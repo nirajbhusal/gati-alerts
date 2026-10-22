@@ -1,0 +1,31 @@
+<section aria-labelledby="hfeed"><span id="hfeed"></span>
+  <div class="controls" role="group" aria-label="Filters">
+    <label class="dsearch"><span class="ne-only">खोज</span><span class="en-only">Search</span><input id="dSearch" type="search" list="dList" autocomplete="off"><datalist id="dList"></datalist></label>
+    <label><span class="ne-only">जिल्ला</span><span class="en-only">District</span><select id="fDistrict"></select></label>
+    <label><span class="ne-only">मिलाउने तरिका</span><span class="en-only">Sort by</span><select id="fSort">
+      <option value="severity" data-ne="गम्भीरता" data-en="Severity">गम्भीरता</option><option value="time" data-ne="समय" data-en="Time">समय</option><option value="area" data-ne="क्षेत्र" data-en="Area">क्षेत्र</option></select></label>
+    <label class="check"><input type="checkbox" id="fExpired" checked><span class="ne-only">म्याद सकिएका सूचना पनि देखाउनुहोस्</span><span class="en-only">Show expired</span></label>
+  </div>
+  <div class="feedgrid">
+    <section class="g-active" aria-labelledby="hlist">
+      <h3 id="hlist"><span class="ne-only">चालु</span><span class="en-only">Active</span> <span id="nActive"></span></h3>
+      <div id="active"></div>
+    </section>
+    <section class="g-exp" aria-labelledby="hexp">
+      <h3 id="hexp"><span class="ne-only">म्याद सकिएका (पुराना सूचना)</span><span class="en-only">Expired (archive)</span> <span id="nExpired"></span></h3>
+      <div id="expired"></div>
+    </section>
+  </div>
+  <p class="meta"><a href="../atom.xml">Atom/CAP feed</a> · <a href="../data/alerts.json">JSON</a> · <span id="gen"></span></p>
+  </section><section aria-labelledby="hcharts"><h2 id="hcharts"><span class="ne-only">चार्ट</span><span class="en-only">Charts</span></h2>
+    <p class="meta"><span class="ne-only">यी अङ्क गतिले राखेका सूचनाको सङ्ख्या हुन्। फरक निकायका तथ्याङ्क कहिल्यै जोडिँदैनन्।</span><span class="en-only">These count the items Gati carries. Figures from different agencies are never added together.</span></p>
+    <div class="charts">
+      <figure class="card chart"><figcaption><span class="ne-only">खतराको किसिमअनुसार</span><span class="en-only">By hazard</span></figcaption><div id="cHazard"></div></figure>
+      <figure class="card chart"><figcaption><span class="ne-only">गम्भीरताअनुसार</span><span class="en-only">By severity</span></figcaption><div id="cSev"></div></figure>
+      <figure class="card chart wide"><figcaption><span class="ne-only">समयरेखा (जारी मिति)</span><span class="en-only">Timeline (date issued)</span></figcaption><div id="cTime"></div></figure>
+      <figure class="card chart"><figcaption><span class="ne-only">स्रोत निकायअनुसार</span><span class="en-only">By source agency</span></figcaption><div id="cAgency"></div></figure>
+      <figure class="card chart"><figcaption><span class="ne-only">मुख्य सडकको अवस्था</span><span class="en-only">Main road status</span></figcaption><div id="cRoads"></div></figure>
+      <figure class="card chart wide"><figcaption><span class="ne-only">भरोसा चिह्न</span><span class="en-only">Trust labels</span></figcaption><div id="cTrust"></div>
+        <p class="meta"><a href="../about/#trust"><span class="ne-only">गतिले सूचना कसरी जाँच्छ</span><span class="en-only">How Gati verifies</span></a></p></figure>
+    </div></section><section aria-labelledby="hupd"><h2 id="hupd"><span class="ne-only">के नयाँ छ</span><span class="en-only">Updates</span></h2>
+    <ol class="updates" id="updates"></ol></section>

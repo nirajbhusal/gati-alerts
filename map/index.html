@@ -1,0 +1,30 @@
+<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>नक्सा · Map · गति Gati</title><meta name="description" content="Gati map: alert areas, main road status and river gauges in Nepal, with sources.">
+<meta property="og:title" content="नक्सा · Map · गति Gati"><meta property="og:description" content="Gati map: alert areas, main road status and river gauges in Nepal, with sources."><meta property="og:type" content="website">
+<meta property="og:url" content="https://nirajbhusal.github.io/gati-alerts/map/"><meta name="theme-color" content="#0E2A47">
+<link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"><link rel="stylesheet" href="../assets/vendor/leaflet/leaflet.css">
+</head><body data-page="map" data-root="../"><main id="main" class="wrap dash">
+<h1><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h1>
+<div class="mydist" id="mydist"></div><section class="mapsec" aria-labelledby="hmap">
+    <div class="sechead first"><span id="hmap"></span>
+      <div class="seg" role="group" aria-label="Map scope">
+        <button type="button" data-scope="active"><span class="ne-only">चालु मात्र</span><span class="en-only">Active only</span></button>
+        <button type="button" data-scope="30"><span class="ne-only">पछिल्ला ३० दिन</span><span class="en-only">Last 30 days</span></button></div></div>
+    <div class="chipbar" role="group" aria-label="Map layers">
+      <button type="button" class="lchip" data-layer="alerts" aria-pressed="true"><span aria-hidden="true">⚠</span> <span class="ne-only">सूचना</span><span class="en-only">Alerts</span></button>
+      <button type="button" class="lchip" data-layer="roads" aria-pressed="true"><span aria-hidden="true">🛣</span> <span class="ne-only">सडक</span><span class="en-only">Roads</span></button>
+      <button type="button" class="lchip" data-layer="rivers" aria-pressed="true"><span aria-hidden="true">💧</span> <span class="ne-only">नदी</span><span class="en-only">Rivers</span></button>
+    </div>
+    <div class="mapgrid">
+      <div class="mapcol"><div id="map" role="region" aria-label="Map of alert areas, road status and river gauges"></div>
+        <div class="maplegend" id="mapLegend"></div></div>
+      <aside class="side">
+        <div class="card sumcard" id="sumcard" aria-live="polite"></div>
+        <div class="card roadlist" id="roads"><h3><span class="ne-only">मुख्य सडकको अवस्था</span><span class="en-only">Main road status</span></h3><ol id="roadList"></ol></div>
+      </aside>
+    </div>
+    <p class="meta" id="mapNote"></p>
+  </section>
+</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/vendor/leaflet/leaflet.js"></script>
+<script src="../assets/js/home.js"></script></body></html>

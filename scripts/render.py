@@ -348,11 +348,17 @@ def main():
         share_png(a, ROOT / "alerts" / a["identifier"] / "share.png", now)
         story_png(a, ROOT / "stories/img" / (a["identifier"] + ".png"), now)
     idx = "".join(f'<li><a href="{e(a["identifier"])}/">{e(a["info"]["ne"]["headline"])}</a> <span class="meta">{npt(a["sent"], "ne")}</span></li>' for a in alerts)
+    body = (ROOT / "scripts/alerts_list.html").read_text(encoding="utf-8")
     (ROOT / "alerts/index.html").write_text(f'''<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>सबै सूचना · All alerts · गति Gati</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
-<body data-page="alerts" data-root="../"><main id="main" class="wrap" style="max-width:780px"><h1>{b("सबै सूचनाको अभिलेख", "Archive of all alerts")}</h1>
-<p class="lead">{b("म्याद सकिएका सूचना पनि मेटिँदैनन्, यहीँ रहन्छन्।", "Expired notices are never deleted; they stay here.")}</p><ul>{idx}</ul>
-</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script></body></html>''', encoding="utf-8")
+<title>सबै सूचना · All alerts · गति Gati</title><meta name="description" content="Gati: every relayed alert with filters, charts and the full archive. Expired notices are never deleted.">
+<meta property="og:title" content="सबै सूचना · All alerts · गति Gati"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0E2A47">
+<link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
+<body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1>
+<p class="lead">{b("चालु र पुराना सबै सूचना, फिल्टरसहित। म्याद सकिएका सूचना पनि मेटिँदैनन्।", "Every active and past alert, with filters. Expired notices are never deleted.")}</p>
+{body}
+<section aria-labelledby="harch"><h2 id="harch">{b("पूरा अभिलेख", "Full archive")}</h2><div class="card"><ul class="archive">{idx}</ul></div></section>
+</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/home.js"></script></body></html>''', encoding="utf-8")
     print(f"rendered {len(alerts)} permalinks and share images")
     lite(alerts, now)
     ics(now)

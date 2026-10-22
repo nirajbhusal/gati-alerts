@@ -14,10 +14,10 @@
 
   /* Item 18: desktop nav; Map, Rivers and Roads are sections of the dashboard. */
   const NAV = [
-    ["home", "#hfeed", "सूचना", "Alerts"],
-    ["map", "#hmap", "नक्सा", "Map"],
-    ["rivers", "#hriv", "नदी", "Rivers"],
-    ["roads", "#roads", "सडक", "Roads"],
+    ["alerts", "alerts/", "सूचना", "Alerts"],
+    ["map", "map/", "नक्सा", "Map"],
+    ["rivers", "rivers/", "नदी", "Rivers"],
+    ["roads", "roads/", "सडक", "Roads"],
     ["stories", "stories/", "सूचना फिड", "Feed"],
     ["patro", "patro/", "पात्रो", "Patro"],
     ["ask", "ask/", "सोध्नुहोस्", "Ask"],
@@ -25,7 +25,7 @@
     ["about", "about/", "बारेमा", "About"],
   ];
   /* Mobile bottom bar */
-  const TABS = [["home", "?view=dashboard#hfeed", "⚠", "सूचना", "Alerts"], ["stories", "stories/", "▶", "सूचना फिड", "Feed"],
+  const TABS = [["alerts", "alerts/", "⚠", "सूचना", "Alerts"], ["stories", "stories/", "▶", "सूचना फिड", "Feed"],
                 ["patro", "patro/", "📅", "पात्रो", "Patro"], ["ask", "ask/", "?", "सोध्नुहोस्", "Ask"]];
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;
