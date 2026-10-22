@@ -483,3 +483,6 @@ html[data-theme=dark] .nearbtn{background:#7FD1D8;color:#0E2A47}.mydist{display:
 .wlist{list-style:none;margin:0 0 var(--s3);padding:0}.wlist li{display:flex;align-items:center;gap:var(--s2);padding:8px 0;border-bottom:1px solid var(--line)}.wn{flex:1;font-weight:600}.wn a{color:var(--ink)}
 .wx{min-width:36px;min-height:36px;border-radius:50%;border:0;background:var(--surface2);color:var(--slate);cursor:pointer}
 .wadd{display:flex;gap:var(--s2);flex-wrap:wrap}.wadd label{flex:1 1 140px}.wadd select{width:100%;font:inherit;min-height:44px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+/* Air */
+.aqlist{list-style:none;margin:0 0 var(--s3);padding:0;display:grid;gap:var(--s2)}.aqb{display:flex;gap:var(--s3);align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}.aqb p{margin:2px 0 0;color:var(--slate)}
+.aqsw{flex:none;width:96px;text-align:center;padding:8px 10px;border-radius:10px;font-weight:800}
