@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-aarughat-2026-10-11</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-11T08:40:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://x.com/DHM_FloodEWS/status/2109167177526116425</note>
+  <info>
+    <language>ne</language>
+    <category>Met</category>
+    <event>बाढी — नदी खतराको तहमाथि</event>
+    <responseType>Evacuate</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Extreme</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-11T08:40:00+05:45</effective>
+    <expires>2026-10-11T20:00:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित</senderName>
+    <headline>बुढीगण्डकी आरुघाटमा ८.४३ मि. — खतराको तह (५.० मि.) भन्दा माथि</headline>
+    <description>DHM: आरुघाट मापन केन्द्र (स्टेसन ४४५) मा असोज २५ बिहान ८:४० मा जलसतह ८.४३ मिटर, बढ्दो (चेतावनी तह ४.५ मि., खतरा तह ५.० मि.)। करिब ८:४० बजे बाढीले पुलसहित मापन केन्द्र बगाएकोले थप रिडिङ उपलब्ध छैन। बिहान ६:०० मा २.२८ मि., ७:५० मा खतरा तह पार।</description>
+    <instruction>नदी किनार र जोखिमयुक्त बस्तीबाट टाढा, सुरक्षित स्थानमा रहनुहोस्। जोखिमयुक्त पुल र सडक प्रयोग नगर्नुहोस्। स्थानीय प्रशासन र सुरक्षा निकायको निर्देशन पालना गर्नुहोस्।</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2109167177526116425</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2109167177526116425</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-11T08:40:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>गोरखा जिल्ला</areaDesc>
+      <polygon>28.7369,84.4937 28.7519,84.5561 28.7352,84.6274 28.6708,84.705 28.637,84.6989 28.5747,84.8562 28.5984,84.9936 28.6827,85.0599 28.6848,85.1231 28.6282,85.1975 28.5967,85.1783 28.5352,85.1864 28.4512,85.1006 28.3935,85.1287 28.3494,85.1129 28.3244,85.0489 28.2741,85.0313 28.2135,84.9638 28.1256,84.9531 28.1031,84.9134 28.1159,84.8463 28.0056,84.8162 27.9549,84.7466 27.8915,84.7386 27.8165,84.781 27.7961,84.7327 27.816,84.6745 27.8764,84.6253 27.8571,84.564 27.912,84.5433 27.9535,84.4263 28.0607,84.4931 28.0854,84.4828 28.1033,84.5488 28.1893,84.6374 28.2912,84.653 28.3616,84.6963 28.4391,84.6414 28.4874,84.5691 28.6276,84.5457 28.7369,84.4937</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>gorkha</value></geocode>
+    </area>
+    <area>
+      <areaDesc>धादिङ जिल्ला</areaDesc>
+      <polygon>28.3444,85.1089 28.231,85.2197 28.1667,85.1968 28.0858,85.1267 28.0285,84.9897 27.9901,85.0161 27.809,85.0141 27.8128,85.0457 27.7608,85.1262 27.7792,85.2611 27.7465,85.2634 27.6683,85.1465 27.7097,85.0428 27.6975,84.9085 27.6689,84.8856 27.6907,84.831 27.6696,84.7995 27.7334,84.757 27.7221,84.6919 27.7384,84.6724 27.7646,84.6887 27.7991,84.6549 27.8165,84.781 27.9224,84.7342 28.0056,84.8162 28.1159,84.8463 28.1031,84.9134 28.1256,84.9531 28.2135,84.9638 28.2741,85.0313 28.3244,85.0489 28.3444,85.1089</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>dhading</value></geocode>
+    </area>
+    <area>
+      <areaDesc>आरुघाट मापन केन्द्र, बुढीगण्डकी (अनुमानित स्थान)</areaDesc>
+      <circle>28.043,84.812 5</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Flood — river above danger level</event>
+    <responseType>Evacuate</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Extreme</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-11T08:40:00+05:45</effective>
+    <expires>2026-10-11T20:00:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM) — relayed by Gati</senderName>
+    <headline>Budhi Gandaki at Aarughat 8.43 m — above the 5.0 m danger level</headline>
+    <description>DHM: Aarughat gauging station (index 445) read 8.43 m and rising at 8:40 AM on Asoj 25 (11 Oct 2026); warning level 4.5 m, danger level 5.0 m. The flood swept away the station and bridge at about 8:40 AM, so there are no further readings. It read 2.28 m at 6:00 AM and crossed the danger level at 7:50 AM.</description>
+    <instruction>Stay in safe places away from the river and risky settlements. Avoid risky bridges and roads. Follow the local administration and security agencies.</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2109167177526116425</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2109167177526116425</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-11T08:40:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>Gorkha district</areaDesc>
+      <polygon>28.7369,84.4937 28.7519,84.5561 28.7352,84.6274 28.6708,84.705 28.637,84.6989 28.5747,84.8562 28.5984,84.9936 28.6827,85.0599 28.6848,85.1231 28.6282,85.1975 28.5967,85.1783 28.5352,85.1864 28.4512,85.1006 28.3935,85.1287 28.3494,85.1129 28.3244,85.0489 28.2741,85.0313 28.2135,84.9638 28.1256,84.9531 28.1031,84.9134 28.1159,84.8463 28.0056,84.8162 27.9549,84.7466 27.8915,84.7386 27.8165,84.781 27.7961,84.7327 27.816,84.6745 27.8764,84.6253 27.8571,84.564 27.912,84.5433 27.9535,84.4263 28.0607,84.4931 28.0854,84.4828 28.1033,84.5488 28.1893,84.6374 28.2912,84.653 28.3616,84.6963 28.4391,84.6414 28.4874,84.5691 28.6276,84.5457 28.7369,84.4937</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>gorkha</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Dhading district</areaDesc>
+      <polygon>28.3444,85.1089 28.231,85.2197 28.1667,85.1968 28.0858,85.1267 28.0285,84.9897 27.9901,85.0161 27.809,85.0141 27.8128,85.0457 27.7608,85.1262 27.7792,85.2611 27.7465,85.2634 27.6683,85.1465 27.7097,85.0428 27.6975,84.9085 27.6689,84.8856 27.6907,84.831 27.6696,84.7995 27.7334,84.757 27.7221,84.6919 27.7384,84.6724 27.7646,84.6887 27.7991,84.6549 27.8165,84.781 27.9224,84.7342 28.0056,84.8162 28.1159,84.8463 28.1031,84.9134 28.1256,84.9531 28.2135,84.9638 28.2741,85.0313 28.3244,85.0489 28.3444,85.1089</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>dhading</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Aarughat gauging station, Budhi Gandaki (approximate location)</areaDesc>
+      <circle>28.043,84.812 5</circle>
+    </area>
+  </info>
+</alert>

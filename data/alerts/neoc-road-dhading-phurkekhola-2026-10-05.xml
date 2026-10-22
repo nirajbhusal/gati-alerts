@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.neoc-road-dhading-phurkekhola-2026-10-05</identifier>
+  <sender>neoc.moha.gov.np</sender>
+  <sent>2026-10-05T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Emergency Operation Centre (NEOC), Ministry of Home Affairs</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
+  <info>
+    <language>ne</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
+    <headline>कालुपाण्डे राजमार्ग: अवरुद्ध (धादिङ, बाढी)</headline>
+    <description>स्थान: गजुरी गा.पा. २ फुर्केखोला। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>धादिङ जिल्ला</areaDesc>
+      <polygon>28.3444,85.1089 28.231,85.2197 28.1667,85.1968 28.0858,85.1267 28.0285,84.9897 27.9901,85.0161 27.809,85.0141 27.8128,85.0457 27.7608,85.1262 27.7792,85.2611 27.7465,85.2634 27.6683,85.1465 27.7097,85.0428 27.6975,84.9085 27.6689,84.8856 27.6907,84.831 27.6696,84.7995 27.7334,84.757 27.7221,84.6919 27.7384,84.6724 27.7646,84.6887 27.7991,84.6549 27.8165,84.781 27.9224,84.7342 28.0056,84.8162 28.1159,84.8463 28.1031,84.9134 28.1256,84.9531 28.2135,84.9638 28.2741,85.0313 28.3244,85.0489 28.3444,85.1089</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>dhading</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
+    <headline>Kalupande Highway: Blocked (Dhading, flood)</headline>
+    <description>Location: Gajuri Rural Municipality-2, Phurkekhola. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>Dhading district</areaDesc>
+      <polygon>28.3444,85.1089 28.231,85.2197 28.1667,85.1968 28.0858,85.1267 28.0285,84.9897 27.9901,85.0161 27.809,85.0141 27.8128,85.0457 27.7608,85.1262 27.7792,85.2611 27.7465,85.2634 27.6683,85.1465 27.7097,85.0428 27.6975,84.9085 27.6689,84.8856 27.6907,84.831 27.6696,84.7995 27.7334,84.757 27.7221,84.6919 27.7384,84.6724 27.7646,84.6887 27.7991,84.6549 27.8165,84.781 27.9224,84.7342 28.0056,84.8162 28.1159,84.8463 28.1031,84.9134 28.1256,84.9531 28.2135,84.9638 28.2741,85.0313 28.3244,85.0489 28.3444,85.1089</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>dhading</value></geocode>
+    </area>
+  </info>
+</alert>

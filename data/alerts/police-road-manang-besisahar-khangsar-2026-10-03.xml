@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-manang-besisahar-khangsar-2026-10-03</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-10-03T06:45:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2106191584438186356</note>
+  <info>
+    <language>ne</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित</senderName>
+    <headline>बेशीसहर हुँदै खाङसारसम्म जाने सडक: पूर्णरुपमा अवरोध (मनाङ, बाढी)</headline>
+    <description>स्थान: बेशीसहर हुँदै खाङसारसम्म जाने सडक। कारण: बाढी। अवरुद्ध मिति: २०८३/०६/०८। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <parameter><valueName>gati:status</valueName><value>Corrected</value></parameter>
+    <parameter><valueName>gati:correction</valueName><value>सुधार: सडक विभाग (DoR NAVIGATE) अनुसार बेशीसहर–घेर्मु २ अक्टोबर १९:०० र सत्तले–चामे ३ अक्टोबर १६:०० मा खुला। NEOC को असोज १८/१९ को सूचीमा मनाङ छैन।</value></parameter>
+    <area>
+      <areaDesc>मनाङ जिल्ला</areaDesc>
+      <polygon>28.8966,84.183 28.8606,84.3916 28.8339,84.3997 28.8223,84.4382 28.7698,84.4413 28.6911,84.5238 28.6276,84.5457 28.5187,84.5726 28.4711,84.5525 28.4618,84.4952 28.5091,84.4391 28.457,84.3933 28.4847,84.3186 28.4883,84.1969 28.5369,84.142 28.5392,84.0876 28.6041,83.9707 28.6155,83.8753 28.6903,83.7956 28.7441,83.8923 28.7924,83.9441 28.832,83.9522 28.8007,84.0204 28.8863,84.1007 28.873,84.1611 28.8966,84.183</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>manang</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>Nepal Police Headquarters — relayed by Gati</senderName>
+    <headline>Besisahar–Khangsar road: Fully blocked (Manang, flood)</headline>
+    <description>Location: Road via Besisahar to Khangsar. Cause: Flood. Closed since: 2026-09-24. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <parameter><valueName>gati:status</valueName><value>Corrected</value></parameter>
+    <parameter><valueName>gati:correction</valueName><value>Correction: DoR NAVIGATE lists Besisahar–Ghermu OPEN from 2 Oct 19:00 and Sattale–Chame OPEN from 3 Oct 16:00 NPT. NEOC's Asoj 18/19 sheets no longer list Manang.</value></parameter>
+    <area>
+      <areaDesc>Manang district</areaDesc>
+      <polygon>28.8966,84.183 28.8606,84.3916 28.8339,84.3997 28.8223,84.4382 28.7698,84.4413 28.6911,84.5238 28.6276,84.5457 28.5187,84.5726 28.4711,84.5525 28.4618,84.4952 28.5091,84.4391 28.457,84.3933 28.4847,84.3186 28.4883,84.1969 28.5369,84.142 28.5392,84.0876 28.6041,83.9707 28.6155,83.8753 28.6903,83.7956 28.7441,83.8923 28.7924,83.9441 28.832,83.9522 28.8007,84.0204 28.8863,84.1007 28.873,84.1611 28.8966,84.183</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>manang</value></geocode>
+    </area>
+  </info>
+</alert>

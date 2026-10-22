@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.neoc-road-myagdi-baisari-tilkeni-2026-10-05</identifier>
+  <sender>neoc.moha.gov.np</sender>
+  <sent>2026-10-05T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Emergency Operation Centre (NEOC), Ministry of Home Affairs</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
+  <info>
+    <language>ne</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
+    <headline>बेनी-जोमसोम खण्ड: अवरुद्ध (म्याग्दी, पहिरो)</headline>
+    <description>स्थान: रघुगंगा गा.पा.२ बैसरी, ३ तिल्केनी। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>म्याग्दी जिल्ला</areaDesc>
+      <polygon>28.7898,83.4901 28.7741,83.5555 28.6875,83.5349 28.5828,83.5864 28.5764,83.6739 28.6879,83.7491 28.67,83.8357 28.6155,83.8753 28.5818,83.806 28.5319,83.8308 28.4744,83.7601 28.4006,83.7378 28.3909,83.687 28.3465,83.6607 28.3823,83.6246 28.3722,83.5742 28.2983,83.6063 28.3274,83.4508 28.3699,83.3595 28.3548,83.3056 28.4395,83.2821 28.4627,83.303 28.488,83.2826 28.5142,83.232 28.494,83.1374 28.5413,83.1066 28.6268,83.11 28.747,83.1537 28.7213,83.2779 28.7898,83.4901</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>myagdi</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
+    <headline>Beni–Jomsom road: Blocked (Myagdi, landslide)</headline>
+    <description>Location: Raghuganga Rural Municipality-2 Baisari and -3 Tilkeni. Cause: Landslide. Closed since: 2026-09-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>Myagdi district</areaDesc>
+      <polygon>28.7898,83.4901 28.7741,83.5555 28.6875,83.5349 28.5828,83.5864 28.5764,83.6739 28.6879,83.7491 28.67,83.8357 28.6155,83.8753 28.5818,83.806 28.5319,83.8308 28.4744,83.7601 28.4006,83.7378 28.3909,83.687 28.3465,83.6607 28.3823,83.6246 28.3722,83.5742 28.2983,83.6063 28.3274,83.4508 28.3699,83.3595 28.3548,83.3056 28.4395,83.2821 28.4627,83.303 28.488,83.2826 28.5142,83.232 28.494,83.1374 28.5413,83.1066 28.6268,83.11 28.747,83.1537 28.7213,83.2779 28.7898,83.4901</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>myagdi</value></geocode>
+    </area>
+  </info>
+</alert>

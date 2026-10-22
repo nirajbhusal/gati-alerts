@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-humla-simkot-hilsa-2026-10-03</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-10-03T06:45:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2106191584438186356</note>
+  <info>
+    <language>ne</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित</senderName>
+    <headline>सिमकोट हिल्सा सडक खण्ड: पूर्ण रुपमा अवरोध (हुम्ला, पहिरो)</headline>
+    <description>स्थान: नाम्खा गा.पा. ४ यालबाङ र सिमकोट गा.पा. ७ ठाडोढुङ्गा। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१२। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <area>
+      <areaDesc>हुम्ला जिल्ला</areaDesc>
+      <polygon>30.311,81.4213 30.369,81.3977 30.3831,81.428 30.3954,81.4007 30.4192,81.4113 30.3736,81.5579 30.4284,81.568 30.4172,81.6148 30.4458,81.6243 30.3842,81.7718 30.3584,81.9497 30.321,81.9903 30.3436,82.0169 30.3478,82.1044 30.3025,82.1272 30.2385,82.1013 30.192,82.1842 30.1531,82.2058 30.1215,82.1697 30.1117,82.1873 30.0653,82.1757 30.0762,82.2479 30.0402,82.2978 30.0468,82.3336 30.0126,82.3628 30.025,82.3961 29.9508,82.5014 29.8929,82.459 29.8132,82.4421 29.8024,82.404 29.7024,82.4011 29.7,82.2612 29.6925,82.2334 29.657,82.2204 29.6395,82.1207 29.7465,82.0636 29.7484,82.036 29.6767,81.9546 29.6644,81.8905 29.6175,81.8574 29.606,81.7429 29.6715,81.7018 29.844,81.755 29.8443,81.7913 29.9044,81.7996 29.914,81.7165 29.9498,81.6883 29.9245,81.5214 29.8887,81.4949 29.8918,81.4659 30.002,81.4608 30.0216,81.4099 30.0098,81.3579 30.0472,81.2728 30.109,81.2906 30.1517,81.2621 30.1536,81.3347 30.2062,81.3946 30.311,81.4213</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>humla</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>Nepal Police Headquarters — relayed by Gati</senderName>
+    <headline>Simkot–Hilsa road: Fully blocked (Humla, landslide)</headline>
+    <description>Location: Namkha-4 Yalbang and Simkot-7 Thadodhunga. Cause: Landslide. Closed since: 2026-09-28. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <area>
+      <areaDesc>Humla district</areaDesc>
+      <polygon>30.311,81.4213 30.369,81.3977 30.3831,81.428 30.3954,81.4007 30.4192,81.4113 30.3736,81.5579 30.4284,81.568 30.4172,81.6148 30.4458,81.6243 30.3842,81.7718 30.3584,81.9497 30.321,81.9903 30.3436,82.0169 30.3478,82.1044 30.3025,82.1272 30.2385,82.1013 30.192,82.1842 30.1531,82.2058 30.1215,82.1697 30.1117,82.1873 30.0653,82.1757 30.0762,82.2479 30.0402,82.2978 30.0468,82.3336 30.0126,82.3628 30.025,82.3961 29.9508,82.5014 29.8929,82.459 29.8132,82.4421 29.8024,82.404 29.7024,82.4011 29.7,82.2612 29.6925,82.2334 29.657,82.2204 29.6395,82.1207 29.7465,82.0636 29.7484,82.036 29.6767,81.9546 29.6644,81.8905 29.6175,81.8574 29.606,81.7429 29.6715,81.7018 29.844,81.755 29.8443,81.7913 29.9044,81.7996 29.914,81.7165 29.9498,81.6883 29.9245,81.5214 29.8887,81.4949 29.8918,81.4659 30.002,81.4608 30.0216,81.4099 30.0098,81.3579 30.0472,81.2728 30.109,81.2906 30.1517,81.2621 30.1536,81.3347 30.2062,81.3946 30.311,81.4213</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>humla</value></geocode>
+    </area>
+  </info>
+</alert>

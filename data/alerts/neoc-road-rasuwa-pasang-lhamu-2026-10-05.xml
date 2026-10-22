@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.neoc-road-rasuwa-pasang-lhamu-2026-10-05</identifier>
+  <sender>neoc.moha.gov.np</sender>
+  <sent>2026-10-05T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Emergency Operation Centre (NEOC), Ministry of Home Affairs</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
+  <info>
+    <language>ne</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
+    <headline>पासाङल्हामु राजमार्ग: अवरुद्ध (रसुवा, बाढी)</headline>
+    <description>स्थान: बारा घुम्ती देखी रसुवागढी सम्म। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>रसुवा जिल्ला</areaDesc>
+      <polygon>28.3353,85.1225 28.3369,85.2075 28.294,85.254 28.3018,85.3391 28.2767,85.3773 28.3249,85.4166 28.3328,85.5086 28.3055,85.5964 28.255,85.6083 28.3029,85.6629 28.3821,85.6881 28.3853,85.7112 28.2454,85.7461 28.1982,85.7958 28.1272,85.6304 28.1556,85.602 28.1648,85.5408 27.9864,85.3304 27.9627,85.2748 27.974,85.1833 28.0187,85.187 28.0301,85.1398 28.1056,85.128 28.1667,85.1968 28.231,85.2197 28.3353,85.1225</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>rasuwa</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
+    <headline>Pasang Lhamu Highway: Blocked (Rasuwa, flood)</headline>
+    <description>Location: From Bara Ghumti to Rasuwagadhi. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>Rasuwa district</areaDesc>
+      <polygon>28.3353,85.1225 28.3369,85.2075 28.294,85.254 28.3018,85.3391 28.2767,85.3773 28.3249,85.4166 28.3328,85.5086 28.3055,85.5964 28.255,85.6083 28.3029,85.6629 28.3821,85.6881 28.3853,85.7112 28.2454,85.7461 28.1982,85.7958 28.1272,85.6304 28.1556,85.602 28.1648,85.5408 27.9864,85.3304 27.9627,85.2748 27.974,85.1833 28.0187,85.187 28.0301,85.1398 28.1056,85.128 28.1667,85.1968 28.231,85.2197 28.3353,85.1225</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>rasuwa</value></geocode>
+    </area>
+  </info>
+</alert>

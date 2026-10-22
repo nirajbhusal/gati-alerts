@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.ndrrma-budhigandaki-2026-10-11</identifier>
+  <sender>ndrrma.gov.np</sender>
+  <sent>2026-10-11T08:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Disaster Risk Reduction and Management Authority (NDRRMA)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Disaster Risk Reduction and Management Authority (NDRRMA). Source: https://ndrrma.gov.np/np/pressnote/66</note>
+  <info>
+    <language>ne</language>
+    <category>Geo</category>
+    <event>पहिरोले नदी थुनिएर फुटेको बाढी</event>
+    <responseType>Evacuate</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Severe</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-11T08:00:00+05:45</effective>
+    <expires>2026-10-12T20:00:00+05:45</expires>
+    <senderName>राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण (NDRRMA) — गति मार्फत प्रसारित</senderName>
+    <headline>बुढीगण्डकी: लोक्पा–चुम्लिङ पहिरोले थुनिएको नदी फुट्यो, तटीय क्षेत्र सतर्क रहनुहोस्</headline>
+    <description>NDRRMA प्रेस नोट (२०८३/०६/२५): चुमनुब्री गाउँपालिका–६, लोक्पा र चुम्लिङ बीच ठूलो पहिरोले बुढीगण्डकी थुनियो। थुनिएको भाग फुटेर लेदोसहितको ठूलो बाढी आयो र भौतिक क्षति भयो। गोरखा, धादिङ, तनहुँ, चितवन, नवलपरासी पूर्व र पश्चिमका नदी किनार; बेनीघाटसम्म अति उच्च जोखिम, मुग्लिङसम्म उच्च सतर्कता।</description>
+    <instruction>नदी र जोखिमयुक्त बस्तीबाट टाढा बस्नुहोस्। बहाव घटेको देखिए पनि जोखिम सकियो भन्ने नठान्नुहोस्। बाढी हेर्न नजानुहोस्। प्रहरी र स्थानीय सूचना पालना गर्नुहोस्।</instruction>
+    <web>https://ndrrma.gov.np/np/pressnote/66</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://ndrrma.gov.np/np/pressnote/66</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-11T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>गोरखा जिल्ला</areaDesc>
+      <polygon>28.7369,84.4937 28.7519,84.5561 28.7352,84.6274 28.6708,84.705 28.637,84.6989 28.5747,84.8562 28.5984,84.9936 28.6827,85.0599 28.6848,85.1231 28.6282,85.1975 28.5967,85.1783 28.5352,85.1864 28.4512,85.1006 28.3935,85.1287 28.3494,85.1129 28.3244,85.0489 28.2741,85.0313 28.2135,84.9638 28.1256,84.9531 28.1031,84.9134 28.1159,84.8463 28.0056,84.8162 27.9549,84.7466 27.8915,84.7386 27.8165,84.781 27.7961,84.7327 27.816,84.6745 27.8764,84.6253 27.8571,84.564 27.912,84.5433 27.9535,84.4263 28.0607,84.4931 28.0854,84.4828 28.1033,84.5488 28.1893,84.6374 28.2912,84.653 28.3616,84.6963 28.4391,84.6414 28.4874,84.5691 28.6276,84.5457 28.7369,84.4937</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>gorkha</value></geocode>
+    </area>
+    <area>
+      <areaDesc>धादिङ जिल्ला</areaDesc>
+      <polygon>28.3444,85.1089 28.231,85.2197 28.1667,85.1968 28.0858,85.1267 28.0285,84.9897 27.9901,85.0161 27.809,85.0141 27.8128,85.0457 27.7608,85.1262 27.7792,85.2611 27.7465,85.2634 27.6683,85.1465 27.7097,85.0428 27.6975,84.9085 27.6689,84.8856 27.6907,84.831 27.6696,84.7995 27.7334,84.757 27.7221,84.6919 27.7384,84.6724 27.7646,84.6887 27.7991,84.6549 27.8165,84.781 27.9224,84.7342 28.0056,84.8162 28.1159,84.8463 28.1031,84.9134 28.1256,84.9531 28.2135,84.9638 28.2741,85.0313 28.3244,85.0489 28.3444,85.1089</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>dhading</value></geocode>
+    </area>
+    <area>
+      <areaDesc>तनहुँ जिल्ला</areaDesc>
+      <polygon>28.1159,84.0054 28.0843,84.0673 28.1066,84.1107 28.0862,84.1824 28.0996,84.2223 28.0781,84.2384 28.1266,84.3374 28.127,84.4062 28.0576,84.4837 27.9535,84.4263 27.912,84.5433 27.8571,84.564 27.8154,84.5156 27.8214,84.4464 27.787,84.4353 27.7616,84.474 27.7418,84.4311 27.7794,84.379 27.7494,84.3291 27.8365,84.2945 27.8708,83.9504 27.8863,83.9417 27.9012,83.9798 27.985,83.9814 28.0186,84.0333 28.0443,83.9635 28.0859,83.9574 28.1159,84.0054</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>tanahu</value></geocode>
+    </area>
+    <area>
+      <areaDesc>चितवन जिल्ला</areaDesc>
+      <polygon>27.816,84.6745 27.7991,84.6549 27.7646,84.6887 27.7384,84.6724 27.7106,84.789 27.6582,84.7687 27.6436,84.7235 27.5824,84.7332 27.5545,84.6869 27.4628,84.6939 27.4346,84.7238 27.4292,84.65 27.461,84.563 27.3854,84.542 27.3541,84.4749 27.3838,84.2957 27.4518,84.2528 27.4454,84.2093 27.4699,84.2066 27.4864,84.1501 27.517,84.1437 27.5157,84.1011 27.4444,84.0563 27.4327,84.0229 27.4474,83.9341 27.5102,83.972 27.5209,83.921 27.544,83.926 27.5485,84.102 27.6251,84.1875 27.6988,84.3366 27.6992,84.4196 27.739,84.4257 27.7616,84.474 27.787,84.4353 27.8214,84.4464 27.8154,84.5156 27.8777,84.59 27.8764,84.6253 27.816,84.6745</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>chitwan</value></geocode>
+    </area>
+    <area>
+      <areaDesc>नवलपरासी पूर्व जिल्ला</areaDesc>
+      <polygon>27.8579,84.0313 27.8696,84.0795 27.8402,84.1613 27.8365,84.2945 27.7494,84.3291 27.7722,84.4006 27.7109,84.4315 27.6863,84.3909 27.6988,84.3366 27.6251,84.1875 27.5593,84.1235 27.5403,84.036 27.543,83.9246 27.6081,83.8525 27.6525,83.86 27.6805,83.7234 27.7191,83.7493 27.7114,83.8377 27.7319,83.8437 27.7275,83.927 27.7517,83.9915 27.8579,84.0313</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-east</value></geocode>
+    </area>
+    <area>
+      <areaDesc>नवलपरासी पश्चिम जिल्ला</areaDesc>
+      <polygon>27.543,83.9258 27.5209,83.921 27.5102,83.972 27.4494,83.9358 27.4329,83.8745 27.3895,83.8806 27.3871,83.9081 27.3479,83.8673 27.4681,83.6179 27.614,83.5903 27.6956,83.6244 27.7032,83.6599 27.6525,83.86 27.6081,83.8525 27.543,83.9258</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-west</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Geo</category>
+    <event>Landslide-dam burst flood</event>
+    <responseType>Evacuate</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Severe</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-11T08:00:00+05:45</effective>
+    <expires>2026-10-12T20:00:00+05:45</expires>
+    <senderName>National Disaster Risk Reduction and Management Authority (NDRRMA) — relayed by Gati</senderName>
+    <headline>Budhi Gandaki: river blocked by the Lokpa–Chumling landslide burst; riverside areas stay alert</headline>
+    <description>NDRRMA press note (2083-06-25): a big landslide between Lokpa and Chumling in Chumnubri Rural Municipality-6 blocked the Budhi Gandaki. The blockage burst into a large debris flood and caused physical damage. River banks in Gorkha, Dhading, Tanahun, Chitwan, and Nawalparasi East and West; very high risk down to Benighat, high alert up to Mugling.</description>
+    <instruction>Stay away from the river and risky settlements. Do not assume the risk is over even if the flow looks lower. Do not go to watch the flood. Follow police and local announcements.</instruction>
+    <web>https://ndrrma.gov.np/np/pressnote/66</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://ndrrma.gov.np/np/pressnote/66</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-11T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>Gorkha district</areaDesc>
+      <polygon>28.7369,84.4937 28.7519,84.5561 28.7352,84.6274 28.6708,84.705 28.637,84.6989 28.5747,84.8562 28.5984,84.9936 28.6827,85.0599 28.6848,85.1231 28.6282,85.1975 28.5967,85.1783 28.5352,85.1864 28.4512,85.1006 28.3935,85.1287 28.3494,85.1129 28.3244,85.0489 28.2741,85.0313 28.2135,84.9638 28.1256,84.9531 28.1031,84.9134 28.1159,84.8463 28.0056,84.8162 27.9549,84.7466 27.8915,84.7386 27.8165,84.781 27.7961,84.7327 27.816,84.6745 27.8764,84.6253 27.8571,84.564 27.912,84.5433 27.9535,84.4263 28.0607,84.4931 28.0854,84.4828 28.1033,84.5488 28.1893,84.6374 28.2912,84.653 28.3616,84.6963 28.4391,84.6414 28.4874,84.5691 28.6276,84.5457 28.7369,84.4937</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>gorkha</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Dhading district</areaDesc>
+      <polygon>28.3444,85.1089 28.231,85.2197 28.1667,85.1968 28.0858,85.1267 28.0285,84.9897 27.9901,85.0161 27.809,85.0141 27.8128,85.0457 27.7608,85.1262 27.7792,85.2611 27.7465,85.2634 27.6683,85.1465 27.7097,85.0428 27.6975,84.9085 27.6689,84.8856 27.6907,84.831 27.6696,84.7995 27.7334,84.757 27.7221,84.6919 27.7384,84.6724 27.7646,84.6887 27.7991,84.6549 27.8165,84.781 27.9224,84.7342 28.0056,84.8162 28.1159,84.8463 28.1031,84.9134 28.1256,84.9531 28.2135,84.9638 28.2741,85.0313 28.3244,85.0489 28.3444,85.1089</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>dhading</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Tanahu district</areaDesc>
+      <polygon>28.1159,84.0054 28.0843,84.0673 28.1066,84.1107 28.0862,84.1824 28.0996,84.2223 28.0781,84.2384 28.1266,84.3374 28.127,84.4062 28.0576,84.4837 27.9535,84.4263 27.912,84.5433 27.8571,84.564 27.8154,84.5156 27.8214,84.4464 27.787,84.4353 27.7616,84.474 27.7418,84.4311 27.7794,84.379 27.7494,84.3291 27.8365,84.2945 27.8708,83.9504 27.8863,83.9417 27.9012,83.9798 27.985,83.9814 28.0186,84.0333 28.0443,83.9635 28.0859,83.9574 28.1159,84.0054</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>tanahu</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Chitwan district</areaDesc>
+      <polygon>27.816,84.6745 27.7991,84.6549 27.7646,84.6887 27.7384,84.6724 27.7106,84.789 27.6582,84.7687 27.6436,84.7235 27.5824,84.7332 27.5545,84.6869 27.4628,84.6939 27.4346,84.7238 27.4292,84.65 27.461,84.563 27.3854,84.542 27.3541,84.4749 27.3838,84.2957 27.4518,84.2528 27.4454,84.2093 27.4699,84.2066 27.4864,84.1501 27.517,84.1437 27.5157,84.1011 27.4444,84.0563 27.4327,84.0229 27.4474,83.9341 27.5102,83.972 27.5209,83.921 27.544,83.926 27.5485,84.102 27.6251,84.1875 27.6988,84.3366 27.6992,84.4196 27.739,84.4257 27.7616,84.474 27.787,84.4353 27.8214,84.4464 27.8154,84.5156 27.8777,84.59 27.8764,84.6253 27.816,84.6745</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>chitwan</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Nawalparasi East district</areaDesc>
+      <polygon>27.8579,84.0313 27.8696,84.0795 27.8402,84.1613 27.8365,84.2945 27.7494,84.3291 27.7722,84.4006 27.7109,84.4315 27.6863,84.3909 27.6988,84.3366 27.6251,84.1875 27.5593,84.1235 27.5403,84.036 27.543,83.9246 27.6081,83.8525 27.6525,83.86 27.6805,83.7234 27.7191,83.7493 27.7114,83.8377 27.7319,83.8437 27.7275,83.927 27.7517,83.9915 27.8579,84.0313</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-east</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Nawalparasi West district</areaDesc>
+      <polygon>27.543,83.9258 27.5209,83.921 27.5102,83.972 27.4494,83.9358 27.4329,83.8745 27.3895,83.8806 27.3871,83.9081 27.3479,83.8673 27.4681,83.6179 27.614,83.5903 27.6956,83.6244 27.7032,83.6599 27.6525,83.86 27.6081,83.8525 27.543,83.9258</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-west</value></geocode>
+    </area>
+  </info>
+</alert>

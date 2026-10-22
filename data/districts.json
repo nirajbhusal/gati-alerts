@@ -1,0 +1,464 @@
+[
+{
+"id": "jhapa",
+"en": "Jhapa",
+"ne": "झापा",
+"province": "koshi"
+},
+{
+"id": "ilam",
+"en": "Ilam",
+"ne": "इलाम",
+"province": "koshi"
+},
+{
+"id": "panchthar",
+"en": "Panchthar",
+"ne": "पाँचथर",
+"province": "koshi"
+},
+{
+"id": "taplejung",
+"en": "Taplejung",
+"ne": "ताप्लेजुङ",
+"province": "koshi"
+},
+{
+"id": "morang",
+"en": "Morang",
+"ne": "मोरङ",
+"province": "koshi"
+},
+{
+"id": "sunsari",
+"en": "Sunsari",
+"ne": "सुनसरी",
+"province": "koshi"
+},
+{
+"id": "bhojpur",
+"en": "Bhojpur",
+"ne": "भोजपुर",
+"province": "koshi"
+},
+{
+"id": "dhankuta",
+"en": "Dhankuta",
+"ne": "धनकुटा",
+"province": "koshi"
+},
+{
+"id": "terhathum",
+"en": "Terhathum",
+"ne": "तेह्रथुम",
+"province": "koshi"
+},
+{
+"id": "sankhuwasabha",
+"en": "Sankhuwasabha",
+"ne": "सङ्खुवासभा",
+"province": "koshi"
+},
+{
+"id": "saptari",
+"en": "Saptari",
+"ne": "सप्तरी",
+"province": "madhesh"
+},
+{
+"id": "siraha",
+"en": "Siraha",
+"ne": "सिराहा",
+"province": "madhesh"
+},
+{
+"id": "udayapur",
+"en": "Udayapur",
+"ne": "उदयपुर",
+"province": "koshi"
+},
+{
+"id": "khotang",
+"en": "Khotang",
+"ne": "खोटाङ",
+"province": "koshi"
+},
+{
+"id": "okhaldhunga",
+"en": "Okhaldhunga",
+"ne": "ओखलढुङ्गा",
+"province": "koshi"
+},
+{
+"id": "solukhumbu",
+"en": "Solukhumbu",
+"ne": "सोलुखुम्बु",
+"province": "koshi"
+},
+{
+"id": "dhanusha",
+"en": "Dhanusha",
+"ne": "धनुषा",
+"province": "madhesh"
+},
+{
+"id": "mahottari",
+"en": "Mahottari",
+"ne": "महोत्तरी",
+"province": "madhesh"
+},
+{
+"id": "sarlahi",
+"en": "Sarlahi",
+"ne": "सर्लाही",
+"province": "madhesh"
+},
+{
+"id": "sindhuli",
+"en": "Sindhuli",
+"ne": "सिन्धुली",
+"province": "bagmati"
+},
+{
+"id": "ramechhap",
+"en": "Ramechhap",
+"ne": "रामेछाप",
+"province": "bagmati"
+},
+{
+"id": "dolakha",
+"en": "Dolakha",
+"ne": "दोलखा",
+"province": "bagmati"
+},
+{
+"id": "bhaktapur",
+"en": "Bhaktapur",
+"ne": "भक्तपुर",
+"province": "bagmati"
+},
+{
+"id": "dhading",
+"en": "Dhading",
+"ne": "धादिङ",
+"province": "bagmati"
+},
+{
+"id": "kathmandu",
+"en": "Kathmandu",
+"ne": "काठमाडौं",
+"province": "bagmati"
+},
+{
+"id": "kavrepalanchok",
+"en": "Kavrepalanchok",
+"ne": "काभ्रेपलाञ्चोक",
+"province": "bagmati"
+},
+{
+"id": "lalitpur",
+"en": "Lalitpur",
+"ne": "ललितपुर",
+"province": "bagmati"
+},
+{
+"id": "nuwakot",
+"en": "Nuwakot",
+"ne": "नुवाकोट",
+"province": "bagmati"
+},
+{
+"id": "rasuwa",
+"en": "Rasuwa",
+"ne": "रसुवा",
+"province": "bagmati"
+},
+{
+"id": "sindhupalchok",
+"en": "Sindhupalchok",
+"ne": "सिन्धुपाल्चोक",
+"province": "bagmati"
+},
+{
+"id": "bara",
+"en": "Bara",
+"ne": "बारा",
+"province": "madhesh"
+},
+{
+"id": "parsa",
+"en": "Parsa",
+"ne": "पर्सा",
+"province": "madhesh"
+},
+{
+"id": "rautahat",
+"en": "Rautahat",
+"ne": "रौतहट",
+"province": "madhesh"
+},
+{
+"id": "chitwan",
+"en": "Chitwan",
+"ne": "चितवन",
+"province": "bagmati"
+},
+{
+"id": "makwanpur",
+"en": "Makwanpur",
+"ne": "मकवानपुर",
+"province": "bagmati"
+},
+{
+"id": "gorkha",
+"en": "Gorkha",
+"ne": "गोरखा",
+"province": "gandaki"
+},
+{
+"id": "kaski",
+"en": "Kaski",
+"ne": "कास्की",
+"province": "gandaki"
+},
+{
+"id": "lamjung",
+"en": "Lamjung",
+"ne": "लमजुङ",
+"province": "gandaki"
+},
+{
+"id": "syangja",
+"en": "Syangja",
+"ne": "स्याङ्जा",
+"province": "gandaki"
+},
+{
+"id": "tanahu",
+"en": "Tanahu",
+"ne": "तनहुँ",
+"province": "gandaki"
+},
+{
+"id": "manang",
+"en": "Manang",
+"ne": "मनाङ",
+"province": "gandaki"
+},
+{
+"id": "kapilbastu",
+"en": "Kapilbastu",
+"ne": "कपिलवस्तु",
+"province": "lumbini"
+},
+{
+"id": "nawalparasi-east",
+"en": "Nawalparasi East",
+"ne": "नवलपरासी पूर्व",
+"province": "gandaki"
+},
+{
+"id": "nawalparasi-west",
+"en": "Nawalparasi West",
+"ne": "नवलपरासी पश्चिम",
+"province": "lumbini"
+},
+{
+"id": "rupandehi",
+"en": "Rupandehi",
+"ne": "रुपन्देही",
+"province": "lumbini"
+},
+{
+"id": "arghakhanchi",
+"en": "Arghakhanchi",
+"ne": "अर्घाखाँची",
+"province": "lumbini"
+},
+{
+"id": "gulmi",
+"en": "Gulmi",
+"ne": "गुल्मी",
+"province": "lumbini"
+},
+{
+"id": "palpa",
+"en": "Palpa",
+"ne": "पाल्पा",
+"province": "lumbini"
+},
+{
+"id": "baglung",
+"en": "Baglung",
+"ne": "बागलुङ",
+"province": "gandaki"
+},
+{
+"id": "myagdi",
+"en": "Myagdi",
+"ne": "म्याग्दी",
+"province": "gandaki"
+},
+{
+"id": "parbat",
+"en": "Parbat",
+"ne": "पर्वत",
+"province": "gandaki"
+},
+{
+"id": "mustang",
+"en": "Mustang",
+"ne": "मुस्ताङ",
+"province": "gandaki"
+},
+{
+"id": "dang",
+"en": "Dang",
+"ne": "दाङ",
+"province": "lumbini"
+},
+{
+"id": "pyuthan",
+"en": "Pyuthan",
+"ne": "प्युठान",
+"province": "lumbini"
+},
+{
+"id": "rolpa",
+"en": "Rolpa",
+"ne": "रोल्पा",
+"province": "lumbini"
+},
+{
+"id": "rukum-east",
+"en": "Rukum East",
+"ne": "पूर्वी रुकुम",
+"province": "lumbini"
+},
+{
+"id": "rukum-west",
+"en": "Rukum West",
+"ne": "पश्चिम रुकुम",
+"province": "karnali"
+},
+{
+"id": "salyan",
+"en": "Salyan",
+"ne": "सल्यान",
+"province": "karnali"
+},
+{
+"id": "dolpa",
+"en": "Dolpa",
+"ne": "डोल्पा",
+"province": "karnali"
+},
+{
+"id": "humla",
+"en": "Humla",
+"ne": "हुम्ला",
+"province": "karnali"
+},
+{
+"id": "jumla",
+"en": "Jumla",
+"ne": "जुम्ला",
+"province": "karnali"
+},
+{
+"id": "kalikot",
+"en": "Kalikot",
+"ne": "कालिकोट",
+"province": "karnali"
+},
+{
+"id": "mugu",
+"en": "Mugu",
+"ne": "मुगु",
+"province": "karnali"
+},
+{
+"id": "banke",
+"en": "Banke",
+"ne": "बाँके",
+"province": "lumbini"
+},
+{
+"id": "bardiya",
+"en": "Bardiya",
+"ne": "बर्दिया",
+"province": "lumbini"
+},
+{
+"id": "surkhet",
+"en": "Surkhet",
+"ne": "सुर्खेत",
+"province": "karnali"
+},
+{
+"id": "dailekh",
+"en": "Dailekh",
+"ne": "दैलेख",
+"province": "karnali"
+},
+{
+"id": "jajarkot",
+"en": "Jajarkot",
+"ne": "जाजरकोट",
+"province": "karnali"
+},
+{
+"id": "kailali",
+"en": "Kailali",
+"ne": "कैलाली",
+"province": "sudurpaschim"
+},
+{
+"id": "achham",
+"en": "Achham",
+"ne": "अछाम",
+"province": "sudurpaschim"
+},
+{
+"id": "doti",
+"en": "Doti",
+"ne": "डोटी",
+"province": "sudurpaschim"
+},
+{
+"id": "bajhang",
+"en": "Bajhang",
+"ne": "बझाङ",
+"province": "sudurpaschim"
+},
+{
+"id": "bajura",
+"en": "Bajura",
+"ne": "बाजुरा",
+"province": "sudurpaschim"
+},
+{
+"id": "kanchanpur",
+"en": "Kanchanpur",
+"ne": "कञ्चनपुर",
+"province": "sudurpaschim"
+},
+{
+"id": "dadeldhura",
+"en": "Dadeldhura",
+"ne": "डडेलधुरा",
+"province": "sudurpaschim"
+},
+{
+"id": "baitadi",
+"en": "Baitadi",
+"ne": "बैतडी",
+"province": "sudurpaschim"
+},
+{
+"id": "darchula",
+"en": "Darchula",
+"ne": "दार्चुला",
+"province": "sudurpaschim"
+}
+]

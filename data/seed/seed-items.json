@@ -1,0 +1,435 @@
+[
+ {
+  "id": "dhm-aarughat-2026-10-11",
+  "agency": "DHM",
+  "file": "data/budhi-gandaki.json",
+  "trust": "Official",
+  "hazard": "flood",
+  "category": "Met",
+  "urgency": "Immediate",
+  "severity": "Extreme",
+  "certainty": "Observed",
+  "response": "Evacuate",
+  "sent": "2026-10-11T08:40:00+05:45",
+  "expires": "2026-10-11T20:00:00+05:45",
+  "source": "https://x.com/DHM_FloodEWS/status/2109167177526116425",
+  "event_ne": "बाढी — नदी खतराको तहमाथि",
+  "event_en": "Flood — river above danger level",
+  "head_ne": "बुढीगण्डकी आरुघाटमा ८.४३ मि. — खतराको तह (५.० मि.) भन्दा माथि",
+  "head_en": "Budhi Gandaki at Aarughat 8.43 m — above the 5.0 m danger level",
+  "desc_ne": "DHM: आरुघाट मापन केन्द्र (स्टेसन ४४५) मा असोज २५ बिहान ८:४० मा जलसतह ८.४३ मिटर, बढ्दो (चेतावनी तह ४.५ मि., खतरा तह ५.० मि.)। करिब ८:४० बजे बाढीले पुलसहित मापन केन्द्र बगाएकोले थप रिडिङ उपलब्ध छैन। बिहान ६:०० मा २.२८ मि., ७:५० मा खतरा तह पार।",
+  "desc_en": "DHM: Aarughat gauging station (index 445) read 8.43 m and rising at 8:40 AM on Asoj 25 (11 Oct 2026); warning level 4.5 m, danger level 5.0 m. The flood swept away the station and bridge at about 8:40 AM, so there are no further readings. It read 2.28 m at 6:00 AM and crossed the danger level at 7:50 AM.",
+  "instr_ne": "नदी किनार र जोखिमयुक्त बस्तीबाट टाढा, सुरक्षित स्थानमा रहनुहोस्। जोखिमयुक्त पुल र सडक प्रयोग नगर्नुहोस्। स्थानीय प्रशासन र सुरक्षा निकायको निर्देशन पालना गर्नुहोस्।",
+  "instr_en": "Stay in safe places away from the river and risky settlements. Avoid risky bridges and roads. Follow the local administration and security agencies.",
+  "area": {
+   "districts": [
+    "gorkha",
+    "dhading"
+   ],
+   "circles": [
+    {
+     "ne": "आरुघाट मापन केन्द्र, बुढीगण्डकी (अनुमानित स्थान)",
+     "en": "Aarughat gauging station, Budhi Gandaki (approximate location)",
+     "circle": "28.043,84.812 5"
+    }
+   ]
+  }
+ },
+ {
+  "id": "ndrrma-budhigandaki-2026-10-11",
+  "agency": "NDRRMA",
+  "file": "data/budhi-gandaki.json",
+  "trust": "Official",
+  "hazard": "flood",
+  "category": "Geo",
+  "urgency": "Immediate",
+  "severity": "Severe",
+  "certainty": "Observed",
+  "response": "Evacuate",
+  "sent": "2026-10-11T08:00:00+05:45",
+  "expires": "2026-10-12T20:00:00+05:45",
+  "source": "https://ndrrma.gov.np/np/pressnote/66",
+  "event_ne": "पहिरोले नदी थुनिएर फुटेको बाढी",
+  "event_en": "Landslide-dam burst flood",
+  "head_ne": "बुढीगण्डकी: लोक्पा–चुम्लिङ पहिरोले थुनिएको नदी फुट्यो, तटीय क्षेत्र सतर्क रहनुहोस्",
+  "head_en": "Budhi Gandaki: river blocked by the Lokpa–Chumling landslide burst; riverside areas stay alert",
+  "desc_ne": "NDRRMA प्रेस नोट (२०८३/०६/२५): चुमनुब्री गाउँपालिका–६, लोक्पा र चुम्लिङ बीच ठूलो पहिरोले बुढीगण्डकी थुनियो। थुनिएको भाग फुटेर लेदोसहितको ठूलो बाढी आयो र भौतिक क्षति भयो। गोरखा, धादिङ, तनहुँ, चितवन, नवलपरासी पूर्व र पश्चिमका नदी किनार; बेनीघाटसम्म अति उच्च जोखिम, मुग्लिङसम्म उच्च सतर्कता।",
+  "desc_en": "NDRRMA press note (2083-06-25): a big landslide between Lokpa and Chumling in Chumnubri Rural Municipality-6 blocked the Budhi Gandaki. The blockage burst into a large debris flood and caused physical damage. River banks in Gorkha, Dhading, Tanahun, Chitwan, and Nawalparasi East and West; very high risk down to Benighat, high alert up to Mugling.",
+  "instr_ne": "नदी र जोखिमयुक्त बस्तीबाट टाढा बस्नुहोस्। बहाव घटेको देखिए पनि जोखिम सकियो भन्ने नठान्नुहोस्। बाढी हेर्न नजानुहोस्। प्रहरी र स्थानीय सूचना पालना गर्नुहोस्।",
+  "instr_en": "Stay away from the river and risky settlements. Do not assume the risk is over even if the flow looks lower. Do not go to watch the flood. Follow police and local announcements.",
+  "area": {
+   "districts": [
+    "gorkha",
+    "dhading",
+    "tanahu",
+    "chitwan",
+    "nawalparasi-east",
+    "nawalparasi-west"
+   ]
+  }
+ },
+ {
+  "id": "ndrrma-narayani-2026-09-27",
+  "agency": "NDRRMA",
+  "file": "data/ndrrma_flood_alerts.json",
+  "trust": "Official",
+  "hazard": "flood",
+  "category": "Met",
+  "urgency": "Immediate",
+  "severity": "Severe",
+  "certainty": "Observed",
+  "response": "Evacuate",
+  "sent": "2026-09-27T08:00:00+05:45",
+  "expires": "2026-10-05T15:30:00+05:45",
+  "source": "https://x.com/NDRRMA_Nepal/status/2104050743875653646",
+  "event_ne": "विशेष बाढी चेतावनी",
+  "event_en": "Special flood alert",
+  "head_ne": "नारायणी नदी खतराको तह पार गरेको छ",
+  "head_en": "The Narayani River has crossed the danger level",
+  "desc_ne": "NDRRMA, असोज ११ बिहान ८ बजे: हालको स्तर ११ मिटर (खतराको तह ११ मिटर); अपेक्षित उच्चतम करिब १३.० मिटर। स्थान: चितवन, नवलपरासी पूर्व, नवलपरासी पश्चिम। पछि: नारायणी देवघाटमा ४.१७ मि., स्थिर (५ अक्टोबर १५:३०, DHM) — सतर्कता तहभन्दा तल।",
+  "desc_en": "NDRRMA, Asoj 11, 8 AM: current level 11 m (danger level 11 m); expected peak about 13.0 m. Areas: Chitwan, Nawalparasi East and Nawalparasi West. Later: Narayani at Devghat 4.17 m, steady (5 Oct 15:30 NPT, DHM), below the alert level.",
+  "instr_ne": "तुरुन्त उच्च तथा सुरक्षित स्थानमा जानुहोस्। किनार र तटीय क्षेत्रबाट टाढा बस्नुहोस्।",
+  "instr_en": "Move to high, safe ground now. Stay away from river banks and low-lying areas.",
+  "area": {
+   "districts": [
+    "chitwan",
+    "nawalparasi-east",
+    "nawalparasi-west"
+   ]
+  }
+ },
+ {
+  "id": "dhm-weather-12337-2026-10-05",
+  "agency": "DHM",
+  "file": "data/dhm-weather-alert.json",
+  "trust": "Official",
+  "hazard": "weather",
+  "category": "Met",
+  "urgency": "Unknown",
+  "severity": "Unknown",
+  "certainty": "Unknown",
+  "response": "None",
+  "sent": "2026-10-05T08:00:00+05:45",
+  "expires": "2026-10-08T08:00:00+05:45",
+  "source": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12337",
+  "event_ne": "मौसम सूचना",
+  "event_en": "Weather notice",
+  "head_ne": "आगामी तीन दिनका लागि मौसम चेतावनी: सबै जिल्ला हरियो (कुनै चेतावनी छैन)",
+  "head_en": "Weather alert for the next three days: all districts green (no warning)",
+  "desc_ne": "DHM मौसम पूर्वानुमान महाशाखा, जारी मिति २०८३-०६-१९ बिहान ८:०० बजे: तीन दिनको चेतावनी नक्सामा सबै जिल्ला हरियो।",
+  "desc_en": "DHM Meteorological Forecasting Division, issued 2083-06-19 (5 Oct 2026) 8:00 AM: all districts are green on the three-day warning map.",
+  "area": {
+   "national": true
+  }
+ },
+ {
+  "id": "neoc-road-rasuwa-pasang-lhamu-2026-10-05",
+  "agency": "NEOC",
+  "file": "data/neoc_roads_2083-06-19-0700.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-05T07:00:00+05:45",
+  "expires": "2026-10-06T07:00:00+05:45",
+  "source": "https://x.com/NEOCOfficial/status/2106915670164459834",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "पासाङल्हामु राजमार्ग: अवरुद्ध (रसुवा, बाढी)",
+  "head_en": "Pasang Lhamu Highway: Blocked (Rasuwa, flood)",
+  "desc_ne": "स्थान: बारा घुम्ती देखी रसुवागढी सम्म। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।",
+  "desc_en": "Location: From Bara Ghumti to Rasuwagadhi. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "rasuwa"
+   ]
+  }
+ },
+ {
+  "id": "neoc-road-rasuwa-trishuli-rasuwagadhi-2026-10-05",
+  "agency": "NEOC",
+  "file": "data/neoc_roads_2083-06-19-0700.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-05T07:00:00+05:45",
+  "expires": "2026-10-06T07:00:00+05:45",
+  "source": "https://x.com/NEOCOfficial/status/2106915670164459834",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "त्रिशुली- मैलुङ-रसुवागढी: अवरुद्ध (रसुवा, बाढी)",
+  "head_en": "Trishuli–Mailung–Rasuwagadhi road: Blocked (Rasuwa, flood)",
+  "desc_ne": "स्थान: त्रिशुली-बेत्रावती-खाल्टे-मैलुङ-स्याफ्रुबेशी टिमुरे-रसुवागढी। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।",
+  "desc_en": "Location: Trishuli–Betrawati–Khalte–Mailung–Syaphrubesi–Timure–Rasuwagadhi. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "rasuwa"
+   ]
+  }
+ },
+ {
+  "id": "neoc-road-nuwakot-trishuli-betrawati-2026-10-05",
+  "agency": "NEOC",
+  "file": "data/neoc_roads_2083-06-19-0700.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-05T07:00:00+05:45",
+  "expires": "2026-10-06T07:00:00+05:45",
+  "source": "https://x.com/NEOCOfficial/status/2106915670164459834",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "मैलुङ-स्याफ्रुबेशी: अवरुद्ध (नुवाकोट, बाढी)",
+  "head_en": "Mailung–Syaphrubesi road: Blocked (Nuwakot, flood)",
+  "desc_ne": "स्थान: त्रिशुली बाट बेत्रावती सम्म। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।",
+  "desc_en": "Location: From Trishuli to Betrawati. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "nuwakot"
+   ]
+  }
+ },
+ {
+  "id": "neoc-road-dhading-phurkekhola-2026-10-05",
+  "agency": "NEOC",
+  "file": "data/neoc_roads_2083-06-19-0700.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-05T07:00:00+05:45",
+  "expires": "2026-10-06T07:00:00+05:45",
+  "source": "https://x.com/NEOCOfficial/status/2106915670164459834",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "कालुपाण्डे राजमार्ग: अवरुद्ध (धादिङ, बाढी)",
+  "head_en": "Kalupande Highway: Blocked (Dhading, flood)",
+  "desc_ne": "स्थान: गजुरी गा.पा. २ फुर्केखोला। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।",
+  "desc_en": "Location: Gajuri Rural Municipality-2, Phurkekhola. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "dhading"
+   ]
+  }
+ },
+ {
+  "id": "neoc-road-lalitpur-tikabhairab-2026-10-05",
+  "agency": "NEOC",
+  "file": "data/neoc_roads_2083-06-19-0700.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-05T07:00:00+05:45",
+  "expires": "2026-10-06T07:00:00+05:45",
+  "source": "https://x.com/NEOCOfficial/status/2106915670164459834",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "चापागाउ – कान्तिलोक पथ: अवरुद्ध (ललितपुर, पहिरो)",
+  "head_en": "Chapagaun – Kantilokpath: Blocked (Lalitpur, landslide)",
+  "desc_ne": "स्थान: गोदावरी न.पा.- ६ टिकाभैरव। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१७। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।",
+  "desc_en": "Location: Godawari Municipality-6, Tikabhairab. Cause: Landslide. Closed since: 2026-10-03. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "lalitpur"
+   ]
+  }
+ },
+ {
+  "id": "neoc-road-myagdi-sukebagar-2026-10-05",
+  "agency": "NEOC",
+  "file": "data/neoc_roads_2083-06-19-0700.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-05T07:00:00+05:45",
+  "expires": "2026-10-06T07:00:00+05:45",
+  "source": "https://x.com/NEOCOfficial/status/2106915670164459834",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "बेनी-जोमसोम खण्ड: अवरुद्ध (म्याग्दी, पहिरो)",
+  "head_en": "Beni–Jomsom road: Blocked (Myagdi, landslide)",
+  "desc_ne": "स्थान: अन्नपुर्ण गा.पा.३ सुकेवगर। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/११। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।",
+  "desc_en": "Location: Annapurna Rural Municipality-3, Sukebagar. Cause: Landslide. Closed since: 2026-09-27. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "myagdi"
+   ]
+  }
+ },
+ {
+  "id": "neoc-road-myagdi-baisari-tilkeni-2026-10-05",
+  "agency": "NEOC",
+  "file": "data/neoc_roads_2083-06-19-0700.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-05T07:00:00+05:45",
+  "expires": "2026-10-06T07:00:00+05:45",
+  "source": "https://x.com/NEOCOfficial/status/2106915670164459834",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "बेनी-जोमसोम खण्ड: अवरुद्ध (म्याग्दी, पहिरो)",
+  "head_en": "Beni–Jomsom road: Blocked (Myagdi, landslide)",
+  "desc_ne": "स्थान: रघुगंगा गा.पा.२ बैसरी, ३ तिल्केनी। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।",
+  "desc_en": "Location: Raghuganga Rural Municipality-2 Baisari and -3 Tilkeni. Cause: Landslide. Closed since: 2026-09-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "myagdi"
+   ]
+  }
+ },
+ {
+  "id": "police-road-manang-besisahar-khangsar-2026-10-03",
+  "agency": "POLICE",
+  "file": "data/police_roads_2083-06-17-0645.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-03T06:45:00+05:45",
+  "expires": "2026-10-04T06:45:00+05:45",
+  "source": "https://x.com/NepalPoliceHQ/status/2106191584438186356",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "बेशीसहर हुँदै खाङसारसम्म जाने सडक: पूर्णरुपमा अवरोध (मनाङ, बाढी)",
+  "head_en": "Besisahar–Khangsar road: Fully blocked (Manang, flood)",
+  "desc_ne": "स्थान: बेशीसहर हुँदै खाङसारसम्म जाने सडक। कारण: बाढी। अवरुद्ध मिति: २०८३/०६/०८। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।",
+  "desc_en": "Location: Road via Besisahar to Khangsar. Cause: Flood. Closed since: 2026-09-24. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "manang"
+   ]
+  },
+  "correction_ne": "सुधार: सडक विभाग (DoR NAVIGATE) अनुसार बेशीसहर–घेर्मु २ अक्टोबर १९:०० र सत्तले–चामे ३ अक्टोबर १६:०० मा खुला। NEOC को असोज १८/१९ को सूचीमा मनाङ छैन।",
+  "correction_en": "Correction: DoR NAVIGATE lists Besisahar–Ghermu OPEN from 2 Oct 19:00 and Sattale–Chame OPEN from 3 Oct 16:00 NPT. NEOC's Asoj 18/19 sheets no longer list Manang."
+ },
+ {
+  "id": "police-road-nawalparasi-east-ghumauri-2026-10-03",
+  "agency": "POLICE",
+  "file": "data/police_roads_2083-06-17-0645.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Minor",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-03T06:45:00+05:45",
+  "expires": "2026-10-04T06:45:00+05:45",
+  "source": "https://x.com/NepalPoliceHQ/status/2106191584438186356",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "कालीगण्डकी करीडोर: एकतर्फि सुचारु (नवलपरासी पूर्व, पहिरो)",
+  "head_en": "Kaligandaki Corridor: One-way open (Nawalparasi East, landslide)",
+  "desc_ne": "स्थान: बुलिङटार गा.पा.६ घुमाउरी घाट। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१०। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।",
+  "desc_en": "Location: Bulingtar-6 Ghumauri Ghat. Cause: Landslide. Closed since: 2026-09-26. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.",
+  "instr_ne": "सावधानीसाथ यात्रा गर्नुहोस् र ट्राफिक प्रहरीको निर्देशन पालना गर्नुहोस्।",
+  "instr_en": "Travel with care and follow traffic police instructions.",
+  "area": {
+   "districts": [
+    "nawalparasi-east"
+   ]
+  }
+ },
+ {
+  "id": "police-road-nawalparasi-east-janti-2026-10-03",
+  "agency": "POLICE",
+  "file": "data/police_roads_2083-06-17-0645.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Minor",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-03T06:45:00+05:45",
+  "expires": "2026-10-04T06:45:00+05:45",
+  "source": "https://x.com/NepalPoliceHQ/status/2106191584438186356",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "कालीगण्डकी कोरिडोर: एकतर्फी सुचारु (ठुला गाडी जान नसक्ने) (नवलपरासी पूर्व, पहिरो)",
+  "head_en": "Kaligandaki Corridor: One-way open (no heavy vehicles) (Nawalparasi East, landslide)",
+  "desc_ne": "स्थान: बौदिकाली गा.पा. ३ जन्ती पहिरो। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१४। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।",
+  "desc_en": "Location: Baudikali-3 Janti landslide. Cause: Landslide. Closed since: 2026-09-30. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.",
+  "instr_ne": "सावधानीसाथ यात्रा गर्नुहोस् र ट्राफिक प्रहरीको निर्देशन पालना गर्नुहोस्।",
+  "instr_en": "Travel with care and follow traffic police instructions.",
+  "area": {
+   "districts": [
+    "nawalparasi-east"
+   ]
+  }
+ },
+ {
+  "id": "police-road-humla-simkot-hilsa-2026-10-03",
+  "agency": "POLICE",
+  "file": "data/police_roads_2083-06-17-0645.json",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-03T06:45:00+05:45",
+  "expires": "2026-10-04T06:45:00+05:45",
+  "source": "https://x.com/NepalPoliceHQ/status/2106191584438186356",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "सिमकोट हिल्सा सडक खण्ड: पूर्ण रुपमा अवरोध (हुम्ला, पहिरो)",
+  "head_en": "Simkot–Hilsa road: Fully blocked (Humla, landslide)",
+  "desc_ne": "स्थान: नाम्खा गा.पा. ४ यालबाङ र सिमकोट गा.पा. ७ ठाडोढुङ्गा। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१२। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।",
+  "desc_en": "Location: Namkha-4 Yalbang and Simkot-7 Thadodhunga. Cause: Landslide. Closed since: 2026-09-28. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.",
+  "instr_ne": "यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।",
+  "instr_en": "Avoid this road or check with the police before travelling.",
+  "area": {
+   "districts": [
+    "humla"
+   ]
+  }
+ }
+]

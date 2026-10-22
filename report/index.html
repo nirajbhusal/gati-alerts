@@ -1,0 +1,82 @@
+<!doctype html><html lang="ne"><head>
+<title>रिपोर्ट गर्नुहोस् · Report — गति Gati</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0E2A47">
+<link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/atom+xml" title="Gati CAP feed" href="../feed.xml">
+<link rel="stylesheet" href="../assets/css/gati.css">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head><body data-page="report" data-root="../">
+<main id="main" class="wrap" style="max-width:760px">
+  <h1><span class="ne-only">जोखिम रिपोर्ट गर्नुहोस्</span><span class="en-only">Report a hazard</span></h1>
+  <p class="lead"><span class="ne-only">तपाईंले देखेको बाढी, पहिरो, सडक अवरोध वा अन्य जोखिमबारे जानकारी दिनुहोस्। यो आधिकारिक उद्धार अनुरोध होइन।</span>
+  <span class="en-only">Tell us about a flood, landslide, blocked road or other hazard you have seen. This is not an official rescue request.</span></p>
+  <div class="note" role="note"><strong><span class="ne-only">जीवन जोखिममा छ? अहिले फोन गर्नुहोस्:</span><span class="en-only">Life in danger? Call now:</span></strong>
+    <div class="helplines" style="margin-top:8px"><a href="tel:100">100</a><a href="tel:101">101</a><a href="tel:102">102</a><a href="tel:1149">1149</a></div></div>
+
+  <h2><span class="ne-only">यो कसरी काम गर्छ</span><span class="en-only">How it works</span></h2>
+  <ol>
+    <li><span class="ne-only">तलको फारम भर्नुहोस्।</span><span class="en-only">Fill in the form below.</span></li>
+    <li><span class="ne-only">"GitHub मा पठाउनुहोस्" थिच्दा तपाईंको विवरण भरिएको GitHub Issue खुल्छ। <strong>पठाउन GitHub खाता चाहिन्छ</strong> (निःशुल्क)। त्यहाँ "Create/Submit" थिच्नुहोस्।</span>
+        <span class="en-only">"Send via GitHub" opens a GitHub Issue already filled with your details. <strong>Submitting needs a free GitHub account.</strong> Press "Create/Submit" there.</span></li>
+    <li><span class="ne-only">रिपोर्ट <strong>सार्वजनिक</strong> हुन्छ र मोडेरेटरले जाँच नगरेसम्म "रिपोर्ट गरिएको — पुष्टि भएको छैन" भनी देखाइन्छ।</span>
+        <span class="en-only">The report is <strong>public</strong> and is shown as "Reported — not confirmed" until a moderator checks it.</span></li>
+  </ol>
+
+  <form id="rf" class="card" novalidate>
+    <label><span><span class="ne-only">जोखिमको प्रकार</span><span class="en-only">Hazard type</span> *</span>
+      <select id="hazard" required></select></label>
+
+    <fieldset style="border:0;padding:0;margin:0 0 6px">
+      <legend style="font-weight:600;margin-bottom:6px"><span class="ne-only">स्थान</span><span class="en-only">Location</span></legend>
+      <div id="pickmap" aria-label="Map: tap to place the pin"></div>
+      <p class="meta" style="margin-top:0"><span class="ne-only">नक्सामा थिचेर पिन राख्नुहोस्, वा GPS प्रयोग गर्नुहोस्। पिन तानेर मिलाउन सकिन्छ।</span><span class="en-only">Tap the map to drop a pin, or use GPS. You can drag the pin.</span></p>
+      <div class="controls"><button type="button" class="btn alt" id="gps">📍 <span class="ne-only">मेरो GPS स्थान</span><span class="en-only">Use my GPS</span></button>
+        <label style="margin:0;flex:1;min-width:200px"><span class="h">GPS (lat, lon)</span><input id="latlon" inputmode="decimal" placeholder="27.7000, 85.3200"></label></div>
+      <div class="row c3">
+        <label><span><span class="ne-only">जिल्ला</span><span class="en-only">District</span> *</span><select id="district" required></select></label>
+        <label><span class="ne-only">नगर/गाउँपालिका</span><span class="en-only">Municipality</span><input id="municipality" autocomplete="off"></label>
+        <label><span class="ne-only">वडा नं.</span><span class="en-only">Ward no.</span><input id="ward" inputmode="numeric" maxlength="3"></label>
+      </div>
+      <label><span class="ne-only">ठाउँको नाम / नजिकको चिनारी</span><span class="en-only">Place name / nearby landmark</span><input id="place" autocomplete="off"></label>
+    </fieldset>
+
+    <label><span><span class="ne-only">कहिले देख्नुभयो?</span><span class="en-only">When did you see it?</span> *</span><input type="datetime-local" id="when" required></label>
+    <label><span><span class="ne-only">के देख्नुभयो?</span><span class="en-only">What did you see?</span> *</span>
+      <span class="h"><span class="ne-only">आफैँले देखेको कुरा मात्र लेख्नुहोस्। सुनेको हल्ला होइन। मानिसको नाम वा फोन नम्बर नलेख्नुहोस्।</span><span class="en-only">Only what you saw yourself, not rumours. Do not include people's names or phone numbers.</span></span>
+      <textarea id="desc" rows="5" required maxlength="2000"></textarea></label>
+
+    <label><span class="ne-only">तस्विर (ऐच्छिक)</span><span class="en-only">Photo (optional)</span>
+      <span class="h"><span class="ne-only">तस्विर यहाँबाट अपलोड हुँदैन। GitHub पेज खुलेपछि त्यही तस्विर विवरण बाकसमा तानेर राख्नुहोस्। तस्विर सार्वजनिक हुन्छ — अनुहार, घरको नम्बर वा पीडितको तस्विर नराख्नुहोस्।</span>
+      <span class="en-only">Photos are not uploaded from here. When the GitHub page opens, drag the same photo into the description box. Photos are public: avoid faces, house numbers and images of victims.</span></span>
+      <input type="file" id="photo" accept="image/*"></label>
+    <img id="preview" alt="" style="max-width:100%;max-height:220px;border-radius:10px;display:none;margin:-6px 0 14px">
+
+    <label><span class="ne-only">तपाईंको सम्पर्क (ऐच्छिक, निजी)</span><span class="en-only">Your contact (optional, private)</span>
+      <span class="h"><span class="ne-only">यो GitHub मा जाँदैन र सार्वजनिक हुँदैन। चाहनुभयो भने पठाएपछि इमेलबाट मोडेरेटरलाई मात्र पठाउन सकिन्छ।</span><span class="en-only">This is never put on GitHub or shown publicly. If you wish, you can send it only to the moderator by email after submitting.</span></span>
+      <input id="contact" autocomplete="tel" placeholder="98XXXXXXXX / email"></label>
+
+    <label class="check" style="font-weight:400"><input type="checkbox" id="consent" required>
+      <span><span class="ne-only">म बुझ्छु कि मेरो रिपोर्ट (सम्पर्क बाहेक) सार्वजनिक हुन्छ र मैले आफैँ देखेको सत्य विवरण दिएको छु।</span><span class="en-only">I understand my report (except contact) will be public, and that this is a true account of what I saw.</span></span></label>
+    <p id="err" class="note" role="alert" hidden></p>
+    <button class="btn" type="submit">↗ <span class="ne-only">GitHub मा पठाउनुहोस्</span><span class="en-only">Send via GitHub</span></button>
+  </form>
+  <div id="done" class="note ok" hidden></div>
+
+  <h2 id="privacy"><span class="ne-only">गोपनीयता</span><span class="en-only">Privacy</span></h2>
+  <ul class="ne-only"><li>GPS तपाईंको फोनमै पढिन्छ; हामी कुनै सर्भरमा पठाउँदैनौं। रिपोर्टमा ४ दशमलव (करिब ११ मिटर) सम्म मात्र राखिन्छ।</li>
+    <li>रिपोर्ट GitHub Issue को रूपमा सार्वजनिक हुन्छ र तपाईंको GitHub प्रयोगकर्ता नाम देखिन्छ।</li>
+    <li>सम्पर्क विवरण कहिल्यै सार्वजनिक गरिँदैन; यो पेजले कतै पठाउँदैन।</li>
+    <li>यो साइटमा कुकी, विज्ञापन वा ट्र्याकिङ छैन। नक्साको टाइल OpenStreetMap बाट आउँछ।</li></ul>
+  <ul class="en-only"><li>GPS is read on your phone only; we do not send it to any server. Reports keep 4 decimals (about 11 m).</li>
+    <li>The report becomes a public GitHub Issue and shows your GitHub username.</li>
+    <li>Contact details are never published; this page does not send them anywhere.</li>
+    <li>No cookies, ads or tracking on this site. Map tiles come from OpenStreetMap.</li></ul>
+</main>
+<script src="../assets/js/common.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../assets/js/report.js"></script>
+</body></html>

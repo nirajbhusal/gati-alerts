@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-nawalparasi-east-janti-2026-10-03</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-10-03T06:45:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2106191584438186356</note>
+  <info>
+    <language>ne</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित</senderName>
+    <headline>कालीगण्डकी कोरिडोर: एकतर्फी सुचारु (ठुला गाडी जान नसक्ने) (नवलपरासी पूर्व, पहिरो)</headline>
+    <description>स्थान: बौदिकाली गा.पा. ३ जन्ती पहिरो। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१४। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।</description>
+    <instruction>सावधानीसाथ यात्रा गर्नुहोस् र ट्राफिक प्रहरीको निर्देशन पालना गर्नुहोस्।</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <area>
+      <areaDesc>नवलपरासी पूर्व जिल्ला</areaDesc>
+      <polygon>27.8579,84.0313 27.8696,84.0795 27.8402,84.1613 27.8365,84.2945 27.7494,84.3291 27.7722,84.4006 27.7109,84.4315 27.6863,84.3909 27.6988,84.3366 27.6251,84.1875 27.5593,84.1235 27.5403,84.036 27.543,83.9246 27.6081,83.8525 27.6525,83.86 27.6805,83.7234 27.7191,83.7493 27.7114,83.8377 27.7319,83.8437 27.7275,83.927 27.7517,83.9915 27.8579,84.0313</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-east</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>Nepal Police Headquarters — relayed by Gati</senderName>
+    <headline>Kaligandaki Corridor: One-way open (no heavy vehicles) (Nawalparasi East, landslide)</headline>
+    <description>Location: Baudikali-3 Janti landslide. Cause: Landslide. Closed since: 2026-09-30. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.</description>
+    <instruction>Travel with care and follow traffic police instructions.</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <area>
+      <areaDesc>Nawalparasi East district</areaDesc>
+      <polygon>27.8579,84.0313 27.8696,84.0795 27.8402,84.1613 27.8365,84.2945 27.7494,84.3291 27.7722,84.4006 27.7109,84.4315 27.6863,84.3909 27.6988,84.3366 27.6251,84.1875 27.5593,84.1235 27.5403,84.036 27.543,83.9246 27.6081,83.8525 27.6525,83.86 27.6805,83.7234 27.7191,83.7493 27.7114,83.8377 27.7319,83.8437 27.7275,83.927 27.7517,83.9915 27.8579,84.0313</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-east</value></geocode>
+    </area>
+  </info>
+</alert>

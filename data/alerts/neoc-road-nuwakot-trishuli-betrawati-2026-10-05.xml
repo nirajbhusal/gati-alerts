@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.neoc-road-nuwakot-trishuli-betrawati-2026-10-05</identifier>
+  <sender>neoc.moha.gov.np</sender>
+  <sent>2026-10-05T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Emergency Operation Centre (NEOC), Ministry of Home Affairs</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
+  <info>
+    <language>ne</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
+    <headline>मैलुङ-स्याफ्रुबेशी: अवरुद्ध (नुवाकोट, बाढी)</headline>
+    <description>स्थान: त्रिशुली बाट बेत्रावती सम्म। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>नुवाकोट जिल्ला</areaDesc>
+      <polygon>28.0858,85.1267 28.0301,85.1398 28.0187,85.187 27.974,85.1833 27.9627,85.2748 28.0841,85.4439 28.064,85.4691 28.0287,85.496 27.9168,85.4884 27.8722,85.4548 27.8134,85.4486 27.8135,85.3114 27.7787,85.2701 27.7608,85.1262 27.8128,85.0457 27.809,85.0141 27.9901,85.0161 28.0285,84.9897 28.0858,85.1267</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nuwakot</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
+    <headline>Mailung–Syaphrubesi road: Blocked (Nuwakot, flood)</headline>
+    <description>Location: From Trishuli to Betrawati. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <area>
+      <areaDesc>Nuwakot district</areaDesc>
+      <polygon>28.0858,85.1267 28.0301,85.1398 28.0187,85.187 27.974,85.1833 27.9627,85.2748 28.0841,85.4439 28.064,85.4691 28.0287,85.496 27.9168,85.4884 27.8722,85.4548 27.8134,85.4486 27.8135,85.3114 27.7787,85.2701 27.7608,85.1262 27.8128,85.0457 27.809,85.0141 27.9901,85.0161 28.0285,84.9897 28.0858,85.1267</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nuwakot</value></geocode>
+    </area>
+  </info>
+</alert>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.ndrrma-narayani-2026-09-27</identifier>
+  <sender>ndrrma.gov.np</sender>
+  <sent>2026-09-27T08:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Disaster Risk Reduction and Management Authority (NDRRMA)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Disaster Risk Reduction and Management Authority (NDRRMA). Source: https://x.com/NDRRMA_Nepal/status/2104050743875653646</note>
+  <info>
+    <language>ne</language>
+    <category>Met</category>
+    <event>विशेष बाढी चेतावनी</event>
+    <responseType>Evacuate</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Severe</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-09-27T08:00:00+05:45</effective>
+    <expires>2026-10-05T15:30:00+05:45</expires>
+    <senderName>राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण (NDRRMA) — गति मार्फत प्रसारित</senderName>
+    <headline>नारायणी नदी खतराको तह पार गरेको छ</headline>
+    <description>NDRRMA, असोज ११ बिहान ८ बजे: हालको स्तर ११ मिटर (खतराको तह ११ मिटर); अपेक्षित उच्चतम करिब १३.० मिटर। स्थान: चितवन, नवलपरासी पूर्व, नवलपरासी पश्चिम। पछि: नारायणी देवघाटमा ४.१७ मि., स्थिर (५ अक्टोबर १५:३०, DHM) — सतर्कता तहभन्दा तल।</description>
+    <instruction>तुरुन्त उच्च तथा सुरक्षित स्थानमा जानुहोस्। किनार र तटीय क्षेत्रबाट टाढा बस्नुहोस्।</instruction>
+    <web>https://x.com/NDRRMA_Nepal/status/2104050743875653646</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NDRRMA_Nepal/status/2104050743875653646</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-09-27T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/ndrrma_flood_alerts.json</value></parameter>
+    <area>
+      <areaDesc>चितवन जिल्ला</areaDesc>
+      <polygon>27.816,84.6745 27.7991,84.6549 27.7646,84.6887 27.7384,84.6724 27.7106,84.789 27.6582,84.7687 27.6436,84.7235 27.5824,84.7332 27.5545,84.6869 27.4628,84.6939 27.4346,84.7238 27.4292,84.65 27.461,84.563 27.3854,84.542 27.3541,84.4749 27.3838,84.2957 27.4518,84.2528 27.4454,84.2093 27.4699,84.2066 27.4864,84.1501 27.517,84.1437 27.5157,84.1011 27.4444,84.0563 27.4327,84.0229 27.4474,83.9341 27.5102,83.972 27.5209,83.921 27.544,83.926 27.5485,84.102 27.6251,84.1875 27.6988,84.3366 27.6992,84.4196 27.739,84.4257 27.7616,84.474 27.787,84.4353 27.8214,84.4464 27.8154,84.5156 27.8777,84.59 27.8764,84.6253 27.816,84.6745</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>chitwan</value></geocode>
+    </area>
+    <area>
+      <areaDesc>नवलपरासी पूर्व जिल्ला</areaDesc>
+      <polygon>27.8579,84.0313 27.8696,84.0795 27.8402,84.1613 27.8365,84.2945 27.7494,84.3291 27.7722,84.4006 27.7109,84.4315 27.6863,84.3909 27.6988,84.3366 27.6251,84.1875 27.5593,84.1235 27.5403,84.036 27.543,83.9246 27.6081,83.8525 27.6525,83.86 27.6805,83.7234 27.7191,83.7493 27.7114,83.8377 27.7319,83.8437 27.7275,83.927 27.7517,83.9915 27.8579,84.0313</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-east</value></geocode>
+    </area>
+    <area>
+      <areaDesc>नवलपरासी पश्चिम जिल्ला</areaDesc>
+      <polygon>27.543,83.9258 27.5209,83.921 27.5102,83.972 27.4494,83.9358 27.4329,83.8745 27.3895,83.8806 27.3871,83.9081 27.3479,83.8673 27.4681,83.6179 27.614,83.5903 27.6956,83.6244 27.7032,83.6599 27.6525,83.86 27.6081,83.8525 27.543,83.9258</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-west</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Special flood alert</event>
+    <responseType>Evacuate</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Severe</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-09-27T08:00:00+05:45</effective>
+    <expires>2026-10-05T15:30:00+05:45</expires>
+    <senderName>National Disaster Risk Reduction and Management Authority (NDRRMA) — relayed by Gati</senderName>
+    <headline>The Narayani River has crossed the danger level</headline>
+    <description>NDRRMA, Asoj 11, 8 AM: current level 11 m (danger level 11 m); expected peak about 13.0 m. Areas: Chitwan, Nawalparasi East and Nawalparasi West. Later: Narayani at Devghat 4.17 m, steady (5 Oct 15:30 NPT, DHM), below the alert level.</description>
+    <instruction>Move to high, safe ground now. Stay away from river banks and low-lying areas.</instruction>
+    <web>https://x.com/NDRRMA_Nepal/status/2104050743875653646</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NDRRMA_Nepal/status/2104050743875653646</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-09-27T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/ndrrma_flood_alerts.json</value></parameter>
+    <area>
+      <areaDesc>Chitwan district</areaDesc>
+      <polygon>27.816,84.6745 27.7991,84.6549 27.7646,84.6887 27.7384,84.6724 27.7106,84.789 27.6582,84.7687 27.6436,84.7235 27.5824,84.7332 27.5545,84.6869 27.4628,84.6939 27.4346,84.7238 27.4292,84.65 27.461,84.563 27.3854,84.542 27.3541,84.4749 27.3838,84.2957 27.4518,84.2528 27.4454,84.2093 27.4699,84.2066 27.4864,84.1501 27.517,84.1437 27.5157,84.1011 27.4444,84.0563 27.4327,84.0229 27.4474,83.9341 27.5102,83.972 27.5209,83.921 27.544,83.926 27.5485,84.102 27.6251,84.1875 27.6988,84.3366 27.6992,84.4196 27.739,84.4257 27.7616,84.474 27.787,84.4353 27.8214,84.4464 27.8154,84.5156 27.8777,84.59 27.8764,84.6253 27.816,84.6745</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>chitwan</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Nawalparasi East district</areaDesc>
+      <polygon>27.8579,84.0313 27.8696,84.0795 27.8402,84.1613 27.8365,84.2945 27.7494,84.3291 27.7722,84.4006 27.7109,84.4315 27.6863,84.3909 27.6988,84.3366 27.6251,84.1875 27.5593,84.1235 27.5403,84.036 27.543,83.9246 27.6081,83.8525 27.6525,83.86 27.6805,83.7234 27.7191,83.7493 27.7114,83.8377 27.7319,83.8437 27.7275,83.927 27.7517,83.9915 27.8579,84.0313</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-east</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Nawalparasi West district</areaDesc>
+      <polygon>27.543,83.9258 27.5209,83.921 27.5102,83.972 27.4494,83.9358 27.4329,83.8745 27.3895,83.8806 27.3871,83.9081 27.3479,83.8673 27.4681,83.6179 27.614,83.5903 27.6956,83.6244 27.7032,83.6599 27.6525,83.86 27.6081,83.8525 27.543,83.9258</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>nawalparasi-west</value></geocode>
+    </area>
+  </info>
+</alert>
