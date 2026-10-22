@@ -479,3 +479,7 @@ html[data-theme=dark] .nearbtn{background:#7FD1D8;color:#0E2A47}.mydist{display:
 .qfilt button[aria-pressed=true]{background:#0E2A47;color:#fff;border-color:#0E2A47}html[data-theme=dark] .qfilt button[aria-pressed=true]{background:#7FD1D8;color:#0E2A47}
 .qlist{list-style:none;margin:0;padding:0}.qlist li{display:flex;gap:var(--s3);padding:12px 0;border-bottom:1px solid var(--line)}.qlist a{color:var(--ink);font-weight:600}
 .qmag{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#fff;background:#B3261E;font-size:1.05rem}
+/* Watchlist */
+.wlist{list-style:none;margin:0 0 var(--s3);padding:0}.wlist li{display:flex;align-items:center;gap:var(--s2);padding:8px 0;border-bottom:1px solid var(--line)}.wn{flex:1;font-weight:600}.wn a{color:var(--ink)}
+.wx{min-width:36px;min-height:36px;border-radius:50%;border:0;background:var(--surface2);color:var(--slate);cursor:pointer}
+.wadd{display:flex;gap:var(--s2);flex-wrap:wrap}.wadd label{flex:1 1 140px}.wadd select{width:100%;font:inherit;min-height:44px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
