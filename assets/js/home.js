@@ -36,6 +36,7 @@
       ${i.instruction ? `<div class="instr"><strong>${G.lang === "ne" ? "के गर्ने" : "What to do"}:</strong> ${G.esc(i.instruction)}</div>` : ""}
       <p class="meta src">${G.lang === "ne" ? "स्रोत" : "Source"}: <strong>${G.esc(i.senderName)}</strong> · <a href="${G.esc(i.web)}" rel="noopener" target="_blank">${G.lang === "ne" ? "मूल सूचना" : "Original notice"} ↗</a></p>
       <details><summary>${G.lang === "ne" ? "विस्तृत विवरण" : "Details"}</summary>
+        ${a.expired && i.instruction ? `<p><strong>${G.lang === "ne" ? "त्यस बेलाको निर्देशन" : "Instruction at the time"}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>
         <p class="meta">CAP: urgency ${en.urgency} · severity ${en.severity} · certainty ${en.certainty} · sender <code>${G.esc(a.sender)}</code><br>
         <a href="${G.esc(a.file)}">CAP 1.2 XML</a> · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${G.lang === "ne" ? "बुलेटिन डेटा" : "Bulletin data"}</a></p>
@@ -83,7 +84,7 @@
       ? "अहिले यो क्षेत्रका लागि गतिले प्रसारण गरेको कुनै सक्रिय सूचना छैन। यसको अर्थ जोखिम छैन भन्ने होइन — DHM, NDRRMA र स्थानीय प्रशासनको सूचना पनि हेर्नुहोस्।"
       : "Gati is not relaying any active notice for this area right now. That does not mean there is no risk; also check DHM, NDRRMA and your local administration."}</div>`;
     $("expired").innerHTML = exp.map(card).join("");
-    $("expired").hidden = $("hexp").hidden = !showExp.checked;
+    document.querySelector(".g-exp").hidden = !showExp.checked;
     drawMap(showExp.checked ? list : act);
     $("legend").innerHTML = G.SEVORDER.map(G.sevChip).join("");
     $("trustLegend").innerHTML = Object.keys(G.TRUST).map(G.trustChip).join("");

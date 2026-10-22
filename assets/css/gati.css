@@ -21,7 +21,7 @@ nav.main a[aria-current=page]{background:rgba(127,209,216,.18);color:#fff;box-sh
 @media (max-width:720px){.menubtn{display:block}nav.main{display:none;flex-direction:column;padding:0 10px 10px}nav.main.open{display:flex}.brand small{display:none}}
 .disclaimer{background:#e8f3f4;border-bottom:1px solid var(--mist);font-size:.88rem;color:var(--slate)}
 .disclaimer .wrap{padding:10px 18px}
-main{padding:24px 0 48px}
+main{padding:30px 0 56px}
 h1{color:var(--navy);font-size:1.7rem;line-height:1.25;margin:0 0 6px}
 h2{color:var(--navy);font-size:1.3rem;margin:32px 0 12px}h3{color:var(--navy);margin:20px 0 8px}
 .lead{color:var(--slate);margin:0 0 18px;font-size:1.02rem}
@@ -67,3 +67,7 @@ footer a{color:var(--glacier)}footer .wrap{display:grid;gap:10px}
 footer .helplines a{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2)}
 table{border-collapse:collapse;width:100%;font-size:.95rem}td,th{border-bottom:1px solid var(--mist);padding:8px;text-align:left;vertical-align:top}
 [data-en]{}html[lang=ne] .en-only{display:none}html[lang=en] .ne-only{display:none}
+.homegrid{display:grid;gap:8px 28px;grid-template-areas:"active" "map" "exp"}
+.g-active{grid-area:active}.g-map{grid-area:map}.g-exp{grid-area:exp}
+@media(min-width:900px){.homegrid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"active map" "exp map";grid-template-rows:auto 1fr}.g-map h2{margin-top:0}}
+.alert.expired .instr{display:none}

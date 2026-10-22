@@ -22,21 +22,23 @@
       <option value="severity">गम्भीरता / Severity</option><option value="time">समय / Time</option><option value="area">क्षेत्र / Area</option></select></label>
     <label class="check"><input type="checkbox" id="fExpired" checked><span class="ne-only">म्याद सकिएका पनि देखाउनुहोस्</span><span class="en-only">Show expired</span></label>
   </div>
-  <div class="grid2">
-    <section aria-labelledby="hlist">
+  <div class="homegrid">
+    <section class="g-active" aria-labelledby="hlist">
       <h2 id="hlist" style="margin-top:0"><span class="ne-only">सक्रिय</span><span class="en-only">Active</span> <span id="nActive"></span></h2>
       <div id="active"></div>
-      <h2 id="hexp"><span class="ne-only">म्याद सकिएका (अभिलेख)</span><span class="en-only">Expired (archive)</span> <span id="nExpired"></span></h2>
-      <div id="expired"></div>
     </section>
-    <section class="sticky" aria-labelledby="hmap">
-      <h2 id="hmap" style="margin-top:0"><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h2>
+    <section class="g-map" aria-labelledby="hmap"><div class="sticky">
+      <h2 id="hmap"><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h2>
       <div id="map" role="region" aria-label="Alert areas map"></div>
       <p class="meta"><span class="ne-only">नक्सा थप सहायताका लागि मात्र हो; सूची आफैँमा पूर्ण छ। जिल्लाको सीमा सरलीकृत छ।</span><span class="en-only">The map is a helper only; the list is complete on its own. District outlines are simplified.</span></p>
       <div class="legend" id="legend"></div>
       <div class="card"><h3 style="margin-top:0"><span class="ne-only">विश्वास लेबल</span><span class="en-only">Trust labels</span></h3>
         <div id="trustLegend" class="chips"></div>
         <p class="meta"><a href="about/#trust"><span class="ne-only">गतिले कसरी प्रमाणित गर्छ</span><span class="en-only">How Gati verifies</span></a></p></div>
+    </div></section>
+    <section class="g-exp" aria-labelledby="hexp">
+      <h2 id="hexp"><span class="ne-only">म्याद सकिएका (अभिलेख)</span><span class="en-only">Expired (archive)</span> <span id="nExpired"></span></h2>
+      <div id="expired"></div>
     </section>
   </div>
   <p class="meta" id="gen"></p>
