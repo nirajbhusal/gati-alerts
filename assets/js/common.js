@@ -8,6 +8,7 @@
 
   const NAV = [
     ["home", "", "गृहपृष्ठ", "Home"],
+    ["nepal-now", "#nepal-now", "नेपाल अहिले", "Nepal Now"],
     ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"],
     ["reports", "reports/", "नागरिक रिपोर्ट", "Reports"],
     ["sources", "sources/", "स्रोत", "Sources"],
