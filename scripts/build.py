@@ -75,6 +75,13 @@ def main(check=False):
         a["expires"] = en["expires"]
         a["districts"] = sorted({ar["geocodes"]["NP-DISTRICT"] for ar in en["areas"] if "NP-DISTRICT" in ar["geocodes"]})
         a["expired"] = dt.datetime.fromisoformat(en["expires"]) < now
+        # Split: geometry lives once in data/districts.geojson, keyed by NP-DISTRICT code.
+        a["areas"] = [{"code": ar["geocodes"].get("NP-DISTRICT"), "circles": ar["circles"],
+                       "ne": ne_ar["desc"], "en": ar["desc"]}
+                      for ar, ne_ar in zip(en["areas"], a["info"]["ne"]["areas"])]
+        for lang in a["info"]:
+            for ar in a["info"][lang]["areas"]:
+                ar.pop("polygons", None)
         alerts.append(a)
     print(f"{len(alerts)} valid, {bad} failed")
     if bad: sys.exit(1)

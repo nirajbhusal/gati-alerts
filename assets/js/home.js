@@ -3,9 +3,14 @@
    Charts count Gati items only; figures from different agencies are never summed. */
 (async function () {
   const G = window.Gati;
-  const [data, districts, polys, roads, upd] = await Promise.all([G.json("data/alerts.json"), G.json("data/districts.json"),
-    G.json("data/seed/district-polygons.json"), G.json("data/roads.json"), G.json("data/updates.json")]);
-  const DN = Object.fromEntries(districts.map((d) => [d.id, d]));
+  const [data, districts, geo, roads, upd] = await Promise.all([G.json("data/alerts.json"), G.json("data/districts.json"),
+    G.json("data/districts.geojson"), G.json("data/roads.json"), G.json("data/updates.json")]);
+  const DN = Object.fromEntries(districts.map((d) => [d.code, d]));
+  /* NP-DISTRICT code -> outer rings as [lat, lng] (COD-AB, simplified) */
+  const polys = Object.fromEntries(geo.features.map((f) => {
+    const g = f.geometry, parts = g.type === "MultiPolygon" ? g.coordinates : [g.coordinates];
+    return [f.id, parts.map((p) => p[0].map(([lo, la]) => [la, lo]))];
+  }));
   const now = Date.now();
   data.alerts.forEach((a) => (a.expired = new Date(a.expires).getTime() < now));
   const $ = (id) => document.getElementById(id);
@@ -13,7 +18,7 @@
   const T = (n, e) => (ne() ? n : e);
   const sel = $("fDistrict"), sortSel = $("fSort"), showExp = $("fExpired");
   const params = new URLSearchParams(location.search);
-  if (params.get("district")) sel.dataset.v = params.get("district");
+  if (params.get("district")) { const q = params.get("district"); sel.dataset.v = (districts.find((d) => d.id === q || d.code === q) || {}).code || ""; }
 
   const HAZ = { flood: ["बाढी", "Flood", "🌊"], road: ["सडक", "Road", "🛣"], weather: ["मौसम", "Weather", "🌧"], landslide: ["पहिरो", "Landslide", "⛰"],
     avalanche: ["हिमपहिरो", "Avalanche", "❄"], earthquake: ["भूकम्प", "Earthquake", "〰"], fire: ["आगलागी", "Fire", "🔥"] };
@@ -39,7 +44,7 @@
     const sorted = [...districts].sort((a, b) => name(a).localeCompare(name(b), G.lang));
     const v = sel.value || sel.dataset.v || "";
     sel.innerHTML = `<option value="">${T("सबै जिल्ला", "All districts")}</option>` +
-      sorted.map((d) => `<option value="${d.id}">${G.esc(name(d))}${used.has(d.id) ? " •" : ""}</option>`).join("");
+      sorted.map((d) => `<option value="${d.code}">${G.esc(name(d))}${used.has(d.code) ? " •" : ""}</option>`).join("");
     sel.value = v;
   }
   const areaName = (a) => (a.districts[0] ? (ne() ? DN[a.districts[0]]?.ne : DN[a.districts[0]]?.en) || "" : a.info[G.lang].areas[0]?.desc || "");
@@ -83,7 +88,7 @@
     map.attributionControl.setPrefix("").addAttribution(T("सडक रेखा: © OpenStreetMap योगदानकर्ता", "Road lines: © OpenStreetMap contributors"));
     window.__gmap = map; baseLayer = L.featureGroup().addTo(map); riverLayer = L.featureGroup().addTo(map); areaLayer = L.featureGroup().addTo(map);
     roadLayer = L.featureGroup().addTo(map); labelLayer = L.featureGroup().addTo(map);
-    Object.values(polys).forEach((p) => L.polygon(p, { color: "#c9d3dd", weight: 0.8, fillColor: "#f1f4f7", fillOpacity: 1, interactive: false }).addTo(baseLayer));
+    Object.values(polys).forEach((p) => L.polygon(p.map((r) => [r]), { color: "#c9d3dd", weight: 0.8, fillColor: "#f1f4f7", fillOpacity: 1, interactive: false }).addTo(baseLayer));
     fit(); requestAnimationFrame(fit); window.addEventListener("load", fit);
     let rz; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(fit, 200); });
     map.on("click", () => { picked = null; summary(); });
@@ -110,7 +115,7 @@
         if (!polys[d]) return;
         al.sort((x, y) => (x.expired - y.expired) || G.SEVORDER.indexOf(x.severity) - G.SEVORDER.indexOf(y.severity));
         const c = G.SEVCOLOR[al[0].severity], allExp = al.every((a) => a.expired);
-        L.polygon(polys[d], { color: c, weight: allExp ? 1.5 : 2.5, dashArray: allExp ? "5 5" : null, fillColor: c, fillOpacity: allExp ? 0.18 : 0.42 })
+        L.polygon(polys[d].map((r) => [r]), { color: c, weight: allExp ? 1.5 : 2.5, dashArray: allExp ? "5 5" : null, fillColor: c, fillOpacity: allExp ? 0.18 : 0.42 })
           .on("click", pick({ type: "district", d, al })).addTo(areaLayer);
       });
       // one big hazard icon per alert: at its point(s), else at its first district's centre
@@ -118,7 +123,7 @@
       list.forEach((a) => {
         const i = a.info[G.lang], pts = [];
         i.areas.forEach((ar) => ar.circles.forEach((cs) => pts.push(cs.split(" ")[0].split(",").map(Number))));
-        if (!pts.length && a.districts[0] && polys[a.districts[0]]) pts.push(centroid(polys[a.districts[0]]));
+        if (!pts.length && a.districts[0] && polys[a.districts[0]]) pts.push(centroid(polys[a.districts[0]][0]));
         if (a.hazard === "flood" && a.severity === "Unknown" && pts.length > 2) return; // river readings: shown as gauges
         pts.forEach((ll) => { const k = ll.join() + a.hazard; if (seen.has(k)) return; seen.add(k);
           L.marker(ll, { icon: icon(HZICON[a.hazard] || "⚠", `mk-alert s-${a.severity}${a.expired ? " is-exp" : ""}`, a.expired ? 34 : 44), title: i.headline, riseOnHover: true, zIndexOffset: a.expired ? 0 : 500 })
@@ -317,7 +322,7 @@
     $("expired").innerHTML = exp.map(card).join("");
     document.querySelector(".g-exp").hidden = !showExp.checked;
     $("gen").textContent = T("सूचना अद्यावधिक: ", "Feed built: ") + G.npt(data.generated);
-    const u = new URL(location); d ? u.searchParams.set("district", d) : u.searchParams.delete("district"); history.replaceState(null, "", u);
+    const u = new URL(location); d ? u.searchParams.set("district", (DN[d] || {}).id || d) : u.searchParams.delete("district"); history.replaceState(null, "", u);
   }
   function all() { kpis(); glance(); drawMap(); gaugesCard(); charts(); render(); updates(); }
   initMap(); fillDistricts(); all();

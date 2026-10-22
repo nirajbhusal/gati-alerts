@@ -56,3 +56,10 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 - A changed normalised content hash writes `data/raw/<id>/<UTC ISO>.json`. Health is written only on a status change, a new snapshot, or every 6 h. The workflow commits only when files changed.
 - Fetch errors are recorded in health, never fatal. `concurrency: poll-sources` prevents overlap. `data/raw` is an archive: never delete (see data/raw/README.md).
 - `ci/cap.yml` (to be moved to `.github/workflows/cap.yml`) now omits the Pages artifact deploy, since Pages builds from the main branch.
+
+## Data split (item 3)
+
+- `data/alerts.json`: events only (CAP messages). Areas are referenced by `NP-DISTRICT` code (`a.districts`, `a.areas[].code`); no polygons are duplicated per language.
+- `data/rivers.json`: gauges. `data/roads.json`: roads.
+- `data/districts.geojson` (77 districts, `id` = NP-DISTRICT = COD-AB `adm2_pcode`, e.g. `NP0330` Dhading) and `data/localunits.geojson` (775 local units, NP-LOCALUNIT = `adm3_pcode`). Source: Nepal COD-AB v02 (Survey Department of Nepal, UN RCO, OCHA HDX, CC BY-IGO), https://data.humdata.org/dataset/cod-ab-npl, simplified by `scripts/make_geo.py`.
+- `data/districts.json` gains `code`; `?district=` accepts the slug or the code.

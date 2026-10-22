@@ -11,8 +11,13 @@ import json, pathlib
 from xml.sax.saxutils import escape as x
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-POLY = json.loads((ROOT / "data/seed/district-polygons.json").read_text())
-DIST = {d["id"]: d for d in json.loads((ROOT / "data/districts.json").read_text())}
+GEO = json.loads((ROOT / "data/districts.geojson").read_text(encoding="utf-8"))
+DIST = {d["id"]: d for d in json.loads((ROOT / "data/districts.json").read_text(encoding="utf-8"))}
+def _rings(g):
+    polys = g["coordinates"] if g["type"] == "MultiPolygon" else [g["coordinates"]]
+    return [p[0] for p in polys if len(p[0]) >= 4]
+# district slug -> list of outer rings as [lat, lon] (COD-AB, see scripts/make_geo.py)
+POLY = {f["properties"]["slug"]: [[[la, lo] for lo, la in r] for r in _rings(f["geometry"])] for f in GEO["features"]}
 BUL = "https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/"
 NOTE = ("Relayed by Gati (गति), an independent citizen verification project. Gati does not issue "
         "official warnings (Disaster Risk Reduction and Management Act 2074). Original: {agency}. "
@@ -30,11 +35,11 @@ def area_xml(a, lang):
     out = []
     for d in a.get("districts", []):
         dd = DIST[d]
-        pts = " ".join(f"{la},{lo}" for la, lo in POLY[d])
+        polys = "\n".join("      <polygon>" + " ".join(f"{la},{lo}" for la, lo in ring) + "</polygon>" for ring in POLY[d])
         out.append(f"""    <area>
       <areaDesc>{x(dd['ne'] if lang=='ne' else dd['en'])} {'जिल्ला' if lang=='ne' else 'district'}</areaDesc>
-      <polygon>{pts}</polygon>
-      <geocode><valueName>NP-DISTRICT</valueName><value>{d}</value></geocode>
+{polys}
+      <geocode><valueName>NP-DISTRICT</valueName><value>{dd['code']}</value></geocode>
     </area>""")
     for c in a.get("circles", []):
         out.append(f"""    <area>
