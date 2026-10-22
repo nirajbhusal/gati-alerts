@@ -455,3 +455,13 @@ html body .tabbar a{color:#A9BED2}html body .tabbar a[aria-current=page]{color:#
 .sgrid{display:grid;gap:var(--s4)}@media(min-width:900px){.sgrid{grid-template-columns:1fr 1fr}}
 .scard{background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);padding:var(--s5,24px);box-shadow:var(--sh1);scroll-margin-top:90px}
 .scard h2{margin:0 0 var(--s3);font-size:var(--fs-l)}.scard ul{margin:0 0 var(--s3);padding-left:1.2em}.scard li{margin:0 0 8px;line-height:1.6}
+/* Nearby */
+#nearbyslot{display:inline-block;margin-left:var(--s2)}.nearbtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:600;min-height:44px;padding:8px 16px;border-radius:999px;border:0;background:#0E2A47;color:#fff;cursor:pointer;box-shadow:var(--sh1)}
+html[data-theme=dark] .nearbtn{background:#7FD1D8;color:#0E2A47}.mydist{display:inline-block}
+.nsheet{position:fixed;inset:0;z-index:2000}.nsheet[hidden]{display:none}.nback{position:absolute;inset:0;background:rgba(8,20,34,.5)}
+.npanel{position:absolute;right:0;top:0;bottom:0;width:min(440px,100%);background:var(--surface);color:var(--ink);padding:var(--s4);overflow:auto;box-shadow:var(--sh2)}
+@media(max-width:640px){.npanel{top:auto;max-height:85vh;border-radius:20px 20px 0 0;padding-bottom:calc(var(--s4) + env(safe-area-inset-bottom))}}
+.nhead{display:flex;justify-content:space-between;align-items:center}.nhead h2{margin:0}.nclose{font-size:1.2rem;min-width:44px;min-height:44px;border:0;background:var(--surface2);border-radius:50%;color:var(--ink);cursor:pointer}
+.nrange{display:flex;align-items:center;gap:var(--s2);margin:var(--s3) 0}.nrange input{flex:1;accent-color:#0E7C86}
+.nlist{list-style:none;padding:0;margin:0 0 var(--s3)}.nlist li{display:flex;gap:var(--s2);align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.nlist a{flex:1;color:var(--ink)}.nd{font-weight:700;white-space:nowrap;font-size:var(--fs-s)}
+.npanel h3{font-size:var(--fs-m);margin:var(--s4) 0 var(--s2)}.npanel .count{font-size:var(--fs-s);color:var(--slate)}
