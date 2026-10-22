@@ -84,7 +84,7 @@ table{border-collapse:collapse;width:100%;font-size:.95rem}td,th{border-bottom:1
 .seg button[aria-pressed=true]{background:var(--teal);color:#fff;font-weight:600}
 .layers{display:flex;flex-wrap:wrap;gap:4px 22px;margin:0 0 10px}
 .dash #map{height:62vh;min-height:420px;max-height:640px;border-radius:16px;background:#e9eef3}
-@media(max-width:600px){.dash #map{height:420px;min-height:0}.seg button{padding:8px 12px}}
+@media(max-width:600px){.dash #map{height:340px;min-height:0}.seg button{padding:8px 12px}}
 .maplegend{display:grid;gap:14px 32px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));background:#fff;border:1px solid var(--mist);border-radius:var(--r);padding:16px 18px;margin:14px 0 8px}
 .maplegend ul{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:8px 18px}
 .maplegend li{display:flex;align-items:center;gap:8px;font-size:.95rem}
