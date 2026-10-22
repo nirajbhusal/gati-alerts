@@ -49,3 +49,10 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 - `data/sources.json`: one entry per upstream source (`id, agency{ne,en}, url, feedType, pollMinutes, hazards[], trustDefault, contact, status`). Planned sources have `status: "planned"` and `url: null`.
 - `data/source-health.json`: `lastSuccess`, `lastChecked` and `lastResult` per source, updated by `python3 scripts/check_sources.py`. That script fetches each URL once; a timeout is recorded, never fatal.
 - Status shown on `/sources/` and on the dashboard flag: planned; down (no success yet); stale (last success older than 3x pollMinutes, or the latest check failed); ok.
+
+## Pollers (GitHub Actions)
+
+- `.github/workflows/poll.yml` (staged at `ci/poll.yml` until moved; the box token lacks the `workflow` scope) runs `scripts/poll.py` at :05 and :35 UTC. DHM sources (pollMinutes 30) are polled every run; others (120) on the first run of each even UTC hour. `workflow_dispatch` polls all.
+- A changed normalised content hash writes `data/raw/<id>/<UTC ISO>.json`. Health is written only on a status change, a new snapshot, or every 6 h. The workflow commits only when files changed.
+- Fetch errors are recorded in health, never fatal. `concurrency: poll-sources` prevents overlap. `data/raw` is an archive: never delete (see data/raw/README.md).
+- `ci/cap.yml` (to be moved to `.github/workflows/cap.yml`) now omits the Pages artifact deploy, since Pages builds from the main branch.

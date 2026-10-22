@@ -1,4 +1,6 @@
-name: Validate CAP, build feed, deploy Pages
+# Pages is served from the main branch (legacy build), so this workflow only validates and
+# rebuilds feed.xml and data/alerts.json; the branch push then republishes the site.
+name: Validate CAP and rebuild feed
 on:
   push:
     branches: [main]
@@ -8,10 +10,8 @@ on:
     - cron: "15 0 * * *"   # daily 05:00 NPT: refresh expiry flags and feed timestamp
 permissions:
   contents: write
-  pages: write
-  id-token: write
 concurrency:
-  group: pages
+  group: cap-build
   cancel-in-progress: false
 jobs:
   build:
@@ -33,19 +33,3 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add feed.xml data/alerts.json
           git diff --cached --quiet || (git commit -m "Rebuild CAP feed [skip ci]" && git push)
-      - uses: actions/configure-pages@v5
-        if: github.event_name != 'pull_request'
-      - uses: actions/upload-pages-artifact@v3
-        if: github.event_name != 'pull_request'
-        with:
-          path: .
-  deploy:
-    if: github.event_name != 'pull_request'
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4

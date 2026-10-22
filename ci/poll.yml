@@ -1,0 +1,36 @@
+name: Poll sources
+on:
+  schedule:
+    - cron: "5,35 * * * *"   # every 30 min; DHM every run, others every 2 h (see scripts/poll.py due())
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Poll every source now, ignoring the schedule"
+        type: boolean
+        default: true
+permissions:
+  contents: write
+concurrency:
+  group: poll-sources
+  cancel-in-progress: false
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Poll due sources (failures are recorded, never fatal)
+        continue-on-error: true
+        run: python scripts/poll.py ${{ (github.event_name == 'workflow_dispatch' && inputs.all) && '--all' || '' }}
+      - name: Commit only on change
+        continue-on-error: true
+        run: |
+          git config user.name "gati-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw data/source-health.json
+          if git diff --cached --quiet; then echo "No change, no commit."; exit 0; fi
+          git commit -m "Poll sources: $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
