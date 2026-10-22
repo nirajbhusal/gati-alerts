@@ -1,4 +1,4 @@
-# गति · Gati — प्रमाणित सूचना, अफवाहभन्दा छिटो। / Verified. Faster than rumour.
+# गति · Gati — सही सूचना, समयमै। / The right alert, right on time.
 
 **Live:** https://nirajbhusal.github.io/gati-alerts/ · **CAP feed:** [`feed.xml`](https://nirajbhusal.github.io/gati-alerts/feed.xml) · **JSON:** [`data/alerts.json`](https://nirajbhusal.github.io/gati-alerts/data/alerts.json)
 

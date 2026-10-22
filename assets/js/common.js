@@ -18,10 +18,10 @@
   G.b = b;
   const header = document.createElement("header");
   header.className = "top";
-  header.innerHTML = `<a class="skip" href="#main">${b("मुख्य सामग्रीमा जानुहोस्", "Skip to content")}</a>
+  header.innerHTML = `<a class="skip" href="#main">${b("मुख्य भागमा जानुहोस्", "Skip to content")}</a>
   <div class="bar">
     <a class="brand" href="${ROOT}"><img src="${ROOT}assets/img/gati-concept-A-ga-signal-icon.svg" alt="" width="40" height="40">
-      <span><b>${b("गति", "Gati")}</b><small>${b("प्रमाणित सूचना, अफवाहभन्दा छिटो।", "Verified. Faster than rumour.")}</small></span></a>
+      <span><b>${b("गति", "Gati")}</b><small>${b("सही सूचना, समयमै।", "The right alert, right on time.")}</small></span></a>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
   </div>
@@ -30,14 +30,14 @@
   const disc = document.createElement("div");
   disc.className = "disclaimer";
   disc.innerHTML = `<div class="wrap">${b(
-    "<strong>गति आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले सम्बन्धित सरकारी निकायको सूचना स्रोतसहित मात्र प्रसारण र प्रमाणीकरण गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।",
+    "<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।",
     "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1149.")}</div>`;
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
     <div class="helplines" aria-label="Emergency helplines">
       <a href="tel:100">${b("प्रहरी १००", "Police 100")}</a><a href="tel:101">${b("दमकल १०१", "Fire 101")}</a>
       <a href="tel:102">${b("एम्बुलेन्स १०२", "Ambulance 102")}</a><a href="tel:1149">${b("विपद् ११४९", "Disaster 1149")}</a></div>
-    <div>${b("गति — स्वतन्त्र नागरिक परियोजना, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",
+    <div>${b("गति एउटा स्वतन्त्र नागरिक परियोजना हो, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",
              "Gati is an independent citizen project, not an official system of any government agency. Maintainer: Niraj Bhusal.")}
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
       · <a href="${ROOT}feed.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>

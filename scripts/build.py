@@ -91,7 +91,7 @@ def main(check=False):
         return e
     sub(feed, "id", SITE + "feed.xml")
     sub(feed, "title", "गति (Gati) — relayed CAP 1.2 alerts (not official warnings)")
-    sub(feed, "subtitle", "प्रमाणित सूचना, अफवाहभन्दा छिटो। / Verified. Faster than rumour. Gati relays and verifies; it does not issue official warnings.")
+    sub(feed, "subtitle", "सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.")
     sub(feed, "updated", gen)
     sub(feed, "link", href=SITE + "feed.xml", rel="self")
     sub(feed, "link", href=SITE, rel="alternate")

@@ -27,8 +27,8 @@
     return "Reported";
   };
   function render() {
-    if (failed) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "GitHub बाट रिपोर्ट ल्याउन सकिएन (सम्भवतः API सीमा)। केही बेरपछि फेरि प्रयास गर्नुहोस् वा" : "Could not load reports from GitHub (possibly the API rate limit). Try again later or"} <a href="https://github.com/nirajbhusal/gati-alerts/issues?q=label%3Areported%2Cverified">GitHub ${G.lang === "ne" ? "मा हेर्नुहोस्" : "issues"}</a>.</div>`; return; }
-    if (!items.length) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "अहिलेसम्म कुनै नागरिक रिपोर्ट छैन।" : "No citizen reports yet."}</div>`; return; }
+    if (failed) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "GitHub बाट रिपोर्ट ल्याउन सकिएन (सायद API को सीमा नाघ्यो)। केही बेरपछि फेरि हेर्नुहोस्, नत्र" : "Could not load reports from GitHub (possibly the API rate limit). Try again later or"} <a href="https://github.com/nirajbhusal/gati-alerts/issues?q=label%3Areported%2Cverified">GitHub ${G.lang === "ne" ? "मा हेर्नुहोस्" : "issues"}</a>.</div>`; return; }
+    if (!items.length) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "अहिलेसम्म कुनै नागरिकले रिपोर्ट पठाउनुभएको छैन।" : "No citizen reports yet."}</div>`; return; }
     el.innerHTML = items.map((i) => {
       const o = parse(i.body), st = status(i.labels);
       const gps = pick(o, "GPS"), m = gps.match(/(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)/);

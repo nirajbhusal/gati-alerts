@@ -37,8 +37,8 @@
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
       ${i.instruction ? `<div class="instr"><strong>${G.lang === "ne" ? "के गर्ने" : "What to do"}:</strong> ${G.esc(i.instruction)}</div>` : ""}
       <p class="meta src">${G.lang === "ne" ? "स्रोत" : "Source"}: <strong>${G.esc(i.senderName)}</strong> · <a href="${G.esc(i.web)}" rel="noopener" target="_blank">${G.lang === "ne" ? "मूल सूचना" : "Original notice"} ↗</a></p>
-      <details><summary>${G.lang === "ne" ? "विस्तृत विवरण" : "Details"}</summary>
-        ${a.expired && i.instruction ? `<p><strong>${G.lang === "ne" ? "त्यस बेलाको निर्देशन" : "Instruction at the time"}:</strong> ${G.esc(i.instruction)}</p>` : ""}
+      <details><summary>${G.lang === "ne" ? "पूरा विवरण" : "Details"}</summary>
+        ${a.expired && i.instruction ? `<p><strong>${G.lang === "ne" ? "त्यति बेलाको निर्देशन" : "Instruction at the time"}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>
         <p class="meta">CAP: urgency ${en.urgency} · severity ${en.severity} · certainty ${en.certainty} · sender <code>${G.esc(a.sender)}</code><br>
         <a href="${G.esc(a.file)}">CAP 1.2 XML</a> · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${G.lang === "ne" ? "बुलेटिन डेटा" : "Bulletin data"}</a></p>
@@ -83,14 +83,14 @@
     $("nActive").textContent = `(${G.num(act.length)})`;
     $("nExpired").textContent = `(${G.num(exp.length)})`;
     $("active").innerHTML = act.length ? act.map(card).join("") : `<div class="empty">${G.lang === "ne"
-      ? "अहिले यो क्षेत्रका लागि गतिले प्रसारण गरेको कुनै सक्रिय सूचना छैन। यसको अर्थ जोखिम छैन भन्ने होइन — DHM, NDRRMA र स्थानीय प्रशासनको सूचना पनि हेर्नुहोस्।"
+      ? "अहिले यो ठाउँका लागि गतिमा कुनै चालु सूचना छैन। तर यसको अर्थ खतरा छैन भन्ने होइन — DHM, NDRRMA र स्थानीय प्रशासनका सूचना पनि हेर्नुहोस्।"
       : "Gati is not relaying any active notice for this area right now. That does not mean there is no risk; also check DHM, NDRRMA and your local administration."}</div>`;
     $("expired").innerHTML = exp.map(card).join("");
     document.querySelector(".g-exp").hidden = !showExp.checked;
     drawMap(showExp.checked ? list : act);
     $("legend").innerHTML = G.SEVORDER.map(G.sevChip).join("");
     $("trustLegend").innerHTML = Object.keys(G.TRUST).map(G.trustChip).join("");
-    $("gen").textContent = (G.lang === "ne" ? "फिड बनेको: " : "Feed built: ") + G.npt(data.generated);
+    $("gen").textContent = (G.lang === "ne" ? "सूचना अद्यावधिक: " : "Feed built: ") + G.npt(data.generated);
     const u = new URL(location); d ? u.searchParams.set("district", d) : u.searchParams.delete("district"); history.replaceState(null, "", u);
   }
   initMap(); fillDistricts(); render();

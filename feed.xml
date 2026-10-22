@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://nirajbhusal.github.io/gati-alerts/feed.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
-  <subtitle>प्रमाणित सूचना, अफवाहभन्दा छिटो। / Verified. Faster than rumour. Gati relays and verifies; it does not issue official warnings.</subtitle>
+  <subtitle>सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
   <updated>2026-10-22T06:34:14+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/feed.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>

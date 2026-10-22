@@ -1,7 +1,11 @@
 <!doctype html><html lang="ne"><head>
-<title>गति · Gati — प्रमाणित सूचना, अफवाहभन्दा छिटो।</title>
-<meta name="description" content="Gati relays verified official disaster alerts for Nepal in CAP 1.2, Nepali first. It does not issue official warnings.">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>गति · Gati — सही सूचना, समयमै।</title>
+<meta name="description" content="The right alert, right on time. Gati relays verified official disaster alerts for Nepal in CAP 1.2, Nepali first. It does not issue official warnings.">
+<meta property="og:title" content="गति · Gati — सही सूचना, समयमै। / The right alert, right on time.">
+<meta property="og:description" content="सही सूचना, समयमै। The right alert, right on time. Gati relays verified official disaster alerts for Nepal; it does not issue official warnings.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://nirajbhusal.github.io/gati-alerts/">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="गति · Gati — The right alert, right on time.">
 <meta name="theme-color" content="#0E2A47">
 <link rel="icon" href="./assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,15 +16,15 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head><body data-page="home" data-root="./">
 <main id="main" class="wrap">
-  <p class="tagline"><span class="ne-only">प्रमाणित सूचना, अफवाहभन्दा छिटो।</span><span class="en-only">Verified. Faster than rumour.</span></p>
+  <p class="tagline"><span class="ne-only">सही सूचना, समयमै।</span><span class="en-only">The right alert, right on time.</span></p>
   <h1><span class="ne-only">सूचना तथा चेतावनी</span><span class="en-only">Alerts and notices</span></h1>
-  <p class="lead"><span class="ne-only">सरकारी निकायका प्रमाणित सूचना, मूल स्रोतको लिङ्क र विश्वास लेबलसहित। गम्भीरता, क्षेत्र वा समयअनुसार हेर्नुहोस्।</span>
+  <p class="lead"><span class="ne-only">सरकारी निकायका जाँचिएका सूचना, मूल स्रोतको लिङ्क र भरोसा चिह्नसहित। खतरा, ठाउँ वा समयअनुसार मिलाएर हेर्नुहोस्।</span>
   <span class="en-only">Verified notices from government agencies, each with its original source link and a trust label. Sort by severity, area or time.</span></p>
   <div class="controls" role="group" aria-label="Filters">
     <label><span class="ne-only">जिल्ला</span><span class="en-only">District</span><select id="fDistrict"></select></label>
-    <label><span class="ne-only">क्रम</span><span class="en-only">Sort by</span><select id="fSort">
+    <label><span class="ne-only">मिलाउने तरिका</span><span class="en-only">Sort by</span><select id="fSort">
       <option value="severity" data-ne="गम्भीरता" data-en="Severity">गम्भीरता</option><option value="time" data-ne="समय" data-en="Time">समय</option><option value="area" data-ne="क्षेत्र" data-en="Area">क्षेत्र</option></select></label>
-    <label class="check"><input type="checkbox" id="fExpired" checked><span class="ne-only">म्याद सकिएका पनि देखाउनुहोस्</span><span class="en-only">Show expired</span></label>
+    <label class="check"><input type="checkbox" id="fExpired" checked><span class="ne-only">म्याद सकिएका सूचना पनि देखाउनुहोस्</span><span class="en-only">Show expired</span></label>
   </div>
   <div class="homegrid">
     <section class="g-active" aria-labelledby="hlist">
@@ -30,14 +34,14 @@
     <section class="g-map" aria-labelledby="hmap"><div class="sticky">
       <h2 id="hmap"><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h2>
       <div id="map" role="region" aria-label="Alert areas map"></div>
-      <p class="meta"><span class="ne-only">नक्सा थप सहायताका लागि मात्र हो; सूची आफैँमा पूर्ण छ। जिल्लाको सीमा सरलीकृत छ।</span><span class="en-only">The map is a helper only; the list is complete on its own. District outlines are simplified.</span></p>
+      <p class="meta"><span class="ne-only">नक्सा सजिलोका लागि मात्र हो; सबै सूचना तलको सूचीमै छन्। जिल्लाको सीमा मोटामोटी मात्र देखाइएको छ।</span><span class="en-only">The map is a helper only; the list is complete on its own. District outlines are simplified.</span></p>
       <div class="legend" id="legend"></div>
-      <div class="card"><h3 style="margin-top:0"><span class="ne-only">विश्वास लेबल</span><span class="en-only">Trust labels</span></h3>
+      <div class="card"><h3 style="margin-top:0"><span class="ne-only">भरोसा चिह्न</span><span class="en-only">Trust labels</span></h3>
         <div id="trustLegend" class="chips"></div>
-        <p class="meta"><a href="about/#trust"><span class="ne-only">गतिले कसरी प्रमाणित गर्छ</span><span class="en-only">How Gati verifies</span></a></p></div>
+        <p class="meta"><a href="about/#trust"><span class="ne-only">गतिले सूचना कसरी जाँच्छ</span><span class="en-only">How Gati verifies</span></a></p></div>
     </div></section>
     <section class="g-exp" aria-labelledby="hexp">
-      <h2 id="hexp"><span class="ne-only">म्याद सकिएका (अभिलेख)</span><span class="en-only">Expired (archive)</span> <span id="nExpired"></span></h2>
+      <h2 id="hexp"><span class="ne-only">म्याद सकिएका (पुराना सूचना)</span><span class="en-only">Expired (archive)</span> <span id="nExpired"></span></h2>
       <div id="expired"></div>
     </section>
   </div>

@@ -1,14 +1,14 @@
 name: "नागरिक रिपोर्ट / Citizen hazard report"
-description: "बाढी, पहिरो, सडक अवरोध आदि देख्नुभयो? Report a hazard you saw. Public; not an emergency line (call 100/101/102/1149)."
+description: "बाढी, पहिरो, बाटो बन्द जस्ता खतरा देख्नुभयो? Report a hazard you saw. Public; not an emergency line (call 100/101/102/1149)."
 title: "[Report] "
 labels: ["reported", "citizen-report"]
 body:
   - type: markdown
     attributes:
       value: |
-        **जीवन जोखिममा छ भने अहिले १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।** If life is at risk, call 100, 101, 102 or 1149 now.
+        **ज्यान जोखिममा छ भने अहिल्यै १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।** If life is at risk, call 100, 101, 102 or 1149 now.
 
-        यो रिपोर्ट **सार्वजनिक** हुन्छ र मोडेरेटरले जाँच नगरेसम्म *रिपोर्ट गरिएको — पुष्टि भएको छैन* भनी देखिन्छ। This report is **public** and is shown as *Reported — not confirmed* until a moderator checks it.
+        यो रिपोर्ट **सार्वजनिक** हुन्छ र मोडेरेटरले नजाँचेसम्म *रिपोर्ट गरिएको — पुष्टि भएको छैन* भनी देखिन्छ। This report is **public** and is shown as *Reported — not confirmed* until a moderator checks it.
         **फोन नम्बर, इमेल वा अरूको नाम यहाँ नलेख्नुहोस्।** Do not put phone numbers, emails or other people's names here.
   - type: dropdown
     id: hazard
@@ -60,7 +60,7 @@ body:
     id: description
     attributes:
       label: "के देख्नुभयो? / What did you see?"
-      description: "आफैँ देखेको कुरा मात्र। तस्विर थप्न यहाँ तान्नुहोस् (सार्वजनिक हुन्छ)। Only what you saw yourself. Drag a photo here to attach it (it will be public)."
+      description: "आफैँले देख्नुभएको कुरा मात्र लेख्नुहोस्। तस्विर थप्न यहाँ तानेर राख्नुहोस् (सबैले देख्छन्)। Only what you saw yourself. Drag a photo here to attach it (it will be public)."
     validations:
       required: true
   - type: checkboxes
@@ -68,5 +68,5 @@ body:
     attributes:
       label: "सहमति / Consent"
       options:
-        - label: "म बुझ्छु यो रिपोर्ट सार्वजनिक हुन्छ र यो मैले आफैँ देखेको सत्य विवरण हो। I understand this report is public and it is a true account of what I saw."
+        - label: "यो रिपोर्ट सबैले देख्छन् भन्ने मलाई थाहा छ, र यो मैले आफैँ देखेको साँचो कुरा हो। I understand this report is public and it is a true account of what I saw."
           required: true
