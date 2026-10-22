@@ -24,6 +24,10 @@
     ["sources", "sources/", "स्रोत", "Sources"],
     ["about", "about/", "बारेमा", "About"],
   ];
+  /* "More" menu (desktop) and extra links in the mobile menu */
+  const MORE = [
+    ["weather", "weather/", "मौसम", "Weather"],
+  ];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
   const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
@@ -50,7 +54,9 @@
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
   </div>
   <nav class="main" id="mainnav" aria-label="Main">${NAV.map(([id, href, ne, en]) =>
-    `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</nav>`;
+    `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}
+    <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
+      <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div></nav>`;
   const disc = document.createElement("div");
   disc.className = "disclaimer";
   disc.innerHTML = `<div class="wrap">${b(
@@ -78,6 +84,10 @@
   document.body.append(footer);
 
   const mb = header.querySelector(".menubtn"), nav = header.querySelector("nav");
+  const morebtn = header.querySelector(".morebtn"), moremenu = header.querySelector(".moremenu");
+  morebtn.onclick = (e) => { e.stopPropagation(); const o = moremenu.hidden; moremenu.hidden = !o; morebtn.setAttribute("aria-expanded", o); };
+  document.addEventListener("click", () => { moremenu.hidden = true; morebtn.setAttribute("aria-expanded", false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !moremenu.hidden) { moremenu.hidden = true; morebtn.focus(); } });
   mb.onclick = () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); };
   header.querySelector("#langbtn").onclick = () => G.setLang(G.lang === "ne" ? "en" : "ne");
   G.setLang = (l) => { G.lang = l; localStorage.setItem("gati-lang", l); document.documentElement.lang = l; G.listeners.forEach((f) => f(l)); };

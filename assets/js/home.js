@@ -414,7 +414,14 @@
       <ul class="hilist">${rs.map((r) => `<li><span class="hin">${G.esc(ne() ? r.name_ne : r.name_en)}</span><span class="hiv" style="color:${RC[r.status]}">${G.esc(rw(r.status))}</span></li>`).join("")}</ul>
       <p class="meta">${G.esc(ne() ? roads.as_of_ne : roads.as_of_en)}</p>`;
   }
-  function all() { riverHi(); roadHi(); if (!map && PAGE === "roads") { roadList(); summary(); } myDistrict(); thisWeek(); dsearch(); kpis(); glance(); drawMap(); gaugesCard(); charts(); render(); updates(); }
+  function wxHome() {
+    const box = $("wxhome"); if (box === NIL) return;
+    const w = allAlerts.filter((a) => a.hazard === "weather").sort((a, b) => b.sent.localeCompare(a.sent))[0];
+    if (!w) { box.innerHTML = `<p class="meta">${T("उपलब्ध छैन", "Not available")}</p>`; return; }
+    const i = w.info[G.lang], live = Date.parse(w.expires) > now;
+    box.innerHTML = `<p class="hisum">${G.esc(i.headline)}</p><div class="atrust">${G.trustChip(w.trust)}${live ? "" : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}<span class="meta">${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || w.sent)} · <a href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a></span></div>`;
+  }
+  function all() { riverHi(); roadHi(); wxHome(); if (!map && PAGE === "roads") { roadList(); summary(); } myDistrict(); thisWeek(); dsearch(); kpis(); glance(); drawMap(); gaugesCard(); charts(); render(); updates(); }
   initMap(); fillDistricts(); all();
   sel.onchange = sortSel.onchange = showExp.onchange = render;
   document.querySelectorAll("[data-scope]").forEach((b) => (b.onclick = () => { scope = b.dataset.scope; drawMap(); }));
