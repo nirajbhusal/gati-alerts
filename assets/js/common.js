@@ -28,6 +28,7 @@
   const MORE = [
     ["weather", "weather/", "मौसम", "Weather"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
+    ["safety", "safety/", "के गर्ने", "What to do"],
   ];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */

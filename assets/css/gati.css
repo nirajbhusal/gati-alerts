@@ -449,3 +449,9 @@ html body .tabbar a{color:#A9BED2}html body .tabbar a[aria-current=page]{color:#
 .callbtn:hover{filter:brightness(1.1)}html[data-theme=dark] .callbtn{background:#2b5e8c}html[data-theme=dark] .ccard.key .callbtn{background:#c4413a}
 @media(max-width:520px){.ccard{flex-direction:column}.callbtn{width:100%}}
 .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* Safety */
+.sdial{display:flex;flex-wrap:wrap;gap:var(--s2)}.sdial .callbtn{font-size:1rem;min-height:44px}.sdial .callbtn.key{background:#B3261E}
+.stoc{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s4) 0}.stoc a{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-size:var(--fs-s);min-height:40px;display:inline-flex;align-items:center}
+.sgrid{display:grid;gap:var(--s4)}@media(min-width:900px){.sgrid{grid-template-columns:1fr 1fr}}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);padding:var(--s5,24px);box-shadow:var(--sh1);scroll-margin-top:90px}
+.scard h2{margin:0 0 var(--s3);font-size:var(--fs-l)}.scard ul{margin:0 0 var(--s3);padding-left:1.2em}.scard li{margin:0 0 8px;line-height:1.6}
