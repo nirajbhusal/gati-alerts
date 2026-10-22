@@ -21,7 +21,7 @@ nav.main a[aria-current=page]{background:rgba(127,209,216,.18);color:#fff;box-sh
 @media (max-width:720px){.menubtn{display:block}nav.main{display:none;flex-direction:column;padding:0 10px 10px}nav.main.open{display:flex}.brand small{display:none}}
 .disclaimer{background:#e8f3f4;border-bottom:1px solid var(--mist);font-size:.88rem;color:var(--slate)}
 .disclaimer .wrap{padding:10px 18px}
-main{padding:30px 0 56px}
+main{padding:30px 0 56px;min-height:62vh}
 h1{color:var(--navy);font-size:1.7rem;line-height:1.25;margin:0 0 6px}
 h2{color:var(--navy);font-size:1.3rem;margin:32px 0 12px}h3{color:var(--navy);margin:20px 0 8px}
 .lead{color:var(--slate);margin:0 0 18px;font-size:1.02rem}

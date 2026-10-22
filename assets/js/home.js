@@ -10,7 +10,9 @@
   const params = new URLSearchParams(location.search);
   if (params.get("district")) sel.dataset.v = params.get("district");
 
+  function fillSort() { sortSel.querySelectorAll("option").forEach((o) => (o.textContent = o.dataset[G.lang])); }
   function fillDistricts() {
+    fillSort();
     const used = new Set(data.alerts.flatMap((a) => a.districts));
     const name = (d) => (G.lang === "ne" ? d.ne : d.en);
     const sorted = [...districts].sort((a, b) => name(a).localeCompare(name(b), G.lang));
