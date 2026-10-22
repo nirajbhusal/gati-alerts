@@ -5,7 +5,7 @@ const CORE = ["./", "index.html", "sources/", "about/", "api/", "alerts/", "stor
   "assets/css/gati.css", "assets/fonts/fonts.css", "assets/js/common.js", "assets/js/home.js", "assets/js/sources.js",
   "assets/vendor/leaflet/leaflet.css", "assets/vendor/leaflet/leaflet.js", "assets/img/gati-concept-A-ga-signal-icon.svg", "assets/img/icon-192.png",
   "data/alerts.json", "data/districts.json", "data/districts.geojson", "data/roads.json", "data/rivers.json", "data/updates.json",
-  "data/geo/roads.geojson", "data/geo/rivers.geojson", "data/sources.json", "data/source-health.json"];
+  "data/geo/roads.geojson", "data/geo/rivers.geojson", "data/geo/provinces.geojson", "assets/js/maplayers.js", "data/sources.json", "data/source-health.json"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => Promise.all(CORE.map((u) => c.add(new Request(u, { cache: "reload" })).catch(() => null)))).then(() => self.skipWaiting()));
 });

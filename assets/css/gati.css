@@ -405,3 +405,13 @@ body.sheet-open{overflow:hidden}
 .ftop .dpick{background:rgba(14,42,71,.75);color:#fff;border-color:rgba(255,255,255,.4);box-shadow:none;min-height:32px;padding:4px 12px;font-size:.85rem}.ftop .dpick b{color:var(--glacier)}
 .fmine{background:var(--glacier);color:#0E2A47!important}
 .ftr{display:flex;gap:6px;align-items:center}
+/* Map v2 */
+body[data-page=map] #map{height:min(78vh,720px)}
+.mlab{pointer-events:none}.mlab span{display:inline-block;transform:translate(-50%,-50%);white-space:nowrap;font-family:var(--ff);text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 2px #fff}
+.mlab.prov span{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0E2A47;opacity:.7}
+.mlab.dist span{font-size:11.5px;color:#4A5A6A;font-weight:500}
+.mlab.hwy span{font-size:11px;font-weight:700;color:#fff;background:#15803d;border-radius:6px;padding:1px 6px;text-shadow:none;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.locbtn{width:34px;height:34px;background:#fff;font-size:20px;line-height:1;cursor:pointer;border:2px solid rgba(0,0,0,.2)!important}
+.mapcite{margin-top:var(--s4)}.mapcite h3{margin-top:0}.mapcite li{font-size:var(--fs-s)}
+.chipbar{display:flex;flex-wrap:wrap;gap:var(--s2)}.lchip[aria-pressed=false]{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+html[data-theme=dark] .mlab span{text-shadow:0 0 3px #0E1C2A,0 0 3px #0E1C2A}html[data-theme=dark] .mlab.prov span{color:#CFE3F1}html[data-theme=dark] .mlab.dist span{color:#A9B8C6}
