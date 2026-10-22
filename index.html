@@ -49,7 +49,8 @@
     <p id="srcflag" class="srcflag" hidden></p>
     <div class="glance" id="glance"></div>
     <h3 class="vh"><span class="ne-only">मुख्य अङ्क</span><span class="en-only">Key numbers</span></h3>
-    <div class="kpis" id="kpis"></div></section>
+    <div class="kpis" id="kpis"></div>
+    <div class="card" id="week" style="margin-top:14px"></div></section>
   <section aria-labelledby="hriv"><h2 id="hriv"><span class="ne-only">नदीको सतह</span><span class="en-only">River levels</span></h2>
     <div class="card" id="gauges"></div></section>
 
@@ -67,6 +68,7 @@
 
   <section aria-labelledby="hfeed"><h2 id="hfeed"><span class="ne-only">सूचनाको सूची</span><span class="en-only">Alert feed</span></h2>
   <div class="controls" role="group" aria-label="Filters">
+    <label class="dsearch"><span class="ne-only">खोज</span><span class="en-only">Search</span><input id="dSearch" type="search" list="dList" autocomplete="off"><datalist id="dList"></datalist></label>
     <label><span class="ne-only">जिल्ला</span><span class="en-only">District</span><select id="fDistrict"></select></label>
     <label><span class="ne-only">मिलाउने तरिका</span><span class="en-only">Sort by</span><select id="fSort">
       <option value="severity" data-ne="गम्भीरता" data-en="Severity">गम्भीरता</option><option value="time" data-ne="समय" data-en="Time">समय</option><option value="area" data-ne="क्षेत्र" data-en="Area">क्षेत्र</option></select></label>
@@ -88,7 +90,7 @@
   <section aria-labelledby="hupd"><h2 id="hupd"><span class="ne-only">के नयाँ छ</span><span class="en-only">Updates</span></h2>
     <ol class="updates" id="updates"></ol></section>
 </main>
-<script src="assets/js/common.js"></script>
+<script src="assets/js/bs.js"></script><script src="assets/js/common.js"></script>
 <script src="./assets/vendor/leaflet/leaflet.js"></script>
 <script src="assets/js/home.js"></script>
 </body></html>

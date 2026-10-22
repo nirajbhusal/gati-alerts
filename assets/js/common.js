@@ -5,6 +5,12 @@
   const saved = localStorage.getItem("gati-lang");
   const G = (window.Gati = { root: ROOT, lang: saved === "en" ? "en" : "ne", listeners: [] });
   document.documentElement.lang = G.lang;
+  /* Display preferences, kept in this browser only. */
+  const pref = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
+  G.numPref = pref("gati-num", "");            // "" follows language; "ne" or "en" forces numerals
+  G.cal = pref("gati-cal", "ad");              // "ad" or "bs"
+  G.theme = pref("gati-theme", matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.dataset.theme = G.theme;
 
   const NAV = [
     ["home", "", "गृहपृष्ठ", "Home"],
@@ -23,6 +29,10 @@
   <div class="bar">
     <a class="brand" href="${ROOT}"><img src="${ROOT}assets/img/gati-concept-A-ga-signal-icon.svg" alt="" width="40" height="40">
       <span><b>${b("गति", "Gati")}</b><small>${b("सही सूचना, समयमै।", "The right alert, right on time.")}</small></span></a>
+    <div class="prefs" role="group" aria-label="Display / देखाउने तरिका">
+      <button class="pbtn" type="button" id="numbtn" title="Numerals / अङ्क"></button>
+      <button class="pbtn" type="button" id="calbtn" title="BS / AD"></button>
+      <button class="pbtn" type="button" id="thmbtn" title="Dark mode / अँध्यारो"></button></div>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
   </div>
@@ -51,10 +61,24 @@
   mb.onclick = () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); };
   header.querySelector("#langbtn").onclick = () => G.setLang(G.lang === "ne" ? "en" : "ne");
   G.setLang = (l) => { G.lang = l; localStorage.setItem("gati-lang", l); document.documentElement.lang = l; G.listeners.forEach((f) => f(l)); };
+  const save = (k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {} };
+  const prefBtns = () => {
+    const nb = header.querySelector("#numbtn"), cb = header.querySelector("#calbtn"), tb = header.querySelector("#thmbtn");
+    nb.textContent = G.devNum() ? "१२३" : "123"; nb.setAttribute("aria-label", G.lang === "ne" ? "अङ्क: नेपाली वा अङ्ग्रेजी" : "Numerals: Nepali or Latin");
+    cb.textContent = G.cal === "bs" ? (G.lang === "ne" ? "वि.सं." : "BS") : (G.lang === "ne" ? "ई.सं." : "AD");
+    cb.setAttribute("aria-label", G.lang === "ne" ? "मिति: विक्रम संवत् वा ईस्वी संवत्" : "Dates: Bikram Sambat or Gregorian");
+    tb.textContent = G.theme === "dark" ? "☀" : "☾"; tb.setAttribute("aria-pressed", G.theme === "dark");
+    tb.setAttribute("aria-label", G.lang === "ne" ? "अँध्यारो रूप" : "Dark mode");
+  };
+  header.querySelector("#numbtn").onclick = () => { G.numPref = G.devNum() ? "en" : "ne"; if (G.numPref === G.lang) G.numPref = ""; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
+  header.querySelector("#calbtn").onclick = () => { G.cal = G.cal === "bs" ? "ad" : "bs"; save("gati-cal", G.cal === "bs" ? "bs" : ""); G.listeners.forEach((f) => f(G.lang)); };
+  header.querySelector("#thmbtn").onclick = () => { G.theme = G.theme === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = G.theme; save("gati-theme", G.theme); prefBtns(); };
+  G.listeners.push(prefBtns);
   G.onLang = (f) => G.listeners.push(f);
 
   const DEV = "०१२३४५६७८९";
-  G.num = (s) => (G.lang === "ne" ? String(s).replace(/\d/g, (d) => DEV[d]) : String(s));
+  G.devNum = () => (G.numPref || G.lang) === "ne";
+  G.num = (s) => (G.devNum() ? String(s).replace(/\d/g, (d) => DEV[d]) : String(s));
   G.esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const MON_NE = ["जनवरी","फेब्रुअरी","मार्च","अप्रिल","मे","जुन","जुलाई","अगस्ट","सेप्टेम्बर","अक्टोबर","नोभेम्बर","डिसेम्बर"];
   const MON_EN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -63,9 +87,10 @@
     const d = new Date(new Date(iso).getTime() + 345 * 60000);
     const day = d.getUTCDate(), m = d.getUTCMonth(), y = d.getUTCFullYear();
     let h = d.getUTCHours(); const mi = String(d.getUTCMinutes()).padStart(2, "0");
-    if (G.lang === "ne") return G.num(`${MON_NE[m]} ${day}, ${y} · ${h}:${mi}`) + " NPT";
+    const bs = G.cal === "bs" && window.BS ? window.BS.toBS(y, m + 1, day) : null;
+    if (G.lang === "ne") return G.num(bs ? `${window.BS.MN[bs.m - 1]} ${bs.d}, ${bs.y} · ${h}:${mi}` : `${MON_NE[m]} ${day}, ${y} · ${h}:${mi}`) + " NPT";
     const ap = h >= 12 ? "PM" : "AM"; h = h % 12 || 12;
-    return `${day} ${MON_EN[m]} ${y} · ${h}:${mi} ${ap} NPT`;
+    return G.num(bs ? `${bs.d} ${window.BS.ME[bs.m - 1]} ${bs.y} BS · ${h}:${mi} ${ap}` : `${day} ${MON_EN[m]} ${y} · ${h}:${mi} ${ap}`) + " NPT";
   };
   G.ago = (iso) => {
     const m = Math.round((Date.now() - new Date(iso)) / 60000);
@@ -108,4 +133,5 @@
     off.hidden = navigator.onLine;
   };
   addEventListener("online", offDraw); addEventListener("offline", offDraw); G.onLang(offDraw); offDraw();
+  prefBtns();
 })();

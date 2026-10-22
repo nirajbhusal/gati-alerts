@@ -192,7 +192,7 @@ def permalink(a, by, now):
 <h2 style="font-size:1.1rem">{b("सेयर गर्नुहोस्", "Share")}</h2>
 {share_buttons(url, summ)}
 <p class="meta">{b("सेयर गर्दा मूल स्रोत पनि उल्लेख गर्नुहोस्। गतिले सूचना जारी गर्दैन, फैलाउने मात्र गर्छ।", "When sharing, mention the original source. Gati relays notices; it does not issue them.")}</p>
-</main><script src="../../assets/js/common.js"></script><script src="../../assets/js/share.js"></script></body></html>
+</main><script src="../../assets/js/bs.js"></script><script src="../../assets/js/common.js"></script><script src="../../assets/js/share.js"></script></body></html>
 '''
     out = ROOT / "alerts" / ident
     out.mkdir(parents=True, exist_ok=True)
@@ -211,7 +211,7 @@ def main():
 <title>सबै सूचना · All alerts · गति Gati</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
 <body data-page="alerts" data-root="../"><main id="main" class="wrap" style="max-width:780px"><h1>{b("सबै सूचनाको अभिलेख", "Archive of all alerts")}</h1>
 <p class="lead">{b("म्याद सकिएका सूचना पनि मेटिँदैनन्, यहीँ रहन्छन्।", "Expired notices are never deleted; they stay here.")}</p><ul>{idx}</ul>
-</main><script src="../assets/js/common.js"></script></body></html>''', encoding="utf-8")
+</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script></body></html>''', encoding="utf-8")
     print(f"rendered {len(alerts)} permalinks and share images")
 
 

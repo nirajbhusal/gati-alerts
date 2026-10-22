@@ -1,0 +1,4 @@
+{
+ "note": "24 h gauge readings, built from raw DHM snapshots in data/raw/dhm-hydrology/ once the poller can reach DHM and a reading parser exists. Empty until then; the dashboard shows 'no history yet'.",
+ "series": {}
+}

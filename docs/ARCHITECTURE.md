@@ -82,3 +82,11 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 - `data/hazards.json` lists hazard values. New: `earthquake`, `air-quality`, `epidemic`.
 - `scripts/ingest_quakes.py`: NSC event table (ML >= 4.0) and the USGS FDSN API (M4.5+, Nepal bbox 26.3..30.5 N, 80.0..88.3 E, last 90 days) become CAP files. Existing files are never overwritten. NSC and USGS figures are never merged. `ci/poll.yml` runs it once enabled.
 - Air quality (DoE) and epidemics (EDCD) have source entries and hazard values only; no item is published until a linkable official item can be fetched.
+
+## Dashboard (item 12)
+
+- Header buttons: numerals (१२३/123, overrides the language default), dates (BS/AD), dark mode. Stored in localStorage (`gati-num`, `gati-cal`, `gati-theme`).
+- `assets/js/bs.js`: BS/AD conversion. Month lengths for BS 2000 to 2090 come from nepali-date-converter 3.4.0 (MIT), which matches bikram-sambat 1.8.1 (Apache-2.0) for 2000 to 2083. Years after 2083 are marked provisional. Checked against NSC's dual dates (2083-06-21 = 2026-10-07), DHM (Asoj 25 = 11 Oct 2026) and the 2083 MoHA holiday notice as reported (Poush 10 = 25 Dec 2026).
+- Gauge sparklines read `data/river-history.json`. It is empty until DHM snapshots can be parsed, so each gauge shows "no history yet".
+- The severity chart leaves out Unknown (Info). District search accepts Nepali or English names.
+- "This week" merges active alerts with the next 7 days of `data/calendar.json`. Holidays there are labelled Reported: the MoHA PDF could not be fetched, so only dates on which two independent outlets agree are listed.
