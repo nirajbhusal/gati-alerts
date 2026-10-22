@@ -325,3 +325,23 @@
   document.querySelectorAll("[data-scope]").forEach((b) => (b.onclick = () => { scope = b.dataset.scope; drawMap(); }));
   G.onLang(() => { fillDistricts(); all(); });
 })();
+/* Source health flag: shows when any active source is stale or unreachable. Links to /sources/. */
+
+(function () {
+  const G = window.Gati;
+  const el = document.getElementById("srcflag"); if (!el) return;
+  Promise.all([G.json("data/sources.json"), G.json("data/source-health.json")]).then(([S, h]) => {
+    const H = (h && h.sources) || {};
+    const draw = () => {
+      const st = S.map((s) => G.srcStatus(s, H[s.id]));
+      const stale = st.filter((x) => x === "stale").length, down = st.filter((x) => x === "down").length;
+      if (!stale && !down) { el.hidden = true; return; }
+      const ne = [stale ? `${G.num(stale)} पुरानो` : "", down ? `${G.num(down)} पहुँच नभएको` : ""].filter(Boolean).join(", ");
+      const en = [stale ? `${stale} stale` : "", down ? `${down} unreachable` : ""].filter(Boolean).join(", ");
+      el.innerHTML = `<a href="${document.body.dataset.root || ""}sources/#health"><span aria-hidden="true">⚠</span> ` +
+        (G.lang === "ne" ? `केही स्रोत अद्यावधिक छैनन् (${ne})। स्रोतको अवस्था हेर्नुहोस्` : `Some sources are not up to date (${en}). See source health`) + "</a>";
+      el.hidden = false;
+    };
+    draw(); G.onLang(draw);
+  }).catch(() => {});
+})();

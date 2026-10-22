@@ -1,4 +1,4 @@
-<!doctype html><html lang="ne"><head><title>स्रोत · Sources — गति Gati</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ne"><head><title>स्रोत · Sources | गति Gati</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0E2A47">
 <link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -8,6 +8,11 @@
 <body data-page="sources" data-root="../"><main id="main" class="wrap" style="max-width:780px">
 <h1><span class="ne-only">स्रोतहरू</span><span class="en-only">Sources</span></h1>
 <p class="lead"><span class="ne-only">गतिले यी सरकारी निकायका सूचना फैलाउँछ। हरेक सूचनामा मूल लिङ्क हुन्छ — शङ्का लागे मूल स्रोतै हेर्नुहोस्।</span><span class="en-only">Gati relays notices from these official bodies. Every item links to the original; if in doubt, check the original source.</span></p>
+<h2 id="health"><span class="ne-only">स्रोतको अवस्था</span><span class="en-only">Source health</span></h2>
+<p class="muted"><span class="ne-only">हरेक स्रोत तोकिएको समयमा जाँचिन्छ। अन्तिम सफल जाँच तोकिएको अवधिको तीन गुणाभन्दा पुरानो भए "पुरानो" देखिन्छ।</span><span class="en-only">Each source is checked on its poll interval. A source shows as "stale" when its last success is older than 3x that interval.</span></p>
+<div id="srcHealth" class="srch" aria-live="polite"></div>
+<p id="srcNote" class="muted small"></p>
+<h2><span class="ne-only">मुख्य स्रोतहरू</span><span class="en-only">Main sources</span></h2>
 <div class="card"><h3 style="margin-top:0">DHM — <span class="ne-only">जल तथा मौसम विज्ञान विभाग</span><span class="en-only">Department of Hydrology and Meteorology</span></h3>
 <p><span class="ne-only">नदीको पानीको सतह, बाढीको पूर्वसूचना, मौसमको चेतावनी।</span><span class="en-only">River levels, flood early warning, weather warnings.</span></p>
 <p class="src"><a href="https://www.dhm.gov.np/">dhm.gov.np</a> · <a href="https://hydrology.gov.np/">hydrology.gov.np</a> · <a href="https://x.com/DHM_FloodEWS">@DHM_FloodEWS</a></p></div>
@@ -27,4 +32,4 @@
 <p><span class="ne-only">सबै सूचना CAP 1.2 ढाँचामा खुला छन्; सञ्चारमाध्यम, एप र अनुसन्धानकर्ताले फेरि प्रयोग गर्न सक्छन्।</span><span class="en-only">All items are open CAP 1.2; media, apps and researchers may reuse them.</span></p>
 <ul><li><a href="../feed.xml">feed.xml</a> — Atom index</li><li><a href="../data/alerts.json">data/alerts.json</a> — JSON</li>
 <li><a href="https://github.com/nirajbhusal/gati-alerts/tree/main/data/alerts">data/alerts/*.xml</a> — CAP 1.2</li><li><a href="https://github.com/nirajbhusal/gati-alerts/blob/main/docs/CAP.md">docs/CAP.md</a></li></ul>
-</main><script src="../assets/js/common.js"></script></body></html>
+</main><script src="../assets/js/common.js"></script><script src="../assets/js/sources.js"></script></body></html>

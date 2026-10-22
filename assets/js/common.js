@@ -81,5 +81,14 @@
               Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"] };
   G.sevChip = (s) => { const v = G.SEV[s] || G.SEV.Unknown; return `<span class="sev sev-${G.SEV[s] ? s : "Unknown"}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>`; };
   G.trustChip = (t) => { const v = G.TRUST[t]; return v ? `<span class="trust t-${t}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>` : ""; };
+  /* Source health: planned | ok | stale | down. Stale = last success older than 3x pollMinutes. */
+  G.srcStatus = (src, h) => {
+    if (src.status === "planned" || !src.url) return "planned";
+    h = h || {};
+    if (!h.lastSuccess) return "down";
+    const age = (Date.now() - new Date(h.lastSuccess)) / 60000;
+    if (age > 3 * src.pollMinutes) return "stale";
+    return h.lastChecked && h.lastChecked > h.lastSuccess ? "stale" : "ok";
+  };
   G.json = (p) => fetch(ROOT + p, { cache: "no-cache" }).then((r) => r.json());
 })();

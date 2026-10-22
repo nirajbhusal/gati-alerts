@@ -1,0 +1,76 @@
+{
+ "sources": {
+  "dhm-hydrology": {
+   "lastSuccess": null,
+   "lastChecked": "2026-10-22T13:19:30+00:00",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+  },
+  "dhm-mfd": {
+   "lastSuccess": null,
+   "lastChecked": "2026-10-22T13:19:38+00:00",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+  },
+  "neoc": {
+   "lastSuccess": null,
+   "lastChecked": "2026-10-22T13:19:46+00:00",
+   "lastResult": "URLError: timed out"
+  },
+  "ndrrma": {
+   "lastSuccess": null,
+   "lastChecked": "2026-10-22T13:20:11+00:00",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+  },
+  "nepal-police": {
+   "lastSuccess": "2026-10-22T13:20:19+00:00",
+   "lastChecked": "2026-10-22T13:20:19+00:00",
+   "lastResult": "HTTP 200"
+  },
+  "bipad": {
+   "lastSuccess": null,
+   "lastChecked": "2026-10-22T13:20:26+00:00",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+  },
+  "nsc": {
+   "lastSuccess": "2026-10-22T13:20:34+00:00",
+   "lastChecked": "2026-10-22T13:20:34+00:00",
+   "lastResult": "HTTP 200"
+  },
+  "usgs": {
+   "lastSuccess": "2026-10-22T13:20:38+00:00",
+   "lastChecked": "2026-10-22T13:20:38+00:00",
+   "lastResult": "HTTP 200"
+  },
+  "doe-air": {
+   "lastSuccess": null,
+   "lastChecked": "2026-10-22T13:20:39+00:00",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+  },
+  "edcd": {
+   "lastSuccess": null,
+   "lastChecked": "2026-10-22T13:20:47+00:00",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+  },
+  "lightning": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "planned"
+  },
+  "forest-fire": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "planned"
+  },
+  "avalanche": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "planned"
+  },
+  "glof": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "planned"
+  }
+ },
+ "checkedAt": "2026-10-22T13:20:55+00:00",
+ "note": "Checked from an automated server outside Nepal; some .gov.np sites block or time out for such servers even when they are up for people in Nepal."
+}
