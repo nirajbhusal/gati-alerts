@@ -474,3 +474,8 @@ html[data-theme=dark] .nearbtn{background:#7FD1D8;color:#0E2A47}.mydist{display:
 .rstep:not(:last-child)::before{content:"";position:absolute;left:8px;top:20px;bottom:0;width:3px;background:var(--line)}
 .rdot{flex:none;width:19px;height:19px;border-radius:50%;background:#1f8a4c;margin-top:3px;box-shadow:0 0 0 4px var(--surface2)}.r-unk .rdot{background:#8a99a8}.r-bad .rdot{background:#B3261E}.r-warn .rdot{background:#1f5fbf}
 .rtop{display:flex;gap:var(--s2);align-items:center;flex-wrap:wrap}.rstep p{margin:4px 0}
+/* Earthquakes */
+.qfilt{display:flex;gap:var(--s2);flex-wrap:wrap;margin-bottom:var(--s4)}.qfilt button{font:inherit;min-height:40px;padding:6px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.qfilt button[aria-pressed=true]{background:#0E2A47;color:#fff;border-color:#0E2A47}html[data-theme=dark] .qfilt button[aria-pressed=true]{background:#7FD1D8;color:#0E2A47}
+.qlist{list-style:none;margin:0;padding:0}.qlist li{display:flex;gap:var(--s3);padding:12px 0;border-bottom:1px solid var(--line)}.qlist a{color:var(--ink);font-weight:600}
+.qmag{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#fff;background:#B3261E;font-size:1.05rem}
