@@ -3,7 +3,8 @@
  "note_en": "Public holidays are from the MoHA notice for BS 2083, which could not be opened from automated servers. Only holidays whose dates agree in two independent outlets are listed, labelled Reported. Names still need checking against the MoHA PDF.",
  "types": {
   "holiday": "Public holiday (MoHA)",
-  "closure": "Planned closure (official notice)"
+  "closure": "Planned closure (official notice)",
+  "season": "Seasonal hazard band (approximate, not a forecast)"
  },
  "closures_note": "No planned closure with an official notice was found for the coming weeks; none is listed.",
  "entries": [
@@ -366,6 +367,82 @@
     "https://khatain.com/calendar/2083",
     "https://katigate.com/festivals"
    ]
+  }
+ ],
+ "tithi_note_ne": "तिथि नेपाल पञ्चाङ्ग निर्णायक विकास समितिको उद्धृत गर्न मिल्ने स्रोतबाट लिन सकिएन, त्यसैले राखिएको छैन।",
+ "tithi_note_en": "Tithi is omitted: no citable Nepal Panchanga Nirnayak Bikas Samiti source could be opened, so none is shown.",
+ "festivals_note_ne": "चाडपर्व नेपाल पञ्चाङ्ग निर्णायक विकास समिति वा सरकारी बिदा सूचीबाट मात्र राखिन्छ। सार्वजनिक बिदामा परेका बाहेक अरू चाड यहाँ छैनन्।",
+ "festivals_note_en": "Festivals are listed only from the Nepal Panchanga Nirnayak Bikas Samiti or the official holiday list. Only those that are public holidays appear here.",
+ "seasons_note_en": "Seasonal bands are approximate climatological windows, not forecasts or warnings. Always follow the current official notice.",
+ "seasons_note_ne": "मौसमी पट्टी अनुमानित मात्र हुन्, पूर्वानुमान वा चेतावनी होइनन्। सधैँ पछिल्लो आधिकारिक सूचना मान्नुहोस्।",
+ "seasons": [
+  {
+   "id": "monsoon",
+   "from_md": "06-13",
+   "to_md": "10-02",
+   "approximate": true,
+   "title_ne": "मनसुन (अनुमानित)",
+   "title_en": "Monsoon (approximate)",
+   "colour": "#2B6CB0",
+   "source": "DHM: normal monsoon onset 13 June, normal withdrawal 2 October",
+   "sourceUrl": "https://www.dhm.gov.np/"
+  },
+  {
+   "id": "fog",
+   "from_md": "12-01",
+   "to_md": "01-31",
+   "approximate": true,
+   "title_ne": "जाडोको हुस्सु, तराई (अनुमानित)",
+   "title_en": "Winter fog, Terai (approximate)",
+   "colour": "#7A8A9A",
+   "source": "DHM seasonal climate summaries (winter fog and cold wave in the Terai)",
+   "sourceUrl": "https://www.dhm.gov.np/"
+  },
+  {
+   "id": "avalanche",
+   "from_md": "01-01",
+   "to_md": "04-30",
+   "approximate": true,
+   "title_ne": "हिमपहिरो, उच्च हिमाल (अनुमानित)",
+   "title_en": "Avalanche, high mountains (approximate)",
+   "colour": "#7FD1D8",
+   "source": "BIPAD Portal hazard records (avalanche events cluster in winter and spring)",
+   "sourceUrl": "https://bipadportal.gov.np/"
+  },
+  {
+   "id": "fire",
+   "from_md": "02-15",
+   "to_md": "05-31",
+   "approximate": true,
+   "title_ne": "वन डढेलो (अनुमानित)",
+   "title_en": "Forest fire (approximate)",
+   "colour": "#E8770E",
+   "source": "ICIMOD Regional Forest Fire Monitoring (Nepal fire season, peak March to May)",
+   "sourceUrl": "https://www.icimod.org/"
+  },
+  {
+   "id": "dashain-travel",
+   "around": "dashain",
+   "approximate": true,
+   "title_ne": "दशैंको यात्रा भीड (अनुमानित)",
+   "title_en": "Dashain travel peak (approximate)",
+   "colour": "#C81E1E",
+   "source": "Derived by Gati: 3 days before to 1 day after the Dashain holidays listed above (not an official notice)",
+   "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
+   "from_ad": "2026-10-08",
+   "to_ad": "2026-10-24"
+  },
+  {
+   "id": "tihar-travel",
+   "around": "tihar",
+   "approximate": true,
+   "title_ne": "तिहार र छठको यात्रा भीड (अनुमानित)",
+   "title_en": "Tihar and Chhath travel peak (approximate)",
+   "colour": "#C81E1E",
+   "source": "Derived by Gati: 3 days before to 1 day after the Tihar and Chhath holidays listed above (not an official notice)",
+   "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
+   "from_ad": "2026-11-05",
+   "to_ad": "2026-11-16"
   }
  ]
 }

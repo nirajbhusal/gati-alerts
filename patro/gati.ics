@@ -1,0 +1,353 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Gati//Patro//NE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:गति पात्रो · Gati Patro
+X-WR-TIMEZONE:Asia/Kathmandu
+X-WR-CALDESC:Public holidays are from the MoHA notice for BS 2083\, which
+  could not be opened from automated servers. Only holidays whose dates ag
+ ree in two independent outlets are listed\, labelled Reported. Names stil
+ l need checking against the MoHA PDF.
+BEGIN:VEVENT
+UID:2026-04-14-holiday-new-year@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20260414
+DTEND;VALUE=DATE:20260415
+SUMMARY:नयाँ वर्ष · New Year
+DESCRIPTION:वि.सं. 2083-01-01 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-01-holiday-buddha-jayanti,-chandi-purnima@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260502
+SUMMARY:बुद्ध जयन्ती\, चण्डी पूर्
+ णिमा · Buddha Jayanti\, Chandi Purnima
+DESCRIPTION:वि.सं. 2083-01-18 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-28-holiday-janai-purnima@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20260828
+DTEND;VALUE=DATE:20260829
+SUMMARY:जनै पूर्णिमा · Janai Purnima
+DESCRIPTION:वि.सं. 2083-05-12 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-04-holiday-krishna-janmashtami@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260905
+SUMMARY:श्रीकृष्ण जन्माष्टमी · Kri
+ shna Janmashtami
+DESCRIPTION:वि.सं. 2083-05-19 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-08-holiday-gen-z-martyrs-day@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20260908
+DTEND;VALUE=DATE:20260909
+SUMMARY:जेन–जी सहिद दिवस · Gen Z Martyrs Day
+DESCRIPTION:वि.सं. 2083-05-23 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-holiday-ghatasthapana@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:घटस्थापना · Ghatasthapana
+DESCRIPTION:वि.सं. 2083-06-25 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-holiday-dashain-holiday-fulpati@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:दशैं बिदा (फूलपाती) · Dashain holi
+ day (Fulpati)
+DESCRIPTION:वि.सं. 2083-06-31 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-holiday-dashain-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:दशैं बिदा · Dashain holiday
+DESCRIPTION:वि.सं. 2083-07-01 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-19-holiday-dashain-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261020
+SUMMARY:दशैं बिदा · Dashain holiday
+DESCRIPTION:वि.सं. 2083-07-02 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-20-holiday-dashain-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:दशैं बिदा · Dashain holiday
+DESCRIPTION:वि.सं. 2083-07-03 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-21-holiday-dashain-holiday-vijaya-dashami@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:दशैं बिदा (विजया दशमी) · Dasha
+ in holiday (Vijaya Dashami)
+DESCRIPTION:वि.सं. 2083-07-04 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-22-holiday-dashain-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261022
+DTEND;VALUE=DATE:20261023
+SUMMARY:दशैं बिदा · Dashain holiday
+DESCRIPTION:वि.सं. 2083-07-05 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-23-holiday-dashain-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+SUMMARY:दशैं बिदा · Dashain holiday
+DESCRIPTION:वि.सं. 2083-07-06 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-holiday-tihar-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:तिहार बिदा · Tihar holiday
+DESCRIPTION:वि.सं. 2083-07-22 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-09-holiday-tihar-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:तिहार बिदा · Tihar holiday
+DESCRIPTION:वि.सं. 2083-07-23 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-10-holiday-tihar-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:तिहार बिदा · Tihar holiday
+DESCRIPTION:वि.सं. 2083-07-24 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-11-holiday-tihar-holiday-bhai-tika@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:तिहार बिदा (भाइटीका) · Tihar hol
+ iday (Bhai Tika)
+DESCRIPTION:वि.सं. 2083-07-25 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-12-holiday-tihar-holiday@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:तिहार बिदा · Tihar holiday
+DESCRIPTION:वि.सं. 2083-07-26 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-holiday-chhath@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:छठ पर्व · Chhath
+DESCRIPTION:वि.सं. 2083-07-29 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-24-holiday-dhanya-purnima@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261224
+DTEND;VALUE=DATE:20261225
+SUMMARY:धान्य पूर्णिमा · Dhanya Purnima
+DESCRIPTION:वि.सं. 2083-09-09 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-25-holiday-christmas-day@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+SUMMARY:क्रिसमस डे · Christmas Day
+DESCRIPTION:वि.सं. 2083-09-10 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-30-holiday-tamu-lhosar@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20261230
+DTEND;VALUE=DATE:20261231
+SUMMARY:तमु ल्होसार · Tamu Lhosar
+DESCRIPTION:वि.सं. 2083-09-15 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-15-holiday-maghe-sankranti@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:माघे सङ्क्रान्ति · Maghe Sankranti
+DESCRIPTION:वि.सं. 2083-10-01 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-07-holiday-sonam-lhosar@gati
+DTSTAMP:20261022T144627Z
+DTSTART;VALUE=DATE:20270207
+DTEND;VALUE=DATE:20270208
+SUMMARY:सोनाम ल्होसार · Sonam Lhosar
+DESCRIPTION:वि.सं. 2083-10-24 · holiday · Reported · Source: 
+ गृह मन्त्रालय\, २०८३ सालको स
+ रकारी तथा सार्वजनिक बिदा (न
+ ेपाल राजपत्र) https://www.moha.gov.np/page/governme
+ nt-and-public-holidays-in-2083
+URL:https://www.moha.gov.np/page/government-and-public-holidays-in-2083
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

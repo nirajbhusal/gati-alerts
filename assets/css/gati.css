@@ -258,3 +258,20 @@ html[data-theme=dark] .maplegend{background:#112233;color:var(--ink)}
 .stbtn{background:rgba(14,42,71,.75);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:4px 12px;font:inherit;font-size:.82rem;text-decoration:none;cursor:pointer;min-height:32px}
 .stnav{position:absolute;top:30%;bottom:30%;width:22%;background:none;border:0;z-index:2;cursor:pointer}.stnav.prev{left:0}.stnav.next{right:0}
 .storypage .shead{padding-top:58px}
+/* Patro (item 15) */
+.ptools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}.ptools h2{margin:0 auto 0 4px;font-size:1.2rem;min-width:12em}.ptools h2 small{font-weight:400;color:var(--slate);font-size:.8rem}
+.seg button[aria-pressed=true]{background:var(--navy);color:#fff}
+.pmonth{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.pwh{text-align:center;font-weight:600;font-size:.85rem;color:var(--slate)}.pwh.hol{color:var(--severe)}
+.pday{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:96px;padding:4px 6px 10px;border:1px solid var(--mist);border-radius:8px;background:#fff;font:inherit;text-align:left;cursor:pointer;color:var(--ink);overflow:hidden}
+.pday.hol .pbig{color:var(--severe)}.pday.today{outline:3px solid var(--teal)}.pday.sel{background:#e8f3f4}
+.pbig{font-size:1.35rem;font-weight:700;line-height:1.1}.psmall{position:absolute;top:4px;right:6px;font-size:.75rem;color:var(--slate)}
+.phol{font-size:.72rem;line-height:1.2;color:var(--severe)}.psun{font-size:.66rem;color:var(--slate);margin-top:auto}
+.pmarks{position:absolute;top:28px;right:6px;display:flex;flex-direction:column;gap:2px}.hdot{display:inline-block;width:10px;height:10px;border-radius:50%;border:1px solid #fff;vertical-align:middle}
+.pbands{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column}.band{display:inline-block;height:3px;min-width:100%;opacity:.8}
+#plegend .band{min-width:18px;height:8px;vertical-align:middle;border-radius:2px}.plist .band{min-width:18px;height:8px}
+.ppanel{position:relative;margin-top:12px}.pclose{position:absolute;top:8px;right:8px;background:none;border:0;font-size:1.2rem;cursor:pointer;color:inherit}
+.plist{padding-left:1.1em}.plist li{margin:.35em 0}
+.pweek{display:grid;gap:8px}.pwrow{display:grid;grid-template-columns:150px 1fr;gap:12px;border:1px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}.pwrow.today{outline:3px solid var(--teal)}.pwrow p,.pwrow ul{margin:.2em 0}
+@media(max-width:600px){.pday{min-height:64px;padding:3px}.phol,.psun{display:none}.pbig{font-size:1.05rem}.pwrow{grid-template-columns:1fr}.ptools h2{min-width:100%;order:-1}}
+html[data-theme=dark] .pday,html[data-theme=dark] .pwrow{background:#14283d;color:#e6edf3;border-color:#2C4A6B}html[data-theme=dark] .pday.sel{background:#1d3a55}

@@ -5,6 +5,7 @@
   lite/index.html                  text-only page, no JS, no fonts, under 30 KB
   stories/img/<identifier>.png     1080x1920 story card with QR to the permalink
   stories/qr/<identifier>.svg      QR code to the permalink, used by /stories/
+  patro/gati.ics                   iCalendar of the cited holidays in data/calendar.json
 Everything shown comes from the CAP message: headline, agency, source link, source time.
 Nothing is invented. Usage: python scripts/render.py
 """
@@ -309,6 +310,35 @@ def lite(alerts, now):
     print(f"lite/index.html {size} bytes")
 
 
+def ics(now):
+    cal = json.loads((ROOT / "data/calendar.json").read_text(encoding="utf-8"))
+    def esc_ics(x):
+        return x.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+    def fold(line):
+        out, cur = [], b""
+        for ch in line:
+            c = ch.encode("utf-8")
+            if len(cur) + len(c) > 73: out.append(cur.decode("utf-8")); cur = b""
+            cur += c
+        out.append(cur.decode("utf-8"))
+        return "\r\n ".join(out)
+    stamp = now.strftime("%Y%m%dT%H%M%SZ")
+    L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Gati//Patro//NE", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+         "X-WR-CALNAME:गति पात्रो · Gati Patro", "X-WR-TIMEZONE:Asia/Kathmandu",
+         "X-WR-CALDESC:" + esc_ics(cal.get("note_en", ""))]
+    for x in cal["entries"]:
+        d0 = dt.date.fromisoformat(x["date_ad"])
+        L += ["BEGIN:VEVENT", f"UID:{x['date_ad']}-{x['type']}-{x["title_en"].lower().replace(" ", "-").replace("(", "").replace(")", "")}@gati",
+              f"DTSTAMP:{stamp}", f"DTSTART;VALUE=DATE:{d0:%Y%m%d}", f"DTEND;VALUE=DATE:{d0 + dt.timedelta(1):%Y%m%d}",
+              "SUMMARY:" + esc_ics(f"{x['title_ne']} · {x['title_en']}"),
+              "DESCRIPTION:" + esc_ics(f"वि.सं. {x['date_bs']} · {x['type']} · {x.get('trust', '')} · Source: {x['source']} {x['sourceUrl']}"),
+              "URL:" + x["sourceUrl"], "TRANSP:TRANSPARENT", "END:VEVENT"]
+    L.append("END:VCALENDAR")
+    (ROOT / "patro").mkdir(exist_ok=True)
+    (ROOT / "patro/gati.ics").write_bytes(("\r\n".join(fold(l) for l in L) + "\r\n").encode("utf-8"))
+    print(f"patro/gati.ics {len(cal['entries'])} events")
+
+
 def main():
     now = dt.datetime.now(dt.timezone.utc)
     alerts = json.loads((ROOT / "data/alerts.json").read_text(encoding="utf-8"))["alerts"]
@@ -325,6 +355,7 @@ def main():
 </main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script></body></html>''', encoding="utf-8")
     print(f"rendered {len(alerts)} permalinks and share images")
     lite(alerts, now)
+    ics(now)
 
 
 if __name__ == "__main__":
