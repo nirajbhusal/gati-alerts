@@ -68,16 +68,17 @@
     const areas = i.areas.map((x) => x.desc).join(" · ");
     const corr = i.params["gati:correction"], src2 = i.params["gati:sourceUrl2"];
     return `<article class="card alert s-${a.severity}${a.expired ? " expired" : ""}" id="${G.esc(a.identifier)}">
-      <div class="chips">${G.sevChip(a.severity)}${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}
-        ${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag">${T("चालु", "Active")}</span>`}
+      <div class="ahead">${G.sevChip(a.severity)}
+        ${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag live">${T("चालु", "Active")}</span>`}
         <span class="tag">${G.esc(i.event)}</span></div>
       <h4>${G.esc(i.headline)}</h4>
-      <p class="meta">📍 ${G.esc(areas)}</p>
-      <p class="meta">🕒 ${T("जारी", "Issued")}: ${G.npt(a.sent)} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
+      <p class="aarea">📍 ${G.esc(areas)}</p>
+      <p class="atime">🕒 ${T("स्रोतको समय", "Source time")}: <strong>${G.npt(i.params["gati:sourceTime"] || a.sent)}</strong> · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
+      <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.esc((i.senderName || "").split(" — ")[0])}</span></div>
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
       ${chain(a)}
       ${i.instruction && !a.expired ? `<div class="instr"><strong>${T("के गर्ने", "What to do")}:</strong> ${G.esc(i.instruction)}</div>` : ""}
-      <p class="meta src">${T("स्रोत", "Source")}: <strong>${G.esc(i.senderName)}</strong> · <a href="${G.esc(i.web)}" rel="noopener" target="_blank">${T("मूल सूचना", "Original notice")} ↗</a> · <a href="alerts/${G.esc(a.identifier)}/">${T("स्थायी लिङ्क र सेयर", "Permalink and share")}</a>${src2 ? ` · <a href="${G.esc(src2)}" rel="noopener" target="_blank">${T("दोस्रो स्रोत", "Second source")} ↗</a>` : ""}</p>
+      <p class="meta src alinks"><a href="${G.esc(i.web)}" rel="noopener" target="_blank">${T("मूल सूचना", "Original notice")} ↗</a> · <a href="alerts/${G.esc(a.identifier)}/">${T("स्थायी लिङ्क र सेयर", "Permalink and share")}</a>${src2 ? ` · <a href="${G.esc(src2)}" rel="noopener" target="_blank">${T("दोस्रो स्रोत", "Second source")} ↗</a>` : ""}</p>
       <details><summary>${T("पूरा विवरण", "Details")}</summary>
         ${a.expired && i.instruction ? `<p><strong>${T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>

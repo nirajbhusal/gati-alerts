@@ -289,3 +289,51 @@ html[data-theme=dark] .pday,html[data-theme=dark] .pwrow{background:#14283d;colo
 .tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:0;padding:6px 2px 7px;color:#dfe9f2;text-decoration:none;font-size:.78rem;line-height:1.2;min-height:52px}
 .tabbar a span[aria-hidden]{font-size:1.15rem}.tabbar a[aria-current=page]{color:#fff;box-shadow:inset 0 3px 0 var(--glacier)}
 body.has-tabbar{padding-bottom:62px}}
+/* ===== Design system v2 (modern round): tokens, cards, type, states ===== */
+:root{--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--rad:16px;--rad-s:10px;
+--sh1:0 1px 2px rgba(14,42,71,.06),0 2px 8px rgba(14,42,71,.06);--sh2:0 4px 10px rgba(14,42,71,.08),0 12px 28px rgba(14,42,71,.10);
+--surface:#fff;--surface2:#F1F5F9;--line:#E3E9EF;--fs-xs:.78rem;--fs-s:.88rem;--fs-m:1rem;--fs-l:1.2rem;--fs-xl:1.55rem;--fs-2xl:2.05rem}
+html[data-theme=dark]{--surface:#122233;--surface2:#0F1D2C;--line:#22364A;--sh1:0 1px 2px rgba(0,0,0,.35);--sh2:0 8px 24px rgba(0,0,0,.45)}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1{font-size:var(--fs-2xl);font-weight:700;letter-spacing:-.01em;line-height:1.2;margin:var(--s5) 0 var(--s2)}
+h2{font-size:var(--fs-xl);font-weight:700;letter-spacing:-.005em;line-height:1.25}h3{font-size:var(--fs-l);line-height:1.3}
+.lead{font-size:1.05rem;color:var(--slate);max-width:70ch}
+.card,.kpi,.chart,.sumcard,.roadlist,.fresh{background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--sh1);padding:var(--s5)}
+.card{margin:0 0 var(--s4)}
+.card,.kpi,.sbtn,.seg button,.pday,.langbtn,.pbtn{transition:box-shadow .18s,transform .18s,background-color .18s,border-color .18s}
+@media(hover:hover){.card.alert:hover,.kpi:hover,.pday:hover{box-shadow:var(--sh2);transform:translateY(-1px)}.sbtn:hover{border-color:var(--teal)}}
+.card.alert:active,.sbtn:active,.seg button:active,.pday:active{transform:scale(.985)}
+/* alert card hierarchy: severity chip > title > area > source time > trust */
+.alert{border-left:0;position:relative;padding:var(--s5) var(--s5) var(--s4) calc(var(--s5) + 6px);overflow:hidden}
+.alert::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--info)}
+.alert.s-Extreme::before{background:var(--extreme)}.alert.s-Severe::before{background:var(--severe)}.alert.s-Moderate::before{background:var(--moderate)}.alert.s-Minor::before{background:var(--minor)}
+.ahead{display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center}
+.alert .sev{font-size:.85rem;padding:3px 12px}
+.alert h4{font-size:var(--fs-l);line-height:1.35;margin:var(--s3) 0 var(--s2);font-weight:700}
+.aarea{margin:0 0 var(--s1);color:var(--ink);font-size:var(--fs-s);font-weight:500}.atime{margin:0 0 var(--s3);color:var(--slate);font-size:var(--fs-s)}
+.atrust{display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;padding-top:var(--s3);border-top:1px solid var(--line)}.atrust .meta{margin:0}
+.tag.live{background:#DDF3EA;color:#0B6B4A}html[data-theme=dark] .tag.live{background:#103B2E;color:#8FE0BF}
+.alert .instr,.alert .vchain,.alert .correction{border-radius:var(--rad-s);margin:var(--s3) 0}
+.alert details{margin-top:var(--s3)}
+/* KPI and Nepal Now */
+.kpis{gap:var(--s4)}.kpi{padding:var(--s5);gap:var(--s1)}.kpi.hot{border-top:0;box-shadow:inset 0 4px 0 var(--severe),var(--sh1)}
+.kpi b{font-size:2.4rem;letter-spacing:-.02em}.kpi span{font-size:var(--fs-s);text-transform:none}
+.glance{border-radius:20px;padding:var(--s6);box-shadow:var(--sh2)}
+.sbtn,.langbtn,.pbtn{border-radius:999px}.seg{border-radius:999px;box-shadow:var(--sh1)}
+.sev,.trust,.tag{padding:3px 11px;font-size:var(--fs-xs)}
+html[data-theme=dark] .card,html[data-theme=dark] .kpi,html[data-theme=dark] .chart,html[data-theme=dark] .sumcard,html[data-theme=dark] .fresh{background:var(--surface);border-color:var(--line)}
+html[data-theme=dark] .aarea{color:var(--ink)}
+.dash h2{margin:var(--s7) 0 var(--s4)}
+header.top{position:sticky;top:0;z-index:950;background:rgba(14,42,71,.94);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.top .bar{padding:10px 18px}
+nav.main{gap:4px;padding:0 14px 8px}nav.main a{padding:7px 14px;border-radius:999px;font-weight:500;transition:background-color .15s,color .15s}
+nav.main a:hover{background:rgba(255,255,255,.08);color:#fff}nav.main a[aria-current=page]{box-shadow:none;background:rgba(127,209,216,.2);color:#fff}
+.disclaimer{font-size:.84rem;line-height:1.45}.disclaimer .wrap{padding-top:10px;padding-bottom:10px}
+.pbtn{min-width:40px;min-height:40px}
+.tagline{display:none}
+.storypage header.top{display:none}
+html[data-theme=dark] .kpi b{color:#E6EDF3}html[data-theme=dark] .kpi.hot b{color:#FF7A7A}
+@media(max-width:600px){.kpis{grid-template-columns:1fr 1fr;gap:var(--s3)}.kpi{padding:var(--s4)}.kpi b{font-size:1.9rem}.kpi.hz,.kpis>.kpi:last-child{grid-column:1/-1}
+.alert{padding:var(--s4) var(--s4) var(--s3) calc(var(--s4) + 6px)}.card{padding:var(--s4)}}
+.alinks{margin-top:var(--s2)}.alinks a{font-weight:600}
+@media(max-width:600px){.kpis>.kpi:nth-child(3){grid-column:1/-1}}
