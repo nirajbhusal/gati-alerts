@@ -9,7 +9,7 @@ Gati (MVP) is a fully static site on GitHub Pages. There is no server, database 
  data/alerts/*.xml  (CAP 1.2, one file/message)     prefilled GitHub issue form URL
           │  git push / PR                                  │  reporter submits with own account
           ▼                                                 ▼
- GitHub Action  .github/workflows/cap.yml           Issue + labels reported, citizen-report
+ GitHub Action  ci/cap.yml (→ .github/workflows/cap.yml)           Issue + labels reported, citizen-report
    1. XSD validation (schema/CAP-v1.2.xsd)                  │  moderator relabels (docs/VERIFICATION.md)
    2. Gati profile checks                                   ▼
    3. scripts/build.py → feed.xml + data/alerts.json  /reports/ reads GitHub REST API in the browser
@@ -27,7 +27,7 @@ Gati (MVP) is a fully static site on GitHub Pages. There is no server, database 
 | Report | `report/index.html`, `assets/js/report.js` | GPS via `navigator.geolocation`, pin via Leaflet, rounded to 4 decimals. Builds `issues/new?template=report.yml&labels=…&<field-id>=…`. Contact never enters the URL; optional `mailto:` to the maintainer |
 | Reports | `reports/index.html`, `assets/js/reports.js` | `GET /repos/nirajbhusal/gati-alerts/issues?labels=reported` and `…=verified`, merged. Status precedence: retracted > corrected > verified > reported. Emails and phone numbers are scrubbed before display |
 | Feed | `scripts/build.py` | lxml XMLSchema validation, Atom 1.0 (`feed.xml`), JSON mirror |
-| CI/CD | `.github/workflows/cap.yml` | On push, PR (validate only), manual and daily. Pages `build_type` = workflow |
+| CI/CD | `ci/cap.yml (→ .github/workflows/cap.yml)` | On push, PR (validate only), manual and daily. Pages `build_type` = workflow |
 
 ## Data model (JSON mirror)
 
