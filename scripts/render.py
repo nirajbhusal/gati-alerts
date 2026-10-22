@@ -2,6 +2,7 @@
 """Build-time renderer (run after scripts/build.py). Reads data/alerts.json and writes:
   alerts/<identifier>/index.html   static permalink with OG meta and share buttons
   alerts/<identifier>/share.png    1200x630 share image
+  lite/index.html                  text-only page, no JS, no fonts, under 30 KB
 Everything shown comes from the CAP message: headline, agency, source link, source time.
 Nothing is invented. Usage: python scripts/render.py
 """
@@ -199,6 +200,60 @@ def permalink(a, by, now):
     (out / "index.html").write_text(page, encoding="utf-8")
 
 
+DISC_NE = ("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ "
+           "(विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।")
+DISC_EN = ("<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source "
+           "(Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1149.")
+RW = {"open": ("खुला", "Open"), "oneway": ("एकतर्फी", "One-way"), "night": ("राति बन्द", "Closed at night"), "closed": ("बन्द", "Blocked"), "none": ("स्थिति पुष्टि भएन", "Not confirmed")}
+
+
+def lite(alerts, now):
+    roads = json.loads((ROOT / "data/roads.json").read_text(encoding="utf-8"))
+    rivers = json.loads((ROOT / "data/rivers.json").read_text(encoding="utf-8"))
+    act = [a for a in alerts if is_active(a, now)]
+    def item(a, lang):
+        i = a["info"][lang]
+        s = SEV.get(a["severity"], SEV["Unknown"]); t = TRUST.get(a["trust"], ("", "", ""))
+        lab = f"{s[0] if lang == 'ne' else s[1]} · {t[0] if lang == 'ne' else t[1]}"
+        return (f'<li><b>[{e(lab)}]</b> {e(i["headline"])}<br><small>{"स्रोत" if lang == "ne" else "Source"}: '
+                f'<a href="{e(i["web"])}">{e(agency(i))}</a>, {npt(src_time(a, i), lang)} · '
+                f'<a href="../alerts/{e(a["identifier"])}/">{"पूरा" if lang == "ne" else "More"}</a></small></li>')
+    def sec(lang):
+        ne = lang == "ne"
+        out = [f'<h2>{"चालु सूचना" if ne else "Active alerts"} ({str(len(act)).translate(DEV) if ne else len(act)})</h2>']
+        out.append("<ul>" + "".join(item(a, lang) for a in act) + "</ul>" if act else
+                   f'<p>{"अहिले गतिमा कुनै चालु सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।" if ne else "No active item in Gati now. That does not mean there is no risk."}</p>')
+        out.append(f'<h2>{"मुख्य सडक" if ne else "Main roads"}</h2><p><small>{e(roads["as_of_ne"] if ne else roads["as_of_en"])}</small></p><ul>')
+        out += [f'<li>{e(r["name_ne"] if ne else r["name_en"])}: <b>{RW.get(r["status"], (r["status"], r["status"]))[0 if ne else 1]}</b></li>' for r in roads["routes"]]
+        out.append("</ul>")
+        out.append(f'<h2>{"नदी" if ne else "Rivers"}</h2><p><small>{e(rivers["as_of_ne"] if ne else rivers["as_of_en"])} · <a href="{e(rivers["url"])}">DHM</a></small></p><ul>')
+        for g in rivers["gauges"]:
+            lv = f'{g["level"]:.1f}'; wn = f'{g["warning"]:.1f}'
+            out.append(f'<li>{e(g["ne"] if ne else g["en"])}: {lv.translate(DEV) if ne else lv} {"मि." if ne else "m"} '
+                       f'({"चेतावनी" if ne else "warning"} {wn.translate(DEV) if ne else wn})</li>')
+        out.append("</ul>")
+        return "".join(out)
+    page = f'''<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>गति Lite: पाठ मात्र</title><link rel="icon" href="data:,"><meta name="description" content="Gati text-only page for slow connections.">
+<style>body{{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:10px;color:#14202B}}a{{color:#0F7C86}}h1{{font-size:1.3em;color:#0E2A47}}h2{{font-size:1.1em;color:#0E2A47;margin:1.2em 0 .3em}}ul{{padding-left:1.1em}}li{{margin:.3em 0}}.d{{background:#e8f3f4;padding:8px;font-size:.9em}}hr{{border:0;border-top:1px solid #ccd}}</style>
+</head><body>
+<h1>गति Lite · सही सूचना, समयमै।</h1>
+<p class="d">{DISC_NE}</p>
+<p><small>बनाइएको: {npt(now.isoformat(), "ne")} · <a href="#en">English</a> · <a href="../">पूरा साइट</a></small></p>
+{sec("ne")}
+<hr><h1 id="en">Gati Lite · The right alert, right on time.</h1>
+<p class="d">{DISC_EN}</p>
+<p><small>Built: {npt(now.isoformat(), "en")} · <a href="../">Full site</a> · <a href="../atom.xml">Atom feed</a></small></p>
+{sec("en")}
+<hr><p><small>प्रहरी १०० · दमकल १०१ · एम्बुलेन्स १०२ · विपद् ११४९ · <a href="../alerts/">सबै सूचना / Archive</a> · <a href="../sources/">स्रोत / Sources</a></small></p>
+</body></html>'''
+    (ROOT / "lite").mkdir(exist_ok=True)
+    (ROOT / "lite/index.html").write_text(page, encoding="utf-8")
+    size = len(page.encode("utf-8"))
+    assert size < 30_000, f"lite page is {size} bytes, over 30 KB"
+    print(f"lite/index.html {size} bytes")
+
+
 def main():
     now = dt.datetime.now(dt.timezone.utc)
     alerts = json.loads((ROOT / "data/alerts.json").read_text(encoding="utf-8"))["alerts"]
@@ -213,6 +268,7 @@ def main():
 <p class="lead">{b("म्याद सकिएका सूचना पनि मेटिँदैनन्, यहीँ रहन्छन्।", "Expired notices are never deleted; they stay here.")}</p><ul>{idx}</ul>
 </main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script></body></html>''', encoding="utf-8")
     print(f"rendered {len(alerts)} permalinks and share images")
+    lite(alerts, now)
 
 
 if __name__ == "__main__":
