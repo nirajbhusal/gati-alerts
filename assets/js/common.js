@@ -54,7 +54,8 @@
     <div class="prefs" role="group" aria-label="Display / देखाउने तरिका">
       <button class="pbtn" type="button" id="numbtn" title="Numerals / अङ्क"></button>
       <button class="pbtn" type="button" id="calbtn" title="BS / AD"></button>
-      <button class="pbtn" type="button" id="thmbtn" title="Dark mode / अँध्यारो"></button></div>
+      <button class="pbtn" type="button" id="thmbtn" title="Dark mode / अँध्यारो"></button>
+      <button class="pbtn" type="button" id="txtbtn" title="Large text / ठूलो अक्षर">अ+</button></div>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
   </div>
@@ -108,6 +109,11 @@
   header.querySelector("#numbtn").onclick = () => { G.numPref = G.devNum() ? "en" : "ne"; if (G.numPref === G.lang) G.numPref = ""; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
   header.querySelector("#calbtn").onclick = () => { G.cal = G.cal === "bs" ? "ad" : "bs"; save("gati-cal", G.cal === "bs" ? "bs" : ""); G.listeners.forEach((f) => f(G.lang)); };
   header.querySelector("#thmbtn").onclick = () => { G.theme = G.theme === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = G.theme; save("gati-theme", G.theme); prefBtns(); };
+  /* Accessibility: large text toggle */
+  G.bigText = pref("gati-text", "") === "large"; document.documentElement.dataset.text = G.bigText ? "large" : "";
+  const txtBtn = () => { const t = header.querySelector("#txtbtn"); t.setAttribute("aria-pressed", G.bigText); t.setAttribute("aria-label", G.lang === "ne" ? "ठूलो अक्षर" : "Large text"); };
+  header.querySelector("#txtbtn").onclick = () => { G.bigText = !G.bigText; document.documentElement.dataset.text = G.bigText ? "large" : ""; save("gati-text", G.bigText ? "large" : ""); txtBtn(); };
+  G.listeners.push(txtBtn); txtBtn();
   G.listeners.push(prefBtns);
   G.onLang = (f) => G.listeners.push(f);
 
@@ -175,3 +181,33 @@
   addEventListener("online", offDraw); addEventListener("offline", offDraw); G.onLang(offDraw); offDraw();
   prefBtns();
 })();
+/* Accessibility: read aloud with speechSynthesis on alert cards and Feed cards (ne-NP voice if the device has one, else English) */
+(function () {
+  const G = window.Gati; if (!G || !("speechSynthesis" in window)) return;
+  const T = (ne, en) => (G.lang === "ne" ? ne : en);
+  let cur = null;
+  const voice = () => { const v = speechSynthesis.getVoices(); return v.find((x) => /^ne(-|_|$)/i.test(x.lang)) || null; };
+  function stop() { speechSynthesis.cancel(); if (cur) { cur.setAttribute("aria-pressed", "false"); cur = null; } }
+  function speak(btn, el) {
+    if (cur === btn) { stop(); return; } stop();
+    const clone = el.cloneNode(true); clone.querySelectorAll(".tts,.rail,button,.fbg,script").forEach((n) => n.remove());
+    const text = clone.innerText.replace(/\s+/g, " ").trim().slice(0, 1500);
+    const nv = voice(), u = new SpeechSynthesisUtterance(nv || G.lang === "en" ? text : text);
+    if (G.lang === "ne" && nv) { u.voice = nv; u.lang = nv.lang; } else if (G.lang === "ne") { u.lang = "ne-NP"; } else u.lang = "en-US";
+    if (G.lang === "ne" && !nv) { const en = speechSynthesis.getVoices().find((x) => /^en/i.test(x.lang)); if (!speechSynthesis.getVoices().some((x) => /^(ne|hi)/i.test(x.lang)) && en) { u.voice = en; u.lang = en.lang; } }
+    u.onend = u.onerror = () => { if (cur === btn) stop(); };
+    cur = btn; btn.setAttribute("aria-pressed", "true"); speechSynthesis.speak(u);
+  }
+  function mk(el, cls) {
+    if (el.dataset.tts) return; el.dataset.tts = "1";
+    const b = document.createElement("button"); b.type = "button"; b.className = "tts " + cls; b.setAttribute("aria-pressed", "false");
+    const lab = () => { b.innerHTML = `<span aria-hidden="true">🔊</span><span class="ttsl">${T("सुन्नुहोस्", "Listen")}</span>`; b.setAttribute("aria-label", T("ठूलो स्वरमा पढ्नुहोस्", "Read aloud")); };
+    lab(); G.onLang && G.onLang(lab);
+    b.onclick = (e) => { e.preventDefault(); e.stopPropagation(); speak(b, el.classList.contains("rail") ? el.parentElement : el); };
+    if (el.classList.contains("rail")) el.prepend(b); else el.appendChild(b);
+  }
+  function scan() { document.querySelectorAll("article.alert").forEach((a) => mk(a, "ttsa")); document.querySelectorAll(".rail").forEach((r) => mk(r, "ttsr")); }
+  new MutationObserver(() => { clearTimeout(scan.t); scan.t = setTimeout(scan, 150); }).observe(document.body, { childList: true, subtree: true });
+  scan(); speechSynthesis.getVoices(); addEventListener("pagehide", stop);
+})();
+
