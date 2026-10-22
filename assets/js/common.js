@@ -121,6 +121,11 @@
     return r.json();
   });
 
+  /* Demo mode (?demo=1): load the client-side scenario before page scripts run. */
+  if (/[?&]demo=/.test(location.search) || sessionStorage.getItem("gati-demo-start")) {
+    const x = new XMLHttpRequest(); x.open("GET", ROOT + "assets/js/demo.js", false);
+    try { x.send(); if (x.status === 200) (0, eval)(x.responseText); } catch (e) {}
+  }
   /* PWA: manifest, service worker, offline banner with the last-known state. */
   const mf = document.createElement("link"); mf.rel = "manifest"; mf.href = ROOT + "manifest.webmanifest"; document.head.append(mf);
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register(ROOT + "sw.js", { scope: ROOT }).catch(() => {});

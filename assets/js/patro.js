@@ -139,7 +139,6 @@
   }));
   document.querySelectorAll("#pview button").forEach((b) => (b.onclick = () => { view = b.dataset.v; localStorage.setItem("gati-patro-view", view); draw(); }));
   G.patro = { setAlerts(list) { alerts = list; draw(); } };
-  if (G.demoAlerts) alerts = alerts.concat(G.demoAlerts);
   G.onLang(draw);
   draw();
 })();

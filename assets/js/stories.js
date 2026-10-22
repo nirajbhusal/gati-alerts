@@ -16,7 +16,7 @@
     const L = G.lang, i = a.info[L] || a.info.ne, sev = G.SEV[a.severity] ? a.severity : "Unknown";
     const src = i.params["gati:sourceTime"] || a.sent;
     const areas = a.areas.map((x) => x[L] || x.en).filter(Boolean).join(" · ");
-    const url = `${R}alerts/${a.identifier}/`;
+    const url = a.demo ? "?demo=0" : `${R}alerts/${a.identifier}/`;
     return `<article class="story s-${sev}" style="--sc:${G.SEVCOLOR[sev]}">
       <div class="shead"><span class="sbrand">${b("गति", "Gati")}</span><span class="ssev">${G.sevChip(sev)}</span></div>
       <div class="sbody">
@@ -29,7 +29,7 @@
         <div><div class="slab">${b("स्रोत", "Source")}</div><strong>${esc(agency(i))}</strong>
           <div class="slab">${b("स्रोतको समय", "Source time")}</div><div>${G.npt(src)}</div>
           <p><a href="${esc(i.web)}" target="_blank" rel="noopener">${b("मूल सूचना", "Original notice")} ↗</a> · <a href="${url}">${b("पूरा सूचना", "Full notice")}</a></p></div>
-        <a class="sqr" href="${url}" aria-label="QR"><img src="${R}stories/qr/${a.identifier}.svg" alt="QR: ${esc(url)}" width="120" height="120"></a>
+        ${a.demo ? `<span class="sqr tag">DEMO</span>` : `<a class="sqr" href="${url}" aria-label="QR"><img src="${R}stories/qr/${a.identifier}.svg" alt="QR: ${esc(url)}" width="120" height="120"></a>`}
       </div>
       <p class="sdisc">${b("गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्। आपत्कालमा १०० वा ११४९।", "Relayed by Gati, not an official warning. Check the original source. Emergency: 100 or 1149.")}</p>
     </article>`;
@@ -89,7 +89,7 @@
   G.stories = { set(list) { items = list; idx = 0; elapsed = 0; draw(); }, redraw: draw };
   G.json("data/alerts.json").then((d) => {
     const list = d.alerts.filter(active).sort((x, y) => SR[x.severity] - SR[y.severity] || (y.sent > x.sent ? 1 : -1));
-    if (!G.demoActive) G.stories.set(list);
+    G.stories.set(list);
   }).catch(() => G.stories.set([]));
   G.onLang(draw);
   draw();
