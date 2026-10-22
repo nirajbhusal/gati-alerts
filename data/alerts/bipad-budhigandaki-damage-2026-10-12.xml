@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.bipad-budhigandaki-damage-2026-10-12</identifier>
+  <sender>bipadportal.gov.np</sender>
+  <sent>2026-10-12T11:21:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>BIPAD portal, National Disaster Risk Reduction and Management Authority</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: BIPAD portal, National Disaster Risk Reduction and Management Authority. Source: https://bipadportal.gov.np/</note>
+  <info>
+    <language>ne</language>
+    <category>Met</category>
+    <event>बाढी — क्षतिको विवरण</event>
+    <responseType>None</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-12T11:21:00+05:45</effective>
+    <expires>2026-10-19T11:21:00+05:45</expires>
+    <senderName>विपद् पोर्टल (BIPAD), राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण — गति मार्फत प्रसारित</senderName>
+    <headline>बुढीगण्डकी बाढी: लोक्पादेखि चुम्लिङसम्म १३६ घर नष्ट (BIPAD)</headline>
+    <description>BIPAD पोर्टल, असोज २६ बिहान ११:२१ सम्म: लोक्पादेखि चुम्लिङ, धार्चे–५ सम्म १३६ घर नष्ट। उङ्गिलुङ (BIPAD को हिज्जे Uingurlung) मा १४० पशुधन नोक्सान; BIPAD ले यसलाई हिमपहिरोका रूपमा राखेको छ। यी BIPAD का अङ्क हुन्; NDRRMA प्रेस नोटका अङ्कसँग जोडिएको छैन।</description>
+    <web>https://bipadportal.gov.np/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://bipadportal.gov.np/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-12T11:21:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>गोरखा जिल्ला</areaDesc>
+      <polygon>28.7369,84.4937 28.7519,84.5561 28.7352,84.6274 28.6708,84.705 28.637,84.6989 28.5747,84.8562 28.5984,84.9936 28.6827,85.0599 28.6848,85.1231 28.6282,85.1975 28.5967,85.1783 28.5352,85.1864 28.4512,85.1006 28.3935,85.1287 28.3494,85.1129 28.3244,85.0489 28.2741,85.0313 28.2135,84.9638 28.1256,84.9531 28.1031,84.9134 28.1159,84.8463 28.0056,84.8162 27.9549,84.7466 27.8915,84.7386 27.8165,84.781 27.7961,84.7327 27.816,84.6745 27.8764,84.6253 27.8571,84.564 27.912,84.5433 27.9535,84.4263 28.0607,84.4931 28.0854,84.4828 28.1033,84.5488 28.1893,84.6374 28.2912,84.653 28.3616,84.6963 28.4391,84.6414 28.4874,84.5691 28.6276,84.5457 28.7369,84.4937</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>gorkha</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Flood — damage record</event>
+    <responseType>None</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-12T11:21:00+05:45</effective>
+    <expires>2026-10-19T11:21:00+05:45</expires>
+    <senderName>BIPAD portal, National Disaster Risk Reduction and Management Authority — relayed by Gati</senderName>
+    <headline>Budhi Gandaki flood: 136 houses destroyed from Lokpa to Chumling (BIPAD)</headline>
+    <description>BIPAD portal, as of 11:21 AM Asoj 26 (12 Oct 2026): 136 houses destroyed from Lokpa to Chumling, Dharche-5. 140 livestock lost at Ungilung (BIPAD spells it Uingurlung); BIPAD records this as an avalanche. These are BIPAD's figures and are not added to the NDRRMA press-note figures.</description>
+    <web>https://bipadportal.gov.np/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://bipadportal.gov.np/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-12T11:21:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>Gorkha district</areaDesc>
+      <polygon>28.7369,84.4937 28.7519,84.5561 28.7352,84.6274 28.6708,84.705 28.637,84.6989 28.5747,84.8562 28.5984,84.9936 28.6827,85.0599 28.6848,85.1231 28.6282,85.1975 28.5967,85.1783 28.5352,85.1864 28.4512,85.1006 28.3935,85.1287 28.3494,85.1129 28.3244,85.0489 28.2741,85.0313 28.2135,84.9638 28.1256,84.9531 28.1031,84.9134 28.1159,84.8463 28.0056,84.8162 27.9549,84.7466 27.8915,84.7386 27.8165,84.781 27.7961,84.7327 27.816,84.6745 27.8764,84.6253 27.8571,84.564 27.912,84.5433 27.9535,84.4263 28.0607,84.4931 28.0854,84.4828 28.1033,84.5488 28.1893,84.6374 28.2912,84.653 28.3616,84.6963 28.4391,84.6414 28.4874,84.5691 28.6276,84.5457 28.7369,84.4937</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>gorkha</value></geocode>
+    </area>
+  </info>
+</alert>

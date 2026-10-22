@@ -7,10 +7,10 @@ else starts as **Reported** and must earn **Verified**.
 
 | Label | Public? | Meaning |
 |---|---|---|
-| `reported` | Yes, as "रिपोर्ट गरिएको — पुष्टि भएको छैन / Reported — not confirmed" | Default for every new citizen report (set by the issue form) |
+| `reported` | No: the Gati reports page shows only a count of pending reports (the issue itself is public on GitHub) | Default for every new citizen report (set by the issue form) |
 | `verified` | Yes, with Verified badge | Moderator confirmed by one of the routes below |
 | `corrected` | Yes, with Corrected badge and a comment explaining the change | Details changed after new information |
-| `retracted` | Shown only while `reported`/`verified` label remains, marked Retracted; otherwise hidden | False, recycled or misleading |
+| `retracted` | No (excluded from the list) | False, recycled or misleading |
 | `unverified` | No (remove `reported`) | Spam, off-topic, duplicate, no detail, or unsafe content |
 | `official` | — | Used for relayed agency notices tracked as issues |
 | `citizen-report` | — | Marks issues from the report form |

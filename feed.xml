@@ -3,12 +3,48 @@
   <id>https://nirajbhusal.github.io/gati-alerts/feed.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-10-22T06:34:14+00:00</updated>
+  <updated>2026-10-22T07:20:04+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/feed.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.reported-road-rajpath-khatripauwa-2026-10-13</id>
+    <title>Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa</title>
+    <updated>2026-10-13T06:00:00+05:45</updated>
+    <published>2026-10-13T06:00:00+05:45</published>
+    <summary>[Reported] Minor · Nepal Police Headquarters — relayed by Gati · expires 2026-10-14T06:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/data/alerts/reported-road-rajpath-khatripauwa-2026-10-13.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.bipad-budhigandaki-damage-2026-10-12</id>
+    <title>Budhi Gandaki flood: 136 houses destroyed from Lokpa to Chumling (BIPAD)</title>
+    <updated>2026-10-12T11:21:00+05:45</updated>
+    <published>2026-10-12T11:21:00+05:45</published>
+    <summary>[Official] Unknown · BIPAD portal, National Disaster Risk Reduction and Management Authority — relayed by Gati · expires 2026-10-19T11:21:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/data/alerts/bipad-budhigandaki-damage-2026-10-12.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://bipadportal.gov.np/" rel="via"/>
+    <author>
+      <name>bipadportal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-downstream-gauges-2026-10-12</id>
+    <title>Downstream Narayani and Trishuli: all three gauges below warning level, steady</title>
+    <updated>2026-10-12T11:20:00+05:45</updated>
+    <published>2026-10-12T11:20:00+05:45</published>
+    <summary>[Official] Unknown · Department of Hydrology and Meteorology (DHM) — relayed by Gati · expires 2026-10-13T11:20:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/data/alerts/dhm-downstream-gauges-2026-10-12.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://www.hydrology.gov.np/" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.dhm-aarughat-2026-10-11</id>
     <title>Budhi Gandaki at Aarughat 8.43 m — above the 5.0 m danger level</title>

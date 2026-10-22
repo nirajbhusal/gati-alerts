@@ -431,5 +431,105 @@
     "humla"
    ]
   }
+ },
+ {
+  "id": "bipad-budhigandaki-damage-2026-10-12",
+  "agency": "BIPAD",
+  "file": "data/budhi-gandaki.json",
+  "trust": "Official",
+  "hazard": "flood",
+  "category": "Met",
+  "urgency": "Past",
+  "severity": "Unknown",
+  "certainty": "Observed",
+  "response": "None",
+  "sent": "2026-10-12T11:21:00+05:45",
+  "expires": "2026-10-19T11:21:00+05:45",
+  "source": "https://bipadportal.gov.np/",
+  "event_ne": "बाढी — क्षतिको विवरण",
+  "event_en": "Flood — damage record",
+  "head_ne": "बुढीगण्डकी बाढी: लोक्पादेखि चुम्लिङसम्म १३६ घर नष्ट (BIPAD)",
+  "head_en": "Budhi Gandaki flood: 136 houses destroyed from Lokpa to Chumling (BIPAD)",
+  "desc_ne": "BIPAD पोर्टल, असोज २६ बिहान ११:२१ सम्म: लोक्पादेखि चुम्लिङ, धार्चे–५ सम्म १३६ घर नष्ट। उङ्गिलुङ (BIPAD को हिज्जे Uingurlung) मा १४० पशुधन नोक्सान; BIPAD ले यसलाई हिमपहिरोका रूपमा राखेको छ। यी BIPAD का अङ्क हुन्; NDRRMA प्रेस नोटका अङ्कसँग जोडिएको छैन।",
+  "desc_en": "BIPAD portal, as of 11:21 AM Asoj 26 (12 Oct 2026): 136 houses destroyed from Lokpa to Chumling, Dharche-5. 140 livestock lost at Ungilung (BIPAD spells it Uingurlung); BIPAD records this as an avalanche. These are BIPAD's figures and are not added to the NDRRMA press-note figures.",
+  "area": {
+   "districts": [
+    "gorkha"
+   ]
+  }
+ },
+ {
+  "id": "dhm-downstream-gauges-2026-10-12",
+  "agency": "DHM",
+  "file": "data/budhi-gandaki.json",
+  "trust": "Official",
+  "hazard": "flood",
+  "category": "Met",
+  "urgency": "Unknown",
+  "severity": "Unknown",
+  "certainty": "Observed",
+  "response": "Monitor",
+  "sent": "2026-10-12T11:20:00+05:45",
+  "expires": "2026-10-13T11:20:00+05:45",
+  "source": "https://www.hydrology.gov.np/",
+  "event_ne": "नदीको सतह — चेतावनी तहमुनि",
+  "event_en": "River level — below warning level",
+  "head_ne": "तल्लो तटीय नारायणी र त्रिशूली: तीनै मापन केन्द्र चेतावनी तहमुनि, स्थिर",
+  "head_en": "Downstream Narayani and Trishuli: all three gauges below warning level, steady",
+  "desc_ne": "DHM, असोज २६: देवघाट · नारायणी ३.६९ मि. (चेतावनी ७.३, खतरा ९.० मि.), बिहान ११:००। काली खोला · त्रिशूली ४.११ मि. (चेतावनी १०.८, खतरा १२.१ मि.), ११:२०। भोर्ले · त्रिशूली ३.४४ मि. (चेतावनी ९.५ मि.), ११:२०। तीनै स्थिर।",
+  "desc_en": "DHM, Asoj 26 (12 Oct 2026): Narayani at Devghat 3.69 m (warning 7.3 m, danger 9.0 m) at 11:00 AM; Trishuli at Kali Khola 4.11 m (warning 10.8 m, danger 12.1 m) at 11:20 AM; Trishuli at Bhorle 3.44 m (warning 9.5 m) at 11:20 AM. All steady.",
+  "instr_ne": "तल्लो तटीय क्षेत्रमा सतर्क रहनुहोस् र DHM को पछिल्लो सूचना हेर्नुहोस्।",
+  "instr_en": "Downstream areas should stay alert and check DHM's latest readings.",
+  "area": {
+   "districts": [
+    "chitwan"
+   ],
+   "circles": [
+    {
+     "ne": "देवघाट · नारायणी मापन केन्द्र",
+     "en": "Narayani at Devghat gauge",
+     "circle": "27.71,84.43 3"
+    },
+    {
+     "ne": "काली खोला · त्रिशूली मापन केन्द्र",
+     "en": "Trishuli at Kali Khola gauge",
+     "circle": "27.83,84.55 3"
+    },
+    {
+     "ne": "भोर्ले · त्रिशूली मापन केन्द्र",
+     "en": "Trishuli at Bhorle gauge",
+     "circle": "27.82,84.45 3"
+    }
+   ]
+  }
+ },
+ {
+  "id": "reported-road-rajpath-khatripauwa-2026-10-13",
+  "agency": "POLICE",
+  "file": "road-visual.js",
+  "trust": "Reported",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Minor",
+  "certainty": "Likely",
+  "response": "Avoid",
+  "sent": "2026-10-13T06:00:00+05:45",
+  "expires": "2026-10-14T06:00:00+05:45",
+  "source": "https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html",
+  "source2": "https://www.onlinepana.com/content/417910/",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "त्रिभुवन राजपथ (काठमाडौँ–हेटौँडा): खत्रीपौवामा पहिरो, एकतर्फी",
+  "head_en": "Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa",
+  "desc_ne": "रिपोर्ट गरिएको: धुनिबेँसी–९ खत्रीपौवाको पहिरोका कारण राजपथ एकतर्फी। अनलाइनखबर र अनलाइनपाना दुवैले नेपाल प्रहरीको असोज २७ बिहान ६ बजेको विवरण उद्धृत गरेका। कान्ति लोकपथ दुवैतर्फी चलिरहेको (रातोपाटी, संघीय सडक कार्यालय)।",
+  "desc_en": "Reported: the Rajpath is one-way after a landslide at Khatripauwa, Dhunibesi-9. Onlinekhabar and Onlinepana both cite Nepal Police's 6 AM notice of Asoj 27 (13 Oct 2026). Kanti Lokpath is running two-way (Ratopati, federal road office).",
+  "instr_ne": "यात्रा अघि प्रहरीसँग सडकको अवस्था बुझ्नुहोस्।",
+  "instr_en": "Check road status with the police before travelling.",
+  "area": {
+   "districts": [
+    "dhading"
+   ]
+  }
  }
 ]

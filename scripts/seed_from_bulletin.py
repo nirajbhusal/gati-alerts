@@ -22,6 +22,7 @@ AG = {
  "DHM":  ("hydrology.gov.np", "जल तथा मौसम विज्ञान विभाग (DHM)", "Department of Hydrology and Meteorology (DHM)"),
  "NDRRMA": ("ndrrma.gov.np", "राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण (NDRRMA)", "National Disaster Risk Reduction and Management Authority (NDRRMA)"),
  "NEOC": ("neoc.moha.gov.np", "राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय", "National Emergency Operation Centre (NEOC), Ministry of Home Affairs"),
+ "BIPAD": ("bipadportal.gov.np", "विपद् पोर्टल (BIPAD), राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण", "BIPAD portal, National Disaster Risk Reduction and Management Authority"),
  "POLICE": ("nepalpolice.gov.np", "नेपाल प्रहरी प्रधान कार्यालय", "Nepal Police Headquarters"),
 }
 
@@ -51,6 +52,8 @@ def info_xml(it, lang):
     ag = AG[it["agency"]]
     p = {"gati:trustLevel": it["trust"], "gati:sourceUrl": it["source"], "gati:sourceTime": it["sent"],
          "gati:hazard": it["hazard"], "gati:bulletinFile": BUL + it["file"]}
+    if it.get("source2"):
+        p["gati:sourceUrl2"] = it["source2"]
     if it.get("correction_en"):
         p["gati:status"] = "Corrected"
         p["gati:correction"] = it["correction_" + lang]

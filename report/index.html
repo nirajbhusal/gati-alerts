@@ -3,12 +3,11 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0E2A47">
 <link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="alternate" type="application/atom+xml" title="Gati CAP feed" href="../feed.xml">
 <link rel="stylesheet" href="../assets/css/gati.css">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="../assets/vendor/leaflet/leaflet.css">
 </head><body data-page="report" data-root="../">
 <main id="main" class="wrap" style="max-width:760px">
   <h1><span class="ne-only">खतराबारे खबर गर्नुहोस्</span><span class="en-only">Report a hazard</span></h1>
@@ -22,8 +21,8 @@
     <li><span class="ne-only">तलको फारम भर्नुहोस्।</span><span class="en-only">Fill in the form below.</span></li>
     <li><span class="ne-only">"GitHub मा पठाउनुहोस्" थिच्नुभयो भने हजुरको विवरण भरिएको GitHub Issue खुल्छ। <strong>पठाउन GitHub खाता चाहिन्छ</strong> (निःशुल्क)। त्यहाँ "Create/Submit" थिच्नुहोस्।</span>
         <span class="en-only">"Send via GitHub" opens a GitHub Issue already filled with your details. <strong>Submitting needs a free GitHub account.</strong> Press "Create/Submit" there.</span></li>
-    <li><span class="ne-only">रिपोर्ट <strong>सार्वजनिक</strong> हुन्छ र मोडेरेटरले नजाँचेसम्म "रिपोर्ट गरिएको — पुष्टि भएको छैन" भनेर देखाइन्छ।</span>
-        <span class="en-only">The report is <strong>public</strong> and is shown as "Reported — not confirmed" until a moderator checks it.</span></li>
+    <li><span class="ne-only">रिपोर्ट GitHub मा <strong>सार्वजनिक</strong> हुन्छ। गतिको नागरिक रिपोर्ट पेजमा भने मोडेरेटरले जाँचेर पुष्टि गरेपछि मात्र देखिन्छ।</span>
+        <span class="en-only">The report is <strong>public</strong> on GitHub. Gati's citizen reports page shows it only after a moderator has checked and verified it.</span></li>
   </ol>
 
   <form id="rf" class="card" novalidate>
@@ -70,13 +69,13 @@
   <ul class="ne-only"><li>GPS हजुरको फोनमै पढिन्छ; हामी कुनै सर्भरमा पठाउँदैनौँ। रिपोर्टमा ठाउँ करिब ११ मिटरसम्म (४ दशमलव) मात्र राखिन्छ।</li>
     <li>रिपोर्ट GitHub Issue बनेर सबैले देख्ने गरी राखिन्छ, र हजुरको GitHub नाम पनि देखिन्छ।</li>
     <li>हजुरको सम्पर्क कहिल्यै सार्वजनिक गरिँदैन; यो पेजले त्यो कतै पठाउँदैन।</li>
-    <li>यो साइटमा कुकी, विज्ञापन वा हजुरलाई पछ्याउने कुनै कुरा छैन। नक्सा OpenStreetMap बाट आउँछ।</li></ul>
+    <li>यो साइटमा कुकी, विज्ञापन वा हजुरलाई पछ्याउने कुनै कुरा छैन। फन्ट र नक्साको कोड यही साइटबाट आउँछ। नक्साको पृष्ठभूमि (टाइल) भने OpenStreetMap बाट आउँछ, त्यसैले नक्सा खोल्दा हजुरको ब्राउजर OSM सर्भरसँग जोडिन्छ।</li></ul>
   <ul class="en-only"><li>GPS is read on your phone only; we do not send it to any server. Reports keep 4 decimals (about 11 m).</li>
     <li>The report becomes a public GitHub Issue and shows your GitHub username.</li>
     <li>Contact details are never published; this page does not send them anywhere.</li>
-    <li>No cookies, ads or tracking on this site. Map tiles come from OpenStreetMap.</li></ul>
+    <li>No cookies, ads or tracking on this site. Fonts and map code are served from this site. Map background tiles come from OpenStreetMap, so opening a map makes your browser contact OSM's servers.</li></ul>
 </main>
 <script src="../assets/js/common.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../assets/vendor/leaflet/leaflet.js"></script>
 <script src="../assets/js/report.js"></script>
 </body></html>

@@ -1,16 +1,20 @@
-/* Public list of citizen reports from GitHub Issues labelled reported/verified. Read-only, unauthenticated API. */
+/* Public list of citizen reports: ONLY issues a moderator labelled "verified" are shown.
+   Unverified reports are never listed here; we show only how many are still pending. Read-only, unauthenticated API. */
 (async function () {
-  const G = window.Gati, el = document.getElementById("list");
-  const API = "https://api.github.com/repos/nirajbhusal/gati-alerts/issues?state=open&per_page=50&labels=";
-  let items = [], failed = false;
+  const G = window.Gati, el = document.getElementById("list"), pend = document.getElementById("pending");
+  const REPO = "nirajbhusal/gati-alerts";
+  let items = [], failed = false, pending = null;
   try {
-    const rs = await Promise.all(["reported", "verified"].map((l) => fetch(API + l, { headers: { Accept: "application/vnd.github+json" } })
-      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })));
-    const seen = new Map();
-    rs.flat().filter((i) => !i.pull_request).forEach((i) => seen.set(i.id, i));
-    items = [...seen.values()].sort((a, b) => b.created_at.localeCompare(a.created_at));
+    const r = await fetch(`https://api.github.com/repos/${REPO}/issues?state=all&per_page=50&labels=verified`, { headers: { Accept: "application/vnd.github+json" } });
+    if (!r.ok) throw new Error(r.status);
+    items = (await r.json()).filter((i) => !i.pull_request && !i.labels.some((l) => l.name.toLowerCase() === "retracted"))
+      .sort((a, b) => b.created_at.localeCompare(a.created_at));
   } catch (e) { failed = true; }
-
+  try {
+    const q = encodeURIComponent(`repo:${REPO} is:issue is:open label:reported -label:verified -label:retracted`);
+    const r = await fetch(`https://api.github.com/search/issues?per_page=1&q=${q}`);
+    if (r.ok) pending = (await r.json()).total_count;
+  } catch (e) { /* count is optional */ }
   const parse = (body) => {
     const o = {}; (body || "").split(/^### /m).slice(1).forEach((s) => {
       const nl = s.indexOf("\n"); const k = s.slice(0, nl).trim(); let v = s.slice(nl + 1).trim();
@@ -27,8 +31,11 @@
     return "Reported";
   };
   function render() {
-    if (failed) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "GitHub बाट रिपोर्ट ल्याउन सकिएन (सायद API को सीमा नाघ्यो)। केही बेरपछि फेरि हेर्नुहोस्, नत्र" : "Could not load reports from GitHub (possibly the API rate limit). Try again later or"} <a href="https://github.com/nirajbhusal/gati-alerts/issues?q=label%3Areported%2Cverified">GitHub ${G.lang === "ne" ? "मा हेर्नुहोस्" : "issues"}</a>.</div>`; return; }
-    if (!items.length) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "अहिलेसम्म कुनै नागरिकले रिपोर्ट पठाउनुभएको छैन।" : "No citizen reports yet."}</div>`; return; }
+    if (pend) pend.innerHTML = pending === null ? "" : (G.lang === "ne"
+      ? `<strong>${G.num(pending)}</strong> रिपोर्ट मोडेरेटरले जाँच्न बाँकी छन्। जाँच नसकिएसम्म ती यहाँ देखाइँदैनन्।`
+      : `<strong>${pending}</strong> report${pending === 1 ? " is" : "s are"} waiting for a moderator to check. They are not shown here until checked.`);
+    if (failed) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "GitHub बाट रिपोर्ट ल्याउन सकिएन (सायद API को सीमा नाघ्यो)। केही बेरपछि फेरि हेर्नुहोस्, नत्र" : "Could not load reports from GitHub (possibly the API rate limit). Try again later or"} <a href="https://github.com/nirajbhusal/gati-alerts/issues?q=label%3Averified">GitHub ${G.lang === "ne" ? "मा हेर्नुहोस्" : "issues"}</a>.</div>`; return; }
+    if (!items.length) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "अहिलेसम्म मोडेरेटरले जाँचेको कुनै नागरिक रिपोर्ट छैन।" : "No verified citizen reports yet."}</div>`; return; }
     el.innerHTML = items.map((i) => {
       const o = parse(i.body), st = status(i.labels);
       const gps = pick(o, "GPS"), m = gps.match(/(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)/);

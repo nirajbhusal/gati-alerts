@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-downstream-gauges-2026-10-12</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-12T11:20:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.hydrology.gov.np/</note>
+  <info>
+    <language>ne</language>
+    <category>Met</category>
+    <event>नदीको सतह — चेतावनी तहमुनि</event>
+    <responseType>Monitor</responseType>
+    <urgency>Unknown</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-12T11:20:00+05:45</effective>
+    <expires>2026-10-13T11:20:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित</senderName>
+    <headline>तल्लो तटीय नारायणी र त्रिशूली: तीनै मापन केन्द्र चेतावनी तहमुनि, स्थिर</headline>
+    <description>DHM, असोज २६: देवघाट · नारायणी ३.६९ मि. (चेतावनी ७.३, खतरा ९.० मि.), बिहान ११:००। काली खोला · त्रिशूली ४.११ मि. (चेतावनी १०.८, खतरा १२.१ मि.), ११:२०। भोर्ले · त्रिशूली ३.४४ मि. (चेतावनी ९.५ मि.), ११:२०। तीनै स्थिर।</description>
+    <instruction>तल्लो तटीय क्षेत्रमा सतर्क रहनुहोस् र DHM को पछिल्लो सूचना हेर्नुहोस्।</instruction>
+    <web>https://www.hydrology.gov.np/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.hydrology.gov.np/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-12T11:20:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>चितवन जिल्ला</areaDesc>
+      <polygon>27.816,84.6745 27.7991,84.6549 27.7646,84.6887 27.7384,84.6724 27.7106,84.789 27.6582,84.7687 27.6436,84.7235 27.5824,84.7332 27.5545,84.6869 27.4628,84.6939 27.4346,84.7238 27.4292,84.65 27.461,84.563 27.3854,84.542 27.3541,84.4749 27.3838,84.2957 27.4518,84.2528 27.4454,84.2093 27.4699,84.2066 27.4864,84.1501 27.517,84.1437 27.5157,84.1011 27.4444,84.0563 27.4327,84.0229 27.4474,83.9341 27.5102,83.972 27.5209,83.921 27.544,83.926 27.5485,84.102 27.6251,84.1875 27.6988,84.3366 27.6992,84.4196 27.739,84.4257 27.7616,84.474 27.787,84.4353 27.8214,84.4464 27.8154,84.5156 27.8777,84.59 27.8764,84.6253 27.816,84.6745</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>chitwan</value></geocode>
+    </area>
+    <area>
+      <areaDesc>देवघाट · नारायणी मापन केन्द्र</areaDesc>
+      <circle>27.71,84.43 3</circle>
+    </area>
+    <area>
+      <areaDesc>काली खोला · त्रिशूली मापन केन्द्र</areaDesc>
+      <circle>27.83,84.55 3</circle>
+    </area>
+    <area>
+      <areaDesc>भोर्ले · त्रिशूली मापन केन्द्र</areaDesc>
+      <circle>27.82,84.45 3</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>River level — below warning level</event>
+    <responseType>Monitor</responseType>
+    <urgency>Unknown</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-12T11:20:00+05:45</effective>
+    <expires>2026-10-13T11:20:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM) — relayed by Gati</senderName>
+    <headline>Downstream Narayani and Trishuli: all three gauges below warning level, steady</headline>
+    <description>DHM, Asoj 26 (12 Oct 2026): Narayani at Devghat 3.69 m (warning 7.3 m, danger 9.0 m) at 11:00 AM; Trishuli at Kali Khola 4.11 m (warning 10.8 m, danger 12.1 m) at 11:20 AM; Trishuli at Bhorle 3.44 m (warning 9.5 m) at 11:20 AM. All steady.</description>
+    <instruction>Downstream areas should stay alert and check DHM's latest readings.</instruction>
+    <web>https://www.hydrology.gov.np/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.hydrology.gov.np/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-12T11:20:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/budhi-gandaki.json</value></parameter>
+    <area>
+      <areaDesc>Chitwan district</areaDesc>
+      <polygon>27.816,84.6745 27.7991,84.6549 27.7646,84.6887 27.7384,84.6724 27.7106,84.789 27.6582,84.7687 27.6436,84.7235 27.5824,84.7332 27.5545,84.6869 27.4628,84.6939 27.4346,84.7238 27.4292,84.65 27.461,84.563 27.3854,84.542 27.3541,84.4749 27.3838,84.2957 27.4518,84.2528 27.4454,84.2093 27.4699,84.2066 27.4864,84.1501 27.517,84.1437 27.5157,84.1011 27.4444,84.0563 27.4327,84.0229 27.4474,83.9341 27.5102,83.972 27.5209,83.921 27.544,83.926 27.5485,84.102 27.6251,84.1875 27.6988,84.3366 27.6992,84.4196 27.739,84.4257 27.7616,84.474 27.787,84.4353 27.8214,84.4464 27.8154,84.5156 27.8777,84.59 27.8764,84.6253 27.816,84.6745</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>chitwan</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Narayani at Devghat gauge</areaDesc>
+      <circle>27.71,84.43 3</circle>
+    </area>
+    <area>
+      <areaDesc>Trishuli at Kali Khola gauge</areaDesc>
+      <circle>27.83,84.55 3</circle>
+    </area>
+    <area>
+      <areaDesc>Trishuli at Bhorle gauge</areaDesc>
+      <circle>27.82,84.45 3</circle>
+    </area>
+  </info>
+</alert>

@@ -8,46 +8,73 @@
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="गति · Gati — The right alert, right on time.">
 <meta name="theme-color" content="#0E2A47">
 <link rel="icon" href="./assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/fonts/fonts.css">
 <link rel="alternate" type="application/atom+xml" title="Gati CAP feed" href="./feed.xml">
 <link rel="stylesheet" href="./assets/css/gati.css">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="./assets/vendor/leaflet/leaflet.css">
 </head><body data-page="home" data-root="./">
-<main id="main" class="wrap">
+<main id="main" class="wrap dash">
   <p class="tagline"><span class="ne-only">सही सूचना, समयमै।</span><span class="en-only">The right alert, right on time.</span></p>
-  <h1><span class="ne-only">सूचना तथा चेतावनी</span><span class="en-only">Alerts and notices</span></h1>
-  <p class="lead"><span class="ne-only">सरकारी निकायका जाँचिएका सूचना, मूल स्रोतको लिङ्क र भरोसा चिह्नसहित। खतरा, ठाउँ वा समयअनुसार मिलाएर हेर्नुहोस्।</span>
-  <span class="en-only">Verified notices from government agencies, each with its original source link and a trust label. Sort by severity, area or time.</span></p>
+  <h1><span class="ne-only">गति अलर्ट्स — सूचना ड्यासबोर्ड</span><span class="en-only">Gati Alerts — dashboard</span></h1>
+
+
+  <section class="mapsec" aria-labelledby="hmap">
+    <div class="sechead first"><h2 id="hmap"><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h2>
+      <div class="seg" role="group" aria-label="Map scope">
+        <button type="button" data-scope="active"><span class="ne-only">चालु मात्र</span><span class="en-only">Active only</span></button>
+        <button type="button" data-scope="30"><span class="ne-only">पछिल्ला ३० दिन</span><span class="en-only">Last 30 days</span></button>
+        <button type="button" data-scope="all"><span class="ne-only">सबै</span><span class="en-only">All</span></button></div></div>
+    <div class="layers" role="group" aria-label="Map layers">
+      <label class="check"><input type="checkbox" id="lyAreas" checked><span class="ne-only">सूचना क्षेत्र</span><span class="en-only">Alert areas</span></label>
+      <label class="check"><input type="checkbox" id="lyRoads" checked><span class="ne-only">मुख्य सडक</span><span class="en-only">Main roads</span></label></div>
+    <div id="map" role="region" aria-label="Map of alert areas and road status"></div>
+    <div class="maplegend" id="mapLegend"></div>
+    <p class="meta" id="mapNote"></p>
+  </section>
+
+  <p class="lead"><span class="ne-only">सरकारी निकायका जाँचिएका सूचना एकै ठाउँमा: नक्सा, मुख्य अङ्क र चार्ट। हरेक सूचनामा मूल स्रोतको लिङ्क र भरोसा चिह्न छ।</span>
+  <span class="en-only">Verified notices from government agencies in one place: map, key numbers and charts. Every item links to its original source and carries a trust label.</span></p>
+  <div id="fresh" class="fresh" role="status"></div>
+  <section aria-labelledby="hkpi"><h2 id="hkpi" class="vh"><span class="ne-only">मुख्य अङ्क</span><span class="en-only">Key numbers</span></h2>
+    <div class="kpis" id="kpis"></div></section>
+
+  <section aria-labelledby="hcharts"><h2 id="hcharts"><span class="ne-only">चार्ट</span><span class="en-only">Charts</span></h2>
+    <p class="meta"><span class="ne-only">यी अङ्क गतिले राखेका सूचनाको सङ्ख्या हुन्। फरक निकायका तथ्याङ्क कहिल्यै जोडिँदैनन्।</span><span class="en-only">These count the items Gati carries. Figures from different agencies are never added together.</span></p>
+    <div class="charts">
+      <figure class="card chart"><figcaption><span class="ne-only">खतराको किसिमअनुसार</span><span class="en-only">By hazard</span></figcaption><div id="cHazard"></div></figure>
+      <figure class="card chart"><figcaption><span class="ne-only">गम्भीरताअनुसार</span><span class="en-only">By severity</span></figcaption><div id="cSev"></div></figure>
+      <figure class="card chart wide"><figcaption><span class="ne-only">समयरेखा (जारी मिति)</span><span class="en-only">Timeline (date issued)</span></figcaption><div id="cTime"></div></figure>
+      <figure class="card chart"><figcaption><span class="ne-only">स्रोत निकायअनुसार</span><span class="en-only">By source agency</span></figcaption><div id="cAgency"></div></figure>
+      <figure class="card chart"><figcaption><span class="ne-only">मुख्य सडकको अवस्था</span><span class="en-only">Main road status</span></figcaption><div id="cRoads"></div></figure>
+      <figure class="card chart wide"><figcaption><span class="ne-only">भरोसा चिह्न</span><span class="en-only">Trust labels</span></figcaption><div id="cTrust"></div>
+        <p class="meta"><a href="about/#trust"><span class="ne-only">गतिले सूचना कसरी जाँच्छ</span><span class="en-only">How Gati verifies</span></a></p></figure>
+    </div></section>
+
+  <section aria-labelledby="hfeed"><h2 id="hfeed"><span class="ne-only">सूचनाको सूची</span><span class="en-only">Alert feed</span></h2>
   <div class="controls" role="group" aria-label="Filters">
     <label><span class="ne-only">जिल्ला</span><span class="en-only">District</span><select id="fDistrict"></select></label>
     <label><span class="ne-only">मिलाउने तरिका</span><span class="en-only">Sort by</span><select id="fSort">
       <option value="severity" data-ne="गम्भीरता" data-en="Severity">गम्भीरता</option><option value="time" data-ne="समय" data-en="Time">समय</option><option value="area" data-ne="क्षेत्र" data-en="Area">क्षेत्र</option></select></label>
     <label class="check"><input type="checkbox" id="fExpired" checked><span class="ne-only">म्याद सकिएका सूचना पनि देखाउनुहोस्</span><span class="en-only">Show expired</span></label>
   </div>
-  <div class="homegrid">
+  <div class="feedgrid">
     <section class="g-active" aria-labelledby="hlist">
-      <h2 id="hlist" style="margin-top:0"><span class="ne-only">सक्रिय</span><span class="en-only">Active</span> <span id="nActive"></span></h2>
+      <h3 id="hlist"><span class="ne-only">चालु</span><span class="en-only">Active</span> <span id="nActive"></span></h3>
       <div id="active"></div>
     </section>
-    <section class="g-map" aria-labelledby="hmap"><div class="sticky">
-      <h2 id="hmap"><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h2>
-      <div id="map" role="region" aria-label="Alert areas map"></div>
-      <p class="meta"><span class="ne-only">नक्सा सजिलोका लागि मात्र हो; सबै सूचना तलको सूचीमै छन्। जिल्लाको सीमा मोटामोटी मात्र देखाइएको छ।</span><span class="en-only">The map is a helper only; the list is complete on its own. District outlines are simplified.</span></p>
-      <div class="legend" id="legend"></div>
-      <div class="card"><h3 style="margin-top:0"><span class="ne-only">भरोसा चिह्न</span><span class="en-only">Trust labels</span></h3>
-        <div id="trustLegend" class="chips"></div>
-        <p class="meta"><a href="about/#trust"><span class="ne-only">गतिले सूचना कसरी जाँच्छ</span><span class="en-only">How Gati verifies</span></a></p></div>
-    </div></section>
     <section class="g-exp" aria-labelledby="hexp">
-      <h2 id="hexp"><span class="ne-only">म्याद सकिएका (पुराना सूचना)</span><span class="en-only">Expired (archive)</span> <span id="nExpired"></span></h2>
+      <h3 id="hexp"><span class="ne-only">म्याद सकिएका (पुराना सूचना)</span><span class="en-only">Expired (archive)</span> <span id="nExpired"></span></h3>
       <div id="expired"></div>
     </section>
   </div>
-  <p class="meta" id="gen"></p>
+  <p class="meta"><a href="feed.xml">Atom/CAP feed</a> · <a href="data/alerts.json">JSON</a> · <span id="gen"></span></p>
+  </section>
+
+  <section aria-labelledby="hupd"><h2 id="hupd"><span class="ne-only">के नयाँ छ</span><span class="en-only">Updates</span></h2>
+    <ol class="updates" id="updates"></ol></section>
 </main>
 <script src="assets/js/common.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="./assets/vendor/leaflet/leaflet.js"></script>
 <script src="assets/js/home.js"></script>
 </body></html>
