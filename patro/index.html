@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css">
 </head><body data-page="patro" data-root="../"><main id="main" class="wrap patro">
 <h1><span class="ne-only">पात्रो</span><span class="en-only">Patro (calendar)</span></h1>
-<div class="ptools">
+<div class="ptools" id="ptools">
   <button type="button" class="sbtn" id="pprev"></button>
   <h2 id="ptitle" aria-live="polite"></h2>
   <button type="button" class="sbtn" id="pnext"></button>
@@ -17,7 +17,7 @@
   <a class="sbtn" href="gati.ics" download>📅 .ics</a>
 </div>
 <div id="pgrid"></div>
-<div id="ppanel" class="card ppanel" hidden></div>
+<div id="pback" class="pback" hidden></div><div id="ppanel" class="ppanel" role="dialog" aria-modal="true" hidden></div>
 <div id="plegend" class="meta"></div>
-<div id="pnotes" class="meta"></div>
+<details class="card pinfo"><summary><span class="ne-only">यो पात्रोका स्रोत र टिप्पणी</span><span class="en-only">Sources and notes for this calendar</span></summary><div id="pnotes" class="meta"></div></details>
 </main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/patro.js"></script></body></html>

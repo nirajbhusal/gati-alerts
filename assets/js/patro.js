@@ -107,7 +107,9 @@
     g.querySelectorAll(".pday").forEach((b) => (b.onclick = () => { sel = b.dataset.ad; draw(); }));
     const p = document.getElementById("ppanel");
     const sd = sel && days.find((d) => d.ad === sel);
-    p.hidden = !sd || view === "week"; if (sd && view !== "week") p.innerHTML = `<button type="button" class="pclose" aria-label="${T("बन्द", "Close")}">✕</button>` + detail(sd);
+    const open = !!sd && view !== "week";
+    p.hidden = !open; document.getElementById("pback").hidden = !open; document.body.classList.toggle("sheet-open", open);
+    if (open) p.innerHTML = `<div class="grab" aria-hidden="true"></div><button type="button" class="pclose" aria-label="${T("बन्द", "Close")}">✕</button>` + detail(sd);
     const pc = p.querySelector(".pclose"); if (pc) pc.onclick = () => { sel = null; draw(); };
     document.getElementById("pprev").textContent = "‹ " + T("अघिल्लो", "Previous");
     document.getElementById("pnext").textContent = T("अर्को", "Next") + " ›";
@@ -129,6 +131,16 @@
     else { cur.m += k; if (cur.m > 12) { cur.m = 1; cur.y++; } if (cur.m < 1) { cur.m = 12; cur.y--; } }
     draw();
   }
+  document.getElementById("pback").onclick = () => { sel = null; draw(); };
+  addEventListener("keydown", (e) => { if (e.key === "Escape" && sel) { sel = null; draw(); } });
+  /* Month swipe on touch screens, with a short slide animation. */
+  const grid = document.getElementById("pgrid"); let tx = null, ty = 0;
+  grid.addEventListener("touchstart", (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  grid.addEventListener("touchend", (e) => {
+    if (tx === null) return; const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+    const k = dx < 0 ? 1 : -1; grid.classList.remove("swl", "swr"); void grid.offsetWidth; step(k); grid.classList.add(k > 0 ? "swl" : "swr");
+  }, { passive: true });
   document.getElementById("pprev").onclick = () => step(-1);
   document.getElementById("pnext").onclick = () => step(1);
   document.getElementById("ptoday").onclick = () => { cur = { y: mode === "bs" ? tb.y : t.y, m: mode === "bs" ? tb.m : t.m }; weekStart = Date.UTC(t.y, t.m - 1, t.d) - new Date(Date.UTC(t.y, t.m - 1, t.d)).getUTCDay() * DAY; sel = iso(t.y, t.m, t.d); draw(); };
