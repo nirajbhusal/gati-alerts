@@ -346,7 +346,9 @@
    ]
   },
   "correction_ne": "सुधार: सडक विभाग (DoR NAVIGATE) अनुसार बेशीसहर–घेर्मु २ अक्टोबर १९:०० र सत्तले–चामे ३ अक्टोबर १६:०० मा खुला। NEOC को असोज १८/१९ को सूचीमा मनाङ छैन।",
-  "correction_en": "Correction: DoR NAVIGATE lists Besisahar–Ghermu OPEN from 2 Oct 19:00 and Sattale–Chame OPEN from 3 Oct 16:00 NPT. NEOC's Asoj 18/19 sheets no longer list Manang."
+  "correction_en": "Correction: DoR NAVIGATE lists Besisahar–Ghermu OPEN from 2 Oct 19:00 and Sattale–Chame OPEN from 3 Oct 16:00 NPT. NEOC's Asoj 18/19 sheets no longer list Manang.",
+  "correction_source": "https://navigate.dor.gov.np/dashboard",
+  "correction_time": "2026-10-03T16:00:00+05:45"
  },
  {
   "id": "police-road-nawalparasi-east-ghumauri-2026-10-03",

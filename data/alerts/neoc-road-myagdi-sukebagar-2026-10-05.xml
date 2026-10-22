@@ -9,7 +9,7 @@
   <scope>Public</scope>
   <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
   <info>
-    <language>ne</language>
+    <language>ne-NP</language>
     <category>Transport</category>
     <event>सडक अवस्था</event>
     <responseType>Avoid</responseType>
@@ -17,17 +17,20 @@
     <severity>Moderate</severity>
     <certainty>Observed</certainty>
     <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
     <expires>2026-10-06T07:00:00+05:45</expires>
     <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
     <headline>बेनी-जोमसोम खण्ड: अवरुद्ध (म्याग्दी, पहिरो)</headline>
     <description>स्थान: अन्नपुर्ण गा.पा.३ सुकेवगर। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/११। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
     <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
     <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>बेनी-जोमसोम खण्ड: अवरुद्ध (म्याग्दी, पहिरो)</value></parameter>
     <area>
       <areaDesc>म्याग्दी जिल्ला</areaDesc>
       <polygon>28.7901,83.506 28.7906,83.4868 28.7828,83.4833 28.7606,83.4103 28.763,83.3884 28.7341,83.3619 28.7379,83.3255 28.7219,83.2768 28.7428,83.2292 28.7319,83.2098 28.7435,83.1864 28.7471,83.1453 28.7338,83.1425 28.7011,83.1524 28.6929,83.1431 28.6807,83.1453 28.6725,83.1186 28.6586,83.1243 28.6435,83.1151 28.6314,83.1158 28.6276,83.1054 28.5811,83.1086 28.5669,83.1004 28.5413,83.1014 28.5277,83.1255 28.4961,83.1311 28.4934,83.1688 28.5138,83.2193 28.5009,83.2577 28.4956,83.2546 28.4935,83.2738 28.4762,83.2825 28.4701,83.2964 28.4614,83.3004 28.4467,83.2903 28.442,83.2725 28.4299,83.2745 28.4331,83.2794 28.4157,83.2967 28.3969,83.2897 28.3928,83.2823 28.3798,83.2866 28.3674,83.2787 28.3685,83.2858 28.3559,83.3022 28.3546,83.3121 28.3708,83.3355 28.3706,83.3635 28.3553,83.3776 28.3574,83.4112 28.3411,83.4243 28.3403,83.4388 28.3287,83.4434 28.32,83.4845 28.3243,83.4979 28.315,83.5269 28.3032,83.5351 28.3135,83.5464 28.317,83.5626 28.2982,83.6011 28.3153,83.597 28.341,83.5682 28.3744,83.5695 28.3915,83.5973 28.3808,83.6266 28.3661,83.634 28.3481,83.658 28.3714,83.6794 28.3988,83.6879 28.3936,83.7591 28.4055,83.7572 28.4026,83.7452 28.4202,83.7317 28.4384,83.7364 28.4583,83.7534 28.472,83.7521 28.4804,83.7724 28.5154,83.8015 28.5182,83.8135 28.5343,83.8285 28.5799,83.8018 28.5953,83.8192 28.6149,83.8712 28.6533,83.85 28.6826,83.8117 28.6932,83.7891 28.6864,83.7673 28.6901,83.7444 28.6669,83.7278 28.6548,83.7299 28.6402,83.7067 28.6173,83.6972 28.6136,83.6858 28.5851,83.6766 28.5669,83.6633 28.5665,83.6377 28.573,83.6425 28.5759,83.6208 28.5893,83.5965 28.5834,83.5796 28.6071,83.5639 28.6442,83.5614 28.6548,83.5436 28.6717,83.5406 28.6884,83.5274 28.6972,83.5396 28.7111,83.5371 28.7462,83.5586 28.7645,83.556 28.7754,83.5488 28.7901,83.506</polygon>
@@ -43,17 +46,20 @@
     <severity>Moderate</severity>
     <certainty>Observed</certainty>
     <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
     <expires>2026-10-06T07:00:00+05:45</expires>
     <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
     <headline>Beni–Jomsom road: Blocked (Myagdi, landslide)</headline>
     <description>Location: Annapurna Rural Municipality-3, Sukebagar. Cause: Landslide. Closed since: 2026-09-27. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
     <instruction>Avoid this road or check with the police before travelling.</instruction>
     <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Beni–Jomsom road: Blocked (Myagdi, landslide)</value></parameter>
     <area>
       <areaDesc>Myagdi district</areaDesc>
       <polygon>28.7901,83.506 28.7906,83.4868 28.7828,83.4833 28.7606,83.4103 28.763,83.3884 28.7341,83.3619 28.7379,83.3255 28.7219,83.2768 28.7428,83.2292 28.7319,83.2098 28.7435,83.1864 28.7471,83.1453 28.7338,83.1425 28.7011,83.1524 28.6929,83.1431 28.6807,83.1453 28.6725,83.1186 28.6586,83.1243 28.6435,83.1151 28.6314,83.1158 28.6276,83.1054 28.5811,83.1086 28.5669,83.1004 28.5413,83.1014 28.5277,83.1255 28.4961,83.1311 28.4934,83.1688 28.5138,83.2193 28.5009,83.2577 28.4956,83.2546 28.4935,83.2738 28.4762,83.2825 28.4701,83.2964 28.4614,83.3004 28.4467,83.2903 28.442,83.2725 28.4299,83.2745 28.4331,83.2794 28.4157,83.2967 28.3969,83.2897 28.3928,83.2823 28.3798,83.2866 28.3674,83.2787 28.3685,83.2858 28.3559,83.3022 28.3546,83.3121 28.3708,83.3355 28.3706,83.3635 28.3553,83.3776 28.3574,83.4112 28.3411,83.4243 28.3403,83.4388 28.3287,83.4434 28.32,83.4845 28.3243,83.4979 28.315,83.5269 28.3032,83.5351 28.3135,83.5464 28.317,83.5626 28.2982,83.6011 28.3153,83.597 28.341,83.5682 28.3744,83.5695 28.3915,83.5973 28.3808,83.6266 28.3661,83.634 28.3481,83.658 28.3714,83.6794 28.3988,83.6879 28.3936,83.7591 28.4055,83.7572 28.4026,83.7452 28.4202,83.7317 28.4384,83.7364 28.4583,83.7534 28.472,83.7521 28.4804,83.7724 28.5154,83.8015 28.5182,83.8135 28.5343,83.8285 28.5799,83.8018 28.5953,83.8192 28.6149,83.8712 28.6533,83.85 28.6826,83.8117 28.6932,83.7891 28.6864,83.7673 28.6901,83.7444 28.6669,83.7278 28.6548,83.7299 28.6402,83.7067 28.6173,83.6972 28.6136,83.6858 28.5851,83.6766 28.5669,83.6633 28.5665,83.6377 28.573,83.6425 28.5759,83.6208 28.5893,83.5965 28.5834,83.5796 28.6071,83.5639 28.6442,83.5614 28.6548,83.5436 28.6717,83.5406 28.6884,83.5274 28.6972,83.5396 28.7111,83.5371 28.7462,83.5586 28.7645,83.556 28.7754,83.5488 28.7901,83.506</polygon>

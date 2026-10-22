@@ -48,6 +48,16 @@
     sel.value = v;
   }
   const areaName = (a) => (a.districts[0] ? (ne() ? DN[a.districts[0]]?.ne : DN[a.districts[0]]?.en) || "" : a.info[G.lang].areas[0]?.desc || "");
+  const MT = { Alert: ["मूल सूचना", "Original"], Update: ["अद्यावधिक", "Update"], Cancel: ["रद्द", "Cancel"] };
+  function chain(a) {
+    if (!a.chain || !a.chain.length) return "";
+    const steps = a.chain.map((c, k) => {
+      const lab = `${G.num(k + 1)}. ${T(...MT[c.msgType])}${c.state ? " · " + T(...{ Corrected: ["सच्याइएको", "Corrected"], Retracted: ["फिर्ता लिइएको", "Retracted"] }[c.state]) : ""} <span class="meta">${G.npt(c.sent)}</span>`;
+      return c.id === a.identifier ? `<strong aria-current="true">${lab}</strong>` : `<a href="#${G.esc(c.id)}">${lab}</a>`;
+    }).join(" → ");
+    const sup = a.supersededBy ? `<br><span class="meta">${T("यो सूचना पछि अद्यावधिक भएको छ। पछिल्लो संस्करण हेर्नुहोस्।", "This notice was later updated. See the latest version.")}</span>` : "";
+    return `<div class="vchain"><span aria-hidden="true">🔗</span> ${T("संस्करण", "Versions")}: ${steps}${sup}</div>`;
+  }
   function card(a) {
     const i = a.info[G.lang], en = a.info.en;
     const areas = i.areas.map((x) => x.desc).join(" · ");
@@ -60,6 +70,7 @@
       <p class="meta">📍 ${G.esc(areas)}</p>
       <p class="meta">🕒 ${T("जारी", "Issued")}: ${G.npt(a.sent)} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
+      ${chain(a)}
       ${i.instruction && !a.expired ? `<div class="instr"><strong>${T("के गर्ने", "What to do")}:</strong> ${G.esc(i.instruction)}</div>` : ""}
       <p class="meta src">${T("स्रोत", "Source")}: <strong>${G.esc(i.senderName)}</strong> · <a href="${G.esc(i.web)}" rel="noopener" target="_blank">${T("मूल सूचना", "Original notice")} ↗</a>${src2 ? ` · <a href="${G.esc(src2)}" rel="noopener" target="_blank">${T("दोस्रो स्रोत", "Second source")} ↗</a>` : ""}</p>
       <details><summary>${T("पूरा विवरण", "Details")}</summary>

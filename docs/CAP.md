@@ -64,3 +64,10 @@ The 15 seeded messages come only from verified items in the Rasuwa–Bhotekoshi 
 `data/budhi-gandaki.json` (DHM Aarughat 8.43 m, 11 Oct 2026 08:40 NPT; NDRRMA press note 66),
 `data/ndrrma_flood_alerts.json` (Narayani special flood alert, 27 Sep), `data/dhm-weather-alert.json` (DHM 12337),
 `data/neoc_roads_2083-06-19-0700.json` and `data/police_roads_2083-06-17-0645.json` (road status). All are expired.
+
+
+## Lifecycle and required fields (item 4)
+
+- `msgType`: `Alert` for a first message; a Gati correction is an `Update` and a retraction a `Cancel`. Both carry `<references>` as `sender,identifier,sent` of the message they replace (CAP 1.2 §3.2.1). `gati:status` Corrected maps to `Update`, Retracted to `Cancel`; build.py rejects any other pairing. The original message is never deleted; it stays archived and is marked as superseded.
+- Every `<info>` has `language` (`ne-NP` and `en`), `responseType`, `onset` (the source time unless the source gives another), `contact` (the agency's public contact), and parameter `gati:summary160`: the source headline cut to at most 160 characters, never new wording.
+- `data/alerts.json` adds `chain` (all versions, oldest first) and `supersededBy`; cards show the chain.

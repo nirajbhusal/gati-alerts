@@ -25,13 +25,27 @@ def profile_errors(doc):
     e = []
     infos = doc.findall("c:info", NS)
     langs = {t(i, "c:language") for i in infos}
-    if not {"ne", "en"} <= langs: e.append(f"needs <info> in ne and en, found {sorted(langs)}")
+    if not {"ne-NP", "en"} <= langs: e.append(f"needs <info> in ne-NP and en, found {sorted(langs)}")
+    mt, refs = t(doc, "c:msgType"), t(doc, "c:references")
+    if mt in ("Update", "Cancel"):
+        if not refs: e.append(f"msgType {mt} needs <references>")
+        else:
+            for r in refs.split():
+                if len(r.split(",")) != 3: e.append(f"reference {r!r} must be sender,identifier,sent")
+    elif refs: e.append("only Update/Cancel may carry <references>")
     for i in infos:
         p = {t(x, "c:valueName"): t(x, "c:value") for x in i.findall("c:parameter", NS)}
         if p.get("gati:trustLevel") not in TRUST: e.append("gati:trustLevel missing/invalid")
         if not p.get("gati:sourceUrl"): e.append("gati:sourceUrl missing")
         if not t(i, "c:web"): e.append("<web> (original source link) missing")
         if not t(i, "c:expires"): e.append("<expires> missing")
+        for need in ("responseType", "onset", "contact"):
+            if not t(i, "c:" + need): e.append(f"<{need}> missing")
+        s160 = p.get("gati:summary160")
+        if not s160 or len(s160) > 160: e.append("gati:summary160 missing or over 160 characters")
+        st = p.get("gati:status")
+        if st == "Corrected" and mt != "Update": e.append("gati:status Corrected must be msgType Update")
+        if st == "Retracted" and mt != "Cancel": e.append("gati:status Retracted must be msgType Cancel")
         if not i.findall("c:area", NS): e.append("<area> missing")
         for poly in i.findall("c:area/c:polygon", NS):
             pts = poly.text.split()
@@ -71,10 +85,10 @@ def main(check=False):
         a["file"] = "data/alerts/" + f.name
         a["info"] = {}
         for i in root.findall("c:info", NS):
-            lang = t(i, "c:language")
+            lang = t(i, "c:language").split("-")[0]
             p = {t(x, "c:valueName"): t(x, "c:value") for x in i.findall("c:parameter", NS)}
-            a["info"][lang] = {k: t(i, "c:" + k) for k in ("category", "event", "urgency", "severity", "certainty",
-                               "effective", "expires", "senderName", "headline", "description", "instruction", "web")}
+            a["info"][lang] = {k: t(i, "c:" + k) for k in ("category", "event", "responseType", "urgency", "severity", "certainty",
+                               "effective", "onset", "expires", "contact", "senderName", "headline", "description", "instruction", "web")}
             a["info"][lang]["params"] = p
             a["info"][lang]["areas"] = [{
                 "desc": t(ar, "c:areaDesc"),
@@ -101,6 +115,25 @@ def main(check=False):
     print(f"{len(alerts)} valid, {bad} failed")
     if bad: sys.exit(1)
     if check: return
+    # Version chains: follow references back to the first message.
+    by = {a["identifier"]: a for a in alerts}
+    for a in alerts:
+        a["refIds"] = [r.split(",")[1] for r in (a["references"] or "").split()]
+        missing = [r for r in a["refIds"] if r not in by]
+        if missing:
+            print("FAIL", a["identifier"], "references unknown", missing); sys.exit(1)
+    def root(a):
+        while a["refIds"]: a = by[a["refIds"][0]]
+        return a["identifier"]
+    chains = {}
+    for a in alerts: chains.setdefault(root(a), []).append(a)
+    for msgs in chains.values():
+        msgs.sort(key=lambda m: m["sent"])
+        chain = [{"id": m["identifier"], "msgType": m["msgType"], "sent": m["sent"], "state": m["state"]} for m in msgs]
+        for m in msgs:
+            m["chain"] = chain if len(chain) > 1 else []
+            later = [c for c in msgs if c["sent"] > m["sent"] or (c is not m and m["identifier"] in c["refIds"])]
+            m["supersededBy"] = later[-1]["identifier"] if later else None
     alerts.sort(key=lambda a: a["sent"], reverse=True)
     gen = now.isoformat(timespec="seconds")
     (ROOT / "data/alerts.json").write_text(json.dumps({"generated": gen, "count": len(alerts), "alerts": alerts},

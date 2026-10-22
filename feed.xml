@@ -3,7 +3,7 @@
   <id>https://nirajbhusal.github.io/gati-alerts/feed.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-10-22T13:51:44+00:00</updated>
+  <updated>2026-10-22T13:55:29+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/feed.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
@@ -202,6 +202,18 @@
     </author>
   </entry>
   <entry>
+    <id>np.gati.police-road-manang-besisahar-khangsar-2026-10-03-update-1</id>
+    <title>Corrected: Besisahar–Khangsar road: Fully blocked (Manang, flood)</title>
+    <updated>2026-10-03T16:00:00+05:45</updated>
+    <published>2026-10-03T16:00:00+05:45</published>
+    <summary>[Official / Corrected] Moderate · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/data/alerts/police-road-manang-besisahar-khangsar-2026-10-03-update-1.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://navigate.dor.gov.np/dashboard" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
     <id>np.gati.police-road-humla-simkot-hilsa-2026-10-03</id>
     <title>Simkot–Hilsa road: Fully blocked (Humla, landslide)</title>
     <updated>2026-10-03T06:45:00+05:45</updated>
@@ -218,7 +230,7 @@
     <title>Besisahar–Khangsar road: Fully blocked (Manang, flood)</title>
     <updated>2026-10-03T06:45:00+05:45</updated>
     <published>2026-10-03T06:45:00+05:45</published>
-    <summary>[Official / Corrected] Moderate · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
+    <summary>[Official] Moderate · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/data/alerts/police-road-manang-besisahar-khangsar-2026-10-03.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://x.com/NepalPoliceHQ/status/2106191584438186356" rel="via"/>
     <author>

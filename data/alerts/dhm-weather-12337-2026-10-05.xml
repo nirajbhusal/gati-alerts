@@ -9,7 +9,7 @@
   <scope>Public</scope>
   <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12337</note>
   <info>
-    <language>ne</language>
+    <language>ne-NP</language>
     <category>Met</category>
     <event>मौसम सूचना</event>
     <responseType>None</responseType>
@@ -17,16 +17,19 @@
     <severity>Unknown</severity>
     <certainty>Unknown</certainty>
     <effective>2026-10-05T08:00:00+05:45</effective>
+    <onset>2026-10-05T08:00:00+05:45</onset>
     <expires>2026-10-08T08:00:00+05:45</expires>
     <senderName>जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित</senderName>
     <headline>आगामी तीन दिनका लागि मौसम चेतावनी: सबै जिल्ला हरियो (कुनै चेतावनी छैन)</headline>
     <description>DHM मौसम पूर्वानुमान महाशाखा, जारी मिति २०८३-०६-१९ बिहान ८:०० बजे: तीन दिनको चेतावनी नक्सामा सबै जिल्ला हरियो।</description>
     <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12337</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12337</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T08:00:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/dhm-weather-alert.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>आगामी तीन दिनका लागि मौसम चेतावनी: सबै जिल्ला हरियो (कुनै चेतावनी छैन)</value></parameter>
     <area>
       <areaDesc>नेपाल (सबै जिल्ला)</areaDesc>
       <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
@@ -41,16 +44,19 @@
     <severity>Unknown</severity>
     <certainty>Unknown</certainty>
     <effective>2026-10-05T08:00:00+05:45</effective>
+    <onset>2026-10-05T08:00:00+05:45</onset>
     <expires>2026-10-08T08:00:00+05:45</expires>
     <senderName>Department of Hydrology and Meteorology (DHM) — relayed by Gati</senderName>
     <headline>Weather alert for the next three days: all districts green (no warning)</headline>
     <description>DHM Meteorological Forecasting Division, issued 2083-06-19 (5 Oct 2026) 8:00 AM: all districts are green on the three-day warning map.</description>
     <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12337</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12337</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T08:00:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/dhm-weather-alert.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Weather alert for the next three days: all districts green (no warning)</value></parameter>
     <area>
       <areaDesc>Nepal (all districts)</areaDesc>
       <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>

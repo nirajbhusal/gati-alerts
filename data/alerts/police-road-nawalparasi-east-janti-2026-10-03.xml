@@ -9,7 +9,7 @@
   <scope>Public</scope>
   <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2106191584438186356</note>
   <info>
-    <language>ne</language>
+    <language>ne-NP</language>
     <category>Transport</category>
     <event>सडक अवस्था</event>
     <responseType>Avoid</responseType>
@@ -17,17 +17,20 @@
     <severity>Minor</severity>
     <certainty>Observed</certainty>
     <effective>2026-10-03T06:45:00+05:45</effective>
+    <onset>2026-10-03T06:45:00+05:45</onset>
     <expires>2026-10-04T06:45:00+05:45</expires>
     <senderName>नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित</senderName>
     <headline>कालीगण्डकी कोरिडोर: एकतर्फी सुचारु (ठुला गाडी जान नसक्ने) (नवलपरासी पूर्व, पहिरो)</headline>
     <description>स्थान: बौदिकाली गा.पा. ३ जन्ती पहिरो। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१४। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।</description>
     <instruction>सावधानीसाथ यात्रा गर्नुहोस् र ट्राफिक प्रहरीको निर्देशन पालना गर्नुहोस्।</instruction>
     <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>कालीगण्डकी कोरिडोर: एकतर्फी सुचारु (ठुला गाडी जान नसक्ने) (नवलपरासी पूर्व, पहिरो)</value></parameter>
     <area>
       <areaDesc>नवलपरासी पूर्व जिल्ला</areaDesc>
       <polygon>27.8657,84.1013 27.8695,84.0779 27.8636,84.0785 27.865,84.0714 27.8488,84.0525 27.8561,84.0487 27.8499,84.0413 27.8571,84.0391 27.8564,84.0284 27.8408,84.0202 27.8206,84.0266 27.7886,84.0002 27.7492,83.9898 27.7475,83.9504 27.7268,83.9241 27.7356,83.9044 27.73,83.8964 27.735,83.8449 27.7095,83.8462 27.7106,83.8203 27.725,83.7822 27.721,83.751 27.7091,83.7285 27.7156,83.7142 27.7209,83.6821 27.7186,83.677 27.7182,83.6827 27.6981,83.6897 27.6828,83.7045 27.6615,83.6953 27.6591,83.708 27.6724,83.7251 27.6674,83.7582 27.6612,83.7626 27.667,83.7831 27.6623,83.8117 27.6475,83.8064 27.6354,83.8097 27.6296,83.8009 27.6208,83.8051 27.6202,83.7972 27.6119,83.7996 27.6063,83.7898 27.5954,83.8093 27.5887,83.808 27.5926,83.8214 27.5857,83.8361 27.5726,83.8414 27.5656,83.8315 27.545,83.836 27.5603,83.8471 27.5279,83.8823 27.5104,83.8756 27.4988,83.8976 27.4893,83.8746 27.4811,83.885 27.4465,83.8876 27.4377,83.8954 27.4517,83.9363 27.4658,83.9445 27.4915,83.9386 27.5106,83.9689 27.522,83.966 27.5275,83.9542 27.5157,83.9418 27.5147,83.9255 27.533,83.9187 27.5446,83.9243 27.5402,83.9484 27.5505,83.9703 27.5372,84.0311 27.5565,84.0505 27.5513,84.0643 27.5595,84.0745 27.5533,84.1146 27.5845,84.1352 27.6387,84.2066 27.6541,84.2502 27.6511,84.2578 27.7022,84.3436 27.6983,84.36 27.6813,84.3788 27.7058,84.4305 27.7577,84.4186 27.7757,84.3916 27.7778,84.372 27.7541,84.3612 27.7511,84.3438 27.7439,84.3399 27.7487,84.325 27.7633,84.3155 27.7854,84.3138 27.7923,84.3 27.8064,84.298 27.8188,84.3056 27.8378,84.2915 27.8324,84.2675 27.8387,84.2658 27.8384,84.2526 27.8466,84.2401 27.8456,84.2276 27.8366,84.2253 27.8465,84.2134 27.8387,84.2094 27.8524,84.2021 27.8466,84.1907 27.8524,84.1732 27.8396,84.1561 27.8483,84.1557 27.847,84.1218 27.8547,84.1295 27.8596,84.1251 27.8596,84.1199 27.8508,84.1183 27.8618,84.1091 27.8555,84.0996 27.8595,84.0954 27.8657,84.1013</polygon>
@@ -43,17 +46,20 @@
     <severity>Minor</severity>
     <certainty>Observed</certainty>
     <effective>2026-10-03T06:45:00+05:45</effective>
+    <onset>2026-10-03T06:45:00+05:45</onset>
     <expires>2026-10-04T06:45:00+05:45</expires>
     <senderName>Nepal Police Headquarters — relayed by Gati</senderName>
     <headline>Kaligandaki Corridor: One-way open (no heavy vehicles) (Nawalparasi East, landslide)</headline>
     <description>Location: Baudikali-3 Janti landslide. Cause: Landslide. Closed since: 2026-09-30. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.</description>
     <instruction>Travel with care and follow traffic police instructions.</instruction>
     <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Kaligandaki Corridor: One-way open (no heavy vehicles) (Nawalparasi East, landslide)</value></parameter>
     <area>
       <areaDesc>Nawalparasi East district</areaDesc>
       <polygon>27.8657,84.1013 27.8695,84.0779 27.8636,84.0785 27.865,84.0714 27.8488,84.0525 27.8561,84.0487 27.8499,84.0413 27.8571,84.0391 27.8564,84.0284 27.8408,84.0202 27.8206,84.0266 27.7886,84.0002 27.7492,83.9898 27.7475,83.9504 27.7268,83.9241 27.7356,83.9044 27.73,83.8964 27.735,83.8449 27.7095,83.8462 27.7106,83.8203 27.725,83.7822 27.721,83.751 27.7091,83.7285 27.7156,83.7142 27.7209,83.6821 27.7186,83.677 27.7182,83.6827 27.6981,83.6897 27.6828,83.7045 27.6615,83.6953 27.6591,83.708 27.6724,83.7251 27.6674,83.7582 27.6612,83.7626 27.667,83.7831 27.6623,83.8117 27.6475,83.8064 27.6354,83.8097 27.6296,83.8009 27.6208,83.8051 27.6202,83.7972 27.6119,83.7996 27.6063,83.7898 27.5954,83.8093 27.5887,83.808 27.5926,83.8214 27.5857,83.8361 27.5726,83.8414 27.5656,83.8315 27.545,83.836 27.5603,83.8471 27.5279,83.8823 27.5104,83.8756 27.4988,83.8976 27.4893,83.8746 27.4811,83.885 27.4465,83.8876 27.4377,83.8954 27.4517,83.9363 27.4658,83.9445 27.4915,83.9386 27.5106,83.9689 27.522,83.966 27.5275,83.9542 27.5157,83.9418 27.5147,83.9255 27.533,83.9187 27.5446,83.9243 27.5402,83.9484 27.5505,83.9703 27.5372,84.0311 27.5565,84.0505 27.5513,84.0643 27.5595,84.0745 27.5533,84.1146 27.5845,84.1352 27.6387,84.2066 27.6541,84.2502 27.6511,84.2578 27.7022,84.3436 27.6983,84.36 27.6813,84.3788 27.7058,84.4305 27.7577,84.4186 27.7757,84.3916 27.7778,84.372 27.7541,84.3612 27.7511,84.3438 27.7439,84.3399 27.7487,84.325 27.7633,84.3155 27.7854,84.3138 27.7923,84.3 27.8064,84.298 27.8188,84.3056 27.8378,84.2915 27.8324,84.2675 27.8387,84.2658 27.8384,84.2526 27.8466,84.2401 27.8456,84.2276 27.8366,84.2253 27.8465,84.2134 27.8387,84.2094 27.8524,84.2021 27.8466,84.1907 27.8524,84.1732 27.8396,84.1561 27.8483,84.1557 27.847,84.1218 27.8547,84.1295 27.8596,84.1251 27.8596,84.1199 27.8508,84.1183 27.8618,84.1091 27.8555,84.0996 27.8595,84.0954 27.8657,84.1013</polygon>
