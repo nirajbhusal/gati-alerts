@@ -415,3 +415,13 @@ body[data-page=map] #map{height:min(78vh,720px)}
 .mapcite{margin-top:var(--s4)}.mapcite h3{margin-top:0}.mapcite li{font-size:var(--fs-s)}
 .chipbar{display:flex;flex-wrap:wrap;gap:var(--s2)}.lchip[aria-pressed=false]{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
 html[data-theme=dark] .mlab span{text-shadow:0 0 3px #0E1C2A,0 0 3px #0E1C2A}html[data-theme=dark] .mlab.prov span{color:#CFE3F1}html[data-theme=dark] .mlab.dist span{color:#A9B8C6}
+/* Bottom bar v2 */
+@media(max-width:720px){.tabbar{padding:6px 6px calc(6px + env(safe-area-inset-bottom));gap:2px;background:rgba(14,42,71,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08)}
+.tabbar a{min-height:52px;min-width:44px;justify-content:center;gap:3px;padding:4px 2px;border-radius:14px;font-size:.72rem;font-weight:500;color:#A9BED2;box-shadow:none;transition:color .15s}
+.tabbar a .tico{display:grid;place-items:center;width:52px;height:30px;border-radius:999px;transition:background-color .2s}
+.tabbar a .tico svg{display:block}
+.tabbar a[aria-current=page]{color:#fff;box-shadow:none}.tabbar a[aria-current=page] .tico{background:rgba(127,209,216,.22);color:#7FD1D8}
+.tabbar a:active .tico{background:rgba(255,255,255,.12)}
+.tlab{white-space:nowrap;line-height:1.1}
+body.has-tabbar{padding-bottom:calc(70px + env(safe-area-inset-bottom))}}
+html body .tabbar a{color:#A9BED2}html body .tabbar a[aria-current=page]{color:#fff}html body .tabbar a[aria-current=page] .tico{color:#7FD1D8}
