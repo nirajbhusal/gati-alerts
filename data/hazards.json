@@ -1,0 +1,80 @@
+[
+ {
+  "id": "flood",
+  "ne": "बाढी",
+  "en": "Flood",
+  "icon": "🌊"
+ },
+ {
+  "id": "landslide",
+  "ne": "पहिरो",
+  "en": "Landslide",
+  "icon": "⛰"
+ },
+ {
+  "id": "road",
+  "ne": "सडक",
+  "en": "Road",
+  "icon": "🛣"
+ },
+ {
+  "id": "weather",
+  "ne": "मौसम",
+  "en": "Weather",
+  "icon": "🌧"
+ },
+ {
+  "id": "earthquake",
+  "ne": "भूकम्प",
+  "en": "Earthquake",
+  "icon": "〰",
+  "sources": [
+   "nsc",
+   "usgs"
+  ]
+ },
+ {
+  "id": "air-quality",
+  "ne": "वायु गुणस्तर",
+  "en": "Air quality",
+  "icon": "🌫",
+  "sources": [
+   "doe-air"
+  ],
+  "note": "Source entry only: the DoE portal was not reachable from automated servers, so no item is published yet."
+ },
+ {
+  "id": "epidemic",
+  "ne": "महामारी, रोगको प्रकोप",
+  "en": "Epidemic, disease outbreak",
+  "icon": "🦠",
+  "sources": [
+   "edcd"
+  ],
+  "note": "Source entry only; no item is published until EDCD publishes one that can be linked."
+ },
+ {
+  "id": "avalanche",
+  "ne": "हिमपहिरो",
+  "en": "Avalanche",
+  "icon": "❄"
+ },
+ {
+  "id": "fire",
+  "ne": "आगलागी",
+  "en": "Fire",
+  "icon": "🔥"
+ },
+ {
+  "id": "lightning",
+  "ne": "चट्याङ",
+  "en": "Lightning",
+  "icon": "⚡"
+ },
+ {
+  "id": "glof",
+  "ne": "हिमताल विस्फोट बाढी",
+  "en": "GLOF",
+  "icon": "🏔"
+ }
+]

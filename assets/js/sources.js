@@ -5,7 +5,7 @@
   const HZ = { flood: ["बाढी", "flood"], "river-level": ["नदीको सतह", "river level"], rainfall: ["वर्षा", "rainfall"], weather: ["मौसम", "weather"],
     "heavy-rain": ["भारी वर्षा", "heavy rain"], "cold-wave": ["शीतलहर", "cold wave"], road: ["सडक", "road"], incident: ["घटना", "incident"],
     "multi-hazard": ["बहुविपद्", "multi-hazard"], "press-note": ["प्रेस विज्ञप्ति", "press note"], loss: ["क्षति", "loss"], earthquake: ["भूकम्प", "earthquake"],
-    "air-quality": ["वायु गुणस्तर", "air quality"], "disease-outbreak": ["रोगको प्रकोप", "disease outbreak"], lightning: ["चट्याङ", "lightning"],
+    "air-quality": ["वायु गुणस्तर", "air quality"], "disease-outbreak": ["रोगको प्रकोप", "disease outbreak"], epidemic: ["महामारी", "epidemic"], lightning: ["चट्याङ", "lightning"],
     "forest-fire": ["वन डढेलो", "forest fire"], avalanche: ["हिमपहिरो", "avalanche"], glof: ["हिमताल विस्फोट", "GLOF"] };
   let S = [], H = {};
   const t = (a) => (G.lang === "ne" ? a[0] : a[1]);

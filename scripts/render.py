@@ -37,7 +37,7 @@ def b(ne, en):
 
 
 def agency(i):
-    return i["senderName"].split(" — ")[0]
+    return i["senderName"].split(" — ")[0].split(" · ")[0]
 
 
 def src_time(a, i):

@@ -23,9 +23,10 @@
   if (params.get("district")) { const q = params.get("district"); sel.dataset.v = (districts.find((d) => d.id === q || d.code === q) || {}).code || ""; }
 
   const HAZ = { flood: ["बाढी", "Flood", "🌊"], road: ["सडक", "Road", "🛣"], weather: ["मौसम", "Weather", "🌧"], landslide: ["पहिरो", "Landslide", "⛰"],
-    avalanche: ["हिमपहिरो", "Avalanche", "❄"], earthquake: ["भूकम्प", "Earthquake", "〰"], fire: ["आगलागी", "Fire", "🔥"] };
+    avalanche: ["हिमपहिरो", "Avalanche", "❄"], earthquake: ["भूकम्प", "Earthquake", "〰"], fire: ["आगलागी", "Fire", "🔥"],
+    "air-quality": ["वायु गुणस्तर", "Air quality", "🌫"], epidemic: ["महामारी", "Epidemic", "🦠"] };
   const hz = (h) => HAZ[h] || [h || "अन्य", h || "Other", "•"];
-  const AGENCY = { "hydrology.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD" };
+  const AGENCY = { "hydrology.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
   const agency = (a) => { const v = AGENCY[a.sender] || a.sender; return Array.isArray(v) ? T(v[0], v[1]) : v; };
   const RC = { open: "#15803d", oneway: "#1d4ed8", night: "#b45309", closed: "#b91c1c", none: "#94a3b8" };
   const RW = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], night: ["राति बन्द", "Closed at night"], closed: ["बन्द", "Blocked"], none: ["स्थिति पुष्टि भएन", "Not confirmed"] };

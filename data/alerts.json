@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-22T13:56:49+00:00",
- "count": 22,
+ "generated": "2026-10-22T14:10:28+00:00",
+ "count": 32,
  "alerts": [
   {
    "identifier": "np.gati.reported-dhm-3day-forecast-2026-10-22",
@@ -1130,6 +1130,113 @@
      "circles": [],
      "ne": "नवलपरासी पश्चिम जिल्ला",
      "en": "Nawalparasi West district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1381-2026-10-07",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-10-07T21:37:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1381-2026-10-07.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-10-07T21:37:00+05:45",
+     "onset": "2026-10-07T21:37:00+05:45",
+     "expires": "2026-10-08T21:37:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.१ ML, बाजुरा (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-१०-०७ २१:३७ NPT मा बाजुरा क्षेत्रमा ४.१ ML को भूकम्प गयो। केन्द्रबिन्दु: २९.३४°N, ८१.२७°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-10-07T21:37:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.१ ML, बाजुरा (NSC)",
+      "gati:magnitude": "4.1 ML"
+     },
+     "areas": [
+      {
+       "desc": "बाजुरा जिल्ला",
+       "circles": [
+        "29.3400,81.2700 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0768"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-10-07T21:37:00+05:45",
+     "onset": "2026-10-07T21:37:00+05:45",
+     "expires": "2026-10-08T21:37:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.1 ML, Bajura (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.1 ML occurred at 2026-10-07 21:37 NPT, Bajura. Epicentre: 29.34°N, 81.27°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-10-07T21:37:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.1 ML, Bajura (NSC)",
+      "gati:magnitude": "4.1 ML"
+     },
+     "areas": [
+      {
+       "desc": "Bajura district",
+       "circles": [
+        "29.3400,81.2700 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0768"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-10-08T21:37:00+05:45",
+   "districts": [
+    "NP0768"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0768",
+     "circles": [
+      "29.3400,81.2700 0"
+     ],
+     "ne": "बाजुरा जिल्ला",
+     "en": "Bajura district"
     }
    ],
    "refIds": [],
@@ -2616,6 +2723,969 @@
      "circles": [],
      "ne": "नवलपरासी पश्चिम जिल्ला",
      "en": "Nawalparasi West district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1380-2026-09-15",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-09-15T04:28:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1380-2026-09-15.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-15T04:28:00+05:45",
+     "onset": "2026-09-15T04:28:00+05:45",
+     "expires": "2026-09-16T04:28:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.२ ML, मुगु (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०९-१५ ०४:२८ NPT मा मुगु क्षेत्रमा ४.२ ML को भूकम्प गयो। केन्द्रबिन्दु: २९.५९°N, ८१.९६°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-15T04:28:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.२ ML, मुगु (NSC)",
+      "gati:magnitude": "4.2 ML"
+     },
+     "areas": [
+      {
+       "desc": "मुगु जिल्ला",
+       "circles": [
+        "29.5900,81.9600 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0665"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-15T04:28:00+05:45",
+     "onset": "2026-09-15T04:28:00+05:45",
+     "expires": "2026-09-16T04:28:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.2 ML, Mugu (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.2 ML occurred at 2026-09-15 04:28 NPT, Mugu. Epicentre: 29.59°N, 81.96°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-15T04:28:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.2 ML, Mugu (NSC)",
+      "gati:magnitude": "4.2 ML"
+     },
+     "areas": [
+      {
+       "desc": "Mugu district",
+       "circles": [
+        "29.5900,81.9600 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0665"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-09-16T04:28:00+05:45",
+   "districts": [
+    "NP0665"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0665",
+     "circles": [
+      "29.5900,81.9600 0"
+     ],
+     "ne": "मुगु जिल्ला",
+     "en": "Mugu district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1379-2026-09-15",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-09-15T01:51:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1379-2026-09-15.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-15T01:51:00+05:45",
+     "onset": "2026-09-15T01:51:00+05:45",
+     "expires": "2026-09-16T01:51:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.५ ML, मुगु (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०९-१५ ०१:५१ NPT मा मुगु क्षेत्रमा ४.५ ML को भूकम्प गयो। केन्द्रबिन्दु: २९.६०°N, ८१.९५°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-15T01:51:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.५ ML, मुगु (NSC)",
+      "gati:magnitude": "4.5 ML"
+     },
+     "areas": [
+      {
+       "desc": "मुगु जिल्ला",
+       "circles": [
+        "29.6000,81.9500 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0665"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-15T01:51:00+05:45",
+     "onset": "2026-09-15T01:51:00+05:45",
+     "expires": "2026-09-16T01:51:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.5 ML, Mugu (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.5 ML occurred at 2026-09-15 01:51 NPT, Mugu. Epicentre: 29.60°N, 81.95°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-15T01:51:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.5 ML, Mugu (NSC)",
+      "gati:magnitude": "4.5 ML"
+     },
+     "areas": [
+      {
+       "desc": "Mugu district",
+       "circles": [
+        "29.6000,81.9500 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0665"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-09-16T01:51:00+05:45",
+   "districts": [
+    "NP0665"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0665",
+     "circles": [
+      "29.6000,81.9500 0"
+     ],
+     "ne": "मुगु जिल्ला",
+     "en": "Mugu district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1377-2026-09-09",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-09-09T19:54:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1377-2026-09-09.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-09T19:54:00+05:45",
+     "onset": "2026-09-09T19:54:00+05:45",
+     "expires": "2026-09-10T19:54:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.० ML, मुस्ताङ (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०९-०९ १९:५४ NPT मा मुस्ताङ क्षेत्रमा ४.० ML को भूकम्प गयो। केन्द्रबिन्दु: २८.९४°N, ८३.९४°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-09T19:54:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.० ML, मुस्ताङ (NSC)",
+      "gati:magnitude": "4.0 ML"
+     },
+     "areas": [
+      {
+       "desc": "मुस्ताङ जिल्ला",
+       "circles": [
+        "28.9400,83.9400 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-09T19:54:00+05:45",
+     "onset": "2026-09-09T19:54:00+05:45",
+     "expires": "2026-09-10T19:54:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.0 ML, Mustang (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.0 ML occurred at 2026-09-09 19:54 NPT, Mustang. Epicentre: 28.94°N, 83.94°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-09T19:54:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.0 ML, Mustang (NSC)",
+      "gati:magnitude": "4.0 ML"
+     },
+     "areas": [
+      {
+       "desc": "Mustang district",
+       "circles": [
+        "28.9400,83.9400 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-09-10T19:54:00+05:45",
+   "districts": [
+    "NP0445"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0445",
+     "circles": [
+      "28.9400,83.9400 0"
+     ],
+     "ne": "मुस्ताङ जिल्ला",
+     "en": "Mustang district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1375-2026-09-08",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-09-08T21:53:34+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1375-2026-09-08.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-08T21:53:34+05:45",
+     "onset": "2026-09-08T21:53:34+05:45",
+     "expires": "2026-09-09T21:53:34+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ५.३ ML, मुस्ताङ (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०९-०८ २१:५३ NPT मा मुस्ताङ क्षेत्रमा ५.३ ML को भूकम्प गयो। केन्द्रबिन्दु: २९.१५°N, ८४.०१°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-08T21:53:34+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ५.३ ML, मुस्ताङ (NSC)",
+      "gati:magnitude": "5.3 ML"
+     },
+     "areas": [
+      {
+       "desc": "मुस्ताङ जिल्ला",
+       "circles": [
+        "29.1500,84.0100 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-08T21:53:34+05:45",
+     "onset": "2026-09-08T21:53:34+05:45",
+     "expires": "2026-09-09T21:53:34+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 5.3 ML, Mustang (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 5.3 ML occurred at 2026-09-08 21:53 NPT, Mustang. Epicentre: 29.15°N, 84.01°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-09-08T21:53:34+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 5.3 ML, Mustang (NSC)",
+      "gati:magnitude": "5.3 ML"
+     },
+     "areas": [
+      {
+       "desc": "Mustang district",
+       "circles": [
+        "29.1500,84.0100 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-09-09T21:53:34+05:45",
+   "districts": [
+    "NP0445"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0445",
+     "circles": [
+      "29.1500,84.0100 0"
+     ],
+     "ne": "मुस्ताङ जिल्ला",
+     "en": "Mustang district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.usgs-quake-us7000tfur-2026-09-08",
+   "sender": "earthquake.usgs.gov",
+   "sent": "2026-09-08T21:53:34+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: U.S. Geological Survey (USGS). Source: https://earthquake.usgs.gov/earthquakes/eventpage/us7000tfur",
+   "references": null,
+   "file": "data/alerts/usgs-quake-us7000tfur-2026-09-08.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-08T21:53:34+05:45",
+     "onset": "2026-09-08T21:53:34+05:45",
+     "expires": "2026-09-09T21:53:34+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: M४.९ (mb), मुस्ताङ जिल्ला, 90 km NNE of Chitre, Nepal (USGS)",
+     "description": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) अनुसार २०२६-०९-०८ २१:५३ NPT मा मुस्ताङ जिल्ला, ९० km NNE of Chitre, Nepal क्षेत्रमा M४.९ (mb) को भूकम्प गयो। केन्द्रबिन्दु: २९.२०°N, ८३.९८°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tfur",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tfur",
+      "gati:sourceTime": "2026-09-08T21:53:34+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: M४.९ (mb), मुस्ताङ जिल्ला, 90 km NNE of Chitre, Nepal (USGS)",
+      "gati:magnitude": "M4.9 (mb)"
+     },
+     "areas": [
+      {
+       "desc": "मुस्ताङ जिल्ला",
+       "circles": [
+        "29.2042,83.9776 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-09-08T21:53:34+05:45",
+     "onset": "2026-09-08T21:53:34+05:45",
+     "expires": "2026-09-09T21:53:34+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "U.S. Geological Survey (USGS) · relayed by Gati",
+     "headline": "Earthquake: M4.9 (mb), 90 km NNE of Chitre, Nepal (USGS)",
+     "description": "According to U.S. Geological Survey (USGS), an earthquake of M4.9 (mb) occurred at 2026-09-08 21:53 NPT, 90 km NNE of Chitre, Nepal. Epicentre: 29.20°N, 83.98°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tfur",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tfur",
+      "gati:sourceTime": "2026-09-08T21:53:34+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: M4.9 (mb), 90 km NNE of Chitre, Nepal (USGS)",
+      "gati:magnitude": "M4.9 (mb)"
+     },
+     "areas": [
+      {
+       "desc": "Mustang district",
+       "circles": [
+        "29.2042,83.9776 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-09-09T21:53:34+05:45",
+   "districts": [
+    "NP0445"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0445",
+     "circles": [
+      "29.2042,83.9776 0"
+     ],
+     "ne": "मुस्ताङ जिल्ला",
+     "en": "Mustang district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.usgs-quake-us7000tbwb-2026-08-26",
+   "sender": "earthquake.usgs.gov",
+   "sent": "2026-08-26T08:37:10+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: U.S. Geological Survey (USGS). Source: https://earthquake.usgs.gov/earthquakes/eventpage/us7000tbwb",
+   "references": null,
+   "file": "data/alerts/usgs-quake-us7000tbwb-2026-08-26.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-26T08:37:10+05:45",
+     "onset": "2026-08-26T08:37:10+05:45",
+     "expires": "2026-08-27T08:37:10+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: M५.२ (ms_vx), रसुवा जिल्ला, 55 km NW of Kodāri̇̄, Nepal (USGS)",
+     "description": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) अनुसार २०२६-०८-२६ ०८:३७ NPT मा रसुवा जिल्ला, ५५ km NW of Kodāri̇̄, Nepal क्षेत्रमा M५.२ (ms_vx) को भूकम्प गयो। केन्द्रबिन्दु: २८.२७°N, ८५.५२°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tbwb",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tbwb",
+      "gati:sourceTime": "2026-08-26T08:37:10+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: M५.२ (ms_vx), रसुवा जिल्ला, 55 km NW of Kodāri̇̄, Nepal (USGS)",
+      "gati:magnitude": "M5.2 (ms_vx)"
+     },
+     "areas": [
+      {
+       "desc": "रसुवा जिल्ला",
+       "circles": [
+        "28.2710,85.5150 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0329"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-26T08:37:10+05:45",
+     "onset": "2026-08-26T08:37:10+05:45",
+     "expires": "2026-08-27T08:37:10+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "U.S. Geological Survey (USGS) · relayed by Gati",
+     "headline": "Earthquake: M5.2 (ms_vx), 55 km NW of Kodāri̇̄, Nepal (USGS)",
+     "description": "According to U.S. Geological Survey (USGS), an earthquake of M5.2 (ms_vx) occurred at 2026-08-26 08:37 NPT, 55 km NW of Kodāri̇̄, Nepal. Epicentre: 28.27°N, 85.52°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tbwb",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tbwb",
+      "gati:sourceTime": "2026-08-26T08:37:10+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: M5.2 (ms_vx), 55 km NW of Kodāri̇̄, Nepal (USGS)",
+      "gati:magnitude": "M5.2 (ms_vx)"
+     },
+     "areas": [
+      {
+       "desc": "Rasuwa district",
+       "circles": [
+        "28.2710,85.5150 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0329"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-08-27T08:37:10+05:45",
+   "districts": [
+    "NP0329"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0329",
+     "circles": [
+      "28.2710,85.5150 0"
+     ],
+     "ne": "रसुवा जिल्ला",
+     "en": "Rasuwa district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1374-2026-08-18",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-08-18T01:44:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1374-2026-08-18.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-18T01:44:00+05:45",
+     "onset": "2026-08-18T01:44:00+05:45",
+     "expires": "2026-08-19T01:44:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.४ ML, कास्की (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०८-१८ ०१:४४ NPT मा कास्की क्षेत्रमा ४.४ ML को भूकम्प गयो। केन्द्रबिन्दु: २८.३६°N, ८३.९६°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-08-18T01:44:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.४ ML, कास्की (NSC)",
+      "gati:magnitude": "4.4 ML"
+     },
+     "areas": [
+      {
+       "desc": "कास्की जिल्ला",
+       "circles": [
+        "28.3600,83.9600 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0439"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-18T01:44:00+05:45",
+     "onset": "2026-08-18T01:44:00+05:45",
+     "expires": "2026-08-19T01:44:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.4 ML, Kaski (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.4 ML occurred at 2026-08-18 01:44 NPT, Kaski. Epicentre: 28.36°N, 83.96°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-08-18T01:44:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.4 ML, Kaski (NSC)",
+      "gati:magnitude": "4.4 ML"
+     },
+     "areas": [
+      {
+       "desc": "Kaski district",
+       "circles": [
+        "28.3600,83.9600 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0439"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-08-19T01:44:00+05:45",
+   "districts": [
+    "NP0439"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0439",
+     "circles": [
+      "28.3600,83.9600 0"
+     ],
+     "ne": "कास्की जिल्ला",
+     "en": "Kaski district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1368-2026-08-11",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-08-11T09:08:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1368-2026-08-11.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-11T09:08:00+05:45",
+     "onset": "2026-08-11T09:08:00+05:45",
+     "expires": "2026-08-12T09:08:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.१ ML, जाजरकोट (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०८-११ ०९:०८ NPT मा जाजरकोट क्षेत्रमा ४.१ ML को भूकम्प गयो। केन्द्रबिन्दु: २८.८९°N, ८२.१६°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-08-11T09:08:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.१ ML, जाजरकोट (NSC)",
+      "gati:magnitude": "4.1 ML"
+     },
+     "areas": [
+      {
+       "desc": "जाजरकोट जिल्ला",
+       "circles": [
+        "28.8900,82.1600 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0660"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-11T09:08:00+05:45",
+     "onset": "2026-08-11T09:08:00+05:45",
+     "expires": "2026-08-12T09:08:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.1 ML, Jajarkot (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.1 ML occurred at 2026-08-11 09:08 NPT, Jajarkot. Epicentre: 28.89°N, 82.16°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-08-11T09:08:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.1 ML, Jajarkot (NSC)",
+      "gati:magnitude": "4.1 ML"
+     },
+     "areas": [
+      {
+       "desc": "Jajarkot district",
+       "circles": [
+        "28.8900,82.1600 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0660"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-08-12T09:08:00+05:45",
+   "districts": [
+    "NP0660"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0660",
+     "circles": [
+      "28.8900,82.1600 0"
+     ],
+     "ne": "जाजरकोट जिल्ला",
+     "en": "Jajarkot district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1367-2026-08-02",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-08-02T03:07:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1367-2026-08-02.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-02T03:07:00+05:45",
+     "onset": "2026-08-02T03:07:00+05:45",
+     "expires": "2026-08-03T03:07:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.४ ML, रोल्पा (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०८-०२ ०३:०७ NPT मा रोल्पा क्षेत्रमा ४.४ ML को भूकम्प गयो। केन्द्रबिन्दु: २८.४८°N, ८२.४९°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-08-02T03:07:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.४ ML, रोल्पा (NSC)",
+      "gati:magnitude": "4.4 ML"
+     },
+     "areas": [
+      {
+       "desc": "रोल्पा जिल्ला",
+       "circles": [
+        "28.4800,82.4900 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0554"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-08-02T03:07:00+05:45",
+     "onset": "2026-08-02T03:07:00+05:45",
+     "expires": "2026-08-03T03:07:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.4 ML, Rolpa (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.4 ML occurred at 2026-08-02 03:07 NPT, Rolpa. Epicentre: 28.48°N, 82.49°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-08-02T03:07:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.4 ML, Rolpa (NSC)",
+      "gati:magnitude": "4.4 ML"
+     },
+     "areas": [
+      {
+       "desc": "Rolpa district",
+       "circles": [
+        "28.4800,82.4900 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0554"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-08-03T03:07:00+05:45",
+   "districts": [
+    "NP0554"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0554",
+     "circles": [
+      "28.4800,82.4900 0"
+     ],
+     "ne": "रोल्पा जिल्ला",
+     "en": "Rolpa district"
     }
    ],
    "refIds": [],

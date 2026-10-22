@@ -30,7 +30,7 @@
       const st = i.params["gati:sourceTime"] || a.sent;
       return `<li class="it" style="border-left-color:${s[3]}"><span class="chip" style="background:${s[3]}">${s[2]} ${T(s[0], s[1])}</span>${t ? `<span class="tr">${T(...t)}</span>` : ""}
         <h3><a href="${site}alerts/${esc(a.identifier)}/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${esc(i.headline)}</a></h3>
-        <p class="m" style="margin:0">${T("स्रोत", "Source")}: <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(i.senderName.split(" — ")[0])}</a> · ${npt(st)}</p></li>`; }).join("") +
+        <p class="m" style="margin:0">${T("स्रोत", "Source")}: <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(i.senderName.split(" — ")[0].split(" · ")[0])}</a> · ${npt(st)}</p></li>`; }).join("") +
       (act.length > MAX ? `<li class="m"><a href="${site}${d ? "?district=" + d.id : ""}" target="_blank" rel="noopener">${T(`थप ${num(act.length - MAX)} सूचना हेर्नुहोस्`, `${act.length - MAX} more`)}</a></li>` : "");
   }).catch(() => { document.getElementById("ls").innerHTML = `<li class="empty">${T("सूचना खुलेन।", "Could not load.")}</li>`; });
 })();

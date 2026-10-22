@@ -25,12 +25,18 @@ jobs:
       - name: Poll due sources (failures are recorded, never fatal)
         continue-on-error: true
         run: python scripts/poll.py ${{ (github.event_name == 'workflow_dispatch' && inputs.all) && '--all' || '' }}
+      - name: Ingest real earthquake events (NSC table, USGS M4.5+ Nepal bbox), rebuild and render
+        continue-on-error: true
+        run: |
+          pip install -q lxml==5.3.0 shapely pillow segno
+          python scripts/ingest_quakes.py
+          python scripts/build.py && python scripts/render.py
       - name: Commit only on change
         continue-on-error: true
         run: |
           git config user.name "gati-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/raw data/source-health.json
+          git add data/raw data/source-health.json data/alerts data/alerts.json atom.xml feed.xml cap alerts stories lite
           if git diff --cached --quiet; then echo "No change, no commit."; exit 0; fi
           git commit -m "Poll sources: $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
           for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

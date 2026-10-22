@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.nsc-quake-1380-2026-09-15</identifier>
+  <sender>seismonepal.gov.np</sender>
+  <sent>2026-09-15T04:28:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Earthquake Monitoring and Research Center (NSC)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Geo</category>
+    <event>भूकम्प</event>
+    <responseType>None</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-09-15T04:28:00+05:45</effective>
+    <onset>2026-09-15T04:28:00+05:45</onset>
+    <expires>2026-09-16T04:28:00+05:45</expires>
+    <senderName>राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित</senderName>
+    <headline>भूकम्प: ४.२ ML, मुगु (NSC)</headline>
+    <description>राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-०९-१५ ०४:२८ NPT मा मुगु क्षेत्रमा ४.२ ML को भूकम्प गयो। केन्द्रबिन्दु: २९.५९°N, ८१.९६°E।</description>
+    <instruction>धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।</instruction>
+    <web>https://seismonepal.gov.np/ne</web>
+    <contact>NSC · https://seismonepal.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://seismonepal.gov.np/ne</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-09-15T04:28:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>earthquake</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>भूकम्प: ४.२ ML, मुगु (NSC)</value></parameter>
+    <parameter><valueName>gati:magnitude</valueName><value>4.2 ML</value></parameter>
+    <area>
+      <areaDesc>मुगु जिल्ला</areaDesc>
+      <circle>29.5900,81.9600 0</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0665</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Geo</category>
+    <event>Earthquake</event>
+    <responseType>None</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-09-15T04:28:00+05:45</effective>
+    <onset>2026-09-15T04:28:00+05:45</onset>
+    <expires>2026-09-16T04:28:00+05:45</expires>
+    <senderName>National Earthquake Monitoring and Research Center (NSC) · relayed by Gati</senderName>
+    <headline>Earthquake: 4.2 ML, Mugu (NSC)</headline>
+    <description>According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.2 ML occurred at 2026-09-15 04:28 NPT, Mugu. Epicentre: 29.59°N, 81.96°E.</description>
+    <instruction>If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.</instruction>
+    <web>https://seismonepal.gov.np/ne</web>
+    <contact>NSC · https://seismonepal.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://seismonepal.gov.np/ne</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-09-15T04:28:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>earthquake</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Earthquake: 4.2 ML, Mugu (NSC)</value></parameter>
+    <parameter><valueName>gati:magnitude</valueName><value>4.2 ML</value></parameter>
+    <area>
+      <areaDesc>Mugu district</areaDesc>
+      <circle>29.5900,81.9600 0</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0665</value></geocode>
+    </area>
+  </info>
+</alert>

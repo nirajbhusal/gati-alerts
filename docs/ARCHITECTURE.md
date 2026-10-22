@@ -76,3 +76,9 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 - Pages and data are network first with the last saved copy as fallback; assets are cache first. When offline, a banner shows the time of the last successful `data/alerts.json` load.
 - "My district" (`localStorage['gati-district']`, an NP-DISTRICT code) preselects the feed filter. It stays in the browser.
 - Web Push is not included (needs a server/Cloudflare Worker).
+
+## New hazards (item 11)
+
+- `data/hazards.json` lists hazard values. New: `earthquake`, `air-quality`, `epidemic`.
+- `scripts/ingest_quakes.py`: NSC event table (ML >= 4.0) and the USGS FDSN API (M4.5+, Nepal bbox 26.3..30.5 N, 80.0..88.3 E, last 90 days) become CAP files. Existing files are never overwritten. NSC and USGS figures are never merged. `ci/poll.yml` runs it once enabled.
+- Air quality (DoE) and epidemics (EDCD) have source entries and hazard values only; no item is published until a linkable official item can be fetched.

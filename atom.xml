@@ -3,7 +3,7 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-10-22T13:56:49+00:00</updated>
+  <updated>2026-10-22T14:10:28+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
@@ -111,6 +111,19 @@
     <link href="https://ndrrma.gov.np/np/pressnote/66" rel="via"/>
     <author>
       <name>ndrrma.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1381-2026-10-07</id>
+    <title>Earthquake: 4.1 ML, Bajura (NSC)</title>
+    <updated>2026-10-07T21:37:00+05:45</updated>
+    <published>2026-10-07T21:37:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-10-08T21:37:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1381-2026-10-07.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1381-2026-10-07/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
     </author>
   </entry>
   <entry>
@@ -293,6 +306,123 @@
     <link href="https://x.com/NDRRMA_Nepal/status/2104050743875653646" rel="via"/>
     <author>
       <name>ndrrma.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1380-2026-09-15</id>
+    <title>Earthquake: 4.2 ML, Mugu (NSC)</title>
+    <updated>2026-09-15T04:28:00+05:45</updated>
+    <published>2026-09-15T04:28:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-09-16T04:28:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1380-2026-09-15.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1380-2026-09-15/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1379-2026-09-15</id>
+    <title>Earthquake: 4.5 ML, Mugu (NSC)</title>
+    <updated>2026-09-15T01:51:00+05:45</updated>
+    <published>2026-09-15T01:51:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-09-16T01:51:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1379-2026-09-15.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1379-2026-09-15/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1377-2026-09-09</id>
+    <title>Earthquake: 4.0 ML, Mustang (NSC)</title>
+    <updated>2026-09-09T19:54:00+05:45</updated>
+    <published>2026-09-09T19:54:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-09-10T19:54:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1377-2026-09-09.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1377-2026-09-09/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1375-2026-09-08</id>
+    <title>Earthquake: 5.3 ML, Mustang (NSC)</title>
+    <updated>2026-09-08T21:53:34+05:45</updated>
+    <published>2026-09-08T21:53:34+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-09-09T21:53:34+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1375-2026-09-08.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1375-2026-09-08/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.usgs-quake-us7000tfur-2026-09-08</id>
+    <title>Earthquake: M4.9 (mb), 90 km NNE of Chitre, Nepal (USGS)</title>
+    <updated>2026-09-08T21:53:34+05:45</updated>
+    <published>2026-09-08T21:53:34+05:45</published>
+    <summary>[Official] Unknown · U.S. Geological Survey (USGS) · relayed by Gati · expires 2026-09-09T21:53:34+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.usgs-quake-us7000tfur-2026-09-08.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.usgs-quake-us7000tfur-2026-09-08/" rel="related" type="text/html"/>
+    <link href="https://earthquake.usgs.gov/earthquakes/eventpage/us7000tfur" rel="via"/>
+    <author>
+      <name>earthquake.usgs.gov</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.usgs-quake-us7000tbwb-2026-08-26</id>
+    <title>Earthquake: M5.2 (ms_vx), 55 km NW of Kodāri̇̄, Nepal (USGS)</title>
+    <updated>2026-08-26T08:37:10+05:45</updated>
+    <published>2026-08-26T08:37:10+05:45</published>
+    <summary>[Official] Unknown · U.S. Geological Survey (USGS) · relayed by Gati · expires 2026-08-27T08:37:10+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.usgs-quake-us7000tbwb-2026-08-26.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.usgs-quake-us7000tbwb-2026-08-26/" rel="related" type="text/html"/>
+    <link href="https://earthquake.usgs.gov/earthquakes/eventpage/us7000tbwb" rel="via"/>
+    <author>
+      <name>earthquake.usgs.gov</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1374-2026-08-18</id>
+    <title>Earthquake: 4.4 ML, Kaski (NSC)</title>
+    <updated>2026-08-18T01:44:00+05:45</updated>
+    <published>2026-08-18T01:44:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-08-19T01:44:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1374-2026-08-18.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1374-2026-08-18/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1368-2026-08-11</id>
+    <title>Earthquake: 4.1 ML, Jajarkot (NSC)</title>
+    <updated>2026-08-11T09:08:00+05:45</updated>
+    <published>2026-08-11T09:08:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-08-12T09:08:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1368-2026-08-11.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1368-2026-08-11/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1367-2026-08-02</id>
+    <title>Earthquake: 4.4 ML, Rolpa (NSC)</title>
+    <updated>2026-08-02T03:07:00+05:45</updated>
+    <published>2026-08-02T03:07:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-08-03T03:07:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1367-2026-08-02.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1367-2026-08-02/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
     </author>
   </entry>
 </feed>
