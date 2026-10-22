@@ -368,11 +368,10 @@
     const box = $("mydist"); if (!box) return;
     const cur = localStorage.getItem(MYD) || "", name = (d) => (ne() ? d.ne : d.en);
     const n = cur ? data.alerts.filter((a) => !a.expired && !a.supersededBy && a.districts.includes(cur)).length : 0;
-    box.innerHTML = `<label for="myd"><strong>📍 ${T("मेरो जिल्ला", "My district")}</strong></label>
-      <select id="myd"><option value="">${T("छान्नुहोस्", "Choose")}</option>${[...districts].sort((a, b) => name(a).localeCompare(name(b), G.lang))
-        .map((d) => `<option value="${d.code}"${d.code === cur ? " selected" : ""}>${G.esc(name(d))}</option>`).join("")}</select>
+    const dn = cur && DN[cur] ? name(DN[cur]) : "";
+    box.innerHTML = `<button type="button" class="dpick" id="myd">📍 ${T("मेरो जिल्ला", "My district")}: <b>${dn ? G.esc(dn) : T("छान्नुहोस्", "Choose")}</b> ▾</button>
       ${cur ? `<span class="meta">${n ? T(`${G.num(n)} चालु सूचना`, `${n} active`) : T("अहिले गतिमा चालु सूचना छैन; खतरा छैन भन्ने होइन", "No active item in Gati now; that does not mean no risk")}</span>` : `<span class="meta">${T("यो छनोट हजुरको ब्राउजरमा मात्र बस्छ।", "Saved in this browser only.")}</span>`}`;
-    $("myd").onchange = (ev) => { const v = ev.target.value; v ? localStorage.setItem(MYD, v) : localStorage.removeItem(MYD); sel.value = v; render(); myDistrict(); };
+    $("myd").onclick = () => G.district.open((v) => { sel.value = v; render(); myDistrict(); drawMap(); });
   }
   /* 'This week': active alerts plus the next 7 days from data/calendar.json (holidays, planned closures). */
   function thisWeek() {

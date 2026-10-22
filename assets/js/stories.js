@@ -25,7 +25,7 @@
     const areas = a.areas.map((x) => x[G.lang] || x.en).filter(Boolean).join(" · ");
     return `<div class="fbg"></div>
       <div class="fmain">
-        <div class="ftags">${G.sevChip(sev)}${status(a)}<span class="tag">${esc(i.event)}</span></div>
+        <div class="ftags">${G.sevChip(sev)}${status(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(i.event)}</span></div>
         <h2>${esc(i.headline)}</h2>
         ${i.instruction ? `<p class="fins"><strong>${act ? T("के गर्ने", "What to do") : T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${esc(i.instruction)}</p>` : ""}
       </div>
@@ -108,12 +108,18 @@
   /* Mouse wheel on desktop: one card per gesture. */
   let lock = 0;
   feed.addEventListener("wheel", (e) => { if (Math.abs(e.deltaY) < 4) return; e.preventDefault(); const n = Date.now(); if (n - lock < 600) return; lock = n; go(e.deltaY > 0 ? 1 : -1); }, { passive: false });
+  const dp = document.getElementById("fdist");
+  const dpDraw = () => { const c = G.district.get(); (c ? G.district.name(c) : Promise.resolve("")).then((n) => (dp.innerHTML = `📍 <b>${n ? esc(n) : T("मेरो जिल्ला", "My district")}</b> ▾`)); };
+  dp.onclick = () => G.district.open(() => location.reload());
+  dpDraw(); G.onLang(dpDraw);
   G.json("data/alerts.json").then((d) => {
     by = Object.fromEntries(d.alerts.map((a) => [a.identifier, a]));
     const cut = Date.now() - 30 * 864e5;
     const act = d.alerts.filter(isActive).sort((x, y) => SR[x.severity] - SR[y.severity] || (y.sent > x.sent ? 1 : -1));
     const old = d.alerts.filter((a) => !isActive(a) && Date.parse(a.sent) >= cut).sort((x, y) => (y.sent > x.sent ? 1 : -1));
-    items = act.concat(old); draw();
+    const my = G.district ? G.district.get() : "";
+    const mine = (a) => my && a.districts.includes(my);
+    items = act.filter(mine).concat(act.filter((a) => !mine(a)), old.filter(mine), old.filter((a) => !mine(a))); draw();
   }).catch(() => { items = []; draw(); });
   G.onLang(draw);
   draw();
