@@ -12,16 +12,21 @@
   G.theme = pref("gati-theme", matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   document.documentElement.dataset.theme = G.theme;
 
+  /* Item 18: desktop nav; Map, Rivers and Roads are sections of the dashboard. */
   const NAV = [
-    ["home", "", "गृहपृष्ठ", "Home"],
-    ["nepal-now", "#nepal-now", "नेपाल अहिले", "Nepal Now"],
+    ["home", "#hfeed", "सूचना", "Alerts"],
+    ["map", "#hmap", "नक्सा", "Map"],
+    ["rivers", "#hriv", "नदी", "Rivers"],
+    ["roads", "#roads", "सडक", "Roads"],
     ["stories", "stories/", "कथा", "Stories"],
-    ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"],
-    ["reports", "reports/", "नागरिक रिपोर्ट", "Reports"],
+    ["patro", "patro/", "पात्रो", "Patro"],
+    ["ask", "ask/", "सोध्नुहोस्", "Ask"],
     ["sources", "sources/", "स्रोत", "Sources"],
     ["about", "about/", "बारेमा", "About"],
-    ["contact", "contact/", "सम्पर्क", "Contact"],
   ];
+  /* Mobile bottom bar */
+  const TABS = [["home", "?view=dashboard#hfeed", "⚠", "सूचना", "Alerts"], ["stories", "stories/", "▶", "कथा", "Stories"],
+                ["patro", "patro/", "📅", "पात्रो", "Patro"], ["ask", "ask/", "?", "सोध्नुहोस्", "Ask"]];
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;
   const header = document.createElement("header");
@@ -52,8 +57,15 @@
     <div>${b("गति एउटा स्वतन्त्र नागरिक परियोजना हो, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",
              "Gati is an independent citizen project, not an official system of any government agency. Maintainer: Niraj Bhusal.")}
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
+      · <a href="${ROOT}report/">${b("रिपोर्ट गर्नुहोस्", "Report")}</a> · <a href="${ROOT}reports/">${b("नागरिक रिपोर्ट", "Reports")}</a>
+      · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}lite/">Lite</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
       · <a href="${ROOT}atom.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
       · <a href="https://github.com/nirajbhusal/gati-alerts">GitHub</a></div></div>`;
+  const tabs = document.createElement("nav");
+  tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
+  tabs.innerHTML = TABS.map(([id, href, ic, ne, en]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}><span aria-hidden="true">${ic}</span>${b(ne, en)}</a>`).join("");
+  document.body.classList.add("has-tabbar");
+  document.body.append(tabs);
   document.body.prepend(disc);
   document.body.prepend(header);
   document.body.append(footer);

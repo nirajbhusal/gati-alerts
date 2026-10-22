@@ -279,3 +279,9 @@ html[data-theme=dark] .pday,html[data-theme=dark] .pwrow{background:#14283d;colo
 .demobar{position:sticky;top:0;z-index:1000;background:#F5C518;border-top:6px solid;border-bottom:6px solid;border-image:repeating-linear-gradient(45deg,#F5C518 0 10px,#14202B 10px 20px) 6;color:#14202B;padding:6px 12px;font-size:.9rem;text-align:center}
 .demobar>*{background:#F5C518}.demobar strong{background:#14202B;color:#F5C518;padding:1px 8px;border-radius:4px;margin-right:6px}.demobar a{color:#14202B;font-weight:600;margin-left:6px}
 .trust.t-Demo{background:#F5C518;color:#14202B}
+/* Navigation (item 18) */
+.tabbar{display:none}
+@media(max-width:720px){.tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:900;background:var(--navy);border-top:1px solid #2C4A6B;padding-bottom:env(safe-area-inset-bottom)}
+.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:0;padding:6px 2px 7px;color:#dfe9f2;text-decoration:none;font-size:.78rem;line-height:1.2;min-height:52px}
+.tabbar a span[aria-hidden]{font-size:1.15rem}.tabbar a[aria-current=page]{color:#fff;box-shadow:inset 0 3px 0 var(--glacier)}
+body.has-tabbar{padding-bottom:62px}.storypage .stage{height:calc(100dvh - 70px - 62px)}}

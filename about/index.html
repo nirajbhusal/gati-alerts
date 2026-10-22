@@ -1,4 +1,4 @@
-<!doctype html><html lang="ne"><head><title>बारेमा · About — गति Gati</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ne"><head><title>बारेमा · About · गति Gati</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0E2A47">
 <link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -12,6 +12,19 @@
 <div class="card"><h2 style="margin-top:0"><span class="ne-only">कानुनी स्थिति</span><span class="en-only">Legal position</span></h2>
 <p class="ne-only">विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४ अनुसार पूर्वसूचना र चेतावनी दिने काम तोकिएका निकाय (जस्तै DHM, NDRRMA, स्थानीय प्रशासन) को हो। <strong>गतिले कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले ती निकायकै सूचना मूल स्रोत, समय र भरोसा चिह्नसहित <em>फैलाउने र जाँच्ने</em> काम मात्र गर्छ। हरेक CAP सन्देशमा <code>sender</code> मूल निकाय नै हो; गतिको नाम "सूचना फैलाउने" भनेर <code>note</code> मा मात्र लेखिन्छ। गति कुनै सरकारी निकायको आधिकारिक प्रणाली होइन।</p>
 <p class="en-only">Under the Disaster Risk Reduction and Management Act 2074 (2017), issuing early warnings is the job of the mandated agencies (such as DHM, NDRRMA and local administration). <strong>Gati never issues official warnings.</strong> It only <em>relays and verifies</em> their notices with the original source, time and a trust label. In every CAP message the <code>sender</code> is the original agency; Gati appears only as the relay in <code>note</code>. Gati is not an official system of any government agency.</p></div>
+<h2 id="layers"><span class="ne-only">गति कसरी बनेको छ: पाँच तह</span><span class="en-only">How Gati works: five layers</span></h2>
+<ol class="ne-only">
+<li><strong>स्रोत:</strong> तोकिएका सरकारी निकाय (DHM, NDRRMA, NEOC, नेपाल प्रहरी, NSC) का सार्वजनिक सूचना। सूची र तिनको अवस्था <a href="../sources/">स्रोत</a> पृष्ठमा छ।</li>
+<li><strong>सङ्कलन:</strong> स्क्रिप्टले स्रोत नियमित रूपमा जाँच्छन्, कच्चा प्रति सुरक्षित राख्छन्, र बदलिएमा मात्र नयाँ प्रति थप्छन्।</li>
+<li><strong>मानकीकरण:</strong> हरेक सूचना नेपाली र अङ्ग्रेजीमा CAP 1.2 सन्देश बन्छ, मूल निकाय <code>sender</code> मै रहन्छ, स्रोत लिङ्क, स्रोतको समय र भरोसा चिह्नसहित; XSD र गतिको नियमले जाँचिन्छ। फरक निकायका तथ्याङ्क जोडिँदैनन्।</li>
+<li><strong>प्रकाशन:</strong> स्थिर साइट, Atom/CAP फिड, JSON, स्थायी लिङ्क, सेयर र कथा तस्बिर, Lite पृष्ठ र पात्रो (.ics)। म्याद सकिएका सूचना अभिलेखमै रहन्छन्।</li>
+<li><strong>सहभागिता:</strong> कथा, पात्रो, मेरो जिल्ला, सेयर बटन, इम्बेड, नागरिक रिपोर्ट (पुष्टि नभएसम्म "रिपोर्ट गरिएको") र आउँदै गरेको "सोध्नुहोस्"।</li></ol>
+<ol class="en-only">
+<li><strong>Sources:</strong> public notices from the mandated agencies (DHM, NDRRMA, NEOC, Nepal Police, NSC). The list and its health are on the <a href="../sources/">Sources</a> page.</li>
+<li><strong>Ingest:</strong> scripts poll each source on a schedule, keep raw snapshots and commit only when something changed.</li>
+<li><strong>Normalise:</strong> every notice becomes a CAP 1.2 message in Nepali and English, with the original agency as <code>sender</code>, the source link, source time and a trust label, validated against the XSD and the Gati profile. Counts from different agencies are never added together.</li>
+<li><strong>Publish:</strong> a static site, Atom/CAP feeds, JSON, permalinks, share and story images, the Lite page and the Patro (.ics). Expired notices stay in the archive.</li>
+<li><strong>Engage:</strong> Stories, Patro, My district, share buttons, the embed widget, citizen reports (shown as Reported until checked) and the coming Ask page.</li></ol>
 <h2 id="trust"><span class="ne-only">भरोसा चिह्न</span><span class="en-only">Trust labels</span></h2>
 <table><tbody>
 <tr><td><span class="trust t-Official">🛡 <span class="ne-only">आधिकारिक</span><span class="en-only">Official</span></span></td><td><span class="ne-only">जिम्मेवार सरकारी निकायले नै जारी गरेको; मूल लिङ्कसहित।</span><span class="en-only">Issued by a mandated government agency; original link attached.</span></td></tr>
@@ -25,7 +38,7 @@
 <p><span class="sev sev-Extreme">⬢ <span class="ne-only">अत्यन्त गम्भीर</span><span class="en-only">Extreme</span></span> <span class="sev sev-Severe">▲ <span class="ne-only">गम्भीर</span><span class="en-only">Severe</span></span> <span class="sev sev-Moderate">◆ <span class="ne-only">मध्यम</span><span class="en-only">Moderate</span></span> <span class="sev sev-Minor">● <span class="ne-only">सामान्य</span><span class="en-only">Minor</span></span> <span class="sev sev-Unknown">ℹ <span class="ne-only">सूचना</span><span class="en-only">Info</span></span></p>
 <p class="meta"><span class="ne-only">रङ CAP को <code>severity</code> अनुसार राखिएको हो, र सधैँ शब्द र चिह्नसँगै आउँछ। भरोसा चिह्न छुट्टै हुन्छ।</span><span class="en-only">Colours follow CAP <code>severity</code> and always appear with a word and an icon. Trust is a separate badge.</span></p>
 <h2><span class="ne-only">हाम्रा नियम</span><span class="en-only">Editorial rules</span></h2>
-<ul class="ne-only"><li>जाँचिएका सूचना मात्र, मूल स्रोत र समयसहित।</li><li>लेख, तालिका र नक्सा मात्र — स्क्रिनसट होइन।</li><li>फरक निकायका तथ्याङ्क कहिल्यै जोडिँदैनन्।</li><li>म्याद सकिएका सूचना मेटिँदैनन्; "म्याद सकियो" लेखेर पुरानो सूचीमा राखिन्छन्।</li></ul>
+<ul class="ne-only"><li>जाँचिएका सूचना मात्र, मूल स्रोत र समयसहित।</li><li>लेख, तालिका र नक्सा मात्र, स्क्रिनसट होइन।</li><li>फरक निकायका तथ्याङ्क कहिल्यै जोडिँदैनन्।</li><li>म्याद सकिएका सूचना मेटिँदैनन्; "म्याद सकियो" लेखेर पुरानो सूचीमा राखिन्छन्।</li></ul>
 <ul class="en-only"><li>Verified information only, with original source and time.</li><li>Text, tables and maps only, no screenshots.</li><li>Counts from different agencies are never added together.</li><li>Expired notices stay in the archive, marked "Expired".</li></ul>
 <p><span class="ne-only">गति <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">रसुवा–भोटेकोशी बाढी, सडक र मौसम बुलेटिन</a> कै अर्को चरण हो। अहिलेका सूचना त्यही बुलेटिनको जाँचिएको डेटाबाट लिइएका हुन्।</span>
 <span class="en-only">Gati is the next step after the <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">Rasuwa–Bhotekoshi flood, road and weather bulletin</a>. The current items come from that bulletin's verified data.</span></p>
