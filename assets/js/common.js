@@ -18,14 +18,14 @@
     ["map", "#hmap", "नक्सा", "Map"],
     ["rivers", "#hriv", "नदी", "Rivers"],
     ["roads", "#roads", "सडक", "Roads"],
-    ["stories", "stories/", "कथा", "Stories"],
+    ["stories", "stories/", "सूचना फिड", "Feed"],
     ["patro", "patro/", "पात्रो", "Patro"],
     ["ask", "ask/", "सोध्नुहोस्", "Ask"],
     ["sources", "sources/", "स्रोत", "Sources"],
     ["about", "about/", "बारेमा", "About"],
   ];
   /* Mobile bottom bar */
-  const TABS = [["home", "?view=dashboard#hfeed", "⚠", "सूचना", "Alerts"], ["stories", "stories/", "▶", "कथा", "Stories"],
+  const TABS = [["home", "?view=dashboard#hfeed", "⚠", "सूचना", "Alerts"], ["stories", "stories/", "▶", "सूचना फिड", "Feed"],
                 ["patro", "patro/", "📅", "पात्रो", "Patro"], ["ask", "ask/", "?", "सोध्नुहोस्", "Ask"]];
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;

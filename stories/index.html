@@ -1,21 +1,19 @@
 <!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>कथा · Stories · गति Gati</title>
-<meta name="description" content="गतिका चालु सूचना, एक एक गरी पूरा पर्दामा। Gati active alerts as full-screen swipeable cards. Relayed, not official warnings.">
+<title>सूचना फिड · Feed · गति Gati</title>
+<meta name="description" content="गतिको सूचना फिड: चालु र हालका सूचना, एक पर्दामा एउटा, स्रोतसहित। Gati Feed: active and recent alerts, one per screen, with source. Relayed, not official warnings.">
+<link rel="canonical" href="https://nirajbhusal.github.io/gati-alerts/stories/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Gati">
+<meta property="og:title" content="सूचना फिड · Feed · गति Gati"><meta property="og:description" content="चालु र हालका सूचना, स्रोतसहित। Active and recent alerts with source. Relayed by Gati, not official warnings.">
+<meta property="og:url" content="https://nirajbhusal.github.io/gati-alerts/stories/"><meta property="og:image" content="https://nirajbhusal.github.io/gati-alerts/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="सूचना फिड · Feed · गति Gati">
 <meta name="theme-color" content="#0E2A47">
 <link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css">
 </head><body data-page="stories" data-root="../" class="storypage">
-<main id="main" class="stwrap">
-  <div class="stage" id="stage" aria-roledescription="carousel" aria-live="polite">
-    <div class="sbars" id="sbars" aria-hidden="true"></div>
-    <div class="stools">
-      <button type="button" class="stbtn" id="stpause" aria-pressed="false"></button>
-      <a class="stbtn" id="stdash" href="../?view=dashboard"></a>
-    </div>
-    <div id="slides"></div>
-    <button type="button" class="stnav prev" id="stprev"></button>
-    <button type="button" class="stnav next" id="stnext"></button>
-  </div>
+<main id="main" class="feedwrap">
+  <div class="ftop"><strong><span class="ne-only">सूचना फिड</span><span class="en-only">Feed</span></strong><a class="stbtn" id="stdash" href="../?view=dashboard"></a></div>
+  <div class="feed" id="feed" tabindex="0" aria-label="Feed"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" hidden><div class="sheetin"><button type="button" class="pclose" id="sheetx">✕</button><div id="sheetbody"></div></div></div>
   <noscript><p class="wrap">JavaScript चाहिन्छ। <a href="../lite/">Lite</a></p></noscript>
 </main>
 <script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/stories.js"></script></body></html>

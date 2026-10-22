@@ -1,6 +1,6 @@
 <!doctype html><html lang="ne"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>/* Item 14: on phones, first visit opens /stories/; the choice is remembered (gati-view). */
+<script>/* Item 14: on phones, first visit opens the Feed (/stories/); the choice is remembered (gati-view). */
 (function(){try{var q=new URLSearchParams(location.search),v=localStorage.getItem("gati-view");
 if(q.get("view")==="dashboard"){localStorage.setItem("gati-view","dashboard");return;}
 if(matchMedia("(max-width:720px)").matches&&v!=="dashboard"&&!q.has("demo")){location.replace("stories/"+location.search);}}catch(e){}})();</script>
