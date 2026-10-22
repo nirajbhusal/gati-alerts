@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.reported-dhm-3day-forecast-2026-10-22</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-22T09:20:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://ukeraa.com/news/detail/181196/</note>
+  <info>
+    <language>ne</language>
+    <category>Met</category>
+    <event>मौसम पूर्वानुमान</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-22T09:20:00+05:45</effective>
+    <expires>2026-10-25T00:00:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित</senderName>
+    <headline>कात्तिक ५–७: अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात</headline>
+    <description>रिपोर्ट गरिएको (उकेरा र खबर सेन्टर, दुवैले DHM मौसम पूर्वानुमान महाशाखाको तीन दिने पूर्वानुमान उद्धृत गरेका): हिमाली र पहाडी भेगमा आंशिक बदली, तराईमा मुख्यतया सफा। बिहीबार र शनिबार कोशी र गण्डकीका हिमाली (शनिबार पहाडी पनि) भागमा, शुक्रबार कोशी, गण्डकी र कर्णालीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात। बिहानीपख तराईमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।</description>
+    <instruction>हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।</instruction>
+    <web>https://ukeraa.com/news/detail/181196/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://ukeraa.com/news/detail/181196/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-22T09:20:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://ukeraa.com/news/detail/181196/</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://hmteiadmin.khabarcenter.com/content/87031</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Weather forecast</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-22T09:20:00+05:45</effective>
+    <expires>2026-10-25T00:00:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM) — relayed by Gati</senderName>
+    <headline>22–24 Oct: mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains</headline>
+    <description>Reported (Ukeraa and Khabar Center, both citing the DHM Meteorological Forecasting Division's three-day forecast): partly cloudy in the hills and mountains, mainly fair in the Terai. Light rain or snow at one or two places in the Koshi and Gandaki mountains on Thursday and Saturday (hills too on Saturday), and in the Koshi, Gandaki and Karnali mountains on Friday. Morning mist or fog in parts of the Terai. No warning is mentioned.</description>
+    <instruction>If travelling in the mountains, check DHM's latest forecast.</instruction>
+    <web>https://ukeraa.com/news/detail/181196/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://ukeraa.com/news/detail/181196/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-22T09:20:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://ukeraa.com/news/detail/181196/</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://hmteiadmin.khabarcenter.com/content/87031</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

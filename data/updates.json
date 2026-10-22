@@ -1,6 +1,39 @@
-{"updates": [
- {"date": "2026-10-22", "ne": "गृहपृष्ठ अब दृश्य ड्यासबोर्ड: ठूलो नक्सा (खतराअनुसार रङ, सडकको अवस्था), मुख्य अङ्क, र चार्टहरू। फन्ट र नक्सा कोड अब यही साइटबाट आउँछ।", "en": "Homepage is now a visual dashboard: a large map (coloured by severity, with road status), key numbers and charts. Fonts and map code are now served from this site."},
- {"date": "2026-10-22", "ne": "रसुवा–भोटेकोशी बुलेटिनबाट असोज २६–२७ का ३ नयाँ जाँचिएका सूचना थपिए: BIPAD को बुढीगण्डकी क्षति विवरण, DHM को तल्लो तटीय नदी सतह, र त्रिभुवन राजपथ एकतर्फी (रिपोर्ट गरिएको, दुई समाचार माध्यम)। सडकको अवस्था असोज २७ दिउँसो १२:४५ सम्मको।", "en": "Added 3 newly verified items from the Rasuwa–Bhotekoshi bulletin (12–13 Oct): BIPAD's Budhi Gandaki damage record, DHM downstream river levels, and Tribhuvan Rajpath one-way (reported, two outlets). Road status is as of 12:45 PM, 13 Oct."},
- {"date": "2026-10-22", "ne": "नागरिक रिपोर्ट पेजमा अब मोडेरेटरले जाँचेका रिपोर्ट मात्र देखिन्छन्; जाँच्न बाँकीको सङ्ख्या मात्र देखाइन्छ।", "en": "The citizen reports page now lists only moderator-verified reports, plus a count of reports still pending."},
- {"date": "2026-10-22", "ne": "नयाँ नारा: सही सूचना, समयमै। सबै नेपाली पाठ सजिलो बनाइयो।", "en": "New tagline: The right alert, right on time. All Nepali text made plainer."}
-]}
+{
+ "updates": [
+  {
+   "date": "2026-10-22",
+   "ne": "नक्सा नयाँ: सडकको वास्तविक बाटो, हल्का पृष्ठभूमि (बाहिरी टाइल सर्भर छैन), खतराअनुसार ठूला चिह्न, सहर र नदीको नाम, सूचना/सडक/नदी छान्ने बटन, थिच्दा सार कार्ड, र डेस्कटपमा छेउमा सडकको सूची।",
+   "en": "New map: real road paths, a light basemap (no outside tile server), bigger hazard icons, town and river labels, Alerts/Roads/Rivers toggles, a summary card on tap, and a road list beside the map on desktop."
+  },
+  {
+   "date": "2026-10-22",
+   "ne": "नयाँ: 'आज एक नजरमा' कार्ड र नदीको सतह (चेतावनी/खतरा तहसँग तुलना) बार। चार्टहरू ठूला र पढ्न सजिला।",
+   "en": "New: a 'Today at a glance' card and river-level bars against warning and danger levels. Charts are bigger and easier to read."
+  },
+  {
+   "date": "2026-10-22",
+   "ne": "ताजा डेटा: नेपाल प्रहरीको कात्तिक ४ को सडक अवरोध सूचना (आरुघाट सोती पुल), DHM का पाँच नदी मापन केन्द्र (अक्टोबर २१), र कात्तिक ५–७ को मौसम पूर्वानुमान (रिपोर्ट गरिएको)। १७ मुख्य सडकको अवस्था आज जाँचियो।",
+   "en": "Fresh data: Nepal Police road-blockage notice of Kartik 4 (Aarughat Soti bridge), five DHM river gauges (21 Oct), and the 22–24 Oct weather forecast (reported). The 17 main roads were rechecked today."
+  },
+  {
+   "date": "2026-10-22",
+   "ne": "गृहपृष्ठ अब दृश्य ड्यासबोर्ड: ठूलो नक्सा (खतराअनुसार रङ, सडकको अवस्था), मुख्य अङ्क, र चार्टहरू। फन्ट र नक्सा कोड अब यही साइटबाट आउँछ।",
+   "en": "Homepage is now a visual dashboard: a large map (coloured by severity, with road status), key numbers and charts. Fonts and map code are now served from this site."
+  },
+  {
+   "date": "2026-10-22",
+   "ne": "रसुवा–भोटेकोशी बुलेटिनबाट असोज २६–२७ का ३ नयाँ जाँचिएका सूचना थपिए: BIPAD को बुढीगण्डकी क्षति विवरण, DHM को तल्लो तटीय नदी सतह, र त्रिभुवन राजपथ एकतर्फी (रिपोर्ट गरिएको, दुई समाचार माध्यम)। सडकको अवस्था असोज २७ दिउँसो १२:४५ सम्मको।",
+   "en": "Added 3 newly verified items from the Rasuwa–Bhotekoshi bulletin (12–13 Oct): BIPAD's Budhi Gandaki damage record, DHM downstream river levels, and Tribhuvan Rajpath one-way (reported, two outlets). Road status is as of 12:45 PM, 13 Oct."
+  },
+  {
+   "date": "2026-10-22",
+   "ne": "नागरिक रिपोर्ट पेजमा अब मोडेरेटरले जाँचेका रिपोर्ट मात्र देखिन्छन्; जाँच्न बाँकीको सङ्ख्या मात्र देखाइन्छ।",
+   "en": "The citizen reports page now lists only moderator-verified reports, plus a count of reports still pending."
+  },
+  {
+   "date": "2026-10-22",
+   "ne": "नयाँ नारा: सही सूचना, समयमै। सबै नेपाली पाठ सजिलो बनाइयो।",
+   "en": "New tagline: The right alert, right on time. All Nepali text made plainer."
+  }
+ ]
+}

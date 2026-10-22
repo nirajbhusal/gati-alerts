@@ -51,7 +51,7 @@ def area_xml(a, lang):
 def info_xml(it, lang):
     ag = AG[it["agency"]]
     p = {"gati:trustLevel": it["trust"], "gati:sourceUrl": it["source"], "gati:sourceTime": it["sent"],
-         "gati:hazard": it["hazard"], "gati:bulletinFile": BUL + it["file"]}
+         "gati:hazard": it["hazard"], "gati:bulletinFile": it["file"] if it["file"].startswith("http") else BUL + it["file"]}
     if it.get("source2"):
         p["gati:sourceUrl2"] = it["source2"]
     if it.get("correction_en"):

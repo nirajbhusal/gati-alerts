@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-river-levels-2026-10-21</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-21T00:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/</note>
+  <info>
+    <language>ne</language>
+    <category>Met</category>
+    <event>नदीको सतह — चेतावनी तहमुनि</event>
+    <responseType>Monitor</responseType>
+    <urgency>Unknown</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-21T00:00:00+05:45</effective>
+    <expires>2026-10-22T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित</senderName>
+    <headline>मुख्य पाँच नदी मापन केन्द्र चेतावनी तहभन्दा तल (DHM, अक्टोबर २१)</headline>
+    <description>DHM गृहपृष्ठको जल निगरानी, २१ अक्टोबर (पढाइको समय नखुलेको): नारायणी · देवघाट ३.७ मि. (चेतावनी ७.३, खतरा ९.०); कर्णाली · चिसापानी ४.८ (१०.० / १०.८); कन्काई · मैनाचुली २.५ (३.८ / ४.३); बबई · चेपाङ २.२ (५.५ / ६.८); महाकाली · परिगाउँ ३.९ (६.८ / ८.०)।</description>
+    <web>https://www.dhm.gov.np/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.dhm.gov.np/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-21T00:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://www.dhm.gov.np/</value></parameter>
+    <area>
+      <areaDesc>नारायणी · देवघाट मापन केन्द्र</areaDesc>
+      <circle>27.71,84.43 3</circle>
+    </area>
+    <area>
+      <areaDesc>कर्णाली · चिसापानी मापन केन्द्र</areaDesc>
+      <circle>28.65,81.29 3</circle>
+    </area>
+    <area>
+      <areaDesc>कन्काई · मैनाचुली मापन केन्द्र</areaDesc>
+      <circle>26.71,87.88 3</circle>
+    </area>
+    <area>
+      <areaDesc>बबई · चेपाङ मापन केन्द्र</areaDesc>
+      <circle>28.36,81.71 3</circle>
+    </area>
+    <area>
+      <areaDesc>महाकाली · परिगाउँ मापन केन्द्र</areaDesc>
+      <circle>29.17,80.26 3</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>River level — below warning level</event>
+    <responseType>Monitor</responseType>
+    <urgency>Unknown</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-21T00:00:00+05:45</effective>
+    <expires>2026-10-22T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM) — relayed by Gati</senderName>
+    <headline>Five main river gauges below warning level (DHM, 21 Oct)</headline>
+    <description>DHM homepage, Hydrology Monitoring, 21 Oct 2026 (reading time not shown): Narayani at Devghat 3.7 m (warning 7.3, danger 9.0); Karnali at Chisapani 4.8 (10.0 / 10.8); Kankai at Mainachuli 2.5 (3.8 / 4.3); Babai at Chepang 2.2 (5.5 / 6.8); Mahakali at Parigaon 3.9 (6.8 / 8.0).</description>
+    <web>https://www.dhm.gov.np/</web>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.dhm.gov.np/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-21T00:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://www.dhm.gov.np/</value></parameter>
+    <area>
+      <areaDesc>Narayani at Devghat gauge</areaDesc>
+      <circle>27.71,84.43 3</circle>
+    </area>
+    <area>
+      <areaDesc>Karnali at Chisapani gauge</areaDesc>
+      <circle>28.65,81.29 3</circle>
+    </area>
+    <area>
+      <areaDesc>Kankai at Mainachuli gauge</areaDesc>
+      <circle>26.71,87.88 3</circle>
+    </area>
+    <area>
+      <areaDesc>Babai at Chepang gauge</areaDesc>
+      <circle>28.36,81.71 3</circle>
+    </area>
+    <area>
+      <areaDesc>Mahakali at Parigaon gauge</areaDesc>
+      <circle>29.17,80.26 3</circle>
+    </area>
+  </info>
+</alert>

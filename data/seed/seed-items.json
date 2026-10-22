@@ -531,5 +531,118 @@
     "dhading"
    ]
   }
+ },
+ {
+  "id": "police-road-aarughat-soti-2026-10-21",
+  "agency": "POLICE",
+  "file": "https://www.nepalpolice.gov.np/notices/1141/",
+  "trust": "Official",
+  "hazard": "road",
+  "category": "Transport",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "response": "Avoid",
+  "sent": "2026-10-21T18:00:00+05:45",
+  "expires": "2026-10-22T18:00:00+05:45",
+  "source": "https://www.nepalpolice.gov.np/notices/1141/",
+  "event_ne": "सडक अवस्था",
+  "event_en": "Road status",
+  "head_ne": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+  "head_en": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+  "desc_ne": "नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।०४ (कात्तिक ४) साँझ ६ बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो पूर्ण रूपमा अवरुद्ध। देशभरको सूचीमा यही एउटा मात्र अवरोध छ।",
+  "desc_en": "Nepal Police notice 'Road blockages', to 6 PM on 2083-07-04 (Kartik 4, 21 Oct 2026): the iron motorable bridge at Soti linking Aarughat-2 and 3 was swept away by the Budhi Gandaki flood of Asoj 25 (11 Oct), and the road is fully blocked. This is the only blockage on the nationwide list.",
+  "instr_ne": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्।",
+  "instr_en": "Do not use this road; check with local police before travelling.",
+  "area": {
+   "districts": [
+    "gorkha"
+   ],
+   "circles": [
+    {
+     "ne": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+     "en": "Soti, Aarughat-2/3 (approximate location)",
+     "circle": "28.05,84.81 3"
+    }
+   ]
+  }
+ },
+ {
+  "id": "dhm-river-levels-2026-10-21",
+  "agency": "DHM",
+  "file": "https://www.dhm.gov.np/",
+  "trust": "Official",
+  "hazard": "flood",
+  "category": "Met",
+  "urgency": "Unknown",
+  "severity": "Unknown",
+  "certainty": "Observed",
+  "response": "Monitor",
+  "sent": "2026-10-21T00:00:00+05:45",
+  "expires": "2026-10-22T23:59:00+05:45",
+  "source": "https://www.dhm.gov.np/",
+  "event_ne": "नदीको सतह — चेतावनी तहमुनि",
+  "event_en": "River level — below warning level",
+  "head_ne": "मुख्य पाँच नदी मापन केन्द्र चेतावनी तहभन्दा तल (DHM, अक्टोबर २१)",
+  "head_en": "Five main river gauges below warning level (DHM, 21 Oct)",
+  "desc_ne": "DHM गृहपृष्ठको जल निगरानी, २१ अक्टोबर (पढाइको समय नखुलेको): नारायणी · देवघाट ३.७ मि. (चेतावनी ७.३, खतरा ९.०); कर्णाली · चिसापानी ४.८ (१०.० / १०.८); कन्काई · मैनाचुली २.५ (३.८ / ४.३); बबई · चेपाङ २.२ (५.५ / ६.८); महाकाली · परिगाउँ ३.९ (६.८ / ८.०)।",
+  "desc_en": "DHM homepage, Hydrology Monitoring, 21 Oct 2026 (reading time not shown): Narayani at Devghat 3.7 m (warning 7.3, danger 9.0); Karnali at Chisapani 4.8 (10.0 / 10.8); Kankai at Mainachuli 2.5 (3.8 / 4.3); Babai at Chepang 2.2 (5.5 / 6.8); Mahakali at Parigaon 3.9 (6.8 / 8.0).",
+  "area": {
+   "districts": [],
+   "circles": [
+    {
+     "ne": "नारायणी · देवघाट मापन केन्द्र",
+     "en": "Narayani at Devghat gauge",
+     "circle": "27.71,84.43 3"
+    },
+    {
+     "ne": "कर्णाली · चिसापानी मापन केन्द्र",
+     "en": "Karnali at Chisapani gauge",
+     "circle": "28.65,81.29 3"
+    },
+    {
+     "ne": "कन्काई · मैनाचुली मापन केन्द्र",
+     "en": "Kankai at Mainachuli gauge",
+     "circle": "26.71,87.88 3"
+    },
+    {
+     "ne": "बबई · चेपाङ मापन केन्द्र",
+     "en": "Babai at Chepang gauge",
+     "circle": "28.36,81.71 3"
+    },
+    {
+     "ne": "महाकाली · परिगाउँ मापन केन्द्र",
+     "en": "Mahakali at Parigaon gauge",
+     "circle": "29.17,80.26 3"
+    }
+   ]
+  }
+ },
+ {
+  "id": "reported-dhm-3day-forecast-2026-10-22",
+  "agency": "DHM",
+  "file": "https://ukeraa.com/news/detail/181196/",
+  "trust": "Reported",
+  "hazard": "weather",
+  "category": "Met",
+  "urgency": "Future",
+  "severity": "Unknown",
+  "certainty": "Likely",
+  "response": "Monitor",
+  "sent": "2026-10-22T09:20:00+05:45",
+  "expires": "2026-10-25T00:00:00+05:45",
+  "source": "https://ukeraa.com/news/detail/181196/",
+  "source2": "https://hmteiadmin.khabarcenter.com/content/87031",
+  "event_ne": "मौसम पूर्वानुमान",
+  "event_en": "Weather forecast",
+  "head_ne": "कात्तिक ५–७: अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात",
+  "head_en": "22–24 Oct: mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains",
+  "desc_ne": "रिपोर्ट गरिएको (उकेरा र खबर सेन्टर, दुवैले DHM मौसम पूर्वानुमान महाशाखाको तीन दिने पूर्वानुमान उद्धृत गरेका): हिमाली र पहाडी भेगमा आंशिक बदली, तराईमा मुख्यतया सफा। बिहीबार र शनिबार कोशी र गण्डकीका हिमाली (शनिबार पहाडी पनि) भागमा, शुक्रबार कोशी, गण्डकी र कर्णालीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात। बिहानीपख तराईमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।",
+  "desc_en": "Reported (Ukeraa and Khabar Center, both citing the DHM Meteorological Forecasting Division's three-day forecast): partly cloudy in the hills and mountains, mainly fair in the Terai. Light rain or snow at one or two places in the Koshi and Gandaki mountains on Thursday and Saturday (hills too on Saturday), and in the Koshi, Gandaki and Karnali mountains on Friday. Morning mist or fog in parts of the Terai. No warning is mentioned.",
+  "instr_ne": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।",
+  "instr_en": "If travelling in the mountains, check DHM's latest forecast.",
+  "area": {
+   "national": true
+  }
  }
 ]

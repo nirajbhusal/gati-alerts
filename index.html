@@ -17,27 +17,37 @@
 <main id="main" class="wrap dash">
   <p class="tagline"><span class="ne-only">सही सूचना, समयमै।</span><span class="en-only">The right alert, right on time.</span></p>
   <h1><span class="ne-only">गति अलर्ट्स — सूचना ड्यासबोर्ड</span><span class="en-only">Gati Alerts — dashboard</span></h1>
+  <p class="lead"><span class="ne-only">सरकारी निकायका जाँचिएका सूचना एकै ठाउँमा: नक्सा, आजको सार, नदी, सडक र चार्ट। हरेक सूचनामा मूल स्रोतको लिङ्क र भरोसा चिह्न छ।</span><span class="en-only">Verified notices from government agencies in one place: map, today's summary, rivers, roads and charts. Every item links to its original source and carries a trust label.</span></p>
 
 
   <section class="mapsec" aria-labelledby="hmap">
     <div class="sechead first"><h2 id="hmap"><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h2>
       <div class="seg" role="group" aria-label="Map scope">
         <button type="button" data-scope="active"><span class="ne-only">चालु मात्र</span><span class="en-only">Active only</span></button>
-        <button type="button" data-scope="30"><span class="ne-only">पछिल्ला ३० दिन</span><span class="en-only">Last 30 days</span></button>
-        <button type="button" data-scope="all"><span class="ne-only">सबै</span><span class="en-only">All</span></button></div></div>
-    <div class="layers" role="group" aria-label="Map layers">
-      <label class="check"><input type="checkbox" id="lyAreas" checked><span class="ne-only">सूचना क्षेत्र</span><span class="en-only">Alert areas</span></label>
-      <label class="check"><input type="checkbox" id="lyRoads" checked><span class="ne-only">मुख्य सडक</span><span class="en-only">Main roads</span></label></div>
-    <div id="map" role="region" aria-label="Map of alert areas and road status"></div>
-    <div class="maplegend" id="mapLegend"></div>
+        <button type="button" data-scope="30"><span class="ne-only">पछिल्ला ३० दिन</span><span class="en-only">Last 30 days</span></button></div></div>
+    <div class="chipbar" role="group" aria-label="Map layers">
+      <button type="button" class="lchip" data-layer="alerts" aria-pressed="true"><span aria-hidden="true">⚠</span> <span class="ne-only">सूचना</span><span class="en-only">Alerts</span></button>
+      <button type="button" class="lchip" data-layer="roads" aria-pressed="true"><span aria-hidden="true">🛣</span> <span class="ne-only">सडक</span><span class="en-only">Roads</span></button>
+      <button type="button" class="lchip" data-layer="rivers" aria-pressed="true"><span aria-hidden="true">💧</span> <span class="ne-only">नदी</span><span class="en-only">Rivers</span></button>
+    </div>
+    <div class="mapgrid">
+      <div class="mapcol"><div id="map" role="region" aria-label="Map of alert areas, road status and river gauges"></div>
+        <div class="maplegend" id="mapLegend"></div></div>
+      <aside class="side">
+        <div class="card sumcard" id="sumcard" aria-live="polite"></div>
+        <div class="card roadlist"><h3><span class="ne-only">मुख्य सडकको अवस्था</span><span class="en-only">Main road status</span></h3><ol id="roadList"></ol></div>
+      </aside>
+    </div>
     <p class="meta" id="mapNote"></p>
   </section>
 
-  <p class="lead"><span class="ne-only">सरकारी निकायका जाँचिएका सूचना एकै ठाउँमा: नक्सा, मुख्य अङ्क र चार्ट। हरेक सूचनामा मूल स्रोतको लिङ्क र भरोसा चिह्न छ।</span>
-  <span class="en-only">Verified notices from government agencies in one place: map, key numbers and charts. Every item links to its original source and carries a trust label.</span></p>
-  <div id="fresh" class="fresh" role="status"></div>
-  <section aria-labelledby="hkpi"><h2 id="hkpi" class="vh"><span class="ne-only">मुख्य अङ्क</span><span class="en-only">Key numbers</span></h2>
+  <section aria-labelledby="hglance"><h2 id="hglance"><span class="ne-only">आज एक नजरमा</span><span class="en-only">Today at a glance</span></h2>
+    <div id="fresh" class="fresh" role="status"></div>
+    <div class="glance" id="glance"></div>
+    <h3 class="vh"><span class="ne-only">मुख्य अङ्क</span><span class="en-only">Key numbers</span></h3>
     <div class="kpis" id="kpis"></div></section>
+  <section aria-labelledby="hriv"><h2 id="hriv"><span class="ne-only">नदीको सतह</span><span class="en-only">River levels</span></h2>
+    <div class="card" id="gauges"></div></section>
 
   <section aria-labelledby="hcharts"><h2 id="hcharts"><span class="ne-only">चार्ट</span><span class="en-only">Charts</span></h2>
     <p class="meta"><span class="ne-only">यी अङ्क गतिले राखेका सूचनाको सङ्ख्या हुन्। फरक निकायका तथ्याङ्क कहिल्यै जोडिँदैनन्।</span><span class="en-only">These count the items Gati carries. Figures from different agencies are never added together.</span></p>

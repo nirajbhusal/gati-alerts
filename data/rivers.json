@@ -1,0 +1,70 @@
+{
+ "as_of": "2026-10-21",
+ "as_of_ne": "अक्टोबर २१ (कात्तिक ४), समय नखुलेको",
+ "as_of_en": "21 Oct (Kartik 4); reading time not shown",
+ "source_ne": "जल तथा मौसम विज्ञान विभाग (DHM) गृहपृष्ठ, जल निगरानी",
+ "source_en": "DHM homepage, Hydrology Monitoring panel",
+ "url": "https://www.dhm.gov.np/",
+ "gauges": [
+  {
+   "ne": "नारायणी · देवघाट",
+   "en": "Narayani at Devghat",
+   "district": "chitwan",
+   "ll": [
+    27.71,
+    84.43
+   ],
+   "level": 3.7,
+   "warning": 7.3,
+   "danger": 9.0
+  },
+  {
+   "ne": "कर्णाली · चिसापानी",
+   "en": "Karnali at Chisapani",
+   "district": "kailali",
+   "ll": [
+    28.65,
+    81.29
+   ],
+   "level": 4.8,
+   "warning": 10.0,
+   "danger": 10.8
+  },
+  {
+   "ne": "कन्काई · मैनाचुली",
+   "en": "Kankai at Mainachuli",
+   "district": "ilam",
+   "ll": [
+    26.71,
+    87.88
+   ],
+   "level": 2.5,
+   "warning": 3.8,
+   "danger": 4.3
+  },
+  {
+   "ne": "बबई · चेपाङ",
+   "en": "Babai at Chepang",
+   "district": "bardiya",
+   "ll": [
+    28.36,
+    81.71
+   ],
+   "level": 2.2,
+   "warning": 5.5,
+   "danger": 6.8
+  },
+  {
+   "ne": "महाकाली · परिगाउँ",
+   "en": "Mahakali at Parigaon",
+   "district": "dadeldhura",
+   "ll": [
+    29.17,
+    80.26
+   ],
+   "level": 3.9,
+   "warning": 6.8,
+   "danger": 8.0
+  }
+ ]
+}

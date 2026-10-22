@@ -27,6 +27,7 @@
   /* ---------- scope ---------- */
   const anyActive = data.alerts.some((a) => !a.expired);
   let scope = params.get("scope") || (anyActive ? "active" : "30");
+  if (scope === "all") scope = "30";
   const inScope = (a) => scope === "all" ? true : scope === "active" ? !a.expired : now - new Date(a.sent) < 30 * 864e5;
 
   /* ---------- feed cards ---------- */
@@ -60,74 +61,157 @@
         ${a.expired && i.instruction ? `<p><strong>${T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>
         <p class="meta">CAP: urgency ${en.urgency} · severity ${en.severity} · certainty ${en.certainty} · sender <code>${G.esc(a.sender)}</code><br>
-        <a href="${G.esc(a.file)}">CAP 1.2 XML</a> · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("बुलेटिन डेटा", "Bulletin data")}</a></p>
+        <a href="${G.esc(a.file)}">CAP 1.2 XML</a> · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("डेटा स्रोत", "Data provenance")}</a></p>
       </details></article>`;
   }
 
-  /* ---------- map ---------- */
-  let map, areaLayer, roadLayer, baseLayer;
-  function popAlert(list) {
-    return list.map((a) => { const i = a.info[G.lang];
-      return `<div class="pop"><div class="chips">${G.sevChip(a.severity)}${G.trustChip(a.trust)}${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : ""}</div>
-      <strong>${G.esc(i.headline)}</strong><br><span class="meta">${G.esc(agency(a))} · ${G.npt(a.sent)}</span><br>
-      <a href="#${encodeURIComponent(a.identifier)}">${T("सूचीमा हेर्नुहोस्", "See in list")}</a> · <a href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("मूल सूचना", "Original")} ↗</a></div>`; }).join("<hr>");
-  }
+  /* ---------- map (no tile server: muted districts, real road lines, rivers) ---------- */
+  const [roadGeo, riverGeo, gauges] = await Promise.all([G.json("data/geo/roads.geojson"), G.json("data/geo/rivers.geojson"), G.json("data/rivers.json")]);
+  const ROADGEO = Object.fromEntries(roadGeo.features.map((f) => [f.properties.id, f]));
+  const layersOn = { alerts: true, roads: true, rivers: true };
+  let map, baseLayer, areaLayer, roadLayer, riverLayer, labelLayer, picked = null;
+  const HZICON = { flood: "🌊", road: "🛣", weather: "🌦", landslide: "⛰", avalanche: "❄", earthquake: "〰", fire: "🔥" };
+  const centroid = (p) => { let la = 0, lo = 0; p.forEach(([a, b]) => { la += a; lo += b; }); return [la / p.length, lo / p.length]; };
+  const gaugePct = (g) => g.level / g.warning;
+  const gaugeState = (g) => (g.danger && g.level >= g.danger ? "danger" : g.level >= g.warning ? "warning" : "below");
+  const GSC = { below: "#0F7C86", warning: "#E8770E", danger: "#C81E1E" };
+  const GSW = { below: ["चेतावनी तहमुनि", "Below warning"], warning: ["चेतावनी तहमाथि", "Above warning"], danger: ["खतरा तहमाथि", "Above danger"] };
+  function fit() { if (!map) return; map.invalidateSize(); map.fitBounds([[26.35, 80.06], [30.45, 88.2]], { padding: matchMedia("(max-width:600px)").matches ? [0, 0] : [8, 8] }); }
   function initMap() {
     if (!window.L) { $("map").innerHTML = `<p class="empty">${T("नक्सा खुलेन।", "Map unavailable.")}</p>`; return; }
-    map = L.map("map", { scrollWheelZoom: false, tap: true, zoomSnap: 0.25 }).setView([28.3, 84.1], 7);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, opacity: 0.55,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-    baseLayer = L.featureGroup().addTo(map); areaLayer = L.featureGroup().addTo(map); roadLayer = L.featureGroup().addTo(map);
-    Object.entries(polys).forEach(([id, p]) => L.polygon(p, { color: "#5b6b7b", weight: 0.8, fillColor: "#ffffff", fillOpacity: 0.35, interactive: false }).addTo(baseLayer));
-    const fit = () => { map.invalidateSize(); map.fitBounds([[26.35, 80.06], [30.45, 88.2]], { padding: [4, 4] }); };
+    map = L.map("map", { scrollWheelZoom: false, zoomSnap: 0.1, attributionControl: true, minZoom: 4.5, maxZoom: 12, maxBounds: [[24.5, 78], [32, 90.5]] });
+    map.attributionControl.setPrefix("").addAttribution(T("सडक रेखा: © OpenStreetMap योगदानकर्ता", "Road lines: © OpenStreetMap contributors"));
+    window.__gmap = map; baseLayer = L.featureGroup().addTo(map); riverLayer = L.featureGroup().addTo(map); areaLayer = L.featureGroup().addTo(map);
+    roadLayer = L.featureGroup().addTo(map); labelLayer = L.featureGroup().addTo(map);
+    Object.values(polys).forEach((p) => L.polygon(p, { color: "#c9d3dd", weight: 0.8, fillColor: "#f1f4f7", fillOpacity: 1, interactive: false }).addTo(baseLayer));
     fit(); requestAnimationFrame(fit); window.addEventListener("load", fit);
     let rz; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(fit, 200); });
-    $("lyAreas").onchange = $("lyRoads").onchange = drawMap;
+    map.on("click", () => { picked = null; summary(); });
+    document.querySelectorAll(".lchip").forEach((b) => (b.onclick = () => { layersOn[b.dataset.layer] = !layersOn[b.dataset.layer]; drawMap(); }));
   }
+  const pick = (p) => (e) => { L.DomEvent.stopPropagation(e); picked = p; summary(); if (matchMedia("(max-width:899px)").matches) $("sumcard").scrollIntoView({ behavior: "smooth", block: "nearest" }); };
+  function icon(html, cls, size = 40) { if (matchMedia("(max-width:600px)").matches) size = Math.round(size * 0.72); return L.divIcon({ className: "", html: `<span class="mk ${cls}" style="width:${size}px;height:${size}px">${html}</span>`, iconSize: [size, size], iconAnchor: [size / 2, size / 2] }); }
   function drawMap() {
     if (!map) return;
-    areaLayer.clearLayers(); roadLayer.clearLayers();
+    [areaLayer, roadLayer, riverLayer, labelLayer].forEach((l) => l.clearLayers());
     const list = data.alerts.filter(inScope);
-    if ($("lyAreas").checked) {
-      // One shape per district, coloured by its highest severity; tap lists every alert there.
+    if (layersOn.rivers) {
+      riverGeo.features.forEach((f) => L.geoJSON(f, { style: { color: "#7FB8E6", weight: 2.5, opacity: 0.9 }, interactive: false })
+        .eachLayer((l) => { l.addTo(riverLayer); }));
+      [["नारायणी", "Narayani", 27.55, 84.2], ["कर्णाली", "Karnali", 28.95, 81.45], ["कोशी", "Koshi", 26.75, 87.05]].forEach(([n, e, la, lo]) =>
+        L.marker([la, lo], { icon: L.divIcon({ className: "rivlab", html: G.esc(T(n, e)), iconSize: [90, 20], iconAnchor: [45, 10] }), interactive: false }).addTo(riverLayer));
+      gauges.gauges.forEach((g) => { const st = gaugeState(g);
+        L.marker(g.ll, { icon: icon("💧", "mk-gauge mk-" + st, 34), keyboard: true, title: T(g.ne, g.en) }).on("click", pick({ type: "gauge", g })).addTo(riverLayer); });
+    }
+    if (layersOn.alerts) {
       const byD = {};
       list.forEach((a) => a.districts.forEach((d) => (byD[d] = byD[d] || []).push(a)));
       Object.entries(byD).forEach(([d, al]) => {
-        al.sort((x, y) => (x.expired - y.expired) || G.SEVORDER.indexOf(x.severity) - G.SEVORDER.indexOf(y.severity));
-        const top = al[0], c = G.SEVCOLOR[top.severity], allExp = al.every((a) => a.expired);
         if (!polys[d]) return;
-        L.polygon(polys[d], { color: c, weight: allExp ? 1.5 : 2.5, dashArray: allExp ? "5 5" : null, fillColor: c, fillOpacity: allExp ? 0.22 : 0.5 })
-          .bindPopup(`<h4 class="poph">${G.esc(ne() ? DN[d].ne : DN[d].en)} · ${G.num(al.length)} ${T("सूचना", al.length > 1 ? "alerts" : "alert")}</h4>` + popAlert(al), { maxWidth: 300, maxHeight: 320 }).addTo(areaLayer);
+        al.sort((x, y) => (x.expired - y.expired) || G.SEVORDER.indexOf(x.severity) - G.SEVORDER.indexOf(y.severity));
+        const c = G.SEVCOLOR[al[0].severity], allExp = al.every((a) => a.expired);
+        L.polygon(polys[d], { color: c, weight: allExp ? 1.5 : 2.5, dashArray: allExp ? "5 5" : null, fillColor: c, fillOpacity: allExp ? 0.18 : 0.42 })
+          .on("click", pick({ type: "district", d, al })).addTo(areaLayer);
       });
-      list.forEach((a) => a.info[G.lang].areas.forEach((ar) => ar.circles.forEach((cs) => {
-        const [ll] = cs.split(" "); const [la, lo] = ll.split(",").map(Number); const c = G.SEVCOLOR[a.severity];
-        L.circleMarker([la, lo], { radius: 8, color: "#fff", weight: 2, fillColor: c, fillOpacity: 1 }).bindPopup(`<strong>${G.esc(ar.desc)}</strong><hr>` + popAlert([a]), { maxWidth: 300 }).addTo(areaLayer);
-      })));
+      // one big hazard icon per alert: at its point(s), else at its first district's centre
+      const seen = new Set();
+      list.forEach((a) => {
+        const i = a.info[G.lang], pts = [];
+        i.areas.forEach((ar) => ar.circles.forEach((cs) => pts.push(cs.split(" ")[0].split(",").map(Number))));
+        if (!pts.length && a.districts[0] && polys[a.districts[0]]) pts.push(centroid(polys[a.districts[0]]));
+        if (a.hazard === "flood" && a.severity === "Unknown" && pts.length > 2) return; // river readings: shown as gauges
+        pts.forEach((ll) => { const k = ll.join() + a.hazard; if (seen.has(k)) return; seen.add(k);
+          L.marker(ll, { icon: icon(HZICON[a.hazard] || "⚠", `mk-alert s-${a.severity}${a.expired ? " is-exp" : ""}`, a.expired ? 34 : 44), title: i.headline, riseOnHover: true, zIndexOffset: a.expired ? 0 : 500 })
+            .on("click", pick({ type: "alert", a })).addTo(areaLayer); });
+      });
     }
-    if ($("lyRoads").checked) {
+    if (layersOn.roads) {
       const ord = (r) => (r.status === "none" ? 0 : 1);
       [...roads.routes].sort((a, b) => ord(a) - ord(b)).forEach((r) => {
-        const pop = `<div class="pop"><strong>${G.esc(ne() ? r.name_ne : r.name_en)}</strong><br><span class="rpill" style="background:${RC[r.status]}">${G.esc(rw(r.status))}</span>
-          <p>${G.esc(ne() ? r.note_ne : r.note_en)}</p>${r.sources.length ? `<p class="meta">${T("स्रोत", "Sources")}: ${r.sources.map((k) => `<a href="${G.esc(roads.sources[k].u)}" target="_blank" rel="noopener">${G.esc(ne() ? roads.sources[k].ne : roads.sources[k].en)}</a>`).join(" · ")}</p>` : ""}
-          <p class="meta">${T("जाँचेको", "Checked")}: ${G.esc(ne() ? roads.as_of_ne : roads.as_of_en)}</p></div>`;
-        r.segs.forEach(([a, b]) => {
-          const pts = [roads.nodes[a].ll, roads.nodes[b].ll], q = r.status === "none";
-          L.polyline(pts, { color: "#fff", weight: q ? 7 : 11, opacity: 0.9, interactive: false }).addTo(roadLayer);
-          L.polyline(pts, { color: RC[r.status], weight: q ? 4 : 7, dashArray: q ? "4 8" : null, lineCap: "round" }).bindPopup(pop, { maxWidth: 300 }).addTo(roadLayer);
-          L.polyline(pts, { color: "#000", opacity: 0, weight: 24 }).bindPopup(pop, { maxWidth: 300 }).addTo(roadLayer); // wide tap target
-        });
+        const f = ROADGEO[r.id]; if (!f) return; const q = r.status === "none";
+        L.geoJSON(f, { style: { color: "#fff", weight: q ? 7 : 10, opacity: 1 }, interactive: false }).addTo(roadLayer);
+        L.geoJSON(f, { style: { color: RC[r.status], weight: q ? 3.5 : 6, dashArray: q ? "5 7" : null, lineCap: "round" }, interactive: false }).addTo(roadLayer);
+        L.geoJSON(f, { style: { color: "#000", opacity: 0, weight: 26 } }).on("click", pick({ type: "road", r })).addTo(roadLayer);
       });
-      Object.values(roads.nodes).forEach((n) => L.circleMarker(n.ll, { radius: 4, color: "#0E2A47", weight: 2, fillColor: "#fff", fillOpacity: 1 })
-        .bindTooltip(G.esc(ne() ? n.ne : n.en), { direction: "top", className: "townlab" }).addTo(roadLayer));
+      // Aarughat blockage (not one of the 17 corridors) is drawn by its alert icon.
     }
+    const small = matchMedia("(max-width:600px)").matches;
+    const TOWNS = small ? ["ktm", "pokhara", "butwal", "nepalgunj", "dhangadhi", "itahari"] : ["ktm", "pokhara", "butwal", "nepalgunj", "dhangadhi", "itahari", "hetauda", "narayanghat", "kakarbhitta", "dhunche", "baglung", "bardibas"];
+    TOWNS.forEach((k) => { const n = roads.nodes[k]; if (!n) return;
+      L.circleMarker(n.ll, { radius: k === "ktm" ? 5 : 3.5, color: "#0E2A47", weight: 2, fillColor: "#fff", fillOpacity: 1, interactive: false }).addTo(labelLayer);
+      L.marker(n.ll, { icon: L.divIcon({ className: "townlab" + (k === "ktm" ? " cap" : ""), html: G.esc(T(n.ne, n.en).replace(/ \(.*\)/, "")), iconSize: [110, 18], iconAnchor: [-6, 20] }), interactive: false }).addTo(labelLayer); });
     document.querySelectorAll("[data-scope]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.scope === scope));
-    $("mapLegend").innerHTML = `<div><strong>${T("सूचना क्षेत्र (खतरा)", "Alert areas (severity)")}</strong><ul>${G.SEVORDER.map((s) =>
-      `<li><span class="sw" style="background:${G.SEVCOLOR[s]}"></span>${G.esc(ne() ? G.SEV[s][0] : G.SEV[s][1])}</li>`).join("")}
-      <li><span class="sw sw-exp"></span>${T("म्याद सकिएको (टुटेको किनारा)", "Expired (dashed edge)")}</li></ul></div>
-      <div><strong>${T("मुख्य सडक", "Main roads")}</strong><ul>${["open", "oneway", "closed", "none"].map((s) =>
-      `<li><span class="ln ln-${s}" style="--c:${RC[s]}"></span>${G.esc(rw(s))}</li>`).join("")}</ul></div>`;
-    $("mapNote").innerHTML = T(`थिच्नुहोस्: विवरण देखिन्छ। सडक: ${G.esc(roads.as_of_ne)} सम्मको अवस्था; ${G.esc(roads.geometry_note_ne)} ${G.esc(roads.rule_ne)} जिल्लाको सीमा मोटामोटी मात्र। पृष्ठभूमि नक्सा <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> बाट आउँछ — नक्सा खोल्दा हजुरको ब्राउजरले OSM सर्भरबाट टाइल ल्याउँछ।`,
-      `Tap anything for details. Roads: status as of ${G.esc(roads.as_of_en)}; ${G.esc(roads.geometry_note_en)} ${G.esc(roads.rule_en)} District outlines are simplified. Background tiles come from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>: viewing the map makes your browser fetch tiles from OSM's servers.`);
+    document.querySelectorAll(".lchip").forEach((b) => b.setAttribute("aria-pressed", layersOn[b.dataset.layer]));
+    $("mapLegend").innerHTML = `<ul>${G.SEVORDER.map((s) => `<li><span class="sw" style="background:${G.SEVCOLOR[s]}"></span>${G.esc(ne() ? G.SEV[s][0] : G.SEV[s][1])}</li>`).join("")}
+      <li><span class="sw sw-exp"></span>${T("म्याद सकिएको", "Expired")}</li></ul>
+      <ul>${["open", "oneway", "closed", "none"].map((s) => `<li><span class="ln ln-${s}" style="--c:${RC[s]}"></span>${G.esc(rw(s))}</li>`).join("")}
+      <li><span class="mk mk-gauge mk-below mini">💧</span>${T("नदी मापन केन्द्र", "River gauge")}</li></ul>`;
+    $("mapNote").innerHTML = T(`नक्सामा जुनसुकै चिह्न, सडक वा जिल्ला थिच्नुहोस्: सार देखिन्छ। सडक: ${G.esc(roads.as_of_ne)}। ${G.esc(roads.rule_ne)} ${G.esc(roads.geometry_note_ne)} जिल्लाको सीमा मोटामोटी मात्र। यो नक्सामा बाहिरी टाइल सर्भर छैन — सबै डेटा यही साइटबाट आउँछ।`,
+      `Tap any icon, road or district for a summary. Roads: ${G.esc(roads.as_of_en)}. ${G.esc(roads.rule_en)} ${G.esc(roads.geometry_note_en)} District outlines are simplified. This map uses no outside tile server; all map data is served from this site.`);
+    summary(); roadList();
+  }
+  function srcLinks(keys) { return keys.map((k) => `<a href="${G.esc(roads.sources[k].u)}" target="_blank" rel="noopener">${G.esc(ne() ? roads.sources[k].ne : roads.sources[k].en)}</a>`).join(" · "); }
+  function alertBlock(a) { const i = a.info[G.lang];
+    return `<div class="chips">${G.sevChip(a.severity)}${G.trustChip(a.trust)}${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag">${T("चालु", "Active")}</span>`}</div>
+      <p class="sumh">${G.esc(i.headline)}</p><p class="meta">${G.esc(agency(a))} · ${G.npt(a.sent)}</p>
+      <p class="meta"><a href="#${encodeURIComponent(a.identifier)}">${T("सूचीमा पूरा विवरण", "Full details in list")}</a> · <a href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("मूल सूचना", "Original")} ↗</a></p>`; }
+  function summary() {
+    const el = $("sumcard"), p = picked;
+    if (!p) {
+      const act = data.alerts.filter((a) => !a.expired);
+      el.innerHTML = `<p class="kick">${T("नक्सामा केही थिच्नुहोस्", "Tap something on the map")}</p>
+        <p class="sumh">${act.length ? T(`${G.num(act.length)} चालु सूचना`, `${act.length} active alert${act.length > 1 ? "s" : ""}`) : T("कुनै चालु सूचना छैन", "No active alert")}</p>
+        ${act.slice(0, 3).map((a) => `<button type="button" class="sumpick" data-id="${G.esc(a.identifier)}"><span aria-hidden="true">${HZICON[a.hazard] || "⚠"}</span> ${G.esc(a.info[G.lang].headline)}</button>`).join("")}`;
+      el.querySelectorAll(".sumpick").forEach((b) => (b.onclick = () => { picked = { type: "alert", a: data.alerts.find((x) => x.identifier === b.dataset.id) }; summary(); }));
+      return;
+    }
+    let h = "";
+    if (p.type === "alert") h = `<p class="kick">${G.esc(T(hz(p.a.hazard)[0], hz(p.a.hazard)[1]))}</p>` + alertBlock(p.a);
+    if (p.type === "district") h = `<p class="kick">${G.esc(ne() ? DN[p.d].ne : DN[p.d].en)} · ${G.num(p.al.length)} ${T("सूचना", p.al.length > 1 ? "alerts" : "alert")}</p>` + p.al.slice(0, 4).map(alertBlock).join("<hr>");
+    if (p.type === "road") { const r = p.r;
+      h = `<p class="kick">${T("मुख्य सडक", "Main road")}</p><p class="sumh">${G.esc(ne() ? r.name_ne : r.name_en)}</p>
+        <span class="rpill" style="background:${RC[r.status]}">${G.esc(rw(r.status))}</span><p>${G.esc(ne() ? r.note_ne : r.note_en)}</p>
+        ${r.sources.length ? `<p class="meta">${T("स्रोत", "Sources")}: ${srcLinks(r.sources)}</p>` : ""}<p class="meta">${G.esc(ne() ? roads.as_of_ne : roads.as_of_en)}</p>`; }
+    if (p.type === "gauge") { const g = p.g, st = gaugeState(g);
+      h = `<p class="kick">${T("नदी मापन केन्द्र", "River gauge")}</p><p class="sumh">${G.esc(T(g.ne, g.en))}</p>
+        <span class="rpill" style="background:${GSC[st]}">${G.esc(T(...GSW[st]))}</span>${gaugeBar(g)}
+        <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">${G.esc(T(gauges.source_ne, gauges.source_en))}</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))}</p>`; }
+    el.innerHTML = h + `<button type="button" class="btn alt small" id="sumclose">${T("बन्द गर्नुहोस्", "Close")}</button>`;
+    $("sumclose").onclick = () => { picked = null; summary(); };
+  }
+  function roadList() {
+    const order = { closed: 0, night: 1, oneway: 2, none: 3, open: 4 };
+    $("roadList").innerHTML = [...roads.routes].sort((a, b) => order[a.status] - order[b.status]).map((r) =>
+      `<li><button type="button" data-r="${r.id}"><span class="rl-bar" style="background:${RC[r.status]}"></span><span class="rl-n">${G.esc(ne() ? r.name_ne : r.name_en)}</span><span class="rl-s" style="color:${RC[r.status]}">${G.esc(rw(r.status))}</span></button></li>`).join("");
+    $("roadList").querySelectorAll("button").forEach((b) => (b.onclick = () => { picked = { type: "road", r: roads.routes.find((x) => x.id === b.dataset.r) }; summary();
+      const f = ROADGEO[b.dataset.r]; if (map && f) map.fitBounds(L.geoJSON(f).getBounds(), { padding: [30, 30], maxZoom: 9 }); }));
+  }
+  function gaugeBar(g) {
+    const max = (g.danger || g.warning) * 1.15, pc = (v) => Math.min(100, (v / max) * 100), st = gaugeState(g);
+    return `<div class="gbar" role="img" aria-label="${G.esc(`${T(g.ne, g.en)}: ${g.level} m; ${T("चेतावनी", "warning")} ${g.warning} m${g.danger ? `; ${T("खतरा", "danger")} ${g.danger} m` : ""}`)}">
+      <span class="gfill" style="width:${pc(g.level)}%;background:${GSC[st]}"></span>
+      <span class="gtick warn" style="left:${pc(g.warning)}%"></span>${g.danger ? `<span class="gtick dang" style="left:${pc(g.danger)}%"></span>` : ""}</div>
+      <div class="gleg"><span><b>${G.num(g.level.toFixed(1))}</b> ${T("मि.", "m")}</span><span class="w">▲ ${T("चेतावनी", "Warning")} ${G.num(g.warning.toFixed(1))}</span>${g.danger ? `<span class="d">▲ ${T("खतरा", "Danger")} ${G.num(g.danger.toFixed(1))}</span>` : ""}</div>`;
+  }
+  function gaugesCard() {
+    $("gauges").innerHTML = `<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? DN[g.district]?.ne : DN[g.district]?.en)}</span></p>${gaugeBar(g)}</li>`).join("")}</ul>
+      <p class="meta">${T("बार = अहिलेको सतह; सुन्तला रेखा = चेतावनी तह; रातो रेखा = खतरा तह।", "Bar = current level; orange line = warning level; red line = danger level.")} ${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">${G.esc(T(gauges.source_ne, gauges.source_en))}</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))}</p>`;
+  }
+  function glance() {
+    const act = data.alerts.filter((a) => !a.expired);
+    const wx = data.alerts.filter((a) => a.hazard === "weather").sort((a, b) => b.sent.localeCompare(a.sent))[0];
+    const rc = roads.routes.reduce((m, r) => ((m[r.status] = (m[r.status] || 0) + 1), m), {});
+    const below = gauges.gauges.filter((g) => gaugeState(g) === "below").length;
+    const roadAlerts = act.filter((a) => a.hazard === "road");
+    const today = G.npt(new Date().toISOString()).split(" · ")[0];
+    const tile = (ic, k, big, sub, cls = "") => `<div class="gl ${cls}"><span class="glic" aria-hidden="true">${ic}</span><div><p class="glk">${k}</p><p class="glb">${big}</p>${sub ? `<p class="gls">${sub}</p>` : ""}</div></div>`;
+    $("glance").innerHTML = `<p class="gldate">${G.esc(today)}</p><div class="glgrid">` +
+      tile("⚠", T("चालु सूचना", "Active alerts"), G.num(act.length), act.length ? act.map((a) => G.esc(T(hz(a.hazard)[0], hz(a.hazard)[1]))).filter((v, i, s) => s.indexOf(v) === i).join(" · ") : T("अहिले केही छैन", "None right now"), act.some((a) => ["Extreme", "Severe"].includes(a.severity)) ? "hot" : "") +
+      tile("🌦", T("मौसम", "Weather"), wx && !wx.expired ? T("अधिकांश ठाउँमा सफा", "Mostly fair") : T("पुष्टि भएको छैन", "Not confirmed"), wx && !wx.expired ? G.esc(T("कोशी र गण्डकीका हिमालमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात", "Light rain/snow at a few spots in the Koshi and Gandaki mountains")) + ` · ${G.trustChip(wx.trust)}` : "") +
+      tile("💧", T("नदी", "Rivers"), T(`${G.num(below)}/${G.num(gauges.gauges.length)} चेतावनी तहमुनि`, `${below}/${gauges.gauges.length} below warning`), G.esc(T(gauges.as_of_ne, gauges.as_of_en)), below === gauges.gauges.length ? "ok" : "hot") +
+      tile("🛣", T("मुख्य सडक", "Main roads"), T(`${G.num(rc.open || 0)} खुला`, `${rc.open || 0} open`), T(`${G.num(rc.closed || 0)} बन्द · ${G.num(rc.oneway || 0)} एकतर्फी · ${G.num(rc.none || 0)} पुष्टि भएन`, `${rc.closed || 0} blocked · ${rc.oneway || 0} one-way · ${rc.none || 0} not confirmed`)) +
+      tile("🚧", T("अन्य सडक अवरोध", "Other road blockages"), G.num(roadAlerts.length), roadAlerts.map((a) => G.esc(a.info[G.lang].headline.split(":")[0])).join(" · ") || T("प्रहरीको सूचीमा छैन", "None on the Police list")) +
+      `</div>`;
   }
 
   /* ---------- KPIs ---------- */
@@ -173,15 +257,15 @@
     const first = new Date(days[0]), last = new Date(Math.max(new Date(day(new Date().toISOString())), new Date(days.at(-1))));
     const all = []; for (let d = new Date(first); d <= last; d.setUTCDate(d.getUTCDate() + 1)) all.push(d.toISOString().slice(0, 10));
     const byDay = Object.fromEntries(all.map((d) => [d, A.filter((a) => day(a.sent) === d)]));
-    const mx = Math.max(...Object.values(byDay).map((l) => l.length)), W = 720, H = 210, pad = 28, bw = (W - pad * 2) / all.length;
-    let s = `<svg viewBox="0 0 ${W} ${H + 40}" class="tl" role="img" aria-label="${G.esc(T("दैनिक सूचना सङ्ख्या", "Alerts per day"))}">`;
+    const mx = Math.max(...Object.values(byDay).map((l) => l.length)), W = 760, H = 250, pad = 34, bw = (W - pad * 2) / all.length;
+    let s = `<svg viewBox="0 0 ${W} ${H + 46}" class="tl" role="img" aria-label="${G.esc(T("दैनिक सूचना सङ्ख्या", "Alerts per day"))}">`;
     for (let g = 0; g <= mx; g += Math.max(1, Math.ceil(mx / 4))) { const y = H - (g / mx) * (H - 20); s += `<line x1="${pad}" x2="${W - 8}" y1="${y}" y2="${y}" class="grid"/><text x="${pad - 6}" y="${y + 4}" text-anchor="end" class="ax">${G.num(g)}</text>`; }
     all.forEach((d, i) => {
       let y = H; const l = [...byDay[d]].sort((a, b) => G.SEVORDER.indexOf(b.severity) - G.SEVORDER.indexOf(a.severity));
       l.forEach((a) => { const h = (H - 20) / mx; y -= h; s += `<rect x="${pad + i * bw + 2}" y="${y}" width="${Math.max(2, bw - 4)}" height="${h - 1.5}" rx="2" fill="${G.SEVCOLOR[a.severity]}"><title>${G.esc(a.info[G.lang].headline)}</title></rect>`; });
       const dd = +d.slice(8), lab = dd === 1 || i === 0 || i === all.length - 1 || dd % 5 === 0;
-      if (lab) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 18}" text-anchor="middle" class="ax">${G.num(dd)}</text>`;
-      if (dd === 1 || i === 0) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 36}" text-anchor="middle" class="ax b">${T(["","","","","","","","","सेप्टेम्बर","अक्टोबर","नोभेम्बर",""][+d.slice(5, 7) - 1] || d.slice(5, 7), ["","","","","","","","","Sep","Oct","Nov",""][+d.slice(5, 7) - 1] || d.slice(5, 7))}</text>`;
+      if (lab) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 22}" text-anchor="middle" class="ax">${G.num(dd)}</text>`;
+      if (dd === 1 || i === 0) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 42}" text-anchor="middle" class="ax b">${T(["","","","","","","","","सेप्टेम्बर","अक्टोबर","नोभेम्बर",""][+d.slice(5, 7) - 1] || d.slice(5, 7), ["","","","","","","","","Sep","Oct","Nov",""][+d.slice(5, 7) - 1] || d.slice(5, 7))}</text>`;
     });
     $("cTime").innerHTML = `<div class="tlwrap">${s}</svg></div>` + `<p class="meta">${T("हरेक खण्ड एउटा सूचना हो, रङ खतराअनुसार। दायाँ छेउ आज। फोनमा दायाँबायाँ सार्न सकिन्छ।", "Each block is one alert, coloured by severity. The right edge is today. Swipe sideways on a phone.")}</p>`;
     // road status: 100% stacked bar
@@ -235,7 +319,7 @@
     $("gen").textContent = T("सूचना अद्यावधिक: ", "Feed built: ") + G.npt(data.generated);
     const u = new URL(location); d ? u.searchParams.set("district", d) : u.searchParams.delete("district"); history.replaceState(null, "", u);
   }
-  function all() { kpis(); drawMap(); charts(); render(); updates(); }
+  function all() { kpis(); glance(); drawMap(); gaugesCard(); charts(); render(); updates(); }
   initMap(); fillDistricts(); all();
   sel.onchange = sortSel.onchange = showExp.onchange = render;
   document.querySelectorAll("[data-scope]").forEach((b) => (b.onclick = () => { scope = b.dataset.scope; drawMap(); }));

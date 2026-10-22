@@ -1,7 +1,671 @@
 {
- "generated": "2026-10-22T07:20:04+00:00",
- "count": 18,
+ "generated": "2026-10-22T08:10:05+00:00",
+ "count": 21,
  "alerts": [
+  {
+   "identifier": "np.gati.reported-dhm-3day-forecast-2026-10-22",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-22T09:20:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://ukeraa.com/news/detail/181196/",
+   "references": null,
+   "file": "data/alerts/reported-dhm-3day-forecast-2026-10-22.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-22T09:20:00+05:45",
+     "expires": "2026-10-25T00:00:00+05:45",
+     "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित",
+     "headline": "कात्तिक ५–७: अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात",
+     "description": "रिपोर्ट गरिएको (उकेरा र खबर सेन्टर, दुवैले DHM मौसम पूर्वानुमान महाशाखाको तीन दिने पूर्वानुमान उद्धृत गरेका): हिमाली र पहाडी भेगमा आंशिक बदली, तराईमा मुख्यतया सफा। बिहीबार र शनिबार कोशी र गण्डकीका हिमाली (शनिबार पहाडी पनि) भागमा, शुक्रबार कोशी, गण्डकी र कर्णालीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात। बिहानीपख तराईमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।",
+     "instruction": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।",
+     "web": "https://ukeraa.com/news/detail/181196/",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://ukeraa.com/news/detail/181196/",
+      "gati:sourceTime": "2026-10-22T09:20:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://ukeraa.com/news/detail/181196/",
+      "gati:sourceUrl2": "https://hmteiadmin.khabarcenter.com/content/87031"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला)",
+       "polygons": [],
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-22T09:20:00+05:45",
+     "expires": "2026-10-25T00:00:00+05:45",
+     "senderName": "Department of Hydrology and Meteorology (DHM) — relayed by Gati",
+     "headline": "22–24 Oct: mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains",
+     "description": "Reported (Ukeraa and Khabar Center, both citing the DHM Meteorological Forecasting Division's three-day forecast): partly cloudy in the hills and mountains, mainly fair in the Terai. Light rain or snow at one or two places in the Koshi and Gandaki mountains on Thursday and Saturday (hills too on Saturday), and in the Koshi, Gandaki and Karnali mountains on Friday. Morning mist or fog in parts of the Terai. No warning is mentioned.",
+     "instruction": "If travelling in the mountains, check DHM's latest forecast.",
+     "web": "https://ukeraa.com/news/detail/181196/",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://ukeraa.com/news/detail/181196/",
+      "gati:sourceTime": "2026-10-22T09:20:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://ukeraa.com/news/detail/181196/",
+      "gati:sourceUrl2": "https://hmteiadmin.khabarcenter.com/content/87031"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts)",
+       "polygons": [],
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Reported",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Unknown",
+   "expires": "2026-10-25T00:00:00+05:45",
+   "districts": [],
+   "expired": false
+  },
+  {
+   "identifier": "np.gati.police-road-aarughat-soti-2026-10-21",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-10-21T18:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": null,
+   "file": "data/alerts/police-road-aarughat-soti-2026-10-21.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-21T18:00:00+05:45",
+     "expires": "2026-10-22T18:00:00+05:45",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित",
+     "headline": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+     "description": "नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।०४ (कात्तिक ४) साँझ ६ बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो पूर्ण रूपमा अवरुद्ध। देशभरको सूचीमा यही एउटा मात्र अवरोध छ।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-21T18:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला",
+       "polygons": [
+        [
+         [
+          28.7369,
+          84.4937
+         ],
+         [
+          28.7519,
+          84.5561
+         ],
+         [
+          28.7352,
+          84.6274
+         ],
+         [
+          28.6708,
+          84.705
+         ],
+         [
+          28.637,
+          84.6989
+         ],
+         [
+          28.5747,
+          84.8562
+         ],
+         [
+          28.5984,
+          84.9936
+         ],
+         [
+          28.6827,
+          85.0599
+         ],
+         [
+          28.6848,
+          85.1231
+         ],
+         [
+          28.6282,
+          85.1975
+         ],
+         [
+          28.5967,
+          85.1783
+         ],
+         [
+          28.5352,
+          85.1864
+         ],
+         [
+          28.4512,
+          85.1006
+         ],
+         [
+          28.3935,
+          85.1287
+         ],
+         [
+          28.3494,
+          85.1129
+         ],
+         [
+          28.3244,
+          85.0489
+         ],
+         [
+          28.2741,
+          85.0313
+         ],
+         [
+          28.2135,
+          84.9638
+         ],
+         [
+          28.1256,
+          84.9531
+         ],
+         [
+          28.1031,
+          84.9134
+         ],
+         [
+          28.1159,
+          84.8463
+         ],
+         [
+          28.0056,
+          84.8162
+         ],
+         [
+          27.9549,
+          84.7466
+         ],
+         [
+          27.8915,
+          84.7386
+         ],
+         [
+          27.8165,
+          84.781
+         ],
+         [
+          27.7961,
+          84.7327
+         ],
+         [
+          27.816,
+          84.6745
+         ],
+         [
+          27.8764,
+          84.6253
+         ],
+         [
+          27.8571,
+          84.564
+         ],
+         [
+          27.912,
+          84.5433
+         ],
+         [
+          27.9535,
+          84.4263
+         ],
+         [
+          28.0607,
+          84.4931
+         ],
+         [
+          28.0854,
+          84.4828
+         ],
+         [
+          28.1033,
+          84.5488
+         ],
+         [
+          28.1893,
+          84.6374
+         ],
+         [
+          28.2912,
+          84.653
+         ],
+         [
+          28.3616,
+          84.6963
+         ],
+         [
+          28.4391,
+          84.6414
+         ],
+         [
+          28.4874,
+          84.5691
+         ],
+         [
+          28.6276,
+          84.5457
+         ],
+         [
+          28.7369,
+          84.4937
+         ]
+        ]
+       ],
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "gorkha"
+       }
+      },
+      {
+       "desc": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+       "polygons": [],
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-21T18:00:00+05:45",
+     "expires": "2026-10-22T18:00:00+05:45",
+     "senderName": "Nepal Police Headquarters — relayed by Gati",
+     "headline": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+     "description": "Nepal Police notice 'Road blockages', to 6 PM on 2083-07-04 (Kartik 4, 21 Oct 2026): the iron motorable bridge at Soti linking Aarughat-2 and 3 was swept away by the Budhi Gandaki flood of Asoj 25 (11 Oct), and the road is fully blocked. This is the only blockage on the nationwide list.",
+     "instruction": "Do not use this road; check with local police before travelling.",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-21T18:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district",
+       "polygons": [
+        [
+         [
+          28.7369,
+          84.4937
+         ],
+         [
+          28.7519,
+          84.5561
+         ],
+         [
+          28.7352,
+          84.6274
+         ],
+         [
+          28.6708,
+          84.705
+         ],
+         [
+          28.637,
+          84.6989
+         ],
+         [
+          28.5747,
+          84.8562
+         ],
+         [
+          28.5984,
+          84.9936
+         ],
+         [
+          28.6827,
+          85.0599
+         ],
+         [
+          28.6848,
+          85.1231
+         ],
+         [
+          28.6282,
+          85.1975
+         ],
+         [
+          28.5967,
+          85.1783
+         ],
+         [
+          28.5352,
+          85.1864
+         ],
+         [
+          28.4512,
+          85.1006
+         ],
+         [
+          28.3935,
+          85.1287
+         ],
+         [
+          28.3494,
+          85.1129
+         ],
+         [
+          28.3244,
+          85.0489
+         ],
+         [
+          28.2741,
+          85.0313
+         ],
+         [
+          28.2135,
+          84.9638
+         ],
+         [
+          28.1256,
+          84.9531
+         ],
+         [
+          28.1031,
+          84.9134
+         ],
+         [
+          28.1159,
+          84.8463
+         ],
+         [
+          28.0056,
+          84.8162
+         ],
+         [
+          27.9549,
+          84.7466
+         ],
+         [
+          27.8915,
+          84.7386
+         ],
+         [
+          27.8165,
+          84.781
+         ],
+         [
+          27.7961,
+          84.7327
+         ],
+         [
+          27.816,
+          84.6745
+         ],
+         [
+          27.8764,
+          84.6253
+         ],
+         [
+          27.8571,
+          84.564
+         ],
+         [
+          27.912,
+          84.5433
+         ],
+         [
+          27.9535,
+          84.4263
+         ],
+         [
+          28.0607,
+          84.4931
+         ],
+         [
+          28.0854,
+          84.4828
+         ],
+         [
+          28.1033,
+          84.5488
+         ],
+         [
+          28.1893,
+          84.6374
+         ],
+         [
+          28.2912,
+          84.653
+         ],
+         [
+          28.3616,
+          84.6963
+         ],
+         [
+          28.4391,
+          84.6414
+         ],
+         [
+          28.4874,
+          84.5691
+         ],
+         [
+          28.6276,
+          84.5457
+         ],
+         [
+          28.7369,
+          84.4937
+         ]
+        ]
+       ],
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "gorkha"
+       }
+      },
+      {
+       "desc": "Soti, Aarughat-2/3 (approximate location)",
+       "polygons": [],
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-10-22T18:00:00+05:45",
+   "districts": [
+    "gorkha"
+   ],
+   "expired": false
+  },
+  {
+   "identifier": "np.gati.dhm-river-levels-2026-10-21",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-21T00:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/",
+   "references": null,
+   "file": "data/alerts/dhm-river-levels-2026-10-21.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "नदीको सतह — चेतावनी तहमुनि",
+     "urgency": "Unknown",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-10-21T00:00:00+05:45",
+     "expires": "2026-10-22T23:59:00+05:45",
+     "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित",
+     "headline": "मुख्य पाँच नदी मापन केन्द्र चेतावनी तहभन्दा तल (DHM, अक्टोबर २१)",
+     "description": "DHM गृहपृष्ठको जल निगरानी, २१ अक्टोबर (पढाइको समय नखुलेको): नारायणी · देवघाट ३.७ मि. (चेतावनी ७.३, खतरा ९.०); कर्णाली · चिसापानी ४.८ (१०.० / १०.८); कन्काई · मैनाचुली २.५ (३.८ / ४.३); बबई · चेपाङ २.२ (५.५ / ६.८); महाकाली · परिगाउँ ३.९ (६.८ / ८.०)।",
+     "instruction": null,
+     "web": "https://www.dhm.gov.np/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.dhm.gov.np/",
+      "gati:sourceTime": "2026-10-21T00:00:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://www.dhm.gov.np/"
+     },
+     "areas": [
+      {
+       "desc": "नारायणी · देवघाट मापन केन्द्र",
+       "polygons": [],
+       "circles": [
+        "27.71,84.43 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "कर्णाली · चिसापानी मापन केन्द्र",
+       "polygons": [],
+       "circles": [
+        "28.65,81.29 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "कन्काई · मैनाचुली मापन केन्द्र",
+       "polygons": [],
+       "circles": [
+        "26.71,87.88 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "बबई · चेपाङ मापन केन्द्र",
+       "polygons": [],
+       "circles": [
+        "28.36,81.71 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "महाकाली · परिगाउँ मापन केन्द्र",
+       "polygons": [],
+       "circles": [
+        "29.17,80.26 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "River level — below warning level",
+     "urgency": "Unknown",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-10-21T00:00:00+05:45",
+     "expires": "2026-10-22T23:59:00+05:45",
+     "senderName": "Department of Hydrology and Meteorology (DHM) — relayed by Gati",
+     "headline": "Five main river gauges below warning level (DHM, 21 Oct)",
+     "description": "DHM homepage, Hydrology Monitoring, 21 Oct 2026 (reading time not shown): Narayani at Devghat 3.7 m (warning 7.3, danger 9.0); Karnali at Chisapani 4.8 (10.0 / 10.8); Kankai at Mainachuli 2.5 (3.8 / 4.3); Babai at Chepang 2.2 (5.5 / 6.8); Mahakali at Parigaon 3.9 (6.8 / 8.0).",
+     "instruction": null,
+     "web": "https://www.dhm.gov.np/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.dhm.gov.np/",
+      "gati:sourceTime": "2026-10-21T00:00:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://www.dhm.gov.np/"
+     },
+     "areas": [
+      {
+       "desc": "Narayani at Devghat gauge",
+       "polygons": [],
+       "circles": [
+        "27.71,84.43 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "Karnali at Chisapani gauge",
+       "polygons": [],
+       "circles": [
+        "28.65,81.29 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "Kankai at Mainachuli gauge",
+       "polygons": [],
+       "circles": [
+        "26.71,87.88 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "Babai at Chepang gauge",
+       "polygons": [],
+       "circles": [
+        "28.36,81.71 3"
+       ],
+       "geocodes": {}
+      },
+      {
+       "desc": "Mahakali at Parigaon gauge",
+       "polygons": [],
+       "circles": [
+        "29.17,80.26 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "flood",
+   "severity": "Unknown",
+   "expires": "2026-10-22T23:59:00+05:45",
+   "districts": [],
+   "expired": false
+  },
   {
    "identifier": "np.gati.reported-road-rajpath-khatripauwa-2026-10-13",
    "sender": "nepalpolice.gov.np",
