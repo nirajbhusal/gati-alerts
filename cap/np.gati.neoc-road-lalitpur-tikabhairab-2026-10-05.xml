@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.neoc-road-lalitpur-tikabhairab-2026-10-05</identifier>
+  <sender>neoc.moha.gov.np</sender>
+  <sent>2026-10-05T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Emergency Operation Centre (NEOC), Ministry of Home Affairs</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
+    <headline>चापागाउ – कान्तिलोक पथ: अवरुद्ध (ललितपुर, पहिरो)</headline>
+    <description>स्थान: गोदावरी न.पा.- ६ टिकाभैरव। कारण: पहिरो। अवरुद्ध मिति: २०८३/०६/१७। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>चापागाउ – कान्तिलोक पथ: अवरुद्ध (ललितपुर, पहिरो)</value></parameter>
+    <area>
+      <areaDesc>ललितपुर जिल्ला</areaDesc>
+      <polygon>27.6691,85.3476 27.6924,85.3036 27.6728,85.2916 27.6607,85.2968 27.6438,85.2822 27.6339,85.293 27.6041,85.2944 27.5936,85.2854 27.5954,85.2798 27.5855,85.2848 27.5706,85.2665 27.5693,85.2539 27.5503,85.2469 27.5371,85.2314 27.5281,85.251 27.5049,85.2339 27.4965,85.2476 27.4769,85.2471 27.4549,85.2634 27.4522,85.2948 27.4449,85.3132 27.436,85.3157 27.4382,85.3291 27.4243,85.3687 27.4082,85.3842 27.4112,85.3944 27.4042,85.3984 27.4048,85.414 27.4096,85.4185 27.4169,85.4093 27.4331,85.4104 27.4441,85.4181 27.4474,85.4066 27.4801,85.4433 27.4894,85.4387 27.5318,85.4404 27.5415,85.4368 27.5405,85.4248 27.5482,85.4157 27.5451,85.4035 27.563,85.3868 27.5734,85.4016 27.602,85.4024 27.6064,85.417 27.5986,85.4152 27.593,85.4241 27.6082,85.4356 27.6329,85.3963 27.645,85.3894 27.6545,85.3697 27.6608,85.3691 27.6612,85.3607 27.6691,85.3609 27.6691,85.3476</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
+    <headline>Chapagaun – Kantilokpath: Blocked (Lalitpur, landslide)</headline>
+    <description>Location: Godawari Municipality-6, Tikabhairab. Cause: Landslide. Closed since: 2026-10-03. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Chapagaun – Kantilokpath: Blocked (Lalitpur, landslide)</value></parameter>
+    <area>
+      <areaDesc>Lalitpur district</areaDesc>
+      <polygon>27.6691,85.3476 27.6924,85.3036 27.6728,85.2916 27.6607,85.2968 27.6438,85.2822 27.6339,85.293 27.6041,85.2944 27.5936,85.2854 27.5954,85.2798 27.5855,85.2848 27.5706,85.2665 27.5693,85.2539 27.5503,85.2469 27.5371,85.2314 27.5281,85.251 27.5049,85.2339 27.4965,85.2476 27.4769,85.2471 27.4549,85.2634 27.4522,85.2948 27.4449,85.3132 27.436,85.3157 27.4382,85.3291 27.4243,85.3687 27.4082,85.3842 27.4112,85.3944 27.4042,85.3984 27.4048,85.414 27.4096,85.4185 27.4169,85.4093 27.4331,85.4104 27.4441,85.4181 27.4474,85.4066 27.4801,85.4433 27.4894,85.4387 27.5318,85.4404 27.5415,85.4368 27.5405,85.4248 27.5482,85.4157 27.5451,85.4035 27.563,85.3868 27.5734,85.4016 27.602,85.4024 27.6064,85.417 27.5986,85.4152 27.593,85.4241 27.6082,85.4356 27.6329,85.3963 27.645,85.3894 27.6545,85.3697 27.6608,85.3691 27.6612,85.3607 27.6691,85.3609 27.6691,85.3476</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+  </info>
+</alert>

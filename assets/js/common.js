@@ -41,7 +41,7 @@
     <div>${b("गति एउटा स्वतन्त्र नागरिक परियोजना हो, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",
              "Gati is an independent citizen project, not an official system of any government agency. Maintainer: Niraj Bhusal.")}
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
-      · <a href="${ROOT}feed.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
+      · <a href="${ROOT}atom.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
       · <a href="https://github.com/nirajbhusal/gati-alerts">GitHub</a></div></div>`;
   document.body.prepend(disc);
   document.body.prepend(header);

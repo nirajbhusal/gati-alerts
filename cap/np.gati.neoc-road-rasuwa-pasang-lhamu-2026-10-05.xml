@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.neoc-road-rasuwa-pasang-lhamu-2026-10-05</identifier>
+  <sender>neoc.moha.gov.np</sender>
+  <sent>2026-10-05T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Emergency Operation Centre (NEOC), Ministry of Home Affairs</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
+    <headline>पासाङल्हामु राजमार्ग: अवरुद्ध (रसुवा, बाढी)</headline>
+    <description>स्थान: बारा घुम्ती देखी रसुवागढी सम्म। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>पासाङल्हामु राजमार्ग: अवरुद्ध (रसुवा, बाढी)</value></parameter>
+    <area>
+      <areaDesc>रसुवा जिल्ला</areaDesc>
+      <polygon>28.3858,85.7119 28.3824,85.6838 28.3469,85.6861 28.348,85.6656 28.3317,85.6643 28.3174,85.6536 28.3029,85.6606 28.2739,85.6353 28.2568,85.6086 28.2792,85.5989 28.3043,85.6005 28.3098,85.5616 28.3339,85.5064 28.337,85.4579 28.3271,85.4153 28.3083,85.4119 28.2785,85.3775 28.2857,85.3701 28.2884,85.3481 28.3016,85.3481 28.3039,85.3403 28.2898,85.3035 28.2877,85.2728 28.2973,85.2704 28.2944,85.2547 28.3178,85.2413 28.3406,85.2023 28.3242,85.1817 28.3318,85.1597 28.3018,85.1793 28.2674,85.1868 28.2542,85.2013 28.2232,85.1874 28.2034,85.2043 28.1682,85.1954 28.1623,85.1741 28.1407,85.1547 28.1296,85.1581 28.1181,85.1503 28.1055,85.124 28.0912,85.1224 28.0861,85.1292 28.0883,85.1555 28.0821,85.1706 28.0378,85.1331 28.0275,85.1436 28.0191,85.187 27.9875,85.1801 27.973,85.1836 27.9746,85.2554 27.9651,85.2762 27.9831,85.2898 27.9885,85.3295 28.0099,85.3419 28.0131,85.3588 28.0391,85.4033 28.0552,85.405 28.062,85.4122 28.0618,85.4254 28.0758,85.4279 28.0904,85.4458 28.1051,85.4733 28.1057,85.4891 28.1223,85.4952 28.1386,85.4902 28.1521,85.5032 28.1573,85.5267 28.1674,85.5328 28.1678,85.5561 28.1534,85.5839 28.158,85.6015 28.1504,85.6129 28.1341,85.6148 28.1292,85.6271 28.1516,85.6516 28.162,85.7122 28.174,85.7191 28.1696,85.7276 28.1743,85.7787 28.1962,85.8001 28.2085,85.7763 28.218,85.7739 28.2381,85.7487 28.2912,85.7329 28.3192,85.7371 28.3288,85.7274 28.3393,85.7321 28.3594,85.7198 28.3733,85.7242 28.3858,85.7119</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0329</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
+    <headline>Pasang Lhamu Highway: Blocked (Rasuwa, flood)</headline>
+    <description>Location: From Bara Ghumti to Rasuwagadhi. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Pasang Lhamu Highway: Blocked (Rasuwa, flood)</value></parameter>
+    <area>
+      <areaDesc>Rasuwa district</areaDesc>
+      <polygon>28.3858,85.7119 28.3824,85.6838 28.3469,85.6861 28.348,85.6656 28.3317,85.6643 28.3174,85.6536 28.3029,85.6606 28.2739,85.6353 28.2568,85.6086 28.2792,85.5989 28.3043,85.6005 28.3098,85.5616 28.3339,85.5064 28.337,85.4579 28.3271,85.4153 28.3083,85.4119 28.2785,85.3775 28.2857,85.3701 28.2884,85.3481 28.3016,85.3481 28.3039,85.3403 28.2898,85.3035 28.2877,85.2728 28.2973,85.2704 28.2944,85.2547 28.3178,85.2413 28.3406,85.2023 28.3242,85.1817 28.3318,85.1597 28.3018,85.1793 28.2674,85.1868 28.2542,85.2013 28.2232,85.1874 28.2034,85.2043 28.1682,85.1954 28.1623,85.1741 28.1407,85.1547 28.1296,85.1581 28.1181,85.1503 28.1055,85.124 28.0912,85.1224 28.0861,85.1292 28.0883,85.1555 28.0821,85.1706 28.0378,85.1331 28.0275,85.1436 28.0191,85.187 27.9875,85.1801 27.973,85.1836 27.9746,85.2554 27.9651,85.2762 27.9831,85.2898 27.9885,85.3295 28.0099,85.3419 28.0131,85.3588 28.0391,85.4033 28.0552,85.405 28.062,85.4122 28.0618,85.4254 28.0758,85.4279 28.0904,85.4458 28.1051,85.4733 28.1057,85.4891 28.1223,85.4952 28.1386,85.4902 28.1521,85.5032 28.1573,85.5267 28.1674,85.5328 28.1678,85.5561 28.1534,85.5839 28.158,85.6015 28.1504,85.6129 28.1341,85.6148 28.1292,85.6271 28.1516,85.6516 28.162,85.7122 28.174,85.7191 28.1696,85.7276 28.1743,85.7787 28.1962,85.8001 28.2085,85.7763 28.218,85.7739 28.2381,85.7487 28.2912,85.7329 28.3192,85.7371 28.3288,85.7274 28.3393,85.7321 28.3594,85.7198 28.3733,85.7242 28.3858,85.7119</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0329</value></geocode>
+    </area>
+  </info>
+</alert>

@@ -1,0 +1,37 @@
+<!doctype html><html lang="ne"><head><title>API · गति Gati</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Gati open data: Atom feed, CAP 1.2 per alert, JSON, district and local unit boundaries, embed widget.">
+<meta name="theme-color" content="#0E2A47">
+<link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="alternate" type="application/atom+xml" title="Gati CAP feed" href="../atom.xml">
+<link rel="stylesheet" href="../assets/css/gati.css">
+</head>
+<body data-page="api" data-root="../"><main id="main" class="wrap" style="max-width:860px">
+<h1><span class="ne-only">खुला डेटा र API</span><span class="en-only">Open data and API</span></h1>
+<p class="lead"><span class="ne-only">गतिका सबै सूचना खुला र स्थिर (static) फाइलमा छन्। कुनै साँचो (key) चाहिँदैन। गतिले सूचना जारी गर्दैन, सरकारी निकायको सूचना मात्र फैलाउँछ; हरेक सूचनामा मूल स्रोतको लिङ्क र समय हुन्छ। हजुरले प्रयोग गर्दा मूल स्रोत र "गति मार्फत" उल्लेख गर्नुहोस्।</span><span class="en-only">All Gati data is open, as static files. No key is needed. Gati relays official notices and never issues its own; every item carries its original source link and time. When you reuse it, credit the original agency and "via Gati".</span></p>
+<p class="meta"><span class="ne-only">आधार ठेगाना</span><span class="en-only">Base URL</span>: <code>https://nirajbhusal.github.io/gati-alerts/</code></p>
+<h2><span class="ne-only">फाइलहरू</span><span class="en-only">Endpoints</span></h2>
+<table class="srct"><thead><tr><th><span class="ne-only">ठेगाना</span><span class="en-only">Path</span></th><th><span class="ne-only">ढाँचा</span><span class="en-only">Format</span></th><th><span class="ne-only">के छ</span><span class="en-only">Contents</span></th></tr></thead><tbody>
+<tr><td><a href="../atom.xml"><code>atom.xml</code></a></td><td>Atom 1.0</td><td><span class="ne-only">सबै CAP सन्देशको सूची, नयाँ पहिले। हरेक entry मा CAP फाइल र स्थायी पानाको लिङ्क।</span><span class="en-only">Index of every CAP message, newest first, linking each CAP file and permalink.</span></td></tr>
+<tr><td><code>feed.xml</code></td><td>Atom 1.0</td><td><span class="ne-only">पुरानो ठेगाना; atom.xml कै प्रति। नयाँ प्रयोगमा atom.xml लिनुहोस्।</span><span class="en-only">Legacy address, a copy of atom.xml. Use atom.xml for new work.</span></td></tr>
+<tr><td><code>cap/&lt;identifier&gt;.xml</code></td><td>CAP 1.2</td><td><span class="ne-only">एउटा सूचनाको पूरा CAP सन्देश (ne-NP र en)। जस्तै</span><span class="en-only">One full CAP message (ne-NP and en). Example</span> <a href="../cap/np.gati.dhm-aarughat-2026-10-11.xml"><code>cap/np.gati.dhm-aarughat-2026-10-11.xml</code></a></td></tr>
+<tr><td><a href="../data/alerts.json"><code>data/alerts.json</code></a></td><td>JSON</td><td><span class="ne-only">घटना मात्र। <code>districts</code> मा NP-DISTRICT कोड, <code>chain</code> मा संस्करण, <code>supersededBy</code>, <code>expired</code>।</span><span class="en-only">Events only. <code>districts</code> holds NP-DISTRICT codes; <code>chain</code> lists versions; also <code>supersededBy</code>, <code>expired</code>.</span></td></tr>
+<tr><td><a href="../data/districts.geojson"><code>data/districts.geojson</code></a></td><td>GeoJSON</td><td><span class="ne-only">७७ जिल्ला, <code>id</code> = NP-DISTRICT (COD-AB adm2_pcode)।</span><span class="en-only">77 districts, <code>id</code> = NP-DISTRICT (COD-AB adm2_pcode).</span></td></tr>
+<tr><td><a href="../data/localunits.geojson"><code>data/localunits.geojson</code></a></td><td>GeoJSON</td><td><span class="ne-only">७७५ स्थानीय तह, <code>id</code> = NP-LOCALUNIT (adm3_pcode)।</span><span class="en-only">775 local units, <code>id</code> = NP-LOCALUNIT (adm3_pcode).</span></td></tr>
+<tr><td><a href="../data/rivers.json"><code>data/rivers.json</code></a></td><td>JSON</td><td><span class="ne-only">DHM नदी मापन केन्द्रका पछिल्ला रिडिङ।</span><span class="en-only">Latest DHM river gauge readings.</span></td></tr>
+<tr><td><a href="../data/roads.json"><code>data/roads.json</code></a></td><td>JSON</td><td><span class="ne-only">मुख्य सडकको अवस्था, स्रोतसहित।</span><span class="en-only">Main road status, with sources.</span></td></tr>
+<tr><td><a href="../data/sources.json"><code>data/sources.json</code></a>, <a href="../data/source-health.json"><code>data/source-health.json</code></a></td><td>JSON</td><td><span class="ne-only">स्रोतको सूची र अवस्था।</span><span class="en-only">Source registry and health.</span></td></tr>
+</tbody></table>
+<p class="meta"><span class="ne-only">सीमा: Nepal COD-AB v02 (नापी विभाग, UN RCO, OCHA HDX, CC BY-IGO), सरल बनाइएको। फरक निकायका तथ्याङ्क कहिल्यै जोडिँदैनन्।</span><span class="en-only">Boundaries: Nepal COD-AB v02 (Survey Department, UN RCO, OCHA HDX, CC BY-IGO), simplified. Figures from different agencies are never summed.</span></p>
+<h2 id="embed"><span class="ne-only">आफ्नो साइटमा राख्नुहोस्</span><span class="en-only">Embed widget</span></h2>
+<p><span class="ne-only">यो कोड हजुरको साइटमा टाँस्नुहोस्। <code>district</code> मा जिल्लाको नाम (जस्तै <code>gorkha</code>) वा कोड (जस्तै <code>NP0436</code>), <code>size</code> मा <code>s</code>, <code>m</code> वा <code>l</code>, <code>lang</code> मा <code>ne</code> वा <code>en</code>।</span><span class="en-only">Paste this into your site. <code>district</code> takes a slug (e.g. <code>gorkha</code>) or a code (e.g. <code>NP0436</code>); <code>size</code> is <code>s</code>, <code>m</code> or <code>l</code>; <code>lang</code> is <code>ne</code> or <code>en</code>.</span></p>
+<pre class="card" style="overflow-x:auto;font-size:.85rem"><code>&lt;iframe src="https://nirajbhusal.github.io/gati-alerts/embed/?district=gorkha&amp;size=m"
+  width="360" height="420" style="border:0" loading="lazy" title="Gati alerts"&gt;&lt;/iframe&gt;</code></pre>
+<p><span class="ne-only">नमुना</span><span class="en-only">Preview</span>:</p>
+<iframe src="../embed/?size=m" width="360" height="420" style="border:0;max-width:100%" loading="lazy" title="Gati alerts"></iframe>
+<h2><span class="ne-only">नियम</span><span class="en-only">Terms</span></h2>
+<ul><li><span class="ne-only">मूल निकाय र मूल लिङ्क सधैँ देखाउनुहोस्।</span><span class="en-only">Always show the original agency and link.</span></li>
+<li><span class="ne-only">गतिको सूचनालाई आधिकारिक चेतावनी भनेर नदेखाउनुहोस्।</span><span class="en-only">Do not present Gati items as official warnings issued by Gati.</span></li>
+<li><span class="ne-only">म्याद सकिएका र फिर्ता लिइएका सूचना पनि अभिलेखमा रहन्छन्; <code>expired</code> र <code>chain</code> हेर्नुहोस्।</span><span class="en-only">Expired and withdrawn items stay in the archive; check <code>expired</code> and <code>chain</code>.</span></li></ul>
+<p class="meta"><a href="https://github.com/nirajbhusal/gati-alerts/blob/main/docs/CAP.md">docs/CAP.md</a></p>
+</main><script src="../assets/js/common.js"></script></body></html>

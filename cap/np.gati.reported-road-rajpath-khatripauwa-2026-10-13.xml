@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.reported-road-rajpath-khatripauwa-2026-10-13</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-10-13T06:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-13T06:00:00+05:45</effective>
+    <onset>2026-10-13T06:00:00+05:45</onset>
+    <expires>2026-10-14T06:00:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित</senderName>
+    <headline>त्रिभुवन राजपथ (काठमाडौँ–हेटौँडा): खत्रीपौवामा पहिरो, एकतर्फी</headline>
+    <description>रिपोर्ट गरिएको: धुनिबेँसी–९ खत्रीपौवाको पहिरोका कारण राजपथ एकतर्फी। अनलाइनखबर र अनलाइनपाना दुवैले नेपाल प्रहरीको असोज २७ बिहान ६ बजेको विवरण उद्धृत गरेका। कान्ति लोकपथ दुवैतर्फी चलिरहेको (रातोपाटी, संघीय सडक कार्यालय)।</description>
+    <instruction>यात्रा अघि प्रहरीसँग सडकको अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-13T06:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.onlinepana.com/content/417910/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>त्रिभुवन राजपथ (काठमाडौँ–हेटौँडा): खत्रीपौवामा पहिरो, एकतर्फी</value></parameter>
+    <area>
+      <areaDesc>धादिङ जिल्ला</areaDesc>
+      <polygon>28.3453,85.1083 28.3458,85.0804 28.3258,85.0465 28.3028,85.0326 28.2918,85.0379 28.2623,85.0278 28.2532,85.0016 28.2412,84.9985 28.2446,84.9915 28.2173,84.9646 28.1902,84.9737 28.1555,84.9571 28.1267,84.9568 28.1262,84.9287 28.1033,84.918 28.1066,84.9003 28.0999,84.8923 28.1204,84.8693 28.1226,84.8546 28.1162,84.8436 28.0476,84.8183 28.0379,84.8094 28.0029,84.8112 27.9979,84.79 27.9832,84.7839 27.9773,84.7715 27.9713,84.7746 27.96,84.7458 27.9258,84.7319 27.8928,84.7356 27.886,84.7491 27.8802,84.7458 27.8617,84.7559 27.8592,84.765 27.8437,84.7674 27.8353,84.7758 27.8241,84.7736 27.8138,84.7823 27.8086,84.773 27.8182,84.7625 27.8064,84.7537 27.804,84.7387 27.7955,84.7307 27.8037,84.7186 27.8004,84.7111 27.8066,84.7073 27.8105,84.6845 27.8252,84.6656 27.8153,84.6216 27.8092,84.6182 27.8,84.6455 27.7938,84.6446 27.7944,84.637 27.7829,84.6378 27.7785,84.6747 27.7658,84.6685 27.7582,84.6814 27.738,84.67 27.7306,84.6745 27.7212,84.6925 27.7273,84.7 27.7272,84.7285 27.7356,84.7574 27.7092,84.7964 27.6919,84.786 27.6842,84.7966 27.6714,84.8 27.6924,84.8287 27.6798,84.8656 27.6687,84.8797 27.6985,84.9071 27.6886,84.9223 27.6834,84.9514 27.7078,84.99 27.7077,85.0112 27.6977,85.0307 27.7057,85.0385 27.6901,85.0426 27.6994,85.0523 27.6945,85.061 27.7032,85.0656 27.7122,85.0887 27.6963,85.1153 27.6835,85.1201 27.6695,85.1497 27.6813,85.1886 27.708,85.1999 27.7163,85.1971 27.7279,85.2214 27.7371,85.2135 27.7489,85.251 27.7456,85.2671 27.7596,85.27 27.7756,85.2525 27.7714,85.2319 27.7764,85.2298 27.7755,85.2154 27.769,85.2044 27.7735,85.2021 27.7688,85.1977 27.772,85.1786 27.7673,85.176 27.7607,85.1245 27.7744,85.1149 27.7972,85.0525 27.8172,85.0414 27.8094,85.0123 27.8329,85.0228 27.8327,85.0134 27.8504,85.0064 27.8584,84.9889 27.8751,84.9947 27.8856,84.9888 27.9441,85.0163 27.9514,85.0149 27.9507,85.0078 27.9682,85.0195 27.9716,85.0285 27.9895,85.0316 27.9955,85.0294 28.0002,85.003 28.0158,84.9903 28.0286,84.9892 28.0261,85.0125 28.0319,85.0326 28.0504,85.0545 28.0669,85.0621 28.0768,85.1148 28.1058,85.1242 28.1172,85.1495 28.1296,85.1581 28.1426,85.1561 28.1632,85.1751 28.168,85.1951 28.1767,85.1999 28.204,85.2043 28.2232,85.1874 28.2443,85.194 28.2501,85.2025 28.2809,85.1805 28.3058,85.1772 28.3318,85.1597 28.3304,85.1403 28.3453,85.1083</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-13T06:00:00+05:45</effective>
+    <onset>2026-10-13T06:00:00+05:45</onset>
+    <expires>2026-10-14T06:00:00+05:45</expires>
+    <senderName>Nepal Police Headquarters — relayed by Gati</senderName>
+    <headline>Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa</headline>
+    <description>Reported: the Rajpath is one-way after a landslide at Khatripauwa, Dhunibesi-9. Onlinekhabar and Onlinepana both cite Nepal Police's 6 AM notice of Asoj 27 (13 Oct 2026). Kanti Lokpath is running two-way (Ratopati, federal road office).</description>
+    <instruction>Check road status with the police before travelling.</instruction>
+    <web>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-13T06:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.onlinepana.com/content/417910/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa</value></parameter>
+    <area>
+      <areaDesc>Dhading district</areaDesc>
+      <polygon>28.3453,85.1083 28.3458,85.0804 28.3258,85.0465 28.3028,85.0326 28.2918,85.0379 28.2623,85.0278 28.2532,85.0016 28.2412,84.9985 28.2446,84.9915 28.2173,84.9646 28.1902,84.9737 28.1555,84.9571 28.1267,84.9568 28.1262,84.9287 28.1033,84.918 28.1066,84.9003 28.0999,84.8923 28.1204,84.8693 28.1226,84.8546 28.1162,84.8436 28.0476,84.8183 28.0379,84.8094 28.0029,84.8112 27.9979,84.79 27.9832,84.7839 27.9773,84.7715 27.9713,84.7746 27.96,84.7458 27.9258,84.7319 27.8928,84.7356 27.886,84.7491 27.8802,84.7458 27.8617,84.7559 27.8592,84.765 27.8437,84.7674 27.8353,84.7758 27.8241,84.7736 27.8138,84.7823 27.8086,84.773 27.8182,84.7625 27.8064,84.7537 27.804,84.7387 27.7955,84.7307 27.8037,84.7186 27.8004,84.7111 27.8066,84.7073 27.8105,84.6845 27.8252,84.6656 27.8153,84.6216 27.8092,84.6182 27.8,84.6455 27.7938,84.6446 27.7944,84.637 27.7829,84.6378 27.7785,84.6747 27.7658,84.6685 27.7582,84.6814 27.738,84.67 27.7306,84.6745 27.7212,84.6925 27.7273,84.7 27.7272,84.7285 27.7356,84.7574 27.7092,84.7964 27.6919,84.786 27.6842,84.7966 27.6714,84.8 27.6924,84.8287 27.6798,84.8656 27.6687,84.8797 27.6985,84.9071 27.6886,84.9223 27.6834,84.9514 27.7078,84.99 27.7077,85.0112 27.6977,85.0307 27.7057,85.0385 27.6901,85.0426 27.6994,85.0523 27.6945,85.061 27.7032,85.0656 27.7122,85.0887 27.6963,85.1153 27.6835,85.1201 27.6695,85.1497 27.6813,85.1886 27.708,85.1999 27.7163,85.1971 27.7279,85.2214 27.7371,85.2135 27.7489,85.251 27.7456,85.2671 27.7596,85.27 27.7756,85.2525 27.7714,85.2319 27.7764,85.2298 27.7755,85.2154 27.769,85.2044 27.7735,85.2021 27.7688,85.1977 27.772,85.1786 27.7673,85.176 27.7607,85.1245 27.7744,85.1149 27.7972,85.0525 27.8172,85.0414 27.8094,85.0123 27.8329,85.0228 27.8327,85.0134 27.8504,85.0064 27.8584,84.9889 27.8751,84.9947 27.8856,84.9888 27.9441,85.0163 27.9514,85.0149 27.9507,85.0078 27.9682,85.0195 27.9716,85.0285 27.9895,85.0316 27.9955,85.0294 28.0002,85.003 28.0158,84.9903 28.0286,84.9892 28.0261,85.0125 28.0319,85.0326 28.0504,85.0545 28.0669,85.0621 28.0768,85.1148 28.1058,85.1242 28.1172,85.1495 28.1296,85.1581 28.1426,85.1561 28.1632,85.1751 28.168,85.1951 28.1767,85.1999 28.204,85.2043 28.2232,85.1874 28.2443,85.194 28.2501,85.2025 28.2809,85.1805 28.3058,85.1772 28.3318,85.1597 28.3304,85.1403 28.3453,85.1083</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+  </info>
+</alert>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.neoc-road-nuwakot-trishuli-betrawati-2026-10-05</identifier>
+  <sender>neoc.moha.gov.np</sender>
+  <sent>2026-10-05T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>National Emergency Operation Centre (NEOC), Ministry of Home Affairs</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Emergency Operation Centre (NEOC), Ministry of Home Affairs. Source: https://x.com/NEOCOfficial/status/2106915670164459834</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>राष्ट्रिय आपतकालीन कार्यसञ्चालन केन्द्र (NEOC), गृह मन्त्रालय — गति मार्फत प्रसारित</senderName>
+    <headline>मैलुङ-स्याफ्रुबेशी: अवरुद्ध (नुवाकोट, बाढी)</headline>
+    <description>स्थान: त्रिशुली बाट बेत्रावती सम्म। कारण: बाढी। अवरुद्ध मिति: २०८३/०५/१०। स्रोत: NEOC, गृह मन्त्रालय, २०८३ असोज १९, बिहान ७:०० बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>मैलुङ-स्याफ्रुबेशी: अवरुद्ध (नुवाकोट, बाढी)</value></parameter>
+    <area>
+      <areaDesc>नुवाकोट जिल्ला</areaDesc>
+      <polygon>28.0841,85.1351 28.0912,85.1224 28.0768,85.1148 28.0669,85.0621 28.0504,85.0545 28.0319,85.0326 28.0261,85.0125 28.0286,84.9892 28.0158,84.9903 28.0002,85.003 27.9955,85.0294 27.9895,85.0316 27.9716,85.0285 27.9511,85.0079 27.9514,85.0149 27.9441,85.0163 27.8853,84.9887 27.8751,84.9947 27.8581,84.989 27.8504,85.0064 27.8327,85.0134 27.8329,85.0228 27.8094,85.0123 27.8172,85.0414 27.7972,85.0525 27.7744,85.1149 27.7606,85.1247 27.7673,85.176 27.772,85.1786 27.7688,85.1977 27.7735,85.2021 27.769,85.2044 27.7737,85.206 27.7764,85.2296 27.7714,85.2319 27.7725,85.2468 27.7812,85.2671 27.8127,85.2999 27.8151,85.3326 27.8087,85.3452 27.814,85.3616 27.809,85.3726 27.8172,85.3916 27.8095,85.4206 27.8151,85.4472 27.8504,85.4511 27.8691,85.4701 27.8817,85.4683 27.8845,85.475 27.9198,85.4874 27.9593,85.4784 27.9703,85.4837 27.9718,85.4918 27.9925,85.4871 28.0203,85.497 28.0376,85.4943 28.0637,85.4701 28.0825,85.4417 28.0807,85.4327 28.0618,85.4254 28.062,85.4122 28.0549,85.4047 28.0391,85.4033 28.0131,85.3588 28.0099,85.3419 27.9885,85.3295 27.9831,85.2898 27.9651,85.2761 27.9746,85.2554 27.9732,85.1834 27.9875,85.1801 28.0191,85.187 28.0275,85.1436 28.0381,85.1329 28.0826,85.1704 28.0884,85.1545 28.0841,85.1351</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0328</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-05T07:00:00+05:45</effective>
+    <onset>2026-10-05T07:00:00+05:45</onset>
+    <expires>2026-10-06T07:00:00+05:45</expires>
+    <senderName>National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati</senderName>
+    <headline>Mailung–Syaphrubesi road: Blocked (Nuwakot, flood)</headline>
+    <description>Location: From Trishuli to Betrawati. Cause: Flood. Closed since: 2026-08-26. Source: NEOC, Ministry of Home Affairs, as of Asoj 19, 2083, 7:00 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NEOCOfficial/status/2106915670164459834</web>
+    <contact>NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NEOCOfficial/status/2106915670164459834</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-05T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/neoc_roads_2083-06-19-0700.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Mailung–Syaphrubesi road: Blocked (Nuwakot, flood)</value></parameter>
+    <area>
+      <areaDesc>Nuwakot district</areaDesc>
+      <polygon>28.0841,85.1351 28.0912,85.1224 28.0768,85.1148 28.0669,85.0621 28.0504,85.0545 28.0319,85.0326 28.0261,85.0125 28.0286,84.9892 28.0158,84.9903 28.0002,85.003 27.9955,85.0294 27.9895,85.0316 27.9716,85.0285 27.9511,85.0079 27.9514,85.0149 27.9441,85.0163 27.8853,84.9887 27.8751,84.9947 27.8581,84.989 27.8504,85.0064 27.8327,85.0134 27.8329,85.0228 27.8094,85.0123 27.8172,85.0414 27.7972,85.0525 27.7744,85.1149 27.7606,85.1247 27.7673,85.176 27.772,85.1786 27.7688,85.1977 27.7735,85.2021 27.769,85.2044 27.7737,85.206 27.7764,85.2296 27.7714,85.2319 27.7725,85.2468 27.7812,85.2671 27.8127,85.2999 27.8151,85.3326 27.8087,85.3452 27.814,85.3616 27.809,85.3726 27.8172,85.3916 27.8095,85.4206 27.8151,85.4472 27.8504,85.4511 27.8691,85.4701 27.8817,85.4683 27.8845,85.475 27.9198,85.4874 27.9593,85.4784 27.9703,85.4837 27.9718,85.4918 27.9925,85.4871 28.0203,85.497 28.0376,85.4943 28.0637,85.4701 28.0825,85.4417 28.0807,85.4327 28.0618,85.4254 28.062,85.4122 28.0549,85.4047 28.0391,85.4033 28.0131,85.3588 28.0099,85.3419 27.9885,85.3295 27.9831,85.2898 27.9651,85.2761 27.9746,85.2554 27.9732,85.1834 27.9875,85.1801 28.0191,85.187 28.0275,85.1436 28.0381,85.1329 28.0826,85.1704 28.0884,85.1545 28.0841,85.1351</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0328</value></geocode>
+    </area>
+  </info>
+</alert>

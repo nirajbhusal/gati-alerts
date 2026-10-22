@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
+  <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
+  <subtitle>सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
+  <updated>2026-10-22T13:56:49+00:00</updated>
+  <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
+  <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
+  <author>
+    <name>Gati (Niraj Bhusal, maintainer)</name>
+  </author>
+  <entry>
+    <id>np.gati.reported-dhm-3day-forecast-2026-10-22</id>
+    <title>22–24 Oct: mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains</title>
+    <updated>2026-10-22T09:20:00+05:45</updated>
+    <published>2026-10-22T09:20:00+05:45</published>
+    <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) — relayed by Gati · expires 2026-10-25T00:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-3day-forecast-2026-10-22.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-3day-forecast-2026-10-22/" rel="related" type="text/html"/>
+    <link href="https://ukeraa.com/news/detail/181196/" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-10-21</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-10-21T18:00:00+05:45</updated>
+    <published>2026-10-21T18:00:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters — relayed by Gati · expires 2026-10-22T18:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-10-21.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-10-21/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-river-levels-2026-10-21</id>
+    <title>Five main river gauges below warning level (DHM, 21 Oct)</title>
+    <updated>2026-10-21T00:00:00+05:45</updated>
+    <published>2026-10-21T00:00:00+05:45</published>
+    <summary>[Official] Unknown · Department of Hydrology and Meteorology (DHM) — relayed by Gati · expires 2026-10-22T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-river-levels-2026-10-21.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-river-levels-2026-10-21/" rel="related" type="text/html"/>
+    <link href="https://www.dhm.gov.np/" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.reported-road-rajpath-khatripauwa-2026-10-13</id>
+    <title>Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa</title>
+    <updated>2026-10-13T06:00:00+05:45</updated>
+    <published>2026-10-13T06:00:00+05:45</published>
+    <summary>[Reported] Minor · Nepal Police Headquarters — relayed by Gati · expires 2026-10-14T06:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-road-rajpath-khatripauwa-2026-10-13.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-road-rajpath-khatripauwa-2026-10-13/" rel="related" type="text/html"/>
+    <link href="https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.bipad-budhigandaki-damage-2026-10-12</id>
+    <title>Budhi Gandaki flood: 136 houses destroyed from Lokpa to Chumling (BIPAD)</title>
+    <updated>2026-10-12T11:21:00+05:45</updated>
+    <published>2026-10-12T11:21:00+05:45</published>
+    <summary>[Official] Unknown · BIPAD portal, National Disaster Risk Reduction and Management Authority — relayed by Gati · expires 2026-10-19T11:21:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.bipad-budhigandaki-damage-2026-10-12.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.bipad-budhigandaki-damage-2026-10-12/" rel="related" type="text/html"/>
+    <link href="https://bipadportal.gov.np/" rel="via"/>
+    <author>
+      <name>bipadportal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-downstream-gauges-2026-10-12</id>
+    <title>Downstream Narayani and Trishuli: all three gauges below warning level, steady</title>
+    <updated>2026-10-12T11:20:00+05:45</updated>
+    <published>2026-10-12T11:20:00+05:45</published>
+    <summary>[Official] Unknown · Department of Hydrology and Meteorology (DHM) — relayed by Gati · expires 2026-10-13T11:20:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-downstream-gauges-2026-10-12.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-downstream-gauges-2026-10-12/" rel="related" type="text/html"/>
+    <link href="https://www.hydrology.gov.np/" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-aarughat-2026-10-11</id>
+    <title>Budhi Gandaki at Aarughat 8.43 m — above the 5.0 m danger level</title>
+    <updated>2026-10-11T08:40:00+05:45</updated>
+    <published>2026-10-11T08:40:00+05:45</published>
+    <summary>[Official] Extreme · Department of Hydrology and Meteorology (DHM) — relayed by Gati · expires 2026-10-11T20:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-aarughat-2026-10-11.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-aarughat-2026-10-11/" rel="related" type="text/html"/>
+    <link href="https://x.com/DHM_FloodEWS/status/2109167177526116425" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.ndrrma-budhigandaki-2026-10-11</id>
+    <title>Budhi Gandaki: river blocked by the Lokpa–Chumling landslide burst; riverside areas stay alert</title>
+    <updated>2026-10-11T08:00:00+05:45</updated>
+    <published>2026-10-11T08:00:00+05:45</published>
+    <summary>[Official] Severe · National Disaster Risk Reduction and Management Authority (NDRRMA) — relayed by Gati · expires 2026-10-12T20:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.ndrrma-budhigandaki-2026-10-11.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.ndrrma-budhigandaki-2026-10-11/" rel="related" type="text/html"/>
+    <link href="https://ndrrma.gov.np/np/pressnote/66" rel="via"/>
+    <author>
+      <name>ndrrma.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-weather-12337-2026-10-05</id>
+    <title>Weather alert for the next three days: all districts green (no warning)</title>
+    <updated>2026-10-05T08:00:00+05:45</updated>
+    <published>2026-10-05T08:00:00+05:45</published>
+    <summary>[Official] Unknown · Department of Hydrology and Meteorology (DHM) — relayed by Gati · expires 2026-10-08T08:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-weather-12337-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-weather-12337-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12337" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.neoc-road-dhading-phurkekhola-2026-10-05</id>
+    <title>Kalupande Highway: Blocked (Dhading, flood)</title>
+    <updated>2026-10-05T07:00:00+05:45</updated>
+    <published>2026-10-05T07:00:00+05:45</published>
+    <summary>[Official] Moderate · National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati · expires 2026-10-06T07:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.neoc-road-dhading-phurkekhola-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.neoc-road-dhading-phurkekhola-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://x.com/NEOCOfficial/status/2106915670164459834" rel="via"/>
+    <author>
+      <name>neoc.moha.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.neoc-road-lalitpur-tikabhairab-2026-10-05</id>
+    <title>Chapagaun – Kantilokpath: Blocked (Lalitpur, landslide)</title>
+    <updated>2026-10-05T07:00:00+05:45</updated>
+    <published>2026-10-05T07:00:00+05:45</published>
+    <summary>[Official] Moderate · National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati · expires 2026-10-06T07:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.neoc-road-lalitpur-tikabhairab-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.neoc-road-lalitpur-tikabhairab-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://x.com/NEOCOfficial/status/2106915670164459834" rel="via"/>
+    <author>
+      <name>neoc.moha.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.neoc-road-myagdi-baisari-tilkeni-2026-10-05</id>
+    <title>Beni–Jomsom road: Blocked (Myagdi, landslide)</title>
+    <updated>2026-10-05T07:00:00+05:45</updated>
+    <published>2026-10-05T07:00:00+05:45</published>
+    <summary>[Official] Moderate · National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati · expires 2026-10-06T07:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.neoc-road-myagdi-baisari-tilkeni-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.neoc-road-myagdi-baisari-tilkeni-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://x.com/NEOCOfficial/status/2106915670164459834" rel="via"/>
+    <author>
+      <name>neoc.moha.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.neoc-road-myagdi-sukebagar-2026-10-05</id>
+    <title>Beni–Jomsom road: Blocked (Myagdi, landslide)</title>
+    <updated>2026-10-05T07:00:00+05:45</updated>
+    <published>2026-10-05T07:00:00+05:45</published>
+    <summary>[Official] Moderate · National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati · expires 2026-10-06T07:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.neoc-road-myagdi-sukebagar-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.neoc-road-myagdi-sukebagar-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://x.com/NEOCOfficial/status/2106915670164459834" rel="via"/>
+    <author>
+      <name>neoc.moha.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.neoc-road-nuwakot-trishuli-betrawati-2026-10-05</id>
+    <title>Mailung–Syaphrubesi road: Blocked (Nuwakot, flood)</title>
+    <updated>2026-10-05T07:00:00+05:45</updated>
+    <published>2026-10-05T07:00:00+05:45</published>
+    <summary>[Official] Moderate · National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati · expires 2026-10-06T07:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.neoc-road-nuwakot-trishuli-betrawati-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.neoc-road-nuwakot-trishuli-betrawati-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://x.com/NEOCOfficial/status/2106915670164459834" rel="via"/>
+    <author>
+      <name>neoc.moha.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.neoc-road-rasuwa-pasang-lhamu-2026-10-05</id>
+    <title>Pasang Lhamu Highway: Blocked (Rasuwa, flood)</title>
+    <updated>2026-10-05T07:00:00+05:45</updated>
+    <published>2026-10-05T07:00:00+05:45</published>
+    <summary>[Official] Moderate · National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati · expires 2026-10-06T07:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.neoc-road-rasuwa-pasang-lhamu-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.neoc-road-rasuwa-pasang-lhamu-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://x.com/NEOCOfficial/status/2106915670164459834" rel="via"/>
+    <author>
+      <name>neoc.moha.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.neoc-road-rasuwa-trishuli-rasuwagadhi-2026-10-05</id>
+    <title>Trishuli–Mailung–Rasuwagadhi road: Blocked (Rasuwa, flood)</title>
+    <updated>2026-10-05T07:00:00+05:45</updated>
+    <published>2026-10-05T07:00:00+05:45</published>
+    <summary>[Official] Moderate · National Emergency Operation Centre (NEOC), Ministry of Home Affairs — relayed by Gati · expires 2026-10-06T07:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.neoc-road-rasuwa-trishuli-rasuwagadhi-2026-10-05.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.neoc-road-rasuwa-trishuli-rasuwagadhi-2026-10-05/" rel="related" type="text/html"/>
+    <link href="https://x.com/NEOCOfficial/status/2106915670164459834" rel="via"/>
+    <author>
+      <name>neoc.moha.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-manang-besisahar-khangsar-2026-10-03-update-1</id>
+    <title>Corrected: Besisahar–Khangsar road: Fully blocked (Manang, flood)</title>
+    <updated>2026-10-03T16:00:00+05:45</updated>
+    <published>2026-10-03T16:00:00+05:45</published>
+    <summary>[Official / Corrected] Moderate · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-manang-besisahar-khangsar-2026-10-03-update-1.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-manang-besisahar-khangsar-2026-10-03-update-1/" rel="related" type="text/html"/>
+    <link href="https://navigate.dor.gov.np/dashboard" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-humla-simkot-hilsa-2026-10-03</id>
+    <title>Simkot–Hilsa road: Fully blocked (Humla, landslide)</title>
+    <updated>2026-10-03T06:45:00+05:45</updated>
+    <published>2026-10-03T06:45:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-humla-simkot-hilsa-2026-10-03.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-humla-simkot-hilsa-2026-10-03/" rel="related" type="text/html"/>
+    <link href="https://x.com/NepalPoliceHQ/status/2106191584438186356" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-manang-besisahar-khangsar-2026-10-03</id>
+    <title>Besisahar–Khangsar road: Fully blocked (Manang, flood)</title>
+    <updated>2026-10-03T06:45:00+05:45</updated>
+    <published>2026-10-03T06:45:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-manang-besisahar-khangsar-2026-10-03.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-manang-besisahar-khangsar-2026-10-03/" rel="related" type="text/html"/>
+    <link href="https://x.com/NepalPoliceHQ/status/2106191584438186356" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-nawalparasi-east-ghumauri-2026-10-03</id>
+    <title>Kaligandaki Corridor: One-way open (Nawalparasi East, landslide)</title>
+    <updated>2026-10-03T06:45:00+05:45</updated>
+    <published>2026-10-03T06:45:00+05:45</published>
+    <summary>[Official] Minor · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-nawalparasi-east-ghumauri-2026-10-03.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-nawalparasi-east-ghumauri-2026-10-03/" rel="related" type="text/html"/>
+    <link href="https://x.com/NepalPoliceHQ/status/2106191584438186356" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-nawalparasi-east-janti-2026-10-03</id>
+    <title>Kaligandaki Corridor: One-way open (no heavy vehicles) (Nawalparasi East, landslide)</title>
+    <updated>2026-10-03T06:45:00+05:45</updated>
+    <published>2026-10-03T06:45:00+05:45</published>
+    <summary>[Official] Minor · Nepal Police Headquarters — relayed by Gati · expires 2026-10-04T06:45:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-nawalparasi-east-janti-2026-10-03.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-nawalparasi-east-janti-2026-10-03/" rel="related" type="text/html"/>
+    <link href="https://x.com/NepalPoliceHQ/status/2106191584438186356" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.ndrrma-narayani-2026-09-27</id>
+    <title>The Narayani River has crossed the danger level</title>
+    <updated>2026-09-27T08:00:00+05:45</updated>
+    <published>2026-09-27T08:00:00+05:45</published>
+    <summary>[Official] Severe · National Disaster Risk Reduction and Management Authority (NDRRMA) — relayed by Gati · expires 2026-10-05T15:30:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.ndrrma-narayani-2026-09-27.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.ndrrma-narayani-2026-09-27/" rel="related" type="text/html"/>
+    <link href="https://x.com/NDRRMA_Nepal/status/2104050743875653646" rel="via"/>
+    <author>
+      <name>ndrrma.gov.np</name>
+    </author>
+  </entry>
+</feed>

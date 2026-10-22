@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-manang-besisahar-khangsar-2026-10-03</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-10-03T06:45:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2106191584438186356</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <onset>2026-10-03T06:45:00+05:45</onset>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित</senderName>
+    <headline>बेशीसहर हुँदै खाङसारसम्म जाने सडक: पूर्णरुपमा अवरोध (मनाङ, बाढी)</headline>
+    <description>स्थान: बेशीसहर हुँदै खाङसारसम्म जाने सडक। कारण: बाढी। अवरुद्ध मिति: २०८३/०६/०८। स्रोत: नेपाल प्रहरी, २०८३ असोज १७, बिहान ६:४५ बजेसम्म।</description>
+    <instruction>यो सडक प्रयोग नगर्नुहोस् वा यात्रा अघि प्रहरीसँग अवस्था बुझ्नुहोस्।</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>बेशीसहर हुँदै खाङसारसम्म जाने सडक: पूर्णरुपमा अवरोध (मनाङ, बाढी)</value></parameter>
+    <area>
+      <areaDesc>मनाङ जिल्ला</areaDesc>
+      <polygon>28.8996,84.187 28.8722,84.1575 28.8886,84.1305 28.881,84.1153 28.8873,84.0957 28.866,84.0842 28.8554,84.089 28.8495,84.0848 28.8391,84.0606 28.8426,84.0517 28.8225,84.0473 28.7975,84.0147 28.8133,83.9949 28.8171,83.9675 28.8338,83.9597 28.8347,83.9502 28.8247,83.9382 28.7884,83.9388 28.7705,83.8972 28.7437,83.8911 28.7227,83.864 28.727,83.845 28.7144,83.813 28.6932,83.7891 28.6537,83.8497 28.6132,83.8715 28.6011,83.9389 28.6052,83.9637 28.5844,83.9895 28.5871,84.0134 28.5726,84.0308 28.5634,84.0597 28.5384,84.0851 28.5346,84.1244 28.5393,84.1373 28.5121,84.1623 28.5061,84.1852 28.4891,84.189 28.4807,84.2262 28.4803,84.2664 28.4708,84.2786 28.4565,84.2689 28.4464,84.2804 28.4539,84.3742 28.461,84.3731 28.4565,84.398 28.4714,84.4157 28.4909,84.4171 28.5101,84.4324 28.5001,84.4613 28.4615,84.4906 28.4783,84.5639 28.51,84.5704 28.5328,84.5599 28.5501,84.5593 28.5546,84.5474 28.5592,84.5517 28.5983,84.5413 28.6272,84.5426 28.6463,84.5313 28.6518,84.5187 28.6632,84.5221 28.6736,84.5125 28.6944,84.5199 28.6988,84.5009 28.7184,84.4817 28.7347,84.4918 28.7467,84.4807 28.7513,84.4603 28.7647,84.4518 28.7693,84.4365 28.7825,84.4458 28.7931,84.4452 28.8014,84.4319 28.8133,84.4295 28.8209,84.4352 28.8315,84.4188 28.8302,84.4005 28.8533,84.4091 28.8644,84.3751 28.8593,84.3569 28.8729,84.343 28.8627,84.3235 28.8769,84.2877 28.8977,84.2654 28.8902,84.2527 28.8996,84.187</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0438</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-03T06:45:00+05:45</effective>
+    <onset>2026-10-03T06:45:00+05:45</onset>
+    <expires>2026-10-04T06:45:00+05:45</expires>
+    <senderName>Nepal Police Headquarters — relayed by Gati</senderName>
+    <headline>Besisahar–Khangsar road: Fully blocked (Manang, flood)</headline>
+    <description>Location: Road via Besisahar to Khangsar. Cause: Flood. Closed since: 2026-09-24. Source: Nepal Police, as of Asoj 17, 2083, 6:45 AM.</description>
+    <instruction>Avoid this road or check with the police before travelling.</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2106191584438186356</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2106191584438186356</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-03T06:45:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/data/police_roads_2083-06-17-0645.json</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Besisahar–Khangsar road: Fully blocked (Manang, flood)</value></parameter>
+    <area>
+      <areaDesc>Manang district</areaDesc>
+      <polygon>28.8996,84.187 28.8722,84.1575 28.8886,84.1305 28.881,84.1153 28.8873,84.0957 28.866,84.0842 28.8554,84.089 28.8495,84.0848 28.8391,84.0606 28.8426,84.0517 28.8225,84.0473 28.7975,84.0147 28.8133,83.9949 28.8171,83.9675 28.8338,83.9597 28.8347,83.9502 28.8247,83.9382 28.7884,83.9388 28.7705,83.8972 28.7437,83.8911 28.7227,83.864 28.727,83.845 28.7144,83.813 28.6932,83.7891 28.6537,83.8497 28.6132,83.8715 28.6011,83.9389 28.6052,83.9637 28.5844,83.9895 28.5871,84.0134 28.5726,84.0308 28.5634,84.0597 28.5384,84.0851 28.5346,84.1244 28.5393,84.1373 28.5121,84.1623 28.5061,84.1852 28.4891,84.189 28.4807,84.2262 28.4803,84.2664 28.4708,84.2786 28.4565,84.2689 28.4464,84.2804 28.4539,84.3742 28.461,84.3731 28.4565,84.398 28.4714,84.4157 28.4909,84.4171 28.5101,84.4324 28.5001,84.4613 28.4615,84.4906 28.4783,84.5639 28.51,84.5704 28.5328,84.5599 28.5501,84.5593 28.5546,84.5474 28.5592,84.5517 28.5983,84.5413 28.6272,84.5426 28.6463,84.5313 28.6518,84.5187 28.6632,84.5221 28.6736,84.5125 28.6944,84.5199 28.6988,84.5009 28.7184,84.4817 28.7347,84.4918 28.7467,84.4807 28.7513,84.4603 28.7647,84.4518 28.7693,84.4365 28.7825,84.4458 28.7931,84.4452 28.8014,84.4319 28.8133,84.4295 28.8209,84.4352 28.8315,84.4188 28.8302,84.4005 28.8533,84.4091 28.8644,84.3751 28.8593,84.3569 28.8729,84.343 28.8627,84.3235 28.8769,84.2877 28.8977,84.2654 28.8902,84.2527 28.8996,84.187</polygon>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0438</value></geocode>
+    </area>
+  </info>
+</alert>

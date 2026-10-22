@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Validate every CAP 1.2 file in data/alerts/ and regenerate:
-  - feed.xml          Atom index of all CAP messages (newest first)
+  - atom.xml          Atom index of all CAP messages (newest first)
+  - feed.xml          legacy copy of atom.xml for old subscribers (stub; use atom.xml)
+  - cap/<identifier>.xml  one CAP 1.2 file per message, named by its identifier
   - data/alerts.json  JSON mirror for the web UI
 Usage: python scripts/build.py [--check]   (--check = validate only, write nothing)
 Strict: exit code 1 if any file is not well-formed XML, fails the OASIS CAP 1.2 XSD
@@ -144,11 +146,11 @@ def main(check=False):
         e = etree.SubElement(p, "{%s}%s" % (A, tag), **kw)
         if text: e.text = text
         return e
-    sub(feed, "id", SITE + "feed.xml")
+    sub(feed, "id", SITE + "atom.xml")
     sub(feed, "title", "गति (Gati) — relayed CAP 1.2 alerts (not official warnings)")
     sub(feed, "subtitle", "सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.")
     sub(feed, "updated", gen)
-    sub(feed, "link", href=SITE + "feed.xml", rel="self")
+    sub(feed, "link", href=SITE + "atom.xml", rel="self")
     sub(feed, "link", href=SITE, rel="alternate")
     au = sub(feed, "author"); sub(au, "name", "Gati (Niraj Bhusal, maintainer)")
     for a in alerts:
@@ -159,11 +161,18 @@ def main(check=False):
         sub(e, "updated", a["sent"])
         sub(e, "published", a["sent"])
         sub(e, "summary", f"[{a['trust']}{' / ' + a['state'] if a['state'] else ''}] {en['severity']} · {en['senderName']} · expires {a['expires']}")
-        sub(e, "link", href=SITE + a["file"], rel="alternate", type="application/cap+xml")
+        sub(e, "link", href=SITE + "cap/" + a["identifier"] + ".xml", rel="alternate", type="application/cap+xml")
+        sub(e, "link", href=SITE + "alerts/" + a["identifier"] + "/", rel="related", type="text/html")
         sub(e, "link", href=en["web"], rel="via")
         ea = sub(e, "author"); sub(ea, "name", a["sender"])
-    (ROOT / "feed.xml").write_bytes(etree.tostring(feed, xml_declaration=True, encoding="UTF-8", pretty_print=True))
-    print("wrote feed.xml and data/alerts.json")
+    body = etree.tostring(feed, xml_declaration=True, encoding="UTF-8", pretty_print=True)
+    (ROOT / "atom.xml").write_bytes(body)
+    stub = body.replace(b"?>\n", b"?>\n<!-- Moved: this feed now lives at " + SITE.encode() + b"atom.xml . This copy is kept so old subscriptions keep working. -->\n", 1)
+    (ROOT / "feed.xml").write_bytes(stub)
+    capdir = ROOT / "cap"; capdir.mkdir(exist_ok=True)
+    for a in alerts:
+        (capdir / (a["identifier"] + ".xml")).write_bytes((ROOT / a["file"]).read_bytes())
+    print("wrote atom.xml, feed.xml (legacy copy), cap/*.xml and data/alerts.json")
 
 if __name__ == "__main__":
     main("--check" in sys.argv)
