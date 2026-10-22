@@ -206,3 +206,6 @@ table{border-collapse:collapse;width:100%;font-size:.95rem}td,th{border-bottom:1
 .srct tr{border-bottom:1px solid #E3E8EE;padding:.4rem 0}.srct td{border:0;padding:.15rem 0}}
 .vchain{font-size:.88rem;margin:.5rem 0;padding:.45rem .6rem;border-left:3px solid #6b3fa0;background:#F6F2FB;border-radius:6px;line-height:1.6}
 .vchain a{color:#4b2a7a}
+.share{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.sbtn{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--mist);background:#fff;color:var(--navy);font:inherit;font-size:.92rem;font-weight:600;text-decoration:none;cursor:pointer}
+.sbtn:hover{border-color:var(--teal);color:var(--teal)}

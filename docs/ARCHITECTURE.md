@@ -63,3 +63,9 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 - `data/rivers.json`: gauges. `data/roads.json`: roads.
 - `data/districts.geojson` (77 districts, `id` = NP-DISTRICT = COD-AB `adm2_pcode`, e.g. `NP0330` Dhading) and `data/localunits.geojson` (775 local units, NP-LOCALUNIT = `adm3_pcode`). Source: Nepal COD-AB v02 (Survey Department of Nepal, UN RCO, OCHA HDX, CC BY-IGO), https://data.humdata.org/dataset/cod-ab-npl, simplified by `scripts/make_geo.py`.
 - `data/districts.json` gains `code`; `?district=` accepts the slug or the code.
+
+## Publish (items 6 and 7)
+
+- `scripts/build.py` writes `atom.xml`, the legacy copy `feed.xml`, `cap/<identifier>.xml` and `data/alerts.json`.
+- `scripts/render.py` (run after build.py) writes `alerts/<identifier>/index.html` (static permalink, OG and Twitter meta, share buttons for Viber, Facebook, X, WhatsApp, Telegram and copy link) and `alerts/<identifier>/share.png` (1200x630, drawn with Pillow and Mukta from `scripts/fonts`, OFL). `alerts/index.html` lists every message, including expired ones.
+- `/api/` documents the files; `/embed/?district=&size=s|m|l&lang=` is the iframe widget.

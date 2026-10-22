@@ -1,6 +1,6 @@
 # गति · Gati — सही सूचना, समयमै। / The right alert, right on time.
 
-**Live:** https://nirajbhusal.github.io/gati-alerts/ · **CAP feed:** [`feed.xml`](https://nirajbhusal.github.io/gati-alerts/feed.xml) · **JSON:** [`data/alerts.json`](https://nirajbhusal.github.io/gati-alerts/data/alerts.json)
+**Live:** https://nirajbhusal.github.io/gati-alerts/ · **CAP feed:** [`atom.xml`](https://nirajbhusal.github.io/gati-alerts/atom.xml) · [API](https://nirajbhusal.github.io/gati-alerts/api/) · **JSON:** [`data/alerts.json`](https://nirajbhusal.github.io/gati-alerts/data/alerts.json)
 
 Gati is a Nepali-first public alert **relay and verification** site. It republishes official notices from Nepal's
 mandated agencies (DHM, NDRRMA, NEOC, Nepal Police) as standard **CAP 1.2** messages with the original source,
@@ -41,7 +41,8 @@ It is a parallel project to the verified [Rasuwa–Bhotekoshi bulletin](https://
 ```bash
 pip install lxml
 python scripts/build.py --check   # validate only
-python scripts/build.py           # validate + write feed.xml and data/alerts.json
+python scripts/build.py           # validate + write atom.xml, feed.xml, cap/ and data/alerts.json
+python scripts/render.py          # permalinks, share/story images, lite page
 python -m http.server 8000        # open http://localhost:8000/
 ```
 
