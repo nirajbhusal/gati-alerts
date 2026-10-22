@@ -27,6 +27,7 @@
   /* "More" menu (desktop) and extra links in the mobile menu */
   const MORE = [
     ["weather", "weather/", "मौसम", "Weather"],
+    ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
   ];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */

@@ -1,0 +1,16 @@
+{
+ "checked": "2026-10-22",
+ "national": [
+  {"num":"100","ne":"नेपाल प्रहरी","en":"Nepal Police","src":"https://nta.gov.np/uploads/contents/National%20Numbering%20Allocation%20Plan.pdf","srcName":"NTA National Numbering Allocation Plan"},
+  {"num":"101","ne":"दमकल (फायर ब्रिगेड)","en":"Fire Brigade","src":"https://nta.gov.np/uploads/contents/National%20Numbering%20Allocation%20Plan.pdf","srcName":"NTA National Numbering Allocation Plan"},
+  {"num":"102","ne":"एम्बुलेन्स","en":"Ambulance","src":"https://nta.gov.np/uploads/contents/National%20Numbering%20Allocation%20Plan.pdf","srcName":"NTA National Numbering Allocation Plan"},
+  {"num":"1234","ne":"विपद् हेल्पलाइन (२४ घण्टा, निःशुल्क)","en":"Disaster helpline (24 h, toll free)","note_ne":"१२३४ मा गरिएको कल सम्बन्धित जिल्लाको जिल्ला आपतकालीन कार्य सञ्चालन केन्द्र (DEOC) मा जान्छ; काठमाडौं, ललितपुर र भक्तपुरबाट NEOC मा। यसले पुरानो ११४९ लाई प्रतिस्थापन गरेको हो।","note_en":"Calls to 1234 go to the caller's District Emergency Operation Centre (DEOC); from Kathmandu, Lalitpur and Bhaktapur to NEOC. It replaced the older 1149.","src":"https://ndrrma.gov.np/np/news/224","srcName":"NDRRMA","src2":"https://moha.gov.np/en/post/disaster-helpline-24-hour-toll-free-service-1234-2","src2Name":"MoHA"},
+  {"num":"1112","ne":"गृह मन्त्रालय (निःशुल्क)","en":"Ministry of Home Affairs (toll free)","src":"https://moha.gov.np/en/post/disaster-helpline-24-hour-toll-free-service-1234-2","srcName":"MoHA"},
+  {"num":"103","ne":"उपत्यका ट्राफिक प्रहरी","en":"Valley Traffic Police","src":"https://nta.gov.np/uploads/contents/National%20Numbering%20Allocation%20Plan.pdf","srcName":"NTA National Numbering Allocation Plan"},
+  {"num":"104","ne":"बाल उद्धार","en":"Child rescue","src":"https://nta.gov.np/uploads/contents/National%20Numbering%20Allocation%20Plan.pdf","srcName":"NTA National Numbering Allocation Plan"},
+  {"num":"1102","ne":"निर्वाचन आयोग (निःशुल्क, आपतकालीन होइन)","en":"Election Commission (toll free, not an emergency line)","src":"https://election.gov.np/","srcName":"Election Commission Nepal"}
+ ],
+ "districts": {},
+ "districts_note_ne": "जिल्ला प्रशासन कार्यालय, DEOC, प्रहरी र अस्पतालका नम्बर आधिकारिक स्रोतबाट पुष्टि गर्न सकिएको छैन (moha.gov.np र जिल्ला साइटहरू गतिको सर्भरबाट खुलेनन्)। त्यसैले यहाँ कुनै जिल्ला नम्बर राखिएको छैन। आफ्नो जिल्लाको DEOC मा पुग्न १२३४ मा फोन गर्नुहोस्।",
+ "districts_note_en": "District DAO, DEOC, police and hospital numbers could not be verified from an official source (moha.gov.np and district sites were unreachable from Gati's server), so no district numbers are listed. Call 1234 to reach your district's DEOC."
+}

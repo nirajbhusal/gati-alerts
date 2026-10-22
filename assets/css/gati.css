@@ -438,3 +438,14 @@ html body .tabbar a{color:#A9BED2}html body .tabbar a[aria-current=page]{color:#
 .bigmsg{font-size:var(--fs-l);font-weight:700;margin:var(--s2) 0}
 #wxmap{height:360px;border-radius:var(--rad-s)}
 #wxmap{background:var(--surface2)}
+/* Contacts */
+.ctools{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin-bottom:var(--s4)}.ctools .mydist{margin:0}
+.srch{flex:1 1 260px}.srch input{width:100%;font:inherit;padding:12px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-height:44px}
+.clist{display:grid;gap:var(--s3)}@media(min-width:900px){.clist{grid-template-columns:1fr 1fr}}
+.ccard{display:flex;gap:var(--s4);align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);padding:var(--s4);box-shadow:var(--sh1)}
+.ccard h2{font-size:var(--fs-m);margin:2px 0 4px}.ccard p{margin:0 0 4px}.cbody{min-width:0}
+.callbtn{display:inline-flex;align-items:center;gap:8px;flex:none;min-width:108px;min-height:52px;justify-content:center;padding:10px 16px;border-radius:14px;background:#0E2A47;color:#fff!important;text-decoration:none;font-weight:800;font-size:1.25rem}
+.ccard.key .callbtn{background:#B3261E}.callbtn.sm{min-width:0;min-height:44px;font-size:1rem}
+.callbtn:hover{filter:brightness(1.1)}html[data-theme=dark] .callbtn{background:#2b5e8c}html[data-theme=dark] .ccard.key .callbtn{background:#c4413a}
+@media(max-width:520px){.ccard{flex-direction:column}.callbtn{width:100%}}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
