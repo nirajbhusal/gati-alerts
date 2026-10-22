@@ -1,5 +1,10 @@
 <!doctype html><html lang="ne"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>/* Item 14: on phones, first visit opens /stories/; the choice is remembered (gati-view). */
+(function(){try{var q=new URLSearchParams(location.search),v=localStorage.getItem("gati-view");
+if(q.get("view")==="dashboard"){localStorage.setItem("gati-view","dashboard");return;}
+if(matchMedia("(max-width:720px)").matches&&v!=="dashboard"&&!q.has("demo")){location.replace("stories/"+location.search);}}catch(e){}})();</script>
+
 <title>Gati · नेपाल अहिले | Nepal Now</title>
 <meta name="description" content="नेपाल अहिले | Nepal Now: Nepal alerts, flood warnings, river levels and road status in one place. सही सूचना, समयमै। The right alert, right on time. Gati relays verified official disaster alerts for Nepal (CAP 1.2); it does not issue official warnings.">
 <meta name="keywords" content="Nepal Now, नेपाल अहिले, गति, Nepal alerts, Nepal flood, flood warning, river level, Nepal road status, highway status, बाढी, सडक अवस्था, विपद् सूचना, DHM, NDRRMA">

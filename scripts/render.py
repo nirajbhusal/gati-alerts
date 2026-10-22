@@ -3,11 +3,14 @@
   alerts/<identifier>/index.html   static permalink with OG meta and share buttons
   alerts/<identifier>/share.png    1200x630 share image
   lite/index.html                  text-only page, no JS, no fonts, under 30 KB
+  stories/img/<identifier>.png     1080x1920 story card with QR to the permalink
+  stories/qr/<identifier>.svg      QR code to the permalink, used by /stories/
 Everything shown comes from the CAP message: headline, agency, source link, source time.
 Nothing is invented. Usage: python scripts/render.py
 """
 import json, pathlib, datetime as dt, html, urllib.parse, textwrap
 from PIL import Image, ImageDraw, ImageFont
+import io, segno
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://nirajbhusal.github.io/gati-alerts/"
@@ -112,6 +115,58 @@ def share_png(a, out, now):
            font=font("Regular", 22), fill="#7FD1D8")
     out.parent.mkdir(parents=True, exist_ok=True)
     im.save(out, optimize=True)
+
+
+def story_png(a, out, now):
+    """1080x1920 (9:16) story card: severity colour, trust label, source and time, QR to the permalink."""
+    W, H = 1080, 1920
+    ne, en = a["info"]["ne"], a["info"]["en"]
+    s = SEV.get(a["severity"], SEV["Unknown"])
+    url = f"{SITE}alerts/{a['identifier']}/"
+    im = Image.new("RGB", (W, H), "#0E2A47")
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, W, 300], fill=s[3])
+    fg = "#14202B" if a["severity"] == "Minor" else "#FFFFFF"
+    d.text((70, 60), "गति · Gati", font=font("Bold", 64), fill=fg)
+    d.text((70, 150), f"{s[0]} · {s[1]}", font=font("Bold", 60), fill=fg)
+    y = 350
+    t = TRUST.get(a["trust"])
+    x = 70
+    if t: x = pill(d, (x, y), f"{t[0]} · {t[1]}", font("SemiBold", 40), "#0F7C86", pad=22)
+    if a.get("state") in TRUST:
+        pill(d, (x, y), f"{TRUST[a['state']][0]} · {TRUST[a['state']][1]}", font("SemiBold", 40), "#6b3fa0", pad=22)
+    if not is_active(a, now):
+        pill(d, (70, y + 80), "म्याद सकियो वा अद्यावधिक · Expired or superseded", font("SemiBold", 36), "#4A5A6A", pad=22)
+    y = 520
+    for ln in wrap(d, ne["headline"], font("Bold", 78), W - 140, 6):
+        d.text((70, y), ln, font=font("Bold", 78), fill="#FFFFFF"); y += 104
+    y += 24
+    for ln in wrap(d, en["headline"], font("Regular", 46), W - 140, 4):
+        d.text((70, y), ln, font=font("Regular", 46), fill="#D5DEE7"); y += 62
+    y += 30
+    areas = " · ".join(x["ne"] for x in a["areas"]) or " · ".join(x["desc"] for x in ne["areas"])
+    for ln in wrap(d, "स्थान: " + areas, font("Regular", 40), W - 140, 2):
+        d.text((70, y), ln, font=font("Regular", 40), fill="#7FD1D8"); y += 56
+    # footer: source, time, QR
+    qr = segno.make(url, error="m")
+    buf = io.BytesIO(); qr.save(buf, kind="png", scale=10, border=2, dark="#0E2A47", light="#FFFFFF")
+    q = Image.open(buf).convert("RGB").resize((340, 340), Image.NEAREST)
+    im.paste(q, (W - 70 - 340, H - 560))
+    fy = H - 560
+    d.text((70, fy), "स्रोत / Source", font=font("Regular", 34), fill="#7FD1D8")
+    for ln in wrap(d, agency(ne), font("Bold", 44), 560, 2):
+        fy += 56; d.text((70, fy), ln, font=font("Bold", 44), fill="#FFFFFF")
+    fy += 80; d.text((70, fy), "स्रोतको समय / Source time", font=font("Regular", 34), fill="#7FD1D8")
+    fy += 50; d.text((70, fy), npt(src_time(a, ne), "ne"), font=font("SemiBold", 38), fill="#FFFFFF")
+    fy += 50; d.text((70, fy), npt(src_time(a, en), "en"), font=font("Regular", 34), fill="#D5DEE7")
+    d.text((W - 70 - 340, H - 210), "पूरा सूचना / Full notice", font=font("Regular", 30), fill="#7FD1D8")
+    d.line([70, H - 150, W - 70, H - 150], fill="#2C4A6B", width=3)
+    d.text((70, H - 130), "गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्।", font=font("Regular", 34), fill="#FFFFFF")
+    d.text((70, H - 80), "Relayed by Gati, not an official warning. Emergency: 100 · 1149", font=font("Regular", 30), fill="#7FD1D8")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    im.save(out, optimize=True)
+    qdir = ROOT / "stories/qr"; qdir.mkdir(parents=True, exist_ok=True)
+    qr.save(str(qdir / (a["identifier"] + ".svg")), scale=4, border=2, dark="#0E2A47", light="#FFFFFF", xmldecl=False)
 
 
 # ---------- permalink pages ----------
@@ -261,6 +316,7 @@ def main():
     for a in alerts:
         permalink(a, by, now)
         share_png(a, ROOT / "alerts" / a["identifier"] / "share.png", now)
+        story_png(a, ROOT / "stories/img" / (a["identifier"] + ".png"), now)
     idx = "".join(f'<li><a href="{e(a["identifier"])}/">{e(a["info"]["ne"]["headline"])}</a> <span class="meta">{npt(a["sent"], "ne")}</span></li>' for a in alerts)
     (ROOT / "alerts/index.html").write_text(f'''<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>सबै सूचना · All alerts · गति Gati</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
