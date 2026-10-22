@@ -3,7 +3,9 @@
   - feed.xml          Atom index of all CAP messages (newest first)
   - data/alerts.json  JSON mirror for the web UI
 Usage: python scripts/build.py [--check]   (--check = validate only, write nothing)
-Exit code 1 if any file fails XSD or Gati profile checks.
+Strict: exit code 1 if any file is not well-formed XML, fails the OASIS CAP 1.2 XSD
+(schema/CAP-v1.2.xsd), fails the Gati profile, has an identifier that does not match its
+file name, or duplicates another identifier. Nothing is written unless every file passes.
 """
 import json, sys, pathlib, datetime as dt
 from lxml import etree
@@ -42,13 +44,26 @@ def parse_poly(s):
 
 def main(check=False):
     now = dt.datetime.now(dt.timezone.utc)
-    alerts, bad = [], 0
+    alerts, bad, seen = [], 0, set()
+    others = [p.name for p in (ROOT / "data/alerts").iterdir() if p.suffix != ".xml"]
+    if others:
+        bad += 1; print("FAIL non-XML files in data/alerts:", others)
     for f in sorted((ROOT / "data/alerts").glob("*.xml")):
-        doc = etree.parse(str(f))
+        try:
+            doc = etree.parse(str(f), etree.XMLParser(recover=False, resolve_entities=False, no_network=True))
+        except etree.XMLSyntaxError as ex:
+            bad += 1; print(f"FAIL {f.name}: not well-formed XML: {ex}"); continue
         if not SCHEMA.validate(doc):
-            bad += 1; print(f"FAIL {f.name}: {SCHEMA.error_log.last_error}"); continue
+            bad += 1
+            for err in SCHEMA.error_log:
+                print(f"FAIL {f.name}:{err.line}: {err.message}")
+            continue
         root = doc.getroot()
         errs = profile_errors(root)
+        ident = t(root, "c:identifier") or ""
+        if ident != "np.gati." + f.stem: errs.append(f"identifier {ident!r} must be 'np.gati.{f.stem}'")
+        if ident in seen: errs.append(f"duplicate identifier {ident}")
+        seen.add(ident)
         if errs:
             bad += 1; print(f"FAIL {f.name}: " + "; ".join(errs)); continue
         print(f"ok   {f.name}")

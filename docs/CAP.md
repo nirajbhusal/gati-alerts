@@ -2,7 +2,7 @@
 
 Gati stores every item as an [OASIS CAP 1.2](https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html) message
 (ITU-T X.1303) in `data/alerts/`. Files must validate against `schema/CAP-v1.2.xsd` **and** the Gati profile below
-(`scripts/build.py` enforces both; CI blocks merges that fail).
+(`scripts/build.py` enforces both strictly: a file that is not well-formed, fails the OASIS CAP 1.2 XSD, fails the Gati profile, or has an identifier that does not match its file name stops the build with exit code 1 and nothing is written).
 
 ## Rules
 
