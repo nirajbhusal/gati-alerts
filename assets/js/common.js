@@ -90,5 +90,22 @@
     if (age > 3 * src.pollMinutes) return "stale";
     return h.lastChecked && h.lastChecked > h.lastSuccess ? "stale" : "ok";
   };
-  G.json = (p) => fetch(ROOT + p, { cache: "no-cache" }).then((r) => r.json());
+  G.json = (p) => fetch(ROOT + p, { cache: "no-cache" }).then((r) => {
+    if (p === "data/alerts.json" && navigator.onLine) try { localStorage.setItem("gati-last-sync", new Date().toISOString()); } catch (e) {}
+    return r.json();
+  });
+
+  /* PWA: manifest, service worker, offline banner with the last-known state. */
+  const mf = document.createElement("link"); mf.rel = "manifest"; mf.href = ROOT + "manifest.webmanifest"; document.head.append(mf);
+  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register(ROOT + "sw.js", { scope: ROOT }).catch(() => {});
+  const off = document.createElement("div"); off.className = "offline"; off.setAttribute("role", "status"); off.hidden = true;
+  disc.after(off);
+  const offDraw = () => {
+    const last = localStorage.getItem("gati-last-sync");
+    off.innerHTML = `<div class="wrap">${G.lang === "ne"
+      ? `हजुर अहिले अफलाइन हुनुहुन्छ। यहाँ पछिल्लो पटक सुरक्षित गरिएको अवस्था देखाइएको छ${last ? " (" + G.npt(last) + ")" : ""}। यो पुरानो हुन सक्छ।`
+      : `You are offline. This shows the last saved state${last ? " (" + G.npt(last) + ")" : ""}. It may be out of date.`}</div>`;
+    off.hidden = navigator.onLine;
+  };
+  addEventListener("online", offDraw); addEventListener("offline", offDraw); G.onLang(offDraw); offDraw();
 })();

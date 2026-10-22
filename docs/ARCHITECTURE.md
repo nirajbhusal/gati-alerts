@@ -69,3 +69,10 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 - `scripts/build.py` writes `atom.xml`, the legacy copy `feed.xml`, `cap/<identifier>.xml` and `data/alerts.json`.
 - `scripts/render.py` (run after build.py) writes `alerts/<identifier>/index.html` (static permalink, OG and Twitter meta, share buttons for Viber, Facebook, X, WhatsApp, Telegram and copy link) and `alerts/<identifier>/share.png` (1200x630, drawn with Pillow and Mukta from `scripts/fonts`, OFL). `alerts/index.html` lists every message, including expired ones.
 - `/api/` documents the files; `/embed/?district=&size=s|m|l&lang=` is the iframe widget.
+
+## PWA (item 8a)
+
+- `manifest.webmanifest` (icons in `assets/img/icon-*.png`), `sw.js` at the site root. `common.js` adds the manifest link and registers the worker on https.
+- Pages and data are network first with the last saved copy as fallback; assets are cache first. When offline, a banner shows the time of the last successful `data/alerts.json` load.
+- "My district" (`localStorage['gati-district']`, an NP-DISTRICT code) preselects the feed filter. It stays in the browser.
+- Web Push is not included (needs a server/Cloudflare Worker).

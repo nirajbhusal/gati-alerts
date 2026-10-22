@@ -209,3 +209,6 @@ table{border-collapse:collapse;width:100%;font-size:.95rem}td,th{border-bottom:1
 .share{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
 .sbtn{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--mist);background:#fff;color:var(--navy);font:inherit;font-size:.92rem;font-weight:600;text-decoration:none;cursor:pointer}
 .sbtn:hover{border-color:var(--teal);color:var(--teal)}
+.offline{background:#FFF4E5;border-bottom:1px solid #F3C98B;color:#7A3E00;font-size:.9rem;padding:6px 0}
+.mydist{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 16px;font-size:.95rem}
+.mydist select{min-height:40px;padding:6px 10px}.mydist .meta{margin:0}
