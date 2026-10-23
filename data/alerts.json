@@ -1,7 +1,246 @@
 {
- "generated": "2026-10-22T14:10:28+00:00",
- "count": 32,
+ "generated": "2026-10-23T03:27:59+00:00",
+ "count": 34,
  "alerts": [
+  {
+   "identifier": "np.gati.police-road-aarughat-soti-2026-10-23",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-10-23T09:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": "nepalpolice.gov.np,np.gati.police-road-aarughat-soti-2026-10-21,2026-10-21T18:00:00+05:45",
+   "file": "data/alerts/police-road-aarughat-soti-2026-10-23.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-23T09:00:00+05:45",
+     "onset": "2026-10-23T09:00:00+05:45",
+     "expires": "2026-10-24T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+     "description": "अद्यावधिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।०६ (कात्तिक ६) बिहान ९ बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो अझै पूर्ण रूपमा अवरुद्ध। देशभरको सूचीमा यही एउटा मात्र अवरोध छ।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-23T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-23T09:00:00+05:45",
+     "onset": "2026-10-23T09:00:00+05:45",
+     "expires": "2026-10-24T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+     "description": "Update: Nepal Police notice 'Road blockages', to 9 AM on 2083-07-06 (Kartik 6, 23 Oct 2026): the iron motorable bridge at Soti linking Aarughat-2 and 3 was swept away by the Budhi Gandaki flood of Asoj 25 (11 Oct), and the road is still fully blocked. This is the only blockage on the nationwide list.",
+     "instruction": "Do not use this road; check with local police before travelling.",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-23T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "Soti, Aarughat-2/3 (approximate location)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-10-24T09:00:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला",
+     "en": "Gorkha district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.05,84.81 3"
+     ],
+     "ne": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+     "en": "Soti, Aarughat-2/3 (approximate location)"
+    }
+   ],
+   "refIds": [
+    "np.gati.police-road-aarughat-soti-2026-10-21"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-21",
+     "msgType": "Alert",
+     "sent": "2026-10-21T18:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-23",
+     "msgType": "Update",
+     "sent": "2026-10-23T09:00:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-23",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-23T06:28:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.thahakhabar.com/detail/310737",
+   "references": null,
+   "file": "data/alerts/reported-dhm-24h-forecast-2026-10-23.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-23T06:28:00+05:45",
+     "onset": "2026-10-23T06:28:00+05:45",
+     "expires": "2026-10-24T06:00:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
+     "headline": "कात्तिक ६ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कर्णालीका हिमाली र कोशी, बागमती, गण्डकीका पहाडी भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात",
+     "description": "रिपोर्ट गरिएको (थाहा खबर र रातोपाटी, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ६ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली र पहाडी भूभागमा आंशिक बदली, तराईमा मुख्यतया सफा। कर्णाली प्रदेशका हिमाली भूभाग तथा कोशी, बागमती र गण्डकी प्रदेशका पहाडी भूभागका एक–दुई स्थानमा हल्का वर्षा र हिमपातको सम्भावना। आज राति कोशी, गण्डकी र कर्णालीका हिमाली र पहाडी भूभागमा आंशिक बदली। बिहानीपख तराईमा केही स्थानमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।",
+     "instruction": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।",
+     "web": "https://www.thahakhabar.com/detail/310737",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310737",
+      "gati:sourceTime": "2026-10-23T06:28:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310737",
+      "gati:sourceUrl2": "https://english.ratopati.com/story/84304/partial-influence-of-westerly-winds-persists-light-rain-likely-in-these-four-provinces-today",
+      "gati:summary160": "कात्तिक ६ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कर्णालीका हिमाली र कोशी, बागमती, गण्डकीका पहाडी भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-23T06:28:00+05:45",
+     "onset": "2026-10-23T06:28:00+05:45",
+     "expires": "2026-10-24T06:00:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
+     "headline": "23 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills",
+     "description": "Reported (Thaha Khabar and Ratopati, both citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 6): westerly winds have a partial influence. Partly cloudy in the hills and mountains this afternoon, mainly fair in the Terai. Light rain or snow is possible at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills. Tonight partly cloudy in the Koshi, Gandaki and Karnali hills and mountains. Morning mist or fog in parts of the Terai. No warning is mentioned.",
+     "instruction": "If travelling in the mountains, check DHM's latest forecast.",
+     "web": "https://www.thahakhabar.com/detail/310737",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310737",
+      "gati:sourceTime": "2026-10-23T06:28:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310737",
+      "gati:sourceUrl2": "https://english.ratopati.com/story/84304/partial-influence-of-westerly-winds-persists-light-rain-likely-in-these-four-provinces-today",
+      "gati:summary160": "23 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Reported",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Unknown",
+   "expires": "2026-10-24T06:00:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला)",
+     "en": "Nepal (all districts)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.reported-dhm-3day-forecast-2026-10-22",
    "sender": "hydrology.gov.np",
@@ -223,8 +462,21 @@
     }
    ],
    "refIds": [],
-   "chain": [],
-   "supersededBy": null
+   "chain": [
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-21",
+     "msgType": "Alert",
+     "sent": "2026-10-21T18:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-23",
+     "msgType": "Update",
+     "sent": "2026-10-23T09:00:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-23"
   },
   {
    "identifier": "np.gati.dhm-river-levels-2026-10-21",
@@ -368,7 +620,7 @@
    "severity": "Unknown",
    "expires": "2026-10-22T23:59:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,

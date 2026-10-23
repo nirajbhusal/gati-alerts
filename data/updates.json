@@ -1,6 +1,11 @@
 {
  "updates": [
   {
+   "date": "2026-10-23",
+   "ne": "दैनिक डेटा अद्यावधिक: नेपाल प्रहरीको कात्तिक ६ बिहान ९ बजेसम्मको सडक अवरोध सूचनामा अझै गोरखाको आरुघाट (सोती पुल) मात्र छ; १७ मुख्य सडकको अवस्था फेरि जाँचियो, कुनै परिवर्तन छैन। आज (कात्तिक ६) को DHM २४ घण्टे पूर्वानुमान दुई समाचार माध्यमबाट (रिपोर्ट गरिएको)। DHM, NDRRMA, BIPAD र NEOC का साइट गतिको सर्भरबाट खुलेनन्, त्यसैले नदीको सतह अक्टोबर २१ कै हो। NSC र USGS मा नयाँ भूकम्प (ML ४+ / M४.५+) छैन।",
+   "en": "Daily data refresh: Nepal Police's road-blockage notice to 9 AM Kartik 6 still lists only Aarughat (Soti bridge) in Gorkha; the 17 main roads were rechecked, no change. Today's (Kartik 6) DHM 24-hour forecast via two news outlets (Reported). DHM, NDRRMA, BIPAD and NEOC sites could not be reached from Gati's server, so river levels are still those of 21 Oct. No new NSC (ML 4+) or USGS (M4.5+) earthquake."
+  },
+  {
    "date": "2026-10-22",
    "ne": "नक्सा नयाँ: सडकको वास्तविक बाटो, हल्का पृष्ठभूमि (बाहिरी टाइल सर्भर छैन), खतराअनुसार ठूला चिह्न, सहर र नदीको नाम, सूचना/सडक/नदी छान्ने बटन, थिच्दा सार कार्ड, र डेस्कटपमा छेउमा सडकको सूची।",
    "en": "New map: real road paths, a light basemap (no outside tile server), bigger hazard icons, town and river labels, Alerts/Roads/Rivers toggles, a summary card on tap, and a road list beside the map on desktop."

@@ -4,12 +4,38 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, समयमै। / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-10-22T14:10:28+00:00</updated>
+  <updated>2026-10-23T03:27:59+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-10-23</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-10-23T09:00:00+05:45</updated>
+    <published>2026-10-23T09:00:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-10-24T09:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-10-23.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-10-23/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.reported-dhm-24h-forecast-2026-10-23</id>
+    <title>23 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills</title>
+    <updated>2026-10-23T06:28:00+05:45</updated>
+    <published>2026-10-23T06:28:00+05:45</published>
+    <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) · relayed by Gati · expires 2026-10-24T06:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-24h-forecast-2026-10-23.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-24h-forecast-2026-10-23/" rel="related" type="text/html"/>
+    <link href="https://www.thahakhabar.com/detail/310737" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.reported-dhm-3day-forecast-2026-10-22</id>
     <title>22–24 Oct: mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains</title>
