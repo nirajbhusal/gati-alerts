@@ -59,7 +59,7 @@
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
   </div>
-  <nav class="main" id="mainnav" aria-label="Main">${NAV.map(([id, href, ne, en]) =>
+  <nav class="main" id="mainnav" aria-label="Main"><a class="navhome" href="${ROOT}?home=1" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
     `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}
     <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
       <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div></nav>`;
