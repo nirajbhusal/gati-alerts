@@ -210,4 +210,5 @@
   new MutationObserver(() => { clearTimeout(scan.t); scan.t = setTimeout(scan, 150); }).observe(document.body, { childList: true, subtree: true });
   scan(); speechSynthesis.getVoices(); addEventListener("pagehide", stop);
 })();
-
+/* Ask pop-up (loaded on every page that uses common.js) */
+(function () { const G = window.Gati; if (!G) return; const s = document.createElement("script"); s.src = G.root + "assets/js/askpop.js"; s.defer = true; document.body.appendChild(s); })();
