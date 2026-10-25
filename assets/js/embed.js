@@ -16,7 +16,7 @@
     Minor: ["सामान्य", "Minor", "●", "#9a7b00"], Unknown: ["सूचना", "Info", "ℹ", "#2B6CB0"] };
   const TR = { Official: ["🛡 आधिकारिक", "🛡 Official"], Verified: ["✓ प्रमाणित", "✓ Verified"], Reported: ["❝ रिपोर्ट गरिएको", "❝ Reported"] };
   const site = "https://nirajbhusal.github.io/gati-alerts/";
-  document.getElementById("disc").textContent = T("गतिले सूचना जारी गर्दैन, सरकारी सूचना मात्र फैलाउँछ।", "Gati relays official notices; it never issues its own.");
+  document.getElementById("disc").textContent = T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources");
   Promise.all([fetch("../data/alerts.json").then((r) => r.json()), fetch("../data/districts.json").then((r) => r.json())]).then(([data, D]) => {
     const dq = q.get("district"), d = dq && D.find((x) => x.id === dq || x.code === dq);
     document.getElementById("dn").textContent = d ? (lang === "ne" ? d.ne : d.en) : T("सबै नेपाल", "All Nepal");

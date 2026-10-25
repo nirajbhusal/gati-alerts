@@ -23,8 +23,8 @@
       }).join("") + "</tbody></table>";
     const n = document.getElementById("srcNote");
     if (n) n.innerHTML = G.lang === "ne"
-      ? `जाँच नेपालबाहिरको स्वचालित सर्भरबाट गरिएको हो। केही .gov.np साइट त्यस्ता सर्भरका लागि बन्द हुन सक्छन्, तर नेपालबाट हजुरले खोल्दा खुल्न सक्छन्। गतिले सूचना जारी गर्दैन, सरकारी निकायको सूचना मात्र फैलाउँछ।`
-      : `Checks run from an automated server outside Nepal. Some .gov.np sites block or time out for such servers yet open fine from Nepal. Gati relays official notices and never issues its own.`;
+      ? `जाँच नेपालबाहिरको स्वचालित सर्भरबाट गरिएको हो। केही .gov.np साइट त्यस्ता सर्भरका लागि बन्द हुन सक्छन्, तर नेपालबाट हजुरले खोल्दा खुल्न सक्छन्।`
+      : `Checks run from an automated server outside Nepal. Some .gov.np sites block or time out for such servers yet open fine from Nepal.`;
   }
   Promise.all([G.json("data/sources.json"), G.json("data/source-health.json").catch(() => ({}))]).then(([s, h]) => {
     S = s; H = (h && h.sources) || {}; draw(); if (G.onLang) G.onLang(draw);

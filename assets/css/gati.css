@@ -861,3 +861,4 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .afsharecard{margin:0 0 10px;padding:14px 16px;border-radius:14px;background:var(--surface2);border-left:4px solid var(--vc);font-size:.88rem;line-height:1.5;word-break:break-word}
 .afna{padding:16px;border-radius:14px;background:var(--surface2)}
 .afv{display:block}.afv i{margin-right:8px;vertical-align:middle}
+.fdisclaimer{font-size:.85rem;line-height:1.6;color:var(--slate);margin:0 0 14px;max-width:880px}.relaylink{font-size:.78rem;color:var(--slate)!important}

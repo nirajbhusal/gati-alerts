@@ -76,7 +76,7 @@
         <details class="fsrc"><summary>${T("स्रोत विवरण", "Source")}</summary>
           ${areas ? `<p>📍 ${esc(areas)}</p>` : ""}${a.state ? `<p>${G.trustChip(a.state)}</p>` : ""}
           <p>${T("स्रोतको समय", "Source time")}: ${G.npt(srcTime(a, i))} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
-          <p class="fdisc">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्।", "Relayed by Gati, not an official warning. Check the original source.")}</p></details>
+          <p class="fdisc"><a class="relaylink" href="${G.root}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p></details>
       </div>
       <div class="rail">
         <button type="button" data-act="share" data-k="${k}"><span aria-hidden="true">↗</span>${T("सेयर", "Share")}</button>
@@ -101,7 +101,7 @@
       ["WhatsApp", `https://wa.me/?text=${tx}%20${u}`], ["Telegram", `https://t.me/share/url?url=${u}&text=${tx}`]];
     openSheet(`<h3>${T("सेयर गर्नुहोस्", "Share")}</h3><div class="share">${L.map(([n, h]) => `<a class="sbtn" href="${h}" target="_blank" rel="noopener">${n}</a>`).join("")}
       <button class="sbtn" type="button" id="fcopy">${T("लिङ्क कपी गर्नुहोस्", "Copy link")}</button>${navigator.share ? `<button class="sbtn" type="button" id="fnative">${T("अन्य", "More")}</button>` : ""}</div>
-      <p class="meta">${T("सेयर गर्दा मूल स्रोत पनि उल्लेख गर्नुहोस्। गतिले सूचना जारी गर्दैन, फैलाउने मात्र गर्छ।", "When sharing, mention the original source. Gati relays notices; it does not issue them.")}</p>`, "Share");
+      <p class="meta">${T("सेयर गर्दा मूल स्रोत पनि उल्लेख गर्नुहोस्।", "When sharing, mention the original source.")}</p>`, "Share");
     document.getElementById("fcopy").onclick = (e) => navigator.clipboard && navigator.clipboard.writeText(url(a)).then(() => (e.target.textContent = T("कपी भयो", "Copied")));
     const n = document.getElementById("fnative"); if (n) n.onclick = () => navigator.share({ title: i.headline, url: url(a) }).catch(() => {});
   }

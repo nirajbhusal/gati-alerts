@@ -66,13 +66,9 @@
     `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}
     <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
       <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div></nav>`;
-  const disc = document.createElement("div");
-  disc.className = "disclaimer";
-  disc.innerHTML = `<div class="wrap">${b(
-    "<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।",
-    "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</div>`;
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
+    <p class="fdisclaimer">${b("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</p>
     <div class="helplines" aria-label="Emergency helplines">
       <a href="tel:100">${b("प्रहरी १००", "Police 100")}</a><a href="tel:101">${b("दमकल १०१", "Fire 101")}</a>
       <a href="tel:102">${b("एम्बुलेन्स १०२", "Ambulance 102")}</a><a href="tel:1234">${b("विपद् १२३४", "Disaster 1234")}</a></div>
@@ -88,10 +84,9 @@
   tabs.innerHTML = TABS.map(([id, href, ic, ne, en]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
-  document.body.prepend(disc);
   document.body.prepend(header);
   /* Breaking: official, active, issued in the last 24h, severity Moderate or higher. Dismissible per alert. */
-  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; disc.after(brk);
+  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; header.after(brk);
   G.breaking = () => G.json("data/alerts.json").then((d) => { const now = Date.now(), SV = ["Moderate", "Severe", "Extreme"];
     return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity))
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
@@ -207,7 +202,7 @@
   const mf = document.createElement("link"); mf.rel = "manifest"; mf.href = ROOT + "manifest.webmanifest"; document.head.append(mf);
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register(ROOT + "sw.js", { scope: ROOT }).catch(() => {});
   const off = document.createElement("div"); off.className = "offline"; off.setAttribute("role", "status"); off.hidden = true;
-  disc.after(off);
+  header.after(off);
   const offDraw = () => {
     const last = localStorage.getItem("gati-last-sync");
     off.innerHTML = `<div class="wrap">${G.lang === "ne"
@@ -279,7 +274,7 @@
         <div class="merow metsize"><span class="meic" aria-hidden="true">अ</span><span class="melab">${T("अक्षरको आकार", "Text size")}</span><span class="tsize" role="group" aria-label="${T("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${T("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${T("सामान्य अक्षर", "Default size")}">A</button><button type="button" data-ts="1" aria-label="${T("ठूलो अक्षर", "Larger text")}">A+</button><output>${G.num(String(G.textSize()))}%</output></span></div>
         ${row("🔔", "सूचना पाउने तरिका", "Get notified", "Atom", "feed")}
         ${row("ℹ️", "बारेमा र स्रोत", "About and sources", "", "about")}
-      </div><p class="meta">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन। यहाँका सेटिङ यही उपकरणमा मात्र रहन्छन्।", "Gati relays; it does not issue warnings. These settings stay on this device.")}</p></aside>`;
+      </div><p class="meta">${T("यहाँका सेटिङ यही उपकरणमा मात्र रहन्छन्।", "These settings stay on this device.")} <a class="relaylink" href="${R}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p></aside>`;
     G.bindThemePicker(dr.querySelector(".methemes"));
     dr.querySelector(".meback").onclick = close; dr.querySelector(".mex").onclick = close;
     dr.querySelectorAll(".melang button").forEach((b) => (b.onclick = () => G.setLang(b.dataset.l)));

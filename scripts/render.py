@@ -119,7 +119,7 @@ def share_png(a, out, now):
         d.text((60, y), ln, font=font("Regular", 30), fill="#D5DEE7"); y += 40
     d.line([60, H - 112, W - 60, H - 112], fill="#2C4A6B", width=2)
     d.text((60, H - 100), f"स्रोत: {agency(ne)} · {npt(src_time(a, ne), 'ne')}", font=font("SemiBold", 26), fill="#FFFFFF")
-    d.text((60, H - 60), "गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्। Relayed by Gati, not an official warning.",
+    d.text((60, H - 60), "गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ · Gati relays official sources",
            font=font("Regular", 22), fill="#7FD1D8")
     out.parent.mkdir(parents=True, exist_ok=True)
     im.save(out, optimize=True)
@@ -171,8 +171,8 @@ def story_png(a, out, now):
     fy += 50; d.text((70, fy), npt(src_time(a, en), "en"), font=font("Regular", 34), fill="#D5DEE7")
     d.text((W - 70 - 340, H - 210), "पूरा सूचना / Full notice", font=font("Regular", 30), fill="#7FD1D8")
     d.line([70, H - 150, W - 70, H - 150], fill="#2C4A6B", width=3)
-    d.text((70, H - 130), "गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्।", font=font("Regular", 34), fill="#FFFFFF")
-    d.text((70, H - 80), "Relayed by Gati, not an official warning. Emergency: 100 · 1234", font=font("Regular", 30), fill="#7FD1D8")
+    d.text((70, H - 130), "गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ। मूल स्रोत हेर्नुहोस्।", font=font("Regular", 34), fill="#FFFFFF")
+    d.text((70, H - 80), "Gati relays official sources. Emergency: 100 · 1234", font=font("Regular", 30), fill="#7FD1D8")
     out.parent.mkdir(parents=True, exist_ok=True)
     im.save(out, optimize=True)
     qdir = ROOT / "stories/qr"; qdir.mkdir(parents=True, exist_ok=True)
@@ -257,7 +257,7 @@ def permalink(a, by, now):
 </article>
 <h2 style="font-size:1.1rem">{b("सेयर गर्नुहोस्", "Share")}</h2>
 {share_buttons(url, summ)}
-<p class="meta">{b("सेयर गर्दा मूल स्रोत पनि उल्लेख गर्नुहोस्। गतिले सूचना जारी गर्दैन, फैलाउने मात्र गर्छ।", "When sharing, mention the original source. Gati relays notices; it does not issue them.")}</p>
+<p class="meta">{b("सेयर गर्दा मूल स्रोत पनि उल्लेख गर्नुहोस्।", "When sharing, mention the original source.")}</p>
 </main><script src="../../assets/js/bs.js"></script><script src="../../assets/js/common.js"></script><script src="../../assets/js/share.js"></script></body></html>
 '''
     out = ROOT / "alerts" / ident
@@ -303,13 +303,14 @@ def lite(alerts, now):
 <style>body{{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:10px;color:#14202B}}a{{color:#0F7C86}}h1{{font-size:1.3em;color:#0E2A47}}h2{{font-size:1.1em;color:#0E2A47;margin:1.2em 0 .3em}}ul{{padding-left:1.1em}}li{{margin:.3em 0}}.d{{background:#e8f3f4;padding:8px;font-size:.9em}}hr{{border:0;border-top:1px solid #ccd}}</style>
 </head><body>
 <h1>गति Lite · सही सूचना, समयमै।</h1>
-<p class="d">{DISC_NE}</p>
+<p><small><a href="../about/">गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ</a></small></p>
 <p><small>बनाइएको: {npt(now.isoformat(), "ne")} · <a href="#en">English</a> · <a href="../">पूरा साइट</a></small></p>
 {sec("ne")}
 <hr><h1 id="en">Gati Lite · The right alert, right on time.</h1>
-<p class="d">{DISC_EN}</p>
+<p><small><a href="../about/">Gati relays official sources</a></small></p>
 <p><small>Built: {npt(now.isoformat(), "en")} · <a href="../">Full site</a> · <a href="../atom.xml">Atom feed</a></small></p>
 {sec("en")}
+<hr><footer><p class="d">{DISC_NE}</p><p class="d">{DISC_EN}</p></footer>
 <hr><p><small>प्रहरी १०० · दमकल १०१ · एम्बुलेन्स १०२ · विपद् १२३४ · <a href="../alerts/">सबै सूचना / Archive</a> · <a href="../sources/">स्रोत / Sources</a></small></p>
 </body></html>'''
     (ROOT / "lite").mkdir(exist_ok=True)
