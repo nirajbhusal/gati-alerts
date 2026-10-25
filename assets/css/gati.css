@@ -1197,16 +1197,18 @@ html[data-theme=dark] .helplines a{background:var(--surface)!important;color:var
 body[data-page=weather] #mydist:empty{min-height:44px}
 /* Fix sweep 16: Home sidebar at desktop reserves the Weather and Roads summary heights */
 @media(min-width:961px){.home .hright>section:nth-child(1){min-height:268px}.home .hright>section:nth-child(2){min-height:356px}}
-/* Am I affected radius slider: 0 (my district only) to 50 km in 5 km steps; saffron thumb, navy track */
-.afrad{margin:12px 0 4px;--trk:var(--navy);--rest:var(--line)}html[data-theme=dark] .afrad{--trk:#7FA6FF;--rest:#2C3B57}
-.afradl{display:flex;justify-content:space-between;gap:8px;font-size:var(--fs-5);font-weight:600;color:var(--slate)}.afradv{color:var(--ink);font-weight:700}
-.afrange{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:2px 0 0;background:transparent;cursor:pointer;touch-action:pan-y}
-.afrange::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--trk) var(--p),var(--rest) var(--p))}
-.afrange::-moz-range-track{height:6px;border-radius:3px;background:var(--rest)}.afrange::-moz-range-progress{height:6px;border-radius:3px;background:var(--trk)}
-.afrange::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;margin-top:-19px;border-radius:50%;background:var(--saffron);border:4px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.3)}
-.afrange::-moz-range-thumb{width:36px;height:36px;border-radius:50%;background:var(--saffron);border:4px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.3)}
-.afrange:focus-visible{outline:none}.afrange:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--surface),0 0 0 6px var(--river)}.afrange:focus-visible::-moz-range-thumb{box-shadow:0 0 0 3px var(--river)}
-.afticks{position:relative;height:18px;margin:0 22px;font-size:var(--fs-6);color:var(--slate)}.afticks span{position:absolute;transform:translateX(-50%);top:0}.afticks span::before{content:"";position:absolute;left:50%;top:-6px;width:1px;height:5px;background:var(--slate)}
+/* Am I affected radius slider (slim): 4px track, ~18px visible saffron thumb inside an invisible 44px hit area */
+.afrad{margin:10px 0 2px;--trk:var(--navy);--rest:var(--line)}html[data-theme=dark] .afrad{--trk:#7FA6FF;--rest:#2C3B57}
+.afradl{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:var(--fs-6);font-weight:500;color:var(--slate);line-height:1.3;white-space:nowrap}.afradv{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.afrad .afrange{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:-8px 0 -10px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;outline:none;cursor:pointer;touch-action:pan-y}
+.afrange::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--trk) var(--p),var(--rest) var(--p))}
+.afrange::-moz-range-track{height:4px;border-radius:2px;background:var(--rest)}.afrange::-moz-range-progress{height:4px;border-radius:2px;background:var(--trk)}
+.afrange::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;margin-top:-20px;border:0;border-radius:50%;background:radial-gradient(circle,var(--saffron) 0 7px,var(--surface) 7.5px 9px,transparent 9.5px)}
+.afrange::-moz-range-thumb{width:44px;height:44px;border:0;border-radius:50%;background:radial-gradient(circle,var(--saffron) 0 7px,var(--surface) 7.5px 9px,transparent 9.5px)}
+.afrange:focus-visible::-webkit-slider-thumb{background:radial-gradient(circle,var(--saffron) 0 7px,var(--surface) 7.5px 9px,var(--river) 9.5px 12px,transparent 12.5px)}
+.afrange:focus-visible::-moz-range-thumb{background:radial-gradient(circle,var(--saffron) 0 7px,var(--surface) 7.5px 9px,var(--river) 9.5px 12px,transparent 12.5px)}
+.afrad .afrange:focus-visible{outline:none!important}
+.afticks{position:relative;height:16px;margin:0 22px;font-size:12px;line-height:16px;color:var(--slate);opacity:.8}.afticks span{position:absolute;transform:translateX(-50%);top:0}
 .afnote{margin:4px 0 0}
 .drad .afrad{margin:8px 0 4px}
 .aftoast{position:fixed;left:16px;right:16px;margin:0 auto;width:max-content;bottom:calc(156px + env(safe-area-inset-bottom));z-index:1500;display:flex;align-items:center;gap:12px;max-width:calc(100% - 32px);background:var(--ink);color:var(--snow);padding:6px 6px 6px 16px;border-radius:14px;box-shadow:var(--sh2,0 8px 24px rgba(0,0,0,.25));font-size:var(--fs-5)}
