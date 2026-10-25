@@ -35,8 +35,8 @@
         <a role="listitem" class="qs" href="${R}weather/"><span>☁</span>${T("आजको मौसम", "Today's weather")}</a>
         <a role="listitem" class="qs" href="${R}route/"><span>⇄</span>${T("मार्ग जाँच", "Route check")}</a>
         <a role="listitem" class="qs" href="${R}patro/"><span>▦</span>${T("आजको पात्रो", "Today's Patro")}</a></div>
-      <section class="svcard"><div class="svhead"><h2>${T("सेवाहरू", "Services")}</h2><label class="svsearch"><span class="sr-only">${T("सेवा खोज्नुहोस्", "Search services")}</span><input id="svq" type="search" value="${G.esc(q)}" placeholder="${T("सेवा खोज्नुहोस्", "Search services")}"></label></div>
-      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सेवा भेटिएन।", "No matching service.")}</p>`}</div>
+      <section class="svcard"><div class="svhead"><h2>${T("सुविधाहरू", "Features")}</h2><label class="svsearch"><span class="sr-only">${T("सुविधा खोज्नुहोस्", "Search features")}</span><input id="svq" type="search" value="${G.esc(q)}" placeholder="${T("सुविधा खोज्नुहोस्", "Search features")}"></label></div>
+      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सुविधा भेटिएन।", "No matching feature.")}</p>`}</div>
       ${q || L.length <= 8 ? "" : `<button type="button" class="svmore" aria-expanded="${all}">${all ? T("कम देखाउनुहोस्", "Show less") : T("थप हेर्नुहोस्", "See more")} ${all ? "▴" : "▾"}</button>`}</section>`;
     const i = box.querySelector("#svq"); i.oninput = () => { const p = i.selectionStart; draw(); const j = box.querySelector("#svq"); j.focus(); j.setSelectionRange(p, p); };
     const m = box.querySelector(".svmore"); if (m) m.onclick = () => { all = !all; draw(); };
