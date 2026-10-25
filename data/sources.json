@@ -238,5 +238,21 @@
   "trustDefault": "Official",
   "contact": null,
   "status": "planned"
+ },
+ {
+  "id": "dor-navigate",
+  "agency": {
+   "ne": "सडक विभाग (DoR), NAVIGATE",
+   "en": "Department of Roads (DoR), NAVIGATE"
+  },
+  "url": "https://navigate.dor.gov.np/api/Map_data_api/getRoadClosureMapData",
+  "feedType": "json",
+  "pollMinutes": 1440,
+  "hazards": [
+   "road"
+  ],
+  "trustDefault": "Official",
+  "contact": "https://navigate.dor.gov.np/dashboard",
+  "status": "active"
  }
 ]

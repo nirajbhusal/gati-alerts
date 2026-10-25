@@ -186,7 +186,17 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH17"
+    ],
+    "districts": [
+     "Kathmandu",
+     "Dhading",
+     "Chitwan"
+    ]
+   }
   },
   {
    "id": "mugling-pokhara",
@@ -204,7 +214,16 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH17"
+    ],
+    "districts": [
+     "Tanahun",
+     "Kaski"
+    ]
+   }
   },
   {
    "id": "mugling-narayanghat",
@@ -239,7 +258,21 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Chitwan",
+     "Nawalparasi",
+     "Nawalparasi (Bardaghat Susta East)",
+     "Nawalparasi (Bardaghat Susta West)",
+     "Nawalpur",
+     "Parasi",
+     "Rupandehi"
+    ]
+   }
   },
   {
    "id": "ktm-hetauda",
@@ -256,7 +289,13 @@
    "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
    "sources": [
     "pol"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH41"
+    ],
+    "districts": []
+   }
   },
   {
    "id": "bp",
@@ -278,7 +317,13 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH13"
+    ],
+    "districts": []
+   }
   },
   {
    "id": "narayanghat-hetauda",
@@ -296,7 +341,16 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Chitwan",
+     "Makwanpur"
+    ]
+   }
   },
   {
    "id": "hetauda-pathlaiya",
@@ -313,7 +367,16 @@
    "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
    "sources": [
     "pol"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Makwanpur",
+     "Bara"
+    ]
+   }
   },
   {
    "id": "pasang-lhamu",
@@ -331,7 +394,13 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH18"
+    ],
+    "districts": []
+   }
   },
   {
    "id": "araniko",
@@ -348,7 +417,13 @@
    "note_en": "Not confirmed: not on the Police Kartik 8 notice, but one undated news report mentions landslides at Kodari and Jirokilo. Without an official confirmation or two independent outlets, it is not shown as open.",
    "sources": [
     "pol"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH34"
+    ],
+    "districts": []
+   }
   },
   {
    "id": "pokhara-baglung",
@@ -401,7 +476,18 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Rupandehi",
+     "Kapilvastu",
+     "Dang",
+     "Banke"
+    ]
+   }
   },
   {
    "id": "nepalgunj-dhangadhi",
@@ -419,7 +505,17 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Banke",
+     "Bardiya",
+     "Kailali"
+    ]
+   }
   },
   {
    "id": "pathlaiya-bardibas",
@@ -437,7 +533,18 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Bara",
+     "Rautahat",
+     "Sarlahi",
+     "Mahottari"
+    ]
+   }
   },
   {
    "id": "bardibas-itahari",
@@ -455,7 +562,20 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Mahottari",
+     "Dhanusha",
+     "Siraha",
+     "Saptari",
+     "Udayapur",
+     "Sunsari"
+    ]
+   }
   },
   {
    "id": "itahari-kakarbhitta",
@@ -473,7 +593,18 @@
    "sources": [
     "pol",
     "dor"
-   ]
+   ],
+   "navigate": {
+    "refs": [
+     "NH01"
+    ],
+    "districts": [
+     "Sunsari",
+     "Morang",
+     "Jhapa"
+    ]
+   }
   }
- ]
+ ],
+ "navigate_note_en": "routes[].navigate: DoR national highway numbers (NH17 Prithvi, NH41 Tribhuvan Rajpath, NH13 BP, NH18 Pasang Lhamu, NH34 Araniko, NH01 East-West) and districts used to match DoR NAVIGATE records. Not yet mapped: Mugling-Narayanghat, Pokhara-Baglung, Butwal-Palpa."
 }

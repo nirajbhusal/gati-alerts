@@ -208,9 +208,23 @@
     if (age > 3 * src.pollMinutes) return "stale";
     return h.lastChecked && h.lastChecked > h.lastSuccess ? "stale" : "ok";
   };
-  G.json = (p) => fetch(ROOT + p, { cache: "no-cache" }).then((r) => {
+  const rawJson = (p) => fetch(ROOT + p, { cache: "no-cache" }).then((r) => {
     if (p === "data/alerts.json" && navigator.onLine) try { localStorage.setItem("gati-last-sync", new Date().toISOString()); } catch (e) {}
     return r.json();
+  });
+  /* DoR NAVIGATE overlay: data/navigate.json "routes" (resolved by scripts/fetch_navigate.py: newer report wins,
+     disagreement in the same window = not confirmed with both sources) is applied on top of data/roads.json. */
+  G.json = (p) => p !== "data/roads.json" ? rawJson(p) : Promise.all([rawJson(p), rawJson("data/navigate.json").catch(() => null)]).then(([RD, NV]) => {
+    if (!RD || !NV) return RD;
+    RD.navigate = NV;
+    const LB = { open: ["खुला", "open"], oneway: ["आंशिक", "partial"], blocked: ["अवरुद्ध", "blocked"], none: ["पुष्टि नभएको", "not confirmed"] };
+    (RD.routes || []).forEach((r) => { const x = NV.routes && NV.routes[r.id]; if (!x || x.winner === "agree" || x.winner === "police") return;
+      r.nav = x; r.status = x.status; r.sources = [...new Set([...(r.sources || []), "dor"])];
+      const it = (NV.items || []).find((i) => i.id === x.item) || {};
+      const ne = x.winner === "conflict" ? `पुष्टि नभएको: नेपाल प्रहरी (${LB[x.police][0]}) र सडक विभाग NAVIGATE (${LB[x.navigate === "partial" ? "oneway" : x.navigate][0]}) उही समयमा फरक भन्छन्; दुवै स्रोत हेर्नुहोस्।` : `सडक विभाग NAVIGATE (${LB[x.status][0]}, ${it.location || ""}) नेपाल प्रहरीको सूचनाभन्दा नयाँ छ।`;
+      const en = x.winner === "conflict" ? `Not confirmed: Nepal Police (${LB[x.police][1]}) and DoR NAVIGATE (${LB[x.navigate === "partial" ? "oneway" : x.navigate][1]}) disagree in the same window; see both sources.` : `DoR NAVIGATE (${LB[x.status][1]}, ${it.location || ""}) is newer than the Nepal Police notice.`;
+      r.note_ne = ne + " " + (r.note_ne || ""); r.note_en = en + " " + (r.note_en || ""); });
+    return RD;
   });
 
   /* Demo mode (?demo=1): load the client-side scenario before page scripts run. */

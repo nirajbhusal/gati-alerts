@@ -37,8 +37,8 @@
   const hz = (h) => HAZ[h] || [h || "अन्य", h || "Other", "•"];
   const AGENCY = { "hydrology.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
   const agency = (a) => { const v = AGENCY[a.sender] || a.sender; return Array.isArray(v) ? T(v[0], v[1]) : v; };
-  const RC = { open: "#15803d", oneway: "#1d4ed8", night: "#b45309", closed: "#b91c1c", none: "#94a3b8" };
-  const RW = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], night: ["राति बन्द", "Closed at night"], closed: ["बन्द", "Blocked"], none: ["स्थिति पुष्टि भएन", "Not confirmed"] };
+  const RC = { open: "#15803d", oneway: "#1d4ed8", night: "#b45309", closed: "#b91c1c", blocked: "#b91c1c", none: "#94a3b8" };
+  const RW = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], night: ["राति बन्द", "Closed at night"], closed: ["बन्द", "Blocked"], blocked: ["बन्द", "Blocked"], none: ["स्थिति पुष्टि भएन", "Not confirmed"] };
   const rw = (s) => T(...RW[s]);
 
   /* ---------- scope ---------- */
@@ -212,7 +212,7 @@
     $("sumclose").onclick = () => { picked = null; summary(); };
   }
   function roadList() {
-    const order = { closed: 0, night: 1, oneway: 2, none: 3, open: 4 };
+    const order = { closed: 0, blocked: 0, night: 1, oneway: 2, none: 3, open: 4 };
     $("roadList").innerHTML = [...roads.routes].sort((a, b) => order[a.status] - order[b.status]).map((r) =>
       `<li><button type="button" data-r="${r.id}"><span class="rl-bar" style="background:${RC[r.status]}"></span><span class="rl-n">${G.esc(ne() ? r.name_ne : r.name_en)}</span><span class="rl-s" style="color:${RC[r.status]}">${G.esc(rw(r.status))}</span></button></li>`).join("");
     if ($("roadList") === NIL) return;
@@ -430,7 +430,7 @@
   }
   function roadHi() {
     const box = $("roadhi"); if (box === NIL) return;
-    const order = { closed: 0, night: 1, oneway: 2, none: 3, open: 4 };
+    const order = { closed: 0, blocked: 0, night: 1, oneway: 2, none: 3, open: 4 };
     const rs = [...roads.routes].sort((a, b) => order[a.status] - order[b.status]).slice(0, 4);
     const rc = roads.routes.reduce((m, r) => ((m[r.status] = (m[r.status] || 0) + 1), m), {});
     box.innerHTML = `<p class="hisum">${T(`${G.num(rc.open || 0)}/${G.num(roads.routes.length)} मुख्य सडक खुला`, `${rc.open || 0} of ${roads.routes.length} main roads open`)}</p>
