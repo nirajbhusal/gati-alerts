@@ -1030,3 +1030,5 @@ html[data-theme=dark] .pday.today{background:var(--surface)!important;box-shadow
 /* Item 13: Language and format group; account moved into the menu */
 .setgrp h4{margin:10px 0 6px;font-size:var(--fs-5);font-weight:600;color:var(--slate)}.setgrp h4:first-of-type{margin-top:4px}
 nav.main .navme{display:inline-flex;align-items:center;gap:6px;width:auto;height:auto;min-height:44px;padding:0 12px;border-radius:10px;background:transparent;border:0;color:inherit;font:inherit;}@media(min-width:721px){nav.main .navme{margin-left:auto}}
+/* restored Am I affected slider button */
+.hdsl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:12px 0 8px}.hdsl .dpick{min-height:44px}.hdsl .afchip{margin:0;min-height:44px;border:1px solid var(--line);background:var(--surface)}

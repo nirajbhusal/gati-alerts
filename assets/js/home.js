@@ -366,8 +366,21 @@
     const u = new URL(location); d ? u.searchParams.set("district", (DN[d] || {}).id || d) : u.searchParams.delete("district"); history.replaceState(null, "", u);
   }
   /* 'My district': saved in this browser only (localStorage), never sent anywhere. */
+  /* Restored (pre c78c01a): 'My district' button with the 'Am I affected?' verdict chip, just above the At a glance slider */
+  function sliderAff() {
+    const box = $("afslider"); if (!box) return;
+    const cur = localStorage.getItem(MYD) || "", name = (d) => (ne() ? d.ne : d.en);
+    const n = cur ? data.alerts.filter((a) => !a.expired && !a.supersededBy && a.districts.includes(cur)).length : 0;
+    const dn = cur && DN[cur] ? name(DN[cur]) : "";
+    box.innerHTML = `<button type="button" class="dpick" id="mydsl">📍 ${T("मेरो जिल्ला", "My district")}: <b>${dn ? G.esc(dn) : T("छान्नुहोस्", "Choose")}</b> ▾</button>
+      ${cur ? `<span class="meta">${n ? T(`${G.num(n)} चालु सूचना`, `${n} active`) : T("अहिले गतिमा चालु सूचना छैन; खतरा छैन भन्ने होइन", "No active item in Gati now; that does not mean no risk")}</span>` : `<span class="meta">${T("यो छनोट हजुरको ब्राउजरमा मात्र बस्छ।", "Saved in this browser only.")}</span>`}`;
+    $("mydsl").onclick = () => G.district.open((v) => { sel.value = v; render(); myDistrict(); drawMap(); });
+    if (cur && G.affect) G.affect.load().then((d) => { if (box.querySelector(".afchip")) return; const v = G.affect.verdict([cur], d);
+      box.insertAdjacentHTML("beforeend", `<a class="afchip" href="${G.root}affected/#d=${cur}" style="--vc:${v.c}"><i></i>${G.esc(G.affect.phrase(v))} →</a>`); });
+  }
   function myDistrict() {
     const box = $("mydist"); if (!box) return;
+    sliderAff();
     let last = ""; try { last = localStorage.getItem("gati-aff-last") || ""; } catch (e) {}
     const cur = localStorage.getItem(MYD) || last, name = (d) => (ne() ? d.ne : d.en), dn = cur && DN[cur] ? name(DN[cur]) : "";
     const pin = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>`;
