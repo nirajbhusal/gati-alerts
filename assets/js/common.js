@@ -333,7 +333,7 @@
       <div class="mehead"><h2 id="metitle">${T("मेरो गति", "My Gati")}</h2><button type="button" class="mex" aria-label="${T("बन्द गर्नुहोस्", "Close")}">✕</button></div>
       <div class="mecard"><div class="mecard-top"><img src="${R}assets/img/brand/mark-192.png" alt="" width="40" height="40"><div><b>${T("मेरो गति", "My Gati")}</b><small>${T("खाता चाहिँदैन · यही ब्राउजरमा सुरक्षित", "No account · saved in this browser")}</small></div></div>
         <div class="mecard-dist">📍 ${dn ? esc(dn) : T("जिल्ला छानिएको छैन", "No district chosen")}</div>
-        <div class="mecard-stats"><div><b>${G.num(String(watch()))}</b><span>${T("निगरानी", "Watching")}</span></div><div><b>${G.lang === "ne" ? "ने" : "EN"}</b><span>${T("भाषा", "Language")}</span></div><div><b>${G.devNum() ? "१२३" : "123"}</b><span>${T("अङ्क", "Numerals")}</span></div><div><b><i class="thdot th-${G.theme}"></i></b><span>${T(th[1], th[2])}</span></div></div>
+        <div class="mecard-stats"><div><b>${G.num(String(watch()))}</b><span>${T("निगरानी", "Watching")}</span></div><div><b>${G.lang === "ne" ? "ने" : "EN"}</b><span>${T("भाषा", "Language")}</span></div><div><b><i class="thdot th-${G.theme}"></i></b><span>${T(th[1], th[2])}</span></div></div>
         <div class="mecard-foot">🔔 ${notif}</div></div>
       <h3>${T("रूप", "Theme")}</h3><div class="methemes">${G.themePicker()}</div>
       <h3>${T("भाषा", "Language")}</h3><div class="melang" role="radiogroup"><button type="button" role="radio" aria-checked="${G.lang === "ne"}" data-l="ne"><b>नेपाली</b><small>Nepali</small></button><button type="button" role="radio" aria-checked="${G.lang === "en"}" data-l="en"><b>English</b><small>अङ्ग्रेजी</small></button></div>
