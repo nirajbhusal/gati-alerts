@@ -15,7 +15,7 @@
     ["patro/", "पात्रो", "Patro", "#be123c", I('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/>'), "calendar holiday"],
     ["contacts/", "आपतकालीन नम्बर", "Emergency numbers", "#b91c1c", I('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>'), "phone call police ambulance"],
     ["safety/", "के गर्ने", "What to do", "#ca8a04", I('<path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/>'), "safety guide"],
-    ["stories/", "सूचना फिड", "Feed", "#db2777", I('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "feed stories"],
+    ["feed/", "सूचना फिड", "Feed", "#db2777", I('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "feed stories"],
     ["sources/", "स्रोत", "Sources", "#475569", I('<path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/>'), "source agency"],
     ["about/", "बारेमा", "About", "#64748b", I('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'), "about"],
   ];

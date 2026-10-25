@@ -1,4 +1,4 @@
-/* /stories/ (alias /feed/): "सूचना फिड · Feed". Vertical swipe-up feed, one alert per screen, CSS scroll-snap.
+/* /feed/ (canonical; /stories/ redirects here): "सूचना फिड · Feed". Vertical swipe-up feed, one alert per screen, CSS scroll-snap.
    Active alerts first, then alerts sent in the last 30 days marked expired/superseded, then an "all caught up" card.
    Everything comes from data/alerts.json (the CAP messages). Nothing is invented. */
 (function () {
@@ -80,7 +80,6 @@
       </div>
       <div class="rail">
         <button type="button" data-act="share" data-k="${k}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button>
-        <a href="${esc(i.web)}" target="_blank" rel="noopener"><span aria-hidden="true">🏛</span>${T("स्रोत", "Source")}</a>
         <button type="button" data-act="qr" data-k="${k}"><span aria-hidden="true">▦</span>QR</button>
         <button type="button" data-act="details" data-k="${k}"><span aria-hidden="true">≡</span>${T("विवरण", "Details")}</button>
       </div>`;
