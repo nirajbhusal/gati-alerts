@@ -369,7 +369,7 @@ def main():
 <p class="lead">{b("चालु र पुराना सबै सूचना, फिल्टरसहित। म्याद सकिएका सूचना पनि मेटिँदैनन्।", "Every active and past alert, with filters. Expired notices are never deleted.")}</p>
 {body}
 <section aria-labelledby="harch"><h2 id="harch">{b("पूरा अभिलेख", "Full archive")}</h2><div class="card"><ul class="archive">{idx}</ul></div></section>
-</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/home.js"></script></body></html>''', encoding="utf-8")
+</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/dash.js"></script><script src="../assets/js/home.js"></script></body></html>''', encoding="utf-8")
     print(f"rendered {len(alerts)} permalinks and share images")
     lite(alerts, now)
     ics(now)

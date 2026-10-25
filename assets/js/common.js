@@ -153,7 +153,9 @@
     const list = (await pushLog()).sort((x, y) => (y.received || "").localeCompare(x.received || ""));
     let DL = []; try { DL = await G.json("data/districts.json"); } catch (e) {}
     const on = G.push && G.push.on(), mine = (() => { try { return localStorage.getItem("gati-push-district") || ""; } catch (e) { return ""; } })(), cur = mine || (G.district && G.district.get && G.district.get()) || "";
-    box.innerHTML = `<section><h3>${L("जिल्लाका सूचना", "District alerts")}</h3>
+    const lastN = list[0] && (list[0].received || list[0].sent), mineName = mine ? L((DL.find((d) => d.code === mine) || {}).ne || mine, (DL.find((d) => d.code === mine) || {}).en || mine) : "";
+    box.innerHTML = `<div class="gdash gdin"><div class="gdc"><h3 class="gdh">${L("सारांश", "Summary")}</h3><div class="gdtiles"><div class="gdt"><b>${G.num(String(list.length))}</b><span>${L("यो उपकरणमा आएका पुस", "pushes received on this device")}</span></div><div class="gdt"><b style="--c:${mine ? "#F28C1E" : "#8F9BB3"}">${mine ? E(mineName) : L("छैन", "None")}</b><span>${L("सदस्यता", "Subscription")}</span></div><div class="gdt"><b class="sm">${lastN ? G.ago(lastN) : L("छैन", "None")}</b><span>${L("पछिल्लो पुस", "Latest push")}</span></div></div><p class="gdsrc">${L("स्रोत", "Source")}: ${L("यही ब्राउजरको पुस लग", "this browser's push log")}</p></div></div>
+    <section><h3>${L("जिल्लाका सूचना", "District alerts")}</h3>
       <p class="meta">${on ? L("चालु आधिकारिक सूचना आउँदा यो जिल्लाका लागि पुस सूचना पाउनुहोस्।", "Get a push when an official alert covers this district.") : L("पुस सूचना अझै सुरु भएको छैन; कुञ्जी (VAPID) र पठाउने सेवा तयार भएपछि खुल्छ।", "Push is not on yet; it opens once the keys (VAPID) and a sender are set up.")}</p>
       <div class="ntsub"><label class="sr-only" for="ntd">${L("जिल्ला", "District")}</label><select id="ntd" ${on ? "" : "disabled"}>${DL.map((d) => `<option value="${E(d.code)}"${d.code === cur ? " selected" : ""}>${E(L(d.ne, d.en))}</option>`).join("")}</select>
       <button type="button" class="btn" id="ntgo" ${on ? "" : "disabled"}>${mine ? L("बदल्नुहोस्", "Change") : L("सदस्यता लिनुहोस्", "Subscribe")}</button></div>
