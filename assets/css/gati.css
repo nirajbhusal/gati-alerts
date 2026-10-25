@@ -1096,3 +1096,12 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
 .demobar{background:#0B1424!important;color:#fff!important;border:0!important;border-bottom:3px dashed #fff!important;border-image:none!important;padding:10px 14px!important;font-size:var(--fs-5)}
 .demobar>*{background:none!important}.demobar strong{background:#fff!important;color:#0B1424!important;padding:2px 10px;border-radius:999px;margin-right:8px;white-space:nowrap}
 .demobar a{color:#fff!important;text-decoration:underline!important}
+/* Opening animation (Home, once per session) */
+#gintro{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;background:var(--snow,#F7F9FB);pointer-events:none;animation:gi-out .25s ease-in .8s forwards}
+#gintro svg,#gintro .gi-m{grid-area:1/1;width:112px;height:112px}
+#gintro .gi-sq{fill:transparent;stroke:#E2362B;stroke-width:4;stroke-dasharray:420;stroke-dashoffset:420;animation:gi-draw .4s ease-out forwards,gi-fill .15s linear .35s forwards}
+#gintro .gi-a{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;stroke-dasharray:70;stroke-dashoffset:70;animation:gi-draw .2s ease-out forwards}
+#gintro .gi-a1{animation-delay:.4s}#gintro .gi-a2{animation-delay:.48s}#gintro .gi-a3{animation-delay:.56s}
+#gintro .gi-m{opacity:0;animation:gi-in .2s ease-out .6s forwards;border-radius:26px}
+@keyframes gi-draw{to{stroke-dashoffset:0}}@keyframes gi-fill{to{fill:#E2362B}}@keyframes gi-in{to{opacity:1}}@keyframes gi-out{to{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){#gintro{display:none}}

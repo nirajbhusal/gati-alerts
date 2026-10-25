@@ -24,7 +24,11 @@ if(matchMedia("(max-width:720px)").matches&&v!=="dashboard"&&!q.has("demo")){loc
 <meta property="og:site_name" content="Gati">
 <meta property="og:image:alt" content="गति Gati: सही सूचना, सही समयमा । The right alert, right on time.">
 <meta name="twitter:image" content="https://nirajbhusal.github.io/gati-alerts/assets/img/brand/og-cover.png">
-</head><body data-page="home" data-root="./">
+</head><body data-page="home" data-root="./"><script>/* Opening animation: once per session, skipped with reduced motion. A fixed overlay added before the page content; it never blocks parsing of the alerts and removes itself after about 1 s. */
+(function(){try{if(sessionStorage.getItem("gati-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)return;sessionStorage.setItem("gati-intro","1");}catch(e){return}
+var d=document.createElement("div");d.id="gintro";d.setAttribute("aria-hidden","true");
+d.innerHTML='<svg viewBox="0 0 120 120" width="112" height="112"><rect class="gi-sq" x="6" y="6" width="108" height="108" rx="26"/><path class="gi-a gi-a1" d="M80 47a16 16 0 0 1 0 26"/><path class="gi-a gi-a2" d="M89 39a28 28 0 0 1 0 42"/><path class="gi-a gi-a3" d="M98 31a40 40 0 0 1 0 58"/></svg><img class="gi-m" src="assets/img/brand/mark-192.png" alt="" width="112" height="112">';
+document.body.appendChild(d);setTimeout(function(){d.remove()},1100);})();</script>
 <main id="main" class="wrap dash home homev3">
   <div class="hhead"><h1 class="hh1"><span class="ne-only">नेपाल अहिले</span><span class="en-only">Nepal Now</span></h1><p class="hsub">सही सूचना, सही समयमा । The right alert, right on time.</p></div>
   <div id="htop"></div>
