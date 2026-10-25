@@ -143,7 +143,7 @@
     const open = !!sd && view !== "week";
     p.hidden = !open; document.getElementById("pback").hidden = !open; document.body.classList.toggle("sheet-open", open);
     if (open) p.innerHTML = `<div class="grab" aria-hidden="true"></div><button type="button" class="pclose" aria-label="${T("बन्द", "Close")}">✕</button>` + detail(sd);
-    const pc = p.querySelector(".pclose"); if (pc) pc.onclick = () => { sel = null; draw(); };
+    const pc = p.querySelector(".pclose"); if (pc) { pc.onclick = () => { const was = sel; sel = null; draw(); const d = g.querySelector(`.pday[data-ad="${was}"]`); if (d) d.focus(); }; if (!p.contains(document.activeElement)) pc.focus({ preventScroll: true }); }
     document.getElementById("pprev").textContent = "‹ " + T("अघिल्लो", "Previous");
     document.getElementById("pnext").textContent = T("अर्को", "Next") + " ›";
     document.getElementById("ptoday").textContent = T("आज", "Today");

@@ -409,3 +409,18 @@
     const put = () => { const old = document.querySelector(".afxrow"); if (old) old.remove(); const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", `<p class="afxrow">${G.affChip(a.districts)}</p>`); };
     put(); G.onLang(put); }).catch(() => {});
 })();
+
+/* Fix sweep: one focus trap for every open modal (Settings, search, district, feed QR/Details, Patro day, share).
+   Tab and Shift+Tab cycle inside the topmost visible [aria-modal=true] dialog, and focus that has escaped is pulled back in. */
+(function () {
+  const vis = (e) => { if (e.hidden || e.closest("[hidden]")) return false; const r = e.getBoundingClientRect(); const c = getComputedStyle(e); return r.width > 0 && r.height > 0 && c.display !== "none" && c.visibility !== "hidden"; };
+  const top = () => { const ds = [...document.querySelectorAll('[aria-modal="true"]')].filter(vis); return ds[ds.length - 1]; };
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab") return; const d = top(); if (!d) return;
+    const f = [...d.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type=hidden]),select:not([disabled]),textarea,[tabindex]:not([tabindex="-1"]),summary')].filter(vis);
+    if (!f.length) return; const first = f[0], last = f[f.length - 1], a = document.activeElement;
+    if (!d.contains(a)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+    else if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
+  }, true);
+})();
