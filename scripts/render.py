@@ -85,6 +85,13 @@ def pill(draw, xy, text, f, fill, color="#fff", pad=14):
     return x + w + 2 * pad + 12
 
 
+def logo(im, xy, h, white=True):
+    """Paste the official horizontal Gati logo (white wordmark on dark, dark wordmark on light)."""
+    lg = Image.open(ROOT / "assets/img/brand" / ("logo-h-white.png" if white else "logo-h.png")).convert("RGBA")
+    lg = lg.resize((round(lg.width * h / lg.height), h), Image.LANCZOS)
+    im.paste(lg, xy, lg)
+
+
 def share_png(a, out, now):
     W, H = 1200, 630
     ne, en = a["info"]["ne"], a["info"]["en"]
@@ -92,8 +99,8 @@ def share_png(a, out, now):
     im = Image.new("RGB", (W, H), "#0E2A47")
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, 22, H], fill=s[3])
-    d.text((60, 36), "गति · Gati", font=font("Bold", 40), fill="#FFFFFF")
-    d.text((60, 86), "सही सूचना, समयमै। · The right alert, right on time.", font=font("Regular", 24), fill="#7FD1D8")
+    logo(im, (60, 30), 64)
+    d.text((230, 52), "सही सूचना, समयमै। · The right alert, right on time.", font=font("Regular", 24), fill="#7FD1D8")
     x = 60
     sevc = "#14202B" if a["severity"] == "Minor" else "#fff"
     x = pill(d, (x, 140), f"{s[0]} · {s[1]}", font("Bold", 26), s[3], sevc)
@@ -128,7 +135,7 @@ def story_png(a, out, now):
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, W, 300], fill=s[3])
     fg = "#14202B" if a["severity"] == "Minor" else "#FFFFFF"
-    d.text((70, 60), "गति · Gati", font=font("Bold", 64), fill=fg)
+    logo(im, (70, 40), 96, white=a["severity"] != "Minor")
     d.text((70, 150), f"{s[0]} · {s[1]}", font=font("Bold", 60), fill=fg)
     y = 350
     t = TRUST.get(a["trust"])
@@ -143,10 +150,12 @@ def story_png(a, out, now):
         d.text((70, y), ln, font=font("Bold", 78), fill="#FFFFFF"); y += 104
     y += 24
     for ln in wrap(d, en["headline"], font("Regular", 46), W - 140, 4):
+        if y > H - 640: break
         d.text((70, y), ln, font=font("Regular", 46), fill="#D5DEE7"); y += 62
     y += 30
     areas = " · ".join(x["ne"] for x in a["areas"]) or " · ".join(x["desc"] for x in ne["areas"])
     for ln in wrap(d, "स्थान: " + areas, font("Regular", 40), W - 140, 2):
+        if y > H - 620: break
         d.text((70, y), ln, font=font("Regular", 40), fill="#7FD1D8"); y += 56
     # footer: source, time, QR
     qr = segno.make(url, error="m")
@@ -231,7 +240,7 @@ def permalink(a, by, now):
 <meta property="og:locale" content="ne_NP"><meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(ne["headline"])}"><meta name="twitter:image" content="{url}share.png">
 <meta name="theme-color" content="#0E2A47">
-<link rel="icon" href="../../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../../assets/img/brand/apple-touch-icon.png">
 <link rel="alternate" type="application/cap+xml" href="../../cap/{e(ident)}.xml">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css"><link rel="stylesheet" href="../../assets/css/gati.css">
 </head><body data-page="alert" data-root="../../"><main id="main" class="wrap" style="max-width:780px">
@@ -351,8 +360,8 @@ def main():
     body = (ROOT / "scripts/alerts_list.html").read_text(encoding="utf-8")
     (ROOT / "alerts/index.html").write_text(f'''<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>सबै सूचना · All alerts · गति Gati</title><meta name="description" content="Gati: every relayed alert with filters, charts and the full archive. Expired notices are never deleted.">
-<meta property="og:title" content="सबै सूचना · All alerts · गति Gati"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0E2A47">
-<link rel="icon" href="../assets/img/gati-concept-A-ga-signal-icon.svg" type="image/svg+xml">
+<meta property="og:title" content="सबै सूचना · All alerts · गति Gati"> <meta property="og:image" content="{SITE}assets/img/brand/og-cover.png"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0E2A47">
+<link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
 <body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1>
 <p class="lead">{b("चालु र पुराना सबै सूचना, फिल्टरसहित। म्याद सकिएका सूचना पनि मेटिँदैनन्।", "Every active and past alert, with filters. Expired notices are never deleted.")}</p>

@@ -734,3 +734,8 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 .aqform input,.aqform textarea{border:1px solid var(--line)!important;box-shadow:none!important}
 .fcard h2,.fcard .fmain h2,.rail a,.rail button{color:var(--ink)!important}
 .aqhead b,.aqhead h2,.aqhead strong,.aqhead small,.aqhead span{color:var(--ink)!important}.aqhead small,.aqhead span{color:var(--slate)!important}
+/* Official logo */
+.brand img.logo{width:auto;height:40px;border-radius:0;display:block}.brand .logo-d{display:none}
+html[data-theme=dark] .brand .logo-l{display:none}html[data-theme=dark] .brand .logo-d{display:block}
+@media(max-width:440px){.brand img.logo{height:34px}}
+.aqhead img,.mecard-top img{border-radius:10px;background:none!important}

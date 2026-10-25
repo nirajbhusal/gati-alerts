@@ -52,8 +52,7 @@
   header.className = "top";
   header.innerHTML = `<a class="skip" href="#main">${b("मुख्य भागमा जानुहोस्", "Skip to content")}</a>
   <div class="bar">
-    <a class="brand" href="${ROOT}?home=1"><img src="${ROOT}assets/img/gati-concept-A-ga-signal-icon.svg" alt="" width="40" height="40">
-      <span><b>${b("गति", "Gati")}</b><small>${b("सही सूचना, समयमै।", "The right alert, right on time.")}</small></span></a>
+    <a class="brand" href="${ROOT}?home=1" aria-label="${b("गति: गृहपृष्ठ", "Gati: home")}"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"></a>
     <div class="prefs" role="group" aria-label="Display / देखाउने तरिका">
       <button class="pbtn" type="button" id="numbtn" title="Numerals / अङ्क"></button>
       <button class="pbtn" type="button" id="calbtn" title="BS / AD"></button>
@@ -240,7 +239,7 @@
     const notif = T("पुश छैन · RSS/Atom", "No push · RSS/Atom");
     dr.innerHTML = `<div class="meback"></div><aside class="mepanel">
       <div class="mehead"><h2 id="metitle">${T("मेरो गति", "My Gati")}</h2><button type="button" class="mex" aria-label="${T("बन्द गर्नुहोस्", "Close")}">✕</button></div>
-      <div class="mecard"><div class="mecard-top"><img src="${R}assets/img/gati-concept-A-ga-signal-icon.svg" alt="" width="40" height="40"><div><b>${T("मेरो गति", "My Gati")}</b><small>${T("खाता चाहिँदैन · यही ब्राउजरमा सुरक्षित", "No account · saved in this browser")}</small></div></div>
+      <div class="mecard"><div class="mecard-top"><img src="${R}assets/img/brand/mark-192.png" alt="" width="40" height="40"><div><b>${T("मेरो गति", "My Gati")}</b><small>${T("खाता चाहिँदैन · यही ब्राउजरमा सुरक्षित", "No account · saved in this browser")}</small></div></div>
         <div class="mecard-dist">📍 ${dn ? esc(dn) : T("जिल्ला छानिएको छैन", "No district chosen")}</div>
         <div class="mecard-stats"><div><b>${G.num(String(watch()))}</b><span>${T("निगरानी", "Watching")}</span></div><div><b>${G.lang === "ne" ? "ने" : "EN"}</b><span>${T("भाषा", "Language")}</span></div><div><b>${G.devNum() ? "१२३" : "123"}</b><span>${T("अङ्क", "Numerals")}</span></div><div><b><i class="thdot th-${G.theme}"></i></b><span>${T(th[1], th[2])}</span></div></div>
         <div class="mecard-foot">🔔 ${notif}</div></div>
