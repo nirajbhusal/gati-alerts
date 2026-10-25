@@ -328,7 +328,7 @@
     const el = $("cReports"); if (!el) return;
     if (!rcache) {
       try {
-        const q = (l) => fetch(`https://api.github.com/search/issues?per_page=1&q=${encodeURIComponent(`repo:nirajbhusal/gati-alerts is:issue label:${l}`)}`).then((r) => { if (!r.ok) throw 0; return r.json(); }).then((j) => j.total_count);
+        const q = (l) => G.gh(`https://api.github.com/search/issues?per_page=1&q=${encodeURIComponent(`repo:nirajbhusal/gati-alerts is:issue label:${l}`)}`).then((j) => j.total_count);
         const [v, p, r] = await Promise.all([q("verified"), q("reported -label:verified -label:retracted"), q("retracted")]);
         rcache = { Verified: v, Reported: p, Retracted: r };
       } catch (e) { rcache = "fail"; }

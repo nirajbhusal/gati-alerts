@@ -424,3 +424,12 @@
     else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
   }, true);
 })();
+
+/* Fix sweep: GitHub's unauthenticated search API allows about 10 calls a minute per visitor, so a few page views hit 403.
+   G.gh caches each GitHub API answer for 15 minutes and falls back to the last good answer when GitHub refuses. */
+(function () { const G = window.Gati; if (!G || G.gh) return;
+  G.gh = async (url, opt) => { const k = "gati-gh:" + url; let c = null; try { c = JSON.parse(localStorage.getItem(k) || "null"); } catch (e) {}
+    if (c && Date.now() - c.t < 15 * 60e3) return c.j;
+    try { const r = await fetch(url, opt); if (!r.ok) throw new Error(r.status); const j = await r.json(); try { localStorage.setItem(k, JSON.stringify({ t: Date.now(), j })); } catch (e) {} return j; }
+    catch (e) { if (c) return c.j; throw e; } };
+})();

@@ -5,15 +5,12 @@
   const REPO = "nirajbhusal/gati-alerts";
   let items = [], failed = false, pending = null;
   try {
-    const r = await fetch(`https://api.github.com/repos/${REPO}/issues?state=all&per_page=50&labels=verified`, { headers: { Accept: "application/vnd.github+json" } });
-    if (!r.ok) throw new Error(r.status);
-    items = (await r.json()).filter((i) => !i.pull_request && !i.labels.some((l) => l.name.toLowerCase() === "retracted"))
+    items = (await G.gh(`https://api.github.com/repos/${REPO}/issues?state=all&per_page=50&labels=verified`, { headers: { Accept: "application/vnd.github+json" } })).filter((i) => !i.pull_request && !i.labels.some((l) => l.name.toLowerCase() === "retracted"))
       .sort((a, b) => b.created_at.localeCompare(a.created_at));
   } catch (e) { failed = true; }
   try {
     const q = encodeURIComponent(`repo:${REPO} is:issue is:open label:reported -label:verified -label:retracted`);
-    const r = await fetch(`https://api.github.com/search/issues?per_page=1&q=${q}`);
-    if (r.ok) pending = (await r.json()).total_count;
+    pending = (await G.gh(`https://api.github.com/search/issues?per_page=1&q=${q}`)).total_count;
   } catch (e) { /* count is optional */ }
   const parse = (body) => {
     const o = {}; (body || "").split(/^### /m).slice(1).forEach((s) => {
