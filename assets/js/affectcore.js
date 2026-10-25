@@ -24,12 +24,4 @@
   }
   const phrase = (v) => T("आधिकारिक स्रोतअनुसार: ", "Per official sources: ") + v.label;
   G.affect = { load, verdict, phrase, LV, isAct };
-  /* Home: compact verdict in the 'my district' line */
-  if (document.body.dataset.page === "home") {
-    const put = () => { const box = document.getElementById("mydist"), my = G.district && G.district.get(); if (!box || !my || box.querySelector(".afchip")) return;
-      load().then((d) => { if (box.querySelector(".afchip")) return; const v = verdict([my], d);
-        box.insertAdjacentHTML("beforeend", `<a class="afchip" href="${G.root}affected/#d=${my}" style="--vc:${v.c}"><i></i>${G.esc(phrase(v))} →</a>`); }); };
-    const mo = new MutationObserver(put); const t = setInterval(() => { const b = document.getElementById("mydist"); if (b) { clearInterval(t); mo.observe(b, { childList: true }); put(); } }, 200);
-    G.onLang(() => { const c = document.querySelector(".afchip"); if (c) c.remove(); put(); });
-  }
 })();

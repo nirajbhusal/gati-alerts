@@ -951,3 +951,19 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .tdarc{width:60px;height:34px}.tdsun{margin-right:10px}.tdsun b{font-weight:600}
 .tdrow.stale .tdv{filter:grayscale(1);opacity:.6}
 @media(max-width:520px){.tdrow{grid-template-columns:1fr;grid-template-areas:"k" "v" "m";gap:6px}.tdag{grid-template-columns:6em minmax(0,1fr)}.tdgg{grid-template-columns:minmax(0,7.5em) minmax(0,1fr) auto}.tdday{font-size:.7rem}}
+
+/* Am I affected? card and chip */
+.hdist .mydist{display:block;margin:0}
+.afcard{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 16px;border:1px solid var(--line);border-left:4px solid #003893;border-radius:16px;padding:14px 18px;margin:4px 0 16px;background:var(--surface)}
+.afcard.on{border-left-color:var(--vc)}
+.afcard .afch{display:flex;align-items:center;gap:8px;margin:0!important;font-size:1.05rem;font-weight:700;grid-column:1}.afch svg{color:#003893}
+.afcl,.afrow,.afmeta{grid-column:1;margin:0}.afcl{color:var(--slate);font-size:.9rem}
+.afrow{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}.afdn{font-weight:700;font-size:1.05rem}
+.afst{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem}.afst i{width:10px;height:10px;border-radius:50%;background:var(--vc)}
+.afmeta{font-size:.76rem}
+.afcard>.afgo{grid-column:2;grid-row:1/span 2}.afacts{grid-column:2;grid-row:1/span 3;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.afgo{display:inline-block;font-weight:600;font-size:.9rem;padding:9px 16px;border-radius:999px;background:#003893;color:#fff!important;text-decoration:none;white-space:nowrap}
+.afchg{font:inherit;font-size:.8rem;background:none;border:0;color:var(--slate);text-decoration:underline;cursor:pointer;padding:2px}
+@media(max-width:520px){.afcard{grid-template-columns:1fr}.afcard>.afgo,.afacts{grid-column:1;grid-row:auto;justify-self:start}.afacts{flex-direction:row;align-items:center}}
+.afx{display:inline-flex;align-items:center;gap:4px;font-size:.76rem;font-weight:600;padding:3px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink)!important;text-decoration:none;background:var(--surface);white-space:nowrap}.afx:hover{border-color:var(--ink)}
+.afxrow{margin:6px 0}.brk .afx{margin-left:8px}

@@ -41,6 +41,7 @@
   /* ---- result ---- */
   const line = (icon, title, body, src, time, trust) => `<li class="afl"><span class="afi" aria-hidden="true">${icon}</span><div><h3>${title}</h3>${body}<p class="afsrc">${T("स्रोत", "Source")}: ${src}${time ? ` · ${time}` : ""} ${trust || ""}</p></div></li>`;
   async function render(q) {
+    try { if (q && q.d) localStorage.setItem("gati-aff-last", q.d); } catch (e) {}
     let codes = [], title = "", unit = "", route = null;
     if (q.r && RD) { route = RD.routes.find((r) => r.id === q.r); if (!route) return; codes = routeDistricts(route.id); title = T(route.name_ne, route.name_en); inp.querySelector("#afr").value = q.r; tab("r"); }
     else if (q.d) { codes = [q.d]; title = dname(q.d); inp.querySelector("#afd").value = q.d;

@@ -85,6 +85,7 @@
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
       ${chain(a)}
       ${i.instruction && !a.expired ? `<div class="instr"><strong>${T("के गर्ने", "What to do")}:</strong> ${G.esc(i.instruction)}</div>` : ""}
+      ${a.hazard !== "earthquake" && !a.expired ? `<p class="afxrow">${G.affChip(a.districts)}</p>` : ""}
       <p class="meta src alinks"><a href="${G.esc(i.web)}" rel="noopener" target="_blank">${T("मूल सूचना", "Original notice")} ↗</a> · <a href="${RT}alerts/${G.esc(a.identifier)}/">${T("स्थायी लिङ्क र सेयर", "Permalink and share")}</a>${src2 ? ` · <a href="${G.esc(src2)}" rel="noopener" target="_blank">${T("दोस्रो स्रोत", "Second source")} ↗</a>` : ""}</p>
       <details><summary>${T("पूरा विवरण", "Details")}</summary>
         ${a.expired && i.instruction ? `<p><strong>${T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${G.esc(i.instruction)}</p>` : ""}
@@ -366,12 +367,20 @@
   /* 'My district': saved in this browser only (localStorage), never sent anywhere. */
   function myDistrict() {
     const box = $("mydist"); if (!box) return;
-    const cur = localStorage.getItem(MYD) || "", name = (d) => (ne() ? d.ne : d.en);
-    const n = cur ? data.alerts.filter((a) => !a.expired && !a.supersededBy && a.districts.includes(cur)).length : 0;
-    const dn = cur && DN[cur] ? name(DN[cur]) : "";
-    box.innerHTML = `<button type="button" class="dpick" id="myd">📍 ${T("मेरो जिल्ला", "My district")}: <b>${dn ? G.esc(dn) : T("छान्नुहोस्", "Choose")}</b> ▾</button>
-      ${cur ? `<span class="meta">${n ? T(`${G.num(n)} चालु सूचना`, `${n} active`) : T("अहिले गतिमा चालु सूचना छैन; खतरा छैन भन्ने होइन", "No active item in Gati now; that does not mean no risk")}</span>` : `<span class="meta">${T("यो छनोट हजुरको ब्राउजरमा मात्र बस्छ।", "Saved in this browser only.")}</span>`}`;
-    $("myd").onclick = () => G.district.open((v) => { sel.value = v; render(); myDistrict(); drawMap(); });
+    let last = ""; try { last = localStorage.getItem("gati-aff-last") || ""; } catch (e) {}
+    const cur = localStorage.getItem(MYD) || last, name = (d) => (ne() ? d.ne : d.en), dn = cur && DN[cur] ? name(DN[cur]) : "";
+    const pin = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>`;
+    const head = `<h2 class="afch">${pin}${T("के म प्रभावित छु?", "Am I affected?")}</h2>`;
+    if (!cur || !dn || !G.affect) {
+      box.innerHTML = `<section class="afcard">${head}<p class="afcl">${T("हजुरको जिल्लाका लागि आधिकारिक स्रोतले के भन्छन्, एकै छिनमा हेर्नुहोस्।", "See what official sources say for your district, in one tap.")}</p><a class="afgo" href="${RT}affected/">${T("अहिले जाँच्नुहोस्", "Check now")} →</a></section>`;
+      return; }
+    box.innerHTML = `<section class="afcard">${head}<p class="afcl">${T("लोड हुँदै…", "Loading…")}</p></section>`;
+    G.affect.load().then((d) => { const v = G.affect.verdict([cur], d);
+      const ts = v.alerts.map((a) => (a.info.en.params || {})["gati:sourceTime"] || a.sent).concat(v.wx.length && v.b5 ? [v.b5.issued] : []).sort().pop() || (d.AL && d.AL.generated);
+      box.innerHTML = `<section class="afcard on" style="--vc:${v.c}">${head}<div class="afrow"><span class="afdn">${G.esc(dn)}</span><span class="afst"><i></i>${G.esc(G.affect.phrase(v))}</span></div>
+        <p class="meta afmeta">${v.alerts.length ? T(`${G.num(v.alerts.length)} आधिकारिक सूचना`, `${v.alerts.length} official notice${v.alerts.length > 1 ? "s" : ""}`) + " · " : ""}${T("स्रोत समय", "Source time")}: ${G.npt(ts)}${v.lv === 0 ? " · " + T("खतरा छैन भन्ने होइन", "that does not mean no risk") : ""}</p>
+        <div class="afacts"><a class="afgo" href="${RT}affected/#d=${encodeURIComponent(cur)}">${T("विवरण हेर्नुहोस्", "See details")} →</a><button type="button" class="afchg" id="myd">${T("जिल्ला बदल्नुहोस्", "Change district")}</button></div></section>`;
+      $("myd").onclick = () => G.district.open((x) => { sel.value = x; render(); myDistrict(); drawMap(); }); });
   }
   /* 'This week': active alerts plus the next 7 days from data/calendar.json (holidays, planned closures). */
   function thisWeek() {

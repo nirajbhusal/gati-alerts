@@ -95,8 +95,10 @@
   const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
   G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
   const dismissed = () => { try { return JSON.parse(localStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
+  /* 'Am I affected?' chip: links to /affected/ prefilled with the alert's district(s) */
+  G.affChip = (codes) => { const c = (codes || []).filter(Boolean); return `<a class="afx" href="${ROOT}affected/${c.length ? "#d=" + encodeURIComponent(c[0]) + (c.length > 1 ? "&ds=" + encodeURIComponent(c.join(",")) : "") : ""}"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>${G.lang === "ne" ? "के म प्रभावित छु?" : "Am I affected?"}</a>`; };
   const brkItem = (a, x) => { const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity];
-    return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a><span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
+    return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a><span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${G.affChip(a.districts)}${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
   const drawBreaking = () => G.breaking().then((L) => {
     const dis = dismissed(), show = L.filter((a) => !dis.includes(a.identifier));
     brk.hidden = !show.length; brk.innerHTML = show.length ? `<ul class="wrap" aria-label="${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking alerts"}">${show.map((a) => brkItem(a, true)).join("")}</ul>` : "";
@@ -341,4 +343,12 @@
   const main = document.getElementById("main"), page = document.body.dataset.page;
   if (main && !["stories", "embed"].includes(page)) { const p = document.createElement("div"); p.className = "pgshare"; p.innerHTML = `<button type="button" class="shbtn" data-share="">${IC.share}<span>${T("यो पृष्ठ सेयर गर्नुहोस्", "Share this page")}</span></button>`; main.appendChild(p);
     G.onLang(() => (p.querySelector("span").textContent = T("यो पृष्ठ सेयर गर्नुहोस्", "Share this page"))); }
+})();
+
+/* Alert permalink pages: 'Am I affected?' chip under the headline, prefilled with the alert's districts */
+(function () { const G = window.Gati; if (!G || document.body.dataset.page !== "alert") return;
+  const id = decodeURIComponent(location.pathname.replace(/\/$/, "").split("/").pop());
+  G.json("data/alerts.json").then((d) => { const a = d && d.alerts.find((x) => x.identifier === id); if (!a || a.hazard === "earthquake") return;
+    const put = () => { const old = document.querySelector(".afxrow"); if (old) old.remove(); const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", `<p class="afxrow">${G.affChip(a.districts)}</p>`); };
+    put(); G.onLang(put); }).catch(() => {});
 })();
