@@ -71,12 +71,25 @@
   }
   const dots = (x) => [...new Set(x.al.map((a) => a.severity))].sort((p, q) => SR[p] - SR[q]).map((s) => `<i class="hdot" style="background:${G.SEVCOLOR[s] || G.SEVCOLOR.Unknown}" title="${esc(T(G.SEV[s][0], G.SEV[s][1]))}"></i>`).join("");
   const bands = (x) => x.se.map((s) => `<i class="band" style="background:${s.colour}" title="${esc(T(s.title_ne, s.title_en))}"></i>`).join("");
+  /* Item 9: one holiday band spanning the days of a festival, drawn above each week row */
+  const FEST = [["Dashain", "दशैं"], ["Tihar", "तिहार"], ["Chhath", "छठ"]];
+  const festOf = (h) => { const f = FEST.find(([en]) => h.title_en.includes(en)); return f ? { k: f[0], ne: f[1], en: f[0] } : { k: h.title_en, ne: h.title_ne, en: h.title_en }; };
+  function weeks(days) {
+    const slots = [...Array(days[0].wd).fill(null), ...days], out = [];
+    for (let i = 0; i < slots.length; i += 7) {
+      const wk = slots.slice(i, i + 7), runs = [];
+      wk.forEach((x, c) => { if (!x || !x.hol.length) return; const f = festOf(x.hol[0]), r = runs[runs.length - 1];
+        if (r && r.k === f.k && r.e === c) r.e = c + 1; else runs.push({ ...f, s: c, e: c + 1, src: x.hol[0] }); });
+      if (runs.length) out.push(`<div class="pfest" aria-hidden="true">${runs.map((r) => `<span class="pfb" style="grid-column:${r.s + 1}/${r.e + 1}" title="${esc(T(r.ne, r.en))}">${esc(T(r.ne, r.en))}</span>`).join("")}</div>`);
+      out.push(wk.map((x) => (x ? cell(x) : "<div></div>")).join(""));
+    }
+    return out.join("");
+  }
   function cell(x) {
     const today = x.ad === iso(t.y, t.m, t.d);
     const big = mode === "bs" ? G.num(x.bs.d) : G.num(x.d), small = mode === "bs" ? G.num(x.d) : G.num(x.bs.d);
     const aria = `${bsLab(x.bs)} · ${adLab(x)}${x.hol.length ? " · " + x.hol.map((h) => T(h.title_ne, h.title_en)).join(", ") : ""}${x.al.length ? " · " + G.num(x.al.length) + T(" सूचना", " alerts") : ""}`;
     return `<button type="button" class="pday${x.hol.length || x.wd === 6 ? " hol" : ""}${today ? " today" : ""}${sel === x.ad ? " sel" : ""}" data-ad="${x.ad}" aria-label="${esc(aria)}">
-      <span class="phol">${x.hol.length ? esc(T(x.hol[0].title_ne, x.hol[0].title_en)) : ""}</span>
       <span class="pbig">${big}</span>${x.hol.length > 1 ? `<span class="pplus">+${G.num(x.hol.length - 1)}</span>` : ""}<span class="psmall">${small}</span>
       <span class="pmarks">${dots(x)}</span><span class="pbands">${bands(x)}</span></button>`;
   }
@@ -117,7 +130,7 @@
     const g = document.getElementById("pgrid");
     if (view === "week") g.innerHTML = `<div class="pweek">${days.map(weekRow).join("")}</div>`;
     else g.innerHTML = `<div class="pmonth">${(G.lang === "ne" ? WS_NE : WS_EN).map((w, k) => `<div class="pwh${k === 6 ? " hol" : ""}">${w}</div>`).join("")}
-      ${'<div></div>'.repeat(days[0].wd)}${days.map(cell).join("")}</div>`;
+      ${weeks(days)}</div>`;
     g.querySelectorAll(".pday").forEach((b) => (b.onclick = () => { sel = b.dataset.ad; draw(); }));
     const p = document.getElementById("ppanel");
     const sd = sel && days.find((d) => d.ad === sel);

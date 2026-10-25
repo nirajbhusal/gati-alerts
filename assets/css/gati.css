@@ -1019,3 +1019,9 @@ label:has(> input[type=checkbox]),label:has(> input[type=radio]){display:inline-
 .fi span,.finfo span{font-size:var(--fs-6)!important}
 .ahead .tts.ttsi{margin-left:auto;width:36px;height:36px;padding:0;border-radius:50%;display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--surface);cursor:pointer}.ahead .tts.ttsi .ttsl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.ahead{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
 .stalechip{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-6);font-weight:700;color:#8A4B00;background:#FFF1DB;border:1px solid #F2C27A;border-radius:999px;padding:2px 8px;margin-left:6px;white-space:nowrap}
+/* Item 9: festival bands and today ring */
+.pmonth>.pfest{grid-column:1/-1;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;padding:3px 0;border:0!important;background:var(--surface)!important;border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+.pfb{background:color-mix(in srgb,var(--crimson) 12%,var(--surface));color:var(--crimson);font-size:var(--fs-6);font-weight:700;line-height:1.5;border-radius:4px;padding:0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+.pday.today,.pday.today:hover{background:var(--surface)!important;color:inherit;box-shadow:inset 0 0 0 2px var(--navy)!important;border-color:var(--line)}
+.pday.today .pbig{color:var(--ink)!important;font-weight:800}.pday.today.hol .pbig{color:var(--crimson)!important}.pday.today .psmall,.pday.today .psun{color:var(--slate)!important}
+html[data-theme=dark] .pday.today{background:var(--surface)!important;box-shadow:inset 0 0 0 2px #9AA6BE!important}
