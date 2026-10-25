@@ -1266,3 +1266,23 @@ html[data-theme=dark]{--gdtrack:#22364A;--gdok:#3FBF84;--gdblue:#6E9BF5}
 .gdnote,.gdsrc{overflow-wrap:anywhere}.gdrows li>*{min-width:0}
 @media(max-width:520px){.gd-home .gdrows li,.gd-alerts .gdrows li,.gd-map .gdrows li{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto}}
 .gdash .gdh{margin:0 0 8px;padding:0;border:0}.gdash .gdh::before,.gdash .gdh::after{display:none}
+/* CLS: reserve the header's space until common.js inserts it (body.ghdr), so content does not move down */
+body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;height:114px}
+@media(max-width:720px){body[data-page]:not(.storypage):not(.ghdr)::before{height:80.375px}}
+@media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:65px}}
+.gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}.gd-log .gdnote a{white-space:nowrap}
+/* static #gdash placeholders: reserve the dashboard height before dash.js runs */
+body[data-page=home] #gdash{min-height:993px}@media(min-width:760px){body[data-page=home] #gdash{min-height:688px}}
+body[data-page=alerts] #gdash{min-height:715px}@media(min-width:760px){body[data-page=alerts] #gdash{min-height:384px}}
+body[data-page=earthquakes] #gdash{min-height:498px}@media(min-width:760px){body[data-page=earthquakes] #gdash{min-height:302px}}
+body[data-page=roads] #gdash{min-height:265px}@media(min-width:760px){body[data-page=roads] #gdash{min-height:175px}}
+body[data-page=route] #gdash{min-height:265px}@media(min-width:760px){body[data-page=route] #gdash{min-height:175px}}
+body[data-page=rivers] #gdash{min-height:250px}@media(min-width:760px){body[data-page=rivers] #gdash{min-height:230px}}
+body[data-page=weather] #gdash{min-height:328px}@media(min-width:760px){body[data-page=weather] #gdash{min-height:155px}}
+body[data-page=sources] #gdash{min-height:285px}@media(min-width:760px){body[data-page=sources] #gdash{min-height:206px}}
+body[data-page=contacts] #gdash{min-height:169px}@media(min-width:760px){body[data-page=contacts] #gdash{min-height:155px}}
+body[data-page=map] #gdash{min-height:467px}@media(min-width:760px){body[data-page=map] #gdash{min-height:313px}}
+body[data-page=log] #gdash{min-height:202px}@media(min-width:760px){body[data-page=log] #gdash{min-height:165px}}
+/* CLS: async-filled blocks reserve a full screen so the page below never moves into view */
+body.brkwait main,body.brkwait footer{visibility:hidden}
+#srcHealth:empty,#askfull:empty,#pgrid:empty{min-height:100vh}

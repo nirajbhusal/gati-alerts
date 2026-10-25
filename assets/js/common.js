@@ -89,12 +89,14 @@
   tabs.innerHTML = TABS.map(([id, href, ic, ne, en]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
-  document.body.prepend(header);
+  document.body.prepend(header); document.body.classList.add("ghdr");
   /* Breaking: official, active, issued in the last 24h, severity Moderate or higher. Dismissible per alert. */
   const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; header.after(brk);
   /* Fix sweep: paint the last Breaking bar from this browser's cache straight away, so content below does not jump when the fresh one arrives */
   const BRK_KEY = "gati-brk-cache";
   try { const c = JSON.parse(localStorage.getItem(BRK_KEY) || "null"); if (c && c.l === G.lang && Date.now() - c.t < 6 * 3600e3 && ["home", "alerts"].includes(document.body.dataset.page || "")) { brk.innerHTML = c.h; brk.hidden = !c.h; const bl = document.getElementById("breakinglist"); if (bl && c.lh && !bl.innerHTML.trim()) bl.innerHTML = c.lh; } } catch (e) {}
+  /* CLS: on Home and Alerts with no cached Breaking bar, keep the page invisible (space kept) until the bar is known, at most 1.5 s */
+  if (["home", "alerts"].includes(document.body.dataset.page || "") && brk.hidden && !brk.innerHTML) { document.body.classList.add("brkwait"); setTimeout(() => document.body.classList.remove("brkwait"), 1500); }
   G.breaking = () => G.json("data/alerts.json").then((d) => { const now = Date.now(), SV = ["Moderate", "Severe", "Extreme"];
     return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity))
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
@@ -118,7 +120,7 @@
     brk.querySelectorAll(".brkx").forEach((x) => (x.onclick = () => { try { sessionStorage.setItem("gati-brk-dismissed", JSON.stringify([...dismissed(), x.dataset.id].slice(-100))); } catch (e) {} drawBreaking(); }));
     const list = document.getElementById("breakinglist"); if (list) list.innerHTML = `<h2>${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</h2>` + (L.length ? `<ul class="brklist">${L.map((a) => brkItem(a, false)).join("")}</ul>` : `<p class="meta">${G.lang === "ne" ? "पछिल्लो २४ घण्टामा मध्यम वा सोभन्दा माथिको चालु आधिकारिक चेतावनी छैन।" : "No active official alert of Moderate or higher severity issued in the last 24 hours."}</p>`);
     try { const bl = document.getElementById("breakinglist"); localStorage.setItem(BRK_KEY, JSON.stringify({ t: Date.now(), l: G.lang, h: brk.innerHTML, lh: bl ? bl.innerHTML : "" })); } catch (e) {}
-  }).catch(() => { brk.hidden = true; });
+  }).catch(() => { brk.hidden = true; }).then(() => document.body.classList.remove("brkwait"));
   if (document.body.dataset.page !== "embed") setTimeout(() => { drawBreaking(); G.onLang(drawBreaking); }, 0);
   document.body.append(footer);
 

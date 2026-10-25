@@ -365,7 +365,7 @@ def main():
 <meta property="og:title" content="सबै सूचना · All alerts · गति Gati"> <meta property="og:image" content="{SITE}assets/img/brand/og-cover.png"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
-<body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1><section id="breakinglist" class="brksec" aria-live="polite"></section>
+<body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1><section class="gdash" id="gdash" aria-label="सारांश · Summary"></section><section id="breakinglist" class="brksec" aria-live="polite"></section>
 <p class="lead">{b("चालु र पुराना सबै सूचना, फिल्टरसहित। म्याद सकिएका सूचना पनि मेटिँदैनन्।", "Every active and past alert, with filters. Expired notices are never deleted.")}</p>
 {body}
 <section aria-labelledby="harch"><h2 id="harch">{b("पूरा अभिलेख", "Full archive")}</h2><div class="card"><ul class="archive">{idx}</ul></div></section>
