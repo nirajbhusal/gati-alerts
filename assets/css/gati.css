@@ -1197,3 +1197,11 @@ html[data-theme=dark] .helplines a{background:var(--surface)!important;color:var
 body[data-page=weather] #mydist:empty{min-height:44px}
 /* Fix sweep 16: Home sidebar at desktop reserves the Weather and Roads summary heights */
 @media(min-width:961px){.home .hright>section:nth-child(1){min-height:268px}.home .hright>section:nth-child(2){min-height:356px}}
+/* Am I affected radius: my district only / 10 / 25 / 50 km */
+.afrad{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
+.afradl{flex-basis:100%;font-size:var(--fs-5);font-weight:600;color:var(--slate)}
+.afrad button{min-height:44px;min-width:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:var(--fs-5);font-weight:600;cursor:pointer}
+.afrad button[aria-checked=true]{border-color:var(--saffron);box-shadow:inset 0 0 0 1px var(--saffron);background:var(--surface2)}
+.afrad button:focus-visible{outline:2px solid var(--river);outline-offset:2px}
+.afnote{margin:4px 0 0}
+.drad .afrad{margin:8px 0 4px}

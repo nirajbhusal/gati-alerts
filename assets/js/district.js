@@ -28,7 +28,7 @@
       <div class="dhead"><h3 id="dtitle"></h3><button type="button" class="pclose" aria-label="Close">✕</button></div>
       <input type="search" class="dq" autocomplete="off" spellcheck="false">
       <div class="dacts"><button type="button" class="sbtn dloc"></button><button type="button" class="sbtn dclear"></button></div>
-      <p class="meta dmsg" role="status"></p><div class="dlist"></div></div>`;
+      <div class="drad"></div><p class="meta dmsg" role="status"></p><div class="dlist"></div></div>`;
     document.body.append(sheet);
     sheet.querySelector(".dback").onclick = close; sheet.querySelector(".pclose").onclick = close;
     sheet.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
@@ -76,6 +76,7 @@
       sheet.querySelector(".dloc").textContent = "📍 " + T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location");
       sheet.querySelector(".dclear").textContent = T("हटाउनुहोस्", "Clear");
       sheet.querySelector(".dmsg").textContent = T("स्थान यही उपकरणमा मात्र जाँचिन्छ, कतै पठाइँदैन।", "Your location is checked on this device only and never sent anywhere.");
+      const dr = sheet.querySelector(".drad"); if (G.affect) { dr.innerHTML = G.affect.radiusUI(G.affect.getR()) + `<p class="meta">${T("के म प्रभावित छु? मा प्रयोग हुन्छ।", "Used by Am I affected?")}</p>`; G.affect.bindRadius(dr, () => dispatchEvent(new Event("gati:radius"))); } else dr.innerHTML = "";
       list(); sheet.hidden = false; document.body.classList.add("sheet-open"); setTimeout(() => q.focus(), 50);
     }),
   };

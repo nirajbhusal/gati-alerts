@@ -25,10 +25,11 @@
   const inp = document.getElementById("afinput");
   let curTab = "d";
   function buildInput() {
-  inp.innerHTML = `<div class="aftabs" role="tablist">${[["d", "जिल्ला", "District"], ["loc", "मेरो स्थान", "Locate me"], ["r", "मार्ग", "Route"]].map(([k, ne, en], i) => `<button type="button" role="tab" data-t="${k}" aria-selected="${i === 0}">${T(ne, en)}</button>`).join("")}</div>
+  inp.innerHTML = `${G.affect.radiusUI(G.affect.getR())}<div class="aftabs" role="tablist">${[["d", "जिल्ला", "District"], ["loc", "मेरो स्थान", "Locate me"], ["r", "मार्ग", "Route"]].map(([k, ne, en], i) => `<button type="button" role="tab" data-t="${k}" aria-selected="${i === 0}">${T(ne, en)}</button>`).join("")}</div>
     <div class="afpane" data-p="d"><select id="afd" aria-label="${T("जिल्ला", "District")}"><option value="">${T("जिल्ला छान्नुहोस्", "Choose a district")}</option>${DG ? DG.features.slice().sort((a, b) => T(a.properties.ne, a.properties.en).localeCompare(T(b.properties.ne, b.properties.en))).map((f) => `<option value="${f.id}">${E(T(f.properties.ne, f.properties.en))}</option>`).join("") : ""}</select></div>
     <div class="afpane" data-p="loc" hidden><button type="button" class="afbtn" id="afloc">⌖ ${T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location")}</button><p class="meta">${T("स्थान यही उपकरणमा मात्र प्रयोग हुन्छ; कतै पठाइँदैन।", "Your location is used only on this device; nothing is sent.")}</p></div>
     <div class="afpane" data-p="r" hidden><select id="afr" aria-label="${T("मार्ग", "Route")}"><option value="">${T("मार्ग छान्नुहोस्", "Choose a route")}</option>${RD ? RD.routes.map((r) => `<option value="${r.id}">${E(T(r.name_ne, r.name_en))}</option>`).join("") : ""}</select></div>`;
+  G.affect.bindRadius(inp, () => { const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
   const tab = (k) => { curTab = k; inp.querySelectorAll("[data-t]").forEach((b) => b.setAttribute("aria-selected", b.dataset.t === k)); inp.querySelectorAll(".afpane").forEach((p) => (p.hidden = p.dataset.p !== k)); };
   inp.querySelectorAll("[data-t]").forEach((b) => (b.onclick = () => tab(b.dataset.t)));
   inp.querySelector("#afd").onchange = (e) => e.target.value && go({ d: e.target.value });
@@ -52,7 +53,7 @@
     else if (q.d) { codes = [q.d]; title = dname(q.d); inp.querySelector("#afd").value = q.d;
       if (q.u) { const lu = await loadLU(); const f = lu && lu.features.find((x) => x.properties.code === q.u); if (f) unit = f.properties.ne || f.properties.en; } }
     else { box.innerHTML = ""; return; }
-    const v = G.affect.verdict(codes, D);
+    const v = G.affect.verdict(codes, { ...D, DG }, route ? 0 : G.affect.getR()); if (!route) codes = v.area; const place = title; if (!route) title = G.affect.label(title, v.r);
     let lv = v.lv; if (route) { const rl = { open: 0, none: 1, oneway: 2, blocked: 3 }[route.status] || 0; if (rl > lv) lv = rl; }
     const V = { ...G.affect.LV[lv] }, label = T(V.ne, V.en);
     const checked = G.npt(new Date().toISOString()), gen = AL ? G.npt(AL.generated) : "";
@@ -79,9 +80,9 @@
     const acts = doc ? [...hz].map((h) => { const c = doc.getElementById(h); if (!c) return ""; const items = [...c.querySelectorAll("li")].slice(0, 3).map((li) => (li.querySelector(G.lang === "ne" ? ".ne-only" : ".en-only") || li).textContent);
       return `<div class="afdo"><h3>${E((c.querySelector("h2 " + (G.lang === "ne" ? ".ne-only" : ".en-only")) || {}).textContent || h)}</h3><ul>${items.map((t) => `<li>${E(t)}</li>`).join("")}</ul><a href="${R}safety/#${h}">${T("पूरा निर्देशन", "Full guidance")} →</a></div>`; }).join("") : "";
     const share = `${T("आधिकारिक स्रोतअनुसार", "Per official sources")}, ${title}${unit ? ` (${unit})` : ""}: ${label}. ${T("जाँचेको", "Checked")} ${checked}. ${location.href}`;
-    const SENT = G.affect.sentences(v, title);
+    const SENT = G.affect.sentences(v, place);
     box.innerHTML = `
-      <section class="afverdict" style="--vc:${V.c}"><p class="afwhere">${E(title)}${unit ? ` · ${E(unit)}` : ""}</p>
+      <section class="afverdict" style="--vc:${V.c}"><p class="afwhere">${E(title)}${unit ? ` · ${E(unit)}` : ""}</p>${v.r ? `<p class="meta afnote">${E(G.affect.note(v))}</p>` : ""}
         <p class="afv"><i></i>${T("आधिकारिक स्रोतअनुसार", "Per official sources")}: <b>${label}</b></p>
         <p class="meta">${T("यो गतिको आफ्नै निर्णय होइन; आधिकारिक निकायका सूचनामा आधारित।", "This is not Gati's own judgement; it is based on notices from official agencies.")} ${T("पछिल्लो जाँच", "Last checked")}: ${checked}${gen ? ` · ${T("डेटा", "data")} ${gen}` : ""}</p></section>
       <section class="afsent" aria-label="${T("हजुरको जिल्लाका लागि", "For your district")}"><ul>${SENT.map((x, k) => `<li class="${x.none ? "none" : "yes"}"${x.a ? ` style="--vc:${G.SEVCOLOR[x.a.severity] || G.SEVCOLOR.Unknown}"` : ""}><p class="afst1">${E(x.text)}</p>
@@ -133,5 +134,6 @@
   }
   const h = new URLSearchParams(location.hash.slice(1)); const my = G.district && G.district.get();
   if (h.get("r")) render({ r: h.get("r") }); else if (h.get("d")) render({ d: h.get("d"), u: h.get("u") || "" }); else if (my) go({ d: my });
+  addEventListener("gati:radius", () => { buildInput(); render(Object.fromEntries(new URLSearchParams(location.hash.slice(1)))); });
   G.onLang(() => { buildInput(); const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
 })();

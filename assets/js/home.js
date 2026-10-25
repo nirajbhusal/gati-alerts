@@ -372,12 +372,13 @@
     const cur = localStorage.getItem(MYD) || "", name = (d) => (ne() ? d.ne : d.en);
     const n = cur ? data.alerts.filter((a) => !a.expired && !a.supersededBy && a.districts.includes(cur)).length : 0;
     const dn = cur && DN[cur] ? name(DN[cur]) : "";
-    box.innerHTML = `<button type="button" class="dpick" id="mydsl">📍 ${T("मेरो जिल्ला", "My district")}: <b>${dn ? G.esc(dn) : T("छान्नुहोस्", "Choose")}</b> ▾</button>
+    box.innerHTML = `<button type="button" class="dpick" id="mydsl">📍 ${T("मेरो जिल्ला", "My district")}: <b>${dn ? G.esc(G.affect ? G.affect.label(dn, G.affect.getR()) : dn) : T("छान्नुहोस्", "Choose")}</b> ▾</button>
       ${cur ? `<span class="meta">${n ? T(`${G.num(n)} चालु सूचना`, `${n} active`) : T("अहिले गतिमा चालु सूचना छैन; खतरा छैन भन्ने होइन", "No active item in Gati now; that does not mean no risk")}</span>` : `<span class="meta">${T("यो छनोट हजुरको ब्राउजरमा मात्र बस्छ।", "Saved in this browser only.")}</span>`}`;
     $("mydsl").onclick = () => G.district.open((v) => { sel.value = v; render(); myDistrict(); drawMap(); });
     if (cur && G.affect) G.affect.load().then((d) => { if (box.querySelector(".afchip")) return; const v = G.affect.verdict([cur], d);
       box.insertAdjacentHTML("beforeend", `<a class="afchip" href="${G.root}affected/#d=${cur}" style="--vc:${v.c}"><i></i>${G.esc(G.affect.phrase(v))} →</a>`); });
   }
+  addEventListener("gati:radius", () => myDistrict());
   function myDistrict() {
     const box = $("mydist"); if (!box) return;
     sliderAff();
@@ -391,9 +392,11 @@
     box.innerHTML = `<section class="afcard">${head}<p class="afcl">${T("लोड हुँदै…", "Loading…")}</p></section>`;
     G.affect.load().then((d) => { const v = G.affect.verdict([cur], d);
       const ts = v.alerts.map((a) => (a.info.en.params || {})["gati:sourceTime"] || a.sent).concat(v.wx.length && v.b5 ? [v.b5.issued] : []).sort().pop() || (d.AL && d.AL.generated);
-      box.innerHTML = `<section class="afcard on${v.lv > 0 ? " live" : ""}" style="--vc:${v.c}">${head}<div class="afrow"><span class="afdn">${G.esc(dn)}</span><span class="afst"><i></i>${G.esc(G.affect.phrase(v))}</span></div>
+      box.innerHTML = `<section class="afcard on${v.lv > 0 ? " live" : ""}" style="--vc:${v.c}">${head}<div class="afrow"><span class="afdn">${G.esc(G.affect.label(dn, v.r))}</span><span class="afst"><i></i>${G.esc(G.affect.phrase(v))}</span></div>
         <p class="meta afmeta">${v.alerts.length ? T(`${G.num(v.alerts.length)} आधिकारिक सूचना`, `${v.alerts.length} official notice${v.alerts.length > 1 ? "s" : ""}`) + " · " : ""}${T("स्रोत समय", "Source time")}: ${G.npt(ts)}${v.lv === 0 ? " · " + T("खतरा छैन भन्ने होइन", "that does not mean no risk") : ""}</p>
+        ${G.affect.radiusUI(v.r)}${v.r ? `<p class="meta afnote">${G.esc(G.affect.note(v))}</p>` : ""}
         <div class="afacts"><a class="afgo" href="${RT}affected/#d=${encodeURIComponent(cur)}">${T("विवरण हेर्नुहोस्", "See details")} →</a><button type="button" class="afchg" id="myd">${T("जिल्ला बदल्नुहोस्", "Change district")}</button></div></section>`;
+      G.affect.bindRadius(box, () => { myDistrict(); });
       $("myd").onclick = () => G.district.open((x) => { sel.value = x; render(); myDistrict(); drawMap(); }); });
   }
   /* 'This week': active alerts plus the next 7 days from data/calendar.json (holidays, planned closures). */
