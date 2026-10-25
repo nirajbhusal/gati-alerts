@@ -1,7 +1,7 @@
 /* Gati service worker: offline last-known state. Static only; no push (Web Push needs a server).
    Pages and data: network first, fall back to the last copy saved. Assets: cache first, refreshed in the background. */
 const VERSION = "gati-v46";
-const BUILD = "20261025T1223"; /* written by scripts/stamp.py (pre-commit hook and render.py) */
+const BUILD = "20261025T1224"; /* written by scripts/stamp.py (pre-commit hook and render.py) */
 const CACHE_NAME = VERSION + "-" + BUILD;
 const CORE = ["./", "index.html", "sources/", "about/", "api/", "alerts/", "feed/", "stories/", "weather/", "contacts/", "safety/", "route/", "assets/js/wxmodel.js", "earthquakes/", "air/", "assets/js/quakes.js", "assets/js/route.js", "assets/js/nearby.js", "assets/js/askpop.js", "assets/js/watch.js", "assets/js/services.js", "assets/js/contacts.js", "data/contacts.json", "assets/js/weather.js", "data/weather.json", "map/", "rivers/", "roads/", "assets/js/stories.js", "assets/js/district.js", "patro/", "ask/", "patro/gati.ics", "assets/js/patro.js", "data/calendar.json", "assets/js/bs.js", "manifest.webmanifest",
   "assets/css/gati.css", "assets/fonts/fonts.css", "assets/js/common.js", "assets/js/home.js", "assets/js/sources.js",
@@ -28,3 +28,10 @@ self.addEventListener("fetch", (e) => {
     return hit || net;
   }));
 });
+
+/* Feature 3 (behind a flag): show pushes from the district sender; tapping opens the alert permalink. */
+self.addEventListener("push", (e) => {
+  let d = {}; try { d = e.data ? e.data.json() : {}; } catch (x) { d = { title: e.data && e.data.text() }; }
+  e.waitUntil(self.registration.showNotification(d.title || "गति Gati", { body: d.body || "", tag: d.id || "gati", data: { url: d.url || "./" }, icon: "assets/img/brand/favicon-64.png" }));
+});
+self.addEventListener("notificationclick", (e) => { e.notification.close(); e.waitUntil(clients.openWindow(e.notification.data && e.notification.data.url || "./")); });
