@@ -1125,3 +1125,10 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
   .rv-in .gfill,.rv-in .bf,.rv-in .pbands .band{transform-origin:left center;animation:tdfillx .6s cubic-bezier(.2,.7,.2,1) both}
   .rv-now *{animation:none!important}
 }
+/* Fix sweep 2: slider dots get their own 44px hit area so a tap never lands on the neighbouring dot */
+.dsdots{gap:0;margin-top:4px}
+.dsdots button,.dsdots button[aria-selected=true]{position:relative;width:44px;height:44px;min-width:44px;background:none;border-radius:0}
+.dsdots button::after{content:none!important}
+.dsdots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:var(--line)}
+.dsdots button[aria-selected=true]::before{width:22px;border-radius:4px;background:var(--ink)}
+.dsdots button:focus-visible{outline:2px solid var(--focus,#2F6FED);outline-offset:-6px;border-radius:12px}
