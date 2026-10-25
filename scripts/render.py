@@ -301,14 +301,14 @@ def lite(alerts, now):
         return "".join(out)
     page = f'''<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>गति Lite: पाठ मात्र</title><link rel="icon" href="data:,"><meta name="description" content="Gati text-only page for slow connections.">
-<style>body{{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:10px;color:#14202B}}a{{color:#0F7C86}}h1{{font-size:1.3em;color:#0E2A47}}h2{{font-size:1.1em;color:#0E2A47;margin:1.2em 0 .3em}}ul{{padding-left:1.1em}}li{{margin:.3em 0}}.d{{background:#e8f3f4;padding:8px;font-size:.9em}}hr{{border:0;border-top:1px solid #ccd}}</style>
+<style>body{{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:10px;color:#14202B}}a{{color:#0F7C86}}h1{{font-size:1.3em;color:#0E2A47}}h2{{font-size:1.1em;color:#0E2A47;margin:1.2em 0 .3em}}ul{{padding-left:1.1em}}li{{margin:.3em 0}}.d{{background:#e8f3f4;padding:8px;font-size:.9em}}hr{{border:0;border-top:1px solid #ccd}}.rl{{display:inline-block;padding:13px 0}}</style>
 </head><body>
 <h1>गति Lite · सही सूचना, सही समयमा ।</h1>
-<p><small><a href="../about/">गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ</a></small></p>
+<p><small><a class="rl" href="../about/">गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ</a></small></p>
 <p><small>बनाइएको: {npt(now.isoformat(), "ne")} · <a href="#en">English</a> · <a href="../">पूरा साइट</a></small></p>
 {sec("ne")}
 <hr><h2 id="en" class="h1like">Gati Lite · The right alert, right on time.</h2>
-<p><small><a href="../about/">Gati relays official sources</a></small></p>
+<p><small><a class="rl" href="../about/">Gati relays official sources</a></small></p>
 <p><small>Built: {npt(now.isoformat(), "en")} · <a href="../">Full site</a> · <a href="../atom.xml">Atom feed</a></small></p>
 {sec("en")}
 <hr><footer><p class="d">{DISC_NE}</p><p class="d">{DISC_EN}</p></footer>
