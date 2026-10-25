@@ -967,3 +967,10 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 @media(max-width:520px){.afcard{grid-template-columns:1fr}.afcard>.afgo,.afacts{grid-column:1;grid-row:auto;justify-self:start}.afacts{flex-direction:row;align-items:center}}
 .afx{display:inline-flex;align-items:center;gap:4px;font-size:.76rem;font-weight:600;padding:3px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink)!important;text-decoration:none;background:var(--surface);white-space:nowrap}.afx:hover{border-color:var(--ink)}
 .afxrow{margin:6px 0}.brk .afx{margin-left:8px}
+/* header tagline under the logo on small screens */
+@media(max-width:720px){.bar .brand{flex-direction:column;align-items:flex-start;gap:1px}.bar .brand .tagline,.bar .brand .tagline span{display:block!important}.bar .brand .tagline span[class$="-only"]{display:none!important}
+  html[lang=ne] .bar .brand .tagline .ne-only,html[lang=en] .bar .brand .tagline .en-only{display:block!important}
+  .bar .brand .tagline{font-size:.62rem;font-weight:500;line-height:1.1;padding:0;margin:0;border:0;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+  .bar .brand .logo{height:32px;width:auto}}
+@media(max-width:359px){.bar .brand .tagline{display:none!important}}
+@media(max-width:720px){.bar .brand{min-width:0;flex:0 1 auto}.bar .brand .tagline{white-space:normal;max-width:92px;font-size:.58rem;overflow:visible}}
