@@ -1,0 +1,153 @@
+/* Gati map with filters. Every layer cites its source; counts are per layer or per agency, never summed across agencies.
+   Filters live in the URL hash so a view can be shared. Colour is used only for data. */
+(async function () {
+  const G = window.Gati, T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, R = G.root;
+  const get = (p) => G.json(p).catch(() => null);
+  const [AL, DIST, PROV, DL, RV, RD, RG, WX, HL, AV] = await Promise.all(["data/alerts.json", "data/districts.geojson", "data/geo/provinces.geojson", "data/districts.json",
+    "data/rivers.json", "data/roads.json", "data/geo/roads.geojson", "data/weather.json", "data/geo/health.json", "data/geo/aviation.json"].map(get));
+  const ALERTS = AL ? AL.alerts : [], now = Date.now();
+  const SEVS = ["Extreme", "Severe", "Moderate", "Minor", "Unknown"], SVN = (s) => (G.SEV[s] || G.SEV.Unknown)[G.lang === "ne" ? 0 : 1];
+  const HZ = { flood: ["बाढी", "Flood"], landslide: ["पहिरो", "Landslide"], weather: ["मौसम", "Weather"], road: ["सडक", "Road"], fire: ["आगलागी", "Fire"], lightning: ["चट्याङ", "Lightning"], cold: ["शीतलहर", "Cold wave"], glof: ["हिमताल", "GLOF"], other: ["अन्य", "Other"] };
+  const TR = ["Official", "Reported", "Model"].filter((t) => G.TRUST[t]);
+  const isAct = (a) => !a.expired && !a.supersededBy && Date.parse(a.expires) > now;
+  const RCOL = { open: "#16a34a", oneway: "#f59e0b", blocked: "#dc2626", none: "#8a96a3" }, RLB = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], blocked: ["अवरुद्ध", "Blocked"], none: ["पुष्टि छैन", "Not confirmed"] };
+  const VCOL = { normal: "#2B6CB0", warning: "#E8770E", danger: "#C81E1E" }, VLB = { normal: ["सामान्य", "Normal"], warning: ["चेतावनी तह", "Above warning"], danger: ["खतरा तह", "Above danger"] };
+  const gstat = (g) => (g.level >= g.danger ? "danger" : g.level >= g.warning ? "warning" : "normal");
+  const mag = (a) => parseFloat(((a.info.en.params || {})["gati:magnitude"]) || "") || null;
+  const hazards = [...new Set(ALERTS.filter((a) => a.hazard !== "earthquake").map((a) => a.hazard))];
+  const agencies = [...new Set(ALERTS.map((a) => G.agencyOf(a)))];
+  /* ---- state <-> hash ---- */
+  const DEF = { hz: hazards, sv: SEVS, st: "active", ag: agencies, tr: TR, tm: "30d", pr: "", d: "", L: ["alerts", "wx", "rv", "rd", "eq", "lab"], rvs: ["normal", "warning", "danger"], rds: ["open", "oneway", "blocked", "none"], eqm: "0" };
+  const LISTS = ["hz", "sv", "ag", "tr", "L", "rvs", "rds"];
+  let S = JSON.parse(JSON.stringify(DEF));
+  const readHash = () => { const q = new URLSearchParams(location.hash.slice(1)); S = JSON.parse(JSON.stringify(DEF)); q.forEach((v, k) => { if (!(k in S)) return; S[k] = LISTS.includes(k) ? (v ? v.split(",") : []) : v; }); };
+  const writeHash = () => { const q = new URLSearchParams(); Object.keys(S).forEach((k) => { const a = LISTS.includes(k) ? S[k].join(",") : S[k], b = LISTS.includes(k) ? DEF[k].join(",") : DEF[k]; if (a !== b) q.set(k, a); }); history.replaceState(null, "", "#" + q.toString()); };
+  readHash();
+  /* ---- map ---- */
+  const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: [[25.5, 79], [31.2, 89]] }).fitBounds([[26.3, 80.0], [30.45, 88.2]]);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+  L.control.scale({ imperial: false }).addTo(map);
+  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
+  if (PROV) L.geoJSON(PROV, { style: { color: "#5f6670", weight: 1, opacity: 0.6, fill: false, dashArray: "4 4" }, interactive: false }).addTo(LG.prov);
+  const distF = DIST ? Object.fromEntries(DIST.features.map((f) => [f.id, f])) : {};
+  const distName = (id) => { const f = distF[id]; return f ? T(f.properties.ne, f.properties.en) : id; };
+  const inArea = (codes) => (S.d ? codes.includes(S.d) : S.pr ? codes.some((c) => c.startsWith(S.pr)) : true);
+  const tmOk = (iso) => S.tm === "all" || now - Date.parse(iso) <= { "24h": 864e5, "7d": 6048e5, "30d": 2592e6 }[S.tm];
+  const alertOk = (a) => (S.st === "all" || (S.st === "active") === isAct(a)) && S.sv.includes(a.severity) && S.ag.includes(G.agencyOf(a)) && S.tr.includes(a.trust) && tmOk(a.sent) && (!a.districts.length || inArea(a.districts));
+  const pop = (a) => { const i = a.info[G.lang] || a.info.ne; return `<b>${E(i.headline)}</b><br>${G.sevChip(a.severity)} ${G.trustChip(a.trust)}<br><span class="meta">${E(G.agencyOf(a))} · ${G.npt((i.params || {})["gati:sourceTime"] || a.sent)}</span><br><a href="${E(i.web || "#")}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a> · <a href="${R}alerts/${a.identifier}/">${T("पूरा सूचना", "Full notice")}</a>`; };
+  let aqData = null, aqLoading = false;
+  const CITIES = [["काठमाडौँ", "Kathmandu", 27.7172, 85.324], ["पोखरा", "Pokhara", 28.2096, 83.9856], ["विराटनगर", "Biratnagar", 26.4525, 87.2718], ["भरतपुर", "Bharatpur", 27.6766, 84.4303], ["नेपालगन्ज", "Nepalgunj", 28.05, 81.6167], ["धनगढी", "Dhangadhi", 28.6833, 80.6], ["जनकपुर", "Janakpur", 26.7288, 85.9263]];
+  const aqCol = (v) => (v <= 50 ? "#00a651" : v <= 100 ? "#d4b000" : v <= 150 ? "#f7941d" : v <= 200 ? "#e2231a" : v <= 300 ? "#8f3f97" : "#7e0023");
+  function loadAQ() { if (aqData || aqLoading) return; aqLoading = true;
+    fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${CITIES.map((c) => c[2]).join(",")}&longitude=${CITIES.map((c) => c[3]).join(",")}&current=us_aqi&timezone=Asia%2FKathmandu`).then((r) => r.ok ? r.json() : null)
+      .then((d) => { aqData = d ? (Array.isArray(d) ? d : [d]) : []; draw(); }).catch(() => { aqData = []; draw(); }); }
+  const counts = {};
+  function draw() {
+    Object.entries(LG).forEach(([k, g]) => { if (k !== "prov") g.clearLayers(); });
+    const on = (k) => S.L.includes(k);
+    /* alerts (not earthquakes): district fill by worst severity + point circles */
+    const A = ALERTS.filter((a) => a.hazard !== "earthquake" && S.hz.includes(a.hazard) && alertOk(a));
+    counts.ag = {}; ALERTS.filter((a) => a.hazard !== "earthquake" ? S.hz.includes(a.hazard) : on("eq")).filter((a) => (S.st === "all" || (S.st === "active") === isAct(a)) && tmOk(a.sent)).forEach((a) => { const k = G.agencyOf(a); counts.ag[k] = (counts.ag[k] || 0) + 1; });
+    if (on("alerts")) { const worst = {}, by = {};
+      A.forEach((a) => { const ds = a.districts.length ? a.districts : []; ds.forEach((d) => { if (!worst[d] || SEVS.indexOf(a.severity) < SEVS.indexOf(worst[d])) worst[d] = a.severity; (by[d] = by[d] || []).push(a); });
+        a.areas.forEach((ar) => ar.circles.forEach((c) => { const [la, lo] = c.split(" ")[0].split(",").map(Number); if (!isNaN(la)) L.circleMarker([la, lo], { radius: 7, color: "#fff", weight: 1.5, fillColor: G.SEVCOLOR[a.severity], fillOpacity: 0.95 }).bindPopup(pop(a)).addTo(LG.alerts); })); });
+      Object.entries(worst).forEach(([d, s]) => { const f = distF[d]; if (!f) return; L.geoJSON(f, { style: { color: G.SEVCOLOR[s], weight: 1.5, fillColor: G.SEVCOLOR[s], fillOpacity: isAct(by[d][0]) ? 0.4 : 0.15, dashArray: isAct(by[d][0]) ? null : "3 3" } })
+        .bindPopup(`<b>${E(distName(d))}</b><br>` + by[d].map(pop).join("<hr>")).addTo(LG.alerts); }); }
+    /* weather warnings: DHM 5-day bulletin provinces */
+    const b5 = WX && WX.bulletin5, wxDays = b5 ? b5.days.filter((d) => d.level !== "green") : [];
+    counts.wx = wxDays.length;
+    if (on("wx") && b5 && PROV) wxDays.forEach((d) => (d.provinces || []).forEach((p) => { const f = PROV.features.find((x) => x.id === p); if (f) L.geoJSON(f, { style: { color: "#c9a800", weight: 2, dashArray: "6 4", fillColor: "#F5D90A", fillOpacity: 0.25 } })
+      .bindPopup(`<b>DHM: ${E(d.bs)} ${T("पहेँलो", "yellow")}</b><br>${E(T(d.ne, d.en))}<br>${G.trustChip(b5.trust || "Official")} <span class="meta">${T("जारी", "issued")} ${G.npt(b5.issued)}</span><br><a href="${E(b5.url)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.wx); }));
+    /* rivers */
+    const gs = RV ? RV.gauges.filter((g) => S.rvs.includes(gstat(g)) && (!S.d || DL && (DL.find((x) => x.id === g.district) || {}).code === S.d) && (!S.pr || DL && ((DL.find((x) => x.id === g.district) || {}).code || "").startsWith(S.pr))) : [];
+    counts.rv = gs.length;
+    if (on("rv")) gs.forEach((g) => L.circleMarker(g.ll, { radius: 7, color: "#fff", weight: 2, fillColor: VCOL[gstat(g)], fillOpacity: 1 })
+      .bindPopup(`<b>${E(T(g.ne, g.en))}</b><br>${G.num(g.level.toFixed(2))} m · ${T("चेतावनी", "warning")} ${G.num(String(g.warning))} · ${T("खतरा", "danger")} ${G.num(String(g.danger))}<br>${G.trustChip("Official")} <span class="meta">${E(T(RV.source_ne, RV.source_en))} · ${E(T(RV.as_of_ne, RV.as_of_en))}</span>`).addTo(LG.rv));
+    /* roads */
+    const rts = RD ? RD.routes.filter((r) => S.rds.includes(r.status)) : [];
+    counts.rd = rts.length;
+    if (on("rd") && RG) RG.features.forEach((f) => { const r = rts.find((x) => x.id === f.properties.id); if (!r) return;
+      L.geoJSON(f, { style: { color: RCOL[r.status], weight: 4, opacity: 0.9, dashArray: r.status === "none" ? "2 6" : null } })
+        .bindPopup(`<b>${E(T(r.name_ne, r.name_en))}</b><br>${E(T(...RLB[r.status]))}<br>${G.trustChip("Official")} <span class="meta">${E(T(RD.sources.pol.ne, RD.sources.pol.en))} · ${E(T(RD.as_of_ne, RD.as_of_en))}</span>`).addTo(LG.rd); });
+    /* earthquakes */
+    const Q = ALERTS.filter((a) => a.hazard === "earthquake" && S.ag.includes(G.agencyOf(a)) && S.tr.includes(a.trust) && tmOk(a.sent) && (mag(a) || 0) >= +S.eqm && inArea(a.districts));
+    counts.eq = {}; Q.forEach((a) => { const k = G.agencyOf(a); counts.eq[k] = (counts.eq[k] || 0) + 1; });
+    if (on("eq")) Q.forEach((a) => a.areas.forEach((ar) => ar.circles.forEach((c) => { const [la, lo] = c.split(" ")[0].split(",").map(Number), m = mag(a) || 4;
+      L.circleMarker([la, lo], { radius: Math.min(18, 4 + Math.max(0, m - 3) * 4), color: "#7c3aed", weight: 1.5, fillColor: "#7c3aed", fillOpacity: 0.3 }).bindPopup(pop(a)).addTo(LG.eq); })));
+    /* air */
+    if (on("aq")) { if (!aqData) loadAQ(); else aqData.forEach((d, k) => { const v = d && d.current && d.current.us_aqi; if (v == null) return; const c = CITIES[k];
+      L.marker([c[2], c[3]], { icon: L.divIcon({ className: "mxaq", html: `<span style="background:${aqCol(v)}">${G.num(String(Math.round(v)))}</span>`, iconSize: [34, 22] }) })
+        .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + "+05:45")}</span>`).addTo(LG.aq); }); }
+    counts.aq = aqData ? aqData.filter((d) => d && d.current && d.current.us_aqi != null).length : null;
+    /* facilities */
+    const inB = (p) => { if (!S.d && !S.pr) return true; return focusB ? focusB.contains([p[0], p[1]]) : true; };
+    const hos = HL ? HL.hospitals.filter(inB) : [], heli = AV ? AV.helipads.filter(inB) : [];
+    counts.hos = HL ? hos.length : null; counts.heli = AV ? heli.length : null;
+    if (on("hos")) hos.forEach((p) => L.circleMarker([p[0], p[1]], { radius: 3.5, color: "#fff", weight: 1, fillColor: "#5f6670", fillOpacity: 1 }).bindTooltip(E(p[2] || T("अस्पताल", "Hospital"))).addTo(LG.hos));
+    if (on("heli")) heli.forEach((p) => L.marker([p[0], p[1]], { icon: L.divIcon({ className: "mxheli", html: "H", iconSize: [16, 16] }) }).bindTooltip(E(p[2] || "Helipad")).addTo(LG.heli));
+    /* labels */
+    if (on("lab")) { if (PROV) PROV.features.forEach((f) => L.marker(f.properties.label, { icon: L.divIcon({ className: "mxlab prov", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab));
+      if (DIST && map.getZoom() >= 8) DIST.features.forEach((f) => { const c = L.geoJSON(f).getBounds().getCenter(); L.marker(c, { icon: L.divIcon({ className: "mxlab", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab); }); }
+    /* focus outline */
+    if (focusF) L.geoJSON(focusF, { style: { color: "#003893", weight: 2.5, fill: false }, interactive: false }).addTo(LG.focus);
+    panel(); legend(); writeHash();
+  }
+  let focusF = null, focusB = null;
+  function setFocus(zoom) { focusF = S.d ? distF[S.d] : S.pr && PROV ? PROV.features.find((f) => f.id === S.pr) : null; focusB = focusF ? L.geoJSON(focusF).getBounds() : null; if (zoom) focusB ? map.fitBounds(focusB, { padding: [20, 20] }) : map.fitBounds([[26.3, 80.0], [30.45, 88.2]]); }
+  /* ---- panel ---- */
+  const P = document.getElementById("mxpanel");
+  const chip = (grp, val, label, n, extra = "") => `<button type="button" class="mxchip" data-g="${grp}" data-v="${E(val)}" aria-pressed="${LISTS.includes(grp) ? S[grp].includes(val) : S[grp] === val}"${extra}>${label}${n != null ? ` <span class="mxn">${G.num(String(n))}</span>` : ""}</button>`;
+  const perAg = (o) => o && Object.keys(o).length ? Object.entries(o).map(([k, v]) => `${E(k)} ${G.num(String(v))}`).join(" · ") : "";
+  function panel() {
+    const sw = (c) => `<i class="mxsw" style="background:${c}"></i>`;
+    P.querySelector(".mxbody").innerHTML = `
+      <fieldset><legend>${T("तहहरू", "Layers")}</legend><div class="mxchips">
+        ${chip("L", "alerts", T("सूचना", "Alerts"))}${chip("L", "wx", T("मौसम चेतावनी (DHM)", "Weather warnings (DHM)"), counts.wx)}${chip("L", "rv", T("नदी मापन केन्द्र", "River gauges"), counts.rv)}
+        ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}
+        ${chip("L", "hos", T("अस्पताल", "Hospitals"), counts.hos)}${chip("L", "heli", T("हेलिप्याड", "Helipads"), counts.heli)}
+        <button type="button" class="mxchip" disabled title="${T("खुला स्थानको डेटा उपलब्ध छैन", "Open-space data not available")}">${T("खुला स्थान", "Open spaces")} <span class="mxn">${T("उपलब्ध छैन", "n/a")}</span></button>
+        ${chip("L", "lab", T("नाम", "Labels"))}</div>
+        ${S.L.includes("eq") && perAg(counts.eq) ? `<p class="mxhint">${T("भूकम्प, निकायअनुसार", "Earthquakes by agency")}: ${perAg(counts.eq)}</p>` : ""}</fieldset>
+      <fieldset><legend>${T("अवस्था र समय", "Status and time")}</legend><div class="mxseg">${chip("st", "active", T("चालु", "Active"))}${chip("st", "expired", T("म्याद सकिएको", "Expired"))}${chip("st", "all", T("सबै", "All"))}</div>
+        <div class="mxseg">${chip("tm", "24h", T("२४ घण्टा", "24h"))}${chip("tm", "7d", T("७ दिन", "7d"))}${chip("tm", "30d", T("३० दिन", "30d"))}${chip("tm", "all", T("सबै", "All"))}</div></fieldset>
+      <fieldset><legend>${T("स्थान", "Place")}</legend><div class="mxplace">
+        <select id="mxpr" aria-label="${T("प्रदेश", "Province")}"><option value="">${T("सबै प्रदेश", "All provinces")}</option>${PROV ? PROV.features.map((f) => `<option value="${f.id}"${S.pr === f.id ? " selected" : ""}>${E(T(f.properties.ne, f.properties.en))}</option>`).join("") : ""}</select>
+        <select id="mxd" aria-label="${T("जिल्ला", "District")}"><option value="">${T("सबै जिल्ला", "All districts")}</option>${DIST ? DIST.features.filter((f) => !S.pr || f.properties.province === S.pr).sort((a, b) => T(a.properties.ne, a.properties.en).localeCompare(T(b.properties.ne, b.properties.en))).map((f) => `<option value="${f.id}"${S.d === f.id ? " selected" : ""}>${E(T(f.properties.ne, f.properties.en))}</option>`).join("") : ""}</select></div></fieldset>
+      <fieldset><legend>${T("प्रकोप", "Hazard")}</legend><div class="mxchips">${hazards.map((h) => chip("hz", h, E(T(...(HZ[h] || HZ.other))))).join("")}</div></fieldset>
+      <fieldset><legend>${T("गम्भीरता", "Severity")}</legend><div class="mxchips">${SEVS.map((s) => chip("sv", s, sw(G.SEVCOLOR[s]) + E(SVN(s)))).join("")}</div></fieldset>
+      <fieldset><legend>${T("स्रोत निकाय", "Source agency")}</legend><div class="mxchips">${agencies.map((a) => chip("ag", a, E(a), counts.ag[a] || 0)).join("")}</div>
+        <p class="mxhint">${T("सङ्ख्या हरेक निकायको आफ्नै हो; जोडिँदैन।", "Each count is that agency's own; never added together.")}</p></fieldset>
+      <fieldset><legend>${T("विश्वास तह", "Trust label")}</legend><div class="mxchips">${TR.map((t) => chip("tr", t, G.trustChip(t))).join("")}</div></fieldset>
+      <fieldset><legend>${T("नदी अवस्था", "River status")}</legend><div class="mxchips">${Object.keys(VCOL).map((k) => chip("rvs", k, sw(VCOL[k]) + E(T(...VLB[k])))).join("")}</div></fieldset>
+      <fieldset><legend>${T("सडक अवस्था", "Road status")}</legend><div class="mxchips">${Object.keys(RCOL).map((k) => chip("rds", k, sw(RCOL[k]) + E(T(...RLB[k])))).join("")}</div></fieldset>
+      <fieldset><legend>${T("भूकम्प म्याग्निच्युड", "Earthquake magnitude")}</legend><div class="mxseg">${["0", "3", "4", "5"].map((m) => chip("eqm", m, m === "0" ? T("सबै", "All") : G.num(m) + "+")).join("")}</div></fieldset>`;
+    P.querySelectorAll(".mxchip[data-g]").forEach((b) => (b.onclick = () => { const g = b.dataset.g, v = b.dataset.v;
+      if (LISTS.includes(g)) S[g] = S[g].includes(v) ? S[g].filter((x) => x !== v) : [...S[g], v]; else S[g] = v; draw(); }));
+    P.querySelector("#mxpr").onchange = (e) => { S.pr = e.target.value; S.d = ""; setFocus(true); draw(); };
+    P.querySelector("#mxd").onchange = (e) => { S.d = e.target.value; if (S.d) S.pr = S.d.slice(0, 4); setFocus(true); draw(); };
+  }
+  function legend() {
+    const on = (k) => S.L.includes(k), sw = (c, cls = "") => `<i class="mxsw ${cls}" style="background:${c}"></i>`, rows = [];
+    if (on("alerts")) rows.push(`<div><b>${T("सूचना", "Alerts")}</b>${S.sv.map((s) => `<span>${sw(G.SEVCOLOR[s])}${E(SVN(s))}</span>`).join("")}${S.st !== "active" ? `<span>${sw("transparent", "dash")}${T("म्याद सकिएको", "Expired")}</span>` : ""}</div>`);
+    if (on("wx") && counts.wx) rows.push(`<div><b>DHM</b><span>${sw("#F5D90A")}${T("पहेँलो चेतावनी (प्रदेश)", "Yellow warning (province)")}</span></div>`);
+    if (on("rv")) rows.push(`<div><b>${T("नदी", "Rivers")}</b>${S.rvs.map((k) => `<span>${sw(VCOL[k], "dot")}${E(T(...VLB[k]))}</span>`).join("")}</div>`);
+    if (on("rd")) rows.push(`<div><b>${T("सडक", "Roads")}</b>${S.rds.map((k) => `<span>${sw(RCOL[k], "line")}${E(T(...RLB[k]))}</span>`).join("")}</div>`);
+    if (on("eq")) rows.push(`<div><b>${T("भूकम्प", "Earthquakes")}</b><span>${sw("#7c3aed", "dot")}${T("ठूलो घेरा = ठूलो म्याग्निच्युड", "Bigger circle = bigger magnitude")}</span></div>`);
+    if (on("aq")) rows.push(`<div><b>AQI</b>${[[50, "0–50"], [100, "51–100"], [150, "101–150"], [200, "151–200"], [300, "201+"]].map(([v, l]) => `<span>${sw(aqCol(v))}${l}</span>`).join("")}</div>`);
+    if (on("hos")) rows.push(`<div><span>${sw("#5f6670", "dot")}${T("अस्पताल (OSM)", "Hospital (OSM)")}</span></div>`);
+    if (on("heli")) rows.push(`<div><span><i class="mxheli s">H</i>${T("हेलिप्याड (OSM)", "Helipad (OSM)")}</span></div>`);
+    const src = [on("alerts") || on("eq") ? T("सूचना: आधिकारिक निकाय, गतिमार्फत", "Alerts: official agencies via Gati") : "", on("wx") && WX && WX.bulletin5 ? `DHM ${T("५ दिने बुलेटिन", "5-day bulletin")}, ${G.npt(WX.bulletin5.issued)}` : "", on("rv") && RV ? `${E(T(RV.source_ne, RV.source_en))}, ${E(T(RV.as_of_ne, RV.as_of_en))}` : "", on("rd") && RD ? `${E(T(RD.sources.pol.ne, RD.sources.pol.en))}` : "", on("aq") ? "Open-Meteo (CAMS) " + T("मोडेल", "model") : "", on("hos") || on("heli") ? "OpenStreetMap / HOT (HDX)" : ""].filter(Boolean);
+    document.getElementById("mxlegend").innerHTML = (rows.join("") || `<p class="meta">${T("कुनै तह छानिएको छैन", "No layer selected")}</p>`) + `<p class="mxsrc">${T("स्रोत", "Sources")}: ${src.join(" · ")}</p>`;
+  }
+  /* ---- controls ---- */
+  P.querySelector(".mxreset").onclick = () => { S = JSON.parse(JSON.stringify(DEF)); setFocus(true); draw(); };
+  P.querySelector(".mxmine").onclick = () => { const my = G.district && G.district.get(); if (!my) { G.district && G.district.open && G.district.open(() => { S.d = G.district.get() || ""; S.pr = S.d.slice(0, 4); setFocus(true); draw(); }); return; } S.d = my; S.pr = my.slice(0, 4); setFocus(true); draw(); };
+  P.querySelector(".mxshare").onclick = async () => { const u = location.href; try { if (navigator.share) await navigator.share({ title: document.title, url: u }); else { await navigator.clipboard.writeText(u); P.querySelector(".mxshare").textContent = T("लिङ्क कपी भयो", "Link copied"); } } catch (e) {} };
+  const sheet = document.getElementById("mxsheetbtn"); sheet.onclick = () => { const o = P.classList.toggle("open"); sheet.setAttribute("aria-expanded", o); };
+  P.querySelector(".mxclose").onclick = () => { P.classList.remove("open"); sheet.setAttribute("aria-expanded", "false"); };
+  map.on("zoomend", () => S.L.includes("lab") && draw());
+  window.addEventListener("hashchange", () => { readHash(); setFocus(true); draw(); });
+  G.onLang(() => draw());
+  setFocus(!!(S.d || S.pr)); draw();
+  window.__mx = { map, S };
+})();
