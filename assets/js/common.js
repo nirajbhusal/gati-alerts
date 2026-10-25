@@ -9,8 +9,12 @@
   const pref = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
   G.numPref = pref("gati-num", "");            // "" follows language; "ne" or "en" forces numerals
   G.cal = pref("gati-cal", "ad");              // "ad" or "bs"
-  G.theme = pref("gati-theme", matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  document.documentElement.dataset.theme = G.theme;
+  /* Themes: system, light, paper, dark, crimson. "system" follows the device. */
+  G.THEMES = [["system", "प्रणाली", "System"], ["light", "उज्यालो", "Light"], ["paper", "कागज", "Paper"], ["dark", "अँध्यारो", "Dark"], ["crimson", "सिम्रिक", "Crimson"]];
+  G.themePref = pref("gati-theme-pref", pref("gati-theme", "system"));
+  const mq = matchMedia("(prefers-color-scheme: dark)");
+  const applyTheme = () => { G.theme = G.themePref === "system" ? (mq.matches ? "dark" : "light") : G.themePref; document.documentElement.dataset.theme = G.theme; };
+  applyTheme(); mq.addEventListener && mq.addEventListener("change", () => G.themePref === "system" && applyTheme());
 
   /* Item 18: desktop nav; Map, Rivers and Roads are sections of the dashboard. */
   const NAV = [
@@ -54,7 +58,7 @@
     <div class="prefs" role="group" aria-label="Display / देखाउने तरिका">
       <button class="pbtn" type="button" id="numbtn" title="Numerals / अङ्क"></button>
       <button class="pbtn" type="button" id="calbtn" title="BS / AD"></button>
-      <button class="pbtn" type="button" id="thmbtn" title="Dark mode / अँध्यारो"></button>
+      <button class="pbtn" type="button" id="thmbtn" title="Theme / रूप" aria-haspopup="true" aria-expanded="false"></button>
       <button class="pbtn" type="button" id="txtbtn" title="Large text / ठूलो अक्षर">अ+</button></div>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
@@ -103,12 +107,20 @@
     nb.textContent = G.devNum() ? "१२३" : "123"; nb.setAttribute("aria-label", G.lang === "ne" ? "अङ्क: नेपाली वा अङ्ग्रेजी" : "Numerals: Nepali or Latin");
     cb.textContent = G.cal === "bs" ? (G.lang === "ne" ? "वि.सं." : "BS") : (G.lang === "ne" ? "ई.सं." : "AD");
     cb.setAttribute("aria-label", G.lang === "ne" ? "मिति: विक्रम संवत् वा ईस्वी संवत्" : "Dates: Bikram Sambat or Gregorian");
-    tb.textContent = G.theme === "dark" ? "☀" : "☾"; tb.setAttribute("aria-pressed", G.theme === "dark");
-    tb.setAttribute("aria-label", G.lang === "ne" ? "अँध्यारो रूप" : "Dark mode");
+    tb.innerHTML = `<i class="thdot th-${G.theme}" aria-hidden="true"></i>`;
+    tb.setAttribute("aria-label", G.lang === "ne" ? "रूप छान्नुहोस्" : "Choose theme");
   };
   header.querySelector("#numbtn").onclick = () => { G.numPref = G.devNum() ? "en" : "ne"; if (G.numPref === G.lang) G.numPref = ""; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
   header.querySelector("#calbtn").onclick = () => { G.cal = G.cal === "bs" ? "ad" : "bs"; save("gati-cal", G.cal === "bs" ? "bs" : ""); G.listeners.forEach((f) => f(G.lang)); };
-  header.querySelector("#thmbtn").onclick = () => { G.theme = G.theme === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = G.theme; save("gati-theme", G.theme); prefBtns(); };
+  G.setTheme = (t) => { G.themePref = t; save("gati-theme-pref", t); save("gati-theme", ""); applyTheme(); G.listeners.forEach((f) => f(G.lang)); };
+  /* Visual swatch picker, reused by the My Gati drawer */
+  G.themePicker = () => `<div class="thgrid" role="radiogroup" aria-label="${G.lang === "ne" ? "रूप" : "Theme"}">${G.THEMES.map(([k, ne, en]) => `<button type="button" role="radio" class="thsw" data-th="${k}" aria-checked="${G.themePref === k}"><span class="thprev tp-${k}"><i></i><i></i><i></i></span><span>${G.lang === "ne" ? ne : en}</span></button>`).join("")}</div>`;
+  G.bindThemePicker = (el) => el.querySelectorAll(".thsw").forEach((b) => (b.onclick = () => { G.setTheme(b.dataset.th); el.querySelectorAll(".thsw").forEach((x) => x.setAttribute("aria-checked", x.dataset.th === G.themePref)); }));
+  const thpop = document.createElement("div"); thpop.className = "thpop"; thpop.hidden = true; header.querySelector(".prefs").appendChild(thpop);
+  header.querySelector("#thmbtn").onclick = (e) => { e.stopPropagation(); const o = thpop.hidden; thpop.hidden = !o; header.querySelector("#thmbtn").setAttribute("aria-expanded", o); if (o) { thpop.innerHTML = G.themePicker(); G.bindThemePicker(thpop); thpop.querySelector("[aria-checked=true]").focus(); } };
+  thpop.onclick = (e) => e.stopPropagation();
+  document.addEventListener("click", () => { thpop.hidden = true; });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !thpop.hidden) { thpop.hidden = true; header.querySelector("#thmbtn").focus(); } });
   /* Accessibility: large text toggle */
   G.bigText = pref("gati-text", "") === "large"; document.documentElement.dataset.text = G.bigText ? "large" : "";
   const txtBtn = () => { const t = header.querySelector("#txtbtn"); t.setAttribute("aria-pressed", G.bigText); t.setAttribute("aria-label", G.lang === "ne" ? "ठूलो अक्षर" : "Large text"); };
