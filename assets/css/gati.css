@@ -1132,3 +1132,6 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
 .dsdots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:var(--line)}
 .dsdots button[aria-selected=true]::before{width:22px;border-radius:4px;background:var(--ink)}
 .dsdots button:focus-visible{outline:2px solid var(--focus,#2F6FED);outline-offset:-6px;border-radius:12px}
+/* Fix sweep 6: reserve the space Home's late-filled blocks take, so the page does not jump while they load */
+.home #mydist:empty{min-height:147px}.home #today:empty{min-height:1450px}.home #afslider:empty{min-height:80px}.home #dslider:empty{min-height:590px}.home #services:empty{min-height:425px}
+@media(min-width:721px){.home #mydist:empty{min-height:78px}.home #today:empty{min-height:1060px}.home #afslider:empty{min-height:46px}.home #dslider:empty{min-height:488px}.home #services:empty{min-height:258px}}
