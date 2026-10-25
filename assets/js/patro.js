@@ -76,9 +76,8 @@
     const big = mode === "bs" ? G.num(x.bs.d) : G.num(x.d), small = mode === "bs" ? G.num(x.d) : G.num(x.bs.d);
     const aria = `${bsLab(x.bs)} · ${adLab(x)}${x.hol.length ? " · " + x.hol.map((h) => T(h.title_ne, h.title_en)).join(", ") : ""}${x.al.length ? " · " + G.num(x.al.length) + T(" सूचना", " alerts") : ""}`;
     return `<button type="button" class="pday${x.hol.length || x.wd === 6 ? " hol" : ""}${today ? " today" : ""}${sel === x.ad ? " sel" : ""}" data-ad="${x.ad}" aria-label="${esc(aria)}">
-      <span class="pbig">${big}</span><span class="psmall">${small}</span>
-      ${x.hol.length ? `<span class="phol">${esc(T(x.hol[0].title_ne, x.hol[0].title_en))}${x.hol.length > 1 ? " +" + G.num(x.hol.length - 1) : ""}</span>` : ""}
-      <span class="psun">☀ ${G.num(x.sun[0])} · ${G.num(x.sun[1])}</span>
+      <span class="phol">${x.hol.length ? esc(T(x.hol[0].title_ne, x.hol[0].title_en)) : ""}</span>
+      <span class="pbig">${big}</span>${x.hol.length > 1 ? `<span class="pplus">+${G.num(x.hol.length - 1)}</span>` : ""}<span class="psmall">${small}</span>
       <span class="pmarks">${dots(x)}</span><span class="pbands">${bands(x)}</span></button>`;
   }
   function weekRow(x) {
@@ -97,7 +96,22 @@
       ${a ? `<h4>${T("यो दिन लागू सूचना", "Alerts in force this day")}</h4><ul class="plist">${a}</ul>` : `<p class="meta">${T("यो दिनका लागि गतिमा कुनै सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", "No Gati alert covers this day. That does not mean there is no risk.")}</p>`}
       ${s ? `<ul class="plist">${s}</ul>` : ""}`;
   }
+  function side() {
+    const el = document.getElementById("pside"); if (!el) return;
+    const td = day(Date.UTC(t.y, t.m - 1, t.d)), nowt = new Date(Date.now() + 345 * 60000);
+    const up = (cal.entries || []).filter((e) => e.type === "holiday" && e.date_ad > td.ad).sort((a, b) => a.date_ad.localeCompare(b.date_ad)).slice(0, 5);
+    const hh = String(nowt.getUTCHours()).padStart(2, "0"), mm = String(nowt.getUTCMinutes()).padStart(2, "0");
+    el.innerHTML = `<div class="ptoday"><div class="ptile"><b>${G.num(td.bs.d)}</b><span>${T(BS.WN[td.wd], BS.WE[td.wd])}</span></div>
+      <div class="ptinfo"><h2>${G.lang === "ne" ? BS.MN[td.bs.m - 1] + ", " + G.num(td.bs.y) : BS.ME[td.bs.m - 1] + " " + td.bs.y + " BS"}</h2><p>${adLab(td)}</p>
+      <p class="meta">${T("तिथि: उद्धृत गर्न मिल्ने स्रोत नभएकाले देखाइएको छैन", "Tithi: not shown, no citable source")}</p></div></div>
+      ${td.hol.length ? `<p class="ptev">🎉 ${td.hol.map((h) => esc(T(h.title_ne, h.title_en))).join(", ")} ${G.trustChip(td.hol[0].trust)}</p>` : ""}
+      <div class="ptclock"><b id="pclock">${G.num(hh + ":" + mm)}</b><span class="meta">NPT</span><span class="psunr">🌅 ${G.num(td.sun[0])}</span><span class="psunr">🌇 ${G.num(td.sun[1])}</span></div>
+      <h3>${T("आउँदा बिदा", "Upcoming holidays")}</h3><ul class="pup">${up.map((e) => { const d = Math.round((Date.parse(e.date_ad) - Date.parse(td.ad)) / DAY); const b = BS.toBS(...e.date_ad.split("-").map(Number));
+        return `<li><span class="pupd"><b>${G.num(b.d)}</b><small>${G.lang === "ne" ? BS.MN[b.m - 1] : BS.ME[b.m - 1]}</small></span><span class="pupt">${esc(T(e.title_ne, e.title_en))}<small>${G.num(String(d))} ${T("दिनपछि", "days to go")}</small></span></li>`; }).join("") || `<li class="meta">${T("छैन", "None")}</li>`}</ul>
+      ${up.length ? `<p class="meta">${T("स्रोत", "Source")}: <a href="${esc(up[0].sourceUrl)}" target="_blank" rel="noopener">${esc(up[0].source)}</a> ${G.trustChip(up[0].trust)}</p>` : ""}`;
+  }
   function draw() {
+    side();
     const days = range().map(day);
     document.getElementById("ptitle").innerHTML = title(days);
     const g = document.getElementById("pgrid");
