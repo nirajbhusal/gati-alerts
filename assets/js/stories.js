@@ -20,20 +20,63 @@
     if (isActive(a)) return `<span class="tag">${T("चालु", "Active")}</span>`;
     return `<span class="tag exp">${new Date(a.expires) <= Date.now() ? T("म्याद सकियो", "Expired") : T("पछि अद्यावधिक भयो", "Superseded")}</span>`;
   }
+  /* Hazard art (inline SVG line icons on a severity-tinted disc) */
+  const HZ = {
+    flood: '<path d="M4 30c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3 4-3 8-3"/><path d="M4 38c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3 4-3 8-3"/><path d="M14 22V12l10-6 10 6v10"/><path d="M21 22v-6h6v6"/>',
+    landslide: '<path d="M4 40 22 10l10 14 6-6 8 22z"/><circle cx="30" cy="34" r="2.5"/><circle cx="37" cy="30" r="2"/><circle cx="24" cy="36" r="1.8"/>',
+    earthquake: '<path d="M4 26h8l4-12 6 24 6-18 4 6h12"/><path d="M10 40l6-4 6 4 6-4 6 4"/>',
+    weather: '<path d="M14 30a8 8 0 1 1 2-15.8A11 11 0 0 1 37 18a6 6 0 0 1-1 12z"/><path d="M16 36l-2 5M24 36l-2 5M32 36l-2 5"/>',
+    road: '<path d="M18 6 10 42M30 6l8 36"/><path d="M24 8v6M24 20v6M24 32v6"/><path d="M20 30h8l3 8H17z" fill="currentColor" opacity=".25"/>',
+    fire: '<path d="M24 42c-8 0-13-5-13-12 0-8 7-11 8-20 5 4 6 8 6 11 2-2 3-5 3-7 5 4 9 9 9 16 0 7-5 12-13 12z"/>',
+    lightning: '<path d="M27 4 12 26h11l-4 18 17-24H25z"/>',
+    cold: '<path d="M24 4v40M7 14l34 20M41 14 7 34"/><path d="m19 8 5 4 5-4M19 40l5-4 5 4"/>',
+    glof: '<path d="M4 22 14 10l8 8 6-6 16 10"/><path d="M4 32c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3 4-3 8-3"/><path d="M4 40c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3 4-3 8-3"/>',
+    other: '<path d="M24 6 4 42h40z"/><path d="M24 20v10M24 35v.01"/>',
+  };
+  const HZN = { flood: ["बाढी", "Flood"], landslide: ["पहिरो", "Landslide"], earthquake: ["भूकम्प", "Earthquake"], weather: ["मौसम", "Weather"], road: ["सडक", "Road"], fire: ["आगलागी", "Fire"], lightning: ["चट्याङ", "Lightning"], cold: ["शीतलहर", "Cold wave"], glof: ["हिमताल", "GLOF"] };
+  const art = (a) => `<div class="fart" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${HZ[a.hazard] || HZ.other}</svg></div>`;
+  /* Mini map of affected districts, projected from data/districts.geojson */
+  let DP = null;
+  G.json("data/districts.geojson").then((g) => {
+    const W = 200, H = 100, X = (x) => (((x - 80) / 8.3) * W).toFixed(1), Y = (y) => (((30.5 - y) / 4.2) * H).toFixed(1);
+    DP = g.features.map((f) => { const P = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+      return [f.id, P.map((p) => "M" + p[0].filter((_, k) => k % 3 === 0).map(([x, y]) => X(x) + " " + Y(y)).join("L") + "Z").join("")]; });
+    feed.querySelectorAll(".fmini[data-k]").forEach((m) => { const a = items[+m.dataset.k]; if (a) m.innerHTML = mini(a); });
+  }).catch(() => {});
+  function mini(a) {
+    if (!DP) return "";
+    const all = !a.districts.length, c = G.SEVCOLOR[a.severity] || G.SEVCOLOR.Unknown;
+    const dots = a.areas.flatMap((x) => x.circles).map((cc) => { const [y, x] = cc.split(" ")[0].split(",").map(Number); return `<circle cx="${((x - 80) / 8.3) * 200}" cy="${((30.5 - y) / 4.2) * 100}" r="3.5" fill="${c}" stroke="#fff" stroke-width="1.2"/>`; }).join("");
+    return `<svg viewBox="0 0 200 100" role="img" aria-label="${esc(T("प्रभावित जिल्ला नक्सा", "Map of affected districts"))}">${DP.map(([id, d]) => `<path d="${d}" fill="${all || a.districts.includes(id) ? c : "rgba(255,255,255,.14)"}" fill-opacity="${all ? ".45" : "1"}" stroke="rgba(255,255,255,.35)" stroke-width=".4"/>`).join("")}${dots}</svg>`;
+  }
+  const LV = { Extreme: 5, Severe: 4, Moderate: 3, Minor: 2, Unknown: 1 };
+  function left(a) {
+    const ms = Date.parse(a.expires) - Date.now();
+    if (ms <= 0) return [T("सकियो", "Ended"), T("म्याद", "Expiry")];
+    const h = Math.round(ms / 36e5); return h < 48 ? [`${G.num(String(h))} ${T("घण्टा", "h")}`, T("बाँकी", "left")] : [`${G.num(String(Math.round(h / 24)))} ${T("दिन", "days")}`, T("बाँकी", "left")];
+  }
   function card(a, k) {
     const i = a.info[G.lang] || a.info.ne, sev = G.SEV[a.severity] ? a.severity : "Unknown", act = isActive(a);
     const areas = a.areas.map((x) => x[G.lang] || x.en).filter(Boolean).join(" · ");
+    const lv = LV[sev], tl = left(a), nd = a.districts.length;
     return `<div class="fbg"></div>
       <div class="fmain">
-        <div class="ftags">${G.sevChip(sev)}${status(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(i.event)}</span></div>
+        <div class="fhero">${art(a)}<div class="ftags">${G.sevChip(sev)}${status(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div></div>
         <h2>${esc(i.headline)}</h2>
+        <div class="fviz"><div class="fmini" data-k="${k}">${mini(a)}</div>
+          <div class="finfo">
+            <div class="fi"><div class="fmeter" aria-label="${esc(T(G.SEV[sev][0], G.SEV[sev][1]))}">${[1, 2, 3, 4, 5].map((n) => `<i${n <= lv ? ' class="on"' : ""}></i>`).join("")}</div><span>${T("गम्भीरता", "Severity")}</span></div>
+            <div class="fi"><b>${nd ? G.num(String(nd)) : T("देशभर", "All")}</b><span>${nd ? T("जिल्ला", "districts") : T("नेपाल", "Nepal")}</span></div>
+            <div class="fi"><b>${tl[0]}</b><span>${tl[1]}</span></div>
+          </div></div>
         ${i.instruction ? `<p class="fins"><strong>${act ? T("के गर्ने", "What to do") : T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${esc(i.instruction)}</p>` : ""}
       </div>
       <div class="flow" style="--sc:${G.SEVCOLOR[sev]}">
-        <div class="fsev">${G.sevChip(sev)} ${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}</div>
-        ${areas ? `<p>📍 ${esc(areas)}</p>` : ""}
-        <p>🕒 ${T("स्रोतको समय", "Source time")}: ${G.npt(srcTime(a, i))} · ${esc(agency(i))}</p>
-        <p class="fdisc">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्।", "Relayed by Gati, not an official warning. Check the original source.")}</p>
+        <p class="fsrcline">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(agency(i))} ↗</a> ${G.trustChip(a.trust)}</p>
+        <details class="fsrc"><summary>${T("स्रोत विवरण", "Source")}</summary>
+          ${areas ? `<p>📍 ${esc(areas)}</p>` : ""}${a.state ? `<p>${G.trustChip(a.state)}</p>` : ""}
+          <p>${T("स्रोतको समय", "Source time")}: ${G.npt(srcTime(a, i))} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
+          <p class="fdisc">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्।", "Relayed by Gati, not an official warning. Check the original source.")}</p></details>
       </div>
       <div class="rail">
         <button type="button" data-act="share" data-k="${k}"><span aria-hidden="true">↗</span>${T("सेयर", "Share")}</button>
