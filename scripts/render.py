@@ -243,7 +243,7 @@ def permalink(a, by, now):
 <meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../../assets/img/brand/apple-touch-icon.png">
 <link rel="alternate" type="application/cap+xml" href="../../cap/{e(ident)}.xml">
-<link rel="stylesheet" href="../../assets/fonts/fonts.css"><link rel="stylesheet" href="../../assets/css/gati.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css"><link rel="preload" href="../../assets/fonts/mukta-latin-bef5c820.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../assets/fonts/inter-latin-f11d729b.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../assets/fonts/mukta-devanagari-5591b6d0.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../assets/fonts/mukta-devanagari-7cefa967.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../../assets/css/gati.css">
 </head><body data-page="alert" data-root="../../"><main id="main" class="wrap" style="max-width:780px">
 <p class="meta"><a href="../../">{b("← सबै सूचना", "← All alerts")}</a></p>
 <article class="card alert s-{a["severity"]}{"" if active else " expired"}" id="{e(ident)}">
@@ -364,7 +364,7 @@ def main():
 <title>सबै सूचना · All alerts · गति Gati</title><meta name="description" content="Gati: every relayed alert with filters, charts and the full archive. Expired notices are never deleted.">
 <meta property="og:title" content="सबै सूचना · All alerts · गति Gati"> <meta property="og:image" content="{SITE}assets/img/brand/og-cover.png"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
+<link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="preload" href="../assets/fonts/mukta-latin-bef5c820.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/inter-latin-f11d729b.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-5591b6d0.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-7cefa967.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../assets/css/gati.css"></head>
 <body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1><section class="gdash" id="gdash" aria-label="सारांश · Summary"></section><section id="breakinglist" class="brksec" aria-live="polite"></section>
 <p class="lead">{b("चालु र पुराना सबै सूचना, फिल्टरसहित। म्याद सकिएका सूचना पनि मेटिँदैनन्।", "Every active and past alert, with filters. Expired notices are never deleted.")}</p>
 {body}

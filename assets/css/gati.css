@@ -1270,7 +1270,7 @@ html[data-theme=dark]{--gdtrack:#22364A;--gdok:#3FBF84;--gdblue:#6E9BF5}
 body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;height:114px}
 @media(max-width:720px){body[data-page]:not(.storypage):not(.ghdr)::before{height:80.375px}}
 @media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:65px}}
-.gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}.gd-log .gdnote a{white-space:nowrap}
+.gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}
 /* static #gdash placeholders: reserve the dashboard height before dash.js runs */
 body[data-page=home] #gdash{min-height:993px}@media(min-width:760px){body[data-page=home] #gdash{min-height:688px}}
 body[data-page=alerts] #gdash{min-height:715px}@media(min-width:760px){body[data-page=alerts] #gdash{min-height:384px}}
@@ -1286,3 +1286,6 @@ body[data-page=log] #gdash{min-height:202px}@media(min-width:760px){body[data-pa
 /* CLS: async-filled blocks reserve a full screen so the page below never moves into view */
 body.brkwait main,body.brkwait footer{visibility:hidden}
 #srcHealth:empty,#askfull:empty,#pgrid:empty{min-height:100vh}
+@media(max-width:720px){#clist{min-height:100vh}}
+.gd-log .gdnote{padding-right:4px;box-sizing:border-box}.gd-log .gdnote a{display:inline-block}
+.gd-log .gdnote{overflow:hidden}
