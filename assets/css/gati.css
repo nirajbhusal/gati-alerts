@@ -776,3 +776,11 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 .dsbig{margin:0;font-size:2rem;font-weight:700;line-height:1.1}
 .dsaq{display:flex;gap:16px;align-items:center}.dsgauge{width:150px;flex:none;color:var(--ink)}
 .dsna{color:var(--ink);margin:20px 0}
+/* Text size control */
+.tsize{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.tsize button{font:inherit;font-size:.85rem;font-weight:600;min-width:38px;min-height:36px;padding:0 8px;border:0;background:none;color:var(--ink);cursor:pointer}
+.tsize button+button{border-left:1px solid var(--line)}.tsize button:disabled{opacity:.35;cursor:default}.tsize button[aria-pressed=true]{color:var(--crimson)}
+.tsize output{font-size:.8rem;color:var(--slate);padding:0 10px 0 6px;min-width:3.4em;text-align:right}
+header.top .tsize button{background:transparent!important;border-color:var(--line)!important;border-radius:0!important;min-width:34px}
+.metsize{cursor:default}.metsize .tsize{margin-left:auto}
+@media(max-width:720px){header.top .tsize{display:none}}

@@ -57,7 +57,7 @@
       <button class="pbtn" type="button" id="numbtn" title="Numerals / अङ्क"></button>
       <button class="pbtn" type="button" id="calbtn" title="BS / AD"></button>
       <button class="pbtn" type="button" id="thmbtn" title="Theme / रूप" aria-haspopup="true" aria-expanded="false"></button>
-      <button class="pbtn" type="button" id="txtbtn" title="Large text / ठूलो अक्षर">अ+</button></div>
+      <span class="tsize" id="txtbtn" role="group" aria-label="Text size / अक्षरको आकार"><button type="button" data-ts="-1" aria-label="Smaller text / सानो अक्षर">A−</button><button type="button" data-ts="0" aria-label="Default text size / सामान्य अक्षर">A</button><button type="button" data-ts="1" aria-label="Larger text / ठूलो अक्षर">A+</button></span></div>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="mebtn" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
@@ -120,11 +120,16 @@
   thpop.onclick = (e) => e.stopPropagation();
   document.addEventListener("click", () => { thpop.hidden = true; });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !thpop.hidden) { thpop.hidden = true; header.querySelector("#thmbtn").focus(); } });
-  /* Accessibility: large text toggle */
-  G.bigText = pref("gati-text", "") === "large"; document.documentElement.dataset.text = G.bigText ? "large" : "";
-  const txtBtn = () => { const t = header.querySelector("#txtbtn"); t.setAttribute("aria-pressed", G.bigText); t.setAttribute("aria-label", G.lang === "ne" ? "ठूलो अक्षर" : "Large text"); };
-  header.querySelector("#txtbtn").onclick = () => { G.bigText = !G.bigText; document.documentElement.dataset.text = G.bigText ? "large" : ""; save("gati-text", G.bigText ? "large" : ""); txtBtn(); };
-  G.listeners.push(txtBtn); txtBtn();
+  /* Accessibility: text size A- / A / A+ (87.5% to 150%, saved) */
+  const TS = [87.5, 100, 112.5, 125, 137.5, 150];
+  let ts = parseFloat(pref("gati-tsize", "")); if (!TS.includes(ts)) ts = pref("gati-text", "") === "large" ? 125 : 100;
+  G.textSize = () => ts;
+  G.setTextSize = (v) => { ts = TS.includes(v) ? v : 100; document.documentElement.style.fontSize = ts === 100 ? "" : ts + "%"; document.documentElement.dataset.text = ts > 100 ? "large" : "";
+    save("gati-tsize", ts === 100 ? "" : String(ts)); save("gati-text", ""); G.bigText = ts > 100;
+    document.querySelectorAll(".tsize").forEach((g) => { g.querySelector('[data-ts="-1"]').disabled = ts <= TS[0]; g.querySelector('[data-ts="1"]').disabled = ts >= TS[TS.length - 1]; g.querySelector('[data-ts="0"]').setAttribute("aria-pressed", ts === 100); const o = g.querySelector("output"); if (o) o.textContent = G.num(String(ts)) + "%"; }); };
+  G.stepText = (d) => G.setTextSize(d === 0 ? 100 : TS[Math.max(0, Math.min(TS.length - 1, TS.indexOf(ts) + d))]);
+  G.bindTsize = (root) => root.querySelectorAll(".tsize [data-ts]").forEach((b) => (b.onclick = () => G.stepText(+b.dataset.ts)));
+  G.bindTsize(header); G.setTextSize(ts);
   G.listeners.push(prefBtns);
   G.onLang = (f) => G.listeners.push(f);
   /* Tagline in the tab title follows the language */
@@ -254,19 +259,19 @@
         ${row("⭐", "मेरो निगरानी सूची", "My watchlist", G.num(String(watch())), "watch")}
         ${row("१२", "अङ्क", "Numerals", G.devNum() ? "१२३" : "123", "num")}
         ${row("🗓", "मिति", "Dates", G.cal === "bs" ? T("वि.सं.", "BS") : T("ई.सं.", "AD"), "cal")}
-        ${row("अ+", "ठूलो अक्षर", "Large text", G.bigText ? T("खुला", "On") : T("बन्द", "Off"), "txt")}
+        <div class="merow metsize"><span class="meic" aria-hidden="true">अ</span><span class="melab">${T("अक्षरको आकार", "Text size")}</span><span class="tsize" role="group" aria-label="${T("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${T("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${T("सामान्य अक्षर", "Default size")}">A</button><button type="button" data-ts="1" aria-label="${T("ठूलो अक्षर", "Larger text")}">A+</button><output>${G.num(String(G.textSize()))}%</output></span></div>
         ${row("🔔", "सूचना पाउने तरिका", "Get notified", "Atom", "feed")}
         ${row("ℹ️", "बारेमा र स्रोत", "About and sources", "", "about")}
       </div><p class="meta">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन। यहाँका सेटिङ यही उपकरणमा मात्र रहन्छन्।", "Gati relays; it does not issue warnings. These settings stay on this device.")}</p></aside>`;
     G.bindThemePicker(dr.querySelector(".methemes"));
     dr.querySelector(".meback").onclick = close; dr.querySelector(".mex").onclick = close;
     dr.querySelectorAll(".melang button").forEach((b) => (b.onclick = () => G.setLang(b.dataset.l)));
-    dr.querySelectorAll(".merow").forEach((b) => (b.onclick = () => {
+    G.bindTsize(dr); G.setTextSize(G.textSize());
+    dr.querySelectorAll(".merow:not(.metsize)").forEach((b) => (b.onclick = () => {
       const a = b.dataset.act, H = document.querySelector("header.top");
       if (a === "dist" && G.district) G.district.open(render);
       else if (a === "num") H.querySelector("#numbtn").click();
       else if (a === "cal") H.querySelector("#calbtn").click();
-      else if (a === "txt") H.querySelector("#txtbtn").click();
       else if (a === "watch") location.href = R + "?home=1#watch";
       else if (a === "feed") location.href = R + "atom.xml";
       else if (a === "about") location.href = R + "about/";
