@@ -42,13 +42,19 @@
     fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${CITIES.map((c) => c[2]).join(",")}&longitude=${CITIES.map((c) => c[3]).join(",")}&current=us_aqi&timezone=Asia%2FKathmandu`).then((r) => r.ok ? r.json() : null)
       .then((d) => { aqData = d ? (Array.isArray(d) ? d : [d]) : []; draw(); }).catch(() => { aqData = []; draw(); }); }
   const counts = {};
+  let ITEMS = [], selId = null;
+  const RV_STALE = RV && RV.as_of ? (now - Date.parse(RV.as_of + "T23:59:00+05:45")) > 1728e5 : false;
+  const llOf = (a) => { for (const ar of a.areas) for (const c of ar.circles) { const [la, lo] = c.split(" ")[0].split(",").map(Number); if (!isNaN(la)) return [la, lo]; } return null; };
+  const bOf = (a) => { const ll = llOf(a); if (ll) return L.latLngBounds([ll, ll]); const fs = a.districts.map((d) => distF[d]).filter(Boolean); return fs.length ? L.geoJSON({ type: "FeatureCollection", features: fs }).getBounds() : null; };
+  const reg = (it) => { it.id = it.k + ":" + ITEMS.length; ITEMS.push(it); };
+  const aItem = (a, k) => { const i = a.info[G.lang] || a.info.ne, p = i.params || {}; return { k, col: k === "eq" ? "#7c3aed" : G.SEVCOLOR[a.severity], title: i.headline, sub: (k === "eq" && mag(a) ? "M" + G.num(String(mag(a))) + " · " : "") + (a.areas.map((x) => x[G.lang] || x.en).filter(Boolean)[0] || ""), sev: a.severity, agency: G.agencyOf(a), trust: a.trust, url: p["gati:sourceUrl"] || i.web, time: p["gati:sourceTime"] || a.sent, act: isAct(a), b: bOf(a), html: pop(a), more: `<p>${E(i.description || "")}</p>${i.instruction ? `<p><b>${T("के गर्ने", "What to do")}:</b> ${E(i.instruction)}</p>` : ""}<p class="meta">${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p><p><a href="${R}alerts/${a.identifier}/">${T("पूरा सूचना", "Full notice")} →</a></p>` }; };
   function draw() {
-    Object.entries(LG).forEach(([k, g]) => { if (k !== "prov") g.clearLayers(); });
+    Object.entries(LG).forEach(([k, g]) => { if (k !== "prov") g.clearLayers(); }); ITEMS = [];
     const on = (k) => S.L.includes(k);
     /* alerts (not earthquakes): district fill by worst severity + point circles */
     const A = ALERTS.filter((a) => a.hazard !== "earthquake" && S.hz.includes(a.hazard) && alertOk(a));
     counts.ag = {}; ALERTS.filter((a) => a.hazard !== "earthquake" ? S.hz.includes(a.hazard) : on("eq")).filter((a) => (S.st === "all" || (S.st === "active") === isAct(a)) && tmOk(a.sent)).forEach((a) => { const k = G.agencyOf(a); counts.ag[k] = (counts.ag[k] || 0) + 1; });
-    if (on("alerts")) { const worst = {}, by = {};
+    if (on("alerts")) { const worst = {}, by = {}; A.forEach((a) => reg(aItem(a, "alerts")));
       A.forEach((a) => { const ds = a.districts.length ? a.districts : []; ds.forEach((d) => { if (!worst[d] || SEVS.indexOf(a.severity) < SEVS.indexOf(worst[d])) worst[d] = a.severity; (by[d] = by[d] || []).push(a); });
         a.areas.forEach((ar) => ar.circles.forEach((c) => { const [la, lo] = c.split(" ")[0].split(",").map(Number); if (!isNaN(la)) L.circleMarker([la, lo], { radius: 7, color: "#fff", weight: 1.5, fillColor: G.SEVCOLOR[a.severity], fillOpacity: 0.95 }).bindPopup(pop(a)).addTo(LG.alerts); })); });
       Object.entries(worst).forEach(([d, s]) => { const f = distF[d]; if (!f) return; L.geoJSON(f, { style: { color: G.SEVCOLOR[s], weight: 1.5, fillColor: G.SEVCOLOR[s], fillOpacity: isAct(by[d][0]) ? 0.4 : 0.15, dashArray: isAct(by[d][0]) ? null : "3 3" } })
@@ -56,28 +62,34 @@
     /* weather warnings: DHM 5-day bulletin provinces */
     const b5 = WX && WX.bulletin5, wxDays = b5 ? b5.days.filter((d) => d.level !== "green") : [];
     counts.wx = wxDays.length;
+    if (on("wx") && b5 && PROV) wxDays.forEach((d) => { const fs = (d.provinces || []).map((p) => PROV.features.find((x) => x.id === p)).filter(Boolean); reg({ k: "wx", col: "#c9a800", title: `DHM: ${d.bs} ${T("पहेँलो चेतावनी", "yellow warning")}`, sub: T(d.ne, d.en), agency: T("जल तथा मौसम विज्ञान विभाग", "DHM"), trust: b5.trust || "Official", url: b5.url, time: b5.issued, act: true, b: fs.length ? L.geoJSON({ type: "FeatureCollection", features: fs }).getBounds() : null, html: `<b>DHM: ${E(d.bs)}</b><br>${E(T(d.ne, d.en))}` }); });
     if (on("wx") && b5 && PROV) wxDays.forEach((d) => (d.provinces || []).forEach((p) => { const f = PROV.features.find((x) => x.id === p); if (f) L.geoJSON(f, { style: { color: "#c9a800", weight: 2, dashArray: "6 4", fillColor: "#F5D90A", fillOpacity: 0.25 } })
       .bindPopup(`<b>DHM: ${E(d.bs)} ${T("पहेँलो", "yellow")}</b><br>${E(T(d.ne, d.en))}<br>${G.trustChip(b5.trust || "Official")} <span class="meta">${T("जारी", "issued")} ${G.npt(b5.issued)}</span><br><a href="${E(b5.url)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.wx); }));
     /* rivers */
     const gs = RV ? RV.gauges.filter((g) => S.rvs.includes(gstat(g)) && (!S.d || DL && (DL.find((x) => x.id === g.district) || {}).code === S.d) && (!S.pr || DL && ((DL.find((x) => x.id === g.district) || {}).code || "").startsWith(S.pr))) : [];
     counts.rv = gs.length;
+    const staleTxt = RV_STALE ? T(`पुरानो डेटा: अन्तिम डेटा ${RV.as_of_ne}`, `Stale: last data ${RV.as_of_en}`) : "";
+    if (on("rv")) gs.forEach((g) => reg({ k: "rv", col: VCOL[gstat(g)], title: T(g.ne, g.en), sub: `${G.num(g.level.toFixed(2))} m · ${T(...VLB[gstat(g)])}`, agency: T(RV.source_ne, RV.source_en), trust: "Official", url: RV.url, time: RV.as_of, timeTxt: T(RV.as_of_ne, RV.as_of_en), stale: staleTxt, act: !RV_STALE, b: L.latLngBounds([g.ll, g.ll]), html: `<b>${E(T(g.ne, g.en))}</b>`, more: `<p>${T("सतह", "Level")} ${G.num(g.level.toFixed(2))} m · ${T("चेतावनी", "warning")} ${G.num(String(g.warning))} m · ${T("खतरा", "danger")} ${G.num(String(g.danger))} m</p>` }));
     if (on("rv")) gs.forEach((g) => L.circleMarker(g.ll, { radius: 7, color: "#fff", weight: 2, fillColor: VCOL[gstat(g)], fillOpacity: 1 })
-      .bindPopup(`<b>${E(T(g.ne, g.en))}</b><br>${G.num(g.level.toFixed(2))} m · ${T("चेतावनी", "warning")} ${G.num(String(g.warning))} · ${T("खतरा", "danger")} ${G.num(String(g.danger))}<br>${G.trustChip("Official")} <span class="meta">${E(T(RV.source_ne, RV.source_en))} · ${E(T(RV.as_of_ne, RV.as_of_en))}</span>`).addTo(LG.rv));
+      .bindPopup(`<b>${E(T(g.ne, g.en))}</b><br>${G.num(g.level.toFixed(2))} m · ${T("चेतावनी", "warning")} ${G.num(String(g.warning))} · ${T("खतरा", "danger")} ${G.num(String(g.danger))}<br>${G.trustChip("Official")} <span class="meta">${E(T(RV.source_ne, RV.source_en))} · ${E(T(RV.as_of_ne, RV.as_of_en))}</span>${staleTxt ? `<br><span class="mxstale">${E(staleTxt)}</span>` : ""}<br><a href="${E(RV.url)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`, { }).addTo(LG.rv));
     /* roads */
     const rts = RD ? RD.routes.filter((r) => S.rds.includes(r.status)) : [];
     counts.rd = rts.length;
+    if (on("rd") && RG) rts.forEach((r) => { const fs = RG.features.filter((f) => f.properties.id === r.id), su = RD.sources[(r.sources || ["pol"])[0]] || RD.sources.pol; reg({ k: "rd", col: RCOL[r.status], title: T(r.name_ne, r.name_en), sub: T(...RLB[r.status]), agency: T(su.ne, su.en), trust: "Official", url: su.u, time: RD.as_of, timeTxt: T(RD.as_of_ne, RD.as_of_en), act: true, b: fs.length ? L.geoJSON({ type: "FeatureCollection", features: fs }).getBounds() : null, html: `<b>${E(T(r.name_ne, r.name_en))}</b>`, more: `<p>${E(T(r.note_ne || "", r.note_en || ""))}</p>` + (r.sources || []).map((k) => RD.sources[k]).filter(Boolean).map((x) => `<a href="${E(x.u)}" target="_blank" rel="noopener">${E(T(x.ne, x.en))} ↗</a>`).join("<br>") }); });
     if (on("rd") && RG) RG.features.forEach((f) => { const r = rts.find((x) => x.id === f.properties.id); if (!r) return;
       L.geoJSON(f, { style: { color: RCOL[r.status], weight: 4, opacity: 0.9, dashArray: r.status === "none" ? "2 6" : null } })
-        .bindPopup(`<b>${E(T(r.name_ne, r.name_en))}</b><br>${E(T(...RLB[r.status]))}<br>${G.trustChip("Official")} <span class="meta">${E(T(RD.sources.pol.ne, RD.sources.pol.en))} · ${E(T(RD.as_of_ne, RD.as_of_en))}</span>`).addTo(LG.rd); });
+        .bindPopup(`<b>${E(T(r.name_ne, r.name_en))}</b><br>${E(T(...RLB[r.status]))}<br>${G.trustChip("Official")} <span class="meta">${E(T(RD.sources.pol.ne, RD.sources.pol.en))} · ${E(T(RD.as_of_ne, RD.as_of_en))}</span><br><a href="${E(RD.sources.pol.u)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.rd); });
     /* earthquakes */
     const Q = ALERTS.filter((a) => a.hazard === "earthquake" && S.ag.includes(G.agencyOf(a)) && S.tr.includes(a.trust) && tmOk(a.sent) && (mag(a) || 0) >= +S.eqm && inArea(a.districts));
     counts.eq = {}; Q.forEach((a) => { const k = G.agencyOf(a); counts.eq[k] = (counts.eq[k] || 0) + 1; });
+    if (on("eq")) Q.forEach((a) => reg(aItem(a, "eq")));
     if (on("eq")) Q.forEach((a) => a.areas.forEach((ar) => ar.circles.forEach((c) => { const [la, lo] = c.split(" ")[0].split(",").map(Number), m = mag(a) || 4;
       L.circleMarker([la, lo], { radius: Math.min(18, 4 + Math.max(0, m - 3) * 4), color: "#7c3aed", weight: 1.5, fillColor: "#7c3aed", fillOpacity: 0.3 }).bindPopup(pop(a)).addTo(LG.eq); })));
     /* air */
     if (on("aq")) { if (!aqData) loadAQ(); else aqData.forEach((d, k) => { const v = d && d.current && d.current.us_aqi; if (v == null) return; const c = CITIES[k];
+      reg({ k: "aq", col: aqCol(v), title: T(c[0], c[1]), sub: "US AQI " + G.num(String(Math.round(v))), agency: "Open-Meteo (CAMS)", trust: "Model", url: "https://open-meteo.com/en/docs/air-quality-api", time: d.current.time + "+05:45", act: true, b: L.latLngBounds([[c[2], c[3]], [c[2], c[3]]]), html: `<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}` });
       L.marker([c[2], c[3]], { icon: L.divIcon({ className: "mxaq", html: `<span style="background:${aqCol(v)}">${G.num(String(Math.round(v)))}</span>`, iconSize: [34, 22] }) })
-        .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + "+05:45")}</span>`).addTo(LG.aq); }); }
+        .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + "+05:45")}</span><br><a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.aq); }); }
     counts.aq = aqData ? aqData.filter((d) => d && d.current && d.current.us_aqi != null).length : null;
     /* facilities */
     const inB = (p) => { if (!S.d && !S.pr) return true; return focusB ? focusB.contains([p[0], p[1]]) : true; };
@@ -90,7 +102,7 @@
       if (DIST && map.getZoom() >= 8) DIST.features.forEach((f) => { const c = L.geoJSON(f).getBounds().getCenter(); L.marker(c, { icon: L.divIcon({ className: "mxlab", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab); }); }
     /* focus outline */
     if (focusF) L.geoJSON(focusF, { style: { color: "#003893", weight: 2.5, fill: false }, interactive: false }).addTo(LG.focus);
-    panel(); legend(); writeHash();
+    panel(); legend(); details(); writeHash();
   }
   let focusF = null, focusB = null;
   function setFocus(zoom) { focusF = S.d ? distF[S.d] : S.pr && PROV ? PROV.features.find((f) => f.id === S.pr) : null; focusB = focusF ? L.geoJSON(focusF).getBounds() : null; if (zoom) focusB ? map.fitBounds(focusB, { padding: [20, 20] }) : map.fitBounds([[26.3, 80.0], [30.45, 88.2]]); }
@@ -128,26 +140,51 @@
   }
   function legend() {
     const on = (k) => S.L.includes(k), sw = (c, cls = "") => `<i class="mxsw ${cls}" style="background:${c}"></i>`, rows = [];
-    if (on("alerts")) rows.push(`<div><b>${T("सूचना", "Alerts")}</b>${S.sv.map((s) => `<span>${sw(G.SEVCOLOR[s])}${E(SVN(s))}</span>`).join("")}${S.st !== "active" ? `<span>${sw("transparent", "dash")}${T("म्याद सकिएको", "Expired")}</span>` : ""}</div>`);
-    if (on("wx") && counts.wx) rows.push(`<div><b>DHM</b><span>${sw("#F5D90A")}${T("पहेँलो चेतावनी (प्रदेश)", "Yellow warning (province)")}</span></div>`);
-    if (on("rv")) rows.push(`<div><b>${T("नदी", "Rivers")}</b>${S.rvs.map((k) => `<span>${sw(VCOL[k], "dot")}${E(T(...VLB[k]))}</span>`).join("")}</div>`);
-    if (on("rd")) rows.push(`<div><b>${T("सडक", "Roads")}</b>${S.rds.map((k) => `<span>${sw(RCOL[k], "line")}${E(T(...RLB[k]))}</span>`).join("")}</div>`);
-    if (on("eq")) rows.push(`<div><b>${T("भूकम्प", "Earthquakes")}</b><span>${sw("#7c3aed", "dot")}${T("ठूलो घेरा = ठूलो म्याग्निच्युड", "Bigger circle = bigger magnitude")}</span></div>`);
-    if (on("aq")) rows.push(`<div><b>AQI</b>${[[50, "0–50"], [100, "51–100"], [150, "101–150"], [200, "151–200"], [300, "201+"]].map(([v, l]) => `<span>${sw(aqCol(v))}${l}</span>`).join("")}</div>`);
-    if (on("hos")) rows.push(`<div><span>${sw("#5f6670", "dot")}${T("अस्पताल (OSM)", "Hospital (OSM)")}</span></div>`);
-    if (on("heli")) rows.push(`<div><span><i class="mxheli s">H</i>${T("हेलिप्याड (OSM)", "Helipad (OSM)")}</span></div>`);
+    const nc = (k) => { const n = ITEMS.filter((it) => it.k === k).length; return ` <span class="mxn">${G.num(String(n))}</span>`; };
+    if (on("alerts")) rows.push(`<div><b>${T("सूचना", "Alerts")}${nc("alerts")}</b>${S.sv.map((s) => `<span>${sw(G.SEVCOLOR[s])}${E(SVN(s))}</span>`).join("")}${S.st !== "active" ? `<span>${sw("transparent", "dash")}${T("म्याद सकिएको", "Expired")}</span>` : ""}</div>`);
+    if (on("wx") && counts.wx) rows.push(`<div><b>DHM${nc("wx")}</b><span>${sw("#F5D90A")}${T("पहेँलो चेतावनी (प्रदेश)", "Yellow warning (province)")}</span></div>`);
+    if (on("rv")) rows.push(`<div><b>${T("नदी", "Rivers")}${nc("rv")}</b>${RV_STALE ? `<span class="mxstale">${T("पुरानो डेटा", "Stale")}</span>` : ""}${S.rvs.map((k) => `<span>${sw(VCOL[k], "dot")}${E(T(...VLB[k]))}</span>`).join("")}</div>`);
+    if (on("rd")) rows.push(`<div><b>${T("सडक", "Roads")}${nc("rd")}</b>${S.rds.map((k) => `<span>${sw(RCOL[k], "line")}${E(T(...RLB[k]))}</span>`).join("")}</div>`);
+    if (on("eq")) rows.push(`<div><b>${T("भूकम्प", "Earthquakes")}</b>${perAg(counts.eq) ? `<span class="mxn">${perAg(counts.eq)}</span>` : ""}<span>${sw("#7c3aed", "dot")}${T("ठूलो घेरा = ठूलो म्याग्निच्युड", "Bigger circle = bigger magnitude")}</span></div>`);
+    if (on("aq")) rows.push(`<div><b>AQI${counts.aq != null ? nc("aq") : ""}</b>${[[50, "0–50"], [100, "51–100"], [150, "101–150"], [200, "151–200"], [300, "201+"]].map(([v, l]) => `<span>${sw(aqCol(v))}${l}</span>`).join("")}</div>`);
+    if (on("hos")) rows.push(`<div><span>${sw("#5f6670", "dot")}${T("अस्पताल (OSM)", "Hospital (OSM)")} <span class="mxn">${G.num(String(counts.hos || 0))}</span></span></div>`);
+    if (on("heli")) rows.push(`<div><span><i class="mxheli s">H</i>${T("हेलिप्याड (OSM)", "Helipad (OSM)")} <span class="mxn">${G.num(String(counts.heli || 0))}</span></span></div>`);
     const src = [on("alerts") || on("eq") ? T("सूचना: आधिकारिक निकाय, गतिमार्फत", "Alerts: official agencies via Gati") : "", on("wx") && WX && WX.bulletin5 ? `DHM ${T("५ दिने बुलेटिन", "5-day bulletin")}, ${G.npt(WX.bulletin5.issued)}` : "", on("rv") && RV ? `${E(T(RV.source_ne, RV.source_en))}, ${E(T(RV.as_of_ne, RV.as_of_en))}` : "", on("rd") && RD ? `${E(T(RD.sources.pol.ne, RD.sources.pol.en))}` : "", on("aq") ? "Open-Meteo (CAMS) " + T("मोडेल", "model") : "", on("hos") || on("heli") ? "OpenStreetMap / HOT (HDX)" : ""].filter(Boolean);
     document.getElementById("mxlegend").innerHTML = (rows.join("") || `<p class="meta">${T("कुनै तह छानिएको छैन", "No layer selected")}</p>`) + `<p class="mxsrc">${T("स्रोत", "Sources")}: ${src.join(" · ")}</p>`;
   }
+  /* ---- details panel: visible items with agency, trust, source link and source time ---- */
+  const DP = document.getElementById("mxdet");
+  const LAYN = { alerts: ["सूचना", "Alerts"], wx: ["मौसम चेतावनी (DHM)", "Weather warnings (DHM)"], rv: ["नदी मापन केन्द्र", "River gauges"], rd: ["मुख्य सडक", "Main roads"], eq: ["भूकम्प", "Earthquakes"], aq: ["हावा (AQI)", "Air (AQI)"] };
+  const tm = (it) => it.timeTxt ? E(it.timeTxt) : G.npt(it.time);
+  const srcLine = (it) => `<span class="meta">${E(it.agency)} · ${tm(it)}</span>${it.url ? ` <a href="${E(it.url)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>` : ""}`;
+  function focusItem(it) { if (it.b && it.b.isValid()) { const c = it.b.getCenter(); if (it.b.getNorthEast().equals(it.b.getSouthWest())) map.setView(c, Math.max(map.getZoom(), 9)); else map.fitBounds(it.b, { padding: [30, 30], maxZoom: 10 }); L.popup().setLatLng(c).setContent(it.k === "alerts" || it.k === "eq" ? it.html : it.html + "<br>" + srcLine(it)).openOn(map); } }
+  function details() { if (!DP) return;
+    const vis = ITEMS.filter((it) => !it.b || !it.b.isValid() || map.getBounds().intersects(it.b));
+    const sel = ITEMS.find((it) => it.id === selId);
+    const head = `<div class="mxdh"><button type="button" class="mxdgrab" aria-expanded="${DP.classList.contains("open")}" aria-label="${T("विवरण खोल्नुहोस् वा बन्द गर्नुहोस्", "Open or close details")}"><i></i></button><h2>${T("नक्सामा देखिएका", "On the map")} <span class="mxn">${G.num(String(vis.length))}</span></h2></div>`;
+    if (sel) { DP.querySelector(".mxdin").innerHTML = head + `<div class="mxdsel"><button type="button" class="mxback">← ${T("सूची", "List")}</button>
+      <p class="mxdk"><i class="mxsw" style="background:${sel.col}"></i>${E(T(...LAYN[sel.k]))}</p><h3>${E(sel.title)}</h3>${sel.sub ? `<p>${E(sel.sub)}</p>` : ""}
+      <p>${sel.sev ? G.sevChip(sel.sev) + " " : ""}${G.trustChip(sel.trust)}${sel.k === "alerts" && !sel.act ? ` <span class="meta">${T("म्याद सकिएको", "Expired")}</span>` : ""}</p>
+      ${sel.stale ? `<p class="mxstale">${E(sel.stale)}</p>` : ""}
+      <dl class="mxdl"><dt>${T("निकाय", "Agency")}</dt><dd>${E(sel.agency)}</dd><dt>${T("स्रोत समय", "Source time")}</dt><dd>${tm(sel)}</dd><dt>${T("स्रोत", "Source")}</dt><dd>${sel.url ? `<a href="${E(sel.url)}" target="_blank" rel="noopener">${E(sel.url.replace(/^https?:\/\//, "").slice(0, 48))} ↗</a>` : "-"}</dd></dl>${sel.more || ""}</div>`; }
+    else { const groups = Object.keys(LAYN).map((k) => [k, vis.filter((it) => it.k === k)]).filter(([, a]) => a.length);
+      DP.querySelector(".mxdin").innerHTML = head + (groups.length ? groups.map(([k, a]) => `<section><h3>${E(T(...LAYN[k]))} <span class="mxn">${G.num(String(a.length))}</span></h3>${k === "rv" && RV_STALE ? `<p class="mxstale">${T(`पुरानो डेटा: अन्तिम डेटा ${RV.as_of_ne}`, `Stale: last data ${RV.as_of_en}`)}</p>` : ""}<ul>${a.map((it) => `<li><button type="button" class="mxitem" data-id="${it.id}"><i class="mxsw dot" style="background:${it.col}"></i><span><b>${E(it.title)}</b>${it.sub ? `<small>${E(it.sub)}</small>` : ""}<small>${E(it.agency)} · ${tm(it)} · ${G.trustChip(it.trust)}</small></span></button>${it.url ? `<a class="mxsrcl" href="${E(it.url)}" target="_blank" rel="noopener" aria-label="${T("स्रोत", "Source")}">↗</a>` : ""}</li>`).join("")}</ul></section>`).join("")
+        : `<p class="meta">${T("यो दृश्यमा कुनै वस्तु छैन। नक्सा सार्नुहोस् वा फिल्टर बदल्नुहोस्।", "Nothing in this view. Move the map or change filters.")}</p>`)
+        + (S.L.includes("hos") || S.L.includes("heli") ? `<p class="mxhint">${T("अस्पताल र हेलिप्याड नक्सामा मात्र देखाइन्छ", "Hospitals and helipads are shown on the map only")} (OpenStreetMap / HOT, HDX).</p>` : ""); }
+    DP.querySelectorAll(".mxitem").forEach((b) => (b.onclick = () => { selId = b.dataset.id; const it = ITEMS.find((x) => x.id === selId); DP.classList.add("open"); details(); focusItem(it); }));
+    const bk = DP.querySelector(".mxback"); if (bk) bk.onclick = () => { selId = null; map.closePopup(); details(); };
+    DP.querySelector(".mxdgrab").onclick = () => { DP.classList.toggle("open"); details(); };
+  }
+  map.on("moveend", () => { if (!selId) details(); });
   /* ---- controls ---- */
   P.querySelector(".mxreset").onclick = () => { S = JSON.parse(JSON.stringify(DEF)); setFocus(true); draw(); };
   P.querySelector(".mxmine").onclick = () => { const my = G.district && G.district.get(); if (!my) { G.district && G.district.open && G.district.open(() => { S.d = G.district.get() || ""; S.pr = S.d.slice(0, 4); setFocus(true); draw(); }); return; } S.d = my; S.pr = my.slice(0, 4); setFocus(true); draw(); };
   P.querySelector(".mxshare").onclick = async () => { const u = location.href; try { if (navigator.share) await navigator.share({ title: document.title, url: u }); else { await navigator.clipboard.writeText(u); P.querySelector(".mxshare").textContent = T("लिङ्क कपी भयो", "Link copied"); } } catch (e) {} };
-  const sheet = document.getElementById("mxsheetbtn"); sheet.onclick = () => { const o = P.classList.toggle("open"); sheet.setAttribute("aria-expanded", o); };
-  P.querySelector(".mxclose").onclick = () => { P.classList.remove("open"); sheet.setAttribute("aria-expanded", "false"); };
+  const sheet = document.getElementById("mxsheetbtn"); sheet.onclick = () => { const o = P.classList.toggle("open"); sheet.setAttribute("aria-expanded", o); document.querySelector(".mxwrap").classList.toggle("fopen", o); setTimeout(() => map.invalidateSize(), 260); };
+  P.querySelector(".mxclose").onclick = () => { P.classList.remove("open"); document.querySelector(".mxwrap").classList.remove("fopen"); setTimeout(() => map.invalidateSize(), 260); sheet.setAttribute("aria-expanded", "false"); };
   map.on("zoomend", () => S.L.includes("lab") && draw());
   window.addEventListener("hashchange", () => { readHash(); setFocus(true); draw(); });
   G.onLang(() => draw());
-  setFocus(!!(S.d || S.pr)); draw();
+  setFocus(!!(S.d || S.pr)); if (!(S.d || S.pr) && innerWidth < 600) map.setView([28.25, 84.1], 6.25); draw();
   window.__mx = { map, S };
 })();
