@@ -47,7 +47,7 @@
   const groups0 = (P) => P.some(([, , rt]) => rt.status !== "open" && rt.status !== "oneway");
   const RS = { open: ["खुला", "Open", "ok"], blocked: ["अवरुद्ध", "Blocked", "bad"], oneway: ["एकतर्फी", "One-way", "warn"], none: ["पुष्टि छैन", "Not confirmed", "unk"] };
   const f = document.getElementById("rfrom"), t = document.getElementById("rto");
-  const ids = Object.keys(N).filter((k) => adj[k]);
+  const ids = Object.keys(N).filter((k) => adj[k] || N[k].noroad);
   function opts() {
     const keep = [f.value || localStorage.getItem("gati-rfrom") || "ktm", t.value || localStorage.getItem("gati-rto") || "pokhara"];
     const o = ids.slice().sort((a, b) => T(N[a].ne, N[a].en).localeCompare(T(N[b].ne, N[b].en))).map((k) => `<option value="${k}">${esc(T(N[k].ne, N[k].en))}</option>`).join("");
@@ -57,6 +57,8 @@
     try { localStorage.setItem("gati-rfrom", f.value); localStorage.setItem("gati-rto", t.value); } catch (e) {}
     const out = document.getElementById("rout");
     if (f.value === t.value) { out.innerHTML = `<div class="na">${T("फरक ठाउँ छान्नुहोस्।", "Choose two different places.")}</div>`; return; }
+    const nr = [f.value, t.value].filter((k) => N[k].noroad);
+    if (nr.length) { out.innerHTML = `<div class="na">${nr.map((k) => esc(T(N[k].ne, N[k].en))).join(", ")}: ${T("गतिको सडक तथ्याङ्कमा सडक जोडिएको छैन (OpenStreetMap मा सदरमुकामसम्म सडक पुगेको देखिँदैन)। हवाई वा पैदल मार्ग मात्र हुन सक्छ; पुष्टि भएको छैन।", "No road link in Gati's road data (OpenStreetMap shows no road reaching the HQ). It may be air or trail only; not confirmed.")}</div>`; return; }
     const P = path(f.value, t.value);
     if (!P) { out.innerHTML = `<div class="na">${T("गतिको सडक तथ्याङ्कमा यी दुई ठाउँ जोड्ने बाटो छैन।", "Gati's road data has no path between these places.")}</div>`; return; }
     const altP = groups0(P) ? path(f.value, t.value, (rt) => rt.status === "blocked" || rt.status === "none") : null;

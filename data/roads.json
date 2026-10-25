@@ -419,6 +419,453 @@
     27.012,
     84.877
    ]
+  },
+  "phidim": {
+   "ne": "फिदिम (पाँचथर)",
+   "en": "Phidim (Panchthar)",
+   "ll": [
+    27.1441,
+    87.7661
+   ],
+   "hq": "panchthar"
+  },
+  "phungling": {
+   "ne": "फुङलिङ (ताप्लेजुङ)",
+   "en": "Phungling (Taplejung)",
+   "ll": [
+    27.3587,
+    87.6727
+   ],
+   "hq": "taplejung"
+  },
+  "bhadrapur": {
+   "ne": "भद्रपुर (झापा)",
+   "en": "Bhadrapur (Jhapa)",
+   "ll": [
+    26.5456,
+    88.0904
+   ],
+   "hq": "jhapa"
+  },
+  "inaruwa": {
+   "ne": "इनरुवा (सुनसरी)",
+   "en": "Inaruwa (Sunsari)",
+   "ll": [
+    26.5999,
+    87.1681
+   ],
+   "hq": "sunsari"
+  },
+  "myanglung": {
+   "ne": "म्याङलुङ (तेह्रथुम)",
+   "en": "Myanglung (Terhathum)",
+   "ll": [
+    27.1413,
+    87.517
+   ],
+   "hq": "terhathum"
+  },
+  "khandbari": {
+   "ne": "खाँदबारी (संखुवासभा)",
+   "en": "Khandbari (Sankhuwasabha)",
+   "ll": [
+    27.3667,
+    87.2068
+   ],
+   "hq": "sankhuwasabha"
+  },
+  "bhojpur": {
+   "ne": "भोजपुर",
+   "en": "Bhojpur",
+   "ll": [
+    27.1743,
+    87.0935
+   ],
+   "hq": "bhojpur"
+  },
+  "diktel": {
+   "ne": "दिक्तेल (खोटाङ)",
+   "en": "Diktel (Khotang)",
+   "ll": [
+    27.2133,
+    86.7932
+   ],
+   "hq": "khotang"
+  },
+  "okhaldhunga": {
+   "ne": "ओखलढुङ्गा",
+   "en": "Okhaldhunga",
+   "ll": [
+    27.3363,
+    86.4489
+   ],
+   "hq": "okhaldhunga"
+  },
+  "rajbiraj": {
+   "ne": "राजविराज (सप्तरी)",
+   "en": "Rajbiraj (Saptari)",
+   "ll": [
+    26.5396,
+    86.7485
+   ],
+   "hq": "saptari"
+  },
+  "siraha": {
+   "ne": "सिरहा",
+   "en": "Siraha",
+   "ll": [
+    26.7417,
+    86.3494
+   ],
+   "hq": "siraha"
+  },
+  "jaleshwar": {
+   "ne": "जलेश्वर (महोत्तरी)",
+   "en": "Jaleshwar (Mahottari)",
+   "ll": [
+    26.6492,
+    85.8001
+   ],
+   "hq": "mahottari"
+  },
+  "malangwa": {
+   "ne": "मलङ्गवा (सर्लाही)",
+   "en": "Malangwa (Sarlahi)",
+   "ll": [
+    26.854,
+    85.5614
+   ],
+   "hq": "sarlahi"
+  },
+  "gaur": {
+   "ne": "गौर (रौतहट)",
+   "en": "Gaur (Rautahat)",
+   "ll": [
+    26.7661,
+    85.2749
+   ],
+   "hq": "rautahat"
+  },
+  "kalaiya": {
+   "ne": "कलैया (बारा)",
+   "en": "Kalaiya (Bara)",
+   "ll": [
+    27.0327,
+    85.0022
+   ],
+   "hq": "bara"
+  },
+  "manthali": {
+   "ne": "मन्थली (रामेछाप)",
+   "en": "Manthali (Ramechhap)",
+   "ll": [
+    27.3816,
+    86.0608
+   ],
+   "hq": "ramechhap"
+  },
+  "dhulikhel": {
+   "ne": "धुलिखेल (काभ्रे)",
+   "en": "Dhulikhel (Kavre)",
+   "ll": [
+    27.6189,
+    85.5529
+   ],
+   "hq": "kavrepalanchok"
+  },
+  "bhaktapur": {
+   "ne": "भक्तपुर",
+   "en": "Bhaktapur",
+   "ll": [
+    27.6711,
+    85.4262
+   ],
+   "hq": "bhaktapur"
+  },
+  "lalitpur": {
+   "ne": "ललितपुर",
+   "en": "Lalitpur",
+   "ll": [
+    27.6766,
+    85.3166
+   ],
+   "hq": "lalitpur"
+  },
+  "charikot": {
+   "ne": "चरिकोट (दोलखा)",
+   "en": "Charikot (Dolakha)",
+   "ll": [
+    27.6636,
+    86.0488
+   ],
+   "hq": "dolakha"
+  },
+  "chautara": {
+   "ne": "चौतारा (सिन्धुपाल्चोक)",
+   "en": "Chautara (Sindhupalchok)",
+   "ll": [
+    27.7513,
+    85.7268
+   ],
+   "hq": "sindhupalchok"
+  },
+  "bidur": {
+   "ne": "विदुर (नुवाकोट)",
+   "en": "Bidur (Nuwakot)",
+   "ll": [
+    27.8953,
+    85.1464
+   ],
+   "hq": "nuwakot"
+  },
+  "dhadingbesi": {
+   "ne": "धादिङबेसी",
+   "en": "Dhading Besi",
+   "ll": [
+    27.9116,
+    84.8931
+   ],
+   "hq": "dhading"
+  },
+  "chame": {
+   "ne": "चामे (मनाङ)",
+   "en": "Chame (Manang)",
+   "ll": [
+    28.5507,
+    84.2424
+   ],
+   "hq": "manang"
+  },
+  "kusma": {
+   "ne": "कुश्मा (पर्वत)",
+   "en": "Kusma (Parbat)",
+   "ll": [
+    28.2193,
+    83.6768
+   ],
+   "hq": "parbat"
+  },
+  "kawasoti": {
+   "ne": "कावासोती (नवलपुर)",
+   "en": "Kawasoti (Nawalpur)",
+   "ll": [
+    27.6415,
+    84.1252
+   ],
+   "hq": "nawalparasi-east"
+  },
+  "parasi": {
+   "ne": "परासी (नवलपरासी पश्चिम)",
+   "en": "Parasi (Nawalparasi West)",
+   "ll": [
+    27.5309,
+    83.6708
+   ],
+   "hq": "nawalparasi-west"
+  },
+  "taulihawa": {
+   "ne": "तौलिहवा (कपिलवस्तु)",
+   "en": "Taulihawa (Kapilvastu)",
+   "ll": [
+    27.5436,
+    83.0526
+   ],
+   "hq": "kapilbastu"
+  },
+  "sandhikharka": {
+   "ne": "सन्धिखर्क (अर्घाखाँची)",
+   "en": "Sandhikharka (Arghakhanchi)",
+   "ll": [
+    27.9757,
+    83.1271
+   ],
+   "hq": "arghakhanchi"
+  },
+  "tamghas": {
+   "ne": "तम्घास (गुल्मी)",
+   "en": "Tamghas (Gulmi)",
+   "ll": [
+    28.0687,
+    83.2484
+   ],
+   "hq": "gulmi"
+  },
+  "pyuthan": {
+   "ne": "प्युठान खलङ्गा",
+   "en": "Pyuthan Khalanga",
+   "ll": [
+    28.1199,
+    82.83
+   ],
+   "hq": "pyuthan"
+  },
+  "liwang": {
+   "ne": "लिबाङ (रोल्पा)",
+   "en": "Liwang (Rolpa)",
+   "ll": [
+    28.3034,
+    82.6371
+   ],
+   "hq": "rolpa"
+  },
+  "rukumkot": {
+   "ne": "रुकुमकोट (रुकुम पूर्व)",
+   "en": "Rukumkot (Rukum East)",
+   "ll": [
+    28.6254,
+    82.6011
+   ],
+   "hq": "rukum-east"
+  },
+  "gulariya": {
+   "ne": "गुलरिया (बर्दिया)",
+   "en": "Gulariya (Bardiya)",
+   "ll": [
+    28.21,
+    81.3607
+   ],
+   "hq": "bardiya"
+  },
+  "salyan": {
+   "ne": "सल्यान खलङ्गा",
+   "en": "Salyan Khalanga",
+   "ll": [
+    28.4068,
+    82.1676
+   ],
+   "hq": "salyan"
+  },
+  "musikot": {
+   "ne": "मुसिकोट (रुकुम पश्चिम)",
+   "en": "Musikot (Rukum West)",
+   "ll": [
+    28.6292,
+    82.4556
+   ],
+   "hq": "rukum-west"
+  },
+  "jajarkot": {
+   "ne": "जाजरकोट खलङ्गा",
+   "en": "Jajarkot Khalanga",
+   "ll": [
+    28.8698,
+    82.1688
+   ],
+   "hq": "jajarkot",
+   "noroad": true,
+   "noroad_why": "nearest road 4.0 km from HQ"
+  },
+  "dailekh": {
+   "ne": "दैलेख",
+   "en": "Dailekh",
+   "ll": [
+    28.8851,
+    81.6997
+   ],
+   "hq": "dailekh"
+  },
+  "dunai": {
+   "ne": "दुनै (डोल्पा)",
+   "en": "Dunai (Dolpa)",
+   "ll": [
+    28.9543,
+    82.8942
+   ],
+   "hq": "dolpa",
+   "noroad": true,
+   "noroad_why": "nearest road 22.8 km from HQ"
+  },
+  "gamgadhi": {
+   "ne": "गमगढी (मुगु)",
+   "en": "Gamgadhi (Mugu)",
+   "ll": [
+    29.548,
+    82.1544
+   ],
+   "hq": "mugu"
+  },
+  "simikot": {
+   "ne": "सिमकोट (हुम्ला)",
+   "en": "Simikot (Humla)",
+   "ll": [
+    29.9729,
+    81.8202
+   ],
+   "hq": "humla"
+  },
+  "dipayal": {
+   "ne": "दिपायल (डोटी)",
+   "en": "Dipayal (Doti)",
+   "ll": [
+    29.2601,
+    80.9392
+   ],
+   "hq": "doti"
+  },
+  "mangalsen": {
+   "ne": "मंगलसेन (अछाम)",
+   "en": "Mangalsen (Achham)",
+   "ll": [
+    29.1409,
+    81.2565
+   ],
+   "hq": "achham"
+  },
+  "martadi": {
+   "ne": "मार्तडी (बाजुरा)",
+   "en": "Martadi (Bajura)",
+   "ll": [
+    29.458,
+    81.4795
+   ],
+   "hq": "bajura"
+  },
+  "chainpur": {
+   "ne": "चैनपुर (बझाङ)",
+   "en": "Chainpur (Bajhang)",
+   "ll": [
+    29.5509,
+    81.1963
+   ],
+   "hq": "bajhang"
+  },
+  "dasharathchand": {
+   "ne": "दशरथचन्द (बैतडी)",
+   "en": "Dasharathchand (Baitadi)",
+   "ll": [
+    29.5606,
+    80.4164
+   ],
+   "hq": "baitadi"
+  },
+  "darchula": {
+   "ne": "दार्चुला खलङ्गा",
+   "en": "Darchula Khalanga",
+   "ll": [
+    29.9127,
+    80.7937
+   ],
+   "hq": "darchula",
+   "noroad": true,
+   "noroad_why": "nearest road 11.2 km from HQ"
+  },
+  "gaighat": {
+   "ne": "गाईघाट (उदयपुर)",
+   "en": "Gaighat (Udayapur)",
+   "ll": [
+    26.7902,
+    86.8126
+   ],
+   "hq": "udayapur"
+  },
+  "salleri": {
+   "ne": "सल्लेरी (सोलुखुम्बु)",
+   "en": "Salleri (Solukhumbu)",
+   "ll": [
+    27.5144,
+    86.5849
+   ],
+   "hq": "solukhumbu"
   }
  },
  "routes": [
@@ -1351,6 +1798,1018 @@
      "Sunsari",
      "Dhankuta"
     ]
+   }
+  },
+  {
+   "id": "hq-phidim",
+   "status": "none",
+   "segs": [
+    [
+     "ilam",
+     "phidim"
+    ]
+   ],
+   "name_ne": "इलाम–फिदिम (पाँचथर) सडक",
+   "name_en": "Ilam–Phidim (Panchthar) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-phungling",
+   "status": "none",
+   "segs": [
+    [
+     "phidim",
+     "phungling"
+    ]
+   ],
+   "name_ne": "फिदिम (पाँचथर)–फुङलिङ (ताप्लेजुङ) सडक",
+   "name_en": "Phidim (Panchthar)–Phungling (Taplejung) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-bhadrapur",
+   "status": "none",
+   "segs": [
+    [
+     "birtamod",
+     "bhadrapur"
+    ]
+   ],
+   "name_ne": "बिर्तामोड–भद्रपुर (झापा) सडक",
+   "name_en": "Birtamod–Bhadrapur (Jhapa) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-inaruwa",
+   "status": "none",
+   "segs": [
+    [
+     "itahari",
+     "inaruwa"
+    ]
+   ],
+   "name_ne": "इटहरी–इनरुवा (सुनसरी) सडक",
+   "name_en": "Itahari–Inaruwa (Sunsari) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-myanglung",
+   "status": "none",
+   "segs": [
+    [
+     "dhankuta",
+     "myanglung"
+    ]
+   ],
+   "name_ne": "धनकुटा–म्याङलुङ (तेह्रथुम) सडक",
+   "name_en": "Dhankuta–Myanglung (Terhathum) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-khandbari",
+   "status": "none",
+   "segs": [
+    [
+     "dhankuta",
+     "khandbari"
+    ]
+   ],
+   "name_ne": "धनकुटा–खाँदबारी (संखुवासभा) सडक",
+   "name_en": "Dhankuta–Khandbari (Sankhuwasabha) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-bhojpur",
+   "status": "none",
+   "segs": [
+    [
+     "dhankuta",
+     "bhojpur"
+    ]
+   ],
+   "name_ne": "धनकुटा–भोजपुर सडक",
+   "name_en": "Dhankuta–Bhojpur road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-rajbiraj",
+   "status": "none",
+   "segs": [
+    [
+     "lahan",
+     "rajbiraj"
+    ]
+   ],
+   "name_ne": "लहान–राजविराज (सप्तरी) सडक",
+   "name_en": "Lahan–Rajbiraj (Saptari) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-siraha",
+   "status": "none",
+   "segs": [
+    [
+     "lahan",
+     "siraha"
+    ]
+   ],
+   "name_ne": "लहान–सिरहा सडक",
+   "name_en": "Lahan–Siraha road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-jaleshwar",
+   "status": "none",
+   "segs": [
+    [
+     "janakpur",
+     "jaleshwar"
+    ]
+   ],
+   "name_ne": "जनकपुर–जलेश्वर (महोत्तरी) सडक",
+   "name_en": "Janakpur–Jaleshwar (Mahottari) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-malangwa",
+   "status": "none",
+   "segs": [
+    [
+     "bardibas",
+     "malangwa"
+    ]
+   ],
+   "name_ne": "बर्दिबास–मलङ्गवा (सर्लाही) सडक",
+   "name_en": "Bardibas–Malangwa (Sarlahi) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-gaur",
+   "status": "none",
+   "segs": [
+    [
+     "pathlaiya",
+     "gaur"
+    ]
+   ],
+   "name_ne": "पथलैया–गौर (रौतहट) सडक",
+   "name_en": "Pathlaiya–Gaur (Rautahat) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-kalaiya",
+   "status": "none",
+   "segs": [
+    [
+     "pathlaiya",
+     "kalaiya"
+    ]
+   ],
+   "name_ne": "पथलैया–कलैया (बारा) सडक",
+   "name_en": "Pathlaiya–Kalaiya (Bara) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-manthali",
+   "status": "none",
+   "segs": [
+    [
+     "sindhuli",
+     "manthali"
+    ]
+   ],
+   "name_ne": "सिन्धुली–मन्थली (रामेछाप) सडक",
+   "name_en": "Sindhuli–Manthali (Ramechhap) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-dhulikhel",
+   "status": "none",
+   "segs": [
+    [
+     "ktm",
+     "dhulikhel"
+    ]
+   ],
+   "name_ne": "काठमाडौँ–धुलिखेल (काभ्रे) सडक",
+   "name_en": "Kathmandu–Dhulikhel (Kavre) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-bhaktapur",
+   "status": "none",
+   "segs": [
+    [
+     "ktm",
+     "bhaktapur"
+    ]
+   ],
+   "name_ne": "काठमाडौँ–भक्तपुर सडक",
+   "name_en": "Kathmandu–Bhaktapur road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-lalitpur",
+   "status": "none",
+   "segs": [
+    [
+     "ktm",
+     "lalitpur"
+    ]
+   ],
+   "name_ne": "काठमाडौँ–ललितपुर सडक",
+   "name_en": "Kathmandu–Lalitpur road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-charikot",
+   "status": "none",
+   "segs": [
+    [
+     "dhulikhel",
+     "charikot"
+    ]
+   ],
+   "name_ne": "धुलिखेल (काभ्रे)–चरिकोट (दोलखा) सडक",
+   "name_en": "Dhulikhel (Kavre)–Charikot (Dolakha) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-chautara",
+   "status": "none",
+   "segs": [
+    [
+     "dhulikhel",
+     "chautara"
+    ]
+   ],
+   "name_ne": "धुलिखेल (काभ्रे)–चौतारा (सिन्धुपाल्चोक) सडक",
+   "name_en": "Dhulikhel (Kavre)–Chautara (Sindhupalchok) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-bidur",
+   "status": "none",
+   "segs": [
+    [
+     "ktm",
+     "bidur"
+    ]
+   ],
+   "name_ne": "काठमाडौँ–विदुर (नुवाकोट) सडक",
+   "name_en": "Kathmandu–Bidur (Nuwakot) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-dhadingbesi",
+   "status": "none",
+   "segs": [
+    [
+     "galaudi",
+     "dhadingbesi"
+    ]
+   ],
+   "name_ne": "गलौँदी–धादिङबेसी सडक",
+   "name_en": "Galaudi–Dhading Besi road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-chame",
+   "status": "none",
+   "segs": [
+    [
+     "besisahar",
+     "chame"
+    ]
+   ],
+   "name_ne": "बेसीशहर–चामे (मनाङ) सडक",
+   "name_en": "Besisahar–Chame (Manang) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-kusma",
+   "status": "none",
+   "segs": [
+    [
+     "pokhara",
+     "kusma"
+    ]
+   ],
+   "name_ne": "पोखरा–कुश्मा (पर्वत) सडक",
+   "name_en": "Pokhara–Kusma (Parbat) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-kawasoti",
+   "status": "none",
+   "segs": [
+    [
+     "narayanghat",
+     "kawasoti"
+    ]
+   ],
+   "name_ne": "नारायणघाट–कावासोती (नवलपुर) सडक",
+   "name_en": "Narayanghat–Kawasoti (Nawalpur) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-parasi",
+   "status": "none",
+   "segs": [
+    [
+     "butwal",
+     "parasi"
+    ]
+   ],
+   "name_ne": "बुटवल–परासी (नवलपरासी पश्चिम) सडक",
+   "name_en": "Butwal–Parasi (Nawalparasi West) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-taulihawa",
+   "status": "none",
+   "segs": [
+    [
+     "butwal",
+     "taulihawa"
+    ]
+   ],
+   "name_ne": "बुटवल–तौलिहवा (कपिलवस्तु) सडक",
+   "name_en": "Butwal–Taulihawa (Kapilvastu) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-sandhikharka",
+   "status": "none",
+   "segs": [
+    [
+     "palpa",
+     "sandhikharka"
+    ]
+   ],
+   "name_ne": "पाल्पा (तानसेन)–सन्धिखर्क (अर्घाखाँची) सडक",
+   "name_en": "Palpa (Tansen)–Sandhikharka (Arghakhanchi) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-tamghas",
+   "status": "none",
+   "segs": [
+    [
+     "palpa",
+     "tamghas"
+    ]
+   ],
+   "name_ne": "पाल्पा (तानसेन)–तम्घास (गुल्मी) सडक",
+   "name_en": "Palpa (Tansen)–Tamghas (Gulmi) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-pyuthan",
+   "status": "none",
+   "segs": [
+    [
+     "lamahi",
+     "pyuthan"
+    ]
+   ],
+   "name_ne": "लमही–प्युठान खलङ्गा सडक",
+   "name_en": "Lamahi–Pyuthan Khalanga road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-liwang",
+   "status": "none",
+   "segs": [
+    [
+     "ghorahi",
+     "liwang"
+    ]
+   ],
+   "name_ne": "घोराही (दाङ)–लिबाङ (रोल्पा) सडक",
+   "name_en": "Ghorahi (Dang)–Liwang (Rolpa) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-gulariya",
+   "status": "none",
+   "segs": [
+    [
+     "nepalgunj",
+     "gulariya"
+    ]
+   ],
+   "name_ne": "नेपालगन्ज–गुलरिया (बर्दिया) सडक",
+   "name_en": "Nepalgunj–Gulariya (Bardiya) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-salyan",
+   "status": "none",
+   "segs": [
+    [
+     "tulsipur",
+     "salyan"
+    ]
+   ],
+   "name_ne": "तुलसीपुर (दाङ)–सल्यान खलङ्गा सडक",
+   "name_en": "Tulsipur (Dang)–Salyan Khalanga road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-musikot",
+   "status": "none",
+   "segs": [
+    [
+     "salyan",
+     "musikot"
+    ]
+   ],
+   "name_ne": "सल्यान खलङ्गा–मुसिकोट (रुकुम पश्चिम) सडक",
+   "name_en": "Salyan Khalanga–Musikot (Rukum West) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-dailekh",
+   "status": "none",
+   "segs": [
+    [
+     "surkhet",
+     "dailekh"
+    ]
+   ],
+   "name_ne": "सुर्खेत (वीरेन्द्रनगर)–दैलेख सडक",
+   "name_en": "Surkhet (Birendranagar)–Dailekh road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-dipayal",
+   "status": "none",
+   "segs": [
+    [
+     "dadeldhura",
+     "dipayal"
+    ]
+   ],
+   "name_ne": "डडेलधुरा–दिपायल (डोटी) सडक",
+   "name_en": "Dadeldhura–Dipayal (Doti) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-mangalsen",
+   "status": "none",
+   "segs": [
+    [
+     "dipayal",
+     "mangalsen"
+    ]
+   ],
+   "name_ne": "दिपायल (डोटी)–मंगलसेन (अछाम) सडक",
+   "name_en": "Dipayal (Doti)–Mangalsen (Achham) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-martadi",
+   "status": "none",
+   "segs": [
+    [
+     "mangalsen",
+     "martadi"
+    ]
+   ],
+   "name_ne": "मंगलसेन (अछाम)–मार्तडी (बाजुरा) सडक",
+   "name_en": "Mangalsen (Achham)–Martadi (Bajura) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-dasharathchand",
+   "status": "none",
+   "segs": [
+    [
+     "dadeldhura",
+     "dasharathchand"
+    ]
+   ],
+   "name_ne": "डडेलधुरा–दशरथचन्द (बैतडी) सडक",
+   "name_en": "Dadeldhura–Dasharathchand (Baitadi) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-gaighat",
+   "status": "none",
+   "segs": [
+    [
+     "lahan",
+     "gaighat"
+    ]
+   ],
+   "name_ne": "लहान–गाईघाट (उदयपुर) सडक",
+   "name_en": "Lahan–Gaighat (Udayapur) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-diktel",
+   "status": "none",
+   "segs": [
+    [
+     "gaighat",
+     "diktel"
+    ]
+   ],
+   "name_ne": "गाईघाट (उदयपुर)–दिक्तेल (खोटाङ) सडक",
+   "name_en": "Gaighat (Udayapur)–Diktel (Khotang) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-okhaldhunga",
+   "status": "none",
+   "segs": [
+    [
+     "gaighat",
+     "okhaldhunga"
+    ]
+   ],
+   "name_ne": "गाईघाट (उदयपुर)–ओखलढुङ्गा सडक",
+   "name_en": "Gaighat (Udayapur)–Okhaldhunga road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-rukumkot",
+   "status": "none",
+   "segs": [
+    [
+     "musikot",
+     "rukumkot"
+    ]
+   ],
+   "name_ne": "मुसिकोट (रुकुम पश्चिम)–रुकुमकोट (रुकुम पूर्व) सडक",
+   "name_en": "Musikot (Rukum West)–Rukumkot (Rukum East) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-gamgadhi",
+   "status": "none",
+   "segs": [
+    [
+     "jumla",
+     "gamgadhi"
+    ]
+   ],
+   "name_ne": "जुम्ला (खलङ्गा)–गमगढी (मुगु) सडक",
+   "name_en": "Jumla (Khalanga)–Gamgadhi (Mugu) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-chainpur",
+   "status": "none",
+   "segs": [
+    [
+     "dipayal",
+     "chainpur"
+    ]
+   ],
+   "name_ne": "दिपायल (डोटी)–चैनपुर (बझाङ) सडक",
+   "name_en": "Dipayal (Doti)–Chainpur (Bajhang) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-salleri",
+   "status": "none",
+   "segs": [
+    [
+     "okhaldhunga",
+     "salleri"
+    ]
+   ],
+   "name_ne": "ओखलढुङ्गा–सल्लेरी (सोलुखुम्बु) सडक",
+   "name_en": "Okhaldhunga–Salleri (Solukhumbu) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
+   }
+  },
+  {
+   "id": "hq-simikot",
+   "status": "none",
+   "segs": [
+    [
+     "jumla",
+     "simikot"
+    ]
+   ],
+   "name_ne": "जुम्ला (खलङ्गा)–सिमकोट (हुम्ला) सडक",
+   "name_en": "Jumla (Khalanga)–Simikot (Humla) road",
+   "note_ne": "पुष्टि नभएको: गतिले यो खण्डको अवस्था बताउने आधिकारिक स्रोत अझै जोडेको छैन। यात्राअघि नेपाल प्रहरी वा सडक विभाग NAVIGATE हेर्नुहोस्।",
+   "note_en": "Not confirmed: Gati has not yet linked an official source that reports this segment. Check Nepal Police or DoR NAVIGATE before travelling.",
+   "sources": [
+    "pol",
+    "dor"
+   ],
+   "navigate": {
+    "refs": [],
+    "districts": []
    }
   }
  ],
