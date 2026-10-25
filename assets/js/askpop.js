@@ -66,7 +66,30 @@
   const na = () => `<p class="meta">${T("उपलब्ध छैन।", "Not available.")}</p>`;
   const soon = () => `<p>${T("यो प्रश्नको उत्तर अहिले दिन सकिँदैन। पूर्ण \"गतिलाई सोध्नुहोस्\" छिट्टै आउँदैछ। तलका विषय छान्नुहोस्:", "I can't answer that yet. Full Ask Gati is coming soon. Try one of these topics:")}</p>`;
 
-  let panel, log, btn, lastFocus;
+  let panel, log, btn, lastFocus, tab = "ask";
+  const TABS = [["ask", "💬", "सोध्नुहोस्", "Ask"], ["wx", "⛅", "मौसम र हावा", "Weather & air"], ["call", "☎", "सम्पर्क", "Contacts"], ["mine", "📍", "मेरो जिल्ला", "My district"]];
+  function setTab(k) { tab = k; render(); }
+  async function pane() {
+    const el = panel.querySelector(".aqpane"); el.setAttribute("aria-labelledby", "aqt-" + tab); el.innerHTML = `<p class="meta">…</p>`;
+    if (tab === "call") { el.innerHTML = await answer("numbers"); return; }
+    if (tab === "mine") {
+      let w = { d: [], r: [] }; try { w = Object.assign(w, JSON.parse(localStorage.getItem("gati-watch") || "{}")); } catch (e) {}
+      el.innerHTML = `<div class="aqmsg bot" style="width:100%">${await answer("district")}</div><div class="aqwatch"><b>⭐ ${T("मेरो निगरानी सूची", "My watchlist")}</b><span>${G.num(String((w.d || []).length))} ${T("जिल्ला", "districts")} · ${G.num(String((w.r || []).length))} ${T("नदी", "rivers")}</span><a class="aqbtn" href="${R}?home=1#watch">${T("खोल्नुहोस्", "Open")}</a></div>`;
+      el.querySelectorAll("[data-do=pick]").forEach((b) => (b.onclick = () => G.district && G.district.open(() => pane())));
+      return;
+    }
+    if (tab === "wx") {
+      const dhm = await answer("weather");
+      el.innerHTML = `<p class="aqsec">🏛 ${T("DHM (आधिकारिक स्रोत पहिले)", "DHM (official source first)")}</p>${dhm}<p class="aqsec">🧮 ${T("मोडेल: Open-Meteo", "Model: Open-Meteo")}</p><div id="aqwxm"><p class="meta">…</p></div>`;
+      const q = "latitude=27.7172&longitude=85.324&timezone=Asia%2FKathmandu";
+      const [f, a] = await Promise.all([fetch(`https://api.open-meteo.com/v1/forecast?${q}&current=temperature_2m,weather_code`).then((r) => r.json()).catch(() => null), fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?${q}&current=us_aqi,pm2_5`).then((r) => r.json()).catch(() => null)]);
+      const m = el.querySelector("#aqwxm"); if (!m) return;
+      if (!f && !a) { m.innerHTML = `<p class="meta">${T("उपलब्ध छैन।", "Not available.")}</p>`; return; }
+      const v = a ? a.current.us_aqi : null, col = v == null ? "#999" : v <= 50 ? "#00a651" : v <= 100 ? "#d4b000" : v <= 150 ? "#f7941d" : v <= 200 ? "#e2231a" : "#8f3f97";
+      m.innerHTML = `<div class="aqtiles">${f ? `<div class="aqtile"><b>${G.num(String(Math.round(f.current.temperature_2m)))}°C</b><span>${T("काठमाडौँ अहिले", "Kathmandu now")}</span></div>` : ""}${a ? `<div class="aqtile" style="--c:${col}"><b style="color:${col}">${G.num(String(v))}</b><span>US AQI · PM2.5 ${G.num(String(a.current.pm2_5))}</span></div>` : ""}</div>
+        <div class="aqcite"><span class="trust t-Model">🧮 ${T("मोडेल", "Model")}</span><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo ↗</a><span>${f ? G.npt(f.current.time + ":00+05:45") : ""}</span></div><div class="aqacts"><a class="aqbtn" href="${R}weather/">${T("मौसम र हावा पृष्ठ", "Weather and air page")}</a></div>`;
+    }
+  }
   function chips() { return INT.map(([k, ne, en]) => `<button type="button" class="aqchip" data-k="${k}">${T(ne, en)}</button>`).join(""); }
   function build(host) {
     panel = document.createElement("div");
@@ -78,15 +101,20 @@
   function render() {
     const keep = log ? log.innerHTML : "";
     panel.innerHTML = `<div class="aqhead"><img src="${R}assets/img/gati-concept-A-ga-signal-icon.svg" alt="" width="36" height="36"><div><h2 id="aqtitle">${T("गतिलाई सोध्नुहोस्", "Ask Gati")}</h2><small>${T("गतिकै तथ्याङ्कबाट उत्तर, स्रोतसहित", "Answers from Gati's own data, with sources")}</small></div>${FULL ? "" : `<button type="button" class="aqx" aria-label="${T("बन्द गर्नुहोस्", "Close")}">✕</button>`}</div>
-      <div class="aqbody"><p class="aqdisc">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन; सधैँ मूल स्रोत हेर्नुहोस्।", "Gati relays; it does not issue official warnings. Always check the original source.")}</p>
+      <div class="aqtabs" role="tablist">${TABS.map(([k, ic, ne, en]) => `<button type="button" role="tab" id="aqt-${k}" aria-controls="aqp-${k}" aria-selected="${tab === k}" tabindex="${tab === k ? 0 : -1}" data-t="${k}"><span aria-hidden="true">${ic}</span>${T(ne, en)}</button>`).join("")}</div>
+      <div class="aqpane" id="aqp-x" role="tabpanel" ${tab === "ask" ? "hidden" : ""}></div>
+      <div class="aqbody" id="aqp-ask" role="tabpanel" ${tab === "ask" ? "" : "hidden"}><p class="aqdisc">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन; सधैँ मूल स्रोत हेर्नुहोस्।", "Gati relays; it does not issue official warnings. Always check the original source.")}</p>
       <div class="aqhelp"><a href="tel:100" class="aqcall sm"><b>${G.num("100")}</b><span>${T("प्रहरी", "Police")}</span></a><a href="tel:1234" class="aqcall sm red"><b>${G.num("1234")}</b><span>${T("विपद् (NDRRMA)", "Disaster (NDRRMA)")}</span></a></div>
       <div class="aqlog" aria-live="polite">${keep || `<div class="aqmsg bot">${T("नमस्ते! के जान्न चाहनुहुन्छ?", "Namaste! What would you like to know?")}</div>`}</div>
       <div class="aqchips" role="group" aria-label="${T("छिटो प्रश्न", "Quick questions")}">${chips()}</div></div>
-      <form class="aqform"><label class="sr-only" for="aqin">${T("प्रश्न लेख्नुहोस्", "Type a question")}</label><input id="aqin" type="text" autocomplete="off" placeholder="${T("जस्तै: सडक, नदी, बिदा…", "e.g. road, river, holiday…")}"><button type="submit" aria-label="${T("पठाउनुहोस्", "Send")}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></form>`;
+      <form class="aqform" ${tab === "ask" ? "" : "hidden"}><label class="sr-only" for="aqin">${T("प्रश्न लेख्नुहोस्", "Type a question")}</label><input id="aqin" type="text" autocomplete="off" placeholder="${T("जस्तै: सडक, नदी, बिदा…", "e.g. road, river, holiday…")}"><button type="submit" aria-label="${T("पठाउनुहोस्", "Send")}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></form>`;
     log = panel.querySelector(".aqlog");
     panel.querySelectorAll(".aqchip").forEach((c) => (c.onclick = () => ask(c.dataset.k, c.textContent)));
     panel.querySelector(".aqform").onsubmit = (e) => { e.preventDefault(); const i = panel.querySelector("#aqin"), q = i.value.trim(); if (!q) return; i.value = ""; const m = INT.find((x) => x[3].test(q)); ask(m ? m[0] : null, q); };
     const x = panel.querySelector(".aqx"); if (x) x.onclick = close;
+    panel.querySelectorAll(".aqtabs [role=tab]").forEach((b, n, all) => { b.onclick = () => setTab(b.dataset.t);
+      b.onkeydown = (e) => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { const j = (n + (e.key === "ArrowRight" ? 1 : all.length - 1)) % all.length; setTab(all[j].dataset.t); panel.querySelector(`#aqt-${all[j].dataset.t}`).focus(); } }; });
+    if (tab !== "ask") pane();
     log.onclick = (e) => { const b = e.target.closest("[data-do=pick]"); if (b && G.district) G.district.open(() => ask("district", T("के मेरो जिल्ला प्रभावित छ?", "Is my district affected?"))); };
   }
   async function ask(k, q) {
