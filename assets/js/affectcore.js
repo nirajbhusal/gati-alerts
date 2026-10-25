@@ -12,9 +12,11 @@
   let cache = null;
   const load = () => cache || (cache = Promise.all(["data/alerts.json", "data/weather.json", "data/districts.geojson"].map((p) => G.json(p).catch(() => null))).then(([AL, WX, DG]) => ({ AL, WX, DG })));
   /* Radius: 0 = my district only, or 10 / 25 / 50 km from the district boundary. Saved in this browser. */
-  const RKEY = "gati-aff-radius", RADII = [0, 10, 25, 50];
-  const getR = () => { const v = parseInt(localStorage.getItem(RKEY) || "0", 10); return RADII.includes(v) ? v : 0; };
-  const setR = (v) => { try { if (v) localStorage.setItem(RKEY, String(v)); else localStorage.removeItem(RKEY); } catch (e) {} };
+  const RKEY = "gati-aff-radius", RADII = [0, 10, 25, 50], RMAX = 50, RSTEP = 5;
+  /* any saved value (old 0/10/25/50 segments included) is clamped to 0..50 and snapped to 5 km steps */
+  const snap = (v) => Math.max(0, Math.min(RMAX, Math.round((+v || 0) / RSTEP) * RSTEP));
+  const getR = () => { try { const raw = localStorage.getItem(RKEY); if (raw == null) return 0; const v = snap(raw); if (String(v) !== raw) { if (v) localStorage.setItem(RKEY, String(v)); else localStorage.removeItem(RKEY); } return v; } catch (e) { return 0; } };
+  const setR = (v) => { v = snap(v); try { if (v) localStorage.setItem(RKEY, String(v)); else localStorage.removeItem(RKEY); } catch (e) {} };
   const hav = (a, b, c, d) => { const r = Math.PI / 180, x = Math.sin((c - a) * r / 2) ** 2 + Math.cos(a * r) * Math.cos(c * r) * Math.sin((d - b) * r / 2) ** 2; return 12742 * Math.asin(Math.sqrt(x)); };
   const polys = (g) => (g.type === "Polygon" ? [g.coordinates] : g.coordinates);
   const ring = (g) => polys(g).flatMap((p) => p[0]);
@@ -34,8 +36,18 @@
   }
   const note = (v) => !v.r ? "" : v.mode === "geom" ? T(`दायरा: जिल्लाको सिमानाबाट लगभग ${G.num(String(v.r))} किमी (नक्साको सिमाना अनुमानित)। ${G.num(String(v.area.length - 1))} छिमेकी जिल्ला समेटिए।`, `Radius: about ${v.r} km from the district boundary (map boundaries are approximate). Includes ${v.area.length - 1} nearby district${v.area.length === 2 ? "" : "s"}.`) : T("नक्सा लोड भएन; जिल्ला मात्र जाँचियो।", "Map not loaded; checked the district only.");
   const label = (name, r) => r ? `${name} · ${G.num(String(r))} ${T("किमी", "km")}` : name;
-  const radiusUI = (cur) => `<div class="afrad" role="radiogroup" aria-label="${T("दायरा", "Radius")}"><span class="afradl">${T("दायरा", "Radius")}</span>${RADII.map((v) => `<button type="button" role="radio" aria-checked="${v === cur}" data-r="${v}">${v ? `${G.num(String(v))} ${T("किमी", "km")}` : T("मेरो जिल्ला मात्र", "My district only")}</button>`).join("")}</div>`;
-  const bindRadius = (root, cb) => root.querySelectorAll(".afrad [data-r]").forEach((b) => (b.onclick = () => { setR(+b.dataset.r); root.querySelectorAll(".afrad [data-r]").forEach((x) => x.setAttribute("aria-checked", x === b)); cb && cb(+b.dataset.r); }));
+  const rtext = (r, n) => !r ? T("मेरो जिल्ला मात्र", "My district only") : `${G.num(String(r))} ${T("किमी", "km")}` + (n == null ? "" : ` · +${G.num(String(n))} ${T("जिल्ला", n === 1 ? "district" : "districts")}`);
+  const radiusUI = (cur) => `<div class="afrad"><div class="afradl">${T("दायरा", "Radius")}<output class="afradv" aria-hidden="true">${rtext(cur)}</output></div>
+    <input type="range" class="afrange" min="0" max="${RMAX}" step="${RSTEP}" value="${cur}" aria-label="${T("दायरा", "Radius")}" aria-valuetext="${rtext(cur)}" style="--p:${cur / RMAX * 100}%">
+    <div class="afticks" aria-hidden="true">${RADII.map((v) => `<span style="left:${v / RMAX * 100}%">${v ? G.num(String(v)) : "0"}</span>`).join("")}</div></div>`;
+  /* live label while dragging; the check re-runs only on release (change) */
+  const bindRadius = (root, cb) => root.querySelectorAll(".afrad").forEach((w) => { const el = w.querySelector(".afrange"), out = w.querySelector(".afradv"); if (!el) return;
+    const base = (() => { try { return [new URLSearchParams(location.hash.slice(1)).get("d") || localStorage.getItem("gati-district") || localStorage.getItem("gati-aff-last") || ""].filter(Boolean); } catch (e) { return []; } })();
+    const show = (n) => { const r = +el.value, t = rtext(r, r && n != null ? n : null); out.textContent = t; el.setAttribute("aria-valuetext", t); el.style.setProperty("--p", r / RMAX * 100 + "%"); };
+    const count = (r) => load().then((d) => (r && base.length ? area(base, r, d).codes.length - base.length : null)).catch(() => null);
+    show(null); count(+el.value).then(show);
+    el.addEventListener("input", () => { const r = +el.value; show(null); count(r).then((n) => { if (+el.value === r) show(n); }); });
+    el.addEventListener("change", () => { const had = document.activeElement === el; setR(+el.value); cb && cb(+el.value); if (had) setTimeout(() => { const n = root.querySelector(".afrange"); if (n && n !== document.activeElement) n.focus({ preventScroll: true }); }, 60); }); });
   const isAct = (a) => !a.expired && !a.supersededBy && Date.parse(a.expires) > Date.now();
   /* codes: district codes (NP0330); returns the verdict and the official alerts behind it */
   function verdict(codes0, d, r) {

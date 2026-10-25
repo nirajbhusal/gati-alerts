@@ -1197,12 +1197,16 @@ html[data-theme=dark] .helplines a{background:var(--surface)!important;color:var
 body[data-page=weather] #mydist:empty{min-height:44px}
 /* Fix sweep 16: Home sidebar at desktop reserves the Weather and Roads summary heights */
 @media(min-width:961px){.home .hright>section:nth-child(1){min-height:268px}.home .hright>section:nth-child(2){min-height:356px}}
-/* Am I affected radius: my district only / 10 / 25 / 50 km */
-.afrad{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
-.afradl{flex-basis:100%;font-size:var(--fs-5);font-weight:600;color:var(--slate)}
-.afrad button{min-height:44px;min-width:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:var(--fs-5);font-weight:600;cursor:pointer}
-.afrad button[aria-checked=true]{border-color:var(--saffron);box-shadow:inset 0 0 0 1px var(--saffron);background:var(--surface2)}
-.afrad button:focus-visible{outline:2px solid var(--river);outline-offset:2px}
+/* Am I affected radius slider: 0 (my district only) to 50 km in 5 km steps; saffron thumb, navy track */
+.afrad{margin:12px 0 4px;--trk:var(--navy);--rest:var(--line)}html[data-theme=dark] .afrad{--trk:#7FA6FF;--rest:#2C3B57}
+.afradl{display:flex;justify-content:space-between;gap:8px;font-size:var(--fs-5);font-weight:600;color:var(--slate)}.afradv{color:var(--ink);font-weight:700}
+.afrange{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:2px 0 0;background:transparent;cursor:pointer;touch-action:pan-y}
+.afrange::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--trk) var(--p),var(--rest) var(--p))}
+.afrange::-moz-range-track{height:6px;border-radius:3px;background:var(--rest)}.afrange::-moz-range-progress{height:6px;border-radius:3px;background:var(--trk)}
+.afrange::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;margin-top:-19px;border-radius:50%;background:var(--saffron);border:4px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.afrange::-moz-range-thumb{width:36px;height:36px;border-radius:50%;background:var(--saffron);border:4px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.afrange:focus-visible{outline:none}.afrange:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--surface),0 0 0 6px var(--river)}.afrange:focus-visible::-moz-range-thumb{box-shadow:0 0 0 3px var(--river)}
+.afticks{position:relative;height:18px;margin:0 22px;font-size:var(--fs-6);color:var(--slate)}.afticks span{position:absolute;transform:translateX(-50%);top:0}.afticks span::before{content:"";position:absolute;left:50%;top:-6px;width:1px;height:5px;background:var(--slate)}
 .afnote{margin:4px 0 0}
 .drad .afrad{margin:8px 0 4px}
 .aftoast{position:fixed;left:16px;right:16px;margin:0 auto;width:max-content;bottom:calc(156px + env(safe-area-inset-bottom));z-index:1500;display:flex;align-items:center;gap:12px;max-width:calc(100% - 32px);background:var(--ink);color:var(--snow);padding:6px 6px 6px 16px;border-radius:14px;box-shadow:var(--sh2,0 8px 24px rgba(0,0,0,.25));font-size:var(--fs-5)}
