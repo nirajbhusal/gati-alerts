@@ -822,3 +822,17 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
   .mxpanel.open{transform:none;visibility:visible}.mxph{display:flex;margin-bottom:8px}
   #mxmap{height:calc(100dvh - 300px);min-height:380px}}
 @media(prefers-reduced-motion:reduce){.mxpanel{transition:none}}
+/* Home layout v3 */
+.homev3 #htop{margin:20px 0 8px}.homev3 .htag{font-size:1rem;color:var(--ink);font-weight:500}
+@media(min-width:721px){.homev3 #htop .hdate{margin:0}}
+.hcols{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start;margin-top:8px}
+.hleft{min-width:0}.hright{display:grid;gap:16px;position:sticky;top:84px}
+.hright .hcard{background:var(--surface2)!important;border-radius:20px;padding:18px}.hright .hcard h2{font-size:1rem;font-weight:600;margin:0}
+.hdist{margin:0 0 4px}.hdist .mydist{margin:0}
+.hslider .dslider{margin:20px 0 36px}.hslider .dslide{flex-basis:100%}
+.halerts .sechead h2{font-size:1.2rem;font-weight:600}
+.hfeatures{margin:48px 0 24px;padding-top:32px;border-top:1px solid var(--line)}
+.homev3 .hero{display:none}
+@media(max-width:960px){.hcols{display:flex;flex-direction:column;gap:0}.hleft,.hright{display:contents}
+  .hdist{order:1}.hslider{order:2}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
+.hcols>*,.hleft>*,.hslider,.halerts,.hdist{min-width:0;max-width:100%}@media(max-width:960px){.hslider,.halerts,.hdist{width:100%}}
