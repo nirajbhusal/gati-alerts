@@ -1139,3 +1139,4 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
 body:not(.storypage) > main#main{min-height:100vh;min-height:100dvh}
 .dash #sumcard:empty{min-height:132px}
 .roadlist:has(#roadList:empty){min-height:464px}
+html{scroll-padding-top:calc(var(--hdr,72px) + 12px);scroll-padding-bottom:96px}@media(min-width:721px){html{--hdr:96px}}
