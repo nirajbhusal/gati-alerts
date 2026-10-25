@@ -59,5 +59,15 @@
       if (v.r && v.base && !a.districts.some((x) => v.base.includes(x))) return { a, text: T(`"${i.headline}" हजुरको जिल्ला ${place}बाट ${G.num(String(v.r))} किमीभित्र छ।`, `"${i.headline}" is within ${v.r} km of your district, ${place}.`), agency: G.agencyOf(a), sent: a.sent, web: i.web, perma: G.root + "alerts/" + a.identifier + "/" };
       return { a, text: (SV[a.severity] || 1) >= 2 ? T(`हो, "${i.headline}" ले हजुरको जिल्ला ${place}लाई असर गर्छ।`, `Yes, "${i.headline}" affects your district, ${place}.`) : T(`हो, "${i.headline}" मा हजुरको जिल्ला ${place} पनि समेटिएको छ।`, `Yes, "${i.headline}" covers your district, ${place}.`), agency: G.agencyOf(a), sent: a.sent, web: i.web, perma: G.root + "alerts/" + a.identifier + "/" }; });
   }
-  G.affect = { load, verdict, phrase, LV, isAct, sentences, getR, setR, RADII, area, label, note, radiusUI, bindRadius };
+  /* Reset: clear district, last checked district and radius, return to the chooser; an Undo toast restores them for 8 s */
+  function reset(after) {
+    const K = ["gati-district", "gati-aff-last", RKEY], old = {}; K.forEach((k) => { try { old[k] = localStorage.getItem(k); localStorage.removeItem(k); } catch (e) {} });
+    after && after();
+    document.querySelectorAll(".aftoast").forEach((x) => x.remove());
+    const t = document.createElement("div"); t.className = "aftoast"; t.setAttribute("role", "status");
+    t.innerHTML = `<span>${T("रिसेट भयो: जिल्ला र दायरा हटाइयो।", "Reset: district and radius cleared.")}</span><button type="button">${T("पूर्ववत्", "Undo")}</button>`;
+    document.body.append(t); const tm = setTimeout(() => t.remove(), 8000);
+    t.querySelector("button").onclick = () => { clearTimeout(tm); K.forEach((k) => { try { if (old[k] != null) localStorage.setItem(k, old[k]); } catch (e) {} }); t.remove(); after && after(true); };
+  }
+  G.affect = { reset, load, verdict, phrase, LV, isAct, sentences, getR, setR, RADII, area, label, note, radiusUI, bindRadius };
 })();

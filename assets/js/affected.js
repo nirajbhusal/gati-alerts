@@ -82,7 +82,7 @@
     const share = `${T("आधिकारिक स्रोतअनुसार", "Per official sources")}, ${title}${unit ? ` (${unit})` : ""}: ${label}. ${T("जाँचेको", "Checked")} ${checked}. ${location.href}`;
     const SENT = G.affect.sentences(v, place);
     box.innerHTML = `
-      <section class="afverdict" style="--vc:${V.c}"><p class="afwhere">${E(title)}${unit ? ` · ${E(unit)}` : ""}</p>${v.r ? `<p class="meta afnote">${E(G.affect.note(v))}</p>` : ""}
+      <section class="afverdict" style="--vc:${V.c}"><p class="afwhere">${E(title)}${unit ? ` · ${E(unit)}` : ""}</p>${v.r ? `<p class="meta afnote">${E(G.affect.note(v))}</p>` : ""}<button type="button" class="afbtn afreset" id="afreset">↺ ${T("रिसेट", "Reset")}</button>
         <p class="afv"><i></i>${T("आधिकारिक स्रोतअनुसार", "Per official sources")}: <b>${label}</b></p>
         <p class="meta">${T("यो गतिको आफ्नै निर्णय होइन; आधिकारिक निकायका सूचनामा आधारित।", "This is not Gati's own judgement; it is based on notices from official agencies.")} ${T("पछिल्लो जाँच", "Last checked")}: ${checked}${gen ? ` · ${T("डेटा", "data")} ${gen}` : ""}</p></section>
       <section class="afsent" aria-label="${T("हजुरको जिल्लाका लागि", "For your district")}"><ul>${SENT.map((x, k) => `<li class="${x.none ? "none" : "yes"}"${x.a ? ` style="--vc:${G.SEVCOLOR[x.a.severity] || G.SEVCOLOR.Unknown}"` : ""}><p class="afst1">${E(x.text)}</p>
@@ -104,6 +104,7 @@
             <div class="afacts"><button type="button" class="afbtn" id="afwatch">☆ ${T("निगरानी सूचीमा राख्नुहोस्", "Save to watchlist")}</button>${G.push && G.push.on() ? `<button type="button" class="afbtn" id="afpush" data-d="${E(codes[0] || "")}">${T("यो जिल्लाका सूचना पाउनुहोस्", "Notify me for this district")}</button>` : `<button type="button" class="afbtn" disabled>${T("सूचना पाउनुहोस्", "Notify me")} <small>${T("छिट्टै", "coming soon")}</small></button>`}</div></div>
           <div class="afshare"><h2>${T("मेरो अवस्था सेयर गर्नुहोस्", "Share my status")}</h2><p class="afsharecard" style="--vc:${V.c}">${E(share)}</p><button type="button" class="afbtn" id="afshare">${T("सेयर / कपी", "Share / copy")}</button></div>
         </aside></div>`;
+    box.querySelector("#afreset").onclick = () => G.affect.reset((undo) => { if (undo) { const d = G.district.get() || localStorage.getItem("gati-aff-last"); buildInput(); if (d) go({ d }); return; } history.replaceState(null, "", location.pathname); box.innerHTML = ""; buildInput(); const s = inp.querySelector("#afd"); if (s) s.focus(); });
     const w = box.querySelector("#afwatch"); if (codes.length) w.onclick = () => { let s = {}; try { s = JSON.parse(localStorage.getItem("gati-watch") || "{}"); } catch (e) {} s.d = [...new Set([...(s.d || []), ...codes])]; s.r = s.r || []; localStorage.setItem("gati-watch", JSON.stringify(s)); w.textContent = "★ " + T("निगरानी सूचीमा राखियो", "Saved to watchlist"); };
     const pb = box.querySelector("#afpush"); if (pb) pb.onclick = async () => { const r = await G.push.subscribe(pb.dataset.d); pb.textContent = r.msg; };
     box.querySelectorAll(".afsh").forEach((b) => (b.onclick = () => { const x = SENT[+b.dataset.s]; const u = x.a ? new URL(x.perma, location.href).href : location.href;

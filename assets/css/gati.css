@@ -1205,3 +1205,6 @@ body[data-page=weather] #mydist:empty{min-height:44px}
 .afrad button:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 .afnote{margin:4px 0 0}
 .drad .afrad{margin:8px 0 4px}
+.aftoast{position:fixed;left:16px;right:16px;margin:0 auto;width:max-content;bottom:calc(156px + env(safe-area-inset-bottom));z-index:1500;display:flex;align-items:center;gap:12px;max-width:calc(100% - 32px);background:var(--ink);color:var(--snow);padding:6px 6px 6px 16px;border-radius:14px;box-shadow:var(--sh2,0 8px 24px rgba(0,0,0,.25));font-size:var(--fs-5)}
+.aftoast button{min-height:44px;min-width:44px;padding:0 14px;border-radius:10px;border:0;background:var(--saffron);color:#14202B;font:inherit;font-weight:700;cursor:pointer}
+.afchg{min-height:44px}.afreset{margin-top:10px}

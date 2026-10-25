@@ -395,9 +395,9 @@
       box.innerHTML = `<section class="afcard on${v.lv > 0 ? " live" : ""}" style="--vc:${v.c}">${head}<div class="afrow"><span class="afdn">${G.esc(G.affect.label(dn, v.r))}</span><span class="afst"><i></i>${G.esc(G.affect.phrase(v))}</span></div>
         <p class="meta afmeta">${v.alerts.length ? T(`${G.num(v.alerts.length)} आधिकारिक सूचना`, `${v.alerts.length} official notice${v.alerts.length > 1 ? "s" : ""}`) + " · " : ""}${T("स्रोत समय", "Source time")}: ${G.npt(ts)}${v.lv === 0 ? " · " + T("खतरा छैन भन्ने होइन", "that does not mean no risk") : ""}</p>
         ${G.affect.radiusUI(v.r)}${v.r ? `<p class="meta afnote">${G.esc(G.affect.note(v))}</p>` : ""}
-        <div class="afacts"><a class="afgo" href="${RT}affected/#d=${encodeURIComponent(cur)}">${T("विवरण हेर्नुहोस्", "See details")} →</a><button type="button" class="afchg" id="myd">${T("जिल्ला बदल्नुहोस्", "Change district")}</button></div></section>`;
+        <div class="afacts"><a class="afgo" href="${RT}affected/#d=${encodeURIComponent(cur)}">${T("विवरण हेर्नुहोस्", "See details")} →</a><button type="button" class="afchg" id="myd">↺ ${T("रिसेट", "Reset")}</button></div></section>`;
       G.affect.bindRadius(box, () => { myDistrict(); });
-      $("myd").onclick = () => G.district.open((x) => { sel.value = x; render(); myDistrict(); drawMap(); }); });
+      $("myd").onclick = () => G.affect.reset(() => { sel.value = G.district.get() || ""; render(); myDistrict(); drawMap(); }); });
   }
   /* 'This week': active alerts plus the next 7 days from data/calendar.json (holidays, planned closures). */
   function thisWeek() {
