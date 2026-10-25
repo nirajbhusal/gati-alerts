@@ -307,7 +307,7 @@ def lite(alerts, now):
 <p><small><a href="../about/">गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ</a></small></p>
 <p><small>बनाइएको: {npt(now.isoformat(), "ne")} · <a href="#en">English</a> · <a href="../">पूरा साइट</a></small></p>
 {sec("ne")}
-<hr><h1 id="en">Gati Lite · The right alert, right on time.</h1>
+<hr><h2 id="en" class="h1like">Gati Lite · The right alert, right on time.</h2>
 <p><small><a href="../about/">Gati relays official sources</a></small></p>
 <p><small>Built: {npt(now.isoformat(), "en")} · <a href="../">Full site</a> · <a href="../atom.xml">Atom feed</a></small></p>
 {sec("en")}

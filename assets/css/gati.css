@@ -987,3 +987,7 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
   .card.alert.fresh,.brk li{animation:afade .5s ease-out both}@keyframes afade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .leaflet-interactive.mxpulse{animation:mxp 2.4s ease-in-out infinite}@keyframes mxp{0%,100%{stroke-width:1.5;stroke-opacity:1}50%{stroke-width:9;stroke-opacity:.25}}
 }
+
+/* Home H1 and subtitle; the header tagline is hidden on Home mobile so the tagline shows once */
+.hhead{margin:8px 0 14px}.hh1{margin:0;font-size:1.6rem;line-height:1.2}.hsub{margin:2px 0 0;color:var(--slate);font-size:.9rem}
+@media(max-width:720px){body[data-page=home] .bar .brand .tagline{display:none!important}}
