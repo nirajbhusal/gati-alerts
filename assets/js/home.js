@@ -80,14 +80,15 @@
         <span class="tag">${G.esc(i.event)}</span></div>
       <h4>${G.esc(i.headline)}</h4>
       <p class="aarea">📍 ${G.esc(areas)}</p>
-      <p class="atime">🕒 ${T("स्रोतको समय", "Source time")}: <strong>${G.npt(i.params["gati:sourceTime"] || a.sent)}</strong> · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
+      <p class="atime">🕒 ${T("स्रोतको समय", "Source time")}: <strong>${G.npt(i.params["gati:sourceTime"] || a.sent)}</strong></p>
       <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.esc((i.senderName || "").split(" — ")[0])}</span></div>
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
-      ${chain(a)}
       ${i.instruction && !a.expired ? `<div class="instr"><strong>${T("के गर्ने", "What to do")}:</strong> ${G.esc(i.instruction)}</div>` : ""}
       ${a.hazard !== "earthquake" && !a.expired ? `<p class="afxrow">${G.affChip(a.districts)}</p>` : ""}
-      <p class="meta src alinks"><a href="${G.esc(i.web)}" rel="noopener" target="_blank">${T("मूल सूचना", "Original notice")} ↗</a> · <a href="${RT}alerts/${G.esc(a.identifier)}/">${T("स्थायी लिङ्क र सेयर", "Permalink and share")}</a>${src2 ? ` · <a href="${G.esc(src2)}" rel="noopener" target="_blank">${T("दोस्रो स्रोत", "Second source")} ↗</a>` : ""}</p>
       <details><summary>${T("पूरा विवरण", "Details")}</summary>
+        <p class="meta">${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
+        ${chain(a)}
+      <p class="meta src alinks"><a href="${G.esc(i.web)}" rel="noopener" target="_blank">${T("मूल सूचना", "Original notice")} ↗</a> · <a href="${RT}alerts/${G.esc(a.identifier)}/">${T("स्थायी लिङ्क र सेयर", "Permalink and share")}</a>${src2 ? ` · <a href="${G.esc(src2)}" rel="noopener" target="_blank">${T("दोस्रो स्रोत", "Second source")} ↗</a>` : ""}</p>
         ${a.expired && i.instruction ? `<p><strong>${T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>
         <p class="meta">CAP: urgency ${en.urgency} · severity ${en.severity} · certainty ${en.certainty} · sender <code>${G.esc(a.sender)}</code><br>

@@ -255,7 +255,7 @@
     const lab = () => { b.innerHTML = `<span aria-hidden="true">🔊</span><span class="ttsl">${T("सुन्नुहोस्", "Listen")}</span>`; b.setAttribute("aria-label", T("ठूलो स्वरमा पढ्नुहोस्", "Read aloud")); };
     lab(); G.onLang && G.onLang(lab);
     b.onclick = (e) => { e.preventDefault(); e.stopPropagation(); speak(b, el.classList.contains("rail") ? el.parentElement : el); };
-    if (el.classList.contains("rail")) el.prepend(b); else el.appendChild(b);
+    if (el.classList.contains("rail")) el.prepend(b); else { const h = el.querySelector(".ahead"); if (h) { b.classList.add("ttsi"); h.appendChild(b); } else el.appendChild(b); }
   }
   function scan() { document.querySelectorAll("article.alert").forEach((a) => mk(a, "ttsa")); document.querySelectorAll(".rail").forEach((r) => mk(r, "ttsr")); }
   new MutationObserver(() => { clearTimeout(scan.t); scan.t = setTimeout(scan, 150); }).observe(document.body, { childList: true, subtree: true });
