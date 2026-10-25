@@ -1,0 +1,3 @@
+#!/bin/sh
+# Build stamp for the service worker cache name. Enable once: git config core.hooksPath scripts/hooks
+python3 scripts/stamp.py >/dev/null && git add sw.js

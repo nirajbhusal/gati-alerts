@@ -5,6 +5,9 @@
   const saved = localStorage.getItem("gati-lang");
   const G = (window.Gati = { root: ROOT, lang: saved === "en" ? "en" : "ne", listeners: [] });
   document.documentElement.lang = G.lang;
+  /* Agency names, defined first so every page script (Today card included) can use them, even on cached loads */
+  const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
+  G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
   /* Display preferences, kept in this browser only. */
   const pref = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
   G.numPref = pref("gati-num", "");            // "" follows language; "ne" or "en" forces numerals
@@ -92,8 +95,6 @@
   G.breaking = () => G.json("data/alerts.json").then((d) => { const now = Date.now(), SV = ["Moderate", "Severe", "Extreme"];
     return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity))
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
-  const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
-  G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
   const dismissed = () => { try { return JSON.parse(localStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
   /* 'Am I affected?' chip: links to /affected/ prefilled with the alert's district(s) */
   /* BS day label for bulletin days: Nepali as given, English as 'Kartik 12 (29 Oct)' */
@@ -207,7 +208,11 @@
   }
   /* PWA: manifest, service worker, offline banner with the last-known state. */
   const mf = document.createElement("link"); mf.rel = "manifest"; mf.href = ROOT + "manifest.webmanifest"; document.head.append(mf);
-  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register(ROOT + "sw.js", { scope: ROOT }).catch(() => {});
+  if ("serviceWorker" in navigator && location.protocol === "https:") { const hadCtl = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.register(ROOT + "sw.js", { scope: ROOT }).catch(() => {});
+    /* New build took over: offer a refresh (only when an older version was controlling this page) */
+    navigator.serviceWorker.addEventListener("controllerchange", () => { if (!hadCtl || document.querySelector(".swtoast")) return;
+      const t = document.createElement("button"); t.type = "button"; t.className = "swtoast"; t.textContent = "नयाँ संस्करण उपलब्ध · New version, tap to refresh"; t.onclick = () => location.reload(); document.body.append(t); }); }
   const off = document.createElement("div"); off.className = "offline"; off.setAttribute("role", "status"); off.hidden = true;
   header.after(off);
   const offDraw = () => {
