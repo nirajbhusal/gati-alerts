@@ -1,6 +1,6 @@
 /* Gati service worker: offline last-known state. Static only; no push (Web Push needs a server).
    Pages and data: network first, fall back to the last copy saved. Assets: cache first, refreshed in the background. */
-const VERSION = "gati-v20";
+const VERSION = "gati-v21";
 const CORE = ["./", "index.html", "sources/", "about/", "api/", "alerts/", "stories/", "weather/", "contacts/", "safety/", "route/", "assets/js/wxmodel.js", "earthquakes/", "air/", "assets/js/quakes.js", "assets/js/route.js", "assets/js/nearby.js", "assets/js/askpop.js", "assets/js/watch.js", "assets/js/services.js", "assets/js/contacts.js", "data/contacts.json", "assets/js/weather.js", "data/weather.json", "map/", "rivers/", "roads/", "assets/js/stories.js", "assets/js/district.js", "patro/", "ask/", "patro/gati.ics", "assets/js/patro.js", "data/calendar.json", "assets/js/bs.js", "manifest.webmanifest",
   "assets/css/gati.css", "assets/fonts/fonts.css", "assets/js/common.js", "assets/js/home.js", "assets/js/sources.js",
   "assets/vendor/leaflet/leaflet.css", "assets/vendor/leaflet/leaflet.js", "assets/img/gati-concept-A-ga-signal-icon.svg", "assets/img/icon-192.png",

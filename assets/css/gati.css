@@ -671,3 +671,7 @@ html[data-theme=dark] .meic{background:rgba(143,184,255,.12);color:#8fb8ff}
 .rtip{font-weight:700;border-radius:8px;padding:2px 8px}.rdl{font-size:11px;color:#5b6876;text-align:center;font-weight:600;text-shadow:0 0 3px #fff,0 0 3px #fff;white-space:nowrap}
 .ralt{margin:6px 0 0;font-size:.92rem}
 header.top{position:sticky;top:0;z-index:1100}
+/* DHM 5-day timeline */
+.wx5{margin-top:var(--s4)}.wxtl{list-style:none;margin:var(--s3) 0;padding:0;display:grid;gap:8px}@media(min-width:900px){.wxtl{grid-template-columns:repeat(5,1fr)}}
+.wxtd{padding:12px;border-radius:14px;background:var(--surface2);border-top:5px solid #3cb043}.wxtd.lv-yellow{border-top-color:#F5D90A;background:#fffbe0}html[data-theme=dark] .wxtd.lv-yellow{background:#3a3410}
+.wxtd b{display:block}.wxlv{font-size:.78rem;font-weight:700;color:var(--slate)}.wxtd p{margin:6px 0 0;font-size:.88rem}.wxdot{display:none}
