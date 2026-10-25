@@ -100,7 +100,7 @@ def share_png(a, out, now):
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, 22, H], fill=s[3])
     logo(im, (60, 30), 64)
-    d.text((230, 52), "सही सूचना, समयमै। · The right alert, right on time.", font=font("Regular", 24), fill="#7FD1D8")
+    d.text((230, 52), "सही सूचना, सही समयमा । · The right alert, right on time.", font=font("Regular", 24), fill="#7FD1D8")
     x = 60
     sevc = "#14202B" if a["severity"] == "Minor" else "#fff"
     x = pill(d, (x, 140), f"{s[0]} · {s[1]}", font("Bold", 26), s[3], sevc)
@@ -302,7 +302,7 @@ def lite(alerts, now):
 <title>गति Lite: पाठ मात्र</title><link rel="icon" href="data:,"><meta name="description" content="Gati text-only page for slow connections.">
 <style>body{{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:10px;color:#14202B}}a{{color:#0F7C86}}h1{{font-size:1.3em;color:#0E2A47}}h2{{font-size:1.1em;color:#0E2A47;margin:1.2em 0 .3em}}ul{{padding-left:1.1em}}li{{margin:.3em 0}}.d{{background:#e8f3f4;padding:8px;font-size:.9em}}hr{{border:0;border-top:1px solid #ccd}}</style>
 </head><body>
-<h1>गति Lite · सही सूचना, समयमै।</h1>
+<h1>गति Lite · सही सूचना, सही समयमा ।</h1>
 <p><small><a href="../about/">गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ</a></small></p>
 <p><small>बनाइएको: {npt(now.isoformat(), "ne")} · <a href="#en">English</a> · <a href="../">पूरा साइट</a></small></p>
 {sec("ne")}

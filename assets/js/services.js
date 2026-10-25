@@ -28,7 +28,7 @@
     // greeting removed in minimal design
     const _g = h < 12 ? T("शुभ प्रभात, हजुर", "Good morning") : h < 17 ? T("नमस्ते, हजुर", "Good afternoon") : T("शुभ सन्ध्या, हजुर", "Good evening");
     const bsTxt = b ? (G.lang === "ne" ? `${BS.MN[b.m - 1]} ${G.num(String(b.d))}, ${G.num(String(b.y))}` : `${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
-    const ht = document.getElementById("htop"); if (ht) ht.innerHTML = `<p class="htag">${T("सही सूचना, समयमै।", "The right alert, right on time.")}</p>`;
+    const ht = document.getElementById("htop"); if (ht) ht.innerHTML = `<p class="htag">${T("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</p>`;
     box.innerHTML = `<section class="svcard"><div class="svhead"><h2>${T("सुविधाहरू", "Features")}</h2><label class="svsearch"><span class="sr-only">${T("सुविधा खोज्नुहोस्", "Search features")}</span><input id="svq" type="search" value="${G.esc(q)}" placeholder="${T("सुविधा खोज्नुहोस्", "Search features")}"></label></div>
       <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सुविधा भेटिएन।", "No matching feature.")}</p>`}</div>
       ${q || L.length <= 8 ? "" : `<button type="button" class="svmore" aria-expanded="${all}">${all ? T("कम देखाउनुहोस्", "Show less") : T("थप हेर्नुहोस्", "See more")} ${all ? "▴" : "▾"}</button>`}</section>`;

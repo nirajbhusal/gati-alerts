@@ -1,4 +1,4 @@
-# गति · Gati — सही सूचना, समयमै। / The right alert, right on time.
+# गति · Gati — सही सूचना, सही समयमा । / The right alert, right on time.
 
 **Live:** https://nirajbhusal.github.io/gati-alerts/ · **CAP feed:** [`atom.xml`](https://nirajbhusal.github.io/gati-alerts/atom.xml) · [API](https://nirajbhusal.github.io/gati-alerts/api/) · **JSON:** [`data/alerts.json`](https://nirajbhusal.github.io/gati-alerts/data/alerts.json)
 
