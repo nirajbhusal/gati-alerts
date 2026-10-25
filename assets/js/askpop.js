@@ -66,7 +66,7 @@
   const na = () => `<p class="meta">${T("उपलब्ध छैन।", "Not available.")}</p>`;
   const soon = () => `<p>${T("यो प्रश्नको उत्तर अहिले दिन सकिँदैन। पूर्ण \"गतिलाई सोध्नुहोस्\" छिट्टै आउँदैछ। तलका विषय छान्नुहोस्:", "I can't answer that yet. Full Ask Gati is coming soon. Try one of these topics:")}</p>`;
 
-  let panel, log, btn, lastFocus, tab = "ask";
+  let panel, log, btn, lastFocus, tab = "ask" /* fixed: overlay is chat only */;
   const TABS = [["ask", "💬", "सोध्नुहोस्", "Ask"], ["wx", "⛅", "मौसम र हावा", "Weather & air"], ["call", "☎", "सम्पर्क", "Contacts"], ["mine", "📍", "मेरो जिल्ला", "My district"]];
   function setTab(k) { tab = k; render(); }
   async function pane() {
@@ -101,7 +101,7 @@
   function render() {
     const keep = log && log.querySelector(".aqmsg:not(.aqhello)") ? log.innerHTML : "";
     panel.innerHTML = `<div class="aqhead"><img src="${R}assets/img/brand/mark-192.png" alt="" width="36" height="36"><div><h2 id="aqtitle">${T("गतिलाई सोध्नुहोस्", "Ask Gati")}</h2><small>${T("गतिकै तथ्याङ्कबाट उत्तर, स्रोतसहित", "Answers from Gati's own data, with sources")}</small></div>${FULL ? "" : `<button type="button" class="aqx" aria-label="${T("बन्द गर्नुहोस्", "Close")}">✕</button>`}</div>
-      <div class="aqtabs" role="tablist">${TABS.map(([k, ic, ne, en]) => `<button type="button" role="tab" id="aqt-${k}" aria-controls="aqp-${k}" aria-selected="${tab === k}" tabindex="${tab === k ? 0 : -1}" data-t="${k}"><span aria-hidden="true">${ic}</span>${T(ne, en)}</button>`).join("")}</div>
+      <!-- Item 11: no tab row; the floating button opens straight into chat -->
       <div class="aqpane" id="aqp-x" role="tabpanel" ${tab === "ask" ? "hidden" : ""}></div>
       <div class="aqbody" id="aqp-ask" role="tabpanel" ${tab === "ask" ? "" : "hidden"}><p class="aqdisc"><a class="relaylink" href="${R}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p>
       <div class="aqhelp"><a href="tel:100" class="aqcall sm"><b>${G.num("100")}</b><span>${T("प्रहरी", "Police")}</span></a><a href="tel:1234" class="aqcall sm red"><b>${G.num("1234")}</b><span>${T("विपद् (NDRRMA)", "Disaster (NDRRMA)")}</span></a></div>
