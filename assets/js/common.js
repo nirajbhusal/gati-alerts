@@ -22,6 +22,7 @@
     ["map", "map/", "नक्सा", "Map"],
     ["rivers", "rivers/", "नदी", "Rivers"],
     ["roads", "roads/", "सडक", "Roads"],
+    ["route", "route/", "मार्ग जाँच", "Route check"],
     ["stories", "stories/", "सूचना फिड", "Feed"],
     ["patro", "patro/", "पात्रो", "Patro"],
     ["ask", "ask/", "सोध्नुहोस्", "Ask"],
@@ -33,7 +34,6 @@
     ["weather", "weather/", "मौसम र हावा", "Weather & air"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
     ["safety", "safety/", "के गर्ने", "What to do"],
-    ["route", "route/", "मार्ग जाँच", "Route check"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
   ];
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
