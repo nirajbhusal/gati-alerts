@@ -90,6 +90,23 @@
   document.body.append(tabs);
   document.body.prepend(disc);
   document.body.prepend(header);
+  /* Breaking: official, active, issued in the last 24h, severity Moderate or higher. Dismissible per alert. */
+  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; disc.after(brk);
+  G.breaking = () => G.json("data/alerts.json").then((d) => { const now = Date.now(), SV = ["Moderate", "Severe", "Extreme"];
+    return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity))
+      .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
+  const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
+  G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
+  const dismissed = () => { try { return JSON.parse(localStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
+  const brkItem = (a, x) => { const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity];
+    return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a><span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
+  const drawBreaking = () => G.breaking().then((L) => {
+    const dis = dismissed(), show = L.filter((a) => !dis.includes(a.identifier));
+    brk.hidden = !show.length; brk.innerHTML = show.length ? `<ul class="wrap" aria-label="${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking alerts"}">${show.map((a) => brkItem(a, true)).join("")}</ul>` : "";
+    brk.querySelectorAll(".brkx").forEach((x) => (x.onclick = () => { try { localStorage.setItem("gati-brk-dismissed", JSON.stringify([...dismissed(), x.dataset.id].slice(-100))); } catch (e) {} drawBreaking(); }));
+    const list = document.getElementById("breakinglist"); if (list) list.innerHTML = `<h2>${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</h2>` + (L.length ? `<ul class="brklist">${L.map((a) => brkItem(a, false)).join("")}</ul>` : `<p class="meta">${G.lang === "ne" ? "पछिल्लो २४ घण्टामा मध्यम वा सोभन्दा माथिको चालु आधिकारिक चेतावनी छैन।" : "No active official alert of Moderate or higher severity issued in the last 24 hours."}</p>`);
+  }).catch(() => { brk.hidden = true; });
+  if (document.body.dataset.page !== "embed") setTimeout(() => { drawBreaking(); G.onLang(drawBreaking); }, 0);
   document.body.append(footer);
 
   const mb = header.querySelector(".menubtn"), nav = header.querySelector("nav");

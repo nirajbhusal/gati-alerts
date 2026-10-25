@@ -784,3 +784,13 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 header.top .tsize button{background:transparent!important;border-color:var(--line)!important;border-radius:0!important;min-width:34px}
 .metsize{cursor:default}.metsize .tsize{margin-left:auto}
 @media(max-width:720px){header.top .tsize{display:none}}
+/* Breaking banner */
+.breaking[hidden]{display:none}.breaking{background:var(--surface);border-bottom:1px solid var(--line)}
+.breaking ul{list-style:none;margin:0 auto;padding:0}
+.breaking li,.brklist li{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:8px 0 8px 12px;border-left:4px solid var(--sc);font-size:.9rem}
+.breaking li+li{border-top:1px solid var(--line)}
+.brktag{font-size:.72rem;font-weight:700;letter-spacing:.02em;color:var(--crimson);text-transform:uppercase}
+.brkh{font-weight:600;color:var(--ink)!important;flex:1 1 14em;text-decoration:none}.brkh:hover{text-decoration:underline}
+.brkm{font-size:.78rem;color:var(--slate)}
+.brkx{margin-left:auto;width:32px;height:32px;border-radius:50%;border:0;background:none;color:var(--slate);font-size:1.2rem;cursor:pointer}.brkx:hover{background:var(--surface2)}
+.brksec{margin:8px 0 24px}.brksec h2{font-size:1.1rem;margin:0 0 8px}.brklist{list-style:none;margin:0;padding:0;display:grid;gap:8px}.brklist li{background:var(--surface2);border-radius:0 12px 12px 0;padding:10px 12px}
