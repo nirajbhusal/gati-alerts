@@ -10,7 +10,8 @@
   G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
   /* Display preferences, kept in this browser only. */
   const pref = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
-  G.numPref = pref("gati-num", "");            // "" follows language; "ne" or "en" forces numerals
+  /* Numerals follow the language (Nepali: Devanagari, English: Western). The old gati-num override is dropped. */
+  G.numPref = ""; try { localStorage.removeItem("gati-num"); } catch (e) {}
   G.cal = pref("gati-cal", "ad");              // "ad" or "bs"
   /* Themes: paper (default), light, dark, system ("system" follows the device). */
   /* Paper is the default for first-time visitors; a saved choice always wins (retired crimson maps to light). */
@@ -125,8 +126,8 @@
   header.querySelector("#langbtn").onclick = () => G.setLang(G.lang === "ne" ? "en" : "ne");
   G.setLang = (l) => { G.lang = l; localStorage.setItem("gati-lang", l); document.documentElement.lang = l; G.listeners.forEach((f) => f(l)); };
   const save = (k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {} };
-  G.toggleNum = () => { G.numPref = G.devNum() ? "en" : "ne"; if (G.numPref === G.lang) G.numPref = ""; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
-  G.setNum = (v) => { G.numPref = v === G.lang ? "" : v; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
+  G.toggleNum = () => {}; /* retired: numerals follow the language */
+  G.setNum = () => {}; /* retired */
   G.setCal = (v) => { G.cal = v; save("gati-cal", v === "bs" ? "bs" : ""); G.listeners.forEach((f) => f(G.lang)); };
   G.setTheme = (t) => { G.themePref = t; save("gati-theme-pref", t); save("gati-theme", ""); applyTheme(); G.listeners.forEach((f) => f(G.lang)); };
   /* Visual swatch picker, reused by the My Gati drawer */
@@ -139,7 +140,6 @@
   const drawSheet = () => { const ne = G.lang === "ne", L = (a, b) => (ne ? a : b);
     sheet.innerHTML = `<div class="setpanel"><div class="seth"><h2 id="seth">${L("सेटिङ", "Settings")}</h2><button type="button" class="setx" aria-label="${L("बन्द गर्नुहोस्", "Close")}">×</button></div>
       <section class="setgrp"><h3>भाषा र ढाँचा · Language and format</h3><h4>${L("भाषा", "Language")}</h4>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang)}
-      <h4>${L("अङ्क", "Numerals")}</h4>${seg("num", [["ne", "०१२३"], ["en", "0123"]], G.devNum() ? "ne" : "en")}
       <h4>${L("मिति", "Calendar")}</h4>${seg("cal", [["bs", L("वि.सं. BS", "BS")], ["ad", L("ई.सं. AD", "AD")]], G.cal === "bs" ? "bs" : "ad")}</section>
       <section><h3>${L("अक्षरको आकार", "Text size")}</h3><span class="tsize setseg" role="group" aria-label="${L("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${L("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${L("सामान्य अक्षर", "Default text size")}">A</button><button type="button" data-ts="1" aria-label="${L("ठूलो अक्षर", "Larger text")}">A+</button></span></section>
       <section><h3>${L("रूप", "Theme")}</h3>${seg("theme", [["paper", L("कागज", "Paper")], ["light", L("उज्यालो", "Light")], ["dark", L("अँध्यारो", "Dark")], ["system", L("स्वतः", "Auto")]], G.themePref)}</section></div>`;
@@ -171,7 +171,7 @@
   G.listeners.push(tagTitle); tagTitle(G.lang);
 
   const DEV = "०१२३४५६७८९";
-  G.devNum = () => (G.numPref || G.lang) === "ne";
+  G.devNum = () => G.lang === "ne";
   G.num = (s) => (G.devNum() ? String(s).replace(/\d/g, (d) => DEV[d]) : String(s));
   G.esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const MON_NE = ["जनवरी","फेब्रुअरी","मार्च","अप्रिल","मे","जुन","जुलाई","अगस्ट","सेप्टेम्बर","अक्टोबर","नोभेम्बर","डिसेम्बर"];
@@ -311,7 +311,6 @@
       <h3>${T("सेटिङ", "Settings")}</h3><div class="merows">
         ${row("📍", "मेरो जिल्ला", "My district", dn ? esc(dn) : T("छान्नुहोस्", "Choose"), "dist")}
         ${row("⭐", "मेरो निगरानी सूची", "My watchlist", G.num(String(watch())), "watch")}
-        ${row("१२", "अङ्क", "Numerals", G.devNum() ? "१२३" : "123", "num")}
         ${row("🗓", "मिति", "Dates", G.cal === "bs" ? T("वि.सं.", "BS") : T("ई.सं.", "AD"), "cal")}
         <div class="merow metsize"><span class="meic" aria-hidden="true">अ</span><span class="melab">${T("अक्षरको आकार", "Text size")}</span><span class="tsize" role="group" aria-label="${T("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${T("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${T("सामान्य अक्षर", "Default size")}">A</button><button type="button" data-ts="1" aria-label="${T("ठूलो अक्षर", "Larger text")}">A+</button><output>${G.num(String(G.textSize()))}%</output></span></div>
         ${row("🔔", "सूचना पाउने तरिका", "Get notified", "Atom", "feed")}
