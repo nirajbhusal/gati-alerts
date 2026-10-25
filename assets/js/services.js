@@ -24,22 +24,19 @@
     const L = S.filter((s) => !q || (s[1] + s[2] + s[5]).toLowerCase().includes(q.toLowerCase()));
     const shown = q || all ? L : L.slice(0, 8);
     const now = new Date(Date.now() + 345 * 60000), h = now.getUTCHours(), t = window.BS ? BS.todayNP() : null, b = t ? BS.toBS(t.y, t.m, t.d) : null;
-    const greet = h < 12 ? T("शुभ प्रभात, हजुर", "Good morning") : h < 17 ? T("नमस्ते, हजुर", "Good afternoon") : T("शुभ सन्ध्या, हजुर", "Good evening");
+    // greeting removed in minimal design
+    const _g = h < 12 ? T("शुभ प्रभात, हजुर", "Good morning") : h < 17 ? T("नमस्ते, हजुर", "Good afternoon") : T("शुभ सन्ध्या, हजुर", "Good evening");
     const bsTxt = b ? (G.lang === "ne" ? `${BS.MN[b.m - 1]} ${G.num(String(b.d))}, ${G.num(String(b.y))}` : `${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
-    box.innerHTML = `<section class="hhero" aria-label="${T("आज", "Today")}"><div class="hhtext"><p class="hhgreet">${greet} 🙏</p><p class="hhdate">${bsTxt}</p>
-        <p class="hhsub">${G.npt(new Date().toISOString()).split(" · ")[0]} · ${T(BS.WN[now.getUTCDay()], BS.WE[now.getUTCDay()])}</p></div>
-      <svg class="hhart" viewBox="0 0 320 160" aria-hidden="true"><defs><linearGradient id="hs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd2dc"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
-        <circle cx="250" cy="48" r="26" fill="#ffcf5a" opacity=".95"/><path d="M0 160 70 62l34 40 46-70 58 82 30-34 82 80z" fill="#fff" opacity=".22"/><path d="M0 160 52 96l30 26 52-66 44 58 34-30 52 46 56 30z" fill="#fff" opacity=".4"/>
-        <path d="M134 56l14 18 10-8 14 22" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round" opacity=".9"/><path d="M0 160h320v-18c-40-10-80 8-120 0s-80-14-120-2-60 10-80 4z" fill="#fff" opacity=".18"/></svg></section>
+    box.innerHTML = `<p class="hdate">${bsTxt} · ${T(BS.WN[now.getUTCDay()], BS.WE[now.getUTCDay()])}</p>
       <div class="qstrip" role="list">
-        <button type="button" role="listitem" class="qs" data-q="near"><span style="--c:#DC143C">◎</span>${T("के म प्रभावित छु?", "Am I affected?")}</button>
-        <a role="listitem" class="qs" href="tel:1234"><span style="--c:#b91c1c">☎</span>${T("१२३४ विपद्", "1234 Disaster")}</a>
-        <button type="button" role="listitem" class="qs" data-q="dist"><span style="--c:#003893">📍</span>${T("मेरो जिल्ला", "My district")}</button>
-        <a role="listitem" class="qs" href="${R}weather/"><span style="--c:#0284c7">☁</span>${T("आजको मौसम", "Today's weather")}</a>
-        <a role="listitem" class="qs" href="${R}route/"><span style="--c:#16a34a">⇄</span>${T("मार्ग जाँच", "Route check")}</a>
-        <a role="listitem" class="qs" href="${R}patro/"><span style="--c:#be123c">🗓</span>${T("आजको पात्रो", "Today's Patro")}</a></div>
+        <button type="button" role="listitem" class="qs" data-q="near"><span>◎</span>${T("के म प्रभावित छु?", "Am I affected?")}</button>
+        <a role="listitem" class="qs" href="tel:1234"><span>☎</span>${T("१२३४ विपद्", "1234 Disaster")}</a>
+        <button type="button" role="listitem" class="qs" data-q="dist"><span>⌂</span>${T("मेरो जिल्ला", "My district")}</button>
+        <a role="listitem" class="qs" href="${R}weather/"><span>☁</span>${T("आजको मौसम", "Today's weather")}</a>
+        <a role="listitem" class="qs" href="${R}route/"><span>⇄</span>${T("मार्ग जाँच", "Route check")}</a>
+        <a role="listitem" class="qs" href="${R}patro/"><span>▦</span>${T("आजको पात्रो", "Today's Patro")}</a></div>
       <section class="svcard"><div class="svhead"><h2>${T("सेवाहरू", "Services")}</h2><label class="svsearch"><span class="sr-only">${T("सेवा खोज्नुहोस्", "Search services")}</span><input id="svq" type="search" value="${G.esc(q)}" placeholder="${T("सेवा खोज्नुहोस्", "Search services")}"></label></div>
-      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi" style="--c:${c}">${ic}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सेवा भेटिएन।", "No matching service.")}</p>`}</div>
+      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सेवा भेटिएन।", "No matching service.")}</p>`}</div>
       ${q || L.length <= 8 ? "" : `<button type="button" class="svmore" aria-expanded="${all}">${all ? T("कम देखाउनुहोस्", "Show less") : T("थप हेर्नुहोस्", "See more")} ${all ? "▴" : "▾"}</button>`}</section>`;
     const i = box.querySelector("#svq"); i.oninput = () => { const p = i.selectionStart; draw(); const j = box.querySelector("#svq"); j.focus(); j.setSelectionRange(p, p); };
     const m = box.querySelector(".svmore"); if (m) m.onclick = () => { all = !all; draw(); };

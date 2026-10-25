@@ -47,7 +47,7 @@
     if (!DP) return "";
     const all = !a.districts.length, c = G.SEVCOLOR[a.severity] || G.SEVCOLOR.Unknown;
     const dots = a.areas.flatMap((x) => x.circles).map((cc) => { const [y, x] = cc.split(" ")[0].split(",").map(Number); return `<circle cx="${((x - 80) / 8.3) * 200}" cy="${((30.5 - y) / 4.2) * 100}" r="3.5" fill="${c}" stroke="#fff" stroke-width="1.2"/>`; }).join("");
-    return `<svg viewBox="0 0 200 100" role="img" aria-label="${esc(T("प्रभावित जिल्ला नक्सा", "Map of affected districts"))}">${DP.map(([id, d]) => `<path d="${d}" fill="${all || a.districts.includes(id) ? c : "rgba(255,255,255,.14)"}" fill-opacity="${all ? ".45" : "1"}" stroke="rgba(255,255,255,.35)" stroke-width=".4"/>`).join("")}${dots}</svg>`;
+    return `<svg viewBox="0 0 200 100" role="img" aria-label="${esc(T("प्रभावित जिल्ला नक्सा", "Map of affected districts"))}">${DP.map(([id, d]) => `<path d="${d}" fill="${all || a.districts.includes(id) ? c : "rgba(120,128,138,.18)"}" fill-opacity="${all ? ".45" : "1"}" stroke="rgba(255,255,255,.35)" stroke-width=".4"/>`).join("")}${dots}</svg>`;
   }
   const LV = { Extreme: 5, Severe: 4, Moderate: 3, Minor: 2, Unknown: 1 };
   function left(a) {
