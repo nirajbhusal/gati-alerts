@@ -1140,3 +1140,20 @@ body:not(.storypage) > main#main{min-height:100vh;min-height:100dvh}
 .dash #sumcard:empty{min-height:132px}
 .roadlist:has(#roadList:empty){min-height:464px}
 html{scroll-padding-top:calc(var(--hdr,72px) + 12px);scroll-padding-bottom:96px}@media(min-width:721px){html{--hdr:96px}}
+/* Fix sweep 10: Light and Paper get a light header and a light My Gati card; navy stays for Dark and primary buttons */
+html:not([data-theme=dark]) header.top{background:var(--surface)!important;backdrop-filter:none;-webkit-backdrop-filter:none;border-top:0;border-bottom:1px solid var(--line);box-shadow:none;color:var(--navy)}
+html:not([data-theme=dark]) header.top .brand img.logo-l{display:block!important}html:not([data-theme=dark]) header.top .brand img.logo-d{display:none!important}
+html:not([data-theme=dark]) header.top .tagline{color:var(--slate)!important}
+html:not([data-theme=dark]) header.top .bar .mebtn,html:not([data-theme=dark]) header.top .bar .langbtn,html:not([data-theme=dark]) header.top .bar .menubtn{color:var(--navy)!important;border-color:var(--line)!important}
+html:not([data-theme=dark]) header.top .bar .mebtn svg{stroke:var(--navy)}
+@media(min-width:721px){html:not([data-theme=dark]) header.top nav.main{background:var(--surface)!important;border-color:var(--line)!important}
+ html:not([data-theme=dark]) header.top nav.main a,html:not([data-theme=dark]) header.top nav.main .morebtn,html:not([data-theme=dark]) header.top nav.main .navme,html:not([data-theme=dark]) header.top nav.main .navhome{color:var(--navy)!important}
+ html:not([data-theme=dark]) header.top nav.main a:hover,html:not([data-theme=dark]) header.top nav.main .morebtn:hover{background:var(--surface2)!important}
+ html:not([data-theme=dark]) header.top nav.main a[aria-current=page]{color:var(--navy)!important;box-shadow:inset 0 -3px 0 var(--saffron)}}
+html:not([data-theme=dark]) .mecard{background:var(--surface2)!important;color:var(--ink)!important;border:1px solid var(--line)}
+html:not([data-theme=dark]) .mecard-top small,html:not([data-theme=dark]) .mecard-foot{color:var(--slate);opacity:1}
+html:not([data-theme=dark]) .mecard-stats{background:var(--surface)!important;border:1px solid var(--line)}
+html:not([data-theme=dark]) .mecard-stats span{color:var(--slate);opacity:1}
+html[data-theme=dark] .mecard{background:var(--navy)!important;color:#F4F6FA!important;border:1px solid var(--line)}
+html[data-theme=dark] .mecard-top small,html[data-theme=dark] .mecard-foot,html[data-theme=dark] .mecard-stats span{color:#C9D2E3;opacity:1}
+html[data-theme=dark] .mecard-stats{background:rgba(255,255,255,.08)!important}
