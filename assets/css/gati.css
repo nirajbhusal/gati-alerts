@@ -1027,3 +1027,6 @@ label:has(> input[type=checkbox]),label:has(> input[type=radio]){display:inline-
 html[data-theme=dark] .pday.today{background:var(--surface)!important;box-shadow:inset 0 0 0 2px #9AA6BE!important}
 /* Item 12: one visible focus style on all interactive elements */
 :where(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"]),[role=button]):focus-visible{outline:2px solid #F28C1E!important;outline-offset:2px!important;box-shadow:none}
+/* Item 13: Language and format group; account moved into the menu */
+.setgrp h4{margin:10px 0 6px;font-size:var(--fs-5);font-weight:600;color:var(--slate)}.setgrp h4:first-of-type{margin-top:4px}
+nav.main .navme{display:inline-flex;align-items:center;gap:6px;width:auto;height:auto;min-height:44px;padding:0 12px;border-radius:10px;background:transparent;border:0;color:inherit;font:inherit;}@media(min-width:721px){nav.main .navme{margin-left:auto}}
