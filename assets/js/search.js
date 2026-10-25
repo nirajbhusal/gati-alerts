@@ -38,7 +38,7 @@
   let ov = null;
   function open(q0 = "") {
     if (!ov) {
-      ov = document.createElement("div"); ov.className = "srch"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-label", "Search / खोज्नुहोस्"); ov.hidden = true;
+      ov = document.createElement("div"); ov.className = "gsrch"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-label", "Search / खोज्नुहोस्"); ov.hidden = true;
       ov.innerHTML = `<div class="srback"></div><div class="srpanel"><div class="srbar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input type="search" id="srq" autocomplete="off" enterkeyhint="search"><button type="button" class="srx">Esc</button></div><div class="srres" aria-live="polite"></div></div>`;
       document.body.appendChild(ov);
       const close = () => { ov.hidden = true; document.documentElement.classList.remove("srlock"); const u = new URL(location.href); if (u.searchParams.has("q")) { u.searchParams.delete("q"); history.replaceState(null, "", u); } };
