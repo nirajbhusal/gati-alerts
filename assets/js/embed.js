@@ -13,7 +13,7 @@
     if (lang === "ne") return num(`${MN[d.getUTCMonth()]} ${d.getUTCDate()}, ${h}:${mi}`) + " NPT";
     const ap = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return `${d.getUTCDate()} ${ME[d.getUTCMonth()]}, ${h}:${mi} ${ap} NPT`; };
   const SEV = { Extreme: ["अत्यन्त गम्भीर", "Extreme", "⬢", "#8E1B14"], Severe: ["गम्भीर", "Severe", "▲", "#D93025"], Moderate: ["मध्यम", "Moderate", "◆", "#F28C1E"],
-    Minor: ["सामान्य", "Minor", "●", "#9a7b00"], Unknown: ["सूचना", "Info", "ℹ", "#2F6FED"] };
+    Minor: ["सामान्य", "Minor", "●", "#F2C94C"], Unknown: ["सूचना", "Info", "ℹ", "#8F9BB3"] };
   const TR = { Official: ["🛡 आधिकारिक", "🛡 Official"], Verified: ["✓ प्रमाणित", "✓ Verified"], Reported: ["❝ रिपोर्ट गरिएको", "❝ Reported"] };
   const site = "https://nirajbhusal.github.io/gati-alerts/";
   document.getElementById("disc").textContent = T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources");
@@ -28,7 +28,7 @@
     if (!act.length) { ls.innerHTML = `<li class="empty">${T("अहिले यहाँका लागि गतिमा कुनै चालु सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन; DHM, NDRRMA र स्थानीय प्रशासनका सूचना पनि हेर्नुहोस्।", "No active item in Gati for this area right now. That does not mean there is no risk; also check DHM, NDRRMA and local administration.")}</li>`; return; }
     ls.innerHTML = act.slice(0, MAX).map((a) => { const i = a.info[lang], s = SEV[a.severity] || SEV.Unknown, t = TR[a.trust];
       const st = i.params["gati:sourceTime"] || a.sent;
-      return `<li class="it" style="border-left-color:${s[3]}"><span class="chip" style="background:${s[3]}">${s[2]} ${T(s[0], s[1])}</span>${t ? `<span class="tr">${T(...t)}</span>` : ""}
+      return `<li class="it" style="border-left-color:${s[3]}"><span class="chip" style="background:${s[3]}${s[3] === "#F2C94C" ? ";color:#0B1424" : ""}">${s[2]} ${T(s[0], s[1])}</span>${t ? `<span class="tr">${T(...t)}</span>` : ""}
         <h3><a href="${site}alerts/${esc(a.identifier)}/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${esc(i.headline)}</a></h3>
         <p class="m" style="margin:0">${T("स्रोत", "Source")}: <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(i.senderName.split(" — ")[0].split(" · ")[0])}</a> · ${npt(st)}</p></li>`; }).join("") +
       (act.length > MAX ? `<li class="m"><a href="${site}${d ? "?district=" + d.id : ""}" target="_blank" rel="noopener">${T(`थप ${num(act.length - MAX)} सूचना हेर्नुहोस्`, `${act.length - MAX} more`)}</a></li>` : "");

@@ -1086,3 +1086,4 @@ html[data-theme=dark] div.srcflag{background:#3A2A12;color:#FFD9A8}html[data-the
 .logf{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.loglist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .logi{border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:12px;padding:10px 14px;background:var(--surface)}.logi.mt-Update{border-left-color:var(--river)}.logi.mt-Cancel{border-left-color:#8F9BB3}
 .logi p{margin:2px 0}.logt{font-weight:700;text-transform:uppercase;font-size:var(--fs-6);letter-spacing:.04em}.logx{font-weight:600}.logsha code{font-size:var(--fs-6);word-break:break-all}
+.embsnip{white-space:pre-wrap;word-break:break-all;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:var(--fs-6)}

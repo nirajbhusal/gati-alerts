@@ -7,14 +7,14 @@
 html[lang=en] body{font-family:"Inter","Mukta",system-ui,sans-serif}
 .w{border:1px solid var(--mist);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100vh}
 .hd{background:var(--navy);color:#fff;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.hd b{font-size:1rem}.hd span{font-size:.78rem;color:#7FD1D8}
+.hd h1{font-size:1rem;margin:0}.hd span{font-size:.8rem;color:#7FD1D8}
 .ls{flex:1;overflow:auto;padding:8px 10px;margin:0;list-style:none}
 .it{border-left:5px solid #8F9BB3;padding:6px 8px;margin:0 0 8px;background:#F7F9FB;border-radius:6px}
-.it h3{font-size:.95rem;margin:2px 0 4px;line-height:1.3}.m{font-size:.78rem;color:var(--slate)}.m a{color:var(--teal)}
-.chip{display:inline-block;font-size:.72rem;font-weight:700;padding:0 6px;border-radius:999px;margin-right:4px;color:#fff}
-.tr{display:inline-block;font-size:.72rem;padding:0 6px;border-radius:999px;border:1px solid var(--mist);color:var(--navy)}
-.ft{border-top:1px solid var(--mist);padding:6px 10px;font-size:.72rem;color:var(--slate);display:flex;justify-content:space-between;gap:8px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:#fff!important;background:var(--navy);border-radius:999px;padding:3px 9px;font-weight:600;white-space:nowrap}
+.it h3{font-size:.95rem;margin:2px 0 4px;line-height:1.3}.m{font-size:.8rem;color:var(--slate)}.m a{color:#2F6FED;text-decoration:underline;position:relative}.m a::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}
+.chip{display:inline-block;font-size:.8rem;font-weight:700;padding:0 6px;border-radius:999px;margin-right:4px;color:#fff}
+.tr{display:inline-block;font-size:.8rem;padding:0 6px;border-radius:999px;border:1px solid var(--mist);color:var(--navy)}
+.ft{flex-wrap:wrap;border-top:1px solid var(--mist);padding:6px 10px;font-size:.8rem;color:var(--slate);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.badge{min-height:44px;display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:#fff!important;background:var(--navy);border-radius:999px;padding:3px 9px;font-weight:600;white-space:nowrap}
 .badge img{width:14px;height:14px}.empty{padding:12px;color:var(--slate);font-size:.88rem}
 .s .it h3{font-size:.88rem}.s .ls{padding:6px}
 </style><meta property="og:title" content="गति Gati · embed">
@@ -31,6 +31,6 @@ html[lang=en] body{font-family:"Inter","Mukta",system-ui,sans-serif}
 <meta name="twitter:description" content="सही सूचना, सही समयमा । The right alert, right on time. Gati relays official disaster alerts for Nepal with source and time.">
 <meta name="twitter:image" content="https://nirajbhusal.github.io/gati-alerts/assets/img/brand/og-cover.png">
 </head>
-<body><div class="w" id="w"><div class="hd"><b id="ttl">गति</b><span id="dn"></span></div><ul class="ls" id="ls"></ul>
+<body><div class="w" id="w"><div class="hd"><h1 id="ttl">गति</h1><span id="dn"></span></div><ul class="ls" id="ls"></ul>
 <div class="ft"><span id="disc"></span><a class="badge" id="badge" href="https://nirajbhusal.github.io/gati-alerts/" target="_blank" rel="noopener"><img src="../assets/img/brand/mark-192.png" alt="">Powered by Gati</a></div></div>
 <script src="../assets/js/embed.js"></script></body></html>
