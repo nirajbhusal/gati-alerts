@@ -1195,3 +1195,5 @@ html[data-theme=dark] .helplines a{background:var(--surface)!important;color:var
 .dash #wxfc{min-height:1000px}.dash #wxmine{min-height:134px}.dash #wx5{min-height:867px}.dash #wxmodel{min-height:476px}.dash #air{min-height:502px}.dash #wxrain{min-height:201px}
 @media(min-width:721px){.dash #wxfc,.dash #wxmine{min-height:789px}.dash #wx5{min-height:315px}.dash #wxmodel{min-height:407px}.dash #air{min-height:398px}.dash #wxrain{min-height:150px}}
 body[data-page=weather] #mydist:empty{min-height:44px}
+/* Fix sweep 16: Home sidebar at desktop reserves the Weather and Roads summary heights */
+@media(min-width:961px){.home .hright>section:nth-child(1){min-height:268px}.home .hright>section:nth-child(2){min-height:356px}}
