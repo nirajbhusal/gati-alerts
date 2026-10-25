@@ -23,5 +23,11 @@
     return { lv, ...LV[lv], label: T(LV[lv].ne, LV[lv].en), alerts: why, wx: wxd, b5 };
   }
   const phrase = (v) => T("आधिकारिक स्रोतअनुसार: ", "Per official sources: ") + v.label;
-  G.affect = { load, verdict, phrase, LV, isAct };
+  /* Feature 1: one sentence per active official alert ("Yes, ... affects your district") or a single "No active alerts for ..." */
+  function sentences(v, place) {
+    if (!v.alerts.length) return [{ text: T(`${place}का लागि चालु आधिकारिक सूचना छैन।`, `No active official alerts for ${place}.`), none: true }];
+    return v.alerts.map((a) => { const i = a.info[G.lang] || a.info.ne;
+      return { a, text: (SV[a.severity] || 1) >= 2 ? T(`हो, "${i.headline}" ले हजुरको जिल्ला ${place}लाई असर गर्छ।`, `Yes, "${i.headline}" affects your district, ${place}.`) : T(`हो, "${i.headline}" मा हजुरको जिल्ला ${place} पनि समेटिएको छ।`, `Yes, "${i.headline}" covers your district, ${place}.`), agency: G.agencyOf(a), sent: a.sent, web: i.web, perma: G.root + "alerts/" + a.identifier + "/" }; });
+  }
+  G.affect = { load, verdict, phrase, LV, isAct, sentences };
 })();

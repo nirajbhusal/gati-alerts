@@ -1069,3 +1069,6 @@ header.top .bar .mebtn,header.top .bar .langbtn,header.top .bar .menubtn{color:#
 header.top .bar .mebtn svg{stroke:#fff}
 @media(min-width:721px){header.top nav.main a,header.top nav.main .morebtn,header.top nav.main .navme{color:#E6EAF2!important}header.top nav.main a:hover,header.top nav.main .morebtn:hover{background:rgba(255,255,255,.08)!important}header.top nav.main a[aria-current=page]{color:var(--saffron)!important}}
 @media(min-width:721px){header.top nav.main{background:#0B1424!important;border-color:rgba(255,255,255,.12)!important}header.top nav.main .navhome{color:#E6EAF2!important}}
+/* Feature 1: affected answer sentences */
+.afsent ul{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}.afsent li{border:1px solid var(--line);border-left:5px solid var(--vc,var(--line));border-radius:12px;padding:12px 14px;background:var(--surface)}
+.afsent .afst1{margin:0 0 4px;font-size:var(--fs-3);font-weight:700;line-height:1.35}.afsent .meta{margin:0 0 8px}.afsent li.none{border-left-color:#8F9BB3}

@@ -79,10 +79,14 @@
     const acts = doc ? [...hz].map((h) => { const c = doc.getElementById(h); if (!c) return ""; const items = [...c.querySelectorAll("li")].slice(0, 3).map((li) => (li.querySelector(G.lang === "ne" ? ".ne-only" : ".en-only") || li).textContent);
       return `<div class="afdo"><h3>${E((c.querySelector("h2 " + (G.lang === "ne" ? ".ne-only" : ".en-only")) || {}).textContent || h)}</h3><ul>${items.map((t) => `<li>${E(t)}</li>`).join("")}</ul><a href="${R}safety/#${h}">${T("पूरा निर्देशन", "Full guidance")} →</a></div>`; }).join("") : "";
     const share = `${T("आधिकारिक स्रोतअनुसार", "Per official sources")}, ${title}${unit ? ` (${unit})` : ""}: ${label}. ${T("जाँचेको", "Checked")} ${checked}. ${location.href}`;
+    const SENT = G.affect.sentences(v, title);
     box.innerHTML = `
       <section class="afverdict" style="--vc:${V.c}"><p class="afwhere">${E(title)}${unit ? ` · ${E(unit)}` : ""}</p>
         <p class="afv"><i></i>${T("आधिकारिक स्रोतअनुसार", "Per official sources")}: <b>${label}</b></p>
         <p class="meta">${T("यो गतिको आफ्नै निर्णय होइन; आधिकारिक निकायका सूचनामा आधारित।", "This is not Gati's own judgement; it is based on notices from official agencies.")} ${T("पछिल्लो जाँच", "Last checked")}: ${checked}${gen ? ` · ${T("डेटा", "data")} ${gen}` : ""}</p></section>
+      <section class="afsent" aria-label="${T("हजुरको जिल्लाका लागि", "For your district")}"><ul>${SENT.map((x, k) => `<li class="${x.none ? "none" : "yes"}"${x.a ? ` style="--vc:${G.SEVCOLOR[x.a.severity] || G.SEVCOLOR.Unknown}"` : ""}><p class="afst1">${E(x.text)}</p>
+        ${x.a ? `<p class="meta">${T("स्रोत", "Source")}: ${E(x.agency)} · ${G.npt(x.sent)} · <a href="${E(x.web)}" target="_blank" rel="noopener">${T("मूल सूचना", "Original notice")} ↗</a> ${G.trustChip(x.a.trust)}</p>` : `<p class="meta">${T("पछिल्लो जाँच", "Last checked")}: ${checked}</p>`}
+        <button type="button" class="afbtn afsh" data-s="${k}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button></li>`).join("")}</ul></section>
       <div class="afgrid"><div>
         <ul class="aflist">
           ${line("⚠", T("आधिकारिक सूचना (निकायअनुसार)", "Official notices (by agency)"), alBody, T("आधिकारिक निकाय, गतिमार्फत", "Official agencies, relayed by Gati"), gen, G.trustChip("Official"))}
@@ -100,6 +104,8 @@
           <div class="afshare"><h2>${T("मेरो अवस्था सेयर गर्नुहोस्", "Share my status")}</h2><p class="afsharecard" style="--vc:${V.c}">${E(share)}</p><button type="button" class="afbtn" id="afshare">${T("सेयर / कपी", "Share / copy")}</button></div>
         </aside></div>`;
     const w = box.querySelector("#afwatch"); if (codes.length) w.onclick = () => { let s = {}; try { s = JSON.parse(localStorage.getItem("gati-watch") || "{}"); } catch (e) {} s.d = [...new Set([...(s.d || []), ...codes])]; s.r = s.r || []; localStorage.setItem("gati-watch", JSON.stringify(s)); w.textContent = "★ " + T("निगरानी सूचीमा राखियो", "Saved to watchlist"); };
+    box.querySelectorAll(".afsh").forEach((b) => (b.onclick = () => { const x = SENT[+b.dataset.s]; const u = x.a ? new URL(x.perma, location.href).href : location.href;
+      G.share({ url: u, title: x.text, text: x.a ? `${x.text} ${T("स्रोत", "Source")}: ${x.agency}, ${G.npt(x.sent)}.` : `${x.text} ${T("जाँचेको", "Checked")} ${checked}.` }); }));
     box.querySelector("#afshare").onclick = async (e) => { try { if (navigator.share) await navigator.share({ text: share }); else { await navigator.clipboard.writeText(share); e.target.textContent = T("कपी भयो", "Copied"); } } catch (x) {} };
     /* air at the first district centre */
     const c0 = cs[0]; if (c0) fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${c0[0].toFixed(3)}&longitude=${c0[1].toFixed(3)}&current=us_aqi,pm2_5&timezone=Asia%2FKathmandu`).then((r) => r.ok ? r.json() : null).then((a) => {
