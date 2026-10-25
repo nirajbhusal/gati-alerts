@@ -1082,3 +1082,7 @@ html[data-theme=dark] div.srcflag{background:#3A2A12;color:#FFD9A8}html[data-the
 .pseasons{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 10px;background:var(--surface)}.pseasons h3{margin:0 0 6px;font-size:var(--fs-4)}
 .pseasons ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.pseasons li{display:flex;gap:10px;align-items:flex-start}.pseasons .sband{flex:none;width:28px;height:10px;border-radius:3px;margin-top:7px}.pseasons p{margin:6px 0 0}
 .pday .pbands .band{height:5px!important}
+/* Feature 7: change log */
+.logf{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.loglist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.logi{border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:12px;padding:10px 14px;background:var(--surface)}.logi.mt-Update{border-left-color:var(--river)}.logi.mt-Cancel{border-left-color:#8F9BB3}
+.logi p{margin:2px 0}.logt{font-weight:700;text-transform:uppercase;font-size:var(--fs-6);letter-spacing:.04em}.logx{font-weight:600}.logsha code{font-size:var(--fs-6);word-break:break-all}

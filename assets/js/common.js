@@ -38,6 +38,7 @@
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
     ["safety", "safety/", "के गर्ने", "What to do"],
     ["sources", "sources/", "स्रोत", "Sources"],
+    ["log", "log/", "परिवर्तन लग", "Change log"],
     ["about", "about/", "बारेमा", "About"],
   ];
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
