@@ -70,6 +70,9 @@
     drawMap(P, altP);
     document.getElementById("rnote").textContent = T("गतिको सडक तथ्याङ्कमा भएका मुख्य करिडोर मात्र। स्थानीय सडक समावेश छैन।", "Only the main corridors in Gati's road data. Local roads are not included.");
   }
-  f.onchange = t.onchange = draw; document.getElementById("rswap").onclick = () => { [f.value, t.value] = [t.value, f.value]; draw(); };
+  f.onchange = t.onchange = draw;
+  document.getElementById("rgo").onclick = () => { draw(); const o = document.getElementById("rout"), h = o.querySelector(".rsum,.na");
+    o.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); } }; document.getElementById("rswap").onclick = () => { [f.value, t.value] = [t.value, f.value]; draw(); };
   opts(); draw(); G.onLang(() => { opts(); draw(); });
 })();

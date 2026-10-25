@@ -1289,3 +1289,6 @@ body.brkwait main,body.brkwait footer{visibility:hidden}
 @media(max-width:720px){#clist{min-height:100vh}}
 .gd-log .gdnote{padding-right:4px;box-sizing:border-box}
 .gd-log .gdnote{overflow:hidden}
+/* Route check: slim primary button right under From/To */
+.rgo{display:flex;width:100%;margin-top:var(--s3,12px);min-height:44px;padding:9px 16px;border-radius:12px}
+#rout{scroll-margin-top:96px}
