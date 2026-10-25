@@ -857,9 +857,10 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .hslider .dslider{margin:20px 0 36px}.hslider .dslide{flex-basis:100%}
 .halerts .sechead h2{font-size:1.2rem;font-weight:600}
 .hfeatures{margin:48px 0 24px;padding-top:32px;border-top:1px solid var(--line)}
+.hleft>.hfeatures{margin:8px 0 32px;padding-top:24px}
 .homev3 .hero{display:none}
 @media(max-width:960px){.hcols{display:flex;flex-direction:column;gap:0}.hleft,.hright{display:contents}
-  .hdist{order:1}.hslider{order:2}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
+  .hdist{order:1}.hslider{order:2}.hleft>.hfeatures{order:2;width:100%}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
 .hcols>*,.hleft>*,.hslider,.halerts,.hdist{min-width:0;max-width:100%}@media(max-width:960px){.hslider,.halerts,.hdist{width:100%}}
 /* Am I affected */
 .afchip{display:inline-flex;align-items:center;gap:8px;margin:8px 0 0;font-size:.9rem;font-weight:600;color:var(--ink)!important;text-decoration:none;padding:6px 14px;border-radius:999px;background:var(--surface2)}
