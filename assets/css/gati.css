@@ -1162,3 +1162,12 @@ html[data-theme=dark] .mecard-stats{background:rgba(255,255,255,.08)!important}
 .melang button[aria-checked=true] b{color:var(--ink)}
 
 .mecard-stats{grid-template-columns:repeat(3,1fr)!important}
+/* Fix sweep 13: header bell (unread dot) and profile; My Gati and Notifications lead the phone drawer */
+header.top .bar .mebtn{position:relative;min-width:44px;min-height:44px}
+.bellbtn .bdot{position:absolute;top:9px;right:10px;width:9px;height:9px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 2px var(--surface)}html[data-theme=dark] .bellbtn .bdot{box-shadow:0 0 0 2px var(--navy)}.bellbtn .bdot[hidden]{display:none}
+nav.main .navme{display:none!important}
+.navtop{display:none}
+@media(max-width:720px){nav.main.open .navtop{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 0 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+ .navtopbtn{min-height:48px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;text-align:left;padding:0 14px}}
+@media(max-width:400px){header.top .bar{gap:4px}header.top .bar .tagline{display:none!important}header.top .bar .langbtn{padding:0 10px;min-width:44px}}
+header.top .bar .langbtn{min-height:44px}
