@@ -79,7 +79,7 @@
           <p class="fdisc"><a class="relaylink" href="${G.root}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p></details>
       </div>
       <div class="rail">
-        <button type="button" data-act="share" data-k="${k}"><span aria-hidden="true">↗</span>${T("सेयर", "Share")}</button>
+        <button type="button" data-act="share" data-k="${k}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button>
         <a href="${esc(i.web)}" target="_blank" rel="noopener"><span aria-hidden="true">🏛</span>${T("स्रोत", "Source")}</a>
         <button type="button" data-act="qr" data-k="${k}"><span aria-hidden="true">▦</span>QR</button>
         <button type="button" data-act="details" data-k="${k}"><span aria-hidden="true">≡</span>${T("विवरण", "Details")}</button>
@@ -96,15 +96,9 @@
   document.getElementById("sheetx").onclick = closeSheet;
   sheet.addEventListener("click", (e) => { if (e.target === sheet) closeSheet(); });
   function shareSheet(a) {
-    const i = a.info[G.lang] || a.info.ne, u = encodeURIComponent(url(a)), tx = encodeURIComponent(i.params["gati:summary160"] || i.headline);
-    const L = [["Viber", `viber://forward?text=${tx}%20${u}`], ["Facebook", `https://www.facebook.com/sharer/sharer.php?u=${u}`], ["X", `https://x.com/intent/post?text=${tx}&url=${u}`],
-      ["WhatsApp", `https://wa.me/?text=${tx}%20${u}`], ["Telegram", `https://t.me/share/url?url=${u}&text=${tx}`]];
-    openSheet(`<h3>${T("सेयर गर्नुहोस्", "Share")}</h3><div class="share">${L.map(([n, h]) => `<a class="sbtn" href="${h}" target="_blank" rel="noopener">${n}</a>`).join("")}
-      <button class="sbtn" type="button" id="fcopy">${T("लिङ्क कपी गर्नुहोस्", "Copy link")}</button>${navigator.share ? `<button class="sbtn" type="button" id="fnative">${T("अन्य", "More")}</button>` : ""}</div>
-      <p class="meta">${T("सेयर गर्दा मूल स्रोत पनि उल्लेख गर्नुहोस्।", "When sharing, mention the original source.")}</p>`, "Share");
-    document.getElementById("fcopy").onclick = (e) => navigator.clipboard && navigator.clipboard.writeText(url(a)).then(() => (e.target.textContent = T("कपी भयो", "Copied")));
-    const n = document.getElementById("fnative"); if (n) n.onclick = () => navigator.share({ title: i.headline, url: url(a) }).catch(() => {});
+    const i = a.info[G.lang] || a.info.ne; G.share({ url: url(a), title: i.headline, text: i.headline });
   }
+
   function qrSheet(a) {
     openSheet(`<h3>QR · ${T("स्थायी लिङ्क", "Permalink")}</h3>${a.demo ? `<p>DEMO</p>` : `<img class="fqr" src="${R}stories/qr/${esc(a.identifier)}.svg" alt="QR" width="220" height="220">
       <p><a href="${esc(url(a))}">${esc(url(a))}</a></p><p><a href="${R}stories/img/${esc(a.identifier)}.png" download>${T("फिड तस्बिर (१०८०×१९२०)", "Feed image (1080×1920)")}</a></p>`}`, "QR");

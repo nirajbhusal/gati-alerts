@@ -301,3 +301,44 @@
   G.myGati = { open };
 })();
 
+/* Share: native Web Share where available, otherwise a minimal sheet (copy link, Facebook, X, WhatsApp, Viber) with monochrome icons. */
+(function () {
+  const G = window.Gati; if (!G) return;
+  const T = (ne, en) => (G.lang === "ne" ? ne : en);
+  const SV = (d, fill) => `<svg viewBox="0 0 24 24" width="22" height="22" ${fill ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${d}</svg>`;
+  const IC = {
+    link: SV('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>'),
+    fb: SV('<path d="M14 8h2.5V4.5H14A3.5 3.5 0 0 0 10.5 8v2.5H8V14h2.5v6H14v-6h2.5l.5-3.5h-3V8.5c0-.3.2-.5.5-.5z"/>'),
+    x: SV('<path d="M4 4l16 16M20 4 4 20"/>'),
+    wa: SV('<path d="M4.5 19.5l1.2-3.6A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.2 2.6 3.6 6 6.2 6.2l.9-1.6-2-1-1 .8a5 5 0 0 1-2.3-2.3l.8-1-1-2z"/>'),
+    vb: SV('<path d="M12 3.5c4.7 0 8 2.3 8 7s-3.3 7-8 7c-.8 0-1.5 0-2.2-.2L6.5 20v-3.3C4.9 15.5 4 13.3 4 10.5c0-4.7 3.3-7 8-7z"/><path d="M9.5 8.5c.3 2.6 2.4 4.7 5 5l.8-1.2-1.6-.9-.8.6a3.6 3.6 0 0 1-1.9-1.9l.6-.8-.9-1.6z"/>'),
+    share: SV('<circle cx="6" cy="12" r="2.3"/><circle cx="18" cy="6" r="2.3"/><circle cx="18" cy="18" r="2.3"/><path d="m8 11 8-4M8 13l8 4"/>') };
+  G.SHAREICON = IC.share;
+  let sh = null;
+  function sheet(url, text) {
+    const u = encodeURIComponent(url), tx = encodeURIComponent(text || document.title);
+    if (!sh) { sh = document.createElement("div"); sh.className = "shs"; sh.setAttribute("role", "dialog"); sh.setAttribute("aria-modal", "true"); sh.hidden = true; document.body.appendChild(sh); }
+    sh.innerHTML = `<div class="shback"></div><div class="shpanel"><div class="shhead"><h2>${T("सेयर गर्नुहोस्", "Share")}</h2><button type="button" class="shx" aria-label="${T("बन्द", "Close")}">×</button></div>
+      <p class="shurl">${G.esc(url)}</p>
+      <div class="shgrid"><button type="button" class="shb" data-copy>${IC.link}<span>${T("लिङ्क कपी", "Copy link")}</span></button>
+      <a class="shb" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">${IC.fb}<span>Facebook</span></a>
+      <a class="shb" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${tx}&url=${u}">${IC.x}<span>X</span></a>
+      <a class="shb" target="_blank" rel="noopener" href="https://wa.me/?text=${tx}%20${u}">${IC.wa}<span>WhatsApp</span></a>
+      <a class="shb" href="viber://forward?text=${tx}%20${u}">${IC.vb}<span>Viber</span></a></div>
+      <p class="meta">${T("सेयर गर्दा मूल स्रोत पनि उल्लेख गर्नुहोस्।", "When sharing, mention the original source.")}</p></div>`;
+    const close = () => (sh.hidden = true);
+    sh.querySelector(".shback").onclick = close; sh.querySelector(".shx").onclick = close; sh.onkeydown = (e) => e.key === "Escape" && close();
+    sh.querySelector("[data-copy]").onclick = async (e) => { const b = e.currentTarget; try { await navigator.clipboard.writeText(url); } catch (x) { const t = document.createElement("textarea"); t.value = url; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); } b.querySelector("span").textContent = T("कपी भयो", "Copied"); };
+    sh.hidden = false; sh.querySelector(".shx").focus();
+  }
+  G.share = async ({ url = location.href, title = document.title, text = "" } = {}) => {
+    if (navigator.share && !G.forceShareSheet) { try { await navigator.share({ title, text, url }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+    sheet(url, text || title);
+  };
+  /* any element with data-share opens it */
+  document.addEventListener("click", (e) => { const b = e.target.closest("[data-share]"); if (!b) return; e.preventDefault(); G.share({ url: b.dataset.share || location.href.split("#")[0], title: b.dataset.title || document.title, text: b.dataset.text || "" }); });
+  /* page-level share button at the end of every page */
+  const main = document.getElementById("main"), page = document.body.dataset.page;
+  if (main && !["stories", "embed"].includes(page)) { const p = document.createElement("div"); p.className = "pgshare"; p.innerHTML = `<button type="button" class="shbtn" data-share="">${IC.share}<span>${T("यो पृष्ठ सेयर गर्नुहोस्", "Share this page")}</span></button>`; main.appendChild(p);
+    G.onLang(() => (p.querySelector("span").textContent = T("यो पृष्ठ सेयर गर्नुहोस्", "Share this page"))); }
+})();

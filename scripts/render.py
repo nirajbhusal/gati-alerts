@@ -186,9 +186,9 @@ def share_buttons(url, text):
     links = [("Viber", f"viber://forward?text={tx}%20{u}"), ("Facebook", f"https://www.facebook.com/sharer/sharer.php?u={u}"),
              ("X", f"https://x.com/intent/post?text={tx}&url={u}"), ("WhatsApp", f"https://wa.me/?text={tx}%20{u}"),
              ("Telegram", f"https://t.me/share/url?url={u}&text={tx}")]
-    a = "".join(f'<a class="sbtn" href="{e(h)}" target="_blank" rel="noopener">{n}</a>' for n, h in links)
-    return (f'<div class="share" aria-label="Share">{a}<button class="sbtn" type="button" data-copy="{e(url)}">'
-            f'{b("लिङ्क कपी गर्नुहोस्", "Copy link")}</button></div>')
+    a = "".join(f'<a class="sbtn" href="{e(h)}" target="_blank" rel="noopener">{n}</a>' for n, h in links if n != "Telegram")
+    return (f'<div class="share" aria-label="Share"><button class="shbtn" type="button" data-share="{e(url)}" data-text="{e(text)}">'
+            f'{b("सेयर गर्नुहोस्", "Share")}</button><noscript>{a}</noscript></div>')
 
 
 def permalink(a, by, now):
