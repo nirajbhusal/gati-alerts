@@ -744,3 +744,35 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 @media(max-width:720px){.brand .tagline{display:none!important}}
 .htag{display:none;margin:18px 0 0;font-size:.92rem;color:var(--slate)}.htag+.hdate{margin-top:2px}
 @media(max-width:720px){.htag{display:block}}
+/* Home dashboard slider */
+.dslider{margin:28px 0}.dshead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.dshead h2{margin:0;font-size:1.2rem;font-weight:600}
+.dsnav{display:none;gap:8px}@media(min-width:721px){.dsnav{display:flex}}
+.dsnav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer}.dsnav button:disabled{opacity:.35;cursor:default}
+.dstrack{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px;outline:0;overscroll-behavior-x:contain}.dstrack::-webkit-scrollbar{display:none}
+.dstrack:focus-visible{outline:2px solid #003893;outline-offset:2px;border-radius:20px}
+.dslide{flex:0 0 100%;scroll-snap-align:start;background:var(--surface2);border-radius:20px;padding:20px;display:flex;flex-direction:column;min-height:300px;box-sizing:border-box}
+@media(min-width:900px){.dslide{flex-basis:calc(50% - 8px)}}
+.dslide h3{margin:0 0 14px;font-size:1rem;font-weight:600;color:var(--ink)}.dsbody{flex:1}
+.dsfoot{margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}.dsfoot .meta{margin:0 0 8px;font-size:.8rem}
+.dsfr{display:flex;justify-content:space-between;align-items:center;gap:8px}.dsmore{font-weight:600;font-size:.9rem;text-decoration:none}
+.dsdots{display:flex;justify-content:center;gap:8px;margin-top:14px}.dsdots button{width:8px;height:8px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
+.dsdots button[aria-selected=true]{background:var(--ink);width:22px;border-radius:4px}
+.dsgrid2{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:480px){.dsgrid2{grid-template-columns:1.1fr 1fr;align-items:center}}
+.dsmap{width:100%;height:auto;display:block}
+.dsrow{display:grid;grid-template-columns:7.5em 1fr 2em;gap:8px;align-items:center;margin:0 0 8px;font-size:.88rem}.dsrow b{text-align:right}
+.dslab{color:var(--slate);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.86rem}
+.dsbar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line);gap:1px}.dsbar i{display:block}
+.dsnote{font-size:.76rem!important;margin:8px 0}
+.dsleg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.76rem;color:var(--slate);margin-top:6px}.dsleg span{display:inline-flex;align-items:center;gap:5px}.dsleg i{display:inline-block;width:10px;height:10px;border-radius:3px}
+.dswx{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.dswx li{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.78rem;text-align:center;color:var(--slate)}.dswx li b{color:var(--ink);font-size:.82rem;font-weight:600}
+.dswx li i{display:block;width:100%;height:10px;border-radius:5px;background:#3cb043}.dswx li.lv-yellow i{background:#F5D90A}.dswx li.lv-orange i{background:#f7941d}.dswx li.lv-red i{background:#e2231a}
+.dssum{margin:14px 0 0;font-size:.92rem;line-height:1.5}
+.dsroads,.dsriv{list-style:none;margin:0;padding:0;display:grid;gap:7px;max-height:220px;overflow:auto}
+.dsroads li{display:flex;justify-content:space-between;gap:10px;align-items:center}.dsst{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--ink)}.dsst i{width:28px;height:8px;border-radius:4px;background:var(--c)}
+.dsriv li{display:grid;grid-template-columns:8.5em 1fr 3.4em;gap:8px;align-items:center;font-size:.85rem}.dsriv b{text-align:right;font-weight:600}
+.dsrb{position:relative;height:10px;border-radius:5px;background:var(--line)}.dsrb .lvl{position:absolute;left:0;top:0;bottom:0;border-radius:5px}
+.mk{position:absolute;top:-3px;bottom:-3px;width:2px}.mk.w{background:#E8770E}.mk.d{background:#C81E1E}.dsleg .mk{position:static;display:inline-block;width:3px;height:12px;border-radius:1px}
+.dsbig{margin:0;font-size:2rem;font-weight:700;line-height:1.1}
+.dsaq{display:flex;gap:16px;align-items:center}.dsgauge{width:150px;flex:none;color:var(--ink)}
+.dsna{color:var(--ink);margin:20px 0}
