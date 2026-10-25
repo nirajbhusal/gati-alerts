@@ -1135,3 +1135,7 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
 /* Fix sweep 6: reserve the space Home's late-filled blocks take, so the page does not jump while they load */
 .home #mydist:empty{min-height:147px}.home #today:empty{min-height:1450px}.home #afslider:empty{min-height:80px}.home #dslider:empty{min-height:590px}.home #services:empty{min-height:425px}
 @media(min-width:721px){.home #mydist:empty{min-height:78px}.home #today:empty{min-height:1060px}.home #afslider:empty{min-height:46px}.home #dslider:empty{min-height:488px}.home #services:empty{min-height:258px}}
+/* Fix sweep 7: main fills the screen, so the footer starts below the fold and is not shoved down as data arrives */
+body:not(.storypage) > main#main{min-height:100vh;min-height:100dvh}
+.dash #sumcard:empty{min-height:132px}
+.roadlist:has(#roadList:empty){min-height:464px}
