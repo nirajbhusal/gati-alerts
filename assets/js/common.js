@@ -23,7 +23,7 @@
   const NAV = [
     ["alerts", "alerts/", "सूचना", "Alerts"],
     ["map", "map/", "नक्सा", "Map"],
-    ["stories", "stories/", "सूचना फिड", "Feed"],
+    ["stories", "stories/", "फिड", "Feed"],
     ["patro", "patro/", "पात्रो", "Patro"],
     ["ask", "ask/", "सोध्नुहोस्", "Ask"],
   ];
