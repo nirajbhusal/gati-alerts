@@ -20,7 +20,7 @@
       document.getElementById("cdist").innerHTML = `<h2 style="margin-top:0">${T("जिल्लाका नम्बर", "District numbers")}${n ? ": " + esc(n) : ""}</h2>` + (dd && dd.length ? "" :
         `<div class="na"><strong>${T("उपलब्ध छैन", "Not available")}</strong>. ${esc(T(C.districts_note_ne, C.districts_note_en))}<div style="margin-top:var(--s3)"><a class="callbtn sm" href="tel:1234">☎ ${G.num("1234")} · DEOC</a></div><p class="meta">${T("अन्तिम जाँच", "Last checked")}: ${G.num(C.checked)}</p></div>`);
     });
-    document.getElementById("cnote").textContent = T("यो साइटको अस्वीकरणमा अझै पुरानो विपद् नम्बर ११४९ लेखिएको छ; NDRRMA अनुसार अब १२३४ हो।", "Note: this site's disclaimer still mentions the older disaster number 1149; per NDRRMA it is now 1234.");
+    document.getElementById("cnote").textContent = T("यहाँ आपतकालीन नम्बर मात्र राखिएका छन्। विपद् हेल्पलाइन १२३४ ले पुरानो ११४९ लाई प्रतिस्थापन गरेको हो (NDRRMA)।", "Emergency numbers only. Disaster helpline 1234 replaced the older 1149 (NDRRMA).");
   }
   q.oninput = draw; draw(); G.onLang(draw);
 })();

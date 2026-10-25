@@ -85,6 +85,6 @@ moderator dashboard would follow. Until then, no secrets are stored in this repo
 Logo concept A "Ga-Signal", Himal Navy `#0E2A47`, River Teal `#0F7C86`, Glacier `#7FD1D8` (Signal Amber only in the logo arcs),
 CAP severity scale Extreme `#7A0019`, Severe `#C81E1E`, Moderate `#E8770E`, Minor `#F5C518`, Info `#2B6CB0`. Fonts: Mukta, Inter.
 
-Maintainer: Niraj Bhusal · [WhatsApp](https://wa.me/9779701010000) · neerajbhusal@gmail.com. Emergencies: 100, 101, 102, 1149.
+Maintainer: Niraj Bhusal · [WhatsApp](https://wa.me/9779701010000) · neerajbhusal@gmail.com. Emergencies: 100, 101, 102, 103, 1234.
 
 Name note: the repo is `gati-alerts` because `nirajbhusal/gati` already hosts a separate project (Nepali Patro PWA).

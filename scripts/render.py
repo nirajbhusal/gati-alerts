@@ -163,7 +163,7 @@ def story_png(a, out, now):
     d.text((W - 70 - 340, H - 210), "पूरा सूचना / Full notice", font=font("Regular", 30), fill="#7FD1D8")
     d.line([70, H - 150, W - 70, H - 150], fill="#2C4A6B", width=3)
     d.text((70, H - 130), "गतिले आधिकारिक चेतावनी जारी गर्दैन; मूल स्रोत हेर्नुहोस्।", font=font("Regular", 34), fill="#FFFFFF")
-    d.text((70, H - 80), "Relayed by Gati, not an official warning. Emergency: 100 · 1149", font=font("Regular", 30), fill="#7FD1D8")
+    d.text((70, H - 80), "Relayed by Gati, not an official warning. Emergency: 100 · 1234", font=font("Regular", 30), fill="#7FD1D8")
     out.parent.mkdir(parents=True, exist_ok=True)
     im.save(out, optimize=True)
     qdir = ROOT / "stories/qr"; qdir.mkdir(parents=True, exist_ok=True)
@@ -257,9 +257,9 @@ def permalink(a, by, now):
 
 
 DISC_NE = ("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ "
-           "(विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।")
+           "(विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।")
 DISC_EN = ("<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source "
-           "(Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1149.")
+           "(Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")
 RW = {"open": ("खुला", "Open"), "oneway": ("एकतर्फी", "One-way"), "night": ("राति बन्द", "Closed at night"), "closed": ("बन्द", "Blocked"), "none": ("स्थिति पुष्टि भएन", "Not confirmed")}
 
 
@@ -301,7 +301,7 @@ def lite(alerts, now):
 <p class="d">{DISC_EN}</p>
 <p><small>Built: {npt(now.isoformat(), "en")} · <a href="../">Full site</a> · <a href="../atom.xml">Atom feed</a></small></p>
 {sec("en")}
-<hr><p><small>प्रहरी १०० · दमकल १०१ · एम्बुलेन्स १०२ · विपद् ११४९ · <a href="../alerts/">सबै सूचना / Archive</a> · <a href="../sources/">स्रोत / Sources</a></small></p>
+<hr><p><small>प्रहरी १०० · दमकल १०१ · एम्बुलेन्स १०२ · विपद् १२३४ · <a href="../alerts/">सबै सूचना / Archive</a> · <a href="../sources/">स्रोत / Sources</a></small></p>
 </body></html>'''
     (ROOT / "lite").mkdir(exist_ok=True)
     (ROOT / "lite/index.html").write_text(page, encoding="utf-8")

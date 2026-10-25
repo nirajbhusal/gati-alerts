@@ -20,7 +20,7 @@ else starts as **Reported** and must earn **Verified**.
 1. **Triage (target: within 30 min in an active event).** Remove personal data (phone numbers, names of private
    people, faces of victims, exact home locations) by editing the issue. If the report is spam/unsafe: remove
    `reported`, add `unverified`, close.
-2. **Check for a life-safety need.** If someone is in danger, call or tell 100 / 101 / 102 / 1149 and the District
+2. **Check for a life-safety need.** If someone is in danger, call or tell 100 / 101 / 102 / 1234 and the District
    Emergency Operation Centre. Gati is not a rescue channel.
 3. **Corroborate.** Mark `verified` only if at least one holds:
    - **Two or more independent reports** of the same hazard at the same place (same ward or ≤ 1 km) within a

@@ -89,7 +89,7 @@
     return `<div class="fmain fend"><h2>${nAct ? T("सबै हेरिसक्नुभयो", "You're all caught up") : T("अहिले गतिमा कुनै चालु सूचना छैन", "No active alert in Gati right now")}</h2>
       <p>${T("यसको अर्थ खतरा छैन भन्ने होइन। आफ्नो क्षेत्रको आधिकारिक सूचना र मौसम हेरिरहनुहोस्।", "This is not an all clear and implies no absence of risk. Keep checking official notices and the weather for your area.")}</p>
       <p><a href="${R}alerts/">${T("सबै सूचनाको अभिलेख", "Archive of all alerts")}</a> · <a href="${R}?view=dashboard">${T("ड्यासबोर्ड", "Dashboard")}</a> · <a href="${R}patro/">${T("पात्रो", "Patro")}</a></p>
-      <p class="fdisc">${T("आपत्कालमा १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।", "In an emergency call 100, 101, 102 or 1149.")}</p></div>`;
+      <p class="fdisc">${T("आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "In an emergency call 100, 101, 102 or 1234.")}</p></div>`;
   }
   function openSheet(html, label) { sb.innerHTML = html; sheet.hidden = false; sheet.setAttribute("aria-label", label); document.getElementById("sheetx").focus(); }
   const closeSheet = () => { sheet.hidden = true; };
