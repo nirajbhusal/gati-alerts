@@ -1297,3 +1297,5 @@ body.brkwait main,body.brkwait footer{visibility:hidden}
 .rblk{margin:4px 0;color:#B42318;font-weight:600;font-size:var(--fs-5)}html[data-theme=dark] .rblk{color:#FF8A80}
 .ralts h2{font-size:var(--fs-3);margin:0 0 8px}.ralt{border-top:1px solid var(--line);padding:8px 0}.ralt summary{cursor:pointer;line-height:1.5}.ralt .reta{display:inline}
 .mxroute{margin:0 0 8px 8px;padding:8px 12px;font-size:var(--fs-5);max-width:300px;background:var(--surface,#fff);color:var(--ink)}.mxroute ul{list-style:none;margin:4px 0;padding:0}.mxroute i{display:inline-block;width:18px;height:0;border-top:4px solid #2F6FED;vertical-align:middle;margin-right:6px}.mxroute i.alt{border-top-style:dashed}
+/* Map with a route: fade the base layers so the chosen route stands out */
+.mxrouting .leaflet-overlay-pane path{opacity:.16!important}
