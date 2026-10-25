@@ -52,7 +52,7 @@
   header.className = "top";
   header.innerHTML = `<a class="skip" href="#main">${b("मुख्य भागमा जानुहोस्", "Skip to content")}</a>
   <div class="bar">
-    <a class="brand" href="${ROOT}?home=1" aria-label="${b("गति: गृहपृष्ठ", "Gati: home")}"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"></a>
+    <a class="brand" href="${ROOT}?home=1" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, समयमै।", "The right alert, right on time.")}</small></a>
     <div class="prefs" role="group" aria-label="Display / देखाउने तरिका">
       <button class="pbtn" type="button" id="numbtn" title="Numerals / अङ्क"></button>
       <button class="pbtn" type="button" id="calbtn" title="BS / AD"></button>
@@ -127,6 +127,10 @@
   G.listeners.push(txtBtn); txtBtn();
   G.listeners.push(prefBtns);
   G.onLang = (f) => G.listeners.push(f);
+  /* Tagline in the tab title follows the language */
+  const TAG = ["सही सूचना, समयमै।", "The right alert, right on time."];
+  const tagTitle = (l) => { const t = document.title; document.title = l === "en" ? t.replace(TAG[0], TAG[1]) : t.replace(TAG[1], TAG[0]); };
+  G.listeners.push(tagTitle); tagTitle(G.lang);
 
   const DEV = "०१२३४५६७८९";
   G.devNum = () => (G.numPref || G.lang) === "ne";

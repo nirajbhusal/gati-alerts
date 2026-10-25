@@ -27,7 +27,7 @@
     // greeting removed in minimal design
     const _g = h < 12 ? T("शुभ प्रभात, हजुर", "Good morning") : h < 17 ? T("नमस्ते, हजुर", "Good afternoon") : T("शुभ सन्ध्या, हजुर", "Good evening");
     const bsTxt = b ? (G.lang === "ne" ? `${BS.MN[b.m - 1]} ${G.num(String(b.d))}, ${G.num(String(b.y))}` : `${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
-    box.innerHTML = `<p class="hdate">${bsTxt} · ${T(BS.WN[now.getUTCDay()], BS.WE[now.getUTCDay()])}</p>
+    box.innerHTML = `<p class="htag">${T("सही सूचना, समयमै।", "The right alert, right on time.")}</p><p class="hdate">${bsTxt} · ${T(BS.WN[now.getUTCDay()], BS.WE[now.getUTCDay()])}</p>
       <div class="qstrip" role="list">
         <button type="button" role="listitem" class="qs" data-q="near"><span>◎</span>${T("के म प्रभावित छु?", "Am I affected?")}</button>
         <a role="listitem" class="qs" href="tel:1234"><span>☎</span>${T("१२३४ विपद्", "1234 Disaster")}</a>

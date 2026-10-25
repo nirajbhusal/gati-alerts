@@ -736,6 +736,11 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 .aqhead b,.aqhead h2,.aqhead strong,.aqhead small,.aqhead span{color:var(--ink)!important}.aqhead small,.aqhead span{color:var(--slate)!important}
 /* Official logo */
 .brand img.logo{width:auto;height:40px;border-radius:0;display:block}.brand .logo-d{display:none}
-html[data-theme=dark] .brand .logo-l{display:none}html[data-theme=dark] .brand .logo-d{display:block}
+.brand img.logo-d{display:none}html[data-theme=dark] .brand img.logo-l{display:none}html[data-theme=dark] .brand img.logo-d{display:block}
 @media(max-width:440px){.brand img.logo{height:34px}}
 .aqhead img,.mecard-top img{border-radius:10px;background:none!important}
+/* Tagline */
+.brand .tagline{display:block;font-size:.78rem;color:var(--slate)!important;line-height:1.2;padding-left:12px;margin-left:2px;border-left:1px solid var(--line);white-space:nowrap}
+@media(max-width:720px){.brand .tagline{display:none!important}}
+.htag{display:none;margin:18px 0 0;font-size:.92rem;color:var(--slate)}.htag+.hdate{margin-top:2px}
+@media(max-width:720px){.htag{display:block}}
