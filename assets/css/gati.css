@@ -1191,3 +1191,7 @@ html:not([data-theme=dark]) .aqcat{color:var(--ink)!important;filter:none}
 html:not([data-theme=dark]) .tdtxt b[style],html:not([data-theme=dark]) .tdsun b{color:#166534!important}
 html[data-theme=dark] figcaption,html[data-theme=dark] figcaption *{color:var(--ink)!important}
 html[data-theme=dark] .helplines a{background:var(--surface)!important;color:var(--ink)!important;border-color:var(--line)!important}
+/* Fix sweep 15: Weather reserves the usual height of its late-filled cards so nothing jumps as forecasts arrive */
+.dash #wxfc{min-height:1000px}.dash #wxmine{min-height:134px}.dash #wx5{min-height:867px}.dash #wxmodel{min-height:476px}.dash #air{min-height:502px}.dash #wxrain{min-height:201px}
+@media(min-width:721px){.dash #wxfc,.dash #wxmine{min-height:789px}.dash #wx5{min-height:315px}.dash #wxmodel{min-height:407px}.dash #air{min-height:398px}.dash #wxrain{min-height:150px}}
+body[data-page=weather] #mydist:empty{min-height:44px}
