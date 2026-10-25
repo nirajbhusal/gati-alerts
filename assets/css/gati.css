@@ -1078,3 +1078,7 @@ div.srcflag .sfh{font-weight:700}div.srcflag ul{margin:6px 0;padding-left:1.1em}
 div.srcflag a{display:inline;padding:0;background:none!important;border:0!important;color:#8A4B00!important;text-decoration:underline!important}div.srcflag .meta{color:#8A4B00}
 html[data-theme=dark] div.srcflag{background:#3A2A12;color:#FFD9A8}html[data-theme=dark] div.srcflag a,html[data-theme=dark] div.srcflag .meta{color:#FFD9A8!important}
 .tdhead .tts{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:var(--fs-5);font-weight:600;cursor:pointer}.tdhead .tts[aria-pressed=true]{border-color:var(--saffron)}
+/* Feature 6: seasonal readiness bands */
+.pseasons{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 10px;background:var(--surface)}.pseasons h3{margin:0 0 6px;font-size:var(--fs-4)}
+.pseasons ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.pseasons li{display:flex;gap:10px;align-items:flex-start}.pseasons .sband{flex:none;width:28px;height:10px;border-radius:3px;margin-top:7px}.pseasons p{margin:6px 0 0}
+.pday .pbands .band{height:5px!important}

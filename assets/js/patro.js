@@ -127,9 +127,15 @@
     side();
     const days = range().map(day);
     document.getElementById("ptitle").innerHTML = title(days);
+    /* Feature 6: seasonal readiness bands for the days in view (or the next one on quiet months) */
+    const MO = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], MN = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"];
+    const md = (x) => { const [m, d] = x.split("-").slice(-2).map(Number); return T(`${MN[m - 1]} ${G.num(String(d))}`, `${d} ${MO[m - 1]}`); };
+    const inView = (cal.seasons || []).filter((s) => days.some((x) => x.se.includes(s)));
+    const showS = inView.length ? inView : (cal.seasons || []).filter((s) => !s.from_ad).map((s) => { const y = new Date(days[days.length - 1].ms).getUTCFullYear(); let st = `${y}-${s.from_md}`; if (st <= days[days.length - 1].ad) st = `${y + 1}-${s.from_md}`; return [st, s]; }).sort((a, b) => a[0].localeCompare(b[0])).slice(0, 1).map((x) => x[1]);
+    const seasonHTML = showS.length ? `<div class="pseasons"><h3>${inView.length ? T("मौसमी तयारी", "Seasonal readiness") : T("अर्को मौसमी जोखिम", "Next seasonal risk")}</h3><ul>${showS.map((s) => `<li><i class="sband" style="background:${s.colour}"></i><span><b>${esc(T(s.title_ne, s.title_en))}</b> · ${s.from_ad ? md(s.from_ad) : md(s.from_md)} ${T("देखि", "to")} ${s.to_ad ? md(s.to_ad) : md(s.to_md)}${T(" सम्म", "")} <span class="meta">${T("स्रोत", "Source")}: ${s.sourceUrl ? `<a href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">${esc(s.source)}</a>` : esc(s.source)}</span></span></li>`).join("")}</ul><p class="meta"><a href="${G.root}safety/">${T("तयारी कसरी गर्ने", "How to prepare")} →</a></p></div>` : "";
     const g = document.getElementById("pgrid");
-    if (view === "week") g.innerHTML = `<div class="pweek">${days.map(weekRow).join("")}</div>`;
-    else g.innerHTML = `<div class="pmonth">${(G.lang === "ne" ? WS_NE : WS_EN).map((w, k) => `<div class="pwh${k === 6 ? " hol" : ""}">${w}</div>`).join("")}
+    if (view === "week") g.innerHTML = seasonHTML + `<div class="pweek">${days.map(weekRow).join("")}</div>`;
+    else g.innerHTML = seasonHTML + `<div class="pmonth">${(G.lang === "ne" ? WS_NE : WS_EN).map((w, k) => `<div class="pwh${k === 6 ? " hol" : ""}">${w}</div>`).join("")}
       ${weeks(days)}</div>`;
     g.querySelectorAll(".pday").forEach((b) => (b.onclick = () => { sel = b.dataset.ad; draw(); }));
     const p = document.getElementById("ppanel");
