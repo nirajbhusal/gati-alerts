@@ -992,3 +992,4 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .hhead{margin:8px 0 14px}.hh1{margin:0;font-size:1.6rem;line-height:1.2}.hsub{margin:2px 0 0;color:var(--slate);font-size:.9rem}
 @media(max-width:720px){body[data-page=home] .bar .brand .tagline{display:none!important}}
 .swtoast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));z-index:3000;font:inherit;font-size:14px;font-weight:600;min-height:44px;padding:10px 18px;border-radius:999px;border:0;background:#0E2A47;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer}
+.brkx{width:44px;height:44px;min-width:44px;flex:none}

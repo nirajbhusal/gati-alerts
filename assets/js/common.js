@@ -95,7 +95,7 @@
   G.breaking = () => G.json("data/alerts.json").then((d) => { const now = Date.now(), SV = ["Moderate", "Severe", "Extreme"];
     return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity))
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
-  const dismissed = () => { try { return JSON.parse(localStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
+  const dismissed = () => { try { return JSON.parse(sessionStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
   /* 'Am I affected?' chip: links to /affected/ prefilled with the alert's district(s) */
   /* BS day label for bulletin days: Nepali as given, English as 'Kartik 12 (29 Oct)' */
   G.bsDay = (d) => { if (G.lang === "ne") return d.bs; const [y, m, dd] = d.ad.split("-").map(Number), MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"], b = window.BS && BS.toBS(y, m, dd);
@@ -103,10 +103,12 @@
   G.affChip = (codes) => { const c = (codes || []).filter(Boolean); return `<a class="afx" href="${ROOT}affected/${c.length ? "#d=" + encodeURIComponent(c[0]) + (c.length > 1 ? "&ds=" + encodeURIComponent(c.join(",")) : "") : ""}"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>${G.lang === "ne" ? "के म प्रभावित छु?" : "Am I affected?"}</a>`; };
   const brkItem = (a, x) => { const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity];
     return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a><span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${G.affChip(a.districts)}${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
-  const drawBreaking = () => G.breaking().then((L) => {
+  /* Breaking bar only on Home and Alerts; dismissal lasts for this browser session, per alert identifier */
+  const BRK_PAGES = ["home", "alerts"];
+  const drawBreaking = () => !BRK_PAGES.includes(PAGE) ? Promise.resolve(brk.hidden = true) : G.breaking().then((L) => {
     const dis = dismissed(), show = L.filter((a) => !dis.includes(a.identifier));
     brk.hidden = !show.length; brk.innerHTML = show.length ? `<ul class="wrap" aria-label="${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking alerts"}">${show.map((a) => brkItem(a, true)).join("")}</ul>` : "";
-    brk.querySelectorAll(".brkx").forEach((x) => (x.onclick = () => { try { localStorage.setItem("gati-brk-dismissed", JSON.stringify([...dismissed(), x.dataset.id].slice(-100))); } catch (e) {} drawBreaking(); }));
+    brk.querySelectorAll(".brkx").forEach((x) => (x.onclick = () => { try { sessionStorage.setItem("gati-brk-dismissed", JSON.stringify([...dismissed(), x.dataset.id].slice(-100))); } catch (e) {} drawBreaking(); }));
     const list = document.getElementById("breakinglist"); if (list) list.innerHTML = `<h2>${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</h2>` + (L.length ? `<ul class="brklist">${L.map((a) => brkItem(a, false)).join("")}</ul>` : `<p class="meta">${G.lang === "ne" ? "पछिल्लो २४ घण्टामा मध्यम वा सोभन्दा माथिको चालु आधिकारिक चेतावनी छैन।" : "No active official alert of Moderate or higher severity issued in the last 24 hours."}</p>`);
   }).catch(() => { brk.hidden = true; });
   if (document.body.dataset.page !== "embed") setTimeout(() => { drawBreaking(); G.onLang(drawBreaking); }, 0);
