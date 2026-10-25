@@ -1267,9 +1267,9 @@ html[data-theme=dark]{--gdtrack:#22364A;--gdok:#3FBF84;--gdblue:#6E9BF5}
 @media(max-width:520px){.gd-home .gdrows li,.gd-alerts .gdrows li,.gd-map .gdrows li{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto}}
 .gdash .gdh{margin:0 0 8px;padding:0;border:0}.gdash .gdh::before,.gdash .gdh::after{display:none}
 /* CLS: reserve the header's space until common.js inserts it (body.ghdr), so content does not move down */
-body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;height:114px}
-@media(max-width:720px){body[data-page]:not(.storypage):not(.ghdr)::before{height:80.375px}}
-@media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:65px}}
+body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;height:106px}
+@media(max-width:720px){body[data-page]:not(.storypage):not(.ghdr)::before{height:57px}}
+@media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:57px}}
 .gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}
 /* static #gdash placeholders: reserve the dashboard height before dash.js runs */
 body[data-page=home] #gdash{min-height:993px}@media(min-width:760px){body[data-page=home] #gdash{min-height:688px}}
@@ -1299,3 +1299,28 @@ body.brkwait main,body.brkwait footer{visibility:hidden}
 .mxroute{margin:0 0 8px 8px;padding:8px 12px;font-size:var(--fs-5);max-width:300px;background:var(--surface,#fff);color:var(--ink)}.mxroute ul{list-style:none;margin:4px 0;padding:0}.mxroute i{display:inline-block;width:18px;height:0;border-top:4px solid #2F6FED;vertical-align:middle;margin-right:6px}.mxroute i.alt{border-top-style:dashed}
 /* Map with a route: fade the base layers so the chosen route stands out */
 .mxrouting .leaflet-overlay-pane path{opacity:.16!important}
+/* nav-full + centred header: logo and tagline centred on web and mobile */
+header.top .bar{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;max-width:1240px}
+header.top .bar .hl,header.top .bar .hr{display:flex;align-items:center;gap:6px;min-width:0}
+header.top .bar .hr{justify-content:flex-end}
+header.top .bar .brand{margin:0!important;justify-self:center;justify-content:center;grid-column:2}
+.langbtn .lshort{display:none}
+nav.main{justify-content:center;flex-wrap:wrap;max-width:1240px}
+nav.main .more[hidden]{display:none!important}
+nav.main .moremenu a[hidden]{display:none!important}
+@media(min-width:721px){header.top .bar{padding-top:6px!important;padding-bottom:6px!important}header.top .bar .menubtn{display:none!important}nav.main a.nx{white-space:nowrap}nav.main a{padding-left:10px!important;padding-right:10px!important}}
+@media(max-width:720px){
+  nav.main a.nx{display:none!important}
+  header.top .bar{position:relative;display:flex!important;justify-content:space-between;padding:8px 8px!important;gap:4px}
+  header.top .bar .hl,header.top .bar .hr{gap:2px;flex:0 0 auto}
+  header.top .bar .hl .srchbtn{display:none!important}
+  header.top .bar .brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);flex-direction:column!important;align-items:center!important;gap:1px!important;text-align:center}
+  header.top .bar .brand .tagline{text-align:center;max-width:112px!important;white-space:normal!important}
+  header.top .bar .brand .logo{height:30px!important}
+  header.top .bar .menubtn{display:inline-grid!important;place-items:center;min-width:38px;min-height:40px;padding:0}
+  header.top .bar .hr .mebtn{width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0}
+  .langbtn .lfull{display:none}.langbtn .lshort{display:inline}
+  header.top .bar .langbtn{min-width:36px;min-height:36px;padding:0 8px!important}
+}
+@media(max-width:720px){body[data-page=home] header.top .bar .brand .tagline{display:block!important}}
+@media(max-width:359px){header.top .bar .brand .tagline{display:none!important}}

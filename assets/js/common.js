@@ -60,17 +60,21 @@
   header.className = "top";
   header.innerHTML = `<a class="skip" href="#main">${b("मुख्य भागमा जानुहोस्", "Skip to content")}</a>
   <div class="bar">
-    <a class="brand" href="${ROOT}?home=1" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
-    <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
+    <div class="hl">
+    <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="मेनु / Menu">☰</button>
     <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
+    </div>
+    <a class="brand" href="${ROOT}?home=1" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
+    <div class="hr">
+    <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्"><span class="lfull">${b("English", "नेपाली")}</span><span class="lshort" aria-hidden="true">${b("EN", "ने")}</span></button>
     <button class="mebtn setbtn bellbtn" type="button" id="setbtn" aria-haspopup="dialog" aria-controls="setsheet" aria-label="सूचना / Notifications" title="सूचना / Notifications"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg><i class="bdot" hidden></i></button>
     <button class="mebtn profbtn" type="button" id="profbtn" aria-haspopup="dialog" aria-controls="medrawer" aria-label="मेरो गति / My Gati" title="मेरो गति / My Gati"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></button>
-    <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="मेनु / Menu">☰</button>
+    </div>
   </div>
   <nav class="main" id="mainnav" aria-label="Main"><div class="navtop"><button type="button" class="navtopbtn" data-go="me">👤 ${b("मेरो गति", "My Gati")}</button><button type="button" class="navtopbtn" data-go="notif">🔔 ${b("सूचना", "Notifications")}</button></div><a class="navhome" href="${ROOT}?home=1" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
-    `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}
+    `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}
     <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
-      <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div><button class="mebtn navme" aria-label="मेरो गति / My Gati" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("मेरो गति", "My Gati")}</span></button></nav>`;
+      <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div><button class="mebtn navme" aria-label="मेरो गति / My Gati" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("मेरो गति", "My Gati")}</span></button></nav>`;
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
     <p class="fdisclaimer">${b("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</p>
@@ -128,6 +132,20 @@
   const morebtn = header.querySelector(".morebtn"), moremenu = header.querySelector(".moremenu");
   morebtn.onclick = (e) => { e.stopPropagation(); const o = moremenu.hidden; moremenu.hidden = !o; morebtn.setAttribute("aria-expanded", o); };
   document.addEventListener("click", () => { moremenu.hidden = true; morebtn.setAttribute("aria-expanded", false); });
+  /* nav-full: on desktop every menu item sits inline when the row has room; only what does not fit moves into More, last first */
+  const nxs = [...nav.querySelectorAll("a.nx")], mis = [...moremenu.querySelectorAll("a[data-id]")], moreW = morebtn.closest(".more");
+  const fitNav = () => {
+    if (innerWidth <= 720) { nxs.forEach((a) => (a.hidden = false)); mis.forEach((a) => (a.hidden = false)); moreW.hidden = false; return; }
+    nxs.forEach((a) => (a.hidden = false)); moreW.hidden = true;
+    const one = () => { const v = [...nav.children].filter((e) => !e.hidden && e.offsetParent && !e.classList.contains("navtop")); return v.every((e) => e.offsetTop === v[0].offsetTop); };
+    let k = nxs.length;
+    if (!one()) { moreW.hidden = false; while (k > 0 && !one()) nxs[--k].hidden = true; }
+    const out = new Set(nxs.slice(k).map((a) => a.dataset.id));
+    mis.forEach((a) => (a.hidden = !out.has(a.dataset.id)));
+    morebtn.toggleAttribute("aria-current", nxs.slice(k).some((a) => a.hasAttribute("aria-current")));
+    if (morebtn.hasAttribute("aria-current")) morebtn.setAttribute("aria-current", "page");
+  };
+  G.fitNav = fitNav; fitNav(); addEventListener("resize", fitNav); setTimeout(() => G.onLang(fitNav), 0); document.fonts && document.fonts.ready.then(fitNav);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !moremenu.hidden) { moremenu.hidden = true; morebtn.focus(); } });
   mb.onclick = () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); };
   /* Fix sweep 8: the phone menu closes with Escape (focus back on ☰) and when one of its in-page links is used */
