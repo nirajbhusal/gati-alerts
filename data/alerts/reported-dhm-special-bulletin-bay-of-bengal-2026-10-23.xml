@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-23T20:40:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://shilapatra.com/detail/197394</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>विशेष मौसम बुलेटिन</event>
+    <responseType>Prepare</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-23T20:40:00+05:45</effective>
+    <onset>2026-10-28T00:00:00+05:45</onset>
+    <expires>2026-11-01T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित</senderName>
+    <headline>बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह</headline>
+    <description>रिपोर्ट गरिएको (शिलापत्र र द काठमाडौं पोस्ट, दुवैले DHM मौसम पूर्वानुमान महाशाखाले कात्तिक ६ (शुक्रबार) साँझ जारी गरेको पोस्ट मनसुन विशेष मौसम बुलेटिन उद्धृत गरेका; बुलेटिनको ठ्याक्कै जारी समय स्रोतमा छैन, यहाँ पहिलो समाचारको समय राखिएको): शुक्रबार बिहान ५:४५ बजे पूर्वमध्य तथा आसपासको दक्षिणपूर्वी बंगालको खाडीमा न्यून चापीय क्षेत्र बनेको छ। यो क्रमशः बलियो हुँदै कात्तिक ९ (सोमबार) सम्म चक्रवातमा परिणत भई भारतको उत्तर आन्ध्र प्रदेश र दक्षिण ओडिशा तटतर्फ जान सक्छ। यसका कारण कात्तिक ११ (बुधबार) देखि १५ (आइतबार) सम्म नेपालको मौसम प्रभावित हुन सक्छ। नेपालमा कति वर्षा हुने र जोखिमको स्तर कस्तो हुने भन्ने अहिले यकिन गर्न नसकिने महाशाखाले जनाएको छ। कृषि र पर्यटन क्षेत्रमा असर पर्न सक्ने भएकाले सबैलाई सतर्क रहन आग्रह गरिएको छ। यो रङ्ग सङ्केत भएको चेतावनी होइन; DHM ले थप सूचना जारी गर्नेछ।</description>
+    <instruction>पाकेको धान र सुकाउन राखेको बाली जोगाउने तयारी गर्नुहोस्; कात्तिक ११ देखि १५ सम्म उच्च हिमाली पदयात्रा वा लामो पहाडी यात्राअघि DHM को पछिल्लो सूचना हेर्नुहोस्।</instruction>
+    <web>https://shilapatra.com/detail/197394</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://shilapatra.com/detail/197394</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-23T20:40:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://shilapatra.com/detail/197394</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Special weather bulletin</event>
+    <responseType>Prepare</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-23T20:40:00+05:45</effective>
+    <onset>2026-10-28T00:00:00+05:45</onset>
+    <expires>2026-11-01T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM) · relayed by Gati</senderName>
+    <headline>Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert</headline>
+    <description>Reported (Shilapatra and The Kathmandu Post, both citing the post-monsoon special weather bulletin issued by the DHM Meteorological Forecasting Division on the evening of Kartik 6 (Friday, 23 Oct); the exact issue time is not given, so the time of the first news report is used): a low-pressure area formed over the east-central and adjoining southeastern Bay of Bengal at 5:45 AM on Friday. It may strengthen into a cyclonic storm by Kartik 9 (Monday, 26 Oct) and move towards the coast of northern Andhra Pradesh and southern Odisha in India. Because of it, Nepal's weather may be affected from Kartik 11 (Wednesday, 28 Oct) to Kartik 15 (Sunday, 1 Nov). DHM says it is too early to say how much rain Nepal will get or how high the risk will be. It asks everyone to stay alert, as agriculture and tourism could be affected. This is not a colour-coded warning; DHM will issue further updates.</description>
+    <instruction>Prepare to protect ripe paddy and crops laid out to dry; before high-mountain treks or long hill journeys from 28 Oct to 1 Nov, check DHM's latest notice.</instruction>
+    <web>https://shilapatra.com/detail/197394</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://shilapatra.com/detail/197394</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-23T20:40:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://shilapatra.com/detail/197394</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

@@ -1,7 +1,353 @@
 {
- "generated": "2026-10-23T03:27:59+00:00",
- "count": 34,
+ "generated": "2026-10-25T03:30:54+00:00",
+ "count": 37,
  "alerts": [
+  {
+   "identifier": "np.gati.police-road-aarughat-soti-2026-10-25",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-10-25T09:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": "nepalpolice.gov.np,np.gati.police-road-aarughat-soti-2026-10-23,2026-10-23T09:00:00+05:45",
+   "file": "data/alerts/police-road-aarughat-soti-2026-10-25.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-25T09:00:00+05:45",
+     "onset": "2026-10-25T09:00:00+05:45",
+     "expires": "2026-10-26T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+     "description": "अद्यावधिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।०८ (कात्तिक ८) बिहान ९ बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो अझै पूर्ण रूपमा अवरुद्ध। देशभरको सूचीमा यही एउटा मात्र अवरोध छ।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-25T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-25T09:00:00+05:45",
+     "onset": "2026-10-25T09:00:00+05:45",
+     "expires": "2026-10-26T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+     "description": "Update: Nepal Police notice 'Road blockages', to 9 AM on 2083-07-08 (Kartik 8, 25 Oct 2026): the iron motorable bridge at Soti linking Aarughat-2 and 3 was swept away by the Budhi Gandaki flood of Asoj 25 (11 Oct), and the road is still fully blocked. This is the only blockage on the nationwide list.",
+     "instruction": "Do not use this road; check with local police before travelling.",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-25T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "Soti, Aarughat-2/3 (approximate location)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-10-26T09:00:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला",
+     "en": "Gorkha district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.05,84.81 3"
+     ],
+     "ne": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+     "en": "Soti, Aarughat-2/3 (approximate location)"
+    }
+   ],
+   "refIds": [
+    "np.gati.police-road-aarughat-soti-2026-10-23"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-21",
+     "msgType": "Alert",
+     "sent": "2026-10-21T18:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-23",
+     "msgType": "Update",
+     "sent": "2026-10-23T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25",
+     "msgType": "Update",
+     "sent": "2026-10-25T09:00:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-25",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-25T08:05:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+   "references": null,
+   "file": "data/alerts/reported-dhm-24h-forecast-2026-10-25.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-25T08:05:00+05:45",
+     "onset": "2026-10-25T08:05:00+05:45",
+     "expires": "2026-10-26T06:00:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
+     "headline": "कात्तिक ८ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात",
+     "description": "रिपोर्ट गरिएको (रिपब्लिका र ओएस नेपाल, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ८ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली र पहाडी भूभागमा आंशिक बदली, तराईमा मुख्यतया सफा। कोशी र गण्डकी प्रदेशका हिमाली भूभागका एक–दुई स्थानमा हल्का वर्षा र हिमपातको सम्भावना। आज राति कोशी, बागमती, गण्डकी र कर्णालीका हिमाली भूभागमा आंशिक बदली, बाँकी भागमा मुख्यतया सफा। बिहानीपख तराई, उपत्यका र खोँचमा केही स्थानमा हुस्सु/कुहिरो। यो दैनिक पूर्वानुमानमा कुनै चेतावनी उल्लेख छैन। बंगालको खाडीको मौसम प्रणालीबारे DHM को छुट्टै विशेष बुलेटिन (कात्तिक ११ देखि १५) पनि हेर्नुहोस्।",
+     "instruction": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।",
+     "web": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+      "gati:sourceTime": "2026-10-25T08:05:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+      "gati:sourceUrl2": "https://www.osnepal.com/detail/592819",
+      "gati:summary160": "कात्तिक ८ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-25T08:05:00+05:45",
+     "onset": "2026-10-25T08:05:00+05:45",
+     "expires": "2026-10-26T06:00:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
+     "headline": "25 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains",
+     "description": "Reported (Republica and OS Nepal, both citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 8): westerly winds have a partial influence. Partly cloudy in the hills and mountains this afternoon, mainly fair in the Terai. Light rain or snow is possible at one or two places in the Koshi and Gandaki mountains. Tonight partly cloudy in the Koshi, Bagmati, Gandaki and Karnali mountains, mostly fair elsewhere. Morning mist or fog in parts of the Terai, valleys and river basins. No warning is mentioned in this daily forecast. See also DHM's separate special bulletin on the Bay of Bengal weather system (28 Oct to 1 Nov).",
+     "instruction": "If travelling in the mountains, check DHM's latest forecast.",
+     "web": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+      "gati:sourceTime": "2026-10-25T08:05:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+      "gati:sourceUrl2": "https://www.osnepal.com/detail/592819",
+      "gati:summary160": "25 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Reported",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Unknown",
+   "expires": "2026-10-26T06:00:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला)",
+     "en": "Nepal (all districts)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-23T20:40:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://shilapatra.com/detail/197394",
+   "references": null,
+   "file": "data/alerts/reported-dhm-special-bulletin-bay-of-bengal-2026-10-23.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "विशेष मौसम बुलेटिन",
+     "responseType": "Prepare",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Possible",
+     "effective": "2026-10-23T20:40:00+05:45",
+     "onset": "2026-10-28T00:00:00+05:45",
+     "expires": "2026-11-01T23:59:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
+     "headline": "बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह",
+     "description": "रिपोर्ट गरिएको (शिलापत्र र द काठमाडौं पोस्ट, दुवैले DHM मौसम पूर्वानुमान महाशाखाले कात्तिक ६ (शुक्रबार) साँझ जारी गरेको पोस्ट मनसुन विशेष मौसम बुलेटिन उद्धृत गरेका; बुलेटिनको ठ्याक्कै जारी समय स्रोतमा छैन, यहाँ पहिलो समाचारको समय राखिएको): शुक्रबार बिहान ५:४५ बजे पूर्वमध्य तथा आसपासको दक्षिणपूर्वी बंगालको खाडीमा न्यून चापीय क्षेत्र बनेको छ। यो क्रमशः बलियो हुँदै कात्तिक ९ (सोमबार) सम्म चक्रवातमा परिणत भई भारतको उत्तर आन्ध्र प्रदेश र दक्षिण ओडिशा तटतर्फ जान सक्छ। यसका कारण कात्तिक ११ (बुधबार) देखि १५ (आइतबार) सम्म नेपालको मौसम प्रभावित हुन सक्छ। नेपालमा कति वर्षा हुने र जोखिमको स्तर कस्तो हुने भन्ने अहिले यकिन गर्न नसकिने महाशाखाले जनाएको छ। कृषि र पर्यटन क्षेत्रमा असर पर्न सक्ने भएकाले सबैलाई सतर्क रहन आग्रह गरिएको छ। यो रङ्ग सङ्केत भएको चेतावनी होइन; DHM ले थप सूचना जारी गर्नेछ।",
+     "instruction": "पाकेको धान र सुकाउन राखेको बाली जोगाउने तयारी गर्नुहोस्; कात्तिक ११ देखि १५ सम्म उच्च हिमाली पदयात्रा वा लामो पहाडी यात्राअघि DHM को पछिल्लो सूचना हेर्नुहोस्।",
+     "web": "https://shilapatra.com/detail/197394",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://shilapatra.com/detail/197394",
+      "gati:sourceTime": "2026-10-23T20:40:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://shilapatra.com/detail/197394",
+      "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
+      "gati:summary160": "बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Special weather bulletin",
+     "responseType": "Prepare",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Possible",
+     "effective": "2026-10-23T20:40:00+05:45",
+     "onset": "2026-10-28T00:00:00+05:45",
+     "expires": "2026-11-01T23:59:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
+     "headline": "Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert",
+     "description": "Reported (Shilapatra and The Kathmandu Post, both citing the post-monsoon special weather bulletin issued by the DHM Meteorological Forecasting Division on the evening of Kartik 6 (Friday, 23 Oct); the exact issue time is not given, so the time of the first news report is used): a low-pressure area formed over the east-central and adjoining southeastern Bay of Bengal at 5:45 AM on Friday. It may strengthen into a cyclonic storm by Kartik 9 (Monday, 26 Oct) and move towards the coast of northern Andhra Pradesh and southern Odisha in India. Because of it, Nepal's weather may be affected from Kartik 11 (Wednesday, 28 Oct) to Kartik 15 (Sunday, 1 Nov). DHM says it is too early to say how much rain Nepal will get or how high the risk will be. It asks everyone to stay alert, as agriculture and tourism could be affected. This is not a colour-coded warning; DHM will issue further updates.",
+     "instruction": "Prepare to protect ripe paddy and crops laid out to dry; before high-mountain treks or long hill journeys from 28 Oct to 1 Nov, check DHM's latest notice.",
+     "web": "https://shilapatra.com/detail/197394",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://shilapatra.com/detail/197394",
+      "gati:sourceTime": "2026-10-23T20:40:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://shilapatra.com/detail/197394",
+      "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
+      "gati:summary160": "Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Reported",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Unknown",
+   "expires": "2026-11-01T23:59:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला)",
+     "en": "Nepal (all districts)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-23",
    "sender": "nepalpolice.gov.np",
@@ -104,7 +450,7 @@
    "districts": [
     "NP0436"
    ],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": "NP0436",
@@ -136,9 +482,15 @@
      "msgType": "Update",
      "sent": "2026-10-23T09:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25",
+     "msgType": "Update",
+     "sent": "2026-10-25T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-25"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-23",
@@ -228,7 +580,7 @@
    "severity": "Unknown",
    "expires": "2026-10-24T06:00:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -329,7 +681,7 @@
    "severity": "Unknown",
    "expires": "2026-10-25T00:00:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -474,9 +826,15 @@
      "msgType": "Update",
      "sent": "2026-10-23T09:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25",
+     "msgType": "Update",
+     "sent": "2026-10-25T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-23"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-25"
   },
   {
    "identifier": "np.gati.dhm-river-levels-2026-10-21",

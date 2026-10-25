@@ -1,16 +1,16 @@
 {
- "as_of": "2026-10-23T09:15:00+05:45",
- "as_of_ne": "अक्टोबर २३ (कात्तिक ६), बिहान ९:१५ NPT मा जाँचेको",
- "as_of_en": "checked 23 Oct (Kartik 6), 9:15 AM NPT",
- "rule_en": "Open = not on Nepal Police's nationwide road-blockage notice (official, to 9 AM Kartik 6 / 23 Oct). Where sources conflict or nothing confirms it: grey dashed = not confirmed.",
- "rule_ne": "खुला = नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म, आधिकारिक) मा यो मार्ग छैन। स्रोत बाझिएमा वा पुष्टि नभएमा खैरो टुटेको रेखा = स्थिति पुष्टि भएन।",
+ "as_of": "2026-10-25T09:40:00+05:45",
+ "as_of_ne": "अक्टोबर २५ (कात्तिक ८), बिहान ९:४० NPT मा जाँचेको",
+ "as_of_en": "checked 25 Oct (Kartik 8), 9:40 AM NPT",
+ "rule_en": "Open = not on Nepal Police's nationwide road-blockage notice (official, to 9 AM Kartik 8 / 25 Oct). Where sources conflict or nothing confirms it: grey dashed = not confirmed.",
+ "rule_ne": "खुला = नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म, आधिकारिक) मा यो मार्ग छैन। स्रोत बाझिएमा वा पुष्टि नभएमा खैरो टुटेको रेखा = स्थिति पुष्टि भएन।",
  "geometry_note_en": "Road lines follow the real roads, from OpenStreetMap road data (simplified).",
  "geometry_note_ne": "सडकको रेखा OpenStreetMap को सडक डेटाबाट बनाइएको, सरल पारिएको।",
  "bulletin_file": "https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js",
  "sources": {
   "pol": {
-   "ne": "नेपाल प्रहरी: बाटो अवरुद्ध सूचना, कात्तिक ६ (२३ अक्टोबर) बिहान ९ बजेसम्म",
-   "en": "Nepal Police: road blockage notice, to 9 AM Kartik 6 (23 Oct)",
+   "ne": "नेपाल प्रहरी: बाटो अवरुद्ध सूचना, कात्तिक ८ (२५ अक्टोबर) बिहान ९ बजेसम्म",
+   "en": "Nepal Police: road blockage notice, to 9 AM Kartik 8 (25 Oct)",
    "u": "https://www.nepalpolice.gov.np/notices/1141/"
   },
   "dor": {
@@ -181,8 +181,8 @@
    ],
    "name_ne": "काठमाडौँ–गजुरी–मुग्लिङ (पृथ्वी)",
    "name_en": "Kathmandu–Gajuri–Mugling (Prithvi)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -199,8 +199,8 @@
    ],
    "name_ne": "मुग्लिङ–पोखरा",
    "name_en": "Mugling–Pokhara",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -217,8 +217,8 @@
    ],
    "name_ne": "मुग्लिङ–नारायणघाट",
    "name_en": "Mugling–Narayanghat",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
    "sources": [
     "pol"
    ]
@@ -234,8 +234,8 @@
    ],
    "name_ne": "नारायणघाट–बुटवल",
    "name_en": "Narayanghat–Butwal",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -252,8 +252,8 @@
    ],
    "name_ne": "काठमाडौँ–हेटौँडा (त्रिभुवन राजपथ)",
    "name_en": "Kathmandu–Hetauda (Tribhuvan Rajpath)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
    "sources": [
     "pol"
    ]
@@ -273,8 +273,8 @@
    ],
    "name_ne": "काठमाडौँ–सिन्धुली–बर्दिबास (बीपी)",
    "name_en": "Kathmandu–Sindhuli–Bardibas (BP)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH13 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH13 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH13 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH13 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -291,8 +291,8 @@
    ],
    "name_ne": "नारायणघाट–हेटौँडा",
    "name_en": "Narayanghat–Hetauda",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -309,8 +309,8 @@
    ],
    "name_ne": "हेटौँडा–पथलैया",
    "name_en": "Hetauda–Pathlaiya",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
    "sources": [
     "pol"
    ]
@@ -326,8 +326,8 @@
    ],
    "name_ne": "काठमाडौँ–धुन्चे (पासाङ ल्हामु)",
    "name_en": "Kathmandu–Dhunche (Pasang Lhamu)",
-   "note_ne": "स्थिति पुष्टि भएन: नेपाल प्रहरीको कात्तिक ६ को अवरोध सूचीमा यो मार्ग छैन, तर सडक विभाग NAVIGATE ले NH42 (गल्छी–त्रिशूली–बेत्रावती–स्याफ्रुबेँसी–रसुवागढी) अझै बन्द देखाउँछ। स्रोत बाझिएकाले पुष्टि मानिएन।",
-   "note_en": "Not confirmed: not on Nepal Police's Kartik 6 blockage notice, but DoR NAVIGATE still lists NH42 (Galchi–Trishuli–Betrawati–Syaphrubesi–Rasuwagadhi) as closed. The sources conflict, so it is not treated as confirmed.",
+   "note_ne": "स्थिति पुष्टि भएन: नेपाल प्रहरीको कात्तिक ८ को अवरोध सूचीमा यो मार्ग छैन, तर सडक विभाग NAVIGATE ले NH42 (गल्छी–त्रिशूली–बेत्रावती–स्याफ्रुबेँसी–रसुवागढी) अझै बन्द देखाउँछ। स्रोत बाझिएकाले पुष्टि मानिएन।",
+   "note_en": "Not confirmed: not on Nepal Police's Kartik 8 blockage notice, but DoR NAVIGATE still lists NH42 (Galchi–Trishuli–Betrawati–Syaphrubesi–Rasuwagadhi) as closed. The sources conflict, so it is not treated as confirmed.",
    "sources": [
     "pol",
     "dor"
@@ -344,8 +344,8 @@
    ],
    "name_ne": "काठमाडौँ–कोदारी (अरनिको)",
    "name_en": "Kathmandu–Kodari (Araniko)",
-   "note_ne": "स्थिति पुष्टि भएन: प्रहरीको कात्तिक ६ को सूचीमा छैन, तर कोदारी–जिरोकिलो पहिरोबारे मिति नखुलेको एउटा समाचार देखियो। दुई स्वतन्त्र स्रोत वा आधिकारिक पुष्टि नभएकाले खुला भनिएन।",
-   "note_en": "Not confirmed: not on the Police Kartik 6 notice, but one undated news report mentions landslides at Kodari and Jirokilo. Without an official confirmation or two independent outlets, it is not shown as open.",
+   "note_ne": "स्थिति पुष्टि भएन: प्रहरीको कात्तिक ८ को सूचीमा छैन, तर कोदारी–जिरोकिलो पहिरोबारे मिति नखुलेको एउटा समाचार देखियो। दुई स्वतन्त्र स्रोत वा आधिकारिक पुष्टि नभएकाले खुला भनिएन।",
+   "note_en": "Not confirmed: not on the Police Kartik 8 notice, but one undated news report mentions landslides at Kodari and Jirokilo. Without an official confirmation or two independent outlets, it is not shown as open.",
    "sources": [
     "pol"
    ]
@@ -361,8 +361,8 @@
    ],
    "name_ne": "पोखरा–बागलुङ",
    "name_en": "Pokhara–Baglung",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha.",
    "sources": [
     "pol"
    ]
@@ -378,8 +378,8 @@
    ],
    "name_ne": "बुटवल–पाल्पा (सिद्धार्थ)",
    "name_en": "Butwal–Palpa (Siddhartha)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH47 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH47 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH47 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH47 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -396,8 +396,8 @@
    ],
    "name_ne": "बुटवल–नेपालगन्ज (पूर्व–पश्चिम)",
    "name_en": "Butwal–Nepalgunj (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -414,8 +414,8 @@
    ],
    "name_ne": "नेपालगन्ज–धनगढी (पूर्व–पश्चिम)",
    "name_en": "Nepalgunj–Dhangadhi (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -432,8 +432,8 @@
    ],
    "name_ne": "पथलैया–बर्दिबास (पूर्व–पश्चिम)",
    "name_en": "Pathlaiya–Bardibas (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -450,8 +450,8 @@
    ],
    "name_ne": "बर्दिबास–इटहरी (पूर्व–पश्चिम)",
    "name_en": "Bardibas–Itahari (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -468,8 +468,8 @@
    ],
    "name_ne": "इटहरी–काँकडभिट्टा (पूर्व–पश्चिम)",
    "name_en": "Itahari–Kakarbhitta (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ६ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 6 / 23 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक ८ बिहान ९ बजेसम्म) मा यो मार्ग छैन; त्यहाँ गोरखाको आरुघाट (सोती पुल) मात्र छ। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 9 AM Kartik 8 / 25 Oct), which lists only Aarughat (Soti bridge) in Gorkha. DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"

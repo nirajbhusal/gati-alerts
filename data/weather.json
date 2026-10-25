@@ -1,8 +1,8 @@
 {
- "checked": "2026-10-23T09:15:00+05:45",
+ "checked": "2026-10-25T09:40:00+05:45",
  "official": {"name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा", "name_en": "DHM Meteorological Forecasting Division", "url": "https://www.mfd.gov.np/", "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning", "reachable": false},
- "note_ne": "mfd.gov.np र dhm.gov.np गतिको सर्भरबाट खुलेनन् (कात्तिक ६, बिहान ९:१५ NPT मा जाँचिएको)। त्यसैले पूर्वानुमान दुई समाचार माध्यममा छापिएको DHM पाठबाट लिइएको छ र \"रिपोर्ट गरिएको\" भनिएको छ।",
- "note_en": "mfd.gov.np and dhm.gov.np could not be reached from Gati's server (checked 23 Oct 2026, 9:15 AM NPT). The forecast is therefore DHM's text as published by two news outlets, labelled Reported.",
+ "note_ne": "mfd.gov.np र dhm.gov.np गतिको सर्भरबाट खुलेनन् (कात्तिक ८, बिहान ९:४० NPT मा जाँचिएको)। त्यसैले पूर्वानुमान दुई समाचार माध्यममा छापिएको DHM पाठबाट लिइएको छ र \"रिपोर्ट गरिएको\" भनिएको छ।",
+ "note_en": "mfd.gov.np and dhm.gov.np could not be reached from Gati's server (checked 25 Oct 2026, 9:40 AM NPT). The forecast is therefore DHM's text as published by two news outlets, labelled Reported.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
  "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",
