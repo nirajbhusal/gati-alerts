@@ -1109,3 +1109,4 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
 .navitems{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}.navitems li{border:1px solid var(--line);border-left:5px solid var(--nc);border-radius:12px;padding:10px 12px;background:var(--surface)}
 .navitems li.nv-none{border-left-style:dashed}.navitems p{margin:2px 0}.navst{display:inline-flex;align-items:center;gap:6px;font-weight:700}.navst i{width:10px;height:10px;border-radius:50%;background:var(--nc)}
 .nv-none .navst i{background:none;border:2px dashed var(--nc)}.navstale{background:#FFF1DB;color:#8A4B00;border:1px solid var(--saffron);border-radius:10px;padding:8px 12px}
+/* Paper default: keeps the Night Navy header (brand); paper ground and cards below it */

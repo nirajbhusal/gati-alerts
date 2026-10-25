@@ -12,10 +12,11 @@
   const pref = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
   G.numPref = pref("gati-num", "");            // "" follows language; "ne" or "en" forces numerals
   G.cal = pref("gati-cal", "ad");              // "ad" or "bs"
-  /* Themes: light, dark, system ("system" follows the device). */
-  G.THEMES = [["light", "उज्यालो", "Light"], ["dark", "अँध्यारो", "Dark"], ["system", "स्वतः", "Auto"]]; /* brand: swatch themes (paper, crimson) retired */
-  G.themePref = pref("gati-theme-pref", pref("gati-theme", "system"));
-  if (!["light", "dark", "system"].includes(G.themePref)) G.themePref = "system";
+  /* Themes: paper (default), light, dark, system ("system" follows the device). */
+  /* Paper is the default for first-time visitors; a saved choice always wins (retired crimson maps to light). */
+  G.THEMES = [["paper", "कागज", "Paper"], ["light", "उज्यालो", "Light"], ["dark", "अँध्यारो", "Dark"], ["system", "स्वतः", "Auto"]];
+  G.themePref = pref("gati-theme-pref", pref("gati-theme", "paper"));
+  if (!G.THEMES.some((t) => t[0] === G.themePref)) G.themePref = "light";
   const mq = matchMedia("(prefers-color-scheme: dark)");
   const applyTheme = () => { G.theme = G.themePref === "system" ? (mq.matches ? "dark" : "light") : G.themePref; document.documentElement.dataset.theme = G.theme; };
   applyTheme(); mq.addEventListener && mq.addEventListener("change", () => G.themePref === "system" && applyTheme());
@@ -141,7 +142,7 @@
       <h4>${L("अङ्क", "Numerals")}</h4>${seg("num", [["ne", "०१२३"], ["en", "0123"]], G.devNum() ? "ne" : "en")}
       <h4>${L("मिति", "Calendar")}</h4>${seg("cal", [["bs", L("वि.सं. BS", "BS")], ["ad", L("ई.सं. AD", "AD")]], G.cal === "bs" ? "bs" : "ad")}</section>
       <section><h3>${L("अक्षरको आकार", "Text size")}</h3><span class="tsize setseg" role="group" aria-label="${L("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${L("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${L("सामान्य अक्षर", "Default text size")}">A</button><button type="button" data-ts="1" aria-label="${L("ठूलो अक्षर", "Larger text")}">A+</button></span></section>
-      <section><h3>${L("रूप", "Theme")}</h3>${seg("theme", [["light", L("उज्यालो", "Light")], ["dark", L("अँध्यारो", "Dark")], ["system", L("स्वतः", "Auto")]], ["light", "dark"].includes(G.themePref) ? G.themePref : "system")}</section></div>`;
+      <section><h3>${L("रूप", "Theme")}</h3>${seg("theme", [["paper", L("कागज", "Paper")], ["light", L("उज्यालो", "Light")], ["dark", L("अँध्यारो", "Dark")], ["system", L("स्वतः", "Auto")]], G.themePref)}</section></div>`;
     sheet.querySelectorAll(".setseg[data-k] button").forEach((b) => (b.onclick = () => { const k = b.parentElement.dataset.k, v = b.dataset.v;
       if (k === "lang") G.setLang(v); else if (k === "num") G.setNum(v); else if (k === "cal") G.setCal(v); else if (k === "theme") G.setTheme(v);
       drawSheet(); const nb = sheet.querySelector(`[data-k="${k}"] [data-v="${v}"]`); if (nb) nb.focus(); }));
