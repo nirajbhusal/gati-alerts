@@ -1157,3 +1157,6 @@ html:not([data-theme=dark]) .mecard-stats span{color:var(--slate);opacity:1}
 html[data-theme=dark] .mecard{background:var(--navy)!important;color:#F4F6FA!important;border:1px solid var(--line)}
 html[data-theme=dark] .mecard-top small,html[data-theme=dark] .mecard-foot,html[data-theme=dark] .mecard-stats span{color:#C9D2E3;opacity:1}
 html[data-theme=dark] .mecard-stats{background:rgba(255,255,255,.08)!important}
+/* Fix sweep 11: selected Language and Theme options use the saffron and navy selected style, not crimson */
+.melang button[aria-checked=true],.thsw[aria-checked=true] .thprev{border-color:var(--saffron)!important;box-shadow:inset 0 0 0 1px var(--saffron)!important}
+.melang button[aria-checked=true] b{color:var(--ink)}
