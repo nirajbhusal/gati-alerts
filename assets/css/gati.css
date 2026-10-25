@@ -1171,3 +1171,23 @@ nav.main .navme{display:none!important}
  .navtopbtn{min-height:48px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;text-align:left;padding:0 14px}}
 @media(max-width:400px){header.top .bar{gap:4px}header.top .bar .tagline{display:none!important}header.top .bar .langbtn{padding:0 10px;min-width:44px}}
 header.top .bar .langbtn{min-height:44px}
+/* Fix sweep 14: WCAG AA contrast in Paper, Light and Dark */
+html:not([data-theme=dark]){--river:#1D55C4}
+main a:not([class]),main p a,main li a:not([class*=btn]),.meta a,.alinks a,.src a,#sheetbody a,.aqpanel .meta a,footer a,.brkh,.afx,.relaylink,.mxsrcl{color:var(--river)!important}
+.sev-Unknown,.sev.sev-Unknown{color:#14202B!important}
+.sev-Moderate,.sev-Minor,.sev.sev-Moderate,.sev.sev-Minor{color:#14202B!important}
+.tdseg i b{color:#14202B!important;text-shadow:none!important}.stack span{color:#fff!important;text-shadow:none!important}.stack span[style*="94a3b8"]{color:#14202B!important}
+html:not([data-theme=dark]) .brktag{color:#B8261C!important}html[data-theme=dark] .brktag{color:#FF7A6E!important}
+html:not([data-theme=dark]) .tlab{color:var(--ink)}html:not([data-theme=dark]) [aria-current=page] .tlab{color:var(--navy)!important;font-weight:700}
+html:not([data-theme=dark]) .tdtxt b{color:#15803D}html[data-theme=dark] .rl-s{color:#6EE7A0}html:not([data-theme=dark]) .rl-s{color:var(--slate)}
+html:not([data-theme=dark]) .aqcat{filter:brightness(.55) saturate(1.4)}
+html:not([data-theme=dark]) .dpick b{color:#0F6F78!important}
+html[data-theme=dark] .gleg .w{color:#F5A524}html[data-theme=dark] .gleg .d{color:#FF7A6E}
+html[data-theme=dark] :is(h2,h3,h4,summary,time,.kick,.dpick b,.dgrp,.sechead h2 *,.mxdh h2){color:var(--ink)!important}
+html[data-theme=dark] .tag.exp{background:#24314A;color:#C9D2E3}
+html:not([data-theme=dark]) .tabbar a[aria-current=page] span.tlab,html:not([data-theme=dark]) .tabbar a[aria-current=page] .tlab span{color:var(--navy)!important;font-weight:700}
+html:not([data-theme=dark]) .roadlist .rl-s[style*="94A3B8"],html:not([data-theme=dark]) .roadlist .rl-s[style*="94a3b8"]{color:var(--slate)!important}html[data-theme=dark] .roadlist .rl-s[style*="15803D"],html[data-theme=dark] .roadlist .rl-s[style*="15803d"]{color:#6EE7A0!important}
+html:not([data-theme=dark]) .aqcat{color:var(--ink)!important;filter:none}
+html:not([data-theme=dark]) .tdtxt b[style],html:not([data-theme=dark]) .tdsun b{color:#166534!important}
+html[data-theme=dark] figcaption,html[data-theme=dark] figcaption *{color:var(--ink)!important}
+html[data-theme=dark] .helplines a{background:var(--surface)!important;color:var(--ink)!important;border-color:var(--line)!important}
