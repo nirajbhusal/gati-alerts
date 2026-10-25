@@ -36,6 +36,7 @@
     ["route", "route/", "मार्ग जाँच", "Route check"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
   ];
+  G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
   const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
@@ -59,6 +60,7 @@
       <button class="pbtn" type="button" id="thmbtn" title="Theme / रूप" aria-haspopup="true" aria-expanded="false"></button>
       <span class="tsize" id="txtbtn" role="group" aria-label="Text size / अक्षरको आकार"><button type="button" data-ts="-1" aria-label="Smaller text / सानो अक्षर">A−</button><button type="button" data-ts="0" aria-label="Default text size / सामान्य अक्षर">A</button><button type="button" data-ts="1" aria-label="Larger text / ठूलो अक्षर">A+</button></span></div>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
+    <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
     <button class="mebtn" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
   </div>
@@ -243,6 +245,7 @@
   scan(); speechSynthesis.getVoices(); addEventListener("pagehide", stop);
 })();
 /* Ask pop-up (loaded on every page that uses common.js) */
+(function () { const G = window.Gati; if (!G) return; const q = document.createElement("script"); q.src = G.root + "assets/js/search.js"; q.defer = true; document.body.appendChild(q); })();
 (function () { const G = window.Gati; if (!G) return; const s = document.createElement("script"); s.src = G.root + "assets/js/askpop.js"; s.defer = true; document.body.appendChild(s); })();
 /* My Gati drawer: no accounts; everything lives in this browser. */
 (function () {
