@@ -23,21 +23,21 @@
   const NAV = [
     ["alerts", "alerts/", "सूचना", "Alerts"],
     ["map", "map/", "नक्सा", "Map"],
-    ["rivers", "rivers/", "नदी", "Rivers"],
-    ["roads", "roads/", "सडक", "Roads"],
-    ["route", "route/", "मार्ग जाँच", "Route check"],
     ["stories", "stories/", "सूचना फिड", "Feed"],
     ["patro", "patro/", "पात्रो", "Patro"],
     ["ask", "ask/", "सोध्नुहोस्", "Ask"],
-    ["sources", "sources/", "स्रोत", "Sources"],
-    ["about", "about/", "बारेमा", "About"],
   ];
   /* "More" menu (desktop) and extra links in the mobile menu */
   const MORE = [
+    ["rivers", "rivers/", "नदी", "Rivers"],
+    ["roads", "roads/", "सडक", "Roads"],
+    ["route", "route/", "मार्ग जाँच", "Route check"],
     ["weather", "weather/", "मौसम र हावा", "Weather & air"],
+    ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
     ["safety", "safety/", "के गर्ने", "What to do"],
-    ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
+    ["sources", "sources/", "स्रोत", "Sources"],
+    ["about", "about/", "बारेमा", "About"],
   ];
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
@@ -57,11 +57,7 @@
   header.innerHTML = `<a class="skip" href="#main">${b("मुख्य भागमा जानुहोस्", "Skip to content")}</a>
   <div class="bar">
     <a class="brand" href="${ROOT}?home=1" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
-    <div class="prefs" role="group" aria-label="Display / देखाउने तरिका">
-      <button class="pbtn" type="button" id="numbtn" title="Numerals / अङ्क"></button>
-      <button class="pbtn" type="button" id="calbtn" title="BS / AD"></button>
-      <button class="pbtn" type="button" id="thmbtn" title="Theme / रूप" aria-haspopup="true" aria-expanded="false"></button>
-      <span class="tsize" id="txtbtn" role="group" aria-label="Text size / अक्षरको आकार"><button type="button" data-ts="-1" aria-label="Smaller text / सानो अक्षर">A−</button><button type="button" data-ts="0" aria-label="Default text size / सामान्य अक्षर">A</button><button type="button" data-ts="1" aria-label="Larger text / ठूलो अक्षर">A+</button></span></div>
+    <button class="mebtn setbtn" type="button" id="setbtn" aria-haspopup="dialog" aria-controls="setsheet" aria-label="सेटिङ / Settings" title="सेटिङ / Settings"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
     <button class="mebtn" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></button>
@@ -123,25 +119,34 @@
   header.querySelector("#langbtn").onclick = () => G.setLang(G.lang === "ne" ? "en" : "ne");
   G.setLang = (l) => { G.lang = l; localStorage.setItem("gati-lang", l); document.documentElement.lang = l; G.listeners.forEach((f) => f(l)); };
   const save = (k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {} };
-  const prefBtns = () => {
-    const nb = header.querySelector("#numbtn"), cb = header.querySelector("#calbtn"), tb = header.querySelector("#thmbtn");
-    nb.textContent = G.devNum() ? "१२३" : "123"; nb.setAttribute("aria-label", G.lang === "ne" ? "अङ्क: नेपाली वा अङ्ग्रेजी" : "Numerals: Nepali or Latin");
-    cb.textContent = G.cal === "bs" ? (G.lang === "ne" ? "वि.सं." : "BS") : (G.lang === "ne" ? "ई.सं." : "AD");
-    cb.setAttribute("aria-label", G.lang === "ne" ? "मिति: विक्रम संवत् वा ईस्वी संवत्" : "Dates: Bikram Sambat or Gregorian");
-    tb.innerHTML = `<i class="thdot th-${G.theme}" aria-hidden="true"></i>`;
-    tb.setAttribute("aria-label", G.lang === "ne" ? "रूप छान्नुहोस्" : "Choose theme");
-  };
-  header.querySelector("#numbtn").onclick = () => { G.numPref = G.devNum() ? "en" : "ne"; if (G.numPref === G.lang) G.numPref = ""; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
-  header.querySelector("#calbtn").onclick = () => { G.cal = G.cal === "bs" ? "ad" : "bs"; save("gati-cal", G.cal === "bs" ? "bs" : ""); G.listeners.forEach((f) => f(G.lang)); };
+  G.toggleNum = () => { G.numPref = G.devNum() ? "en" : "ne"; if (G.numPref === G.lang) G.numPref = ""; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
+  G.setNum = (v) => { G.numPref = v === G.lang ? "" : v; save("gati-num", G.numPref); G.listeners.forEach((f) => f(G.lang)); };
+  G.setCal = (v) => { G.cal = v; save("gati-cal", v === "bs" ? "bs" : ""); G.listeners.forEach((f) => f(G.lang)); };
   G.setTheme = (t) => { G.themePref = t; save("gati-theme-pref", t); save("gati-theme", ""); applyTheme(); G.listeners.forEach((f) => f(G.lang)); };
   /* Visual swatch picker, reused by the My Gati drawer */
   G.themePicker = () => `<div class="thgrid" role="radiogroup" aria-label="${G.lang === "ne" ? "रूप" : "Theme"}">${G.THEMES.map(([k, ne, en]) => `<button type="button" role="radio" class="thsw" data-th="${k}" aria-checked="${G.themePref === k}"><span class="thprev tp-${k}"><i></i><i></i><i></i></span><span>${G.lang === "ne" ? ne : en}</span></button>`).join("")}</div>`;
   G.bindThemePicker = (el) => el.querySelectorAll(".thsw").forEach((b) => (b.onclick = () => { G.setTheme(b.dataset.th); el.querySelectorAll(".thsw").forEach((x) => x.setAttribute("aria-checked", x.dataset.th === G.themePref)); }));
-  const thpop = document.createElement("div"); thpop.className = "thpop"; thpop.hidden = true; header.querySelector(".prefs").appendChild(thpop);
-  header.querySelector("#thmbtn").onclick = (e) => { e.stopPropagation(); const o = thpop.hidden; thpop.hidden = !o; header.querySelector("#thmbtn").setAttribute("aria-expanded", o); if (o) { thpop.innerHTML = G.themePicker(); G.bindThemePicker(thpop); thpop.querySelector("[aria-checked=true]").focus(); } };
-  thpop.onclick = (e) => e.stopPropagation();
-  document.addEventListener("click", () => { thpop.hidden = true; });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !thpop.hidden) { thpop.hidden = true; header.querySelector("#thmbtn").focus(); } });
+  /* Settings sheet: language, numerals, calendar, text size, theme */
+  const sheet = document.createElement("div"); sheet.id = "setsheet"; sheet.className = "setsheet"; sheet.hidden = true; sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true"); sheet.setAttribute("aria-labelledby", "seth");
+  document.body.append(sheet);
+  const seg = (k, opts, cur) => `<div class="setseg" role="radiogroup" data-k="${k}">${opts.map(([v, l]) => `<button type="button" role="radio" data-v="${v}" aria-checked="${v === cur}">${l}</button>`).join("")}</div>`;
+  const drawSheet = () => { const ne = G.lang === "ne", L = (a, b) => (ne ? a : b);
+    sheet.innerHTML = `<div class="setpanel"><div class="seth"><h2 id="seth">${L("सेटिङ", "Settings")}</h2><button type="button" class="setx" aria-label="${L("बन्द गर्नुहोस्", "Close")}">×</button></div>
+      <section><h3>${L("भाषा", "Language")}</h3>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang)}</section>
+      <section><h3>${L("अङ्क", "Numerals")}</h3>${seg("num", [["ne", "०१२३"], ["en", "0123"]], G.devNum() ? "ne" : "en")}</section>
+      <section><h3>${L("मिति", "Calendar")}</h3>${seg("cal", [["bs", L("वि.सं. BS", "BS")], ["ad", L("ई.सं. AD", "AD")]], G.cal === "bs" ? "bs" : "ad")}</section>
+      <section><h3>${L("अक्षरको आकार", "Text size")}</h3><span class="tsize setseg" role="group" aria-label="${L("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${L("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${L("सामान्य अक्षर", "Default text size")}">A</button><button type="button" data-ts="1" aria-label="${L("ठूलो अक्षर", "Larger text")}">A+</button></span></section>
+      <section><h3>${L("रूप", "Theme")}</h3>${seg("theme", [["light", L("उज्यालो", "Light")], ["dark", L("अँध्यारो", "Dark")], ["system", L("स्वतः", "Auto")]], ["light", "dark"].includes(G.themePref) ? G.themePref : "system")}</section></div>`;
+    sheet.querySelectorAll(".setseg[data-k] button").forEach((b) => (b.onclick = () => { const k = b.parentElement.dataset.k, v = b.dataset.v;
+      if (k === "lang") G.setLang(v); else if (k === "num") G.setNum(v); else if (k === "cal") G.setCal(v); else if (k === "theme") G.setTheme(v);
+      drawSheet(); const nb = sheet.querySelector(`[data-k="${k}"] [data-v="${v}"]`); if (nb) nb.focus(); }));
+    G.bindTsize(sheet); if (G.setTextSize) G.setTextSize(G.textSize());
+    sheet.querySelector(".setx").onclick = closeSheet; };
+  const setbtn = header.querySelector("#setbtn");
+  const closeSheet = () => { sheet.hidden = true; setbtn.setAttribute("aria-expanded", "false"); setbtn.focus(); };
+  setbtn.onclick = () => { drawSheet(); sheet.hidden = false; setbtn.setAttribute("aria-expanded", "true"); sheet.querySelector('[aria-checked="true"]').focus(); };
+  sheet.addEventListener("click", (e) => { if (e.target === sheet) closeSheet(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
   /* Accessibility: text size A- / A / A+ (87.5% to 150%, saved) */
   const TS = [87.5, 100, 112.5, 125, 137.5, 150];
   let ts = parseFloat(pref("gati-tsize", "")); if (!TS.includes(ts)) ts = pref("gati-text", "") === "large" ? 125 : 100;
@@ -152,7 +157,7 @@
   G.stepText = (d) => G.setTextSize(d === 0 ? 100 : TS[Math.max(0, Math.min(TS.length - 1, TS.indexOf(ts) + d))]);
   G.bindTsize = (root) => root.querySelectorAll(".tsize [data-ts]").forEach((b) => (b.onclick = () => G.stepText(+b.dataset.ts)));
   G.bindTsize(header); G.setTextSize(ts);
-  G.listeners.push(prefBtns);
+  G.listeners.push(() => { if (!sheet.hidden) drawSheet(); });
   G.onLang = (f) => G.listeners.push(f);
   /* Tagline in the tab title follows the language */
   const TAG = ["सही सूचना, सही समयमा ।", "The right alert, right on time."];
@@ -225,7 +230,7 @@
     off.hidden = navigator.onLine;
   };
   addEventListener("online", offDraw); addEventListener("offline", offDraw); G.onLang(offDraw); offDraw();
-  prefBtns();
+
 })();
 /* Accessibility: read aloud with speechSynthesis on alert cards and Feed cards (ne-NP voice if the device has one, else English) */
 (function () {
@@ -297,8 +302,8 @@
     dr.querySelectorAll(".merow:not(.metsize)").forEach((b) => (b.onclick = () => {
       const a = b.dataset.act, H = document.querySelector("header.top");
       if (a === "dist" && G.district) G.district.open(render);
-      else if (a === "num") H.querySelector("#numbtn").click();
-      else if (a === "cal") H.querySelector("#calbtn").click();
+      else if (a === "num") G.toggleNum();
+      else if (a === "cal") G.setCal(G.cal === "bs" ? "ad" : "bs");
       else if (a === "watch") location.href = R + "?home=1#watch";
       else if (a === "feed") location.href = R + "atom.xml";
       else if (a === "about") location.href = R + "about/";
