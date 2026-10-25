@@ -617,3 +617,16 @@ html[data-theme=dark] .meic{background:rgba(143,184,255,.12);color:#8fb8ff}
 .fsrc summary{cursor:pointer;font-size:.82rem;opacity:.85;display:inline-flex;gap:6px;padding:4px 12px;border:1px solid rgba(255,255,255,.3);border-radius:999px;list-style:none;min-height:32px;align-items:center}.fsrc summary::-webkit-details-marker{display:none}
 .fsrc summary::before{content:"ⓘ"}.fsrc[open] summary{background:rgba(255,255,255,.12)}.fsrc p{margin:6px 0;font-size:.85rem}
 @media(max-width:520px){.fart{width:62px;height:62px;border-radius:20px}.fart svg{width:38px;height:38px}}
+/* Weather + air */
+.trust.t-Model{background:#ede9fe;color:#4c1d95}html[data-theme=dark] .trust.t-Model{background:#2e2350;color:#d8ccff}
+.wxmodel,.wxair{margin-top:var(--s4)}.wxmh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.wxmh h2{margin:0;font-size:1.2rem}
+.wxnow{display:flex;align-items:center;gap:16px;margin:14px 0;padding:14px;border-radius:18px;background:linear-gradient(120deg,rgba(2,132,199,.12),rgba(0,56,147,.08))}
+.wxbig{font-size:3rem;line-height:1}.wxt{font-size:2.2rem;display:block;line-height:1}.wxnow span{color:var(--slate)}.wxkv{margin-left:auto;display:flex;flex-direction:column;gap:2px;font-size:.9rem}
+.wxdays{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.wxday{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;border-radius:16px;background:var(--surface2);text-align:center}
+.wxic{font-size:2rem}.wxbar{position:relative;width:80%;height:6px;border-radius:3px;background:var(--line)}.wxbar i{position:absolute;top:0;bottom:0;border-radius:3px;background:linear-gradient(90deg,#38bdf8,#f97316)}
+.wxrng{font-size:.9rem}.wxrain{font-size:.8rem;color:#0369a1}html[data-theme=dark] .wxrain{color:#7dd3fc}
+.aqnow{display:flex;gap:18px;align-items:center;margin:14px 0}.aqgauge{flex:none;width:118px;height:118px;border-radius:50%;display:grid;place-content:center;text-align:center;background:radial-gradient(closest-side,var(--surface) 76%,transparent 78%),conic-gradient(var(--c) calc(var(--v)*360deg),var(--line) 0)}
+.aqgauge b{font-size:2rem;line-height:1}.aqgauge span{font-size:.72rem;color:var(--slate)}.aqcat{font-size:1.3rem;font-weight:800;margin:0 0 4px}
+.aqspark{display:flex;align-items:flex-end;gap:2px;height:56px;padding:4px;border-radius:10px;background:var(--surface2)}.aqspark i{flex:1;border-radius:2px 2px 0 0;min-height:2px}
+.aqsrc{font-size:.85rem;color:var(--slate);padding-left:1.1em}.aqbands{margin-top:var(--s4)}.aqbands summary{cursor:pointer;list-style:none}.aqbands summary h2{display:inline;font-size:1.1rem}
+@media(max-width:520px){.wxdays{gap:6px}.wxday{padding:10px 4px}.aqgauge{width:100px;height:100px}}

@@ -30,12 +30,11 @@
   ];
   /* "More" menu (desktop) and extra links in the mobile menu */
   const MORE = [
-    ["weather", "weather/", "मौसम", "Weather"],
+    ["weather", "weather/", "मौसम र हावा", "Weather & air"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
     ["safety", "safety/", "के गर्ने", "What to do"],
     ["route", "route/", "मार्ग जाँच", "Route check"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
-    ["air", "air/", "हावाको गुणस्तर", "Air quality"],
   ];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
