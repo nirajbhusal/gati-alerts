@@ -127,6 +127,10 @@
   document.addEventListener("click", () => { moremenu.hidden = true; morebtn.setAttribute("aria-expanded", false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !moremenu.hidden) { moremenu.hidden = true; morebtn.focus(); } });
   mb.onclick = () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); };
+  /* Fix sweep 8: the phone menu closes with Escape (focus back on ☰) and when one of its in-page links is used */
+  const closeNav = (f) => { if (!nav.classList.contains("open")) return; nav.classList.remove("open"); mb.setAttribute("aria-expanded", false); if (f) mb.focus(); };
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNav(true); });
+  nav.addEventListener("click", (e) => { const a = e.target.closest("a[href]"); if (a && a.hash && a.pathname === location.pathname) closeNav(false); });
   header.querySelector("#langbtn").onclick = () => G.setLang(G.lang === "ne" ? "en" : "ne");
   G.setLang = (l) => { G.lang = l; localStorage.setItem("gati-lang", l); document.documentElement.lang = l; G.listeners.forEach((f) => f(l)); };
   const save = (k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {} };
