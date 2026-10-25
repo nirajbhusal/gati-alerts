@@ -44,8 +44,8 @@
     ["home", "?home=1", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
     ["alerts", "alerts/", ICON('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'), "सूचना", "Alerts"],
     ["stories", "stories/", ICON('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="M8 3.5h8"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "सूचना फिड", "Feed"],
+    ["map", "map/", ICON('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "नक्सा", "Map"],
     ["patro", "patro/", ICON('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M7.5 13h1M11.5 13h1M15.5 13h1M7.5 16.5h1M11.5 16.5h1"/>'), "पात्रो", "Patro"],
-    ["ask", "ask/", ICON('<path d="M20.5 11.5c0 4-3.8 7-8.5 7-1.2 0-2.3-.2-3.3-.5L4 19.5l1.3-3.6C4.2 14.7 3.5 13.2 3.5 11.5c0-4 3.8-7 8.5-7s8.5 3 8.5 7z"/>'), "सोध्नुहोस्", "Ask"],
   ];
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;

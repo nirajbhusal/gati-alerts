@@ -563,3 +563,4 @@ html[data-theme=dark] header.top{background:linear-gradient(180deg,#0a1f40,#0818
 .aqmsg.me,.aqform button{background:#003893}
 html[data-theme=crimson] .aqhead{background:linear-gradient(135deg,#DC143C,#B10F31)}
 .disc,.topnote{border-left:4px solid var(--crimson)}
+html:not([data-theme=dark]):not([data-theme=crimson]) .tabbar{background:#002a6e;border-top-color:#DC143C}
