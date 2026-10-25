@@ -1072,3 +1072,8 @@ header.top .bar .mebtn svg{stroke:#fff}
 /* Feature 1: affected answer sentences */
 .afsent ul{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}.afsent li{border:1px solid var(--line);border-left:5px solid var(--vc,var(--line));border-radius:12px;padding:12px 14px;background:var(--surface)}
 .afsent .afst1{margin:0 0 4px;font-size:var(--fs-3);font-weight:700;line-height:1.35}.afsent .meta{margin:0 0 8px}.afsent li.none{border-left-color:#8F9BB3}
+/* Feature 2: stale-source banner */
+div.srcflag{background:#FFF1DB;color:#8A4B00;border:1px solid var(--saffron);border-radius:12px;padding:10px 14px;margin:8px 0 12px}
+div.srcflag .sfh{font-weight:700}div.srcflag ul{margin:6px 0;padding-left:1.1em}div.srcflag li{margin:2px 0}
+div.srcflag a{display:inline;padding:0;background:none!important;border:0!important;color:#8A4B00!important;text-decoration:underline!important}div.srcflag .meta{color:#8A4B00}
+html[data-theme=dark] div.srcflag{background:#3A2A12;color:#FFD9A8}html[data-theme=dark] div.srcflag a,html[data-theme=dark] div.srcflag .meta{color:#FFD9A8!important}
