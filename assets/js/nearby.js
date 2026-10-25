@@ -77,6 +77,9 @@
     slot.innerHTML = `<button type="button" class="nearbtn" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="8"/></svg>${T("के म प्रभावित छु?", "Am I affected?")}</button>`;
     btn = slot.firstChild; btn.onclick = open;
   }
-  G.nearby = { open };
+  /* The full experience lives on /affected/ now */
+  const openPage = () => { const my = G.district && G.district.get(); location.href = R + "affected/" + (my ? "#d=" + my : ""); };
+  if (btn) btn.onclick = openPage;
+  G.nearby = { open: openPage, legacy: open };
   mount(); G.onLang(() => { mount(); if (sheet && !sheet.hidden) { sheet.querySelector("#nh").textContent = T("के म प्रभावित छु?", "Am I affected?"); render(); } });
 })();

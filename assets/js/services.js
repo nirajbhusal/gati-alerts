@@ -4,6 +4,7 @@
   const box = document.getElementById("services"); if (!box) return;
   const I = (d) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
   const S = [
+    ["affected/", "के म प्रभावित छु?", "Am I affected?", "#003893", I('<circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>'), "affected near me location verdict"],
     ["alerts/", "सूचना", "Alerts", "#DC143C", I('<path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/>'), "alert notice warning"],
     ["map/", "नक्सा", "Map", "#003893", I('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "map"],
     ["weather/", "मौसम र हावा", "Weather & air", "#0284c7", I('<path d="M7 18a4 4 0 1 1 .9-7.9A5.5 5.5 0 0 1 18.5 12 3 3 0 0 1 18 18z"/><path d="M8 21l1-2M12 21l1-2M16 21l1-2"/>'), "weather rain aqi air"],

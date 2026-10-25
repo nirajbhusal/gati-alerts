@@ -836,3 +836,28 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 @media(max-width:960px){.hcols{display:flex;flex-direction:column;gap:0}.hleft,.hright{display:contents}
   .hdist{order:1}.hslider{order:2}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
 .hcols>*,.hleft>*,.hslider,.halerts,.hdist{min-width:0;max-width:100%}@media(max-width:960px){.hslider,.halerts,.hdist{width:100%}}
+/* Am I affected */
+.afchip{display:inline-flex;align-items:center;gap:8px;margin:8px 0 0;font-size:.9rem;font-weight:600;color:var(--ink)!important;text-decoration:none;padding:6px 14px;border-radius:999px;background:var(--surface2)}
+.afchip i,.afv i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--vc);flex:none}
+.afinput{margin:16px 0 24px;max-width:560px}.aftabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--surface2);margin-bottom:12px}
+.aftabs button{font:inherit;font-size:.9rem;font-weight:600;padding:8px 16px;border:0;border-radius:999px;background:none;color:var(--slate);cursor:pointer}.aftabs button[aria-selected=true]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.afpane select{font:inherit;width:100%;min-height:46px;padding:6px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.afbtn{font:inherit;font-size:.9rem;font-weight:600;min-height:42px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}.afbtn:disabled{opacity:.55;cursor:not-allowed}.afbtn small{font-weight:400;color:var(--slate)}
+#afloc{background:#003893;color:#fff;border-color:#003893}
+.afverdict{padding:20px 22px;border-radius:20px;background:var(--surface2);border-left:6px solid var(--vc);margin-bottom:28px}
+.afwhere{margin:0;color:var(--slate);font-size:.95rem}.afv{display:flex;align-items:center;gap:10px;margin:6px 0 8px;font-size:1.35rem;line-height:1.3}.afv i{width:14px;height:14px}
+.afgrid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:36px;align-items:start}@media(max-width:900px){.afgrid{grid-template-columns:1fr}}
+.aflist{list-style:none;margin:0;padding:0}.afl{display:grid;grid-template-columns:32px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}.afl:first-child{padding-top:0}
+.afi{font-size:1.2rem;color:var(--slate);text-align:center}.afl h3{margin:0 0 8px;font-size:1rem;font-weight:600}.afl p{margin:6px 0}.afsrc{font-size:.78rem;color:var(--slate)}
+.afwx{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.afwx li{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;color:var(--slate);text-align:center}.afwx b{color:var(--ink);font-weight:600}
+.afwx i{display:block;width:100%;height:8px;border-radius:4px;background:#3cb043}.afwx .lv-yellow i{background:#F5D90A}.afwx .lv-orange i{background:#f7941d}.afwx .lv-red i{background:#e2231a}
+.afrows{list-style:none;margin:0;padding:0;display:grid;gap:8px}.afrows li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:.92rem}.afrows small{color:var(--slate)}
+.afst{display:inline-flex;align-items:center;gap:6px;font-size:.85rem}.afst i{width:22px;height:8px;border-radius:4px;background:var(--c)}
+.afag{margin:4px 0 10px}
+.afside{display:grid;gap:24px}.afmap svg{width:100%;height:auto;display:block}.afleg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.76rem;color:var(--slate);margin:6px 0 0}.afleg span{display:inline-flex;align-items:center;gap:5px}.afleg i{display:inline-block;width:12px;height:10px;border-radius:2px}
+.afnow h2,.afshare h2{font-size:1.05rem;font-weight:600;margin:0 0 10px}.afdo{margin:0 0 14px}.afdo h3{font-size:.92rem;margin:0 0 4px}.afdo ul{margin:0 0 4px;padding-left:1.1em;font-size:.9rem;line-height:1.55}.afdo a{font-size:.85rem;font-weight:600}
+.afcalls{display:flex;gap:8px;margin:14px 0}.afcall{flex:1;text-align:center;font-weight:700;padding:12px;border-radius:14px;background:var(--surface2);color:var(--ink)!important;text-decoration:none}.afcall.key{background:#003893;color:#fff!important}
+.afacts{display:flex;flex-wrap:wrap;gap:8px}
+.afsharecard{margin:0 0 10px;padding:14px 16px;border-radius:14px;background:var(--surface2);border-left:4px solid var(--vc);font-size:.88rem;line-height:1.5;word-break:break-word}
+.afna{padding:16px;border-radius:14px;background:var(--surface2)}
+.afv{display:block}.afv i{margin-right:8px;vertical-align:middle}
