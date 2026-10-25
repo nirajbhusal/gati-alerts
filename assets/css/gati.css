@@ -1002,3 +1002,16 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .setpanel section{padding:12px 0;border-top:1px solid var(--line)}.setpanel section:first-of-type{border-top:0}.setpanel h3{margin:0 0 8px;font-size:.85rem;color:var(--slate);font-weight:700}
 .setseg{display:flex;gap:6px;flex-wrap:wrap}.setseg button{flex:1;min-height:44px;min-width:64px;font:inherit;font-weight:600;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);cursor:pointer}
 .setseg button[aria-checked=true],.setseg button[aria-pressed=true]{border-color:var(--ink);background:var(--surface2)}
+/* 5. Touch targets: every link and control gets at least a 44x44 px hit area via an invisible ::after (no layout change) */
+:where(a[href],button,summary,[role=button],select,input[type=checkbox],input[type=radio]){position:relative}
+:where(a[href],button,summary,[role=button]):not(.nohit)::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
+:where(select,input:not([type=checkbox]):not([type=radio]):not([type=hidden])){min-height:44px}
+.dsdots button,.dsdot{min-width:12px}
+/* 5. Text floor: body text 13 px, nothing under 12 px */
+body{font-size:max(13px,1rem)}
+.brktag,.tddn,.tdtr b,.tdtr span,.tdrp,.tdm,.tdsep,.tdseg b,.tdkey,.tdkey span,.tdggv,.tdold,.tdmag small,.tdm .trust,.trust,.tabbar span,.tabbar a,.mxn,.mxhint,.mxsrc,.meta,.atime,small,.bar .brand .tagline,.stbtn,.strail button,.strail a,.stmeta span{font-size:max(12px,var(--fs-floor,0px))!important}
+.tabbar a span,.tabbar .ne-only,.tabbar .en-only{font-size:12px!important}
+.rail a,.rail button,.rail .ttsr,.fmeter span,.fmeter b,.ftags span,.fsrcline,.fmini span{font-size:max(12px,.75rem)!important}
+input[type=search],input[type=text],input[type=email],input[type=tel],input[type=url],textarea{min-height:44px}
+label:has(> input[type=checkbox]),label:has(> input[type=radio]){display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.fi span,.finfo span{font-size:max(12px,.75rem)!important}
