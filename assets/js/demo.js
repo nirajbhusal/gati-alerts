@@ -57,7 +57,7 @@
   const draw = () => {
     const p = phase(), s = Math.max(0, Math.ceil((LEN - el()) / 1000)), done = el() >= LEN;
     const st = G.lang === "ne" ? ["मूल सूचना", "अद्यावधिक", "रद्द"][p] : ["Alert", "Update", "Cancel"][p];
-    bar.innerHTML = `<strong>DEMO</strong> ${G.lang === "ne"
+    bar.innerHTML = `<strong>नमुना डेटा · Demo data</strong> ${G.lang === "ne"
       ? `काल्पनिक अभ्यास मात्र: बुढीगण्डकी पहिरो-ताल बाढी। वास्तविक सूचना होइन, कुनै डेटा लेखिँदैन। चरण: ${st}${done ? " · सकियो" : " · " + G.num(s) + " से."}`
       : `Fictional exercise only: Budhi Gandaki landslide-dam flood. Not a real alert; no data is written. Step: ${st}${done ? " · finished" : " · " + s + " s left"}`}
       <a href="?demo=1" data-restart>${G.lang === "ne" ? "फेरि सुरु" : "Restart"}</a> <a href="?demo=0">${G.lang === "ne" ? "डेमो बन्द" : "Exit demo"}</a>`;
