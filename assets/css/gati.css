@@ -1025,3 +1025,5 @@ label:has(> input[type=checkbox]),label:has(> input[type=radio]){display:inline-
 .pday.today,.pday.today:hover{background:var(--surface)!important;color:inherit;box-shadow:inset 0 0 0 2px var(--navy)!important;border-color:var(--line)}
 .pday.today .pbig{color:var(--ink)!important;font-weight:800}.pday.today.hol .pbig{color:var(--crimson)!important}.pday.today .psmall,.pday.today .psun{color:var(--slate)!important}
 html[data-theme=dark] .pday.today{background:var(--surface)!important;box-shadow:inset 0 0 0 2px #9AA6BE!important}
+/* Item 12: one visible focus style on all interactive elements */
+:where(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"]),[role=button]):focus-visible{outline:2px solid #F28C1E!important;outline-offset:2px!important;box-shadow:none}

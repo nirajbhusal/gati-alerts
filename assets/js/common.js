@@ -61,7 +61,7 @@
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
     <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
     <button class="mebtn" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></button>
-    <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
+    <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="मेनु / Menu">☰</button>
   </div>
   <nav class="main" id="mainnav" aria-label="Main"><a class="navhome" href="${ROOT}?home=1" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
     `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}
