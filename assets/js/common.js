@@ -303,7 +303,7 @@
   new MutationObserver(() => { clearTimeout(scan.t); scan.t = setTimeout(scan, 150); }).observe(document.body, { childList: true, subtree: true });
   scan(); speechSynthesis.getVoices(); addEventListener("pagehide", stop);
 })();
-(function () { const G = window.Gati; if (!G || G.push) return; const s = document.createElement("script"); s.src = G.root + "assets/js/push.js"; document.body.appendChild(s); })();
+(function () { const G = window.Gati; if (!G || G.push) return; const s = document.createElement("script"); s.src = G.root + "assets/js/push.js"; document.body.appendChild(s); if (!G.motion) { G.motion = 1; const m = document.createElement("script"); m.src = G.root + "assets/js/motion.js"; document.body.appendChild(m); } })();
 /* Ask pop-up (loaded on every page that uses common.js) */
 (function () { const G = window.Gati; if (!G) return; const q = document.createElement("script"); q.src = G.root + "assets/js/search.js"; q.defer = true; document.body.appendChild(q); })();
 (function () { const G = window.Gati; if (!G) return; const s = document.createElement("script"); s.src = G.root + "assets/js/askpop.js"; s.defer = true; document.body.appendChild(s); })();

@@ -981,12 +981,12 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 @media(prefers-reduced-motion:no-preference){
   .afcard.live .afst i{animation:afpulse 2s ease-out infinite}
   @keyframes afpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--vc) 55%,transparent)}70%,100%{box-shadow:0 0 0 8px transparent}}
-  .tdseg,.tdggb i{transform-origin:left center;animation:tdfillx .8s cubic-bezier(.2,.7,.2,1) both}
-  .tdtb i{transform-origin:center bottom;animation:tdfilly .8s cubic-bezier(.2,.7,.2,1) both}
+  .rv-in .tdseg,.rv-in .tdggb i{transform-origin:left center;animation:tdfillx .8s cubic-bezier(.2,.7,.2,1) both}
+  .rv-in .tdtb i{transform-origin:center bottom;animation:tdfilly .8s cubic-bezier(.2,.7,.2,1) both}
   @keyframes tdfillx{from{transform:scaleX(0)}to{transform:none}}@keyframes tdfilly{from{transform:scaleY(0)}to{transform:none}}
-  .tdaq .tdg path+path{animation:tdarc 1s ease-out both}@keyframes tdarc{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
-  .tdsundot{animation:tdsun 1.6s cubic-bezier(.3,.7,.3,1) both}@keyframes tdsun{from{offset-distance:0%}to{offset-distance:var(--sd)}}
-  .card.alert.fresh,.brk li{animation:afade .5s ease-out both}@keyframes afade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .rv-in.tdaq .tdg path+path,.rv-in .tdaq .tdg path+path{animation:tdarc 1s ease-out both}@keyframes tdarc{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+  .rv-in .tdsundot{animation:tdsun 1.6s cubic-bezier(.3,.7,.3,1) both}@keyframes tdsun{from{offset-distance:0%}to{offset-distance:var(--sd)}}
+  @keyframes afade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .leaflet-interactive.mxpulse{animation:mxp 2.4s ease-in-out infinite}@keyframes mxp{0%,100%{stroke-width:1.5;stroke-opacity:1}50%{stroke-width:9;stroke-opacity:.25}}
 }
 
@@ -1116,3 +1116,11 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
 .ntsub{display:flex;gap:8px;flex-wrap:wrap}.ntsub select{min-height:44px;flex:1;min-width:160px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:0 10px;background:var(--surface);color:var(--ink)}.ntsub .btn{min-height:44px}.ntsub [disabled]{opacity:.55}
 .ntlist{list-style:none;margin:0;padding:0;display:grid;gap:8px}.ntlist a{display:flex;flex-direction:column;gap:2px;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;text-decoration:none!important;color:var(--ink)!important}
 .ntempty{padding:18px;border:1px dashed var(--line);border-radius:12px;text-align:center;color:var(--slate)}
+
+/* H. Scroll-driven motion: only for content first seen below the fold; transform and opacity only (no CLS) */
+@media(prefers-reduced-motion:no-preference){
+  html.gm .rv:not(.rv-in){opacity:0;transform:translateY(8px)}
+  html.gm .rv.rv-in{transition:opacity .25s ease-out,transform .25s ease-out}
+  .rv-in .gfill,.rv-in .bf,.rv-in .pbands .band{transform-origin:left center;animation:tdfillx .6s cubic-bezier(.2,.7,.2,1) both}
+  .rv-now *{animation:none!important}
+}
