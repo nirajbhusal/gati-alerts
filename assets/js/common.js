@@ -61,6 +61,7 @@
       <button class="pbtn" type="button" id="thmbtn" title="Theme / रूप" aria-haspopup="true" aria-expanded="false"></button>
       <button class="pbtn" type="button" id="txtbtn" title="Large text / ठूलो अक्षर">अ+</button></div>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्">${b("English", "नेपाली")}</button>
+    <button class="mebtn" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></button>
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
   </div>
   <nav class="main" id="mainnav" aria-label="Main"><a class="navhome" href="${ROOT}?home=1" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
@@ -224,3 +225,57 @@
 })();
 /* Ask pop-up (loaded on every page that uses common.js) */
 (function () { const G = window.Gati; if (!G) return; const s = document.createElement("script"); s.src = G.root + "assets/js/askpop.js"; s.defer = true; document.body.appendChild(s); })();
+/* My Gati drawer: no accounts; everything lives in this browser. */
+(function () {
+  const G = window.Gati; if (!G) return;
+  const R = G.root, esc = G.esc, T = (ne, en) => (G.lang === "ne" ? ne : en);
+  const btn = document.getElementById("mebtn"); if (!btn) return;
+  const dr = document.createElement("div"); dr.id = "medrawer"; dr.className = "medrawer"; dr.hidden = true; dr.setAttribute("role", "dialog"); dr.setAttribute("aria-modal", "true"); dr.setAttribute("aria-labelledby", "metitle");
+  document.body.appendChild(dr);
+  const watch = () => { try { const w = JSON.parse(localStorage.getItem("gati-watch") || "{}"); return (w.d || []).length + (w.r || []).length; } catch (e) { return 0; } };
+  const row = (ic, ne, en, val, act) => `<button type="button" class="merow" data-act="${act}"><span class="meic" aria-hidden="true">${ic}</span><span class="melab">${T(ne, en)}</span><span class="meval">${val}</span><span aria-hidden="true">›</span></button>`;
+  async function render() {
+    const code = G.district && G.district.get ? G.district.get() : (localStorage.getItem("gati-district") || "");
+    let dn = ""; try { dn = code && G.district ? await G.district.name(code) : ""; } catch (e) {}
+    const th = G.THEMES.find((x) => x[0] === G.themePref) || G.THEMES[0];
+    const notif = T("पुश छैन · RSS/Atom", "No push · RSS/Atom");
+    dr.innerHTML = `<div class="meback"></div><aside class="mepanel">
+      <div class="mehead"><h2 id="metitle">${T("मेरो गति", "My Gati")}</h2><button type="button" class="mex" aria-label="${T("बन्द गर्नुहोस्", "Close")}">✕</button></div>
+      <div class="mecard"><div class="mecard-top"><img src="${R}assets/img/gati-concept-A-ga-signal-icon.svg" alt="" width="40" height="40"><div><b>${T("मेरो गति", "My Gati")}</b><small>${T("खाता चाहिँदैन · यही ब्राउजरमा सुरक्षित", "No account · saved in this browser")}</small></div></div>
+        <div class="mecard-dist">📍 ${dn ? esc(dn) : T("जिल्ला छानिएको छैन", "No district chosen")}</div>
+        <div class="mecard-stats"><div><b>${G.num(String(watch()))}</b><span>${T("निगरानी", "Watching")}</span></div><div><b>${G.lang === "ne" ? "ने" : "EN"}</b><span>${T("भाषा", "Language")}</span></div><div><b>${G.devNum() ? "१२३" : "123"}</b><span>${T("अङ्क", "Numerals")}</span></div><div><b><i class="thdot th-${G.theme}"></i></b><span>${T(th[1], th[2])}</span></div></div>
+        <div class="mecard-foot">🔔 ${notif}</div></div>
+      <h3>${T("रूप", "Theme")}</h3><div class="methemes">${G.themePicker()}</div>
+      <h3>${T("भाषा", "Language")}</h3><div class="melang" role="radiogroup"><button type="button" role="radio" aria-checked="${G.lang === "ne"}" data-l="ne"><b>नेपाली</b><small>Nepali</small></button><button type="button" role="radio" aria-checked="${G.lang === "en"}" data-l="en"><b>English</b><small>अङ्ग्रेजी</small></button></div>
+      <h3>${T("सेटिङ", "Settings")}</h3><div class="merows">
+        ${row("📍", "मेरो जिल्ला", "My district", dn ? esc(dn) : T("छान्नुहोस्", "Choose"), "dist")}
+        ${row("⭐", "मेरो निगरानी सूची", "My watchlist", G.num(String(watch())), "watch")}
+        ${row("१२", "अङ्क", "Numerals", G.devNum() ? "१२३" : "123", "num")}
+        ${row("🗓", "मिति", "Dates", G.cal === "bs" ? T("वि.सं.", "BS") : T("ई.सं.", "AD"), "cal")}
+        ${row("अ+", "ठूलो अक्षर", "Large text", G.bigText ? T("खुला", "On") : T("बन्द", "Off"), "txt")}
+        ${row("🔔", "सूचना पाउने तरिका", "Get notified", "Atom", "feed")}
+        ${row("ℹ️", "बारेमा र स्रोत", "About and sources", "", "about")}
+      </div><p class="meta">${T("गतिले आधिकारिक चेतावनी जारी गर्दैन। यहाँका सेटिङ यही उपकरणमा मात्र रहन्छन्।", "Gati relays; it does not issue warnings. These settings stay on this device.")}</p></aside>`;
+    G.bindThemePicker(dr.querySelector(".methemes"));
+    dr.querySelector(".meback").onclick = close; dr.querySelector(".mex").onclick = close;
+    dr.querySelectorAll(".melang button").forEach((b) => (b.onclick = () => G.setLang(b.dataset.l)));
+    dr.querySelectorAll(".merow").forEach((b) => (b.onclick = () => {
+      const a = b.dataset.act, H = document.querySelector("header.top");
+      if (a === "dist" && G.district) G.district.open(render);
+      else if (a === "num") H.querySelector("#numbtn").click();
+      else if (a === "cal") H.querySelector("#calbtn").click();
+      else if (a === "txt") H.querySelector("#txtbtn").click();
+      else if (a === "watch") location.href = R + "?home=1#watch";
+      else if (a === "feed") location.href = R + "atom.xml";
+      else if (a === "about") location.href = R + "about/";
+      if (/num|cal|txt/.test(a)) render();
+    }));
+  }
+  function open() { render().then(() => { dr.hidden = false; document.body.classList.add("me-open"); dr.querySelector(".mex").focus(); }); }
+  function close() { dr.hidden = true; document.body.classList.remove("me-open"); btn.focus(); }
+  btn.onclick = open; btn.setAttribute("aria-label", T("मेरो गति", "My Gati"));
+  dr.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); if (e.key === "Tab") { const f = [...dr.querySelectorAll("button,a[href]")]; const a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } } });
+  G.onLang(() => { btn.setAttribute("aria-label", T("मेरो गति", "My Gati")); if (!dr.hidden) render(); });
+  G.myGati = { open };
+})();
+

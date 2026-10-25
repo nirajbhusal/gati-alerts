@@ -564,3 +564,24 @@ html[data-theme=dark] header.top{background:linear-gradient(180deg,#0a1f40,#0818
 html[data-theme=crimson] .aqhead{background:linear-gradient(135deg,#DC143C,#B10F31)}
 .disc,.topnote{border-left:4px solid var(--crimson)}
 html:not([data-theme=dark]):not([data-theme=crimson]) .tabbar{background:#002a6e;border-top-color:#DC143C}
+/* My Gati drawer */
+.mebtn{width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.medrawer{position:fixed;inset:0;z-index:1600}.medrawer[hidden]{display:none}.meback{position:absolute;inset:0;background:rgba(5,15,35,.5)}
+.mepanel{position:absolute;right:0;top:0;bottom:0;width:min(400px,100%);background:var(--snow);color:var(--ink);overflow:auto;padding:16px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:var(--sh2);animation:mein .2s ease-out}
+@keyframes mein{from{transform:translateX(30px);opacity:0}to{transform:none;opacity:1}}@media(prefers-reduced-motion:reduce){.mepanel{animation:none}}
+.mehead{display:flex;justify-content:space-between;align-items:center}.mehead h2{margin:0}.mex{width:40px;height:40px;border-radius:50%;border:0;background:var(--surface2);color:var(--ink);cursor:pointer;font-size:1rem}
+.mepanel h3{font-size:.95rem;margin:20px 0 8px;color:var(--slate);font-weight:600}
+.mecard{margin-top:14px;border-radius:20px;padding:18px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#ff4d6d 0%,transparent 45%),linear-gradient(135deg,#DC143C 0%,#8e0f3a 45%,#003893 100%);box-shadow:0 12px 28px rgba(0,56,147,.3);position:relative;overflow:hidden}
+.mecard::after{content:"";position:absolute;right:-30px;bottom:-40px;width:160px;height:160px;border-radius:50%;border:22px solid rgba(255,255,255,.08)}
+.mecard-top{display:flex;gap:12px;align-items:center}.mecard-top img{border-radius:12px;background:#fff}.mecard-top b{font-size:1.15rem;display:block}.mecard-top small{opacity:.85;font-size:.78rem}
+.mecard-dist{margin:16px 0 12px;font-size:1.15rem;font-weight:700}
+.mecard-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:rgba(255,255,255,.12);border-radius:14px;padding:10px 6px;text-align:center}.mecard-stats b{display:block;font-size:1.05rem}.mecard-stats span{font-size:.72rem;opacity:.9}
+.mecard-foot{margin-top:12px;font-size:.8rem;opacity:.9}
+.methemes .thgrid{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px}
+.melang{display:grid;grid-template-columns:1fr 1fr;gap:10px}.melang button{font:inherit;text-align:left;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}.melang button[aria-checked=true]{border-color:var(--crimson);box-shadow:0 0 0 3px rgba(220,20,60,.18)}.melang small{display:block;color:var(--slate);font-size:.75rem}
+.merows{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.merow{display:flex;align-items:center;gap:12px;width:100%;font:inherit;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 14px;color:var(--ink);cursor:pointer;min-height:52px}.merow:last-child{border-bottom:0}
+.meic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(0,56,147,.08);font-size:.95rem;flex:none;font-weight:700;color:#003893}.melab{flex:1}.meval{color:var(--slate);font-size:.88rem}
+html[data-theme=dark] .meic{background:rgba(143,184,255,.12);color:#8fb8ff}
+@media(max-width:440px){.mebtn{width:36px;height:36px}}
+@media(max-width:720px){#numbtn,#calbtn,#txtbtn{display:none}}
