@@ -1287,5 +1287,5 @@ body[data-page=log] #gdash{min-height:202px}@media(min-width:760px){body[data-pa
 body.brkwait main,body.brkwait footer{visibility:hidden}
 #srcHealth:empty,#askfull:empty,#pgrid:empty{min-height:100vh}
 @media(max-width:720px){#clist{min-height:100vh}}
-.gd-log .gdnote{padding-right:4px;box-sizing:border-box}.gd-log .gdnote a{display:inline-block}
+.gd-log .gdnote{padding-right:4px;box-sizing:border-box}
 .gd-log .gdnote{overflow:hidden}
