@@ -237,7 +237,7 @@
       <line x1="0" x2="${W}" y1="${wy}" y2="${wy}" stroke="#E8770E" stroke-dasharray="3 3" stroke-width="1"/><polyline points="${xy}" fill="none" stroke="#0F7C86" stroke-width="2"/></svg>`;
   }
   function gaugesCard() {
-    $("gauges").innerHTML = `<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? (DS[g.district] || DN[g.district])?.ne : (DS[g.district] || DN[g.district])?.en)}</span></p>${gaugeBar(g)}${spark(g)}</li>`).join("")}</ul>
+    $("gauges").innerHTML = `${G.staleChip(gauges.as_of + "T12:00:00+05:45") ? `<p class="gstale">${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>` : ""}<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? (DS[g.district] || DN[g.district])?.ne : (DS[g.district] || DN[g.district])?.en)}</span></p>${gaugeBar(g)}${spark(g)}</li>`).join("")}</ul>
       <p class="meta">${T("बार = अहिलेको सतह; सुन्तला रेखा = चेतावनी तह; रातो रेखा = खतरा तह।", "Bar = current level; orange line = warning level; red line = danger level.")} ${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">${G.esc(T(gauges.source_ne, gauges.source_en))}</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))}</p>`;
   }
   function glance() {
@@ -413,7 +413,7 @@
     const box = $("rivhi"); if (box === NIL) return;
     const gs = [...gauges.gauges].sort((a, b) => gaugePct(b) - gaugePct(a)).slice(0, 3);
     box.innerHTML = `<ul class="hilist">${gs.map((g) => `<li><span class="hin">${G.esc(T(g.ne, g.en))}</span><span class="hiv" style="color:${GSC[gaugeState(g)]}">${G.num(g.level.toFixed(1))} ${T("मि.", "m")} · ${T(...GSW[gaugeState(g)])}</span></li>`).join("")}</ul>
-      <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">DHM</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))}</p>`;
+      <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">DHM</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))} ${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>`;
   }
   function roadHi() {
     const box = $("roadhi"); if (box === NIL) return;

@@ -1018,3 +1018,4 @@ input[type=search],input[type=text],input[type=email],input[type=tel],input[type
 label:has(> input[type=checkbox]),label:has(> input[type=radio]){display:inline-flex;align-items:center;gap:8px;min-height:44px}
 .fi span,.finfo span{font-size:var(--fs-6)!important}
 .ahead .tts.ttsi{margin-left:auto;width:36px;height:36px;padding:0;border-radius:50%;display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--surface);cursor:pointer}.ahead .tts.ttsi .ttsl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.ahead{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.stalechip{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-6);font-weight:700;color:#8A4B00;background:#FFF1DB;border:1px solid #F2C27A;border-radius:999px;padding:2px 8px;margin-left:6px;white-space:nowrap}

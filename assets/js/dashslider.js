@@ -47,9 +47,9 @@
   /* 4. Rivers: level against warning and danger */
   {
     const gs = RV ? RV.gauges : [];
-    slides.push({ k: "rivers", t: T("नदी सतह", "River levels"), body: gs.length ? `<ul class="dsriv">${gs.map((g) => { const mx = g.danger * 1.15, c = g.level >= g.danger ? "#C81E1E" : g.level >= g.warning ? "#E8770E" : "#2B6CB0";
+    slides.push({ stale: RV ? G.isStale(RV.as_of + "T12:00:00+05:45") : false, k: "rivers", t: T("नदी सतह", "River levels"), body: gs.length ? `<ul class="dsriv">${gs.map((g) => { const mx = g.danger * 1.15, c = g.level >= g.danger ? "#C81E1E" : g.level >= g.warning ? "#E8770E" : "#2B6CB0";
       return `<li><span class="dslab">${E(T(g.ne, g.en))}</span><span class="dsrb"><i class="lvl" style="width:${Math.min(100, (g.level / mx) * 100).toFixed(1)}%;background:${c}"></i><i class="mk w" style="left:${((g.warning / mx) * 100).toFixed(1)}%"></i><i class="mk d" style="left:${((g.danger / mx) * 100).toFixed(1)}%"></i></span><b>${G.num(g.level.toFixed(1))} m</b></li>`; }).join("")}</ul><div class="dsleg"><span><i class="mk w"></i>${T("चेतावनी तह", "Warning")}</span><span><i class="mk d"></i>${T("खतरा तह", "Danger")}</span></div>` : na(T("नदी सतह", "River levels"), ""),
-      foot: foot(RV ? E(T(RV.source_ne, RV.source_en)) : "DHM", RV ? E(T(RV.as_of_ne, RV.as_of_en)) : "", G.trustChip("Official"), "rivers/", T("नदी", "Rivers")) });
+      foot: foot(RV ? E(T(RV.source_ne, RV.source_en)) : "DHM", RV ? E(T(RV.as_of_ne, RV.as_of_en)) : "", G.trustChip("Official") + (RV ? G.staleChip(RV.as_of + "T12:00:00+05:45") : ""), "rivers/", T("नदी", "Rivers")) });
   }
   /* 5. Earthquakes: latest on a mini map */
   {
@@ -65,6 +65,8 @@
   slides.push({ k: "air", t: T("हावाको गुणस्तर (काठमाडौँ)", "Air quality (Kathmandu)"), body: `<div id="dsair">${T("लोड हुँदै…", "Loading…")}</div>`,
     foot: foot(`<a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">Open-Meteo</a> (Copernicus CAMS)`, `<span id="dsairt"></span>`, G.trustChip("Model"), "weather/#air", T("मौसम र हावा", "Weather & air")) });
 
+  /* stale slides sort below fresh ones */
+  slides.sort((a, b) => (a.stale ? 1 : 0) - (b.stale ? 1 : 0));
   box.innerHTML = `<section class="dslider" aria-roledescription="carousel" aria-label="${T("तथ्याङ्क झलक", "Data at a glance")}">
     <div class="dshead"><h2>${T("तथ्याङ्क झलक", "At a glance")}</h2><div class="dsnav"><button type="button" class="dsprev" aria-label="${T("अघिल्लो", "Previous")}">‹</button><button type="button" class="dsnext" aria-label="${T("अर्को", "Next")}">›</button></div></div>
     <div class="dstrack" tabindex="0">${slides.map((s, k) => `<article class="dslide ds-${s.k}" role="group" aria-roledescription="slide" aria-label="${k + 1} / ${slides.length}: ${E(s.t)}"><h3>${s.t}</h3><div class="dsbody">${s.body}</div>${s.foot}</article>`).join("")}</div>
