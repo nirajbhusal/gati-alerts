@@ -137,16 +137,36 @@
   const sheet = document.createElement("div"); sheet.id = "setsheet"; sheet.className = "setsheet"; sheet.hidden = true; sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true"); sheet.setAttribute("aria-labelledby", "seth");
   document.body.append(sheet);
   const seg = (k, opts, cur) => `<div class="setseg" role="radiogroup" data-k="${k}">${opts.map(([v, l]) => `<button type="button" role="radio" data-v="${v}" aria-checked="${v === cur}">${l}</button>`).join("")}</div>`;
+  let tabk = "set";
+  /* Notifications tab: pushes received (stored by sw.js in the Cache API under gati-pushlog), newest first, plus district subscription */
+  const pushLog = () => ("caches" in window ? caches.open("gati-pushlog").then((c) => c.match("pushlog")).then((r) => (r ? r.json() : [])).catch(() => []) : Promise.resolve([]));
+  async function drawNotif(box) { const L = (a, b) => (G.lang === "ne" ? a : b), E = G.esc;
+    const list = (await pushLog()).sort((x, y) => (y.received || "").localeCompare(x.received || ""));
+    let DL = []; try { DL = await G.json("data/districts.json"); } catch (e) {}
+    const on = G.push && G.push.on(), mine = (() => { try { return localStorage.getItem("gati-push-district") || ""; } catch (e) { return ""; } })(), cur = mine || (G.district && G.district.get && G.district.get()) || "";
+    box.innerHTML = `<section><h3>${L("जिल्लाका सूचना", "District alerts")}</h3>
+      <p class="meta">${on ? L("चालु आधिकारिक सूचना आउँदा यो जिल्लाका लागि पुस सूचना पाउनुहोस्।", "Get a push when an official alert covers this district.") : L("पुस सूचना अझै सुरु भएको छैन; कुञ्जी (VAPID) र पठाउने सेवा तयार भएपछि खुल्छ।", "Push is not on yet; it opens once the keys (VAPID) and a sender are set up.")}</p>
+      <div class="ntsub"><label class="sr-only" for="ntd">${L("जिल्ला", "District")}</label><select id="ntd" ${on ? "" : "disabled"}>${DL.map((d) => `<option value="${E(d.code)}"${d.code === cur ? " selected" : ""}>${E(L(d.ne, d.en))}</option>`).join("")}</select>
+      <button type="button" class="btn" id="ntgo" ${on ? "" : "disabled"}>${mine ? L("बदल्नुहोस्", "Change") : L("सदस्यता लिनुहोस्", "Subscribe")}</button></div>
+      ${mine ? `<p class="meta">${L("सदस्यता", "Subscribed")}: ${E(L((DL.find((d) => d.code === mine) || {}).ne || mine, (DL.find((d) => d.code === mine) || {}).en || mine))}</p>` : ""}<p class="meta" id="ntmsg" role="status"></p></section>
+      <section><h3>${L("आएका सूचना", "Received")}</h3>${list.length ? `<ul class="ntlist">${list.map((n) => `<li><a href="${E(n.url || G.root)}"><b>${E(n.title || "")}</b>${n.body ? `<span>${E(n.body)}</span>` : ""}<span class="meta">${L("स्रोत", "Source")}: ${E(n.source || "")} · ${G.npt(n.sent || n.received)}</span></a></li>`).join("")}</ul>`
+        : `<p class="ntempty">🔔 ${L("अहिलेसम्म कुनै पुस सूचना आएको छैन। सदस्यता लिएपछि यहाँ देखिन्छ, नयाँ माथि।", "No push notifications yet. Once you subscribe they show here, newest first.")}</p>`}</section>`;
+    const go = box.querySelector("#ntgo"); if (go && on) go.onclick = async () => { const r = await G.push.subscribe(box.querySelector("#ntd").value); box.querySelector("#ntmsg").textContent = r.msg; };
+  }
   const drawSheet = () => { const ne = G.lang === "ne", L = (a, b) => (ne ? a : b);
     sheet.innerHTML = `<div class="setpanel"><div class="seth"><h2 id="seth">${L("सेटिङ", "Settings")}</h2><button type="button" class="setx" aria-label="${L("बन्द गर्नुहोस्", "Close")}">×</button></div>
+      <div class="settabs" role="tablist"><button type="button" role="tab" data-tab="set" aria-selected="${tabk === "set"}">⚙ ${L("सेटिङ", "Settings")}</button><button type="button" role="tab" data-tab="notif" aria-selected="${tabk === "notif"}">🔔 ${L("सूचना", "Notifications")}</button></div>
+      ${tabk === "notif" ? `<div id="ntpane" role="tabpanel"><p class="meta">…</p></div>` : ""}<div role="tabpanel"${tabk === "notif" ? " hidden" : ""}>
       <section class="setgrp"><h3>भाषा र ढाँचा · Language and format</h3><h4>${L("भाषा", "Language")}</h4>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang)}
       <h4>${L("मिति", "Calendar")}</h4>${seg("cal", [["bs", L("वि.सं. BS", "BS")], ["ad", L("ई.सं. AD", "AD")]], G.cal === "bs" ? "bs" : "ad")}</section>
       <section><h3>${L("अक्षरको आकार", "Text size")}</h3><span class="tsize setseg" role="group" aria-label="${L("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${L("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${L("सामान्य अक्षर", "Default text size")}">A</button><button type="button" data-ts="1" aria-label="${L("ठूलो अक्षर", "Larger text")}">A+</button></span></section>
-      <section><h3>${L("रूप", "Theme")}</h3>${seg("theme", [["paper", L("कागज", "Paper")], ["light", L("उज्यालो", "Light")], ["dark", L("अँध्यारो", "Dark")], ["system", L("स्वतः", "Auto")]], G.themePref)}</section></div>`;
+      <section><h3>${L("रूप", "Theme")}</h3>${seg("theme", [["paper", L("कागज", "Paper")], ["light", L("उज्यालो", "Light")], ["dark", L("अँध्यारो", "Dark")], ["system", L("स्वतः", "Auto")]], G.themePref)}</section></div></div>`;
     sheet.querySelectorAll(".setseg[data-k] button").forEach((b) => (b.onclick = () => { const k = b.parentElement.dataset.k, v = b.dataset.v;
       if (k === "lang") G.setLang(v); else if (k === "num") G.setNum(v); else if (k === "cal") G.setCal(v); else if (k === "theme") G.setTheme(v);
       drawSheet(); const nb = sheet.querySelector(`[data-k="${k}"] [data-v="${v}"]`); if (nb) nb.focus(); }));
     G.bindTsize(sheet); if (G.setTextSize) G.setTextSize(G.textSize());
+    sheet.querySelectorAll(".settabs [data-tab]").forEach((b) => (b.onclick = () => { tabk = b.dataset.tab; drawSheet(); const t = sheet.querySelector(`[data-tab="${tabk}"]`); if (t) t.focus(); }));
+    const np = sheet.querySelector("#ntpane"); if (np) drawNotif(np);
     sheet.querySelector(".setx").onclick = closeSheet; };
   const setbtn = header.querySelector("#setbtn");
   const closeSheet = () => { sheet.hidden = true; setbtn.setAttribute("aria-expanded", "false"); setbtn.focus(); };
@@ -283,6 +303,7 @@
   new MutationObserver(() => { clearTimeout(scan.t); scan.t = setTimeout(scan, 150); }).observe(document.body, { childList: true, subtree: true });
   scan(); speechSynthesis.getVoices(); addEventListener("pagehide", stop);
 })();
+(function () { const G = window.Gati; if (!G || G.push) return; const s = document.createElement("script"); s.src = G.root + "assets/js/push.js"; document.body.appendChild(s); })();
 /* Ask pop-up (loaded on every page that uses common.js) */
 (function () { const G = window.Gati; if (!G) return; const q = document.createElement("script"); q.src = G.root + "assets/js/search.js"; q.defer = true; document.body.appendChild(q); })();
 (function () { const G = window.Gati; if (!G) return; const s = document.createElement("script"); s.src = G.root + "assets/js/askpop.js"; s.defer = true; document.body.appendChild(s); })();
