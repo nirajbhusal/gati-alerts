@@ -11,7 +11,7 @@
   const TR = ["Official", "Reported", "Model"].filter((t) => G.TRUST[t]);
   const isAct = (a) => !a.expired && !a.supersededBy && Date.parse(a.expires) > now;
   const RCOL = { open: "#16a34a", oneway: "#f59e0b", blocked: "#dc2626", none: "#8a96a3" }, RLB = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], blocked: ["अवरुद्ध", "Blocked"], none: ["पुष्टि छैन", "Not confirmed"] };
-  const VCOL = { normal: "#2B6CB0", warning: "#E8770E", danger: "#C81E1E" }, VLB = { normal: ["सामान्य", "Normal"], warning: ["चेतावनी तह", "Above warning"], danger: ["खतरा तह", "Above danger"] };
+  const VCOL = { normal: "#2F6FED", warning: "#F28C1E", danger: "#D93025" }, VLB = { normal: ["सामान्य", "Normal"], warning: ["चेतावनी तह", "Above warning"], danger: ["खतरा तह", "Above danger"] };
   const gstat = (g) => (g.level >= g.danger ? "danger" : g.level >= g.warning ? "warning" : "normal");
   const mag = (a) => parseFloat(((a.info.en.params || {})["gati:magnitude"]) || "") || null;
   const hazards = [...new Set(ALERTS.filter((a) => a.hazard !== "earthquake").map((a) => a.hazard))];
@@ -101,7 +101,7 @@
     if (on("lab")) { if (PROV) PROV.features.forEach((f) => L.marker(f.properties.label, { icon: L.divIcon({ className: "mxlab prov", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab));
       if (DIST && map.getZoom() >= 8) DIST.features.forEach((f) => { const c = L.geoJSON(f).getBounds().getCenter(); L.marker(c, { icon: L.divIcon({ className: "mxlab", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab); }); }
     /* focus outline */
-    if (focusF) L.geoJSON(focusF, { style: { color: "#003893", weight: 2.5, fill: false }, interactive: false }).addTo(LG.focus);
+    if (focusF) L.geoJSON(focusF, { style: { color: "#0B1424", weight: 2.5, fill: false }, interactive: false }).addTo(LG.focus);
     panel(); legend(); details(); writeHash();
   }
   let focusF = null, focusB = null;

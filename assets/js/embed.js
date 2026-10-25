@@ -12,8 +12,8 @@
   const npt = (iso) => { const d = new Date(new Date(iso).getTime() + 345 * 60000); let h = d.getUTCHours(); const mi = String(d.getUTCMinutes()).padStart(2, "0");
     if (lang === "ne") return num(`${MN[d.getUTCMonth()]} ${d.getUTCDate()}, ${h}:${mi}`) + " NPT";
     const ap = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return `${d.getUTCDate()} ${ME[d.getUTCMonth()]}, ${h}:${mi} ${ap} NPT`; };
-  const SEV = { Extreme: ["अत्यन्त गम्भीर", "Extreme", "⬢", "#7A0019"], Severe: ["गम्भीर", "Severe", "▲", "#C81E1E"], Moderate: ["मध्यम", "Moderate", "◆", "#E8770E"],
-    Minor: ["सामान्य", "Minor", "●", "#9a7b00"], Unknown: ["सूचना", "Info", "ℹ", "#2B6CB0"] };
+  const SEV = { Extreme: ["अत्यन्त गम्भीर", "Extreme", "⬢", "#8E1B14"], Severe: ["गम्भीर", "Severe", "▲", "#D93025"], Moderate: ["मध्यम", "Moderate", "◆", "#F28C1E"],
+    Minor: ["सामान्य", "Minor", "●", "#9a7b00"], Unknown: ["सूचना", "Info", "ℹ", "#2F6FED"] };
   const TR = { Official: ["🛡 आधिकारिक", "🛡 Official"], Verified: ["✓ प्रमाणित", "✓ Verified"], Reported: ["❝ रिपोर्ट गरिएको", "❝ Reported"] };
   const site = "https://nirajbhusal.github.io/gati-alerts/";
   document.getElementById("disc").textContent = T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources");

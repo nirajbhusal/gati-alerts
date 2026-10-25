@@ -14,7 +14,7 @@
     function build() {
       Object.values(L_).forEach((g) => g.clearLayers());
       if (prov) prov.features.forEach((f) => {
-        L.geoJSON(f, { style: { color: "#0E2A47", weight: 1.6, opacity: 0.55, fill: false, dashArray: "6 4" }, interactive: false }).addTo(L_.provinces);
+        L.geoJSON(f, { style: { color: "#0B1424", weight: 1.6, opacity: 0.55, fill: false, dashArray: "6 4" }, interactive: false }).addTo(L_.provinces);
         lab(f.properties.label, G.esc(T(f.properties.ne, f.properties.en)), "prov", 1).addTo(L_.provinces);
       });
       if (dist) dist.features.forEach((f) => {
@@ -30,13 +30,13 @@
       if (al) al.alerts.filter((a) => a.hazard === "earthquake").forEach((a) => {
         const i = a.info[G.lang]; (i.areas || []).forEach((ar) => ar.circles.forEach((c) => {
           const [ll] = c.split(" "), [la, lo] = ll.split(",").map(Number), mag = parseFloat(a.info.en.params["gati:magnitude"]) || 4.5;
-          L.circleMarker([la, lo], { radius: Math.min(16, 5 + Math.max(0, mag - 4) * 5), color: "#7A0019", weight: 1.5, fillColor: "#C81E1E", fillOpacity: 0.35 })
+          L.circleMarker([la, lo], { radius: Math.min(16, 5 + Math.max(0, mag - 4) * 5), color: "#8E1B14", weight: 1.5, fillColor: "#D93025", fillOpacity: 0.35 })
             .bindPopup(`<b>${G.esc(i.headline)}</b><br>${G.trustChip(a.trust)} ${G.npt(i.params["gati:sourceTime"] || a.sent)}<br><a href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a> · <a href="${G.root}alerts/${G.esc(a.identifier)}/">${T("पूरा", "More")}</a>`).addTo(L_.quakes);
         }));
       });
       const dot = (ll, c, r, tip) => L.circleMarker([ll[0], ll[1]], { radius: r, color: "#fff", weight: 1, fillColor: c, fillOpacity: 0.95 }).bindTooltip(G.esc(ll[2] || tip));
-      if (health) { health.hospitals.forEach((p) => dot(p, "#C81E1E", 3.6, T("अस्पताल", "Hospital")).addTo(L_.health)); health.healthPosts.forEach((p) => dot(p, "#E8770E", 2.6, T("स्वास्थ्य चौकी", "Health post")).addTo(L_.health)); }
-      if (avia) { avia.helipads.forEach((p) => dot(p, "#2B6CB0", 3.2, "Helipad").addTo(L_.heli)); avia.aerodromes.forEach((p) => dot(p, "#0E2A47", 4.5, T("विमानस्थल", "Aerodrome")).addTo(L_.heli)); }
+      if (health) { health.hospitals.forEach((p) => dot(p, "#D93025", 3.6, T("अस्पताल", "Hospital")).addTo(L_.health)); health.healthPosts.forEach((p) => dot(p, "#F28C1E", 2.6, T("स्वास्थ्य चौकी", "Health post")).addTo(L_.health)); }
+      if (avia) { avia.helipads.forEach((p) => dot(p, "#2F6FED", 3.2, "Helipad").addTo(L_.heli)); avia.aerodromes.forEach((p) => dot(p, "#0B1424", 4.5, T("विमानस्थल", "Aerodrome")).addTo(L_.heli)); }
       const my = G.district && G.district.get();
       if (my && dist) { const f = dist.features.find((x) => x.id === my); if (f) L.geoJSON(f, { style: { color: "#0F7C86", weight: 3.5, fill: true, fillColor: "#7FD1D8", fillOpacity: 0.18 }, interactive: false }).addTo(L_.mine); }
       apply();
@@ -63,7 +63,7 @@
       b.onclick = () => navigator.geolocation && navigator.geolocation.getCurrentPosition((p) => {
         const ll = [p.coords.latitude, p.coords.longitude];
         if (window.__gloc) map.removeLayer(window.__gloc);
-        window.__gloc = L.layerGroup([L.circle(ll, { radius: p.coords.accuracy, color: "#2B6CB0", weight: 1, fillOpacity: 0.1 }), L.circleMarker(ll, { radius: 7, color: "#fff", weight: 3, fillColor: "#2B6CB0", fillOpacity: 1 })]).addTo(map);
+        window.__gloc = L.layerGroup([L.circle(ll, { radius: p.coords.accuracy, color: "#2F6FED", weight: 1, fillOpacity: 0.1 }), L.circleMarker(ll, { radius: 7, color: "#fff", weight: 3, fillColor: "#2F6FED", fillOpacity: 1 })]).addTo(map);
         map.setView(ll, Math.max(map.getZoom(), 9));
       }, () => alert(T("स्थान अनुमति दिइएन वा भेटिएन।", "Location permission denied or unavailable.")), { timeout: 10000, maximumAge: 600000 });
       return b; } });

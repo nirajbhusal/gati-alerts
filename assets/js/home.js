@@ -105,7 +105,7 @@
   const centroid = (p) => { let la = 0, lo = 0; p.forEach(([a, b]) => { la += a; lo += b; }); return [la / p.length, lo / p.length]; };
   const gaugePct = (g) => g.level / g.warning;
   const gaugeState = (g) => (g.danger && g.level >= g.danger ? "danger" : g.level >= g.warning ? "warning" : "below");
-  const GSC = { below: "#0F7C86", warning: "#E8770E", danger: "#C81E1E" };
+  const GSC = { below: "#0F7C86", warning: "#F28C1E", danger: "#D93025" };
   const GSW = { below: ["चेतावनी तहमुनि", "Below warning"], warning: ["चेतावनी तहमाथि", "Above warning"], danger: ["खतरा तहमाथि", "Above danger"] };
   function fit() { if (!map) return; map.invalidateSize(); map.fitBounds([[26.35, 80.06], [30.45, 88.2]], { padding: matchMedia("(max-width:600px)").matches ? [0, 0] : [8, 8] }); }
   function initMap() {
@@ -170,7 +170,7 @@
     const small = matchMedia("(max-width:600px)").matches;
     const TOWNS = small ? ["ktm", "pokhara", "butwal", "nepalgunj", "dhangadhi", "itahari"] : ["ktm", "pokhara", "butwal", "nepalgunj", "dhangadhi", "itahari", "hetauda", "narayanghat", "kakarbhitta", "dhunche", "baglung", "bardibas"];
     TOWNS.forEach((k) => { const n = roads.nodes[k]; if (!n) return;
-      L.circleMarker(n.ll, { radius: k === "ktm" ? 5 : 3.5, color: "#0E2A47", weight: 2, fillColor: "#fff", fillOpacity: 1, interactive: false }).addTo(labelLayer);
+      L.circleMarker(n.ll, { radius: k === "ktm" ? 5 : 3.5, color: "#0B1424", weight: 2, fillColor: "#fff", fillOpacity: 1, interactive: false }).addTo(labelLayer);
       L.marker(n.ll, { icon: L.divIcon({ className: "townlab" + (k === "ktm" ? " cap" : ""), html: G.esc(T(n.ne, n.en).replace(/ \(.*\)/, "")), iconSize: [110, 18], iconAnchor: [-6, 20] }), interactive: false }).addTo(labelLayer); });
     document.querySelectorAll("[data-scope]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.scope === scope));
     document.querySelectorAll(".lchip").forEach((b) => b.setAttribute("aria-pressed", layersOn[b.dataset.layer]));
@@ -234,7 +234,7 @@
     const xy = pts.map((p) => `${(((new Date(p.t) - t0) / (24 * 36e5)) * W).toFixed(1)},${(H - (p.v / max) * H).toFixed(1)}`).join(" ");
     const wy = (H - (g.warning / max) * H).toFixed(1);
     return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${G.esc(T("पछिल्लो २४ घण्टाको सतह", "Level over the last 24 h"))}">
-      <line x1="0" x2="${W}" y1="${wy}" y2="${wy}" stroke="#E8770E" stroke-dasharray="3 3" stroke-width="1"/><polyline points="${xy}" fill="none" stroke="#0F7C86" stroke-width="2"/></svg>`;
+      <line x1="0" x2="${W}" y1="${wy}" y2="${wy}" stroke="#F28C1E" stroke-dasharray="3 3" stroke-width="1"/><polyline points="${xy}" fill="none" stroke="#0F7C86" stroke-width="2"/></svg>`;
   }
   function gaugesCard() {
     $("gauges").innerHTML = `${G.staleChip(gauges.as_of + "T12:00:00+05:45") ? `<p class="gstale">${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>` : ""}<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? (DS[g.district] || DN[g.district])?.ne : (DS[g.district] || DN[g.district])?.en)}</span></p>${gaugeBar(g)}${spark(g)}</li>`).join("")}</ul>

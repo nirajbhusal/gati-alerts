@@ -13,7 +13,7 @@
     }
     if (lay) map.removeLayer(lay); lay = L.layerGroup().addTo(map);
     const ids = [...new Set(P.map((x) => x[2].id))], feats = RG.features.filter((f) => ids.includes(f.properties.id));
-    if (alt) { const aids = [...new Set(alt.map((x) => x[2].id))].filter((i) => !ids.includes(i)); L.geoJSON({ type: "FeatureCollection", features: RG.features.filter((f) => aids.includes(f.properties.id)) }, { style: { color: "#003893", weight: 4, dashArray: "6 7", opacity: .8 } }).bindTooltip(T("वैकल्पिक मार्ग", "Alternative route")).addTo(lay); }
+    if (alt) { const aids = [...new Set(alt.map((x) => x[2].id))].filter((i) => !ids.includes(i)); L.geoJSON({ type: "FeatureCollection", features: RG.features.filter((f) => aids.includes(f.properties.id)) }, { style: { color: "#0B1424", weight: 4, dashArray: "6 7", opacity: .8 } }).bindTooltip(T("वैकल्पिक मार्ग", "Alternative route")).addTo(lay); }
     const g = L.geoJSON({ type: "FeatureCollection", features: feats }, { style: (f) => { const r = RD.routes.find((x) => x.id === f.properties.id); return { color: COL[r.status] || COL.none, weight: 7, opacity: .95, lineCap: "round", dashArray: r.status === "none" ? "2 10" : null }; },
       onEachFeature: (f, l) => { const r = RD.routes.find((x) => x.id === f.properties.id); l.bindPopup(`<b>${esc(T(r.name_ne, r.name_en))}</b><br>${esc(T(r.note_ne, r.note_en))}`); } }).addTo(lay);
     // casing under the coloured lines

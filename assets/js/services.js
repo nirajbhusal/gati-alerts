@@ -4,10 +4,10 @@
   const box = document.getElementById("services"); if (!box) return;
   const I = (d) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
   const S = [
-    ["affected/", "के म प्रभावित छु?", "Am I affected?", "#003893", I('<circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>'), "affected near me location verdict"],
+    ["affected/", "के म प्रभावित छु?", "Am I affected?", "#0B1424", I('<circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>'), "affected near me location verdict"],
     ["route/", "मार्ग जाँच", "Route check", "#16a34a", I('<circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/>'), "route travel journey bato marga yatra"],
-    ["alerts/", "सूचना", "Alerts", "#DC143C", I('<path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/>'), "alert notice warning"],
-    ["map/", "नक्सा", "Map", "#003893", I('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "map"],
+    ["alerts/", "सूचना", "Alerts", "#0B1424", I('<path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/>'), "alert notice warning"],
+    ["map/", "नक्सा", "Map", "#0B1424", I('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "map"],
     ["weather/", "मौसम र हावा", "Weather & air", "#0284c7", I('<path d="M7 18a4 4 0 1 1 .9-7.9A5.5 5.5 0 0 1 18.5 12 3 3 0 0 1 18 18z"/><path d="M8 21l1-2M12 21l1-2M16 21l1-2"/>'), "weather rain aqi air"],
     ["rivers/", "नदी", "Rivers", "#0891b2", I('<path d="M3 8c2 0 2-1.5 4.5-1.5S10 8 12 8s2.5-1.5 4.5-1.5S19 8 21 8M3 13c2 0 2-1.5 4.5-1.5S10 13 12 13s2.5-1.5 4.5-1.5S19 13 21 13M3 18c2 0 2-1.5 4.5-1.5S10 18 12 18s2.5-1.5 4.5-1.5S19 18 21 18"/>'), "river flood"],
     ["roads/", "सडक", "Roads", "#ea580c", I('<path d="M8 3 4 21M16 3l4 18M12 4v3M12 10.5v3M12 17v3"/>'), "road highway"],

@@ -12,9 +12,10 @@
   const pref = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
   G.numPref = pref("gati-num", "");            // "" follows language; "ne" or "en" forces numerals
   G.cal = pref("gati-cal", "ad");              // "ad" or "bs"
-  /* Themes: system, light, paper, dark, crimson. "system" follows the device. */
-  G.THEMES = [["system", "प्रणाली", "System"], ["light", "उज्यालो", "Light"], ["paper", "कागज", "Paper"], ["dark", "अँध्यारो", "Dark"], ["crimson", "सिम्रिक", "Crimson"]];
+  /* Themes: light, dark, system ("system" follows the device). */
+  G.THEMES = [["light", "उज्यालो", "Light"], ["dark", "अँध्यारो", "Dark"], ["system", "स्वतः", "Auto"]]; /* brand: swatch themes (paper, crimson) retired */
   G.themePref = pref("gati-theme-pref", pref("gati-theme", "system"));
+  if (!["light", "dark", "system"].includes(G.themePref)) G.themePref = "system";
   const mq = matchMedia("(prefers-color-scheme: dark)");
   const applyTheme = () => { G.theme = G.themePref === "system" ? (mq.matches ? "dark" : "light") : G.themePref; document.documentElement.dataset.theme = G.theme; };
   applyTheme(); mq.addEventListener && mq.addEventListener("change", () => G.themePref === "system" && applyTheme());
@@ -127,7 +128,7 @@
   G.setCal = (v) => { G.cal = v; save("gati-cal", v === "bs" ? "bs" : ""); G.listeners.forEach((f) => f(G.lang)); };
   G.setTheme = (t) => { G.themePref = t; save("gati-theme-pref", t); save("gati-theme", ""); applyTheme(); G.listeners.forEach((f) => f(G.lang)); };
   /* Visual swatch picker, reused by the My Gati drawer */
-  G.themePicker = () => `<div class="thgrid" role="radiogroup" aria-label="${G.lang === "ne" ? "रूप" : "Theme"}">${G.THEMES.map(([k, ne, en]) => `<button type="button" role="radio" class="thsw" data-th="${k}" aria-checked="${G.themePref === k}"><span class="thprev tp-${k}"><i></i><i></i><i></i></span><span>${G.lang === "ne" ? ne : en}</span></button>`).join("")}</div>`;
+  G.themePicker = () => `<div class="setseg" role="radiogroup" aria-label="${G.lang === "ne" ? "रूप" : "Theme"}">${G.THEMES.map(([k, ne, en]) => `<button type="button" role="radio" class="thsw" data-th="${k}" aria-checked="${G.themePref === k}">${G.lang === "ne" ? ne : en}</button>`).join("")}</div>`;
   G.bindThemePicker = (el) => el.querySelectorAll(".thsw").forEach((b) => (b.onclick = () => { G.setTheme(b.dataset.th); el.querySelectorAll(".thsw").forEach((x) => x.setAttribute("aria-checked", x.dataset.th === G.themePref)); }));
   /* Settings sheet: language, numerals, calendar, text size, theme */
   const sheet = document.createElement("div"); sheet.id = "setsheet"; sheet.className = "setsheet"; sheet.hidden = true; sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true"); sheet.setAttribute("aria-labelledby", "seth");
@@ -192,7 +193,7 @@
   G.SEV = { Extreme: ["अत्यन्त गम्भीर", "Extreme", "⬢"], Severe: ["गम्भीर", "Severe", "▲"], Moderate: ["मध्यम", "Moderate", "◆"],
             Minor: ["सामान्य", "Minor", "●"], Unknown: ["सूचना", "Info", "ℹ"] };
   G.SEVORDER = ["Extreme", "Severe", "Moderate", "Minor", "Unknown"];
-  G.SEVCOLOR = { Extreme: "#7A0019", Severe: "#C81E1E", Moderate: "#E8770E", Minor: "#F5C518", Unknown: "#2B6CB0" };
+  G.SEVCOLOR = { Extreme: "#8E1B14", Severe: "#D93025", Moderate: "#F28C1E", Minor: "#F2C94C", Unknown: "#8F9BB3" };
   G.TRUST = { Official: ["आधिकारिक", "Official", "🛡"], Verified: ["प्रमाणित", "Verified", "✓"], Reported: ["रिपोर्ट गरिएको", "Reported", "❝"],
               Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"] };
   G.sevChip = (s) => { const v = G.SEV[s] || G.SEV.Unknown; return `<span class="sev sev-${G.SEV[s] ? s : "Unknown"}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>`; };

@@ -47,7 +47,7 @@
   /* 4. Rivers: level against warning and danger */
   {
     const gs = RV ? RV.gauges : [];
-    slides.push({ stale: RV ? G.isStale(RV.as_of + "T12:00:00+05:45") : false, k: "rivers", t: T("नदी सतह", "River levels"), body: gs.length ? `<ul class="dsriv">${gs.map((g) => { const mx = g.danger * 1.15, c = g.level >= g.danger ? "#C81E1E" : g.level >= g.warning ? "#E8770E" : "#2B6CB0";
+    slides.push({ stale: RV ? G.isStale(RV.as_of + "T12:00:00+05:45") : false, k: "rivers", t: T("नदी सतह", "River levels"), body: gs.length ? `<ul class="dsriv">${gs.map((g) => { const mx = g.danger * 1.15, c = g.level >= g.danger ? "#D93025" : g.level >= g.warning ? "#F28C1E" : "#2F6FED";
       return `<li><span class="dslab">${E(T(g.ne, g.en))}</span><span class="dsrb"><i class="lvl" style="width:${Math.min(100, (g.level / mx) * 100).toFixed(1)}%;background:${c}"></i><i class="mk w" style="left:${((g.warning / mx) * 100).toFixed(1)}%"></i><i class="mk d" style="left:${((g.danger / mx) * 100).toFixed(1)}%"></i></span><b>${G.num(g.level.toFixed(1))} m</b></li>`; }).join("")}</ul><div class="dsleg"><span><i class="mk w"></i>${T("चेतावनी तह", "Warning")}</span><span><i class="mk d"></i>${T("खतरा तह", "Danger")}</span></div>` : na(T("नदी सतह", "River levels"), ""),
       foot: foot(RV ? E(T(RV.source_ne, RV.source_en)) : "DHM", RV ? E(T(RV.as_of_ne, RV.as_of_en)) : "", G.trustChip("Official") + (RV ? G.staleChip(RV.as_of + "T12:00:00+05:45") : ""), "rivers/", T("नदी", "Rivers")) });
   }

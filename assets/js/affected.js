@@ -18,7 +18,7 @@
   const routeDistricts = (id) => { const f = RG && RG.features.find((x) => x.properties.id === id); if (!f || !DG) return []; const s = new Set(); lineCoords(f).filter((_, k) => k % 4 === 0).forEach(([x, y]) => { const d = DG.features.find((g) => inGeom(x, y, g.geometry)); if (d) s.add(d.id); }); return [...s]; };
   const routesIn = (code) => (RD ? RD.routes.filter((r) => routeDistricts(r.id).includes(code)) : []);
   const RS = { open: ["खुला", "Open", "#16a34a"], oneway: ["एकतर्फी", "One-way", "#f59e0b"], blocked: ["अवरुद्ध", "Blocked", "#dc2626"], none: ["पुष्टि छैन", "Not confirmed", "#8a96a3"] };
-  const gst = (g) => (g.level >= g.danger ? ["खतरा तह माथि", "Above danger", "#C81E1E"] : g.level >= g.warning ? ["चेतावनी तह माथि", "Above warning", "#E8770E"] : ["सामान्य", "Normal", "#2B6CB0"]);
+  const gst = (g) => (g.level >= g.danger ? ["खतरा तह माथि", "Above danger", "#D93025"] : g.level >= g.warning ? ["चेतावनी तह माथि", "Above warning", "#F28C1E"] : ["सामान्य", "Normal", "#2F6FED"]);
   let SAFE = null; const safety = () => SAFE ? Promise.resolve(SAFE) : fetch(R + "safety/").then((r) => r.text()).then((h) => (SAFE = new DOMParser().parseFromString(h, "text/html"))).catch(() => null);
   const HZS = { flood: ["flood"], landslide: ["landslide"], weather: ["flood", "landslide"], earthquake: ["earthquake"], glof: ["glof"], lightning: ["lightning"], cold: ["coldwave"], fire: ["fire"] };
   /* ---- input ---- */
@@ -122,7 +122,7 @@
       ${RG ? rts.map((r) => { const f = RG.features.find((x) => x.properties.id === r.id); return f ? `<polyline points="${lineCoords(f).map(([x, y]) => X(x) + "," + Y(y)).join(" ")}" fill="none" stroke="${RS[r.status][2]}" stroke-width="3" stroke-linecap="round"/>` : ""; }).join("") : ""}
       ${gs.map(({ g }) => `<circle cx="${X(g.ll[1])}" cy="${Y(g.ll[0])}" r="5" fill="${gst(g)[2]}" stroke="#fff" stroke-width="1.5"/>`).join("")}
       ${qs.map(({ c }) => c.length === 2 ? `<circle cx="${X(c[1])}" cy="${Y(c[0])}" r="6" fill="#7c3aed" fill-opacity=".35" stroke="#7c3aed"/>` : "").join("")}
-    </svg><p class="afleg"><span><i style="background:#1f2328"></i>${T("छानिएको क्षेत्र", "Selected area")}</span>${v.wx.length ? `<span><i style="background:#F5D90A"></i>DHM ${T("पहेँलो", "yellow")}</span>` : ""}<span><i style="background:#2B6CB0;border-radius:50%"></i>${T("नदी मापन", "River gauge")}</span><span><i style="background:#16a34a;height:3px"></i>${T("सडक", "Road")}</span></p>`;
+    </svg><p class="afleg"><span><i style="background:#1f2328"></i>${T("छानिएको क्षेत्र", "Selected area")}</span>${v.wx.length ? `<span><i style="background:#F5D90A"></i>DHM ${T("पहेँलो", "yellow")}</span>` : ""}<span><i style="background:#2F6FED;border-radius:50%"></i>${T("नदी मापन", "River gauge")}</span><span><i style="background:#16a34a;height:3px"></i>${T("सडक", "Road")}</span></p>`;
   }
   const h = new URLSearchParams(location.hash.slice(1)); const my = G.district && G.district.get();
   if (h.get("r")) render({ r: h.get("r") }); else if (h.get("d")) render({ d: h.get("d"), u: h.get("u") || "" }); else if (my) go({ d: my });

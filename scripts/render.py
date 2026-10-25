@@ -20,9 +20,9 @@ NPT = dt.timezone(dt.timedelta(hours=5, minutes=45))
 DEV = str.maketrans("0123456789", "०१२३४५६७८९")
 MON_NE = ["जनवरी","फेब्रुअरी","मार्च","अप्रिल","मे","जुन","जुलाई","अगस्ट","सेप्टेम्बर","अक्टोबर","नोभेम्बर","डिसेम्बर"]
 MON_EN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-SEV = {"Extreme": ("अत्यन्त गम्भीर", "Extreme", "⬢", "#7A0019"), "Severe": ("गम्भीर", "Severe", "▲", "#C81E1E"),
-       "Moderate": ("मध्यम", "Moderate", "◆", "#E8770E"), "Minor": ("सामान्य", "Minor", "●", "#F5C518"),
-       "Unknown": ("सूचना", "Info", "ℹ", "#2B6CB0")}
+SEV = {"Extreme": ("अत्यन्त गम्भीर", "Extreme", "⬢", "#8E1B14"), "Severe": ("गम्भीर", "Severe", "▲", "#D93025"),
+       "Moderate": ("मध्यम", "Moderate", "◆", "#F28C1E"), "Minor": ("सामान्य", "Minor", "●", "#F2C94C"),
+       "Unknown": ("सूचना", "Info", "ℹ", "#8F9BB3")}
 TRUST = {"Official": ("आधिकारिक", "Official", "🛡"), "Verified": ("प्रमाणित", "Verified", "✓"), "Reported": ("रिपोर्ट गरिएको", "Reported", "❝"),
          "Unverified": ("पुष्टि नभएको", "Unverified", "◌"), "Corrected": ("सच्याइएको", "Corrected", "✎"), "Retracted": ("फिर्ता लिइएको", "Retracted", "✕")}
 MT = {"Alert": ("मूल सूचना", "Original"), "Update": ("अद्यावधिक", "Update"), "Cancel": ("रद्द", "Cancel")}
@@ -96,7 +96,7 @@ def share_png(a, out, now):
     W, H = 1200, 630
     ne, en = a["info"]["ne"], a["info"]["en"]
     s = SEV.get(a["severity"], SEV["Unknown"])
-    im = Image.new("RGB", (W, H), "#0E2A47")
+    im = Image.new("RGB", (W, H), "#0B1424")
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, 22, H], fill=s[3])
     logo(im, (60, 30), 64)
@@ -132,7 +132,7 @@ def story_png(a, out, now):
     ne, en = a["info"]["ne"], a["info"]["en"]
     s = SEV.get(a["severity"], SEV["Unknown"])
     url = f"{SITE}alerts/{a['identifier']}/"
-    im = Image.new("RGB", (W, H), "#0E2A47")
+    im = Image.new("RGB", (W, H), "#0B1424")
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, W, 300], fill=s[3])
     fg = "#14202B" if a["severity"] == "Minor" else "#FFFFFF"
@@ -160,7 +160,7 @@ def story_png(a, out, now):
         d.text((70, y), ln, font=font("Regular", 40), fill="#7FD1D8"); y += 56
     # footer: source, time, QR
     qr = segno.make(url, error="m")
-    buf = io.BytesIO(); qr.save(buf, kind="png", scale=10, border=2, dark="#0E2A47", light="#FFFFFF")
+    buf = io.BytesIO(); qr.save(buf, kind="png", scale=10, border=2, dark="#0B1424", light="#FFFFFF")
     q = Image.open(buf).convert("RGB").resize((340, 340), Image.NEAREST)
     im.paste(q, (W - 70 - 340, H - 560))
     fy = H - 560
@@ -177,7 +177,7 @@ def story_png(a, out, now):
     out.parent.mkdir(parents=True, exist_ok=True)
     im.save(out, optimize=True)
     qdir = ROOT / "stories/qr"; qdir.mkdir(parents=True, exist_ok=True)
-    qr.save(str(qdir / (a["identifier"] + ".svg")), scale=4, border=2, dark="#0E2A47", light="#FFFFFF", xmldecl=False)
+    qr.save(str(qdir / (a["identifier"] + ".svg")), scale=4, border=2, dark="#0B1424", light="#FFFFFF", xmldecl=False)
 
 
 # ---------- permalink pages ----------
@@ -240,7 +240,7 @@ def permalink(a, by, now):
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{e(en["headline"])}">
 <meta property="og:locale" content="ne_NP"><meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(ne["headline"])}"><meta name="twitter:image" content="{url}share.png">
-<meta name="theme-color" content="#0E2A47">
+<meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../../assets/img/brand/apple-touch-icon.png">
 <link rel="alternate" type="application/cap+xml" href="../../cap/{e(ident)}.xml">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css"><link rel="stylesheet" href="../../assets/css/gati.css">
@@ -301,7 +301,7 @@ def lite(alerts, now):
         return "".join(out)
     page = f'''<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>गति Lite: पाठ मात्र</title><link rel="icon" href="data:,"><meta name="description" content="Gati text-only page for slow connections.">
-<style>body{{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:10px;color:#14202B}}a{{color:#0F7C86}}h1{{font-size:1.3em;color:#0E2A47}}h2{{font-size:1.1em;color:#0E2A47;margin:1.2em 0 .3em}}ul{{padding-left:1.1em}}li{{margin:.3em 0}}.d{{background:#e8f3f4;padding:8px;font-size:.9em}}hr{{border:0;border-top:1px solid #ccd}}.rl{{display:inline-block;padding:13px 0}}</style>
+<style>body{{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:10px;color:#14202B}}a{{color:#0F7C86}}h1{{font-size:1.3em;color:#0B1424}}h2{{font-size:1.1em;color:#0B1424;margin:1.2em 0 .3em}}ul{{padding-left:1.1em}}li{{margin:.3em 0}}.d{{background:#e8f3f4;padding:8px;font-size:.9em}}hr{{border:0;border-top:1px solid #ccd}}.rl{{display:inline-block;padding:13px 0}}</style>
 </head><body>
 <h1>गति Lite · सही सूचना, सही समयमा ।</h1>
 <p><small><a class="rl" href="../about/">गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ</a></small></p>
@@ -362,7 +362,7 @@ def main():
     body = (ROOT / "scripts/alerts_list.html").read_text(encoding="utf-8")
     (ROOT / "alerts/index.html").write_text(f'''<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>सबै सूचना · All alerts · गति Gati</title><meta name="description" content="Gati: every relayed alert with filters, charts and the full archive. Expired notices are never deleted.">
-<meta property="og:title" content="सबै सूचना · All alerts · गति Gati"> <meta property="og:image" content="{SITE}assets/img/brand/og-cover.png"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0E2A47">
+<meta property="og:title" content="सबै सूचना · All alerts · गति Gati"> <meta property="og:image" content="{SITE}assets/img/brand/og-cover.png"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="stylesheet" href="../assets/css/gati.css"></head>
 <body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1><section id="breakinglist" class="brksec" aria-live="polite"></section>
