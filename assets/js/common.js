@@ -43,6 +43,8 @@
     ["log", "log/", "परिवर्तन लग", "Change log"],
     ["about", "about/", "बारेमा", "About"],
   ];
+  /* shorter English labels for the desktop menu row only */
+  const SHORT = { route: "Route", weather: "Weather", contacts: "Emergency", safety: "Safety", log: "Changes" };
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
@@ -62,17 +64,17 @@
   <div class="bar">
     <div class="hl">
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="मेनु / Menu">☰</button>
-    <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
+    <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्"><span class="lfull">${b("English", "नेपाली")}</span><span class="lshort" aria-hidden="true">${b("EN", "ने")}</span></button>
     </div>
     <a class="brand" href="${ROOT}?home=1" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
     <div class="hr">
-    <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्"><span class="lfull">${b("English", "नेपाली")}</span><span class="lshort" aria-hidden="true">${b("EN", "ने")}</span></button>
+    <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
     <button class="mebtn setbtn bellbtn" type="button" id="setbtn" aria-haspopup="dialog" aria-controls="setsheet" aria-label="सूचना / Notifications" title="सूचना / Notifications"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg><i class="bdot" hidden></i></button>
     <button class="mebtn profbtn" type="button" id="profbtn" aria-haspopup="dialog" aria-controls="medrawer" aria-label="मेरो गति / My Gati" title="मेरो गति / My Gati"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></button>
     </div>
   </div>
   <nav class="main" id="mainnav" aria-label="Main"><div class="navtop"><button type="button" class="navtopbtn" data-go="me">👤 ${b("मेरो गति", "My Gati")}</button><button type="button" class="navtopbtn" data-go="notif">🔔 ${b("सूचना", "Notifications")}</button></div><a class="navhome" href="${ROOT}?home=1" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
-    `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}
+    `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, SHORT[id] || en)}</a>`).join("")}
     <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
       <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div><button class="mebtn navme" aria-label="मेरो गति / My Gati" type="button" id="mebtn" aria-haspopup="dialog" aria-controls="medrawer"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("मेरो गति", "My Gati")}</span></button></nav>`;
   const footer = document.createElement("footer");
@@ -145,6 +147,10 @@
     morebtn.toggleAttribute("aria-current", nxs.slice(k).some((a) => a.hasAttribute("aria-current")));
     if (morebtn.hasAttribute("aria-current")) morebtn.setAttribute("aria-current", "page");
   };
+  /* language button: left of the logo on mobile, in the right cluster (after search) on desktop */
+  const lb = header.querySelector("#langbtn"), hl = header.querySelector(".bar .hl"), hrr = header.querySelector(".bar .hr"), mqm = matchMedia("(max-width:720px)");
+  const placeLang = () => { if (mqm.matches) hl.append(lb); else hrr.querySelector(".srchbtn").after(lb); };
+  placeLang(); mqm.addEventListener && mqm.addEventListener("change", () => { placeLang(); fitNav(); });
   G.fitNav = fitNav; fitNav(); addEventListener("resize", fitNav); setTimeout(() => G.onLang(fitNav), 0); document.fonts && document.fonts.ready.then(fitNav);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !moremenu.hidden) { moremenu.hidden = true; morebtn.focus(); } });
   mb.onclick = () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); };
