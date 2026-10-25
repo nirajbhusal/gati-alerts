@@ -529,3 +529,7 @@ body.aq-open::after{content:"";position:fixed;inset:0;background:rgba(8,20,34,.4
 nav.main a.navhome{display:inline-grid;place-items:center;width:40px;height:40px;padding:0;border-radius:50%;margin-right:4px}
 nav.main a.navhome[aria-current=page]{background:rgba(127,209,216,.22);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(127,209,216,.6)}
 @media(max-width:720px){nav.main a.navhome{display:none}}
+/* DHM 5-day timeline */
+.wx5{margin-top:var(--s4)}.wxtl{list-style:none;margin:var(--s3) 0;padding:0;display:grid;gap:8px}@media(min-width:900px){.wxtl{grid-template-columns:repeat(5,1fr)}}
+.wxtd{padding:12px;border-radius:14px;background:var(--surface2);border-top:5px solid #3cb043}.wxtd.lv-yellow{border-top-color:#F5D90A;background:#fffbe0}html[data-theme=dark] .wxtd.lv-yellow{background:#3a3410}
+.wxtd b{display:block}.wxlv{font-size:.78rem;font-weight:700;color:var(--slate)}.wxtd p{margin:6px 0 0;font-size:.88rem}.wxdot{display:none}

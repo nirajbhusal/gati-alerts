@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-25T03:30:54+00:00",
- "count": 37,
+ "generated": "2026-10-25T04:20:52+00:00",
+ "count": 38,
  "alerts": [
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-25",
@@ -147,6 +147,105 @@
    "supersededBy": null
   },
   {
+   "identifier": "np.gati.dhm-5day-bulletin-2026-10-25",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-25T08:41:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division official X account @NMD_Weather. Source: https://x.com/NMD_Weather/status/2114189338749931888",
+   "references": null,
+   "file": "data/alerts/dhm-5day-bulletin-2026-10-25.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान बुलेटिन (५ दिने)",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Minor",
+     "certainty": "Possible",
+     "effective": "2026-10-25T08:00:00+05:45",
+     "onset": "2026-10-25T08:00:00+05:45",
+     "expires": "2026-10-30T08:00:00+05:45",
+     "contact": "मौसम पूर्वानुमान महाशाखा, बबरमहल, काठमाडौँ · फोन ११५५",
+     "senderName": "नेपाल मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "कात्तिक ११ सम्म मौसमी चेतावनी छैन; कात्तिक १२ (बिहीबार) कोशी, बागमती र गण्डकीका हिमाली र पहाडी भूभागमा भारी वर्षा/हिमपातको सम्भावना, पहेँलो सङ्केत (अद्यावधिक हुनुहोस्)",
+     "description": "आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको ५ दिने बुलेटिन, २०८३ कात्तिक ८ बिहान ८:०० बजे जारी, @NMD_Weather मा बिहान ८:४१ मा प्रकाशित): हाल देशमा पश्चिमी वायुको आंशिक प्रभाव छ। कात्तिक ८ देखि ११ सम्म मौसम मुख्यतया सफा, पहाडी र हिमाली भूभागमा आंशिक बदली; कोशी र गण्डकीका उच्च पहाडी र हिमाली भूभागका एक-दुई ठाउँमा हल्का वर्षा/हिमपात र तराईमा बिहानपख हुस्सु/कुहिरोको सम्भावना। कात्तिक ११ (बुधबार) सम्म कुनै मौसमी चेतावनी छैन। कात्तिक १२ (बिहीबार) देशभर साधारणतया बदली; कोशी, मधेश, बागमती र गण्डकीका धेरै स्थान, लुम्बिनीका केही स्थान तथा कर्णाली र सुदूरपश्चिमका थोरै स्थानमा मेघगर्जन चट्याङसहित मध्यम वर्षा/हिमपातको सम्भावना; कोशी, बागमती र गण्डकीका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी वर्षा/हिमपातको सम्भावना (नक्सामा पहेँलो: अद्यावधिक हुनुहोस्)। पहिरो, बाढी तथा सडक र हवाई यातायातमा असर पर्न सक्छ।",
+     "instruction": "कात्तिक १२ मा कोशी, बागमती र गण्डकीका पहाडी र हिमाली क्षेत्रमा यात्रा गर्नुअघि DHM को पछिल्लो सूचना हेर्नुहोस्; पाकेको बाली जोगाउनुहोस्। मौसम जानकारी: DHM फोन ११५५।",
+     "web": "https://x.com/NMD_Weather/status/2114189338749931888",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2114189338749931888",
+      "gati:sourceTime": "2026-10-25T08:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://x.com/NMD_Weather/status/2114189338749931888",
+      "gati:summary160": "DHM: कात्तिक ११ सम्म चेतावनी छैन; कात्तिक १२ कोशी, बागमती, गण्डकीका पहाड र हिमालमा भारी वर्षा/हिमपात सम्भव (पहेँलो)"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला); कात्तिक १२ पहेँलो: कोशी, बागमती र गण्डकी प्रदेशका हिमाली र पहाडी भूभाग",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast bulletin (5 days)",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Minor",
+     "certainty": "Possible",
+     "effective": "2026-10-25T08:00:00+05:45",
+     "onset": "2026-10-25T08:00:00+05:45",
+     "expires": "2026-10-30T08:00:00+05:45",
+     "contact": "Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati",
+     "headline": "No weather warning through Kartik 11; on Kartik 12 (Thu 29 Oct) heavy rain or snow possible in the Koshi, Bagmati and Gandaki hills and mountains, yellow (be updated)",
+     "description": "Official (DHM Meteorological Forecasting Division 5-day bulletin, issued 2083 Kartik 8 at 8:00 AM, posted on @NMD_Weather at 8:41 AM): western winds are partly affecting the country. Kartik 8 to 11 (25 to 28 Oct): mostly fair, partly cloudy in the hills and mountains; light rain or snow possible at one or two places in the Koshi and Gandaki high hills and mountains, morning mist or fog possible in the Terai. No weather warning through Kartik 11 (Wednesday). Kartik 12 (Thursday, 29 Oct): generally cloudy across the country; moderate rain or snow with thunder and lightning possible at many places in Koshi, Madhesh, Bagmati and Gandaki, some places in Lumbini and a few places in Karnali and Sudurpaschim; heavy rain or snow possible at one or two places in the Koshi, Bagmati and Gandaki hills and mountains (yellow on the map: be updated). Landslides, floods and road and air disruption are possible.",
+     "instruction": "Before travelling in the Koshi, Bagmati and Gandaki hills and mountains on Kartik 12, check DHM's latest notice; protect ripe crops. Weather information: DHM phone 1155.",
+     "web": "https://x.com/NMD_Weather/status/2114189338749931888",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2114189338749931888",
+      "gati:sourceTime": "2026-10-25T08:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://x.com/NMD_Weather/status/2114189338749931888",
+      "gati:summary160": "DHM: no warning to Kartik 11; Kartik 12 heavy rain/snow possible in Koshi, Bagmati, Gandaki hills and mountains (yellow)"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts); Kartik 12 yellow: Koshi, Bagmati and Gandaki provinces, hills and mountains",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Minor",
+   "expires": "2026-10-30T08:00:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला); कात्तिक १२ पहेँलो: कोशी, बागमती र गण्डकी प्रदेशका हिमाली र पहाडी भूभाग",
+     "en": "Nepal (all districts); Kartik 12 yellow: Koshi, Bagmati and Gandaki provinces, hills and mountains"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-25",
    "sender": "hydrology.gov.np",
    "sent": "2026-10-25T08:05:00+05:45",
@@ -281,6 +380,8 @@
       "gati:hazard": "weather",
       "gati:bulletinFile": "https://shilapatra.com/detail/197394",
       "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
+      "gati:newerReference": "https://x.com/NMD_Weather/status/2114189338749931888",
+      "gati:newerReferenceId": "np.gati.dhm-5day-bulletin-2026-10-25",
       "gati:summary160": "बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह"
      },
      "areas": [
@@ -316,6 +417,8 @@
       "gati:hazard": "weather",
       "gati:bulletinFile": "https://shilapatra.com/detail/197394",
       "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
+      "gati:newerReference": "https://x.com/NMD_Weather/status/2114189338749931888",
+      "gati:newerReferenceId": "np.gati.dhm-5day-bulletin-2026-10-25",
       "gati:summary160": "Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert"
      },
      "areas": [
