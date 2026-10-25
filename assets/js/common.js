@@ -245,8 +245,10 @@
   function stop() { speechSynthesis.cancel(); if (cur) { cur.setAttribute("aria-pressed", "false"); cur = null; } }
   function speak(btn, el) {
     if (cur === btn) { stop(); return; } stop();
-    const clone = el.cloneNode(true); clone.querySelectorAll(".tts,.rail,button,.fbg,script").forEach((n) => n.remove());
-    const text = clone.innerText.replace(/\s+/g, " ").trim().slice(0, 1500);
+    const clone = el.cloneNode(true); clone.querySelectorAll(".tts,.rail,button,.fbg,script,.tdkey,.tdwx,.tdggs,.trust,.stalechip,svg").forEach((n) => n.remove());
+    const words = (n) => { if (!n) return ""; const c = n.cloneNode(true); c.querySelectorAll(".tts,button,svg,.trust,.stalechip,.tdwx,.tdtb,.tdsep" + (n.closest(".td-rd") ? ",.tdseg" : "") + (n.closest(".td-rv") ? ",.tdkey" : "")).forEach((x) => x.remove()); c.querySelectorAll("*").forEach((x) => x.append(" ")); return c.textContent.replace(/\s+/g, " ").trim(); };
+    const today = el.classList.contains("tdcard") ? [words(el.querySelector(".tdhead")), ...[...el.querySelectorAll(".tdrow")].map((r) => `${words(r.querySelector(".tdk"))}: ${words(r.querySelector(".tdv"))}.`)].join(" ") : "";
+    const text = (today || clone.innerText).replace(/\s+/g, " ").trim().slice(0, 1500).replace(/NPT/g, G.lang === "ne" ? "नेपाली समय" : "Nepal time").replace(/°/g, G.lang === "ne" ? " डिग्री" : " degrees");
     const nv = voice(), u = new SpeechSynthesisUtterance(nv || G.lang === "en" ? text : text);
     if (G.lang === "ne" && nv) { u.voice = nv; u.lang = nv.lang; } else if (G.lang === "ne") { u.lang = "ne-NP"; } else u.lang = "en-US";
     if (G.lang === "ne" && !nv) { const en = speechSynthesis.getVoices().find((x) => /^en/i.test(x.lang)); if (!speechSynthesis.getVoices().some((x) => /^(ne|hi)/i.test(x.lang)) && en) { u.voice = en; u.lang = en.lang; } }
@@ -259,9 +261,9 @@
     const lab = () => { b.innerHTML = `<span aria-hidden="true">🔊</span><span class="ttsl">${T("सुन्नुहोस्", "Listen")}</span>`; b.setAttribute("aria-label", T("ठूलो स्वरमा पढ्नुहोस्", "Read aloud")); };
     lab(); G.onLang && G.onLang(lab);
     b.onclick = (e) => { e.preventDefault(); e.stopPropagation(); speak(b, el.classList.contains("rail") ? el.parentElement : el); };
-    if (el.classList.contains("rail")) el.prepend(b); else { const h = el.querySelector(".ahead"); if (h) { b.classList.add("ttsi"); h.appendChild(b); } else el.appendChild(b); }
+    if (el.classList.contains("rail")) el.prepend(b); else { const h = el.querySelector(".ahead") || el.querySelector(".tdhead"); if (h) { b.classList.add("ttsi"); h.appendChild(b); } else el.appendChild(b); }
   }
-  function scan() { document.querySelectorAll("article.alert").forEach((a) => mk(a, "ttsa")); document.querySelectorAll(".rail").forEach((r) => mk(r, "ttsr")); }
+  function scan() { document.querySelectorAll("article.alert").forEach((a) => mk(a, "ttsa")); document.querySelectorAll(".rail").forEach((r) => mk(r, "ttsr")); document.querySelectorAll(".tdcard").forEach((c) => mk(c, "ttsd")); }
   new MutationObserver(() => { clearTimeout(scan.t); scan.t = setTimeout(scan, 150); }).observe(document.body, { childList: true, subtree: true });
   scan(); speechSynthesis.getVoices(); addEventListener("pagehide", stop);
 })();
