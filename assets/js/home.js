@@ -74,7 +74,7 @@
     const i = a.info[G.lang], en = a.info.en;
     const areas = i.areas.map((x) => x.desc).join(" · ");
     const corr = i.params["gati:correction"], src2 = i.params["gati:sourceUrl2"];
-    return `<article class="card alert s-${a.severity}${a.expired ? " expired" : ""}" id="${G.esc(a.identifier)}">
+    return `<article class="card alert s-${a.severity}${a.expired ? " expired" : ""}${!a.expired && now - Date.parse(a.sent) < 864e5 ? " fresh" : ""}" id="${G.esc(a.identifier)}">
       <div class="ahead">${G.sevChip(a.severity)}
         ${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag live">${T("चालु", "Active")}</span>`}
         <span class="tag">${G.esc(i.event)}</span></div>
@@ -377,7 +377,7 @@
     box.innerHTML = `<section class="afcard">${head}<p class="afcl">${T("लोड हुँदै…", "Loading…")}</p></section>`;
     G.affect.load().then((d) => { const v = G.affect.verdict([cur], d);
       const ts = v.alerts.map((a) => (a.info.en.params || {})["gati:sourceTime"] || a.sent).concat(v.wx.length && v.b5 ? [v.b5.issued] : []).sort().pop() || (d.AL && d.AL.generated);
-      box.innerHTML = `<section class="afcard on" style="--vc:${v.c}">${head}<div class="afrow"><span class="afdn">${G.esc(dn)}</span><span class="afst"><i></i>${G.esc(G.affect.phrase(v))}</span></div>
+      box.innerHTML = `<section class="afcard on${v.lv > 0 ? " live" : ""}" style="--vc:${v.c}">${head}<div class="afrow"><span class="afdn">${G.esc(dn)}</span><span class="afst"><i></i>${G.esc(G.affect.phrase(v))}</span></div>
         <p class="meta afmeta">${v.alerts.length ? T(`${G.num(v.alerts.length)} आधिकारिक सूचना`, `${v.alerts.length} official notice${v.alerts.length > 1 ? "s" : ""}`) + " · " : ""}${T("स्रोत समय", "Source time")}: ${G.npt(ts)}${v.lv === 0 ? " · " + T("खतरा छैन भन्ने होइन", "that does not mean no risk") : ""}</p>
         <div class="afacts"><a class="afgo" href="${RT}affected/#d=${encodeURIComponent(cur)}">${T("विवरण हेर्नुहोस्", "See details")} →</a><button type="button" class="afchg" id="myd">${T("जिल्ला बदल्नुहोस्", "Change district")}</button></div></section>`;
       $("myd").onclick = () => G.district.open((x) => { sel.value = x; render(); myDistrict(); drawMap(); }); });

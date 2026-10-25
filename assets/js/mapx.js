@@ -56,7 +56,7 @@
     counts.ag = {}; ALERTS.filter((a) => a.hazard !== "earthquake" ? S.hz.includes(a.hazard) : on("eq")).filter((a) => (S.st === "all" || (S.st === "active") === isAct(a)) && tmOk(a.sent)).forEach((a) => { const k = G.agencyOf(a); counts.ag[k] = (counts.ag[k] || 0) + 1; });
     if (on("alerts")) { const worst = {}, by = {}; A.forEach((a) => reg(aItem(a, "alerts")));
       A.forEach((a) => { const ds = a.districts.length ? a.districts : []; ds.forEach((d) => { if (!worst[d] || SEVS.indexOf(a.severity) < SEVS.indexOf(worst[d])) worst[d] = a.severity; (by[d] = by[d] || []).push(a); });
-        a.areas.forEach((ar) => ar.circles.forEach((c) => { const [la, lo] = c.split(" ")[0].split(",").map(Number); if (!isNaN(la)) L.circleMarker([la, lo], { radius: 7, color: "#fff", weight: 1.5, fillColor: G.SEVCOLOR[a.severity], fillOpacity: 0.95 }).bindPopup(pop(a)).addTo(LG.alerts); })); });
+        a.areas.forEach((ar) => ar.circles.forEach((c) => { const [la, lo] = c.split(" ")[0].split(",").map(Number); if (!isNaN(la)) L.circleMarker([la, lo], { radius: 7, color: "#fff", weight: 1.5, fillColor: G.SEVCOLOR[a.severity], fillOpacity: 0.95, className: isAct(a) && now - Date.parse(a.sent) < 864e5 ? "mxpulse" : "" }).bindPopup(pop(a)).addTo(LG.alerts); })); });
       Object.entries(worst).forEach(([d, s]) => { const f = distF[d]; if (!f) return; L.geoJSON(f, { style: { color: G.SEVCOLOR[s], weight: 1.5, fillColor: G.SEVCOLOR[s], fillOpacity: isAct(by[d][0]) ? 0.4 : 0.15, dashArray: isAct(by[d][0]) ? null : "3 3" } })
         .bindPopup(`<b>${E(distName(d))}</b><br>` + by[d].map(pop).join("<hr>")).addTo(LG.alerts); }); }
     /* weather warnings: DHM 5-day bulletin provinces */

@@ -974,3 +974,16 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
   .bar .brand .logo{height:32px;width:auto}}
 @media(max-width:359px){.bar .brand .tagline{display:none!important}}
 @media(max-width:720px){.bar .brand{min-width:0;flex:0 1 auto}.bar .brand .tagline{white-space:normal;max-width:92px;font-size:.58rem;overflow:visible}}
+
+/* Data-only motion; all off under prefers-reduced-motion */
+@media(prefers-reduced-motion:no-preference){
+  .afcard.live .afst i{animation:afpulse 2s ease-out infinite}
+  @keyframes afpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--vc) 55%,transparent)}70%,100%{box-shadow:0 0 0 8px transparent}}
+  .tdseg,.tdggb i{transform-origin:left center;animation:tdfillx .8s cubic-bezier(.2,.7,.2,1) both}
+  .tdtb i{transform-origin:center bottom;animation:tdfilly .8s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes tdfillx{from{transform:scaleX(0)}to{transform:none}}@keyframes tdfilly{from{transform:scaleY(0)}to{transform:none}}
+  .tdaq .tdg path+path{animation:tdarc 1s ease-out both}@keyframes tdarc{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+  .tdsundot{animation:tdsun 1.6s cubic-bezier(.3,.7,.3,1) both}@keyframes tdsun{from{offset-distance:0%}to{offset-distance:var(--sd)}}
+  .card.alert.fresh,.brk li{animation:afade .5s ease-out both}@keyframes afade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .leaflet-interactive.mxpulse{animation:mxp 2.4s ease-in-out infinite}@keyframes mxp{0%,100%{stroke-width:1.5;stroke-opacity:1}50%{stroke-width:9;stroke-opacity:.25}}
+}
