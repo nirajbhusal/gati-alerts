@@ -25,7 +25,7 @@
     const b5 = wx && wx.bulletin5;
     const box5 = document.getElementById("wx5");
     if (box5 && b5) box5.innerHTML = `<div class="sechead" style="margin-top:0"><h2>${T("५ दिने चेतावनी समयरेखा", "5-day warning timeline")}</h2>${G.trustChip(b5.trust)}</div>
-      <ol class="wxtl">${b5.days.map((d) => `<li class="wxtd lv-${d.level}"><span class="wxdot" aria-hidden="true"></span><b>${G.lang === "ne" ? d.bs : d.bs + " · " + d.ad.slice(5)}</b><span class="wxlv">${d.level === "yellow" ? T("पहेँलो: अद्यावधिक हुनुहोस्", "Yellow: be updated") : T("हरियो: चेतावनी छैन", "Green: no warning")}</span><p>${esc(T(d.ne, d.en))}</p></li>`).join("")}</ol>
+      <ol class="wxtl">${b5.days.map((d) => `<li class="wxtd lv-${d.level}"><span class="wxdot" aria-hidden="true"></span><b>${G.bsDay(d)}</b><span class="wxlv">${d.level === "yellow" ? T("पहेँलो: अद्यावधिक हुनुहोस्", "Yellow: be updated") : T("हरियो: चेतावनी छैन", "Green: no warning")}</span><p>${esc(T(d.ne, d.en))}</p></li>`).join("")}</ol>
       <p class="meta">${T("स्रोत", "Source")}: <a href="${esc(b5.url)}" target="_blank" rel="noopener">DHM @NMD_Weather</a> · ${T("जारी", "Issued")} ${G.npt(b5.issued)} · ${T("प्रकाशित", "Posted")} ${G.npt(b5.posted)} · ${T("मौसम जानकारी फोन ११५५", "Weather information phone 1155")}</p>`;
     // warning map: latest official DHM warning item, colour districts only if it names them
     const w = warn[0];

@@ -99,13 +99,13 @@
     host.appendChild(panel); render();
   }
   function render() {
-    const keep = log ? log.innerHTML : "";
+    const keep = log && log.querySelector(".aqmsg:not(.aqhello)") ? log.innerHTML : "";
     panel.innerHTML = `<div class="aqhead"><img src="${R}assets/img/brand/mark-192.png" alt="" width="36" height="36"><div><h2 id="aqtitle">${T("गतिलाई सोध्नुहोस्", "Ask Gati")}</h2><small>${T("गतिकै तथ्याङ्कबाट उत्तर, स्रोतसहित", "Answers from Gati's own data, with sources")}</small></div>${FULL ? "" : `<button type="button" class="aqx" aria-label="${T("बन्द गर्नुहोस्", "Close")}">✕</button>`}</div>
       <div class="aqtabs" role="tablist">${TABS.map(([k, ic, ne, en]) => `<button type="button" role="tab" id="aqt-${k}" aria-controls="aqp-${k}" aria-selected="${tab === k}" tabindex="${tab === k ? 0 : -1}" data-t="${k}"><span aria-hidden="true">${ic}</span>${T(ne, en)}</button>`).join("")}</div>
       <div class="aqpane" id="aqp-x" role="tabpanel" ${tab === "ask" ? "hidden" : ""}></div>
       <div class="aqbody" id="aqp-ask" role="tabpanel" ${tab === "ask" ? "" : "hidden"}><p class="aqdisc"><a class="relaylink" href="${R}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p>
       <div class="aqhelp"><a href="tel:100" class="aqcall sm"><b>${G.num("100")}</b><span>${T("प्रहरी", "Police")}</span></a><a href="tel:1234" class="aqcall sm red"><b>${G.num("1234")}</b><span>${T("विपद् (NDRRMA)", "Disaster (NDRRMA)")}</span></a></div>
-      <div class="aqlog" aria-live="polite">${keep || `<div class="aqmsg bot">${T("नमस्ते! के जान्न चाहनुहुन्छ?", "Namaste! What would you like to know?")}</div>`}</div>
+      <div class="aqlog" aria-live="polite">${keep || `<div class="aqmsg bot aqhello">${T("हजुर के जान्न चाहनुहुन्छ?", "What would you like to know?")}</div>`}</div>
       <div class="aqchips" role="group" aria-label="${T("छिटो प्रश्न", "Quick questions")}">${chips()}</div></div>
       <form class="aqform" ${tab === "ask" ? "" : "hidden"}><label class="sr-only" for="aqin">${T("प्रश्न लेख्नुहोस्", "Type a question")}</label><input id="aqin" type="text" autocomplete="off" placeholder="${T("जस्तै: सडक, नदी, बिदा…", "e.g. road, river, holiday…")}"><button type="submit" aria-label="${T("पठाउनुहोस्", "Send")}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></form>`;
     log = panel.querySelector(".aqlog");

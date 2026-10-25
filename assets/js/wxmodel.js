@@ -12,7 +12,7 @@
   }
   const WMO = (c) => c === 0 ? ["☀️", "सफा", "Clear"] : c <= 2 ? ["🌤️", "आंशिक बदली", "Partly cloudy"] : c === 3 ? ["☁️", "बदली", "Overcast"] : c <= 48 ? ["🌫️", "कुहिरो", "Fog"] : c <= 57 ? ["🌦️", "सिमसिम पानी", "Drizzle"] : c <= 67 ? ["🌧️", "वर्षा", "Rain"] : c <= 77 ? ["🌨️", "हिमपात", "Snow"] : c <= 82 ? ["🌧️", "झरी", "Showers"] : c <= 86 ? ["🌨️", "हिम झरी", "Snow showers"] : ["⛈️", "चट्याङसहित वर्षा", "Thunderstorm"];
   const BAND = [[50, "#00a651", "राम्रो", "Good"], [100, "#f3d000", "मध्यम", "Moderate"], [150, "#f7941d", "संवेदनशीलका लागि अस्वस्थ", "Unhealthy for sensitive groups"], [200, "#e2231a", "अस्वस्थ", "Unhealthy"], [300, "#8f3f97", "धेरै अस्वस्थ", "Very unhealthy"], [1e9, "#7e0023", "खतरनाक", "Hazardous"]];
-  const model = `<span class="trust t-Model">🧮 ${T("मोडेल", "Model")}</span>`;
+  const modelChip = () => `<span class="trust t-Model">🧮 ${T("मोडेल", "Model")}</span>`;
   let fc = null, aq = null, at = null;
   async function load() {
     const p = place(); at = p;
@@ -29,7 +29,7 @@
     if (!fc) m.innerHTML = `<h2>${T("मोडेल पूर्वानुमान", "Model forecast")}</h2><div class="na"><strong>${T("उपलब्ध छैन", "Not available")}</strong>. ${T("Open-Meteo सँग जोडिन सकिएन।", "Could not reach Open-Meteo.")} ${T("अन्तिम प्रयास", "Last tried")}: ${G.npt(new Date().toISOString())}</div>`;
     else {
       const d = fc.daily, c = fc.current, w = WMO(c.weather_code), lo = Math.min(...d.temperature_2m_min), hi = Math.max(...d.temperature_2m_max);
-      m.innerHTML = `<div class="wxmh"><h2>${T("मोडेल पूर्वानुमान", "Model forecast")} · 📍 ${nm}</h2>${model}</div>
+      m.innerHTML = `<div class="wxmh"><h2>${T("मोडेल पूर्वानुमान", "Model forecast")} · 📍 ${nm}</h2>${modelChip()}</div>
         <div class="wxnow"><span class="wxbig">${w[0]}</span><div><b class="wxt">${G.num(String(Math.round(c.temperature_2m)))}°</b><span>${T(w[1], w[2])}</span></div>
           <div class="wxkv"><span>💧 ${G.num(String(c.relative_humidity_2m))}%</span><span>🌬 ${G.num(String(Math.round(c.wind_speed_10m)))} km/h</span></div></div>
         <div class="wxdays">${d.time.map((t, k) => { const ww = WMO(d.weather_code[k]), a = ((d.temperature_2m_min[k] - lo) / (hi - lo || 1)) * 100, b = ((d.temperature_2m_max[k] - lo) / (hi - lo || 1)) * 100;
@@ -43,7 +43,7 @@
       <li><b>${T("अमेरिकी दूतावास काठमाडौँ मनिटर (OpenAQ)", "US Embassy Kathmandu monitor (via OpenAQ)")}</b>: ${T("OpenAQ v3 लाई API कुञ्जी चाहिन्छ; अहिले जोडिएको छैन", "OpenAQ v3 needs an API key; not connected yet")}</li></ul>`;
     if (!aq) { A.innerHTML = `<h2>${T("हावाको गुणस्तर", "Air quality")}</h2><div class="na"><strong>${T("उपलब्ध छैन", "Not available")}</strong></div>${extra}`; return; }
     const v = aq.current.us_aqi, bd = BAND.find((b) => v <= b[0]), hrs = aq.hourly.us_aqi.slice(0, 36), mx = Math.max(...hrs.filter((x) => x != null), 50);
-    A.innerHTML = `<div class="wxmh"><h2>${T("हावाको गुणस्तर", "Air quality")} · 📍 ${nm}</h2>${model}</div>
+    A.innerHTML = `<div class="wxmh"><h2>${T("हावाको गुणस्तर", "Air quality")} · 📍 ${nm}</h2>${modelChip()}</div>
       <div class="aqnow"><div class="aqgauge" style="--v:${Math.min(v, 300) / 300};--c:${bd[1]}"><b>${G.num(String(v))}</b><span>US AQI</span></div>
         <div><p class="aqcat" style="color:${bd[1]}">${T(bd[2], bd[3])}</p><p class="kv"><span>PM2.5 <b>${G.num(String(aq.current.pm2_5))}</b> µg/m³</span><span>PM10 <b>${G.num(String(aq.current.pm10))}</b> µg/m³</span></p></div></div>
       <div class="aqspark" aria-label="${T("आगामी ३६ घण्टाको AQI", "AQI next 36 hours")}">${hrs.map((x, k) => { const b2 = BAND.find((b) => (x || 0) <= b[0]); return `<i style="height:${((x || 0) / mx) * 100}%;background:${b2[1]}" title="${k} h: ${x}"></i>`; }).join("")}</div><p class="meta">${T("आगामी ३६ घण्टा (मोडेल)", "Next 36 hours (model)")}</p>

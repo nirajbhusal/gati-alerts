@@ -23,11 +23,13 @@
   const HZS = { flood: ["flood"], landslide: ["landslide"], weather: ["flood", "landslide"], earthquake: ["earthquake"], glof: ["glof"], lightning: ["lightning"], cold: ["coldwave"], fire: ["fire"] };
   /* ---- input ---- */
   const inp = document.getElementById("afinput");
+  let curTab = "d";
+  function buildInput() {
   inp.innerHTML = `<div class="aftabs" role="tablist">${[["d", "जिल्ला", "District"], ["loc", "मेरो स्थान", "Locate me"], ["r", "मार्ग", "Route"]].map(([k, ne, en], i) => `<button type="button" role="tab" data-t="${k}" aria-selected="${i === 0}">${T(ne, en)}</button>`).join("")}</div>
     <div class="afpane" data-p="d"><select id="afd" aria-label="${T("जिल्ला", "District")}"><option value="">${T("जिल्ला छान्नुहोस्", "Choose a district")}</option>${DG ? DG.features.slice().sort((a, b) => T(a.properties.ne, a.properties.en).localeCompare(T(b.properties.ne, b.properties.en))).map((f) => `<option value="${f.id}">${E(T(f.properties.ne, f.properties.en))}</option>`).join("") : ""}</select></div>
     <div class="afpane" data-p="loc" hidden><button type="button" class="afbtn" id="afloc">⌖ ${T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location")}</button><p class="meta">${T("स्थान यही उपकरणमा मात्र प्रयोग हुन्छ; कतै पठाइँदैन।", "Your location is used only on this device; nothing is sent.")}</p></div>
     <div class="afpane" data-p="r" hidden><select id="afr" aria-label="${T("मार्ग", "Route")}"><option value="">${T("मार्ग छान्नुहोस्", "Choose a route")}</option>${RD ? RD.routes.map((r) => `<option value="${r.id}">${E(T(r.name_ne, r.name_en))}</option>`).join("") : ""}</select></div>`;
-  const tab = (k) => { inp.querySelectorAll("[data-t]").forEach((b) => b.setAttribute("aria-selected", b.dataset.t === k)); inp.querySelectorAll(".afpane").forEach((p) => (p.hidden = p.dataset.p !== k)); };
+  const tab = (k) => { curTab = k; inp.querySelectorAll("[data-t]").forEach((b) => b.setAttribute("aria-selected", b.dataset.t === k)); inp.querySelectorAll(".afpane").forEach((p) => (p.hidden = p.dataset.p !== k)); };
   inp.querySelectorAll("[data-t]").forEach((b) => (b.onclick = () => tab(b.dataset.t)));
   inp.querySelector("#afd").onchange = (e) => e.target.value && go({ d: e.target.value });
   inp.querySelector("#afr").onchange = (e) => e.target.value && go({ r: e.target.value });
@@ -37,6 +39,9 @@
       b.textContent = "⌖ " + T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location");
       if (d) go({ d, u: u ? u.properties.code : "" }); else box.innerHTML = `<p class="afna">${T("हजुरको स्थान नेपालभित्र भेटिएन। जिल्ला छान्नुहोस्।", "Your location was not found inside Nepal. Please choose a district.")}</p>`; },
       () => { b.textContent = "⌖ " + T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location"); box.innerHTML = `<p class="afna">${T("स्थान अनुमति मिलेन। जिल्ला छान्नुहोस्।", "Location permission was not given. Please choose a district.")}</p>`; }, { timeout: 10000 }); };
+    const h0 = new URLSearchParams(location.hash.slice(1)); if (h0.get("d")) inp.querySelector("#afd").value = h0.get("d"); if (h0.get("r")) inp.querySelector("#afr").value = h0.get("r"); tab(curTab);
+  }
+  buildInput();
   function go(q) { history.replaceState(null, "", "#" + new URLSearchParams(Object.entries(q).filter(([, v]) => v)).toString()); render(q); }
   /* ---- result ---- */
   const line = (icon, title, body, src, time, trust) => `<li class="afl"><span class="afi" aria-hidden="true">${icon}</span><div><h3>${title}</h3>${body}<p class="afsrc">${T("स्रोत", "Source")}: ${src}${time ? ` · ${time}` : ""} ${trust || ""}</p></div></li>`;
@@ -121,5 +126,5 @@
   }
   const h = new URLSearchParams(location.hash.slice(1)); const my = G.district && G.district.get();
   if (h.get("r")) render({ r: h.get("r") }); else if (h.get("d")) render({ d: h.get("d"), u: h.get("u") || "" }); else if (my) go({ d: my });
-  G.onLang(() => { const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
+  G.onLang(() => { buildInput(); const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
 })();

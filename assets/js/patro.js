@@ -86,7 +86,7 @@
       <div>${detail(x, true)}</div></div>`;
   }
   function detail(x, inline) {
-    const h = x.hol.map((e) => `<li>🎉 <strong>${esc(T(e.title_ne, e.title_en))}</strong> ${G.trustChip(e.trust)} <span class="meta">${T("स्रोत", "Source")}: <a href="${esc(e.sourceUrl)}" target="_blank" rel="noopener">${esc(e.source)}</a></span></li>`).join("");
+    const h = x.hol.map((e) => `<li>🎉 <strong>${esc(T(e.title_ne, e.title_en))}</strong> ${G.trustChip(e.trust)} <span class="meta">${T("स्रोत", "Source")}: <a href="${esc(e.sourceUrl)}" target="_blank" rel="noopener">${esc(T(e.source, e.source_en || e.source))}</a></span></li>`).join("");
     const a = x.al.map((a) => { const i = a.info[G.lang] || a.info.ne; return `<li>${G.sevChip(a.severity)} ${G.trustChip(a.trust)} <a href="${R}alerts/${esc(a.identifier)}/">${esc(i.headline)}</a>
       <span class="meta">${T("स्रोत", "Source")}: <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc((i.senderName || "").split(" — ")[0])}</a> · ${G.npt(i.params["gati:sourceTime"] || a.sent)}</span></li>`; }).join("");
     const s = x.se.map((s) => `<li><i class="band" style="background:${s.colour}"></i> ${esc(T(s.title_ne, s.title_en))} <span class="meta">${esc(s.source)}</span></li>`).join("");
@@ -108,7 +108,7 @@
       <div class="ptclock"><b id="pclock">${G.num(hh + ":" + mm)}</b><span class="meta">NPT</span><span class="psunr">🌅 ${G.num(td.sun[0])}</span><span class="psunr">🌇 ${G.num(td.sun[1])}</span></div>
       <h3>${T("आउँदा बिदा", "Upcoming holidays")}</h3><ul class="pup">${up.map((e) => { const d = Math.round((Date.parse(e.date_ad) - Date.parse(td.ad)) / DAY); const b = BS.toBS(...e.date_ad.split("-").map(Number));
         return `<li><span class="pupd"><b>${G.num(b.d)}</b><small>${G.lang === "ne" ? BS.MN[b.m - 1] : BS.ME[b.m - 1]}</small></span><span class="pupt">${esc(T(e.title_ne, e.title_en))}<small>${G.num(String(d))} ${T("दिनपछि", "days to go")}</small></span></li>`; }).join("") || `<li class="meta">${T("छैन", "None")}</li>`}</ul>
-      ${up.length ? `<p class="meta">${T("स्रोत", "Source")}: <a href="${esc(up[0].sourceUrl)}" target="_blank" rel="noopener">${esc(up[0].source)}</a> ${G.trustChip(up[0].trust)}</p>` : ""}`;
+      ${up.length ? `<p class="meta">${T("स्रोत", "Source")}: <a href="${esc(up[0].sourceUrl)}" target="_blank" rel="noopener">${esc(T(up[0].source, up[0].source_en || up[0].source))}</a> ${G.trustChip(up[0].trust)}</p>` : ""}`;
   }
   function draw() {
     side();

@@ -430,7 +430,10 @@
     const i = w.info[G.lang], live = Date.parse(w.expires) > now;
     box.innerHTML = `<p class="hisum">${G.esc(i.headline)}</p><div class="atrust">${G.trustChip(w.trust)}${live ? "" : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}<span class="meta">${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || w.sent)} · <a href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a></span></div>`;
   }
-  function all() { riverHi(); roadHi(); wxHome(); if (!map && PAGE === "roads") { roadList(); summary(); } myDistrict(); thisWeek(); dsearch(); kpis(); glance(); drawMap(); gaugesCard(); charts(); render(); updates(); }
+  /* Full archive on /alerts/: the static list is Nepali; re-render it in the chosen language */
+  function archive() { const ul = document.querySelector("ul.archive"); if (!ul || !data) return;
+    ul.innerHTML = [...data.alerts].sort((a, b) => b.sent.localeCompare(a.sent)).map((a) => `<li><a href="${G.esc(a.identifier)}/">${G.esc((a.info[G.lang] || a.info.ne).headline)}</a> <span class="meta">${G.npt(a.sent)}</span></li>`).join(""); }
+  function all() { archive(); riverHi(); roadHi(); wxHome(); if (!map && PAGE === "roads") { roadList(); summary(); } myDistrict(); thisWeek(); dsearch(); kpis(); glance(); drawMap(); gaugesCard(); charts(); render(); updates(); }
   initMap(); fillDistricts(); all();
   sel.onchange = sortSel.onchange = showExp.onchange = render;
   document.querySelectorAll("[data-scope]").forEach((b) => (b.onclick = () => { scope = b.dataset.scope; drawMap(); }));
