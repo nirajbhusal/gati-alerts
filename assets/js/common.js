@@ -3,7 +3,7 @@
   const ROOT = document.body.dataset.root || "./";
   const PAGE = document.body.dataset.page;
   const saved = localStorage.getItem("gati-lang");
-  const G = (window.Gati = { root: ROOT, lang: saved === "en" ? "en" : "ne", listeners: [] });
+  const G = (window.Gati = { root: ROOT, lang: saved === "ne" ? "ne" : "en", /* English is the default for first-time visitors; a saved choice wins */ listeners: [] });
   document.documentElement.lang = G.lang;
   /* Agency names, defined first so every page script (Today card included) can use them, even on cached loads */
   const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
