@@ -13,7 +13,9 @@
     }
     if (lay) map.removeLayer(lay); lay = L.layerGroup().addTo(map);
     const ids = [...new Set(P.map((x) => x[2].id))], feats = RG.features.filter((f) => ids.includes(f.properties.id));
-    if (alt) { const aids = [...new Set(alt.map((x) => x[2].id))].filter((i) => !ids.includes(i)); L.geoJSON({ type: "FeatureCollection", features: RG.features.filter((f) => aids.includes(f.properties.id)) }, { style: { color: "#0B1424", weight: 4, dashArray: "6 7", opacity: .8 } }).bindTooltip(T("वैकल्पिक मार्ग", "Alternative route")).addTo(lay); }
+    (alt || []).forEach((A, k) => { const aids = [...new Set(A.map((x) => x[2].id))].filter((x) => !ids.includes(x)); if (!aids.length) return;
+      L.geoJSON({ type: "FeatureCollection", features: RG.features.filter((f) => aids.includes(f.properties.id)) }, { style: (f) => { const r = RD.routes.find((x) => x.id === f.properties.id); return { color: COL[r.status] || COL.none, weight: 4, dashArray: "6 8", opacity: .85 }; } })
+        .bindTooltip(T(`वैकल्पिक मार्ग ${G.num(k + 1)}`, `Alternative ${k + 1}`)).addTo(lay); });
     const g = L.geoJSON({ type: "FeatureCollection", features: feats }, { style: (f) => { const r = RD.routes.find((x) => x.id === f.properties.id); return { color: COL[r.status] || COL.none, weight: 7, opacity: .95, lineCap: "round", dashArray: r.status === "none" ? "2 10" : null }; },
       onEachFeature: (f, l) => { const r = RD.routes.find((x) => x.id === f.properties.id); l.bindPopup(`<b>${esc(T(r.name_ne, r.name_en))}</b><br>${esc(T(r.note_ne, r.note_en))}`); } }).addTo(lay);
     // casing under the coloured lines
@@ -36,14 +38,7 @@
     map.fitBounds(g.getBounds().pad(0.15));
   }
   const hav = (a, b) => { const r = Math.PI / 180, x = Math.sin((b[0] - a[0]) * r / 2) ** 2 + Math.cos(a[0] * r) * Math.cos(b[0] * r) * Math.sin((b[1] - a[1]) * r / 2) ** 2; return 12742 * Math.asin(Math.sqrt(x)); };
-  const adj = {};
-  RD.routes.forEach((rt) => rt.segs.forEach(([a, b]) => { const w = hav(N[a].ll, N[b].ll); (adj[a] = adj[a] || []).push([b, w, rt]); (adj[b] = adj[b] || []).push([a, w, rt]); }));
-  function path(s, t, avoid) {
-    const d = { [s]: 0 }, prev = {}, Q = new Set(Object.keys(adj));
-    while (Q.size) { let u = null; Q.forEach((q) => { if (d[q] !== undefined && (u === null || d[q] < d[u])) u = q; }); if (u === null || u === t) break; Q.delete(u);
-      adj[u].forEach(([v, w, rt]) => { if (avoid && avoid(rt)) return; if (d[u] + w < (d[v] ?? Infinity)) { d[v] = d[u] + w; prev[v] = [u, rt]; } }); }
-    if (d[t] === undefined) return null; const out = []; let c = t; while (c !== s) { const [p, rt] = prev[c]; out.unshift([p, c, rt]); c = p; } return out;
-  }
+  const EN = G.routeEngine(RD, RG), adj = EN.adj;
   const groups0 = (P) => P.some(([, , rt]) => rt.status !== "open" && rt.status !== "oneway");
   const RS = { open: ["खुला", "Open", "ok"], blocked: ["अवरुद्ध", "Blocked", "bad"], oneway: ["एकतर्फी", "One-way", "warn"], none: ["पुष्टि छैन", "Not confirmed", "unk"] };
   const f = document.getElementById("rfrom"), t = document.getElementById("rto");
@@ -59,17 +54,22 @@
     if (f.value === t.value) { out.innerHTML = `<div class="na">${T("फरक ठाउँ छान्नुहोस्।", "Choose two different places.")}</div>`; return; }
     const nr = [f.value, t.value].filter((k) => N[k].noroad);
     if (nr.length) { out.innerHTML = `<div class="na">${nr.map((k) => esc(T(N[k].ne, N[k].en))).join(", ")}: ${T("गतिको सडक तथ्याङ्कमा सडक जोडिएको छैन (OpenStreetMap मा सदरमुकामसम्म सडक पुगेको देखिँदैन)। हवाई वा पैदल मार्ग मात्र हुन सक्छ; पुष्टि भएको छैन।", "No road link in Gati's road data (OpenStreetMap shows no road reaching the HQ). It may be air or trail only; not confirmed.")}</div>`; return; }
-    const P = path(f.value, t.value);
+    const RTS = EN.routes(f.value, t.value), P = RTS.length ? RTS[0].P : null;
     if (!P) { out.innerHTML = `<div class="na">${T("गतिको सडक तथ्याङ्कमा यी दुई ठाउँ जोड्ने बाटो छैन।", "Gati's road data has no path between these places.")}</div>`; return; }
-    const altP = groups0(P) ? path(f.value, t.value, (rt) => rt.status === "blocked" || rt.status === "none") : null;
-    const groups = []; P.forEach(([a, b, rt]) => { const g = groups[groups.length - 1]; if (g && g.rt === rt) g.to = b; else groups.push({ rt, from: a, to: b }); });
-    const worst = groups.some((g) => g.rt.status === "blocked") ? "bad" : groups.some((g) => g.rt.status === "none" || g.rt.status === "oneway") ? "unk" : "ok";
-    const head = { ok: T("बाटोका सबै खण्ड खुला देखिन्छन्।", "Every corridor on the way shows open."), unk: T("केही खण्डको अवस्था पुष्टि छैन वा एकतर्फी छ।", "Some corridors are not confirmed or one-way."), bad: T("बाटोमा अवरुद्ध खण्ड छ।", "A corridor on the way is blocked.") }[worst];
-    out.innerHTML = `<section class="card rsum r-${worst}"><p class="bigmsg">${head}</p><p class="meta">${esc(T(RD.as_of_ne, RD.as_of_en))}</p>${altP ? `<p class="ralt">🔀 ${T("ज्ञात वैकल्पिक मार्ग (अवरुद्ध वा पुष्टि नभएका खण्ड छलेर)", "Known alternative (avoiding blocked or unconfirmed corridors)")}: <b>${altP.map(([a]) => esc(T(N[a].ne, N[a].en))).concat(esc(T(N[t.value].ne, N[t.value].en))).join(" → ")}</b></p>` : groups0(P) ? `<p class="ralt">${T("गतिको सडक तथ्याङ्कमा वैकल्पिक मार्ग छैन।", "No alternative route in Gati's road data.")}</p>` : ""}</section>
-      <ol class="rsteps">${groups.map((g) => { const s = RS[g.rt.status] || RS.none; return `<li class="rstep r-${s[2]}"><div class="rdot" aria-hidden="true"></div><div><div class="rtop"><b>${esc(T(N[g.from].ne, N[g.from].en))} → ${esc(T(N[g.to].ne, N[g.to].en))}</b><span class="tag rs-${esc(g.rt.status)}">${T(s[0], s[1])}</span></div>
-        <p class="meta">${esc(T(g.rt.name_ne, g.rt.name_en))}</p><p>${esc(T(g.rt.note_ne, g.rt.note_en))}</p></div></li>`; }).join("")}</ol>
+    const CL = { terai: ["तराई", "Terai"], hill: ["पहाडी", "Hill"], mountain: ["हिमाली/कच्ची", "Mountain/earthen"] };
+    const head = (r) => ({ ok: T("बाटोका सबै खण्ड खुला देखिन्छन्।", "Every corridor on the way shows open."), unk: T("केही खण्डको अवस्था पुष्टि छैन वा एकतर्फी छ।", "Some corridors are not confirmed or one-way."), bad: T("बाटोमा अवरुद्ध खण्ड छ।", "A corridor on the way is blocked.") }[r.st]);
+    const etaLine = (r) => `<p class="reta"><b>${EN.fmtKm(r.km)}</b> · <b>${EN.eta(r.h)}</b> <span class="retal">${T("अनुमानित, सामान्य अवस्थामा", "Estimate, normal conditions")}</span></p>${r.blocked ? `<p class="rblk">⛔ ${T("अवरुद्ध खण्ड छ; यो समय लागू हुँदैन।", "Includes a blocked corridor; this time does not apply.")}</p>` : ""}`;
+    const steps = (r) => `<ol class="rsteps">${r.groups.map((g) => { const s = RS[g.rt.status] || RS.none; return `<li class="rstep r-${s[2]}"><div class="rdot" aria-hidden="true"></div><div><div class="rtop"><b>${esc(T(N[g.from].ne, N[g.from].en))} → ${esc(T(N[g.to].ne, N[g.to].en))}</b><span class="tag rs-${esc(g.rt.status)}">${T(s[0], s[1])}</span></div>
+        <p class="meta">${esc(T(g.rt.name_ne, g.rt.name_en))} · ${EN.fmtKm(g.km)} · ${EN.eta(g.h)} · ${T(CL[g.cls][0], CL[g.cls][1])}</p><p>${esc(T(g.rt.note_ne, g.rt.note_en))}</p></div></li>`; }).join("")}</ol>`;
+    const via = (r) => r.P.map(([a]) => esc(T(N[a].ne, N[a].en))).concat(esc(T(N[t.value].ne, N[t.value].en))).join(" → ");
+    const alts = RTS.slice(1);
+    out.innerHTML = `<section class="card rsum r-${RTS[0].st}"><p class="bigmsg">${head(RTS[0])}</p>${etaLine(RTS[0])}<p class="meta">${esc(T(RD.as_of_ne, RD.as_of_en))} · ${T("मानिएको गति: तराई ४०–५५, पहाडी २५–३५, हिमाली/कच्ची १२–२० कि.मि./घण्टा मानेर; प्रत्यक्ष ट्राफिक होइन।", "Speeds assumed: Terai 40–55, hill 25–35, mountain/earthen 12–20 km/h; not live traffic.")}</p>
+      <p><a class="more" href="${R}map/?route=${encodeURIComponent(f.value + "," + t.value)}">${T("नक्सामा हेर्नुहोस् →", "View on map →")}</a></p></section>
+      ${steps(RTS[0])}
+      <section class="card ralts"><h2>${T("वैकल्पिक मार्ग", "Alternative routes")}</h2>${alts.length ? alts.map((r, k) => `<details class="ralt r-${r.st}"><summary><b>${T(`विकल्प ${G.num(k + 1)}`, `Option ${k + 1}`)}</b>: ${via(r)}<br>${etaLine(r)}<span class="tag rs-${r.st === "ok" ? "open" : r.st === "bad" ? "blocked" : "none"}">${head(r)}</span></summary>${steps(r)}</details>`).join("")
+        : `<p class="meta">${T("गतिको सडक तथ्याङ्कमा फरक वैकल्पिक मार्ग छैन।", "No distinct alternative route in Gati's road data.")}</p>`}</section>
       <p><a class="btn" href="${R}roads/">${T("सबै सडक र स्रोत हेर्नुहोस् →", "See all roads and sources →")}</a></p>`;
-    drawMap(P, altP);
+    drawMap(P, alts.map((r) => r.P));
     document.getElementById("rnote").textContent = T("गतिको सडक तथ्याङ्कमा भएका मुख्य करिडोर मात्र। स्थानीय सडक समावेश छैन।", "Only the main corridors in Gati's road data. Local roads are not included.");
   }
   f.onchange = t.onchange = draw;
