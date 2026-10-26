@@ -1267,9 +1267,9 @@ html[data-theme=dark]{--gdtrack:#22364A;--gdok:#3FBF84;--gdblue:#6E9BF5}
 @media(max-width:520px){.gd-home .gdrows li,.gd-alerts .gdrows li,.gd-map .gdrows li{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto}}
 .gdash .gdh{margin:0 0 8px;padding:0;border:0}.gdash .gdh::before,.gdash .gdh::after{display:none}
 /* CLS: reserve the header's space until common.js inserts it (body.ghdr), so content does not move down */
-body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;height:130px}
-@media(max-width:720px){body[data-page]:not(.storypage):not(.ghdr)::before{height:76px}}
-@media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:76px}}
+body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;height:154px}
+@media(max-width:720px){body[data-page]:not(.storypage):not(.ghdr)::before{height:100px}}
+@media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:100px}}
 .gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}
 /* static #gdash placeholders: reserve the dashboard height before dash.js runs */
 body[data-page=home] #gdash{min-height:993px}@media(min-width:760px){body[data-page=home] #gdash{min-height:688px}}
@@ -1379,3 +1379,7 @@ html:not([data-theme=dark]) .roadlist .rl-s[style*="86D8A0"]{color:#2F855A!impor
 @media(prefers-reduced-motion:reduce){.rdlane{clip-path:none!important;transition:none!important}}
 @media(max-width:520px){.rdrow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n c" "s s";gap:2px 8px}.rdname{grid-area:n}.rdn{grid-area:c}.rdrow .rdstrip{grid-area:s;height:16px}.rdrows{gap:6px}}
 .rl-bar[style*="86D8A0"]{outline:1.5px dotted var(--rd-ncedge);outline-offset:-1.5px}
+/* Date line under the header: muted, one line, height reserved */
+.gdate{display:flex;justify-content:center;flex-wrap:nowrap;gap:0;margin:0;height:24px;line-height:24px;font-size:12.5px;color:var(--slate);overflow:hidden;white-space:nowrap;padding:0 10px;border-bottom:1px solid var(--line,#E3E9EF);font-variant-numeric:tabular-nums}
+.gdate span,.gdate time{overflow:hidden;text-overflow:ellipsis}.gdate>*+*::before{content:"·";padding:0 7px;opacity:.7}
+@media(max-width:420px){.gdate{font-size:11.5px;padding:0 6px}.gdate>*+*::before{padding:0 4px}}

@@ -96,8 +96,9 @@
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
   document.body.prepend(header); document.body.classList.add("ghdr");
+  { const dl = document.createElement("p"); dl.className = "gdate"; dl.id = "gdate"; dl.setAttribute("aria-live", "off"); header.after(dl); }
   /* Breaking: official, active, issued in the last 24h, severity Moderate or higher. Dismissible per alert. */
-  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; header.after(brk);
+  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; (document.getElementById("gdate") || header).after(brk);
   /* Fix sweep: paint the last Breaking bar from this browser's cache straight away, so content below does not jump when the fresh one arrives */
   const BRK_KEY = "gati-brk-cache";
   try { const c = JSON.parse(localStorage.getItem(BRK_KEY) || "null"); if (c && c.l === G.lang && Date.now() - c.t < 6 * 3600e3 && ["home", "alerts"].includes(document.body.dataset.page || "")) { brk.innerHTML = c.h; brk.hidden = !c.h; const bl = document.getElementById("breakinglist"); if (bl && c.lh && !bl.innerHTML.trim()) bl.innerHTML = c.lh; } } catch (e) {}
@@ -479,4 +480,21 @@
     if (c && Date.now() - c.t < 15 * 60e3) return c.j;
     try { const r = await fetch(url, opt); if (!r.ok) throw new Error(r.status); const j = await r.json(); try { localStorage.setItem(k, JSON.stringify({ t: Date.now(), j })); } catch (e) {} return j; }
     catch (e) { if (c) return c.j; throw e; } };
+})();
+
+/* Slim date line under the header: today in Bikram Sambat, then Gregorian, then live Nepal time (UTC+5:45, no DST), whatever the device zone. */
+(function () { const G = window.Gati, el = document.getElementById("gdate"); if (!G || !el) return;
+  const GN = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"], GE = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const WS = ["आइत", "सोम", "मङ्गल", "बुध", "बिही", "शुक्र", "शनि"], WSE = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let tm = 0;
+  function draw() { if (!window.BS) return; const ne = G.lang === "ne", N = (x) => G.num(String(x)), t = new Date(Date.now() + 345 * 60000);
+    const y = t.getUTCFullYear(), m = t.getUTCMonth(), d = t.getUTCDate(), w = t.getUTCDay(), h = t.getUTCHours(), mi = String(t.getUTCMinutes()).padStart(2, "0"), b = BS.toBS(y, m + 1, d);
+    const bs = b ? (ne ? `${BS.WN[w]}, ${N(b.d)} ${BS.MN[b.m - 1]} ${N(b.y)}` : `${BS.WE[w]}, ${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
+    const ad = ne ? `${WS[w]}, ${N(d)} ${GN[m]} ${N(y)}` : `${WSE[w]}, ${d} ${GE[m]} ${y}`;
+    const h12 = h % 12 || 12, tt = ne ? `${h < 4 ? "राति" : h < 12 ? "बिहान" : h < 17 ? "दिउँसो" : h < 20 ? "साँझ" : "राति"} ${N(h12)}:${N(mi)} NPT` : `${h12}:${mi} ${h < 12 ? "AM" : "PM"} NPT`;
+    el.innerHTML = `<span>${bs}</span><span>${ad}</span><time datetime="${t.toISOString().slice(0, 16)}+05:45">${tt}</time>`;
+    clearTimeout(tm); tm = setTimeout(draw, 60000 - (Date.now() % 60000) + 50); }
+  if (window.BS) draw(); else { const s = document.createElement("script"); s.src = G.root + "assets/js/bs.js"; s.onload = draw; document.head.appendChild(s); }
+  G.listeners.push(() => setTimeout(draw, 0));
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) draw(); });
 })();
