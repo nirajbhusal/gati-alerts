@@ -48,12 +48,12 @@
       `${T("प्रति निकाय, जोडिँदैन", "per agency, never added")} · ${AL ? G.npt(AL.generated) : ""}`, !AL || stale(AL.generated, 6)));
     /* roads */
     if (RD) { const c = { open: 0, oneway: 0, none: 0, blocked: 0 }; RD.routes.forEach((r) => (c[r.status] = (c[r.status] || 0) + 1)); const st = stale(RD.as_of, 30);
-      const P = [{ n: c.open, c: "#16a34a", l: T("खुला", "Open") }, { n: c.oneway, c: "#f59e0b", l: T("एकतर्फी", "One-way") }, { n: c.none, c: "#8a96a3", l: T("पुष्टि छैन", "Not confirmed") }, { n: c.blocked, c: "#dc2626", l: T("अवरुद्ध", "Blocked") }];
+      const P = [{ n: c.open, c: "#16a34a", l: T("खुला", "Open") }, { n: c.oneway, c: "#f59e0b", l: T("एकतर्फी", "One-way") }, { n: c.none, c: "#86D8A0", l: T("पुष्टि छैन", "Not confirmed") }, { n: c.blocked, c: "#dc2626", l: T("अवरुद्ध", "Blocked") }];
       rows.push(row("rd", "roads/", T("मुख्य सडक", "Main roads"), seg(P, "wide") + key(P), `${E(T("नेपाल प्रहरी", "Nepal Police"))} · ${st ? LC() : ""}${E(T(RD.as_of_ne, RD.as_of_en))} ${G.trustChip("Official")}${G.staleChip(RD.as_of)}`, st)); }
     /* Feature 4: route line, Kathmandu to Pokhara, from the same Nepal Police road data */
     if (RD) { const segs = ["prithvi", "mugling-pokhara"].map((id) => RD.routes.find((r) => r.id === id)).filter(Boolean);
       if (segs.length === 2) { const c = {}; segs.forEach((r) => (c[r.status] = (c[r.status] || 0) + 1));
-        const L = { open: ["खुला", "open"], oneway: ["एकतर्फी", "one-way"], none: ["पुष्टि नभएको", "unknown"], blocked: ["अवरुद्ध", "blocked"] }, CC = { open: "#16a34a", oneway: "#f59e0b", none: "#8a96a3", blocked: "#dc2626" };
+        const L = { open: ["खुला", "open"], oneway: ["एकतर्फी", "one-way"], none: ["पुष्टि नभएको", "unknown"], blocked: ["अवरुद्ध", "blocked"] }, CC = { open: "#16a34a", oneway: "#f59e0b", none: "#2F855A", blocked: "#dc2626" };
         const worst = c.blocked ? "blocked" : c.oneway ? "oneway" : c.open === segs.length ? "open" : c.open ? "open" : "none";
         const rest = Object.keys(c).filter((k) => k !== worst).map((k) => `${N(c[k])} ${T(L[k][0], L[k][1])}`).join(", ");
         const txt = `${T("काठमाडौं–पोखरा", "Kathmandu to Pokhara")}: <b style="color:${CC[worst]}">${T(L[worst][0], L[worst][1])}</b>${rest ? `, ${rest}` : ""}`;

@@ -1354,3 +1354,28 @@ header.top .bar .hr{gap:8px}
 @media(max-width:359px){header.top .bar .brand .tagline{display:block!important}}
 nav.main>a[hidden],nav.main .moremenu a[hidden]{display:none!important}
 @media(max-width:720px){header.top .bar .brand::after,header.top .bar .brand::before{display:none!important;content:none!important}}
+/* Roads drawn as roads (dashboard card, Roads page). Asphalt: light grey in Paper/Light, dark grey in Dark. Not confirmed = light green with dotted edge. */
+:root{--rd-asph:#C9D0D7;--rd-line:rgba(255,255,255,.95);--rd-open:#16A34A;--rd-part:#F28C1E;--rd-blk:#D93025;--rd-nc:#86D8A0;--rd-ncedge:#15803D}
+html[data-theme=dark]{--rd-asph:#3A4048;--rd-line:rgba(255,255,255,.75);--rd-nc:#86D8A0;--rd-ncedge:#DCFCE7}
+.rdleg{display:flex;flex-wrap:wrap;gap:4px 12px;margin:0 0 8px;font-size:var(--fs-6);color:var(--slate)}.rdleg b{color:var(--ink)}
+.rdsw{display:inline-block;width:14px;height:9px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.rd-open{background:var(--rd-open)}.rd-oneway{background:var(--rd-part)}.rd-blocked{background:var(--rd-blk)}
+.rd-none{background:var(--rd-nc);box-shadow:inset 0 0 0 1px var(--rd-nc);outline:1.5px dotted var(--rd-ncedge);outline-offset:-1.5px}
+.rdrows{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rdrow{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr) 2em;gap:8px;align-items:center;font-size:var(--fs-6);min-height:22px}
+.rdname{display:flex;gap:5px;align-items:center;min-width:0;color:var(--ink)}.rdname span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rdnh{flex:none;font-size:11px;line-height:1;padding:3px 4px;border-radius:3px;background:var(--surface2,#F1F5F9);color:var(--ink);border:1px solid var(--line,#E3E9EF);font-variant-numeric:tabular-nums}
+.rdn{text-align:right;color:var(--slate);font-variant-numeric:tabular-nums}
+.rdstrip{position:relative;display:block;height:18px;border-radius:4px;background:var(--rd-asph);padding:3px;box-sizing:border-box}
+.rdlane{position:relative;display:flex;gap:2px;height:100%;clip-path:inset(0 100% 0 0)}
+.rdlane::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:repeating-linear-gradient(90deg,var(--rd-line) 0 7px,transparent 7px 13px);pointer-events:none}
+.rdseg{display:block;flex:1;min-width:2px;border-radius:2px;height:100%}
+.gdin .rdlane,.rdin .rdlane{clip-path:inset(0 0 0 0);transition:clip-path .9s ease calc(var(--i,0) * 70ms)}
+.rdbig{margin:4px 0}.rdbig .rdstrip{height:26px;padding:4px}
+.rdnote{display:flex;flex-direction:column;gap:2px;margin:-8px 0 16px;padding:8px 12px;border-radius:10px;background:var(--surface2,#F1F5F9);font-size:var(--fs-6);color:var(--ink);position:relative;padding-left:32px}
+.rdnote .rdsw{position:absolute;left:12px;top:12px}
+.r-nc .rdot{background:var(--rd-nc);outline:1.5px dotted var(--rd-ncedge);outline-offset:-1.5px}.rsum.r-nc{border-left-color:var(--rd-nc)}
+html:not([data-theme=dark]) .roadlist .rl-s[style*="86D8A0"]{color:#2F855A!important}
+@media(prefers-reduced-motion:reduce){.rdlane{clip-path:none!important;transition:none!important}}
+@media(max-width:520px){.rdrow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n c" "s s";gap:2px 8px}.rdname{grid-area:n}.rdn{grid-area:c}.rdrow .rdstrip{grid-area:s;height:16px}.rdrows{gap:6px}}
+.rl-bar[style*="86D8A0"]{outline:1.5px dotted var(--rd-ncedge);outline-offset:-1.5px}

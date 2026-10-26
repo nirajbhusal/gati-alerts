@@ -17,7 +17,7 @@
   /* which districts a road corridor passes through (sampled point-in-polygon) */
   const routeDistricts = (id) => { const f = RG && RG.features.find((x) => x.properties.id === id); if (!f || !DG) return []; const s = new Set(); lineCoords(f).filter((_, k) => k % 4 === 0).forEach(([x, y]) => { const d = DG.features.find((g) => inGeom(x, y, g.geometry)); if (d) s.add(d.id); }); return [...s]; };
   const routesIn = (code) => (RD ? RD.routes.filter((r) => routeDistricts(r.id).includes(code)) : []);
-  const RS = { open: ["खुला", "Open", "#16a34a"], oneway: ["एकतर्फी", "One-way", "#f59e0b"], blocked: ["अवरुद्ध", "Blocked", "#dc2626"], none: ["पुष्टि छैन", "Not confirmed", "#8a96a3"] };
+  const RS = { open: ["खुला", "Open", "#16a34a"], oneway: ["एकतर्फी", "One-way", "#f59e0b"], blocked: ["अवरुद्ध", "Blocked", "#dc2626"], none: ["पुष्टि छैन", "Not confirmed", "#86D8A0"] };
   const gst = (g) => (g.level >= g.danger ? ["खतरा तह माथि", "Above danger", "#D93025"] : g.level >= g.warning ? ["चेतावनी तह माथि", "Above warning", "#F28C1E"] : ["सामान्य", "Normal", "#2F6FED"]);
   let SAFE = null; const safety = () => SAFE ? Promise.resolve(SAFE) : fetch(R + "safety/").then((r) => r.text()).then((h) => (SAFE = new DOMParser().parseFromString(h, "text/html"))).catch(() => null);
   const HZS = { flood: ["flood"], landslide: ["landslide"], weather: ["flood", "landslide"], earthquake: ["earthquake"], glof: ["glof"], lightning: ["lightning"], cold: ["coldwave"], fire: ["fire"] };

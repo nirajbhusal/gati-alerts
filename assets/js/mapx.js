@@ -10,7 +10,7 @@
   const HZ = { flood: ["बाढी", "Flood"], landslide: ["पहिरो", "Landslide"], weather: ["मौसम", "Weather"], road: ["सडक", "Road"], fire: ["आगलागी", "Fire"], lightning: ["चट्याङ", "Lightning"], cold: ["शीतलहर", "Cold wave"], glof: ["हिमताल", "GLOF"], other: ["अन्य", "Other"] };
   const TR = ["Official", "Reported", "Model"].filter((t) => G.TRUST[t]);
   const isAct = (a) => !a.expired && !a.supersededBy && Date.parse(a.expires) > now;
-  const RCOL = { open: "#16a34a", oneway: "#f59e0b", blocked: "#dc2626", none: "#8a96a3" }, RLB = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], blocked: ["अवरुद्ध", "Blocked"], none: ["पुष्टि छैन", "Not confirmed"] };
+  const RCOL = { open: "#16a34a", oneway: "#f59e0b", blocked: "#dc2626", none: "#86D8A0" }, RLB = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], blocked: ["अवरुद्ध", "Blocked"], none: ["पुष्टि छैन", "Not confirmed"] };
   const VCOL = { normal: "#2F6FED", warning: "#F28C1E", danger: "#D93025" }, VLB = { normal: ["सामान्य", "Normal"], warning: ["चेतावनी तह", "Above warning"], danger: ["खतरा तह", "Above danger"] };
   const gstat = (g) => (g.level >= g.danger ? "danger" : g.level >= g.warning ? "warning" : "normal");
   const mag = (a) => parseFloat(((a.info.en.params || {})["gati:magnitude"]) || "") || null;
@@ -77,7 +77,7 @@
     counts.rd = rts.length;
     if (on("rd") && RG) rts.forEach((r) => { const fs = RG.features.filter((f) => f.properties.id === r.id), su = RD.sources[(r.sources || ["pol"])[0]] || RD.sources.pol; reg({ k: "rd", col: RCOL[r.status], title: T(r.name_ne, r.name_en), sub: T(...RLB[r.status]), agency: T(su.ne, su.en), trust: "Official", url: su.u, time: RD.as_of, timeTxt: T(RD.as_of_ne, RD.as_of_en), act: true, b: fs.length ? L.geoJSON({ type: "FeatureCollection", features: fs }).getBounds() : null, html: `<b>${E(T(r.name_ne, r.name_en))}</b>`, more: `<p>${E(T(r.note_ne || "", r.note_en || ""))}</p>` + (r.sources || []).map((k) => RD.sources[k]).filter(Boolean).map((x) => `<a href="${E(x.u)}" target="_blank" rel="noopener">${E(T(x.ne, x.en))} ↗</a>`).join("<br>") }); });
     if (on("rd") && RG) RG.features.forEach((f) => { const r = rts.find((x) => x.id === f.properties.id); if (!r) return;
-      L.geoJSON(f, { style: { color: RCOL[r.status], weight: 4, opacity: 0.9, dashArray: r.status === "none" ? "2 6" : null } })
+      L.geoJSON(f, { style: { color: RCOL[r.status], weight: 4, opacity: 0.9, dashArray: r.status === "none" ? "3 6" : null } })
         .bindPopup(`<b>${E(T(r.name_ne, r.name_en))}</b><br>${E(T(...RLB[r.status]))}<br>${G.trustChip("Official")} <span class="meta">${E(T(RD.sources.pol.ne, RD.sources.pol.en))} · ${E(T(RD.as_of_ne, RD.as_of_en))}</span><br><a href="${E(RD.sources.pol.u)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.rd); });
     /* earthquakes */
     const Q = ALERTS.filter((a) => a.hazard === "earthquake" && S.ag.includes(G.agencyOf(a)) && S.tr.includes(a.trust) && tmOk(a.sent) && (mag(a) || 0) >= +S.eqm && inArea(a.districts));

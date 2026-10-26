@@ -12,11 +12,11 @@
   const SEVS = G.SEVORDER, sevL = (s) => L(G.SEV[s][0], G.SEV[s][1]);
   /* reserved heights (px) per page at 390 / wide; content is laid out to fit inside */
   const CFG = {
-    home: { at: ".hhead", h: [993, 688], b: ["agency", "roads", "rivers", "wx5"] },
+    home: { at: ".hhead", h: [1350, 840], b: ["agency", "roads", "rivers", "wx5"] },
     alerts: { h: [715, 384], b: ["agency", "trust"] },
     earthquakes: { h: [498, 302], b: ["quakes"] },
-    roads: { h: [265, 175], b: ["roads"] },
-    route: { h: [265, 175], b: ["roads"] },
+    roads: { h: [555, 360], b: ["roads"] },
+    route: { h: [555, 360], b: ["roads"] },
     rivers: { h: [250, 230], b: ["rivers"] },
     weather: { h: [328, 155], b: ["wx5", "air"] },
     sources: { h: [285, 206], b: ["health"] },
@@ -64,12 +64,21 @@
       const top = m.reduce((a, q) => (q.m > a ? q.m : a), 0), last = m[m.length - 1];
       return `<div class="gdq"><a class="gdag" href="${u}" rel="noopener" target="_blank">${E(agName(s))}</a><div class="gdtiles">${tile(m.length, L("घटना", "events"))}${tile(top.toFixed(1), L("ठूलो म्याग्निच्युड", "largest magnitude"))}</div>${svg}<span class="gdlast">${last ? L("पछिल्लो", "Latest") + " " + G.npt(last.t) : ""}</span></div>`; }).join("");
     return card(L("भूकम्प, निकाय अनुसार छुट्टै", "Earthquakes, each agency separately"), `<div class="gdcols">${per}</div><p class="gdnote">${L("NSC र USGS ले उही भूकम्प दुवैतिर दिन सक्छन्; जोडिएको छैन।", "NSC and USGS may list the same quake; they are not added together.")}</p>`, [[R + "data/alerts.json", "alerts.json"]], L("अद्यावधिक", "Updated") + " " + G.npt(D.alerts.generated), "gdwide"); };
-  B.roads = (D) => { const RD = D.roads, rs = RD.routes || [], K = [["open", "खुला", "Open", "var(--gdok)"], ["oneway", "आंशिक", "Partial", "#F28C1E"], ["blocked", "अवरुद्ध", "Blocked", "#D93025"], ["none", "पुष्टि नभएको", "Not confirmed", "#8F9BB3"]];
-    const c = K.map(([k, ne, en, col]) => [k, L(ne, en), col, rs.filter((r) => r.status === k).length]), tot = rs.length;
-    let acc = 0; const ring = c.filter((x) => x[3]).map(([, , col, n]) => { const s = `<circle class="gdarc" r="15.9" cx="20" cy="20" pathLength="100" style="--c:${col};--da:${(100 * n) / tot};--off:${-acc}"/>`; acc += (100 * n) / tot; return s; }).join("");
+  /* Roads drawn as roads: one asphalt strip per highway (NH number from DoR NAVIGATE refs in roads.json), each block one route section coloured by its own status. */
+  B.roads = (D) => { const RD = D.roads, rs = RD.routes || [], grp = new Map();
+    const paren = (r) => { const m = /\(([^()]+)\)/.exec(L(r.name_ne, r.name_en)); return m ? m[1] : ""; };
+    rs.forEach((r) => { const ref = ((r.navigate || {}).refs || [])[0], k = ref || (/^hq-/.test(r.id) ? "~hq" : "~oth"); if (!grp.has(k)) grp.set(k, []); grp.get(k).push(r); });
+    const ord = { open: 0, oneway: 1, blocked: 2, none: 3 };
+    const rows = [...grp.entries()].sort((a, b) => (a[0][0] === "~") - (b[0][0] === "~") || (a[0] === "~hq") - (b[0] === "~hq") || b[1].length - a[1].length).map(([k, list], i) => {
+      const nh = k[0] !== "~", name = nh ? (list.map(paren).find(Boolean) || L(list[0].name_ne, list[0].name_en)) : k === "~hq" ? L("जिल्ला सदरमुकाम सडक", "District HQ roads") : L("अन्य राजमार्ग", "Other highways");
+      const segs = (nh ? list : [...list].sort((a, b) => ord[a.status] - ord[b.status])).map((r) => ({ st: r.status in ord ? r.status : "none", t: L(r.name_ne, r.name_en) + ": " + L(...(G.ROADST[r.status] || G.ROADST.none)) }));
+      const cnt = {}; segs.forEach((x) => (cnt[x.st] = (cnt[x.st] || 0) + 1));
+      const aria = name + ": " + Object.keys(cnt).map((x) => L(...G.ROADST[x]) + " " + N(cnt[x])).join(", ");
+      return `<li class="rdrow"><span class="rdname">${nh ? `<b class="rdnh">${E(N(k))}</b>` : ""}<span>${E(name)}</span></span>${G.roadStrip(segs, aria, i)}<span class="rdn">${N(list.length)}</span></li>`; }).join("");
+    const c = {}; rs.forEach((r) => (c[r.status] = (c[r.status] || 0) + 1));
     const srcs = Object.values(RD.sources || {}).map((s) => [s.u, L(s.ne, s.en)]);
-    return card(L("राजमार्गको अवस्था", "Highway status"), `<div class="gdrow2"><svg class="gddonut" viewBox="0 0 40 40" role="img" aria-label="${E(c.map((x) => x[1] + " " + N(x[3])).join(", "))}"><circle r="15.9" cx="20" cy="20" class="gdtrack"/>${ring}<text x="20" y="22.5" text-anchor="middle">${N(tot)}</text></svg><div class="gdtiles">${c.map(([, lab, col, n]) => tile(n, lab, col)).join("")}</div></div>`,
-      srcs, L(RD.as_of_ne, RD.as_of_en)); };
+    return card(L("राजमार्गको अवस्था", "Highway status"), G.roadLegend(c) + `<ul class="rdrows">${rows}</ul><p class="gdnote">${L("हरेक टुक्रा एउटा मार्ग खण्ड हो; दायाँको अंक खण्ड संख्या।", "Each block is one route section; the number is sections per road.")}</p>`,
+      srcs, L(RD.as_of_ne, RD.as_of_en), "gdroads"); };
   B.rivers = (D) => { const RV = D.rivers, g = RV.gauges || [];
     const rows = g.map((x) => { const mx = x.danger * 1.1, st = x.level >= x.danger ? ["#D93025", L("खतरा", "Danger")] : x.level >= x.warning ? ["#F28C1E", L("चेतावनी", "Warning")] : ["var(--gdok)", L("सामान्य", "Normal")];
       return `<li><span class="gdag">${E(L(x.ne, x.en))}</span><span class="gdgauge" role="img" aria-label="${E(L(x.ne, x.en) + ": " + N(x.level) + " m, " + st[1])}">${bar(x.level, mx, st[0], "")}<em style="left:${(100 * x.warning) / mx}%" title="${L("चेतावनी", "Warning")}"></em><em class="d" style="left:${(100 * x.danger) / mx}%" title="${L("खतरा", "Danger")}"></em></span><span class="gdn">${N(x.level)} ${L("मि", "m")} <small>${st[1]}</small></span></li>`; }).join("");

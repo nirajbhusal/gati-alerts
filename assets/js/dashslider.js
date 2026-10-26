@@ -39,7 +39,7 @@
   }
   /* 3. Roads: status bar per corridor */
   {
-    const COL = { open: "#16a34a", oneway: "#f59e0b", blocked: "#dc2626", none: "#8a96a3" }, LB = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], blocked: ["अवरुद्ध", "Blocked"], none: ["पुष्टि छैन", "Not confirmed"] };
+    const COL = { open: "#16a34a", oneway: "#f59e0b", blocked: "#dc2626", none: "#86D8A0" }, LB = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], blocked: ["अवरुद्ध", "Blocked"], none: ["पुष्टि छैन", "Not confirmed"] };
     const rs = RD ? RD.routes : [];
     slides.push({ k: "roads", t: T("मुख्य सडक", "Main roads"), body: rs.length ? `<ul class="dsroads">${rs.map((r) => `<li><span class="dslab">${E(T(r.name_ne, r.name_en))}</span><span class="dsst" style="--c:${COL[r.status] || COL.none}"><i></i>${E(T(...(LB[r.status] || LB.none)))}</span></li>`).join("")}</ul>` : na(T("सडक अवस्था", "Road status"), ""),
       foot: foot(RD ? E(T(RD.sources.pol.ne, RD.sources.pol.en)) : T("नेपाल प्रहरी", "Nepal Police"), RD ? E(T(RD.as_of_ne, RD.as_of_en)) : "", G.trustChip("Official"), "roads/", T("सडक", "Roads")) });

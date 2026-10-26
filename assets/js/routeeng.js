@@ -23,7 +23,7 @@
     const summarize = (P) => { const groups = []; P.forEach(([a, b, rt, km]) => { const g = groups[groups.length - 1]; if (g && g.rt === rt) { g.to = b; g.km += km; } else groups.push({ rt, from: a, to: b, km }); });
       groups.forEach((g) => { const s = SPEED[klass(g.rt.id)]; g.cls = klass(g.rt.id); g.h = [g.km / s[1], g.km / s[0]]; });
       const km = groups.reduce((x, g) => x + g.km, 0), h = [groups.reduce((x, g) => x + g.h[0], 0), groups.reduce((x, g) => x + g.h[1], 0)];
-      const st = groups.some((g) => g.rt.status === "blocked") ? "bad" : groups.some((g) => g.rt.status === "none" || g.rt.status === "oneway") ? "unk" : "ok";
+      const st = groups.some((g) => g.rt.status === "blocked") ? "bad" : groups.some((g) => g.rt.status === "oneway") ? "unk" : groups.some((g) => g.rt.status === "none") ? "nc" : "ok";
       return { P, groups, km, h, st, blocked: groups.some((g) => g.rt.status === "blocked"), ids: [...new Set(groups.map((g) => g.rt.id))] }; };
     function routes(s, t) {
       const prim = dijk(s, t, (km) => km); if (!prim) return [];

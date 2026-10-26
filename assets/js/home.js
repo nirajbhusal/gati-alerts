@@ -37,7 +37,7 @@
   const hz = (h) => HAZ[h] || [h || "अन्य", h || "Other", "•"];
   const AGENCY = { "hydrology.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
   const agency = (a) => { const v = AGENCY[a.sender] || a.sender; return Array.isArray(v) ? T(v[0], v[1]) : v; };
-  const RC = { open: "#15803d", oneway: "#1d4ed8", night: "#b45309", closed: "#b91c1c", blocked: "#b91c1c", none: "#94a3b8" };
+  const RC = { open: "#15803d", oneway: "#1d4ed8", night: "#b45309", closed: "#b91c1c", blocked: "#b91c1c", none: "#86D8A0" };
   const RW = { open: ["खुला", "Open"], oneway: ["एकतर्फी", "One-way"], night: ["राति बन्द", "Closed at night"], closed: ["बन्द", "Blocked"], blocked: ["बन्द", "Blocked"], none: ["स्थिति पुष्टि भएन", "Not confirmed"] };
   const rw = (s) => T(...RW[s]);
 
@@ -313,10 +313,10 @@
     $("cTime").innerHTML = `<div class="tlwrap">${s}</svg></div>` + `<p class="meta">${T("हरेक खण्ड एउटा सूचना हो, रङ खतराअनुसार। दायाँ छेउ आज। फोनमा दायाँबायाँ सार्न सकिन्छ।", "Each block is one alert, coloured by severity. The right edge is today. Swipe sideways on a phone.")}</p>`;
     // road status: 100% stacked bar
     const rc = roads.routes.reduce((m, r) => ((m[r.status] = (m[r.status] || 0) + 1), m), {}), tot = roads.routes.length;
-    $("cRoads").innerHTML = `<div class="stack">${["open", "oneway", "night", "closed", "none"].filter((k) => rc[k]).map((k) =>
-      `<span style="flex:${rc[k]};background:${RC[k]}" title="${G.esc(rw(k))}">${G.num(rc[k])}</span>`).join("")}</div>
-      <ul class="keyl">${["open", "oneway", "closed", "none"].map((k) => `<li><span class="sw" style="background:${RC[k]}"></span>${G.esc(rw(k))}: <b>${G.num(rc[k] || 0)}</b></li>`).join("")}</ul>
-      <p class="meta">${T(`${G.num(tot)} मुख्य मार्ग · ${G.esc(roads.as_of_ne)} सम्मको अवस्था। पुरानो हुन सक्छ — यात्रा अघि प्रहरीसँग बुझ्नुहोस्।`, `${tot} main routes · status as of ${G.esc(roads.as_of_en)}. May be out of date; check with the police before travelling.`)}</p>`;
+    { const ord = { open: 0, oneway: 1, blocked: 2, none: 3 }, segs = [...roads.routes].sort((a, b) => (ord[a.status] ?? 3) - (ord[b.status] ?? 3)).map((r) => ({ st: r.status in ord ? r.status : "none", t: (ne() ? r.name_ne : r.name_en) + ": " + T(...(G.ROADST[r.status] || G.ROADST.none)) }));
+    $("cRoads").innerHTML = G.roadLegend(rc) + `<div class="rdbig" id="rdbig">${G.roadStrip(segs, ["open", "oneway", "blocked", "none"].map((k) => T(...G.ROADST[k]) + " " + G.num(String(rc[k] || 0))).join(", "))}</div>
+      <p class="meta">${T(`${G.num(tot)} मुख्य मार्ग · ${G.esc(roads.as_of_ne)} सम्मको अवस्था। पुरानो हुन सक्छ; यात्रा अघि प्रहरीसँग बुझ्नुहोस्।`, `${tot} main routes · status as of ${G.esc(roads.as_of_en)}. May be out of date; check with the police before travelling.`)}</p>`;
+      const rb = $("rdbig"); if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) rb.classList.add("rdin"); else { const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { rb.classList.add("rdin"); io.disconnect(); } }, { threshold: 0.2 }); io.observe(rb); } }
     const tc = cnt((a) => a.trust);
     const TC = { Official: "var(--navy)", Verified: "var(--teal)", Reported: "#64748b", Unverified: "#94a3b8", Corrected: "#6b3fa0", Retracted: "#14202B" };
     $("cTrust").innerHTML = `<div class="two"><div><h4>${T("गतिका सूचना", "Gati alerts")}</h4>${bars(Object.keys(G.TRUST).filter((t) => tc[t]).map((t) => ({ label: G.trustChip(t), n: tc[t], c: TC[t] })))}</div>

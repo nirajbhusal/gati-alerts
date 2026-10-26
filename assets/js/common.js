@@ -257,6 +257,11 @@
   G.SEV = { Extreme: ["अत्यन्त गम्भीर", "Extreme", "⬢"], Severe: ["गम्भीर", "Severe", "▲"], Moderate: ["मध्यम", "Moderate", "◆"],
             Minor: ["सामान्य", "Minor", "●"], Unknown: ["सूचना", "Info", "ℹ"] };
   G.SEVORDER = ["Extreme", "Severe", "Moderate", "Minor", "Unknown"];
+  /* Road status look, shared by dashboard cards, Roads page, map and Route check.
+     "none" = no official status: light green with a dotted edge, never the same as official open. */
+  G.ROADST = { open: ["खुला", "Open"], oneway: ["आंशिक खुला", "Partly open"], blocked: ["अवरुद्ध", "Blocked"], none: ["पुष्टि नभएको", "Not confirmed"] };
+  G.roadStrip = (segs, label, i) => `<span class="rdstrip" role="img" aria-label="${G.esc(label)}" style="--i:${i || 0}"><span class="rdlane">${segs.map((s) => `<i class="rdseg rd-${s.st}" style="flex:${s.w || 1}" title="${G.esc(s.t)}"></i>`).join("")}</span></span>`;
+  G.roadLegend = (counts) => `<p class="rdleg">${["open", "oneway", "blocked", "none"].map((k) => `<span><i class="rdsw rd-${k}"></i>${G.lang === "ne" ? G.ROADST[k][0] : G.ROADST[k][1]}${counts ? ` <b>${G.num(String(counts[k] || 0))}</b>` : ""}</span>`).join("")}</p>`;
   G.SEVCOLOR = { Extreme: "#8E1B14", Severe: "#D93025", Moderate: "#F28C1E", Minor: "#F2C94C", Unknown: "#8F9BB3" };
   G.TRUST = { Official: ["आधिकारिक", "Official", "🛡"], Verified: ["प्रमाणित", "Verified", "✓"], Reported: ["रिपोर्ट गरिएको", "Reported", "❝"],
               Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"] };

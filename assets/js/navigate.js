@@ -3,7 +3,7 @@
 (async function () {
   const G = window.Gati, el = document.getElementById("navlist"); if (!G || !el) return;
   const NV = await G.json("data/navigate.json").catch(() => null), RD = await G.json("data/roads.json").catch(() => null);
-  const C = { open: "#16a34a", partial: "#f59e0b", blocked: "#dc2626", none: "#8a96a3" };
+  const C = { open: "#16a34a", partial: "#f59e0b", blocked: "#dc2626", none: "#86D8A0" };
   const draw = () => { const T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc;
     const L = { open: T("खुला", "Open"), partial: T("आंशिक", "Partial"), blocked: T("अवरुद्ध", "Blocked"), none: T("पुष्टि नभएको", "Not confirmed") };
     if (!NV) { el.innerHTML = ""; return; }
