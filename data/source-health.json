@@ -2,52 +2,52 @@
  "sources": {
   "dhm-hydrology": {
    "lastSuccess": null,
-   "lastChecked": "2026-10-25T03:25:14+00:00",
+   "lastChecked": "2026-10-26T03:22:24+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
   },
   "dhm-mfd": {
    "lastSuccess": null,
-   "lastChecked": "2026-10-25T03:25:22+00:00",
+   "lastChecked": "2026-10-26T03:22:32+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
   },
   "neoc": {
    "lastSuccess": null,
-   "lastChecked": "2026-10-25T03:25:30+00:00",
+   "lastChecked": "2026-10-26T03:22:40+00:00",
    "lastResult": "URLError: timed out"
   },
   "ndrrma": {
    "lastSuccess": null,
-   "lastChecked": "2026-10-25T03:25:50+00:00",
+   "lastChecked": "2026-10-26T03:23:00+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
   },
   "nepal-police": {
-   "lastSuccess": "2026-10-25T03:25:58+00:00",
-   "lastChecked": "2026-10-25T03:25:58+00:00",
+   "lastSuccess": "2026-10-26T03:23:08+00:00",
+   "lastChecked": "2026-10-26T03:23:08+00:00",
    "lastResult": "HTTP 200"
   },
   "bipad": {
    "lastSuccess": null,
-   "lastChecked": "2026-10-25T03:26:02+00:00",
+   "lastChecked": "2026-10-26T03:23:12+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
   },
   "nsc": {
-   "lastSuccess": "2026-10-25T03:26:10+00:00",
-   "lastChecked": "2026-10-25T03:26:10+00:00",
+   "lastSuccess": "2026-10-26T03:23:20+00:00",
+   "lastChecked": "2026-10-26T03:23:20+00:00",
    "lastResult": "HTTP 200"
   },
   "usgs": {
-   "lastSuccess": "2026-10-25T03:26:12+00:00",
-   "lastChecked": "2026-10-25T03:26:12+00:00",
+   "lastSuccess": "2026-10-26T03:23:21+00:00",
+   "lastChecked": "2026-10-26T03:23:21+00:00",
    "lastResult": "HTTP 200"
   },
   "doe-air": {
    "lastSuccess": null,
-   "lastChecked": "2026-10-25T03:26:12+00:00",
+   "lastChecked": "2026-10-26T03:23:21+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
   },
   "edcd": {
    "lastSuccess": null,
-   "lastChecked": "2026-10-25T03:26:20+00:00",
+   "lastChecked": "2026-10-26T03:23:29+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
   },
   "lightning": {
@@ -71,11 +71,11 @@
    "lastResult": "planned"
   },
   "dor-navigate": {
-   "lastSuccess": "2026-10-25T12:51:28+05:45",
-   "lastChecked": "2026-10-25T12:51:28+05:45",
+   "lastSuccess": "2026-10-26T09:08:39+05:45",
+   "lastChecked": "2026-10-26T09:08:39+05:45",
    "lastResult": "ok"
   }
  },
- "checkedAt": "2026-10-25T03:26:28+00:00",
+ "checkedAt": "2026-10-26T03:23:39+00:00",
  "note": "Checked from an automated server outside Nepal; some .gov.np sites block or time out for such servers even when they are up for people in Nepal."
 }

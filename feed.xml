@@ -4,12 +4,51 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-10-25T05:07:43+00:00</updated>
+  <updated>2026-10-26T03:30:38+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-10-26</id>
+    <title>DHM: heavy to very heavy rain or snow possible in the Koshi, Bagmati and Gandaki hills and mountains on Kartik 12 (Thu 29 Oct) and across most provinces on Kartik 13 (Fri 30 Oct), orange (be prepared)</title>
+    <updated>2026-10-26T08:22:00+05:45</updated>
+    <published>2026-10-26T08:22:00+05:45</published>
+    <summary>[Official] Moderate · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-10-31T08:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-5day-bulletin-2026-10-26.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-5day-bulletin-2026-10-26/" rel="related" type="text/html"/>
+    <link href="https://x.com/NMD_Weather/status/2114546855346585833" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.reported-dhm-24h-forecast-2026-10-26</id>
+    <title>26 Oct (today and tonight): partly cloudy in the mountains, mainly fair in the hills and Terai; morning mist or fog in the Terai and valleys</title>
+    <updated>2026-10-26T07:07:00+05:45</updated>
+    <published>2026-10-26T07:07:00+05:45</published>
+    <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) · relayed by Gati · expires 2026-10-27T06:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-24h-forecast-2026-10-26.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-24h-forecast-2026-10-26/" rel="related" type="text/html"/>
+    <link href="https://nepallive.com/story/352290" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-10-25-1900</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-10-25T19:00:00+05:45</updated>
+    <published>2026-10-25T19:00:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-10-26T19:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-10-25-1900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-10-25-1900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.police-road-aarughat-soti-2026-10-25</id>
     <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>

@@ -34,7 +34,7 @@
   /* 2. Weather: DHM 5-day strip */
   {
     const b = WX && WX.bulletin5;
-    slides.push({ k: "weather", t: T("मौसम: DHM ५ दिने", "Weather: DHM 5-day"), body: b ? `<ol class="dswx">${b.days.map((d) => `<li class="lv-${d.level}"><b>${E(T(d.bs, new Date(d.ad + "T12:00:00+05:45").toLocaleDateString("en-GB", { day: "numeric", month: "short" })))}</b><i></i><span>${E(T(d.level === "yellow" ? "पहेँलो" : "हरियो", d.level === "yellow" ? "Yellow" : "Green"))}</span></li>`).join("")}</ol><p class="dssum">${E(T(b.days.find((d) => d.level !== "green")?.ne || b.days[0].ne, b.days.find((d) => d.level !== "green")?.en || b.days[0].en))}</p>` : na(T("DHM बुलेटिन", "DHM bulletin"), WX && WX.checked ? G.npt(WX.checked) : ""),
+    slides.push({ k: "weather", t: T("मौसम: DHM ५ दिने", "Weather: DHM 5-day"), body: b ? `<ol class="dswx">${b.days.map((d) => `<li class="lv-${d.level}"><b>${E(T(d.bs, new Date(d.ad + "T12:00:00+05:45").toLocaleDateString("en-GB", { day: "numeric", month: "short" })))}</b><i></i><span>${E(T(...({ yellow: ["पहेँलो", "Yellow"], orange: ["सुन्तले", "Orange"], red: ["रातो", "Red"] }[d.level] || ["हरियो", "Green"])))}</span></li>`).join("")}</ol><p class="dssum">${E(T(b.days.find((d) => d.level !== "green")?.ne || b.days[0].ne, b.days.find((d) => d.level !== "green")?.en || b.days[0].en))}</p>` : na(T("DHM बुलेटिन", "DHM bulletin"), WX && WX.checked ? G.npt(WX.checked) : ""),
       foot: foot(b ? `<a href="${E(b.url)}" target="_blank" rel="noopener">DHM @NMD_Weather</a>` : "DHM", b ? `${T("जारी", "issued")} ${G.npt(b.issued)}` : "", G.trustChip("Official"), "weather/", T("मौसम", "Weather")) });
   }
   /* 3. Roads: status bar per corridor */

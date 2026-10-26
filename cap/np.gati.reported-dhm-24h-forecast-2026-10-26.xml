@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.reported-dhm-24h-forecast-2026-10-26</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-26T07:07:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://nepallive.com/story/352290</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>मौसम पूर्वानुमान</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-26T07:07:00+05:45</effective>
+    <onset>2026-10-26T07:07:00+05:45</onset>
+    <expires>2026-10-27T06:00:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित</senderName>
+    <headline>कात्तिक ९ (आज र आज राति): हिमाली भूभागमा आंशिक बदली, पहाड र तराईमा मुख्यतया सफा; बिहान तराई र खोँचमा हुस्सु/कुहिरो</headline>
+    <description>रिपोर्ट गरिएको (नेपाल लाइभ र ओएस नेपाल, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ९ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली भूभागमा आंशिक बदली, पहाडी र तराई भूभागमा मुख्यतया सफा। आज राति कोशी प्रदेश तथा बागमती, गण्डकी र कर्णालीका हिमाली भूभागमा आंशिक बदली, बाँकी भागमा मुख्यतया सफा। बिहानीपख तराई, उपत्यका र खोँचमा केही स्थानमा हुस्सु/कुहिरो। यो दैनिक पूर्वानुमानमा आजका लागि कुनै चेतावनी छैन। कात्तिक १२ र १३ को सुन्तले सङ्केतबारे DHM को कात्तिक ९ को आधिकारिक ५ दिने बुलेटिन हेर्नुहोस्।</description>
+    <instruction>हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्; कात्तिक १२ देखि १४ सम्मको यात्रा र बाली भित्र्याउने योजना अहिल्यै मिलाउनुहोस्।</instruction>
+    <web>https://nepallive.com/story/352290</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://nepallive.com/story/352290</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-26T07:07:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://nepallive.com/story/352290</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.osnepal.com/detail/592853</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>कात्तिक ९ (आज र आज राति): हिमाली भूभागमा आंशिक बदली, पहाड र तराईमा मुख्यतया सफा; बिहान तराई र खोँचमा हुस्सु/कुहिरो</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Weather forecast</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-26T07:07:00+05:45</effective>
+    <onset>2026-10-26T07:07:00+05:45</onset>
+    <expires>2026-10-27T06:00:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM) · relayed by Gati</senderName>
+    <headline>26 Oct (today and tonight): partly cloudy in the mountains, mainly fair in the hills and Terai; morning mist or fog in the Terai and valleys</headline>
+    <description>Reported (Nepal Live and OS Nepal, both citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 9): westerly winds have a partial influence. Partly cloudy in the mountains this afternoon, mainly fair in the hills and Terai. Tonight partly cloudy in the Koshi, Bagmati, Gandaki and Karnali mountains, mostly fair elsewhere. Morning mist or fog at some places in the Terai, valleys and river basins. No warning for today in this daily forecast. For the orange (be prepared) days of Kartik 12 and 13, see DHM's official 5-day bulletin of Kartik 9.</description>
+    <instruction>If travelling in the mountains, check DHM's latest forecast; plan travel and harvesting now for Kartik 12 to 14 (29 to 31 Oct).</instruction>
+    <web>https://nepallive.com/story/352290</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://nepallive.com/story/352290</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-26T07:07:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://nepallive.com/story/352290</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.osnepal.com/detail/592853</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>26 Oct (today and tonight): partly cloudy in the mountains, mainly fair in the hills and Terai; morning mist or fog in the Terai and valleys</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>
