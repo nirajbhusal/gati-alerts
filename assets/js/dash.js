@@ -15,7 +15,7 @@
     home: { at: ".hhead", h: [1350, 840], b: ["agency", "roads", "rivers", "wx5"] },
     alerts: { h: [715, 384], b: ["agency", "trust"] },
     earthquakes: { h: [498, 302], b: ["quakes"] },
-    roads: { h: [555, 360], b: ["roads"] },
+    roads: { h: [930, 395], b: ["roadmap", "roads"] },
     route: { h: [555, 360], b: ["roads"] },
     rivers: { h: [250, 230], b: ["rivers"] },
     weather: { h: [328, 155], b: ["wx5", "air"] },
@@ -79,6 +79,19 @@
     const srcs = Object.values(RD.sources || {}).map((s) => [s.u, L(s.ne, s.en)]);
     return card(L("राजमार्गको अवस्था", "Highway status"), G.roadLegend(c) + `<ul class="rdrows">${rows}</ul><p class="gdnote">${L("हरेक टुक्रा एउटा मार्ग खण्ड हो; दायाँको अंक खण्ड संख्या।", "Each block is one route section; the number is sections per road.")}</p>`,
       srcs, L(RD.as_of_ne, RD.as_of_en), "gdroads"); };
+  /* Small road network map (SVG, no tiles, no Leaflet): same geometry and palette as the Map page; tap opens the full map. */
+  B.roadmap = (D) => { const RD = D.roads, RG = D.rgeo; if (!RG) return ""; const st = Object.fromEntries((RD.routes || []).map((r) => [r.id, r.status]));
+    const X0 = 80.0, X1 = 88.25, Y0 = 26.3, Y1 = 30.5, K = Math.cos((28.2 * Math.PI) / 180), W = 600, H = Math.round((W * (Y1 - Y0)) / ((X1 - X0) * K));
+    const pt = ([x, y]) => ((x - X0) * W / (X1 - X0)).toFixed(1) + " " + ((Y1 - y) * H / (Y1 - Y0)).toFixed(1);
+    const line = (c) => "M" + c.map(pt).join("L");
+    const ring = (g) => (g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : []).map((p) => p.map((r) => line(r) + "Z").join("")).join("");
+    const prov = D.prov ? `<path class="rmprov" d="${D.prov.features.map((f) => ring(f.geometry)).join("")}"/>` : "";
+    const ord = { none: 0, open: 1, oneway: 2, blocked: 3 }, fs = [...RG.features].sort((a, b) => (ord[st[a.properties.id]] ?? 0) - (ord[st[b.properties.id]] ?? 0));
+    const roads = fs.map((f) => { const g = f.geometry, k = st[f.properties.id] || "none", d = (g.type === "LineString" ? [g.coordinates] : g.coordinates).map(line).join("");
+      return `<path class="rmr rm-${k}" d="${d}"/>`; }).join("");
+    const c = {}; (RD.routes || []).forEach((r) => (c[r.status] = (c[r.status] || 0) + 1));
+    return card(L("सडक सञ्जाल नक्सा", "Road network map"), G.roadLegend(c) + `<a class="rmap" href="${R}map/" aria-label="${E(L("पूरा नक्सा खोल्नुहोस्", "Open the full map"))}"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${E(L("मुख्य सडकहरू, अवस्थाअनुसार रङ", "Main roads coloured by status"))}">${prov}<g class="rmroads">${roads}</g></svg><span class="rmgo">${L("पूरा नक्सा खोल्नुहोस्", "Open full map")} →</span></a>`,
+      [[R + "data/geo/roads.geojson", "roads.geojson"]], L(RD.as_of_ne, RD.as_of_en), "gdrmap"); };
   B.rivers = (D) => { const RV = D.rivers, g = RV.gauges || [];
     const rows = g.map((x) => { const mx = x.danger * 1.1, st = x.level >= x.danger ? ["#D93025", L("खतरा", "Danger")] : x.level >= x.warning ? ["#F28C1E", L("चेतावनी", "Warning")] : ["var(--gdok)", L("सामान्य", "Normal")];
       return `<li><span class="gdag">${E(L(x.ne, x.en))}</span><span class="gdgauge" role="img" aria-label="${E(L(x.ne, x.en) + ": " + N(x.level) + " m, " + st[1])}">${bar(x.level, mx, st[0], "")}<em style="left:${(100 * x.warning) / mx}%" title="${L("चेतावनी", "Warning")}"></em><em class="d" style="left:${(100 * x.danger) / mx}%" title="${L("खतरा", "Danger")}"></em></span><span class="gdn">${N(x.level)} ${L("मि", "m")} <small>${st[1]}</small></span></li>`; }).join("");
@@ -102,8 +115,8 @@
       [[R + "data/alerts.json", "alerts.json"]], L("अद्यावधिक", "Updated") + " " + G.npt(D.alerts.generated), "gdwide"); };
 
   /* ---------- load, draw, animate ---------- */
-  const need = new Set(); C.b.forEach((b) => ({ agency: ["alerts"], trust: ["alerts"], quakes: ["alerts"], log: ["alerts"], roads: ["roads"], rivers: ["rivers"], wx5: ["weather"], air: ["health"], health: ["sources", "health"], contacts: ["contacts"] }[b] || []).forEach((x) => need.add(x)));
-  const FILE = { alerts: "data/alerts.json", roads: "data/roads.json", rivers: "data/rivers.json", weather: "data/weather.json", sources: "data/sources.json", health: "data/source-health.json", contacts: "data/contacts.json" };
+  const need = new Set(); C.b.forEach((b) => ({ agency: ["alerts"], trust: ["alerts"], quakes: ["alerts"], log: ["alerts"], roads: ["roads"], roadmap: ["roads", "rgeo", "prov"], rivers: ["rivers"], wx5: ["weather"], air: ["health"], health: ["sources", "health"], contacts: ["contacts"] }[b] || []).forEach((x) => need.add(x)));
+  const FILE = { alerts: "data/alerts.json", roads: "data/roads.json", rivers: "data/rivers.json", weather: "data/weather.json", sources: "data/sources.json", health: "data/source-health.json", contacts: "data/contacts.json", rgeo: "data/geo/roads.geojson", prov: "data/geo/provinces.geojson" };
   const D = {};
   let io = null, drawn = false;
   function anim() { if (drawn || reduce || !("IntersectionObserver" in window)) { box.classList.add("gdin"); return; }
