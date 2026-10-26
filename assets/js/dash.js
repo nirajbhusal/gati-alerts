@@ -15,7 +15,7 @@
     home: { at: ".hhead", h: [1350, 840], b: ["agency", "roads", "rivers", "wx5"] },
     alerts: { h: [715, 384], b: ["agency", "trust"] },
     earthquakes: { h: [498, 302], b: ["quakes"] },
-    roads: { h: [930, 395], b: ["roadmap", "roads"] },
+    roads: { h: null, b: ["roadmap", "roads"] } /* reserved in gati.css per width and language */,
     route: { h: [555, 360], b: ["roads"] },
     rivers: { h: [250, 230], b: ["rivers"] },
     weather: { h: [328, 155], b: ["wx5", "air"] },
@@ -29,7 +29,7 @@
   const pre = document.getElementById("gdash"), box = pre || document.createElement("section"); box.className = "gdash"; box.id = "gdash";
   box.setAttribute("aria-label", "सारांश · Summary");
   const wide = () => matchMedia("(min-width:760px)").matches;
-  const reserve = () => (box.style.minHeight = (wide() ? C.h[1] : C.h[0]) + "px");
+  const reserve = () => { if (C.h) box.style.minHeight = (wide() ? C.h[1] : C.h[0]) + "px"; };
   reserve();
   let anchor = pre ? null : C.at ? main.querySelector(C.at) : main.querySelector("h1");
   if (pre) {} else if (anchor) { let n = anchor.nextElementSibling; while (n && n.matches("p.lead,p.hsub")) { anchor = n; n = n.nextElementSibling; } anchor.after(box); } else main.prepend(box);

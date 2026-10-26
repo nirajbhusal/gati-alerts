@@ -1396,4 +1396,8 @@ html[data-theme=dark] .rmgo{color:#8DB1F7}
 .rmap:hover .rmgo,.rmap:focus-visible .rmgo{text-decoration:underline}
 @media(min-width:760px){.gd-roads{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.rmroads{opacity:1}}
-body[data-page=roads] #gdash{min-height:930px}@media(min-width:760px){body[data-page=roads] #gdash{min-height:395px}}
+/* Roads page summary: reserved to fit (map height scales with width; NE legend wraps less from 385px) */
+body[data-page=roads] #gdash{min-height:900px}
+@media(max-width:480px){body[data-page=roads] #gdash{min-height:calc(674px + 58.3vw)}html[lang=ne] body[data-page=roads] #gdash{min-height:calc(602px + 58.3vw)}}
+@media(max-width:384px){html[lang=ne] body[data-page=roads] #gdash{min-height:calc(670px + 58.3vw)}}
+@media(min-width:760px){body[data-page=roads] #gdash{min-height:395px}}
