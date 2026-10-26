@@ -24,7 +24,7 @@
     <description>NDRRMA सूचना (मिति २०८३ कार्तिक ९ गते, सोमबार): नेपाल मौसम विज्ञान विभागको आज जारी पोष्ट मनसुन विशेष बुलेटिनअनुसार बंगालको खाडीमा रहेको 'अर्नब' चक्रवात थप शक्तिशाली बन्दै गएको र अति शक्तिशाली हुने सम्भावना छ। यो कार्तिक ११ मा भारतको जमिनी भूभागमा प्रवेश गर्ने सम्भावना छ र प्रभाव कार्तिक १२ गते बिहीबार रातिबाट सुरु हुने देखिन्छ। विशेषगरी कार्तिक १३ (शुक्रबार) र १४ (शनिबार) कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी प्रदेश बढी प्रभावित हुने; धेरै स्थानमा चट्याङ, हावाहुरीसहित मध्यमसम्मको र थोरै स्थानमा भारी वर्षाको सम्भावना। कर्णाली र सुदूरपश्चिमका केही स्थानमा चट्याङ र हावाहुरीसहित मध्यम वर्षा तथा एक-दुई स्थानमा भारी वर्षा सम्भव। उच्च पहाडी तथा हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी तथा हिमपहिरोको उच्च जोखिम।</description>
     <instruction>धानबाली काट्ने, भित्र्याउने काम कार्तिक १२ (बिहीबार) अगाडि नै सक्नुहोस्। पर्यटक उच्च पहाडी र हिमाली क्षेत्रमा नजानुहोस्; गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्। अत्यावश्यक नपरी यात्रा नगर्नुहोस्; आवश्यक परे सवारी आवागमन बन्द हुन सक्छ। जोखिमयुक्त स्थानमा बस्नेहरू सुरक्षित स्थानमा सर्नुहोस्। मौसम जानकारी: ११५५; विपद्मा मद्दत: १२३४, १०० वा १११४।</instruction>
     <web>https://x.com/NDRRMA_Nepal/status/2114701650879521070</web>
-    <contact>NDRRMA · टोल फ्रि ११४९ · https://bipad.gov.np/</contact>
+    <contact>NDRRMA · https://bipad.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NDRRMA_Nepal/status/2114701650879521070</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-26T18:37:17+05:45</value></parameter>
@@ -52,7 +52,7 @@
     <description>NDRRMA notice (dated Kartik 9, 2083, Monday 26 Oct): per the post-monsoon special bulletin issued today by the Department of Hydrology and Meteorology, Cyclone 'Arnab' in the Bay of Bengal is strengthening and may become very severe. It may make landfall in India on Kartik 11 (28 Oct), and its effect is expected from Thursday night, Kartik 12 (29 Oct). Especially on Kartik 13 (Friday, 30 Oct) and Kartik 14 (Saturday, 31 Oct), Koshi, Bagmati, Madhesh, Gandaki and Lumbini provinces will be most affected, with moderate rain with thunder and strong wind at many places and heavy rain at a few places. Some places in Karnali and Sudurpaschim may get moderate rain with thunder and wind, and heavy rain at one or two places. High hills and mountains face a high risk of heavy snowfall, blizzards and avalanches.</description>
     <instruction>Finish harvesting and bringing in paddy before Thursday, Kartik 12 (29 Oct). Tourists should not go to high hills and mountains; those already there should stay in a safe place. Avoid non-essential travel; vehicle movement may be stopped if needed. People in risky places should move to safety. Weather information: 1155; disaster help: 1234, 100 or 1114.</instruction>
     <web>https://x.com/NDRRMA_Nepal/status/2114701650879521070</web>
-    <contact>NDRRMA · toll free 1149 · https://bipad.gov.np/</contact>
+    <contact>NDRRMA · https://bipad.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
     <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NDRRMA_Nepal/status/2114701650879521070</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-26T18:37:17+05:45</value></parameter>
