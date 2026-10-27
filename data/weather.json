@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-26T09:30:00+05:45",
+ "checked": "2026-10-27T09:30:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,40 +7,32 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": false
  },
- "note_ne": "mfd.gov.np र dhm.gov.np गतिको सर्भरबाट खुलेनन् (कात्तिक ९, बिहान ९:३० NPT मा जाँचिएको)। त्यसैले ५ दिने बुलेटिन DHM को आधिकारिक X खाता @NMD_Weather बाट (आधिकारिक) र आजको २४ घण्टे पूर्वानुमान दुई समाचार माध्यममा छापिएको DHM पाठबाट (रिपोर्ट गरिएको) लिइएको छ।",
- "note_en": "mfd.gov.np and dhm.gov.np could not be reached from Gati's server (checked 26 Oct 2026, 9:30 AM NPT). The 5-day bulletin is therefore taken from DHM's official X account @NMD_Weather (Official), and today's 24-hour forecast is DHM's text as published by two news outlets (Reported).",
+ "note_ne": "mfd.gov.np र dhm.gov.np गतिको सर्भरबाट खुलेनन् (कात्तिक १०, बिहान ९:३० NPT मा जाँचिएको)। त्यसैले ५ दिने बुलेटिन र कात्तिक ९ को विशेष बुलेटिन-२ DHM को आधिकारिक X खाता @NMD_Weather बाट (आधिकारिक) लिइएको छ।",
+ "note_en": "mfd.gov.np and dhm.gov.np could not be reached from Gati's server (checked 27 Oct 2026, 9:30 AM NPT). The 5-day bulletin and the Kartik 9 special bulletin 2 are therefore taken from DHM's official X account @NMD_Weather (Official).",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
  "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",
  "rainfallUrl": "https://www.dhm.gov.np/hydrology/rainfall-watch",
  "bulletin5": {
-  "id": "np.gati.dhm-5day-bulletin-2026-10-26",
-  "issued": "2026-10-26T08:00:00+05:45",
-  "posted": "2026-10-26T08:22:00+05:45",
-  "url": "https://x.com/NMD_Weather/status/2114546855346585833",
-  "url_en": "https://x.com/NMD_Weather/status/2114551647863238885",
+  "id": "np.gati.dhm-5day-bulletin-2026-10-27",
+  "issued": "2026-10-27T08:00:00+05:45",
+  "posted": "2026-10-27T08:31:00+05:45",
+  "url": "https://x.com/NMD_Weather/status/2114911633239908548",
   "trust": "Official",
   "days": [
-   {
-    "bs": "कात्तिक ९",
-    "ad": "2026-10-26",
-    "level": "green",
-    "ne": "हिमालमा आंशिक बदली, पहाड र तराईमा मुख्यतया सफा; तराई र खोँचमा बिहान हुस्सु",
-    "en": "Partly cloudy in the mountains, mainly fair in the hills and Terai; morning mist in the Terai and valleys"
-   },
    {
     "bs": "कात्तिक १०",
     "ad": "2026-10-27",
     "level": "green",
-    "ne": "कोशी, मधेश र बागमतीमा आंशिक बदली; राति कोशी, बागमती र गण्डकीका हिमालमा एक-दुई ठाउँमा हल्का वर्षा/हिमपात",
-    "en": "Partly cloudy in Koshi, Madhesh and Bagmati; at night light rain or snow at one or two places in the Koshi, Bagmati and Gandaki mountains"
+    "ne": "कोशी, मधेश र बागमतीमा आंशिक बदली, बाँकी मुख्यतया सफा; राति देशभर आंशिक बदली",
+    "en": "Partly cloudy in Koshi, Madhesh and Bagmati, mainly fair elsewhere; partly cloudy across the country at night"
    },
    {
     "bs": "कात्तिक ११",
     "ad": "2026-10-28",
     "level": "green",
-    "ne": "देशभर साधारणतया बदली; कोशी, बागमती र गण्डकीका हिमाल र पहाडमा हल्का वर्षा/हिमपात; राति हिमालमा हल्कादेखि मध्यम",
-    "en": "Generally cloudy; light rain or snow in the Koshi, Bagmati and Gandaki mountains and hills; light to moderate in the mountains at night"
+    "ne": "देशभर साधारणतया बदली; हिमालमा एक-दुई ठाउँमा हल्का वर्षा/हिमपात; राति हिमालका थोरै ठाउँमा मध्यम र कोशी-बागमतीका पहाड, मधेश र कोशीको तराईमा एक-दुई ठाउँमा मध्यम वर्षा",
+    "en": "Generally cloudy; light rain or snow at one or two places in the mountains; at night moderate at a few places in the mountains and at one or two places in the Koshi and Bagmati hills, Madhesh and the Koshi Terai"
    },
    {
     "bs": "कात्तिक १२",
@@ -53,34 +45,54 @@
     ],
     "provinces_yellow": [
      "NP02",
-     "NP05",
      "NP06"
     ],
-    "ne": "कोशी, बागमती र गण्डकीका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी वर्षा/हिमपात, लुम्बिनीका पहाड र तराईमा एक-दुई स्थानमा भारी वर्षा; धेरै ठाउँमा मेघगर्जनसहित मध्यम वर्षा",
-    "en": "Heavy rain or snow at one or two places in the Koshi, Bagmati and Gandaki hills and mountains, heavy rain at one or two places in the Lumbini hills and Terai; moderate rain with thunder at many places"
+    "ne": "कोशी, मधेश, बागमती र गण्डकीका धेरै ठाउँमा मध्यम वर्षा; राति कोशी, बागमती र गण्डकीका हिमाली र पहाडी भूभागमा र लुम्बिनीका पहाड र तराईमा एक-दुई ठाउँमा भारी वर्षा/हिमपात",
+    "en": "Moderate rain at many places in Koshi, Madhesh, Bagmati and Gandaki; at night heavy rain or snow at one or two places in the Koshi, Bagmati and Gandaki hills and mountains and the Lumbini hills and Terai"
    },
    {
     "bs": "कात्तिक १३",
     "ad": "2026-10-30",
-    "level": "orange",
+    "level": "red",
     "provinces": [
      "NP01",
-     "NP02",
      "NP03",
-     "NP04",
-     "NP05",
+     "NP04"
+    ],
+    "provinces_orange": [
+     "NP02",
      "NP06"
     ],
     "provinces_yellow": [
+     "NP05",
      "NP07"
     ],
-    "ne": "अधिकांश ठाउँमा मेघगर्जनसहित मध्यम वर्षा/हिमपात; कोशी, बागमती, गण्डकी र लुम्बिनीका केही स्थानमा भारी र एक-दुई स्थानमा धेरै भारी वर्षा/हिमपात; मधेश, कर्णाली र सुदूरपश्चिममा एक-दुई स्थानमा भारी",
-    "en": "Moderate rain or snow with thunder at most places; heavy at a few places and very heavy at one or two places in Koshi, Bagmati, Gandaki and Lumbini; heavy at one or two places in Madhesh, Karnali and Sudurpaschim"
+    "ne": "गण्डकी, बागमती र कोशीको उत्तरी हिमाली भाग रातो; अधिकांश ठाउँमा मेघगर्जनसहित मध्यम वर्षा/हिमपात; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका थोरै ठाउँमा भारी र कोशी, बागमती, गण्डकी र लुम्बिनीका एक-दुई ठाउँमा धेरै भारी वर्षा/हिमपात",
+    "en": "Red for the northern mountains of Gandaki, Bagmati and Koshi; moderate rain or snow with thunder at most places; heavy at a few places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini and very heavy at one or two places in Koshi, Bagmati, Gandaki and Lumbini"
+   },
+   {
+    "bs": "कात्तिक १४",
+    "ad": "2026-10-31",
+    "level": "orange",
+    "provinces": [
+     "NP01",
+     "NP03",
+     "NP04",
+     "NP06"
+    ],
+    "provinces_yellow": [
+     "NP02",
+     "NP05",
+     "NP07"
+    ],
+    "ne": "अधिकांश ठाउँमा मेघगर्जनसहित मध्यम वर्षा/हिमपात; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका थोरै ठाउँमा भारी र एक-दुई ठाउँमा धेरै भारी; कर्णाली र सुदूरपश्चिमका पहाड-हिमालमा एक-दुई ठाउँमा भारी",
+    "en": "Moderate rain or snow with thunder at most places; heavy at a few places and very heavy at one or two places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini; heavy at one or two places in the Karnali and Sudurpaschim hills and mountains"
    }
   ],
-  "advisory_ne": "कात्तिक १२ देखि १४ (शनिबार) सम्म बाढी, पहिरो, गेग्रान बहाव र भू-क्षयको जोखिम; कृषि, पर्यटन, पर्वतारोहण र सडक तथा हवाई यातायातमा असर पर्न सक्छ। आगामी तीन दिन चेतावनी छैन।",
-  "advisory_en": "From Kartik 12 to 14 (29 to 31 Oct) floods, landslides, debris flows and soil erosion are possible; agriculture, tourism, mountaineering and road and air transport may be disrupted. No warning for the next three days.",
-  "map_note_ne": "DHM नक्साको सुन्तले र पहेँलो क्षेत्र जिल्लास्तरमा स्पष्ट पढ्न सकिँदैन, त्यसैले प्रदेश देखाइएको छ। कात्तिक १२ मा गण्डकी, उत्तरी बागमती र उत्तरी कोशी सुन्तले र बाँकी भाग धेरैजसो पहेँलो छन्; कात्तिक १३ मा सुदूरपश्चिम, पश्चिमी लुम्बिनी र कोशीको दक्षिणपूर्वी तराई पहेँलो र बाँकी सुन्तले छन्।",
-  "map_note_en": "The orange and yellow areas cannot be read clearly at district level from DHM's map, so provinces are shown. On Kartik 12 Gandaki, northern Bagmati and northern Koshi are orange and much of the rest yellow; on Kartik 13 Sudurpaschim, western Lumbini and the southeastern Koshi Terai are yellow and the rest orange."
+  "advisory_ne": "कात्तिक १२ देखि १४ (शनिबार) सम्म भारी हिमपात, हिमआँधी र हिमपहिरो तथा बाढी, पहिरोको जोखिम; धान अघि नै भित्र्याउन, पर्यटकलाई उच्च हिमाली भूभागमा नजान अनुरोध; सडक तथा हवाई यातायात र दैनिक जनजीवनमा असर पर्न सक्छ। बुलेटिनअनुसार आगामी तीन दिन चेतावनी छैन।",
+  "advisory_en": "From Kartik 12 to 14 (29 to 31 Oct) heavy snow, blizzards and avalanches, floods and landslides are possible; DHM asks people to bring in paddy beforehand and tourists not to go to the high mountains; road and air transport and daily life may be disrupted. The bulletin says no warning for the next three days.",
+  "map_note_ne": "DHM नक्साका रङ जिल्लास्तरमा स्पष्ट पढ्न सकिँदैन, त्यसैले प्रदेश देखाइएको छ। कात्तिक १३ मा गण्डकी, बागमती र कोशीको उत्तरी हिमाली भाग मात्र रातो छ (पूरा प्रदेश होइन); कर्णाली, मधेश र ती प्रदेशको बाँकी भाग सुन्तले, सुदूरपश्चिम, लुम्बिनीको धेरैजसो भाग र कोशीको दक्षिणपूर्वी तराई पहेँलो छन्। कात्तिक १२ र १४ मा पनि यिनै उत्तरी भाग सुन्तले छन्।",
+  "map_note_en": "The colours on DHM's map cannot be read clearly at district level, so provinces are shown. On Kartik 13 only the northern mountain areas of Gandaki, Bagmati and Koshi are red (not the whole provinces); Karnali, Madhesh and the rest of those provinces are orange, and Sudurpaschim, most of Lumbini and the southeastern Koshi Terai yellow. These northern areas are also orange on Kartik 12 and 14.",
+  "url_map": "https://x.com/NMD_Weather/status/2114918504348655756"
  }
 }

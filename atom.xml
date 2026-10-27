@@ -3,12 +3,38 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-10-26T15:06:29+00:00</updated>
+  <updated>2026-10-27T03:29:03+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-10-27</id>
+    <title>DHM: red (take action) for the northern mountains of Gandaki, Bagmati and Koshi on Kartik 13 (Fri 30 Oct); heavy to very heavy rain or snow possible across most of the country from Kartik 12 to 14 (29 to 31 Oct)</title>
+    <updated>2026-10-27T08:31:00+05:45</updated>
+    <published>2026-10-27T08:31:00+05:45</published>
+    <summary>[Official] Severe · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-11-01T08:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-5day-bulletin-2026-10-27.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-5day-bulletin-2026-10-27/" rel="related" type="text/html"/>
+    <link href="https://x.com/NMD_Weather/status/2114911633239908548" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-10-26-2008</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-10-26T20:08:00+05:45</updated>
+    <published>2026-10-26T20:08:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-10-27T20:08:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-10-26-2008.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-10-26-2008/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26</id>
     <title>NDRRMA: high alert requested for Kartik 12, 13 and 14 (29 to 31 Oct) due to Cyclone 'Arnab'; Koshi, Bagmati, Madhesh, Gandaki and Lumbini most affected</title>
@@ -20,6 +46,19 @@
     <link href="https://x.com/NDRRMA_Nepal/status/2114701650879521070" rel="via"/>
     <author>
       <name>ndrrma.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26</id>
+    <title>DHM special bulletin 2: Cyclone 'Arnab' to affect Nepal from Kartik 12 (29 Oct); moderate to heavy rain at many places in Koshi, Madhesh, Bagmati and Gandaki on 30 and 31 Oct, heavy snow and avalanche risk in the mountains</title>
+    <updated>2026-10-26T16:15:00+05:45</updated>
+    <published>2026-10-26T16:15:00+05:45</published>
+    <summary>[Official] Severe · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-10-31T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26/" rel="related" type="text/html"/>
+    <link href="https://x.com/NMD_Weather/status/2114665927468081411" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
     </author>
   </entry>
   <entry>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-26T16:15:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division official X account @NMD_Weather. Source: https://x.com/NMD_Weather/status/2114665927468081411</note>
+  <references>hydrology.gov.np,np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23,2026-10-23T20:40:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>विशेष मौसम बुलेटिन</event>
+    <responseType>Prepare</responseType>
+    <urgency>Expected</urgency>
+    <severity>Severe</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-26T16:00:00+05:45</effective>
+    <onset>2026-10-29T00:00:00+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>नेपाल मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM विशेष बुलेटिन-२: 'अर्णव' चक्रवातको प्रभाव कात्तिक १२ देखि; कात्तिक १३ र १४ कोशी, मधेश, बागमती र गण्डकीका धेरै स्थानमा मध्यमदेखि भारी वर्षा, हिमालमा भारी हिमपात र हिमपहिरोको जोखिम</headline>
+    <description>अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको पोष्ट-मनसुन सम्बन्धी विशेष मौसमी बुलेटिन - २, २०८३ कात्तिक ९ (सोमबार) अपराह्न ४:०० बजे जारी, @NMD_Weather मा ४:१५ मा प्रकाशित; कात्तिक ६ को विशेष बुलेटिनको समाचार रिपोर्टको ठाउँमा): बंगालको खाडीमा रहेको 'अर्णव' चक्रवात (Cyclonic Storm) थप शक्तिशाली बन्दै शक्तिशाली चक्रवात र क्रमशः अति शक्तिशाली चक्रवातमा विकसित हुन सक्छ र कात्तिक ११ (२८ अक्टोबर) मा भारतको आन्ध्र प्रदेश र विशाखापट्टनमको बीचमा पर्ने यानम नजिकबाट जमिनमा प्रवेश गर्न सक्छ। यसको प्रभाव कात्तिक १२ (बिहीबार) बाट सुरु भई विशेषगरी शुक्रबार र शनिबार कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी बढी प्रभावित हुन सक्छन्। कात्तिक १३ देखि १४ सम्म कोशी, मधेश, बागमती र गण्डकीका धेरै स्थानमा मेघगर्जन/चट्याङ/हावाहुरीसहित मध्यमसम्म र थोरै स्थानमा भारी वर्षा; लुम्बिनीका केही स्थानमा मध्यम र थोरै स्थानमा भारी; कर्णाली र सुदूरपश्चिमका केही स्थानमा मध्यम र एक-दुई स्थानमा भारी वर्षा सम्भव। उच्च पहाडी र हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी र हिमपहिरोको जोखिम। पहिरो, बाढी, सडक र हवाई यातायात र दैनिक जनजीवनमा असर पर्न सक्छ। (बुलेटिनको कात्तिक १२ देखि १४ को संयुक्त चेतावनी नक्सामा कर्णाली, गण्डकी, बागमती र कोशीका उत्तरी हिमाली भाग रातो, धेरैजसो देश सुन्तले, सुदूरपश्चिमको पश्चिमी भाग र कोशीको दक्षिणपूर्वी तराई पहेँलो।) पछिल्लो दैनिक नक्साका लागि DHM को कात्तिक १० को ५ दिने बुलेटिन हेर्नुहोस्।</description>
+    <instruction>धानबाली काट्ने र भित्र्याउने काम कात्तिक १२ (बिहीबार) अगाडि नै सक्नुहोस्; उच्च पहाडी र हिमाली क्षेत्रमा नजानुहोस्, गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्; जोखिमयुक्त ठाउँमा सतर्क रहनुहोस्। मौसम जानकारी: DHM फोन ११५५।</instruction>
+    <web>https://x.com/NMD_Weather/status/2114665927468081411</web>
+    <contact>मौसम पूर्वानुमान महाशाखा, बबरमहल, काठमाडौँ · फोन ११५५</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NMD_Weather/status/2114665927468081411</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-26T16:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVjNcvTbUAA3Eqb.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM विशेष बुलेटिन-२: 'अर्णव' चक्रवात, कात्तिक १२ देखि १४ सम्म भारी वर्षा/हिमपात सम्भव; हिमालमा हिमपहिरो जोखिम</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै प्रदेश); बढी प्रभावित: कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Special weather bulletin</event>
+    <responseType>Prepare</responseType>
+    <urgency>Expected</urgency>
+    <severity>Severe</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-26T16:00:00+05:45</effective>
+    <onset>2026-10-29T00:00:00+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati</senderName>
+    <headline>DHM special bulletin 2: Cyclone 'Arnab' to affect Nepal from Kartik 12 (29 Oct); moderate to heavy rain at many places in Koshi, Madhesh, Bagmati and Gandaki on 30 and 31 Oct, heavy snow and avalanche risk in the mountains</headline>
+    <description>Update, official (DHM Meteorological Forecasting Division Special Weather Bulletin for Post-Monsoon - 2, issued 2083 Kartik 9 (Mon 26 Oct) at 4:00 PM, posted on @NMD_Weather at 4:15 PM; replaces the news report of the Kartik 6 special bulletin): Cyclonic Storm 'Arnab' in the Bay of Bengal may strengthen into a Severe and then a Very Severe Cyclonic Storm and make landfall near Yanam, between Andhra Pradesh and Visakhapatnam in India, on Kartik 11 (28 Oct). Its effect is expected from Thursday, Kartik 12 (29 Oct), with Koshi, Bagmati, Madhesh, Gandaki and Lumbini most affected especially on Friday and Saturday. On Kartik 13 and 14 (30 and 31 Oct): moderate rain with thunder, lightning and strong wind at many places and heavy rain at a few places in Koshi, Madhesh, Bagmati and Gandaki; moderate at some places and heavy at a few places in Lumbini; moderate at some places and heavy at one or two places in Karnali and Sudurpaschim. Heavy snowfall, blizzards and avalanches are a risk in the high hills and mountains. Landslides, floods, road and air transport and daily life may be affected. (The bulletin's combined warning map for Kartik 12 to 14 shows the northern mountains of Karnali, Gandaki, Bagmati and Koshi red, most of the country orange, and western Sudurpaschim and the southeastern Koshi Terai yellow.) For the latest day-by-day map see DHM's 5-day bulletin of Kartik 10 (27 Oct).</description>
+    <instruction>Finish harvesting and bringing in paddy before Thursday, Kartik 12 (29 Oct); do not go to the high hills and mountains, and if already there stay in a safe place; take care in risky places. Weather information: DHM phone 1155.</instruction>
+    <web>https://x.com/NMD_Weather/status/2114665927468081411</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NMD_Weather/status/2114665927468081411</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-26T16:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVjNcvTbUAA3Eqb.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM special bulletin 2: Cyclone 'Arnab', heavy rain/snow possible Kartik 12 to 14 (29 to 31 Oct); avalanche risk in the mountains</value></parameter>
+    <area>
+      <areaDesc>Nepal (all provinces); most affected: Koshi, Bagmati, Madhesh, Gandaki and Lumbini</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

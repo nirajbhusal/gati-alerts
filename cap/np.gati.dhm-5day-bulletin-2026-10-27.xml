@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-5day-bulletin-2026-10-27</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-27T08:31:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division official X account @NMD_Weather. Source: https://x.com/NMD_Weather/status/2114911633239908548</note>
+  <references>hydrology.gov.np,np.gati.dhm-5day-bulletin-2026-10-26,2026-10-26T08:22:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>मौसम पूर्वानुमान बुलेटिन (५ दिने)</event>
+    <responseType>Prepare</responseType>
+    <urgency>Future</urgency>
+    <severity>Severe</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-27T08:00:00+05:45</effective>
+    <onset>2026-10-27T08:00:00+05:45</onset>
+    <expires>2026-11-01T08:00:00+05:45</expires>
+    <senderName>नेपाल मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM: कात्तिक १३ (शुक्रबार) गण्डकी, बागमती र कोशीका उत्तरी हिमाली भूभागमा रातो सङ्केत (कदम चाल्नुहोस्); कात्तिक १२ देखि १४ सम्म धेरैजसो देशमा भारीदेखि धेरै भारी वर्षा/हिमपातको सम्भावना</headline>
+    <description>अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको ५ दिने बुलेटिन, २०८३ कात्तिक १० बिहान ८:०० बजे जारी, @NMD_Weather मा बिहान ८:३१ मा प्रकाशित र ८:५८ मा अद्यावधिक चेतावनी नक्सा; कात्तिक ९ को बुलेटिनको ठाउँमा): हाल देशमा पश्चिमी वायुको आंशिक प्रभाव छ। बुलेटिनअनुसार आगामी तीन दिनका लागि कुनै मौसमी चेतावनी छैन, तथापि कात्तिक १२ (बिहीबार) देखि १४ (शनिबार) सम्म वर्षा/हिमपात बढ्ने। कात्तिक १० (मंगलबार): कोशी, मधेश र बागमतीमा आंशिक बदली, बाँकी मुख्यतया सफा। कात्तिक ११ (बुधबार): देशभर साधारणतया बदली, हिमाली भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; राति हिमालका धेरै स्थानमा मध्यमसम्म वर्षा/हिमपात र कोशी, बागमतीका पहाड, मधेश र कोशीको तराईका एक-दुई स्थानमा मध्यम वर्षा। कात्तिक १२ (बिहीबार, २९ अक्टोबर): कोशी, मधेश, बागमती र गण्डकीका धेरै स्थान र लुम्बिनी, कर्णाली र सुदूरपश्चिमका एक-दुई स्थानमा मध्यमसम्म वर्षा; राति कोशी, बागमती र गण्डकीका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी वर्षा/हिमपात र लुम्बिनीका पहाड र तराईका एक-दुई स्थानमा भारी वर्षा (नक्सा: गण्डकी, बागमती र कोशीको उत्तरी भाग सुन्तले; कर्णाली र बाँकी पूर्वी भाग पहेँलो; सुदूरपश्चिम र लुम्बिनीको धेरैजसो भाग हरियो)। कात्तिक १३ (शुक्रबार, ३० अक्टोबर): देशभर अधिकांश बदली; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका अधिकांश स्थान र कर्णाली र सुदूरपश्चिमका धेरै स्थानमा मेघगर्जन चट्याङसहित मध्यमसम्म वर्षा/हिमपात; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका थोरै स्थान तथा कर्णाली र सुदूरपश्चिमका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी वर्षा/हिमपात; कोशी, बागमती, गण्डकी र लुम्बिनीका एक-दुई स्थानमा धेरै भारी वर्षा/हिमपात (नक्सा: गण्डकी, बागमती र कोशीको उत्तरी हिमाली भाग रातो; कर्णाली र कोशी, बागमती, गण्डकी र मधेशको बाँकी भाग सुन्तले; सुदूरपश्चिम, लुम्बिनीको धेरैजसो भाग र कोशीको दक्षिणपूर्वी तराई पहेँलो)। कात्तिक १४ (शनिबार, ३१ अक्टोबर): कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका अधिकांश स्थान र कर्णाली र सुदूरपश्चिमका केही स्थानमा मेघगर्जन चट्याङसहित मध्यमसम्म वर्षा/हिमपात; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका थोरै स्थान तथा कर्णाली र सुदूरपश्चिमका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका एक-दुई स्थानमा धेरै भारी वर्षा/हिमपात (नक्सा: कर्णाली, गण्डकी, बागमती र कोशीको पहाडी-हिमाली भाग सुन्तले; सुदूरपश्चिम, लुम्बिनी र मधेश तथा कोशीको तराई पहेँलो)। कात्तिक १२ देखि १४ सम्म धानबाली भित्र्याउने काम अगाडि नै गर्न, उच्च पहाडी र हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी र हिमपहिरोको जोखिम रहेकाले उच्च सतर्कता अपनाउन र पर्यटक उच्च हिमाली भूभागमा नजान अनुरोध; बाढी, पहिरो, सडक तथा हवाई यातायात र दैनिक जनजीवनमा असर पर्न सक्छ।</description>
+    <instruction>कात्तिक १२ भन्दा अगाडि नै पाकेको धान भित्र्याउनुहोस्; कात्तिक १२ देखि १४ सम्म उच्च पहाडी र हिमाली क्षेत्रमा पदयात्रा, पर्वतारोहण र अनावश्यक यात्रा नगर्नुहोस्, गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्; नदी, खोला र पहिरो जाने ठाउँबाट टाढा बस्नुहोस्। मौसम जानकारी: DHM फोन ११५५।</instruction>
+    <web>https://x.com/NMD_Weather/status/2114911633239908548</web>
+    <contact>मौसम पूर्वानुमान महाशाखा, बबरमहल, काठमाडौँ · फोन ११५५</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NMD_Weather/status/2114911633239908548</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-27T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVms6vbbgAEB0DT.jpg</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NMD_Weather/status/2114918504348655756</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: कात्तिक १३ गण्डकी, बागमती, कोशीका उत्तरी हिमालमा रातो सङ्केत; कात्तिक १२ देखि १४ धेरैजसो देशमा भारी-धेरै भारी वर्षा/हिमपात सम्भव</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला); कात्तिक १२ सुन्तले: गण्डकी, बागमती र कोशीको उत्तरी भाग; कात्तिक १३ रातो: गण्डकी, बागमती र कोशीको उत्तरी हिमाली भाग, सुन्तले: कर्णाली, मधेश र ती प्रदेशको बाँकी भाग; कात्तिक १४ सुन्तले: कर्णाली, गण्डकी, बागमती र कोशीको पहाडी-हिमाली भाग</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Weather forecast bulletin (5 days)</event>
+    <responseType>Prepare</responseType>
+    <urgency>Future</urgency>
+    <severity>Severe</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-27T08:00:00+05:45</effective>
+    <onset>2026-10-27T08:00:00+05:45</onset>
+    <expires>2026-11-01T08:00:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati</senderName>
+    <headline>DHM: red (take action) for the northern mountains of Gandaki, Bagmati and Koshi on Kartik 13 (Fri 30 Oct); heavy to very heavy rain or snow possible across most of the country from Kartik 12 to 14 (29 to 31 Oct)</headline>
+    <description>Update, official (DHM Meteorological Forecasting Division 5-day bulletin, issued 2083 Kartik 10 at 8:00 AM, posted on @NMD_Weather at 8:31 AM with an updated warning map at 8:58 AM; replaces the Kartik 9 bulletin): westerly winds are partly affecting the country. The bulletin says there is no weather warning for the next three days, but rain and snow increase from Kartik 12 (Thu) to 14 (Sat). Kartik 10 (Tue 27 Oct): partly cloudy in Koshi, Madhesh and Bagmati, mainly fair elsewhere. Kartik 11 (Wed 28 Oct): generally cloudy, light rain or snow at one or two places in the mountains; at night moderate rain or snow at a few places in the mountains and moderate rain at one or two places in the Koshi and Bagmati hills, Madhesh and the Koshi Terai. Kartik 12 (Thu 29 Oct): moderate rain at many places in Koshi, Madhesh, Bagmati and Gandaki and one or two places in Lumbini, Karnali and Sudurpaschim; at night heavy rain or snow at one or two places in the Koshi, Bagmati and Gandaki hills and mountains and heavy rain at one or two places in the Lumbini hills and Terai (map: northern Gandaki, Bagmati and Koshi orange; Karnali and the rest of the east yellow; Sudurpaschim and most of Lumbini green). Kartik 13 (Fri 30 Oct): mostly cloudy; moderate rain or snow with thunder and lightning at most places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini and many places in Karnali and Sudurpaschim; heavy rain or snow at a few places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini and at one or two places in the Karnali and Sudurpaschim hills and mountains; very heavy rain or snow at one or two places in Koshi, Bagmati, Gandaki and Lumbini (map: the northern mountain areas of Gandaki, Bagmati and Koshi red; Karnali and the rest of Koshi, Bagmati, Gandaki and Madhesh orange; Sudurpaschim, most of Lumbini and the southeastern Koshi Terai yellow). Kartik 14 (Sat 31 Oct): moderate rain or snow with thunder at most places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini and some places in Karnali and Sudurpaschim; heavy at a few places in those five provinces and at one or two places in the Karnali and Sudurpaschim hills and mountains; very heavy at one or two places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini (map: Karnali and the hills and mountains of Gandaki, Bagmati and Koshi orange; Sudurpaschim, Lumbini, Madhesh and the Koshi Terai yellow). From Kartik 12 to 14 DHM asks people to finish bringing in paddy beforehand, take high caution in the high hills and mountains because of heavy snowfall, blizzards and avalanches, and tourists not to go to the high mountains; floods, landslides, road and air transport and daily life may be affected.</description>
+    <instruction>Bring in ripe paddy before Kartik 12 (29 Oct); from Kartik 12 to 14 (29 to 31 Oct) avoid high-mountain treks, climbs and non-essential travel, and if already there stay in a safe place; keep away from rivers, streams and landslide-prone slopes. Weather information: DHM phone 1155.</instruction>
+    <web>https://x.com/NMD_Weather/status/2114911633239908548</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NMD_Weather/status/2114911633239908548</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-27T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVms6vbbgAEB0DT.jpg</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NMD_Weather/status/2114918504348655756</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: red for the northern mountains of Gandaki, Bagmati, Koshi on Kartik 13 (30 Oct); heavy to very heavy rain/snow possible Kartik 12 to 14</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts); Kartik 12 orange: northern Gandaki, Bagmati and Koshi; Kartik 13 red: northern mountains of Gandaki, Bagmati and Koshi, orange: Karnali, Madhesh and the rest of those provinces; Kartik 14 orange: Karnali and the hills and mountains of Gandaki, Bagmati and Koshi</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

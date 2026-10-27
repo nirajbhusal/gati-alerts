@@ -1,7 +1,285 @@
 {
- "generated": "2026-10-26T15:06:29+00:00",
- "count": 42,
+ "generated": "2026-10-27T03:29:03+00:00",
+ "count": 45,
  "alerts": [
+  {
+   "identifier": "np.gati.dhm-5day-bulletin-2026-10-27",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-27T08:31:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division official X account @NMD_Weather. Source: https://x.com/NMD_Weather/status/2114911633239908548",
+   "references": "hydrology.gov.np,np.gati.dhm-5day-bulletin-2026-10-26,2026-10-26T08:22:00+05:45",
+   "file": "data/alerts/dhm-5day-bulletin-2026-10-27.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान बुलेटिन (५ दिने)",
+     "responseType": "Prepare",
+     "urgency": "Future",
+     "severity": "Severe",
+     "certainty": "Possible",
+     "effective": "2026-10-27T08:00:00+05:45",
+     "onset": "2026-10-27T08:00:00+05:45",
+     "expires": "2026-11-01T08:00:00+05:45",
+     "contact": "मौसम पूर्वानुमान महाशाखा, बबरमहल, काठमाडौँ · फोन ११५५",
+     "senderName": "नेपाल मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "DHM: कात्तिक १३ (शुक्रबार) गण्डकी, बागमती र कोशीका उत्तरी हिमाली भूभागमा रातो सङ्केत (कदम चाल्नुहोस्); कात्तिक १२ देखि १४ सम्म धेरैजसो देशमा भारीदेखि धेरै भारी वर्षा/हिमपातको सम्भावना",
+     "description": "अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको ५ दिने बुलेटिन, २०८३ कात्तिक १० बिहान ८:०० बजे जारी, @NMD_Weather मा बिहान ८:३१ मा प्रकाशित र ८:५८ मा अद्यावधिक चेतावनी नक्सा; कात्तिक ९ को बुलेटिनको ठाउँमा): हाल देशमा पश्चिमी वायुको आंशिक प्रभाव छ। बुलेटिनअनुसार आगामी तीन दिनका लागि कुनै मौसमी चेतावनी छैन, तथापि कात्तिक १२ (बिहीबार) देखि १४ (शनिबार) सम्म वर्षा/हिमपात बढ्ने। कात्तिक १० (मंगलबार): कोशी, मधेश र बागमतीमा आंशिक बदली, बाँकी मुख्यतया सफा। कात्तिक ११ (बुधबार): देशभर साधारणतया बदली, हिमाली भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; राति हिमालका धेरै स्थानमा मध्यमसम्म वर्षा/हिमपात र कोशी, बागमतीका पहाड, मधेश र कोशीको तराईका एक-दुई स्थानमा मध्यम वर्षा। कात्तिक १२ (बिहीबार, २९ अक्टोबर): कोशी, मधेश, बागमती र गण्डकीका धेरै स्थान र लुम्बिनी, कर्णाली र सुदूरपश्चिमका एक-दुई स्थानमा मध्यमसम्म वर्षा; राति कोशी, बागमती र गण्डकीका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी वर्षा/हिमपात र लुम्बिनीका पहाड र तराईका एक-दुई स्थानमा भारी वर्षा (नक्सा: गण्डकी, बागमती र कोशीको उत्तरी भाग सुन्तले; कर्णाली र बाँकी पूर्वी भाग पहेँलो; सुदूरपश्चिम र लुम्बिनीको धेरैजसो भाग हरियो)। कात्तिक १३ (शुक्रबार, ३० अक्टोबर): देशभर अधिकांश बदली; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका अधिकांश स्थान र कर्णाली र सुदूरपश्चिमका धेरै स्थानमा मेघगर्जन चट्याङसहित मध्यमसम्म वर्षा/हिमपात; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका थोरै स्थान तथा कर्णाली र सुदूरपश्चिमका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी वर्षा/हिमपात; कोशी, बागमती, गण्डकी र लुम्बिनीका एक-दुई स्थानमा धेरै भारी वर्षा/हिमपात (नक्सा: गण्डकी, बागमती र कोशीको उत्तरी हिमाली भाग रातो; कर्णाली र कोशी, बागमती, गण्डकी र मधेशको बाँकी भाग सुन्तले; सुदूरपश्चिम, लुम्बिनीको धेरैजसो भाग र कोशीको दक्षिणपूर्वी तराई पहेँलो)। कात्तिक १४ (शनिबार, ३१ अक्टोबर): कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका अधिकांश स्थान र कर्णाली र सुदूरपश्चिमका केही स्थानमा मेघगर्जन चट्याङसहित मध्यमसम्म वर्षा/हिमपात; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका थोरै स्थान तथा कर्णाली र सुदूरपश्चिमका हिमाली र पहाडी भूभागका एक-दुई स्थानमा भारी; कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीका एक-दुई स्थानमा धेरै भारी वर्षा/हिमपात (नक्सा: कर्णाली, गण्डकी, बागमती र कोशीको पहाडी-हिमाली भाग सुन्तले; सुदूरपश्चिम, लुम्बिनी र मधेश तथा कोशीको तराई पहेँलो)। कात्तिक १२ देखि १४ सम्म धानबाली भित्र्याउने काम अगाडि नै गर्न, उच्च पहाडी र हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी र हिमपहिरोको जोखिम रहेकाले उच्च सतर्कता अपनाउन र पर्यटक उच्च हिमाली भूभागमा नजान अनुरोध; बाढी, पहिरो, सडक तथा हवाई यातायात र दैनिक जनजीवनमा असर पर्न सक्छ।",
+     "instruction": "कात्तिक १२ भन्दा अगाडि नै पाकेको धान भित्र्याउनुहोस्; कात्तिक १२ देखि १४ सम्म उच्च पहाडी र हिमाली क्षेत्रमा पदयात्रा, पर्वतारोहण र अनावश्यक यात्रा नगर्नुहोस्, गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्; नदी, खोला र पहिरो जाने ठाउँबाट टाढा बस्नुहोस्। मौसम जानकारी: DHM फोन ११५५।",
+     "web": "https://x.com/NMD_Weather/status/2114911633239908548",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2114911633239908548",
+      "gati:sourceTime": "2026-10-27T08:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVms6vbbgAEB0DT.jpg",
+      "gati:sourceUrl2": "https://x.com/NMD_Weather/status/2114918504348655756",
+      "gati:summary160": "DHM: कात्तिक १३ गण्डकी, बागमती, कोशीका उत्तरी हिमालमा रातो सङ्केत; कात्तिक १२ देखि १४ धेरैजसो देशमा भारी-धेरै भारी वर्षा/हिमपात सम्भव"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला); कात्तिक १२ सुन्तले: गण्डकी, बागमती र कोशीको उत्तरी भाग; कात्तिक १३ रातो: गण्डकी, बागमती र कोशीको उत्तरी हिमाली भाग, सुन्तले: कर्णाली, मधेश र ती प्रदेशको बाँकी भाग; कात्तिक १४ सुन्तले: कर्णाली, गण्डकी, बागमती र कोशीको पहाडी-हिमाली भाग",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast bulletin (5 days)",
+     "responseType": "Prepare",
+     "urgency": "Future",
+     "severity": "Severe",
+     "certainty": "Possible",
+     "effective": "2026-10-27T08:00:00+05:45",
+     "onset": "2026-10-27T08:00:00+05:45",
+     "expires": "2026-11-01T08:00:00+05:45",
+     "contact": "Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati",
+     "headline": "DHM: red (take action) for the northern mountains of Gandaki, Bagmati and Koshi on Kartik 13 (Fri 30 Oct); heavy to very heavy rain or snow possible across most of the country from Kartik 12 to 14 (29 to 31 Oct)",
+     "description": "Update, official (DHM Meteorological Forecasting Division 5-day bulletin, issued 2083 Kartik 10 at 8:00 AM, posted on @NMD_Weather at 8:31 AM with an updated warning map at 8:58 AM; replaces the Kartik 9 bulletin): westerly winds are partly affecting the country. The bulletin says there is no weather warning for the next three days, but rain and snow increase from Kartik 12 (Thu) to 14 (Sat). Kartik 10 (Tue 27 Oct): partly cloudy in Koshi, Madhesh and Bagmati, mainly fair elsewhere. Kartik 11 (Wed 28 Oct): generally cloudy, light rain or snow at one or two places in the mountains; at night moderate rain or snow at a few places in the mountains and moderate rain at one or two places in the Koshi and Bagmati hills, Madhesh and the Koshi Terai. Kartik 12 (Thu 29 Oct): moderate rain at many places in Koshi, Madhesh, Bagmati and Gandaki and one or two places in Lumbini, Karnali and Sudurpaschim; at night heavy rain or snow at one or two places in the Koshi, Bagmati and Gandaki hills and mountains and heavy rain at one or two places in the Lumbini hills and Terai (map: northern Gandaki, Bagmati and Koshi orange; Karnali and the rest of the east yellow; Sudurpaschim and most of Lumbini green). Kartik 13 (Fri 30 Oct): mostly cloudy; moderate rain or snow with thunder and lightning at most places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini and many places in Karnali and Sudurpaschim; heavy rain or snow at a few places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini and at one or two places in the Karnali and Sudurpaschim hills and mountains; very heavy rain or snow at one or two places in Koshi, Bagmati, Gandaki and Lumbini (map: the northern mountain areas of Gandaki, Bagmati and Koshi red; Karnali and the rest of Koshi, Bagmati, Gandaki and Madhesh orange; Sudurpaschim, most of Lumbini and the southeastern Koshi Terai yellow). Kartik 14 (Sat 31 Oct): moderate rain or snow with thunder at most places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini and some places in Karnali and Sudurpaschim; heavy at a few places in those five provinces and at one or two places in the Karnali and Sudurpaschim hills and mountains; very heavy at one or two places in Koshi, Madhesh, Bagmati, Gandaki and Lumbini (map: Karnali and the hills and mountains of Gandaki, Bagmati and Koshi orange; Sudurpaschim, Lumbini, Madhesh and the Koshi Terai yellow). From Kartik 12 to 14 DHM asks people to finish bringing in paddy beforehand, take high caution in the high hills and mountains because of heavy snowfall, blizzards and avalanches, and tourists not to go to the high mountains; floods, landslides, road and air transport and daily life may be affected.",
+     "instruction": "Bring in ripe paddy before Kartik 12 (29 Oct); from Kartik 12 to 14 (29 to 31 Oct) avoid high-mountain treks, climbs and non-essential travel, and if already there stay in a safe place; keep away from rivers, streams and landslide-prone slopes. Weather information: DHM phone 1155.",
+     "web": "https://x.com/NMD_Weather/status/2114911633239908548",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2114911633239908548",
+      "gati:sourceTime": "2026-10-27T08:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVms6vbbgAEB0DT.jpg",
+      "gati:sourceUrl2": "https://x.com/NMD_Weather/status/2114918504348655756",
+      "gati:summary160": "DHM: red for the northern mountains of Gandaki, Bagmati, Koshi on Kartik 13 (30 Oct); heavy to very heavy rain/snow possible Kartik 12 to 14"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts); Kartik 12 orange: northern Gandaki, Bagmati and Koshi; Kartik 13 red: northern mountains of Gandaki, Bagmati and Koshi, orange: Karnali, Madhesh and the rest of those provinces; Kartik 14 orange: Karnali and the hills and mountains of Gandaki, Bagmati and Koshi",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Severe",
+   "expires": "2026-11-01T08:00:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला); कात्तिक १२ सुन्तले: गण्डकी, बागमती र कोशीको उत्तरी भाग; कात्तिक १३ रातो: गण्डकी, बागमती र कोशीको उत्तरी हिमाली भाग, सुन्तले: कर्णाली, मधेश र ती प्रदेशको बाँकी भाग; कात्तिक १४ सुन्तले: कर्णाली, गण्डकी, बागमती र कोशीको पहाडी-हिमाली भाग",
+     "en": "Nepal (all districts); Kartik 12 orange: northern Gandaki, Bagmati and Koshi; Kartik 13 red: northern mountains of Gandaki, Bagmati and Koshi, orange: Karnali, Madhesh and the rest of those provinces; Kartik 14 orange: Karnali and the hills and mountains of Gandaki, Bagmati and Koshi"
+    }
+   ],
+   "refIds": [
+    "np.gati.dhm-5day-bulletin-2026-10-26"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-25",
+     "msgType": "Alert",
+     "sent": "2026-10-25T08:41:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-26",
+     "msgType": "Update",
+     "sent": "2026-10-26T08:22:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T08:31:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-10-26T20:08:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": "nepalpolice.gov.np,np.gati.police-road-aarughat-soti-2026-10-25-1900,2026-10-25T19:00:00+05:45",
+   "file": "data/alerts/police-road-aarughat-soti-2026-10-26-2008.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-26T20:08:00+05:45",
+     "onset": "2026-10-26T20:08:00+05:45",
+     "expires": "2026-10-27T20:08:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+     "description": "अद्यावधिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।०९ (कात्तिक ९) राति ८:०८ बजे (२०:०८) सम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो अझै पूर्ण रूपमा अवरुद्ध। देशभरको सूचीमा यही एउटा मात्र अवरोध छ।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-26T20:08:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-26T20:08:00+05:45",
+     "onset": "2026-10-26T20:08:00+05:45",
+     "expires": "2026-10-27T20:08:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+     "description": "Update: Nepal Police notice 'Road blockages', to 8:08 PM (20:08) on 2083-07-09 (Kartik 9, 26 Oct 2026): the iron motorable bridge at Soti linking Aarughat-2 and 3 was swept away by the Budhi Gandaki flood of Asoj 25 (11 Oct), and the road is still fully blocked. This is the only blockage on the nationwide list.",
+     "instruction": "Do not use this road; check with local police before travelling.",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-26T20:08:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "Soti, Aarughat-2/3 (approximate location)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-10-27T20:08:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला",
+     "en": "Gorkha district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.05,84.81 3"
+     ],
+     "ne": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+     "en": "Soti, Aarughat-2/3 (approximate location)"
+    }
+   ],
+   "refIds": [
+    "np.gati.police-road-aarughat-soti-2026-10-25-1900"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-21",
+     "msgType": "Alert",
+     "sent": "2026-10-21T18:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-23",
+     "msgType": "Update",
+     "sent": "2026-10-23T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25",
+     "msgType": "Update",
+     "sent": "2026-10-25T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25-1900",
+     "msgType": "Update",
+     "sent": "2026-10-25T19:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26",
    "sender": "ndrrma.gov.np",
@@ -99,6 +377,120 @@
    ],
    "refIds": [],
    "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-26T16:15:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division official X account @NMD_Weather. Source: https://x.com/NMD_Weather/status/2114665927468081411",
+   "references": "hydrology.gov.np,np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23,2026-10-23T20:40:00+05:45",
+   "file": "data/alerts/dhm-special-bulletin-2-cyclone-arnab-2026-10-26.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "विशेष मौसम बुलेटिन",
+     "responseType": "Prepare",
+     "urgency": "Expected",
+     "severity": "Severe",
+     "certainty": "Likely",
+     "effective": "2026-10-26T16:00:00+05:45",
+     "onset": "2026-10-29T00:00:00+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "मौसम पूर्वानुमान महाशाखा, बबरमहल, काठमाडौँ · फोन ११५५",
+     "senderName": "नेपाल मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "DHM विशेष बुलेटिन-२: 'अर्णव' चक्रवातको प्रभाव कात्तिक १२ देखि; कात्तिक १३ र १४ कोशी, मधेश, बागमती र गण्डकीका धेरै स्थानमा मध्यमदेखि भारी वर्षा, हिमालमा भारी हिमपात र हिमपहिरोको जोखिम",
+     "description": "अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको पोष्ट-मनसुन सम्बन्धी विशेष मौसमी बुलेटिन - २, २०८३ कात्तिक ९ (सोमबार) अपराह्न ४:०० बजे जारी, @NMD_Weather मा ४:१५ मा प्रकाशित; कात्तिक ६ को विशेष बुलेटिनको समाचार रिपोर्टको ठाउँमा): बंगालको खाडीमा रहेको 'अर्णव' चक्रवात (Cyclonic Storm) थप शक्तिशाली बन्दै शक्तिशाली चक्रवात र क्रमशः अति शक्तिशाली चक्रवातमा विकसित हुन सक्छ र कात्तिक ११ (२८ अक्टोबर) मा भारतको आन्ध्र प्रदेश र विशाखापट्टनमको बीचमा पर्ने यानम नजिकबाट जमिनमा प्रवेश गर्न सक्छ। यसको प्रभाव कात्तिक १२ (बिहीबार) बाट सुरु भई विशेषगरी शुक्रबार र शनिबार कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी बढी प्रभावित हुन सक्छन्। कात्तिक १३ देखि १४ सम्म कोशी, मधेश, बागमती र गण्डकीका धेरै स्थानमा मेघगर्जन/चट्याङ/हावाहुरीसहित मध्यमसम्म र थोरै स्थानमा भारी वर्षा; लुम्बिनीका केही स्थानमा मध्यम र थोरै स्थानमा भारी; कर्णाली र सुदूरपश्चिमका केही स्थानमा मध्यम र एक-दुई स्थानमा भारी वर्षा सम्भव। उच्च पहाडी र हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी र हिमपहिरोको जोखिम। पहिरो, बाढी, सडक र हवाई यातायात र दैनिक जनजीवनमा असर पर्न सक्छ। (बुलेटिनको कात्तिक १२ देखि १४ को संयुक्त चेतावनी नक्सामा कर्णाली, गण्डकी, बागमती र कोशीका उत्तरी हिमाली भाग रातो, धेरैजसो देश सुन्तले, सुदूरपश्चिमको पश्चिमी भाग र कोशीको दक्षिणपूर्वी तराई पहेँलो।) पछिल्लो दैनिक नक्साका लागि DHM को कात्तिक १० को ५ दिने बुलेटिन हेर्नुहोस्।",
+     "instruction": "धानबाली काट्ने र भित्र्याउने काम कात्तिक १२ (बिहीबार) अगाडि नै सक्नुहोस्; उच्च पहाडी र हिमाली क्षेत्रमा नजानुहोस्, गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्; जोखिमयुक्त ठाउँमा सतर्क रहनुहोस्। मौसम जानकारी: DHM फोन ११५५।",
+     "web": "https://x.com/NMD_Weather/status/2114665927468081411",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2114665927468081411",
+      "gati:sourceTime": "2026-10-26T16:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVjNcvTbUAA3Eqb.jpg",
+      "gati:summary160": "DHM विशेष बुलेटिन-२: 'अर्णव' चक्रवात, कात्तिक १२ देखि १४ सम्म भारी वर्षा/हिमपात सम्भव; हिमालमा हिमपहिरो जोखिम"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै प्रदेश); बढी प्रभावित: कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Special weather bulletin",
+     "responseType": "Prepare",
+     "urgency": "Expected",
+     "severity": "Severe",
+     "certainty": "Likely",
+     "effective": "2026-10-26T16:00:00+05:45",
+     "onset": "2026-10-29T00:00:00+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati",
+     "headline": "DHM special bulletin 2: Cyclone 'Arnab' to affect Nepal from Kartik 12 (29 Oct); moderate to heavy rain at many places in Koshi, Madhesh, Bagmati and Gandaki on 30 and 31 Oct, heavy snow and avalanche risk in the mountains",
+     "description": "Update, official (DHM Meteorological Forecasting Division Special Weather Bulletin for Post-Monsoon - 2, issued 2083 Kartik 9 (Mon 26 Oct) at 4:00 PM, posted on @NMD_Weather at 4:15 PM; replaces the news report of the Kartik 6 special bulletin): Cyclonic Storm 'Arnab' in the Bay of Bengal may strengthen into a Severe and then a Very Severe Cyclonic Storm and make landfall near Yanam, between Andhra Pradesh and Visakhapatnam in India, on Kartik 11 (28 Oct). Its effect is expected from Thursday, Kartik 12 (29 Oct), with Koshi, Bagmati, Madhesh, Gandaki and Lumbini most affected especially on Friday and Saturday. On Kartik 13 and 14 (30 and 31 Oct): moderate rain with thunder, lightning and strong wind at many places and heavy rain at a few places in Koshi, Madhesh, Bagmati and Gandaki; moderate at some places and heavy at a few places in Lumbini; moderate at some places and heavy at one or two places in Karnali and Sudurpaschim. Heavy snowfall, blizzards and avalanches are a risk in the high hills and mountains. Landslides, floods, road and air transport and daily life may be affected. (The bulletin's combined warning map for Kartik 12 to 14 shows the northern mountains of Karnali, Gandaki, Bagmati and Koshi red, most of the country orange, and western Sudurpaschim and the southeastern Koshi Terai yellow.) For the latest day-by-day map see DHM's 5-day bulletin of Kartik 10 (27 Oct).",
+     "instruction": "Finish harvesting and bringing in paddy before Thursday, Kartik 12 (29 Oct); do not go to the high hills and mountains, and if already there stay in a safe place; take care in risky places. Weather information: DHM phone 1155.",
+     "web": "https://x.com/NMD_Weather/status/2114665927468081411",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2114665927468081411",
+      "gati:sourceTime": "2026-10-26T16:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVjNcvTbUAA3Eqb.jpg",
+      "gati:summary160": "DHM special bulletin 2: Cyclone 'Arnab', heavy rain/snow possible Kartik 12 to 14 (29 to 31 Oct); avalanche risk in the mountains"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all provinces); most affected: Koshi, Bagmati, Madhesh, Gandaki and Lumbini",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Severe",
+   "expires": "2026-10-31T23:59:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै प्रदेश); बढी प्रभावित: कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी",
+     "en": "Nepal (all provinces); most affected: Koshi, Bagmati, Madhesh, Gandaki and Lumbini"
+    }
+   ],
+   "refIds": [
+    "np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23",
+     "msgType": "Alert",
+     "sent": "2026-10-23T20:40:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
+     "msgType": "Update",
+     "sent": "2026-10-26T16:15:00+05:45",
+     "state": null
+    }
+   ],
    "supersededBy": null
   },
   {
@@ -213,9 +605,15 @@
      "msgType": "Update",
      "sent": "2026-10-26T08:22:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T08:31:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-27"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-26",
@@ -305,7 +703,7 @@
    "severity": "Unknown",
    "expires": "2026-10-27T06:00:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -464,9 +862,15 @@
      "msgType": "Update",
      "sent": "2026-10-25T19:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-25",
@@ -614,9 +1018,15 @@
      "msgType": "Update",
      "sent": "2026-10-25T19:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-25-1900"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-10-25",
@@ -726,9 +1136,15 @@
      "msgType": "Update",
      "sent": "2026-10-26T08:22:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T08:31:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-26"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-27"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-25",
@@ -865,8 +1281,8 @@
       "gati:hazard": "weather",
       "gati:bulletinFile": "https://shilapatra.com/detail/197394",
       "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
-      "gati:newerReference": "https://x.com/NMD_Weather/status/2114546855346585833",
-      "gati:newerReferenceId": "np.gati.dhm-5day-bulletin-2026-10-26",
+      "gati:newerReference": "https://x.com/NMD_Weather/status/2114665927468081411",
+      "gati:newerReferenceId": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
       "gati:summary160": "बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह"
      },
      "areas": [
@@ -902,8 +1318,8 @@
       "gati:hazard": "weather",
       "gati:bulletinFile": "https://shilapatra.com/detail/197394",
       "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
-      "gati:newerReference": "https://x.com/NMD_Weather/status/2114546855346585833",
-      "gati:newerReferenceId": "np.gati.dhm-5day-bulletin-2026-10-26",
+      "gati:newerReference": "https://x.com/NMD_Weather/status/2114665927468081411",
+      "gati:newerReferenceId": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
       "gati:summary160": "Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert"
      },
      "areas": [
@@ -933,8 +1349,21 @@
     }
    ],
    "refIds": [],
-   "chain": [],
-   "supersededBy": null
+   "chain": [
+    {
+     "id": "np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23",
+     "msgType": "Alert",
+     "sent": "2026-10-23T20:40:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
+     "msgType": "Update",
+     "sent": "2026-10-26T16:15:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-23",
@@ -1082,9 +1511,15 @@
      "msgType": "Update",
      "sent": "2026-10-25T19:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-25-1900"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-23",
@@ -1432,9 +1867,15 @@
      "msgType": "Update",
      "sent": "2026-10-25T19:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-25-1900"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
   },
   {
    "identifier": "np.gati.dhm-river-levels-2026-10-21",
