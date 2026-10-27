@@ -1401,3 +1401,18 @@ body[data-page=roads] #gdash{min-height:900px}
 @media(max-width:480px){body[data-page=roads] #gdash{min-height:calc(674px + 58.3vw)}html[lang=ne] body[data-page=roads] #gdash{min-height:calc(602px + 58.3vw)}}
 @media(max-width:384px){html[lang=ne] body[data-page=roads] #gdash{min-height:calc(670px + 58.3vw)}}
 @media(min-width:760px){body[data-page=roads] #gdash{min-height:395px}}
+/* Arnab advisory map 1027 */
+.arnab{min-height:980px}@media(min-width:900px){.arnab{min-height:760px}}
+.anSum{border-left:4px solid var(--moderate);padding:4px 12px;margin:8px 0 12px}.anSum p{margin:4px 0}
+.anDays{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.anDay{font:inherit;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:64px;padding:6px 2px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer;font-size:var(--fs-6)}
+.anDay b{font-size:var(--fs-5)}.anDay i{width:60%;height:5px;border-radius:3px}.anDay[aria-pressed=true]{border-color:var(--saffron);box-shadow:inset 0 0 0 1px var(--saffron)}
+.anSl{display:block;margin:8px 0}.anSl input{width:100%;accent-color:var(--saffron)}
+.anGrid{display:grid;gap:12px}@media(min-width:900px){.anGrid{grid-template-columns:3fr 2fr}}
+.anMap svg{width:100%;height:auto;aspect-ratio:820/451;display:block}
+.anD{stroke:var(--line);stroke-width:.8;cursor:pointer}.anD.on,.anD:focus{stroke:var(--ink);stroke-width:2.2;outline:none}
+.anB{cursor:pointer}.anB .halo{fill:none;stroke-width:16;stroke-opacity:.55;stroke-linecap:round;stroke-linejoin:round}.anB .core{fill:none;stroke:var(--river);stroke-width:2.6;stroke-linecap:round}.anB.on .halo,.anB:focus .halo{stroke-opacity:.95;stroke-width:22}.anB:focus{outline:none}
+.anL{font-size:15px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4px;pointer-events:none}
+.anG{fill:var(--river);stroke:#fff;stroke-width:2;cursor:pointer}
+.anSide{min-height:220px}.anDayT{margin:0 0 6px}.anDet{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}.anDet h3{margin:4px 0}.anHint{color:var(--slate)}
+.anLeg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:var(--fs-6);color:var(--slate);margin:10px 0}.anLeg i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}.anLeg i.ln{height:4px;background:var(--river)}.anLeg i.gg{width:10px;border-radius:50%;background:var(--river)}
+.anMore ul{padding-left:18px}
