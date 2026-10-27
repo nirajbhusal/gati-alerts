@@ -39,7 +39,7 @@
   const rtext = (r, n) => !r ? T("मेरो जिल्ला मात्र", "My district only") : `${G.num(String(r))} ${T("किमी", "km")}` + (n == null ? "" : ` · +${G.num(String(n))} ${T("जिल्ला", n === 1 ? "district" : "districts")}`);
   const radiusUI = (cur) => `<div class="afrad"><div class="afradl">${T("दायरा", "Radius")}<output class="afradv" aria-hidden="true">${rtext(cur)}</output></div>
     <input type="range" class="afrange" min="0" max="${RMAX}" step="${RSTEP}" value="${cur}" aria-label="${T("दायरा", "Radius")}" aria-valuetext="${rtext(cur)}" style="--p:${cur / RMAX * 100}%">
-    <div class="afticks" aria-hidden="true">${RADII.map((v) => `<span style="left:${v / RMAX * 100}%">${v ? G.num(String(v)) : "0"}</span>`).join("")}</div></div>`;
+    <div class="afticks" aria-hidden="true">${RADII.map((v) => `<span style="left:${v / RMAX * 100}%">${G.num(String(v))}</span>`).join("")}</div></div>`;
   /* live label while dragging; the check re-runs only on release (change) */
   const bindRadius = (root, cb) => root.querySelectorAll(".afrad").forEach((w) => { const el = w.querySelector(".afrange"), out = w.querySelector(".afradv"); if (!el) return;
     const base = (() => { try { return [new URLSearchParams(location.hash.slice(1)).get("d") || localStorage.getItem("gati-district") || localStorage.getItem("gati-aff-last") || ""].filter(Boolean); } catch (e) { return []; } })();

@@ -1167,7 +1167,7 @@ header.top .bar .mebtn{position:relative;min-width:44px;min-height:44px}
 .bellbtn .bdot{position:absolute;top:9px;right:10px;width:9px;height:9px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 2px var(--surface)}html[data-theme=dark] .bellbtn .bdot{box-shadow:0 0 0 2px var(--navy)}.bellbtn .bdot[hidden]{display:none}
 nav.main .navme{display:none!important}
 .navtop{display:none}
-@media(max-width:720px){nav.main.open .navtop{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 0 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+@media(max-width:720px){nav.main.open .navtop{display:grid;grid-template-columns:1fr;gap:8px;padding:8px 0 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
  .navtopbtn{min-height:48px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;text-align:left;padding:0 14px}}
 @media(max-width:400px){header.top .bar{gap:4px}header.top .bar .tagline{display:none!important}header.top .bar .langbtn{padding:0 10px;min-width:44px}}
 header.top .bar .langbtn{min-height:44px}
@@ -1416,3 +1416,14 @@ body[data-page=roads] #gdash{min-height:900px}
 .anSide{min-height:220px}.anDayT{margin:0 0 6px}.anDet{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}.anDet h3{margin:4px 0}.anHint{color:var(--slate)}
 .anLeg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:var(--fs-6);color:var(--slate);margin:10px 0}.anLeg i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}.anLeg i.ln{height:4px;background:var(--river)}.anLeg i.gg{width:10px;border-radius:50%;background:var(--river)}
 .anMore ul{padding-left:18px}
+/* Profile & Settings page (me/): reserved heights keep CLS low while sections fill in */
+.mepage .mesec{border-top:1px solid var(--line);padding:var(--s4,16px) 0}
+.mepage .mesec h2{margin:0 0 8px;font-size:1.15rem}
+.mepage .mesec h3{margin:14px 0 6px;font-size:.95rem}
+.mepage #me-place{min-height:262px}.mepage #me-alerts{min-height:560px}.mepage #me-display{min-height:420px}.mepage #me-ntpane{min-height:470px}
+.mepage .merow2{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-height:48px}
+.mepage .merow2 .melab{flex:1 1 auto}.mepage .merow2 .meval{font-weight:600}
+.mepage .melinks{padding-left:1.2em}.mepage .melinks li{margin:6px 0}
+.mepage .tsize output{margin-left:8px;align-self:center}
+a.mebtn{display:inline-flex;align-items:center;justify-content:center;position:relative;color:inherit;text-decoration:none}
+@media(min-width:721px){.mepage #me-place{min-height:150px}.mepage #me-alerts{min-height:330px}.mepage #me-ntpane{min-height:300px}.mepage #me-display{min-height:360px}}
