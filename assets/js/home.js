@@ -379,6 +379,7 @@
       box.insertAdjacentHTML("beforeend", `<a class="afchip" href="${G.root}affected/#d=${cur}" style="--vc:${v.c}"><i></i>${G.esc(G.affect.phrase(v))} →</a>`); });
   }
   addEventListener("gati:radius", () => myDistrict());
+  addEventListener("gati:district", (e) => { sel.value = e.detail || ""; render(); myDistrict(); drawMap(); });
   function myDistrict() {
     const box = $("mydist"); if (!box) return;
     sliderAff();

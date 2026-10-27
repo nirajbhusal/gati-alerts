@@ -64,12 +64,13 @@
   function pick(code) {
     try { if (code) { localStorage.setItem(KEY, code); localStorage.setItem(RKEY, JSON.stringify([code, ...recent().filter((c) => c !== code)].slice(0, 4))); } else localStorage.removeItem(KEY); } catch (e) {}
     close(); onPick && onPick(code);
+    try { dispatchEvent(new CustomEvent("gati:district", { detail: code })); } catch (e) {}
   }
   function close() { if (sheet) { sheet.hidden = true; document.body.classList.remove("sheet-open"); } }
   G.district = {
     get: () => { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } },
     name: (code) => load().then((d) => { const x = d.find((v) => v.code === code); return x ? (G.lang === "ne" ? x.ne : x.en) : ""; }),
-    open: (cb) => load().then(() => {
+    open: (cb) => Promise.all([load(), G.affect ? 0 : new Promise((ok) => { const s = document.createElement("script"); s.src = R + "assets/js/affectcore.js"; s.onload = s.onerror = ok; document.body.appendChild(s); })]).then(() => {
       if (!sheet) build(); onPick = cb;
       sheet.querySelector("#dtitle").textContent = T("मेरो जिल्ला छान्नुहोस्", "Choose my district");
       const q = sheet.querySelector(".dq"); q.value = ""; q.placeholder = T("खोज्नुहोस्: रसुवा, Rasuwa, rasuwa…", "Search: Rasuwa, रसुवा, kavre…");
