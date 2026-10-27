@@ -20,8 +20,9 @@
   function alerts() {
     const box = $("me-alerts");
     box.innerHTML = `<div id="me-ntpane"></div><p class="meta">🔔 ${T("सूचना पाउने अर्को तरिका", "Another way to get alerts")}: <a href="${R}atom.xml">CAP Atom feed</a> · <a href="${R}feed.xml">RSS</a></p>`;
-    if (G.drawNotif) G.drawNotif($("me-ntpane"));
+    const pr = G.drawNotif ? G.drawNotif($("me-ntpane")) : Promise.resolve();
     if (G.markNotifSeen) G.markNotifSeen();
+    return pr;
   }
   function display() {
     const box = $("me-display");
@@ -35,7 +36,9 @@
       display(); const nb = box.querySelector(`[data-k="${k}"] [data-v="${v}"]`); if (nb) nb.focus(); }));
     G.bindTsize(box); G.setTextSize(G.textSize());
   }
-  let lastLang = G.lang; const all = () => { place(); alerts(); display(); };
-  G.onLang((l) => { if (l !== lastLang) { lastLang = l; all(); } }); all();
+  let lastLang = G.lang; const all = () => { display(); return Promise.all([place(), alerts()]).catch(() => {}); };
+  G.onLang((l) => { if (l !== lastLang) { lastLang = l; all(); } });
+  /* CLS: sections stay hidden (space kept by min-height on main) until every async part is filled, then show at once */
+  const m = $("main"); m.classList.add("mewait"); const done = () => m.classList.remove("mewait"); setTimeout(done, 1500); all().then(done);
   if (location.hash) { const t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
 })();

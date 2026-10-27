@@ -1420,10 +1420,11 @@ body[data-page=roads] #gdash{min-height:900px}
 .mepage .mesec{border-top:1px solid var(--line);padding:var(--s4,16px) 0}
 .mepage .mesec h2{margin:0 0 8px;font-size:1.15rem}
 .mepage .mesec h3{margin:14px 0 6px;font-size:.95rem}
-.mepage #me-place{min-height:262px}.mepage #me-alerts{min-height:560px}.mepage #me-display{min-height:420px}.mepage #me-ntpane{min-height:470px}
 .mepage .merow2{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-height:48px}
 .mepage .merow2 .melab{flex:1 1 auto}.mepage .merow2 .meval{font-weight:600}
 .mepage .melinks{padding-left:1.2em}.mepage .melinks li{margin:6px 0}
 .mepage .tsize output{margin-left:8px;align-self:center}
 a.mebtn{display:inline-flex;align-items:center;justify-content:center;position:relative;color:inherit;text-decoration:none}
-@media(min-width:721px){.mepage #me-place{min-height:150px}.mepage #me-alerts{min-height:330px}.mepage #me-ntpane{min-height:300px}.mepage #me-display{min-height:360px}}
+
+.mepage.mewait{min-height:100vh}.mepage.mewait .mesec{visibility:hidden}
+.mepage .ntsub .btn{white-space:normal;flex:1 1 140px;max-width:100%;height:auto;overflow:visible;text-overflow:clip;line-height:1.25;padding-top:8px;padding-bottom:8px}
