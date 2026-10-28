@@ -116,10 +116,43 @@
     panel.querySelectorAll(".aqtabs [role=tab]").forEach((b, n, all) => { b.onclick = () => setTab(b.dataset.t);
       b.onkeydown = (e) => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { const j = (n + (e.key === "ArrowRight" ? 1 : all.length - 1)) % all.length; setTab(all[j].dataset.t); panel.querySelector(`#aqt-${all[j].dataset.t}`).focus(); } }; });
     if (tab !== "ask") pane();
+    log.addEventListener("click", (e) => { const f = e.target.closest("[data-fq]"); if (f) { const q = f.dataset.fq, m = INT.find((x) => x[3].test(q)); ask(m ? m[0] : null, q); return; }
+      const cp = e.target.closest("[data-copy]"); if (cp) { const t = shareText(cp.closest(".aqans")); const ok = () => { cp.textContent = T("कपी भयो", "Copied"); setTimeout(() => (cp.textContent = T("उत्तर सेयर गर्नुहोस्", "Share answer")), 2000); };
+        if (navigator.share) navigator.share({ text: t }).catch(() => {}); else if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, () => {}); } });
     log.onclick = (e) => { const b = e.target.closest("[data-do=pick]"); if (b && G.district) G.district.open(() => ask("district", T("के मेरो जिल्ला प्रभावित छ?", "Is my district affected?"))); };
   }
   /* Ask Gati with Claude, through Gati's Cloudflare Worker (data/ask-config.json "worker"). The key lives only in the Worker.
      Any failure (not configured, offline, rate limited, timeout) returns null and the local answers above are used. */
+  /* Structured answer card (Worker card v1): status badge, headline, cited points, source to-dos, not covered, sources, time, follow-ups */
+  const ST = { alert: ["Severe", "सतर्क: अवरोध वा चेतावनी", "Alert: blocked or warning", '<path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h0"/>'], caution: ["Moderate", "सावधानी", "Caution", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.5h0"/>'], clear: ["Clear", "खुला वा सामान्य", "Open or normal", '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.5 2.8 2.8L16 10"/>'], no_info: ["Unknown", "आधिकारिक जानकारी छैन", "No official information", '<circle cx="12" cy="12" r="8.5"/><path d="M9.8 9.5a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4v.5M12 16.8h0"/>'] };
+  const SC = (k) => (k === "Clear" ? "#2E8B57" : G.SEVCOLOR[k]);
+  const ago = (iso) => { const m = Math.round((Date.now() - Date.parse(iso)) / 6e4); if (!(m >= 0)) return ""; const n = (x) => G.num(String(x));
+    if (m < 60) return T(`${n(Math.max(1, m))} मिनेट अघि`, `${Math.max(1, m)} min ago`); const h = Math.round(m / 60); if (h < 48) return T(`${n(h)} घण्टा अघि`, `${h} hour${h > 1 ? "s" : ""} ago`); const d = Math.round(h / 24); return T(`${n(d)} दिन अघि`, `${d} days ago`); };
+  const when = (iso) => iso ? `<time datetime="${esc(iso)}">${ago(iso)} <span class="aqx2">(${esc(G.npt(iso))})</span></time>` : "";
+  const FOLLOW = { A: [["मेरो जिल्लामा चेतावनी छ?", "Any alert in my district?"]], R: [["अरू कुन सडक बन्द छन्?", "Which other roads are blocked?"], ["काठमाडौँ–पोखरा सडक खुला छ?", "Is Kathmandu–Pokhara open?"]], F: [["कुन जिल्लामा बाढीको उच्च जोखिम छ?", "Which districts have high flood risk?"], ["नदीको सतह कस्तो छ?", "How are river levels now?"]], V: [["कुन नदी खतराको सतहमा छ?", "Which river is above danger level?"]], T: [["पदयात्रा रोकिएको छ?", "Is trekking suspended?"]], P: [["TIMS कार्ड चाहिन्छ?", "Do I need a TIMS card?"], ["अन्नपूर्ण पदयात्राको शुल्क कति हो?", "What are the Annapurna permit fees?"]], C: [["विपद्मा कुन नम्बरमा फोन गर्ने?", "Which number do I call in a disaster?"]] };
+  const follow = (c) => { const ks = [...new Set((c || []).map((x) => x.id[0]))]; const L = (ks.length ? ks : ["A", "R", "F"]).flatMap((k) => FOLLOW[k] || []).slice(0, 3); return L.map(([ne, en]) => `<button type="button" class="aqchip aqfq" data-fq="${esc(T(ne, en))}">${esc(T(ne, en))}</button>`).join(""); };
+  function cardHtml(j) {
+    const c = j.card, st = ST[c.status] || ST.no_info, cites = j.citations || [], byId = Object.fromEntries(cites.map((x, i) => [x.id, [x, i + 1]]));
+    const chip = (id) => { const v = byId[id]; if (!v) return ""; const [x, n] = v; return `<a class="aqsc${x.trust === "Reported" ? " rep" : ""}" href="${esc(x.url || "#")}" target="_blank" rel="noopener" title="${esc(x.agency || "")}">${G.num(String(n))} ${esc((x.agency || "").replace(/\s*\(.*\)$/, "").split(":")[0].slice(0, 28))}</a>`; };
+    const li = (p) => `<li>${esc(p.text)} <span class="aqscs">${p.cite.map(chip).join("")}</span></li>`;
+    const src = cites.map((x, i) => `<li class="aqcard">${G.trustChip(x.trust || "Official")}<b>${G.num(String(i + 1))}. ${esc(G.lang === "ne" && x.title_ne ? x.title_ne : x.title)}</b><span class="meta">${esc(x.agency || "")}${x.time ? " · " + when(x.time) : ""}</span>${x.url ? link(x.url, T("स्रोत खोल्नुहोस्", "Open source")) : ""}</li>`).join("");
+    const refer = (c.refer || []).map((r) => `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)} ↗</a>`).join(", ");
+    return `<article class="aqans s-${c.status}" style="--sc:${SC(st[0])}" aria-label="${T("उत्तर", "Answer")}">
+      <p class="aqst"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st[3]}</svg>${T(st[1], st[2])}</p>
+      <h3 class="aqhl">${esc(c.headline)}</h3>
+      ${c.reported ? `<p class="aqrep">${T("केही जानकारी सञ्चारमाध्यमको हो, आधिकारिक पुष्टि भएको छैन।", "Some of this is reported, not officially confirmed.")}</p>` : ""}
+      ${c.points && c.points.length ? `<ul class="aqpts">${c.points.map(li).join("")}</ul>` : ""}
+      ${c.todo && c.todo.length ? `<div class="aqtodo"><b>${T("आधिकारिक स्रोतले के गर्न भनेको छ", "What official sources say to do")}</b><ul>${c.todo.map(li).join("")}</ul></div>` : ""}
+      ${c.not_covered ? `<p class="aqnc"><b>${T("समेटिएको छैन:", "Not covered:")}</b> ${esc(c.not_covered)}</p>` : ""}
+      ${refer ? `<p class="aqref">${T("जिम्मेवार निकाय:", "Responsible agency:")} ${refer}</p>` : ""}
+      ${c.status === "alert" ? `<div class="aqhelp aqsos"><a href="tel:100" class="aqcall sm"><b>${G.num("100")}</b><span>${T("प्रहरी", "Police")}</span></a><a href="tel:1234" class="aqcall sm red"><b>${G.num("1234")}</b><span>${T("विपद्", "Disaster")}</span></a><a href="tel:102" class="aqcall sm"><b>${G.num("102")}</b><span>${T("एम्बुलेन्स", "Ambulance")}</span></a></div>` : ""}
+      ${cites.length ? `<details class="aqsrcs"><summary>${T("स्रोत", "Sources")} (${G.num(String(cites.length))})${c.as_of ? ` · ${T("अद्यावधिक", "updated")} ${when(c.as_of)}` : ""}</summary><ol>${src}</ol></details>` : ""}
+      <div class="aqfoot"><button type="button" class="aqbtn aqcopy" data-copy>${T("उत्तर सेयर गर्नुहोस्", "Share answer")}</button><span class="aqaim">${T("यो उत्तर AI ले आधिकारिक स्रोतबाट लेखेको हो। स्रोत जाँच्नुहोस्।", "Answer written by AI from official sources. Check the source.")}</span></div>
+      <div class="aqchips aqfollow" role="group" aria-label="${T("सम्बन्धित प्रश्न", "Related questions")}">${follow(cites)}</div>
+    </article>`;
+  }
+  const shareText = (el) => { const h = el.querySelector(".aqhl"), pts = [...el.querySelectorAll(".aqpts li")].map((l) => "• " + l.childNodes[0].textContent.trim()), srcs = [...el.querySelectorAll(".aqsrcs a[href^=http]")].map((a) => a.href);
+    return [h ? h.textContent : "", ...pts, srcs.length ? T("स्रोत: ", "Sources: ") + [...new Set(srcs)].join(" ") : "", T("गति: AI ले आधिकारिक स्रोतबाट लेखेको उत्तर", "Gati: AI answer from official sources") + " https://nirajbhusal.github.io/gati-alerts/ask/"].filter(Boolean).join("\n"); };
   async function claude(q) {
     const cf = await J("data/ask-config.json"); if (!cf || !cf.worker) return { off: true };
     if (navigator.onLine === false) return { err: "offline" };
@@ -129,6 +162,7 @@
       if (r.status === 429) return { err: "busy" };
       if (!r.ok) return { err: "down" }; const j = await r.json(); if (!j || typeof j.answer !== "string") return { err: "down" };
       const cards = (j.citations || []).map((c) => `<div class="aqcard">${G.trustChip(c.trust || "Official")}<b>${esc(G.lang === "ne" && c.title_ne ? c.title_ne : c.title)}</b><span class="meta">${esc(c.agency || "")}${c.time ? " · " + G.npt(c.time) : ""}</span>${c.url ? link(c.url, T("स्रोत", "Source")) : ""}</div>`).join("");
+      if (j.card && j.card.v === 1) return { html: cardHtml(j) };
       return { html: `<p class="aqai">${esc(G.num(j.answer))}</p>${cards ? `<div class="aqcards">${cards}</div>` : `<p class="meta">${T("आधिकारिक स्रोत भेटिएन।", "No official source cited.")}</p>`}<p class="meta aqaim">${T("Claude ले गतिको आधिकारिक सूचनाबाट मात्र तयार गरेको उत्तर; स्रोत हेर्नुहोस्।", "Written by Claude from Gati's official items only; check the sources.")}</p>` };
     } catch (e) { return { err: e && e.name === "AbortError" ? "slow" : "down" }; }
   }

@@ -1591,3 +1591,21 @@ html[data-theme=dark] .mdask{background:#1a2c40}
  html.kb-open .aqpanel.full .aqdock{bottom:0}
  .aqform input{font-size:16px}
 }
+
+/* Ask Gati answer card */
+.aqmsg.bot:has(.aqans){width:100%;max-width:100%;padding:0;background:none;border:0}
+.aqans{border:1px solid var(--line);border-left:4px solid var(--sc);border-radius:14px;background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.aqst{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin:0;padding:3px 10px 3px 8px;border-radius:999px;font-size:13px;font-weight:700;color:var(--sc);background:color-mix(in srgb,var(--sc) 12%,transparent)}
+.aqans.s-caution .aqst{color:#A85A00}html[data-theme=dark] .aqans.s-caution .aqst{color:#F5A54A}html[data-theme=dark] .aqans.s-alert .aqst{color:#FF7A70}html[data-theme=dark] .aqans.s-clear .aqst{color:#5CCB8E}
+.aqhl{margin:0;font-size:18px;line-height:1.4;font-weight:700}
+.aqrep{margin:0;font-size:13px;font-weight:600;color:#8a5a00;background:rgba(242,201,76,.18);border-radius:8px;padding:5px 8px}html[data-theme=dark] .aqrep{color:#F2C94C}
+.aqpts,.aqtodo ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px;line-height:1.5}
+.aqscs{display:inline-flex;flex-wrap:wrap;gap:4px;vertical-align:1px}
+.aqsc{font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:999px;border:1px solid var(--line);background:var(--surface2);color:var(--slate)!important;text-decoration:none;white-space:nowrap}.aqsc.rep{border-style:dashed}
+.aqtodo{background:var(--surface2);border-radius:10px;padding:8px 10px}.aqtodo b{font-size:13px;display:block;margin-bottom:4px}
+.aqnc,.aqref{margin:0;font-size:13.5px;color:var(--slate)}.aqref a{font-weight:600}
+.aqsos{margin:2px 0}
+.aqsrcs{border-top:1px solid var(--line);padding-top:6px}.aqsrcs summary{cursor:pointer;font-size:13.5px;font-weight:600;min-height:32px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.aqsrcs ol{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}.aqx2{color:var(--slate);font-weight:400}
+.aqfoot{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.aqfoot .aqaim{font-size:12px;color:var(--slate);flex:1;min-width:160px}
+.aqfollow{gap:6px}.aqfollow .aqchip{font-size:13.5px;min-height:36px}
