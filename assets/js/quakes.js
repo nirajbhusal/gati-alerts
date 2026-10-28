@@ -18,7 +18,7 @@
       : `<div class="na">${T("यो अवधिमा गतिमा भूकम्प रेकर्ड छैन।", "No quakes recorded in Gati in this period.")}</div>`);
     if (!map && window.L) {
       map = window.L.map("qmap", { zoomSnap: 0.1, scrollWheelZoom: false }); map.attributionControl.setPrefix("").addAttribution("COD-AB / OCHA HDX · NSC · USGS");
-      map.fitBounds([[26.35, 80.06], [30.45, 88.2]]);
+      map.fitBounds([[26.35, 80.06], [30.48, 88.2]]);
       if (geo) window.L.geoJSON(geo, { style: { color: "#c9d3dd", weight: 0.7, fillColor: "#f4f7fa", fillOpacity: 1 }, interactive: false }).addTo(map);
     }
     if (map) { if (lay) map.removeLayer(lay); lay = window.L.layerGroup().addTo(map);

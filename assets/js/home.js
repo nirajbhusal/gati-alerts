@@ -107,7 +107,7 @@
   const gaugeState = (g) => (g.danger && g.level >= g.danger ? "danger" : g.level >= g.warning ? "warning" : "below");
   const GSC = { below: "#0F7C86", warning: "#F28C1E", danger: "#D93025" };
   const GSW = { below: ["चेतावनी तहमुनि", "Below warning"], warning: ["चेतावनी तहमाथि", "Above warning"], danger: ["खतरा तहमाथि", "Above danger"] };
-  function fit() { if (!map) return; map.invalidateSize(); map.fitBounds([[26.35, 80.06], [30.45, 88.2]], { padding: matchMedia("(max-width:600px)").matches ? [0, 0] : [8, 8] }); }
+  function fit() { if (!map) return; map.invalidateSize(); map.fitBounds([[26.35, 80.06], [30.48, 88.2]], { padding: matchMedia("(max-width:600px)").matches ? [0, 0] : [8, 8] }); }
   function initMap() {
     if (!document.getElementById("map")) return;
     if (!window.L) { $("map").innerHTML = `<p class="empty">${T("नक्सा खुलेन।", "Map unavailable.")}</p>`; return; }

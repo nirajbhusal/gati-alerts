@@ -24,7 +24,7 @@
   const writeHash = () => { const q = new URLSearchParams(); Object.keys(S).forEach((k) => { const a = LISTS.includes(k) ? S[k].join(",") : S[k], b = LISTS.includes(k) ? DEF[k].join(",") : DEF[k]; if (a !== b) q.set(k, a); }); history.replaceState(null, "", "#" + q.toString()); };
   readHash();
   /* ---- map ---- */
-  const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: [[25.5, 79], [31.2, 89]] }).fitBounds([[26.3, 80.0], [30.45, 88.2]]);
+  const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: [[25.5, 79], [31.2, 89]] }).fitBounds([[26.3, 80.0], [30.48, 88.2]]);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
   L.control.scale({ imperial: false }).addTo(map);
   const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
@@ -105,7 +105,7 @@
     panel(); legend(); details(); writeHash();
   }
   let focusF = null, focusB = null;
-  function setFocus(zoom) { focusF = S.d ? distF[S.d] : S.pr && PROV ? PROV.features.find((f) => f.id === S.pr) : null; focusB = focusF ? L.geoJSON(focusF).getBounds() : null; if (zoom) focusB ? map.fitBounds(focusB, { padding: [20, 20] }) : map.fitBounds([[26.3, 80.0], [30.45, 88.2]]); }
+  function setFocus(zoom) { focusF = S.d ? distF[S.d] : S.pr && PROV ? PROV.features.find((f) => f.id === S.pr) : null; focusB = focusF ? L.geoJSON(focusF).getBounds() : null; if (zoom) focusB ? map.fitBounds(focusB, { padding: [20, 20] }) : map.fitBounds([[26.3, 80.0], [30.48, 88.2]]); }
   /* ---- panel ---- */
   const P = document.getElementById("mxpanel");
   const chip = (grp, val, label, n, extra = "") => `<button type="button" class="mxchip" data-g="${grp}" data-v="${E(val)}" aria-pressed="${LISTS.includes(grp) ? S[grp].includes(val) : S[grp] === val}"${extra}>${label}${n != null ? ` <span class="mxn">${G.num(String(n))}</span>` : ""}</button>`;
