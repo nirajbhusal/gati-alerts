@@ -1453,3 +1453,7 @@ header.top .gdate span:first-child{font-weight:600;color:var(--ink);font-size:16
 .tkct{display:flex;flex-direction:column;gap:4px;min-width:0}.tkch{font-size:var(--fs-5)}.tkcd{font-size:var(--fs-6);color:var(--slate);min-height:2.6em}
 .tkcard .more{font-size:var(--fs-6);color:var(--link,#1a5fb4)}
 @media(max-width:600px){.tkcard{grid-template-columns:120px minmax(0,1fr);gap:10px;padding:8px 10px}.tkcd{min-height:3.9em}}
+/* Home info strip (homeinfo.js) */
+.hinfo{margin:4px 0 10px}
+.hiq{min-height:44px}.hiqn{display:flex;flex-wrap:wrap;gap:8px}.hiqn a{flex:1 1 auto;text-align:center;padding:9px 12px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;font-size:var(--fs-6)}.hiqn a:hover{border-color:var(--saffron)}
+@media(max-width:600px){.hiq{min-height:92px}.hiqn a{flex:1 1 40%}}
