@@ -13,9 +13,9 @@
     const card = (ne, en, n, unit, href, srcH, when) => `<a class="hiac" href="${href}"><b>${E(T(ne, en))}</b><span class="hin">${N(n)}</span><span class="meta">${unit}</span><span class="meta">${srcH}${when ? " · " + when : ""}</span></a>`;
     const dhm = act((a) => a.sender === "hydrology.gov.np"), nd = act((a) => a.sender === "ndrrma.gov.np"), rdA = act((a) => a.hazard === "road" && a.sender === "nepalpolice.gov.np");
     const c = D.caan;
-    return `<div class="hiag">${card("जल तथा मौसम विज्ञान विभाग", "DHM", dhm.length, T("चालु सूचना", "active notices"), R + "weather/", "DHM", dhm.length ? tm(last(dhm)) : "")}
-      ${card("विपद् प्राधिकरण", "NDRRMA", nd.length, T("चालु सूचना", "active notices"), R + "alerts/", "NDRRMA", nd.length ? tm(last(nd)) : "")}
-      ${c ? card("नागरिक उड्डयन प्राधिकरण", "CAAN", c.notices, E(T(c.latest_ne, c.latest_en)), c.url, T("CAAN वेबसाइट, जाँचेको", "CAAN website, checked"), tm(c.checked)) : ""}
+    return `<div class="hiag">${card("DHM", "DHM", dhm.length, T("चालु सूचना", "active notices"), R + "weather/", "DHM", dhm.length ? tm(last(dhm)) : "")}
+      ${card("NDRRMA", "NDRRMA", nd.length, T("चालु सूचना", "active notices"), R + "alerts/", "NDRRMA", nd.length ? tm(last(nd)) : "")}
+      ${c ? card("CAAN", "CAAN", c.notices, E(T(c.latest_ne, c.latest_en)), c.url, T("CAAN वेबसाइट, जाँचेको", "CAAN website, checked"), tm(c.checked)) : ""}
       ${card("सडक", "Roads", rdA.length, T("नेपाल प्रहरीको चालु सडक अवरोध सूचना", "active Nepal Police road blockage notices"), R + "roads/", T("नेपाल प्रहरी", "Nepal Police"), rdA.length ? tm(last(rdA)) : (D.rd ? tm(D.rd.as_of) : ""))}</div>
       <p class="meta">${T("प्रत्येक निकायको संख्या छुट्टै; कहिल्यै जोडिँदैन।", "Each agency's count is separate; never added together.")}</p>`; };
   B.rivers = (D) => { const v = D.rv; if (!v) return ""; const hot = v.gauges.filter((g) => g.level >= g.warning);
