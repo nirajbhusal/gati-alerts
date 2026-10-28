@@ -1,7 +1,1660 @@
 {
- "generated": "2026-10-27T03:29:03+00:00",
- "count": 45,
+ "generated": "2026-10-28T03:29:06+00:00",
+ "count": 50,
  "alerts": [
+  {
+   "identifier": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-10-28T08:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": "nepalpolice.gov.np,np.gati.police-road-aarughat-soti-2026-10-26-2008,2026-10-28T08:00:00+05:45",
+   "file": "data/alerts/police-road-aarughat-soti-2026-10-28-0800.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-28T08:00:00+05:45",
+     "onset": "2026-10-28T08:00:00+05:45",
+     "expires": "2026-10-29T08:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+     "description": "अद्यावधिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।११ (कात्तिक ११) बिहान ८:०० बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो अझै पूर्ण रूपमा अवरुद्ध। देशभरको सूचीमा यही एउटा मात्र अवरोध छ।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-28T08:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-28T08:00:00+05:45",
+     "onset": "2026-10-28T08:00:00+05:45",
+     "expires": "2026-10-29T08:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+     "description": "Update: Nepal Police notice 'Road blockages', to 8:00 AM on 2083-07-11 (Kartik 11, 28 Oct 2026): the iron motorable bridge at Soti linking Aarughat-2 and 3 was swept away by the Budhi Gandaki flood of Asoj 25 (11 Oct), and the road is still fully blocked. This is the only blockage on the nationwide list.",
+     "instruction": "Do not use this road; check with local police before travelling.",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-10-28T08:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "Soti, Aarughat-2/3 (approximate location)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-10-29T08:00:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला",
+     "en": "Gorkha district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.05,84.81 3"
+     ],
+     "ne": "सोती, आरुघाट–२/३ (अनुमानित स्थान)",
+     "en": "Soti, Aarughat-2/3 (approximate location)"
+    }
+   ],
+   "refIds": [
+    "np.gati.police-road-aarughat-soti-2026-10-26-2008"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-21",
+     "msgType": "Alert",
+     "sent": "2026-10-21T18:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-23",
+     "msgType": "Update",
+     "sent": "2026-10-23T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25",
+     "msgType": "Update",
+     "sent": "2026-10-25T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25-1900",
+     "msgType": "Update",
+     "sent": "2026-10-25T19:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-28",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-28T06:40:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.thahakhabar.com/detail/310967",
+   "references": null,
+   "file": "data/alerts/reported-dhm-24h-forecast-2026-10-28.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-28T06:40:00+05:45",
+     "onset": "2026-10-28T06:40:00+05:45",
+     "expires": "2026-10-29T06:00:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
+     "headline": "कात्तिक ११ (आज र आज राति): कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीमा साधारणतया बदली; राति हिमालमा मध्यम वर्षा/हिमपात र केही पहाड-तराईमा मध्यम वर्षा",
+     "description": "रिपोर्ट गरिएको (थाहाखबर र खबर निरन्तर, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ११ बिहानको पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव छ र बिहीबारदेखि 'अर्नब' चक्रवातको प्रभाव पर्ने। आज दिउँसो कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीमा साधारणतया बदली, कर्णाली र सुदूरपश्चिममा आंशिक बदली; हिमाली भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात। आज राति देशभर साधारणतया बदली; कोशी, कर्णाली र सुदूरपश्चिमका हिमाली भूभागका केही/थोरै स्थान र बागमती, गण्डकीका हिमाली भूभागका एक-दुई स्थानमा मध्यम वर्षा/हिमपात; कोशी र बागमतीका पहाड, मधेश र कोशीको तराईका एक-दुई स्थानमा मध्यम वर्षा। कात्तिक १२ देखि १४ को चेतावनीबारे DHM को आधिकारिक ५ दिने बुलेटिन र NDRRMA को उच्च सतर्कता सूचना हेर्नुहोस्।",
+     "instruction": "पाकेको धान बिहीबार (कात्तिक १२) अगावै भित्र्याउनुहोस्; उच्च पहाडी र हिमाली यात्रा स्थगित गर्नुहोस्; DHM को पछिल्लो पूर्वानुमान हेर्नुहोस् (फोन ११५५)।",
+     "web": "https://www.thahakhabar.com/detail/310967",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310967",
+      "gati:sourceTime": "2026-10-28T06:40:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310967",
+      "gati:sourceUrl2": "https://khabarnirantar.com/59636/",
+      "gati:summary160": "कात्तिक ११: पाँच प्रदेशमा साधारणतया बदली; आज राति हिमालमा मध्यम वर्षा/हिमपात, केही पहाड-तराईमा मध्यम वर्षा"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Unknown",
+     "certainty": "Likely",
+     "effective": "2026-10-28T06:40:00+05:45",
+     "onset": "2026-10-28T06:40:00+05:45",
+     "expires": "2026-10-29T06:00:00+05:45",
+     "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
+     "headline": "28 Oct (today and tonight): generally cloudy in Koshi, Madhesh, Bagmati, Gandaki and Lumbini; tonight moderate rain or snow in the mountains and moderate rain at a few hill and Terai places",
+     "description": "Reported (Thaha Khabar and Khabar Nirantar, both citing the DHM Meteorological Forecasting Division's forecast of the morning of Kartik 11): westerly winds have a partial influence, and Cyclone 'Arnab' is expected to affect Nepal from Thursday. This afternoon generally cloudy in Koshi, Madhesh, Bagmati, Gandaki and Lumbini, partly cloudy in Karnali and Sudurpaschim; light rain or snow at one or two places in the mountains. Tonight generally cloudy across the country; moderate rain or snow at a few places in the Koshi, Karnali and Sudurpaschim mountains and at one or two places in the Bagmati and Gandaki mountains; moderate rain at one or two places in the Koshi and Bagmati hills, Madhesh and the Koshi Terai. For the Kartik 12 to 14 warnings, see DHM's official 5-day bulletin and NDRRMA's high-alert notice.",
+     "instruction": "Bring in ripe paddy before Thursday, Kartik 12 (29 Oct); put off high-hill and mountain travel; check DHM's latest forecast (phone 1155).",
+     "web": "https://www.thahakhabar.com/detail/310967",
+     "params": {
+      "gati:trustLevel": "Reported",
+      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310967",
+      "gati:sourceTime": "2026-10-28T06:40:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310967",
+      "gati:sourceUrl2": "https://khabarnirantar.com/59636/",
+      "gati:summary160": "28 Oct: generally cloudy in five provinces; tonight moderate rain or snow in the mountains, moderate rain at a few hill and Terai places"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Reported",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Unknown",
+   "expires": "2026-10-29T06:00:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला)",
+     "en": "Nepal (all districts)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.dhm-ffs-arnab-advisory-2026-10-27",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-27T18:10:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2115057174414270915",
+   "references": null,
+   "file": "data/alerts/dhm-ffs-arnab-advisory-2026-10-27.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "बाढी-पहिरो जोखिम पूर्वसूचना ('अर्नब' चक्रवात)",
+     "responseType": "Prepare",
+     "urgency": "Future",
+     "severity": "Moderate",
+     "certainty": "Possible",
+     "effective": "2026-10-27T18:10:00+05:45",
+     "onset": "2026-10-29T08:00:00+05:45",
+     "expires": "2026-11-01T23:59:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा (@DHM_FloodEWS) · गति मार्फत प्रसारित",
+     "headline": "DHM बाढी पूर्वानुमान: 'अर्नब' का कारण कात्तिक १३ (शुक्रबार) नारायणी, कोशी, बागमती, कमला, तिनाउ जलाधारमा नदी उल्लेख्य बढ्न सक्ने; ३५ जिल्लामा आकस्मिक बाढीको उच्च जोखिम",
+     "description": "आधिकारिक (बाढी पूर्वानुमान महाशाखाको विशेष सूचना 'चक्रवात अर्नबको सम्भावित प्रभाव: प्रारम्भिक बाढी-पहिरो तथा अन्य जलविज्ञान जोखिम आंकलन तथा पूर्वसूचना', मिति २०८३ कात्तिक १०, @DHM_FloodEWS मा साँझ ६:१० मा प्रकाशित): कात्तिक ११ देखि १५ सम्म विशेषगरी नारायणी, बागमती, कमला र कोशी जलाधारमा उल्लेख्य वर्षा भई नदीको जलसतह बढ्न सक्ने। कात्तिक ११ (बुधबार): प्रमुख नदीमा जलसतह सामान्य। कात्तिक १२ (बिहीबार): नारायणी, कोशी, बागमती, कमलामा सामान्य वृद्धि, न्यून जोखिम। कात्तिक १३ (शुक्रबार): नारायणी, कोशी र शाखा नदी, बागमती, कमला, तिनाउ तथा आसपासमा मध्यम/भारी वर्षासँगै जलसतह उल्लेख्य बढ्न सक्ने; महाकाली, कर्णाली, पश्चिम राप्ती र बबईमा सामान्य वृद्धि मात्र; मध्यम जोखिम। कात्तिक १४ (शनिबार): प्रमुख नदी उच्चतम विन्दुमा पुगे पनि सतर्कता तह आसपास मात्र, खतरा तह पार गर्ने सम्भावना हालका लागि न्यून; मध्यम जोखिम। कात्तिक १५ (आइतबार): केही स्थानमा हल्का वर्षा, न्यून जोखिम। आकस्मिक बहाव (Flash Flood) जोखिम नक्सा: कात्तिक १३ बिहान ८ बजेदेखि २४ घण्टा उच्च जोखिम: मनाङ, कास्की, लमजुङ, गोरखा, तनहुँ, नवलपरासी पूर्व, चितवन, धादिङ, रसुवा, नुवाकोट, सिन्धुपाल्चोक, दोलखा, मकवानपुर, काठमाडौं, भक्तपुर, ललितपुर, काभ्रेपलाञ्चोक, रामेछाप, सोलुखुम्बु, ओखलढुङ्गा, खोटाङ, भोजपुर, सङ्खुवासभा, ताप्लेजुङ, धनकुटा, सिन्धुली, उदयपुर, पर्सा, बारा, रौतहट, सर्लाही, महोत्तरी, धनुषा, सिराहा, सप्तरी; पूर्व र पश्चिमका थप २१ जिल्लामा मध्यम। कात्तिक १२ र १४ मा पूर्वी र मध्य भागका जिल्लामा मध्यम जोखिम। यो प्रारम्भिक आंकलन हो; वास्तविक वर्षाअनुसार जोखिम बदलिन सक्छ। टोल फ्री ११५५(२) पुनः सुचारु।",
+     "instruction": "नदी तथा खोलाको किनार, खोला किनारका सडक, जोखिमयुक्त नदी उपत्यका र हिमाली क्षेत्रमा यात्रा नगर्नुहोस्; अत्यावश्यक यात्रामा सतर्कता अपनाउनुहोस्। खोला नतर्नुहोस्, नदी किनार नजानुहोस्। आधिकारिक सूचना र स्थानीय प्रशासनको निर्देशन पालना गर्नुहोस्। टोल फ्री ११५५(२)।",
+     "web": "https://x.com/DHM_FloodEWS/status/2115057174414270915",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2115057174414270915",
+      "gati:sourceTime": "2026-10-27T18:10:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVoxRDoakAEWJ0H.jpg",
+      "gati:summary160": "DHM: 'अर्नब' का कारण कात्तिक १३ नारायणी, कोशी, बागमती, कमलामा नदी उल्लेख्य बढ्न सक्ने; ३५ जिल्लामा आकस्मिक बाढी उच्च जोखिम"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      },
+      {
+       "desc": "मनाङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0438"
+       }
+      },
+      {
+       "desc": "कास्की जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0439"
+       }
+      },
+      {
+       "desc": "लमजुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0437"
+       }
+      },
+      {
+       "desc": "गोरखा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "तनहुँ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0440"
+       }
+      },
+      {
+       "desc": "नवलपरासी पूर्व जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0447"
+       }
+      },
+      {
+       "desc": "चितवन जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0335"
+       }
+      },
+      {
+       "desc": "धादिङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0330"
+       }
+      },
+      {
+       "desc": "रसुवा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0329"
+       }
+      },
+      {
+       "desc": "नुवाकोट जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0328"
+       }
+      },
+      {
+       "desc": "सिन्धुपाल्चोक जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0323"
+       }
+      },
+      {
+       "desc": "दोलखा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0322"
+       }
+      },
+      {
+       "desc": "मकवानपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0331"
+       }
+      },
+      {
+       "desc": "काठमाडौं जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0327"
+       }
+      },
+      {
+       "desc": "भक्तपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0326"
+       }
+      },
+      {
+       "desc": "ललितपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "काभ्रेपलाञ्चोक जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "रामेछाप जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0321"
+       }
+      },
+      {
+       "desc": "सोलुखुम्बु जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0111"
+       }
+      },
+      {
+       "desc": "ओखलढुङ्गा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0113"
+       }
+      },
+      {
+       "desc": "खोटाङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0112"
+       }
+      },
+      {
+       "desc": "भोजपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0110"
+       }
+      },
+      {
+       "desc": "सङ्खुवासभा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0109"
+       }
+      },
+      {
+       "desc": "ताप्लेजुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0101"
+       }
+      },
+      {
+       "desc": "धनकुटा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0107"
+       }
+      },
+      {
+       "desc": "सिन्धुली जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0320"
+       }
+      },
+      {
+       "desc": "उदयपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0114"
+       }
+      },
+      {
+       "desc": "पर्सा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0234"
+       }
+      },
+      {
+       "desc": "बारा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0233"
+       }
+      },
+      {
+       "desc": "रौतहट जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0232"
+       }
+      },
+      {
+       "desc": "सर्लाही जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0219"
+       }
+      },
+      {
+       "desc": "महोत्तरी जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0218"
+       }
+      },
+      {
+       "desc": "धनुषा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0217"
+       }
+      },
+      {
+       "desc": "सिराहा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0216"
+       }
+      },
+      {
+       "desc": "सप्तरी जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0215"
+       }
+      },
+      {
+       "desc": "तेह्रथुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0108"
+       }
+      },
+      {
+       "desc": "पाँचथर जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0102"
+       }
+      },
+      {
+       "desc": "इलाम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0103"
+       }
+      },
+      {
+       "desc": "झापा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0104"
+       }
+      },
+      {
+       "desc": "मोरङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0105"
+       }
+      },
+      {
+       "desc": "सुनसरी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0106"
+       }
+      },
+      {
+       "desc": "डोल्पा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0662"
+       }
+      },
+      {
+       "desc": "मुस्ताङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      },
+      {
+       "desc": "पूर्वी रुकुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0552"
+       }
+      },
+      {
+       "desc": "पश्चिम रुकुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0652"
+       }
+      },
+      {
+       "desc": "म्याग्दी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0444"
+       }
+      },
+      {
+       "desc": "बागलुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0443"
+       }
+      },
+      {
+       "desc": "पर्वत जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0442"
+       }
+      },
+      {
+       "desc": "स्याङ्जा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0441"
+       }
+      },
+      {
+       "desc": "गुल्मी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0551"
+       }
+      },
+      {
+       "desc": "प्युठान जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0555"
+       }
+      },
+      {
+       "desc": "अर्घाखाँची जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0550"
+       }
+      },
+      {
+       "desc": "पाल्पा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0546"
+       }
+      },
+      {
+       "desc": "कपिलवस्तु जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0549"
+       }
+      },
+      {
+       "desc": "रुपन्देही जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0548"
+       }
+      },
+      {
+       "desc": "नवलपरासी पश्चिम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0547"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Flood and landslide risk advisory (Cyclone 'Arnab')",
+     "responseType": "Prepare",
+     "urgency": "Future",
+     "severity": "Moderate",
+     "certainty": "Possible",
+     "effective": "2026-10-27T18:10:00+05:45",
+     "onset": "2026-10-29T08:00:00+05:45",
+     "expires": "2026-11-01T23:59:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Flood Forecasting (@DHM_FloodEWS) · relayed by Gati",
+     "headline": "DHM flood forecasting: because of Cyclone 'Arnab', rivers in the Narayani, Koshi, Bagmati, Kamala and Tinau basins may rise significantly on Kartik 13 (Fri 30 Oct); high flash flood risk in 35 districts",
+     "description": "Official (Flood Forecasting Division special advisory 'Possible impact of Cyclone Arnab: preliminary flood, landslide and other hydrological risk assessment and early warning', dated 2083 Kartik 10, posted on @DHM_FloodEWS at 6:10 PM on 27 Oct): from Kartik 11 to 15 (28 Oct to 1 Nov) significant rain may raise river levels, especially in the Narayani, Bagmati, Kamala and Koshi basins. Kartik 11 (Wed 28 Oct): major rivers normal. Kartik 12 (Thu 29 Oct): slight rise in the Narayani, Koshi, Bagmati and Kamala; low risk. Kartik 13 (Fri 30 Oct): with moderate to heavy rain, levels may rise significantly in the Narayani, Koshi and tributaries, Bagmati, Kamala, Tinau and nearby basins; only a normal rise in the Mahakali, Karnali, West Rapti and Babai; moderate risk. Kartik 14 (Sat 31 Oct): major rivers may peak but reach only around the warning level; for now the chance of crossing the danger level is low; moderate risk. Kartik 15 (Sun 1 Nov): light rain at some places; low risk. Flash flood risk map, 24 hours from 8 AM Kartik 13: high risk in Manang, Kaski, Lamjung, Gorkha, Tanahu, Nawalparasi East, Chitwan, Dhading, Rasuwa, Nuwakot, Sindhupalchok, Dolakha, Makwanpur, Kathmandu, Bhaktapur, Lalitpur, Kavrepalanchok, Ramechhap, Solukhumbu, Okhaldhunga, Khotang, Bhojpur, Sankhuwasabha, Taplejung, Dhankuta, Sindhuli, Udayapur, Parsa, Bara, Rautahat, Sarlahi, Mahottari, Dhanusha, Siraha, Saptari; moderate in 21 more districts to the east and west. Kartik 12 and 14: moderate risk in districts of the east and centre. This is a preliminary assessment; risk may change with actual rainfall. Toll-free 1155(2) restarted.",
+     "instruction": "Avoid travel along river banks, riverside roads, risky river valleys and high mountain areas; take care on essential travel. Do not cross streams or go to river banks. Follow official notices and the local administration. Toll-free 1155(2).",
+     "web": "https://x.com/DHM_FloodEWS/status/2115057174414270915",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2115057174414270915",
+      "gati:sourceTime": "2026-10-27T18:10:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVoxRDoakAEWJ0H.jpg",
+      "gati:summary160": "DHM: Cyclone 'Arnab' may raise Narayani, Koshi, Bagmati, Kamala rivers significantly on 30 Oct; high flash flood risk in 35 districts"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      },
+      {
+       "desc": "Manang district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0438"
+       }
+      },
+      {
+       "desc": "Kaski district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0439"
+       }
+      },
+      {
+       "desc": "Lamjung district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0437"
+       }
+      },
+      {
+       "desc": "Gorkha district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "Tanahu district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0440"
+       }
+      },
+      {
+       "desc": "Nawalparasi East district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0447"
+       }
+      },
+      {
+       "desc": "Chitwan district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0335"
+       }
+      },
+      {
+       "desc": "Dhading district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0330"
+       }
+      },
+      {
+       "desc": "Rasuwa district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0329"
+       }
+      },
+      {
+       "desc": "Nuwakot district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0328"
+       }
+      },
+      {
+       "desc": "Sindhupalchok district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0323"
+       }
+      },
+      {
+       "desc": "Dolakha district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0322"
+       }
+      },
+      {
+       "desc": "Makwanpur district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0331"
+       }
+      },
+      {
+       "desc": "Kathmandu district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0327"
+       }
+      },
+      {
+       "desc": "Bhaktapur district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0326"
+       }
+      },
+      {
+       "desc": "Lalitpur district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "Kavrepalanchok district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "Ramechhap district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0321"
+       }
+      },
+      {
+       "desc": "Solukhumbu district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0111"
+       }
+      },
+      {
+       "desc": "Okhaldhunga district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0113"
+       }
+      },
+      {
+       "desc": "Khotang district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0112"
+       }
+      },
+      {
+       "desc": "Bhojpur district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0110"
+       }
+      },
+      {
+       "desc": "Sankhuwasabha district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0109"
+       }
+      },
+      {
+       "desc": "Taplejung district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0101"
+       }
+      },
+      {
+       "desc": "Dhankuta district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0107"
+       }
+      },
+      {
+       "desc": "Sindhuli district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0320"
+       }
+      },
+      {
+       "desc": "Udayapur district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0114"
+       }
+      },
+      {
+       "desc": "Parsa district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0234"
+       }
+      },
+      {
+       "desc": "Bara district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0233"
+       }
+      },
+      {
+       "desc": "Rautahat district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0232"
+       }
+      },
+      {
+       "desc": "Sarlahi district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0219"
+       }
+      },
+      {
+       "desc": "Mahottari district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0218"
+       }
+      },
+      {
+       "desc": "Dhanusha district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0217"
+       }
+      },
+      {
+       "desc": "Siraha district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0216"
+       }
+      },
+      {
+       "desc": "Saptari district: high flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0215"
+       }
+      },
+      {
+       "desc": "Terhathum district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0108"
+       }
+      },
+      {
+       "desc": "Panchthar district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0102"
+       }
+      },
+      {
+       "desc": "Ilam district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0103"
+       }
+      },
+      {
+       "desc": "Jhapa district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0104"
+       }
+      },
+      {
+       "desc": "Morang district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0105"
+       }
+      },
+      {
+       "desc": "Sunsari district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0106"
+       }
+      },
+      {
+       "desc": "Dolpa district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0662"
+       }
+      },
+      {
+       "desc": "Mustang district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      },
+      {
+       "desc": "Rukum East district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0552"
+       }
+      },
+      {
+       "desc": "Rukum West district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0652"
+       }
+      },
+      {
+       "desc": "Myagdi district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0444"
+       }
+      },
+      {
+       "desc": "Baglung district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0443"
+       }
+      },
+      {
+       "desc": "Parbat district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0442"
+       }
+      },
+      {
+       "desc": "Syangja district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0441"
+       }
+      },
+      {
+       "desc": "Gulmi district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0551"
+       }
+      },
+      {
+       "desc": "Pyuthan district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0555"
+       }
+      },
+      {
+       "desc": "Arghakhanchi district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0550"
+       }
+      },
+      {
+       "desc": "Palpa district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0546"
+       }
+      },
+      {
+       "desc": "Kapilbastu district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0549"
+       }
+      },
+      {
+       "desc": "Rupandehi district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0548"
+       }
+      },
+      {
+       "desc": "Nawalparasi West district: moderate flash flood risk on Kartik 13",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0547"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "flood",
+   "severity": "Moderate",
+   "expires": "2026-11-01T23:59:00+05:45",
+   "districts": [
+    "NP0101",
+    "NP0102",
+    "NP0103",
+    "NP0104",
+    "NP0105",
+    "NP0106",
+    "NP0107",
+    "NP0108",
+    "NP0109",
+    "NP0110",
+    "NP0111",
+    "NP0112",
+    "NP0113",
+    "NP0114",
+    "NP0215",
+    "NP0216",
+    "NP0217",
+    "NP0218",
+    "NP0219",
+    "NP0232",
+    "NP0233",
+    "NP0234",
+    "NP0320",
+    "NP0321",
+    "NP0322",
+    "NP0323",
+    "NP0324",
+    "NP0325",
+    "NP0326",
+    "NP0327",
+    "NP0328",
+    "NP0329",
+    "NP0330",
+    "NP0331",
+    "NP0335",
+    "NP0436",
+    "NP0437",
+    "NP0438",
+    "NP0439",
+    "NP0440",
+    "NP0441",
+    "NP0442",
+    "NP0443",
+    "NP0444",
+    "NP0445",
+    "NP0447",
+    "NP0546",
+    "NP0547",
+    "NP0548",
+    "NP0549",
+    "NP0550",
+    "NP0551",
+    "NP0552",
+    "NP0555",
+    "NP0652",
+    "NP0662"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला)",
+     "en": "Nepal (all districts)"
+    },
+    {
+     "code": "NP0438",
+     "circles": [],
+     "ne": "मनाङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Manang district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0439",
+     "circles": [],
+     "ne": "कास्की जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Kaski district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0437",
+     "circles": [],
+     "ne": "लमजुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Lamjung district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Gorkha district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0440",
+     "circles": [],
+     "ne": "तनहुँ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Tanahu district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0447",
+     "circles": [],
+     "ne": "नवलपरासी पूर्व जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Nawalparasi East district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0335",
+     "circles": [],
+     "ne": "चितवन जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Chitwan district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0330",
+     "circles": [],
+     "ne": "धादिङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Dhading district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0329",
+     "circles": [],
+     "ne": "रसुवा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Rasuwa district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0328",
+     "circles": [],
+     "ne": "नुवाकोट जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Nuwakot district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0323",
+     "circles": [],
+     "ne": "सिन्धुपाल्चोक जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Sindhupalchok district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0322",
+     "circles": [],
+     "ne": "दोलखा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Dolakha district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0331",
+     "circles": [],
+     "ne": "मकवानपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Makwanpur district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0327",
+     "circles": [],
+     "ne": "काठमाडौं जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Kathmandu district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0326",
+     "circles": [],
+     "ne": "भक्तपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Bhaktapur district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0325",
+     "circles": [],
+     "ne": "ललितपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Lalitpur district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0324",
+     "circles": [],
+     "ne": "काभ्रेपलाञ्चोक जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Kavrepalanchok district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0321",
+     "circles": [],
+     "ne": "रामेछाप जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Ramechhap district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0111",
+     "circles": [],
+     "ne": "सोलुखुम्बु जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Solukhumbu district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0113",
+     "circles": [],
+     "ne": "ओखलढुङ्गा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Okhaldhunga district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0112",
+     "circles": [],
+     "ne": "खोटाङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Khotang district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0110",
+     "circles": [],
+     "ne": "भोजपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Bhojpur district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0109",
+     "circles": [],
+     "ne": "सङ्खुवासभा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Sankhuwasabha district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0101",
+     "circles": [],
+     "ne": "ताप्लेजुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Taplejung district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0107",
+     "circles": [],
+     "ne": "धनकुटा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Dhankuta district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0320",
+     "circles": [],
+     "ne": "सिन्धुली जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Sindhuli district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0114",
+     "circles": [],
+     "ne": "उदयपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Udayapur district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0234",
+     "circles": [],
+     "ne": "पर्सा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Parsa district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0233",
+     "circles": [],
+     "ne": "बारा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Bara district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0232",
+     "circles": [],
+     "ne": "रौतहट जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Rautahat district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0219",
+     "circles": [],
+     "ne": "सर्लाही जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Sarlahi district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0218",
+     "circles": [],
+     "ne": "महोत्तरी जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Mahottari district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0217",
+     "circles": [],
+     "ne": "धनुषा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Dhanusha district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0216",
+     "circles": [],
+     "ne": "सिराहा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Siraha district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0215",
+     "circles": [],
+     "ne": "सप्तरी जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम",
+     "en": "Saptari district: high flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0108",
+     "circles": [],
+     "ne": "तेह्रथुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Terhathum district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0102",
+     "circles": [],
+     "ne": "पाँचथर जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Panchthar district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0103",
+     "circles": [],
+     "ne": "इलाम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Ilam district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0104",
+     "circles": [],
+     "ne": "झापा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Jhapa district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0105",
+     "circles": [],
+     "ne": "मोरङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Morang district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0106",
+     "circles": [],
+     "ne": "सुनसरी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Sunsari district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0662",
+     "circles": [],
+     "ne": "डोल्पा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Dolpa district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0445",
+     "circles": [],
+     "ne": "मुस्ताङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Mustang district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0552",
+     "circles": [],
+     "ne": "पूर्वी रुकुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Rukum East district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0652",
+     "circles": [],
+     "ne": "पश्चिम रुकुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Rukum West district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0444",
+     "circles": [],
+     "ne": "म्याग्दी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Myagdi district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0443",
+     "circles": [],
+     "ne": "बागलुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Baglung district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0442",
+     "circles": [],
+     "ne": "पर्वत जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Parbat district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0441",
+     "circles": [],
+     "ne": "स्याङ्जा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Syangja district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0551",
+     "circles": [],
+     "ne": "गुल्मी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Gulmi district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0555",
+     "circles": [],
+     "ne": "प्युठान जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Pyuthan district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0550",
+     "circles": [],
+     "ne": "अर्घाखाँची जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Arghakhanchi district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0546",
+     "circles": [],
+     "ne": "पाल्पा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Palpa district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0549",
+     "circles": [],
+     "ne": "कपिलवस्तु जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Kapilbastu district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0548",
+     "circles": [],
+     "ne": "रुपन्देही जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Rupandehi district: moderate flash flood risk on Kartik 13"
+    },
+    {
+     "code": "NP0547",
+     "circles": [],
+     "ne": "नवलपरासी पश्चिम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम",
+     "en": "Nawalparasi West district: moderate flash flood risk on Kartik 13"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27",
+   "sender": "ndrrma.gov.np",
+   "sent": "2026-10-27T11:34:58+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Disaster Risk Reduction and Management Authority (NDRRMA). Source: https://x.com/NDRRMA_Nepal/status/2114957760647581789",
+   "references": "ndrrma.gov.np,np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26,2026-10-26T18:37:17+05:45",
+   "file": "data/alerts/ndrrma-high-alert-cyclone-arnab-2026-10-27.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "उच्च सतर्कताका लागि अनुरोध",
+     "responseType": "Prepare",
+     "urgency": "Expected",
+     "severity": "Severe",
+     "certainty": "Likely",
+     "effective": "2026-10-27T11:34:58+05:45",
+     "onset": "2026-10-29T18:00:00+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "NDRRMA · https://bipad.gov.np/",
+     "senderName": "राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण (NDRRMA) · गति मार्फत प्रसारित",
+     "headline": "NDRRMA: 'अर्नब' चक्रवात थप शक्तिशाली हुँदै, अति शक्तिशाली बन्न सक्ने; नेपालमा प्रभाव बिहीबार (कात्तिक १२) रातिबाट; २९ देखि ३१ अक्टोबर उच्च सतर्कता",
+     "description": "अद्यावधिक, आधिकारिक (NDRRMA को अङ्ग्रेजी सूचना 'Request to Remain on High Alert', मिति मंगलबार, २७ अक्टोबर २०२६ / कात्तिक १०, @NDRRMA_Nepal मा बिहान ११:३४ मा प्रकाशित; कात्तिक ९ को नेपाली सूचनाको ठाउँमा): DHM को पोस्ट-मनसुन विशेष बुलेटिनअनुसार बंगालको खाडीमा रहेको 'अर्नब' चक्रवात थप शक्तिशाली हुँदै छ र अति शक्तिशाली (very severe) बन्न सक्छ। यो २८ अक्टोबर (कात्तिक ११) मा भारतमा जमिनमा प्रवेश गर्ने सम्भावना छ र नेपालमा प्रभाव बिहीबार, २९ अक्टोबर (कात्तिक १२) रातिबाट सुरु हुने देखिन्छ। शुक्रबार ३० र शनिबार ३१ अक्टोबर (कात्तिक १३ र १४) कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी बढी प्रभावित हुने; धेरै स्थानमा चट्याङ र हावासहित मध्यमसम्म र थोरै स्थानमा भारी वर्षा। कर्णाली र सुदूरपश्चिमका केही स्थानमा मध्यम र एक-दुई स्थानमा भारी वर्षा सम्भव। उच्च पहाडी र हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी र हिमपहिरोको उच्च जोखिम। २९ देखि ३१ अक्टोबरसम्म उच्च सतर्कतामा रहन अनुरोध।",
+     "instruction": "पर्यटक उच्च पहाडी र हिमाली क्षेत्रमा नजानुहोस्; गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्। अत्यावश्यक नपरी यात्रा नगर्नुहोस्; सडक, हवाई यातायात र दैनिक जीवन प्रभावित हुन सक्छ। बाढी आउन सक्ने नदी किनार जस्ता जोखिमयुक्त ठाउँमा नबस्नुहोस्। NDRRMA, DHM र सम्बन्धित निकायका पछिल्ला सूचना हेर्नुहोस्। मौसम जानकारी: ११५५; विपद्मा सहायता: १२३४ (NEOC/DEOC), १०० (नेपाल प्रहरी), १११४ (सशस्त्र प्रहरी), पर्यटक प्रहरी ११४४।",
+     "web": "https://x.com/NDRRMA_Nepal/status/2114957760647581789",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NDRRMA_Nepal/status/2114957760647581789",
+      "gati:sourceTime": "2026-10-27T11:34:58+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVnWxSZbgAACZDg.jpg",
+      "gati:summary160": "NDRRMA: 'अर्नब' चक्रवात अति शक्तिशाली बन्न सक्ने, प्रभाव कात्तिक १२ रातिबाट; कात्तिक १२ देखि १४ उच्च सतर्कता; हिमालमा हिमपहिरो जोखिम"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै प्रदेश)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Request for high alert",
+     "responseType": "Prepare",
+     "urgency": "Expected",
+     "severity": "Severe",
+     "certainty": "Likely",
+     "effective": "2026-10-27T11:34:58+05:45",
+     "onset": "2026-10-29T18:00:00+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "NDRRMA · https://bipad.gov.np/",
+     "senderName": "National Disaster Risk Reduction and Management Authority (NDRRMA) · relayed by Gati",
+     "headline": "NDRRMA: Cyclone 'Arnab' gaining strength and likely to become very severe; effects on Nepal from Thursday night, 29 Oct; high alert 29 to 31 Oct",
+     "description": "Update, official (NDRRMA English notice 'Request to Remain on High Alert', dated Tuesday 27 October 2026 / Kartik 10, posted on @NDRRMA_Nepal at 11:34 AM; replaces the Nepali notice of Kartik 9): according to DHM's special post-monsoon bulletin, Cyclone 'Arnab' in the Bay of Bengal is gaining strength and is likely to become very severe. It is likely to make landfall in India on 28 October, and its effects on Nepal are expected to begin on the night of Thursday, 29 October. Koshi, Bagmati, Madhesh, Gandaki and Lumbini are expected to be particularly affected on Friday 30 and Saturday 31 October, with rain of up to moderate intensity with thunder, lightning and wind at many places and heavy rain at a few places. In Karnali and Sudurpaschim, moderate rain with thunder, lightning and wind is likely at some places, with heavy rain possible at one or two. High hill and Himalayan areas face a high risk of heavy snowfall, snowstorms and avalanches. All concerned are requested to remain on high alert from 29 to 31 October.",
+     "instruction": "Tourists should avoid travelling to high hill and Himalayan areas; those already there should stay in safe places. Avoid non-essential travel; road and air transport and daily life may be disrupted. Do not stay in high-risk areas such as riverbanks that may flood. Follow the latest forecasts and warnings from NDRRMA, DHM and other official agencies. Weather information: 1155; disaster help: 1234 (NEOC/DEOC), 100 (Nepal Police), 1114 (Armed Police Force), Tourist Police 1144.",
+     "web": "https://x.com/NDRRMA_Nepal/status/2114957760647581789",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NDRRMA_Nepal/status/2114957760647581789",
+      "gati:sourceTime": "2026-10-27T11:34:58+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVnWxSZbgAACZDg.jpg",
+      "gati:summary160": "NDRRMA: Cyclone 'Arnab' may become very severe; effects from night of 29 Oct; high alert 29 to 31 Oct; avalanche risk in the mountains"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all provinces)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Severe",
+   "expires": "2026-10-31T23:59:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै प्रदेश)",
+     "en": "Nepal (all provinces)"
+    }
+   ],
+   "refIds": [
+    "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26",
+     "msgType": "Alert",
+     "sent": "2026-10-26T18:37:17+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T11:34:58+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-10-27",
    "sender": "hydrology.gov.np",
@@ -226,7 +1879,7 @@
    "districts": [
     "NP0436"
    ],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": "NP0436",
@@ -276,9 +1929,15 @@
      "msgType": "Update",
      "sent": "2026-10-26T20:08:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
   },
   {
    "identifier": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26",
@@ -376,8 +2035,21 @@
     }
    ],
    "refIds": [],
-   "chain": [],
-   "supersededBy": null
+   "chain": [
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26",
+     "msgType": "Alert",
+     "sent": "2026-10-26T18:37:17+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T11:34:58+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27"
   },
   {
    "identifier": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
@@ -868,9 +2540,122 @@
      "msgType": "Update",
      "sent": "2026-10-26T20:08:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1382-2026-10-25",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-10-25T13:06:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1382-2026-10-25.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-10-25T13:06:00+05:45",
+     "onset": "2026-10-25T13:06:00+05:45",
+     "expires": "2026-10-26T13:06:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.२ ML, बैतडी (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-१०-२५ १३:०६ NPT मा बैतडी क्षेत्रमा ४.२ ML को भूकम्प गयो। केन्द्रबिन्दु: २९.५८°N, ८०.६९°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-10-25T13:06:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.२ ML, बैतडी (NSC)",
+      "gati:magnitude": "4.2 ML"
+     },
+     "areas": [
+      {
+       "desc": "बैतडी जिल्ला",
+       "circles": [
+        "29.5800,80.6900 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0774"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-10-25T13:06:00+05:45",
+     "onset": "2026-10-25T13:06:00+05:45",
+     "expires": "2026-10-26T13:06:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.2 ML, Baitadi (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.2 ML occurred at 2026-10-25 13:06 NPT, Baitadi. Epicentre: 29.58°N, 80.69°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-10-25T13:06:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.2 ML, Baitadi (NSC)",
+      "gati:magnitude": "4.2 ML"
+     },
+     "areas": [
+      {
+       "desc": "Baitadi district",
+       "circles": [
+        "29.5800,80.6900 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0774"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-10-26T13:06:00+05:45",
+   "districts": [
+    "NP0774"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0774",
+     "circles": [
+      "29.5800,80.6900 0"
+     ],
+     "ne": "बैतडी जिल्ला",
+     "en": "Baitadi district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-25",
@@ -1024,9 +2809,15 @@
      "msgType": "Update",
      "sent": "2026-10-26T20:08:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-10-25",
@@ -1517,9 +3308,15 @@
      "msgType": "Update",
      "sent": "2026-10-26T20:08:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-23",
@@ -1873,9 +3670,15 @@
      "msgType": "Update",
      "sent": "2026-10-26T20:08:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-26-2008"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
   },
   {
    "identifier": "np.gati.dhm-river-levels-2026-10-21",

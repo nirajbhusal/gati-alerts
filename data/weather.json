@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-27T09:30:00+05:45",
+ "checked": "2026-10-28T09:30:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,8 +7,8 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": false
  },
- "note_ne": "mfd.gov.np र dhm.gov.np गतिको सर्भरबाट खुलेनन् (कात्तिक १०, बिहान ९:३० NPT मा जाँचिएको)। त्यसैले ५ दिने बुलेटिन र कात्तिक ९ को विशेष बुलेटिन-२ DHM को आधिकारिक X खाता @NMD_Weather बाट (आधिकारिक) लिइएको छ।",
- "note_en": "mfd.gov.np and dhm.gov.np could not be reached from Gati's server (checked 27 Oct 2026, 9:30 AM NPT). The 5-day bulletin and the Kartik 9 special bulletin 2 are therefore taken from DHM's official X account @NMD_Weather (Official).",
+ "note_ne": "mfd.gov.np र dhm.gov.np गतिको सर्भरबाट खुलेनन् (कात्तिक ११, बिहान ९:३० NPT मा जाँचिएको)। कात्तिक ११ को ५ दिने बुलेटिन जाँच गर्दासम्म DHM को आधिकारिक X खाता @NMD_Weather मा आएको थिएन, त्यसैले कात्तिक १० को आधिकारिक बुलेटिन नै देखाइएको छ। आजको पूर्वानुमान दुई समाचार माध्यममा छापिएको DHM पाठबाट (रिपोर्ट गरिएको) लिइएको छ।",
+ "note_en": "mfd.gov.np and dhm.gov.np could not be reached from Gati's server (checked 28 Oct 2026, 9:30 AM NPT). The Kartik 11 5-day bulletin had not yet been posted on DHM's official X account @NMD_Weather when checked, so the official Kartik 10 bulletin is still shown. Today's forecast is DHM's text as published by two news outlets (Reported).",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
  "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",

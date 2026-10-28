@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-ffs-arnab-advisory-2026-10-27</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-27T18:10:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Flood Forecasting</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2115057174414270915</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>बाढी-पहिरो जोखिम पूर्वसूचना ('अर्नब' चक्रवात)</event>
+    <responseType>Prepare</responseType>
+    <urgency>Future</urgency>
+    <severity>Moderate</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-27T18:10:00+05:45</effective>
+    <onset>2026-10-29T08:00:00+05:45</onset>
+    <expires>2026-11-01T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा (@DHM_FloodEWS) · गति मार्फत प्रसारित</senderName>
+    <headline>DHM बाढी पूर्वानुमान: 'अर्नब' का कारण कात्तिक १३ (शुक्रबार) नारायणी, कोशी, बागमती, कमला, तिनाउ जलाधारमा नदी उल्लेख्य बढ्न सक्ने; ३५ जिल्लामा आकस्मिक बाढीको उच्च जोखिम</headline>
+    <description>आधिकारिक (बाढी पूर्वानुमान महाशाखाको विशेष सूचना 'चक्रवात अर्नबको सम्भावित प्रभाव: प्रारम्भिक बाढी-पहिरो तथा अन्य जलविज्ञान जोखिम आंकलन तथा पूर्वसूचना', मिति २०८३ कात्तिक १०, @DHM_FloodEWS मा साँझ ६:१० मा प्रकाशित): कात्तिक ११ देखि १५ सम्म विशेषगरी नारायणी, बागमती, कमला र कोशी जलाधारमा उल्लेख्य वर्षा भई नदीको जलसतह बढ्न सक्ने। कात्तिक ११ (बुधबार): प्रमुख नदीमा जलसतह सामान्य। कात्तिक १२ (बिहीबार): नारायणी, कोशी, बागमती, कमलामा सामान्य वृद्धि, न्यून जोखिम। कात्तिक १३ (शुक्रबार): नारायणी, कोशी र शाखा नदी, बागमती, कमला, तिनाउ तथा आसपासमा मध्यम/भारी वर्षासँगै जलसतह उल्लेख्य बढ्न सक्ने; महाकाली, कर्णाली, पश्चिम राप्ती र बबईमा सामान्य वृद्धि मात्र; मध्यम जोखिम। कात्तिक १४ (शनिबार): प्रमुख नदी उच्चतम विन्दुमा पुगे पनि सतर्कता तह आसपास मात्र, खतरा तह पार गर्ने सम्भावना हालका लागि न्यून; मध्यम जोखिम। कात्तिक १५ (आइतबार): केही स्थानमा हल्का वर्षा, न्यून जोखिम। आकस्मिक बहाव (Flash Flood) जोखिम नक्सा: कात्तिक १३ बिहान ८ बजेदेखि २४ घण्टा उच्च जोखिम: मनाङ, कास्की, लमजुङ, गोरखा, तनहुँ, नवलपरासी पूर्व, चितवन, धादिङ, रसुवा, नुवाकोट, सिन्धुपाल्चोक, दोलखा, मकवानपुर, काठमाडौं, भक्तपुर, ललितपुर, काभ्रेपलाञ्चोक, रामेछाप, सोलुखुम्बु, ओखलढुङ्गा, खोटाङ, भोजपुर, सङ्खुवासभा, ताप्लेजुङ, धनकुटा, सिन्धुली, उदयपुर, पर्सा, बारा, रौतहट, सर्लाही, महोत्तरी, धनुषा, सिराहा, सप्तरी; पूर्व र पश्चिमका थप २१ जिल्लामा मध्यम। कात्तिक १२ र १४ मा पूर्वी र मध्य भागका जिल्लामा मध्यम जोखिम। यो प्रारम्भिक आंकलन हो; वास्तविक वर्षाअनुसार जोखिम बदलिन सक्छ। टोल फ्री ११५५(२) पुनः सुचारु।</description>
+    <instruction>नदी तथा खोलाको किनार, खोला किनारका सडक, जोखिमयुक्त नदी उपत्यका र हिमाली क्षेत्रमा यात्रा नगर्नुहोस्; अत्यावश्यक यात्रामा सतर्कता अपनाउनुहोस्। खोला नतर्नुहोस्, नदी किनार नजानुहोस्। आधिकारिक सूचना र स्थानीय प्रशासनको निर्देशन पालना गर्नुहोस्। टोल फ्री ११५५(२)।</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2115057174414270915</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2115057174414270915</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-27T18:10:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVoxRDoakAEWJ0H.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: 'अर्नब' का कारण कात्तिक १३ नारायणी, कोशी, बागमती, कमलामा नदी उल्लेख्य बढ्न सक्ने; ३५ जिल्लामा आकस्मिक बाढी उच्च जोखिम</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+    <area>
+      <areaDesc>मनाङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0438</value></geocode>
+    </area>
+    <area>
+      <areaDesc>कास्की जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0439</value></geocode>
+    </area>
+    <area>
+      <areaDesc>लमजुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0437</value></geocode>
+    </area>
+    <area>
+      <areaDesc>गोरखा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0436</value></geocode>
+    </area>
+    <area>
+      <areaDesc>तनहुँ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0440</value></geocode>
+    </area>
+    <area>
+      <areaDesc>नवलपरासी पूर्व जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0447</value></geocode>
+    </area>
+    <area>
+      <areaDesc>चितवन जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0335</value></geocode>
+    </area>
+    <area>
+      <areaDesc>धादिङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+    <area>
+      <areaDesc>रसुवा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0329</value></geocode>
+    </area>
+    <area>
+      <areaDesc>नुवाकोट जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0328</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सिन्धुपाल्चोक जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0323</value></geocode>
+    </area>
+    <area>
+      <areaDesc>दोलखा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0322</value></geocode>
+    </area>
+    <area>
+      <areaDesc>मकवानपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0331</value></geocode>
+    </area>
+    <area>
+      <areaDesc>काठमाडौं जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0327</value></geocode>
+    </area>
+    <area>
+      <areaDesc>भक्तपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0326</value></geocode>
+    </area>
+    <area>
+      <areaDesc>ललितपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+    <area>
+      <areaDesc>काभ्रेपलाञ्चोक जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0324</value></geocode>
+    </area>
+    <area>
+      <areaDesc>रामेछाप जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0321</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सोलुखुम्बु जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0111</value></geocode>
+    </area>
+    <area>
+      <areaDesc>ओखलढुङ्गा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0113</value></geocode>
+    </area>
+    <area>
+      <areaDesc>खोटाङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0112</value></geocode>
+    </area>
+    <area>
+      <areaDesc>भोजपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0110</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सङ्खुवासभा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0109</value></geocode>
+    </area>
+    <area>
+      <areaDesc>ताप्लेजुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0101</value></geocode>
+    </area>
+    <area>
+      <areaDesc>धनकुटा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0107</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सिन्धुली जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0320</value></geocode>
+    </area>
+    <area>
+      <areaDesc>उदयपुर जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0114</value></geocode>
+    </area>
+    <area>
+      <areaDesc>पर्सा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0234</value></geocode>
+    </area>
+    <area>
+      <areaDesc>बारा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0233</value></geocode>
+    </area>
+    <area>
+      <areaDesc>रौतहट जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0232</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सर्लाही जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0219</value></geocode>
+    </area>
+    <area>
+      <areaDesc>महोत्तरी जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0218</value></geocode>
+    </area>
+    <area>
+      <areaDesc>धनुषा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0217</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सिराहा जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0216</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सप्तरी जिल्ला: कात्तिक १३ आकस्मिक बाढी उच्च जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0215</value></geocode>
+    </area>
+    <area>
+      <areaDesc>तेह्रथुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0108</value></geocode>
+    </area>
+    <area>
+      <areaDesc>पाँचथर जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0102</value></geocode>
+    </area>
+    <area>
+      <areaDesc>इलाम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0103</value></geocode>
+    </area>
+    <area>
+      <areaDesc>झापा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0104</value></geocode>
+    </area>
+    <area>
+      <areaDesc>मोरङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0105</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सुनसरी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0106</value></geocode>
+    </area>
+    <area>
+      <areaDesc>डोल्पा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0662</value></geocode>
+    </area>
+    <area>
+      <areaDesc>मुस्ताङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0445</value></geocode>
+    </area>
+    <area>
+      <areaDesc>पूर्वी रुकुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0552</value></geocode>
+    </area>
+    <area>
+      <areaDesc>पश्चिम रुकुम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0652</value></geocode>
+    </area>
+    <area>
+      <areaDesc>म्याग्दी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0444</value></geocode>
+    </area>
+    <area>
+      <areaDesc>बागलुङ जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0443</value></geocode>
+    </area>
+    <area>
+      <areaDesc>पर्वत जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0442</value></geocode>
+    </area>
+    <area>
+      <areaDesc>स्याङ्जा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0441</value></geocode>
+    </area>
+    <area>
+      <areaDesc>गुल्मी जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0551</value></geocode>
+    </area>
+    <area>
+      <areaDesc>प्युठान जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0555</value></geocode>
+    </area>
+    <area>
+      <areaDesc>अर्घाखाँची जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0550</value></geocode>
+    </area>
+    <area>
+      <areaDesc>पाल्पा जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0546</value></geocode>
+    </area>
+    <area>
+      <areaDesc>कपिलवस्तु जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0549</value></geocode>
+    </area>
+    <area>
+      <areaDesc>रुपन्देही जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0548</value></geocode>
+    </area>
+    <area>
+      <areaDesc>नवलपरासी पश्चिम जिल्ला: कात्तिक १३ आकस्मिक बाढी मध्यम जोखिम</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0547</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Flood and landslide risk advisory (Cyclone 'Arnab')</event>
+    <responseType>Prepare</responseType>
+    <urgency>Future</urgency>
+    <severity>Moderate</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-27T18:10:00+05:45</effective>
+    <onset>2026-10-29T08:00:00+05:45</onset>
+    <expires>2026-11-01T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Flood Forecasting (@DHM_FloodEWS) · relayed by Gati</senderName>
+    <headline>DHM flood forecasting: because of Cyclone 'Arnab', rivers in the Narayani, Koshi, Bagmati, Kamala and Tinau basins may rise significantly on Kartik 13 (Fri 30 Oct); high flash flood risk in 35 districts</headline>
+    <description>Official (Flood Forecasting Division special advisory 'Possible impact of Cyclone Arnab: preliminary flood, landslide and other hydrological risk assessment and early warning', dated 2083 Kartik 10, posted on @DHM_FloodEWS at 6:10 PM on 27 Oct): from Kartik 11 to 15 (28 Oct to 1 Nov) significant rain may raise river levels, especially in the Narayani, Bagmati, Kamala and Koshi basins. Kartik 11 (Wed 28 Oct): major rivers normal. Kartik 12 (Thu 29 Oct): slight rise in the Narayani, Koshi, Bagmati and Kamala; low risk. Kartik 13 (Fri 30 Oct): with moderate to heavy rain, levels may rise significantly in the Narayani, Koshi and tributaries, Bagmati, Kamala, Tinau and nearby basins; only a normal rise in the Mahakali, Karnali, West Rapti and Babai; moderate risk. Kartik 14 (Sat 31 Oct): major rivers may peak but reach only around the warning level; for now the chance of crossing the danger level is low; moderate risk. Kartik 15 (Sun 1 Nov): light rain at some places; low risk. Flash flood risk map, 24 hours from 8 AM Kartik 13: high risk in Manang, Kaski, Lamjung, Gorkha, Tanahu, Nawalparasi East, Chitwan, Dhading, Rasuwa, Nuwakot, Sindhupalchok, Dolakha, Makwanpur, Kathmandu, Bhaktapur, Lalitpur, Kavrepalanchok, Ramechhap, Solukhumbu, Okhaldhunga, Khotang, Bhojpur, Sankhuwasabha, Taplejung, Dhankuta, Sindhuli, Udayapur, Parsa, Bara, Rautahat, Sarlahi, Mahottari, Dhanusha, Siraha, Saptari; moderate in 21 more districts to the east and west. Kartik 12 and 14: moderate risk in districts of the east and centre. This is a preliminary assessment; risk may change with actual rainfall. Toll-free 1155(2) restarted.</description>
+    <instruction>Avoid travel along river banks, riverside roads, risky river valleys and high mountain areas; take care on essential travel. Do not cross streams or go to river banks. Follow official notices and the local administration. Toll-free 1155(2).</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2115057174414270915</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2115057174414270915</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-27T18:10:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVoxRDoakAEWJ0H.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: Cyclone 'Arnab' may raise Narayani, Koshi, Bagmati, Kamala rivers significantly on 30 Oct; high flash flood risk in 35 districts</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Manang district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0438</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Kaski district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0439</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Lamjung district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0437</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Gorkha district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0436</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Tanahu district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0440</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Nawalparasi East district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0447</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Chitwan district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0335</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Dhading district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Rasuwa district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0329</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Nuwakot district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0328</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Sindhupalchok district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0323</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Dolakha district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0322</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Makwanpur district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0331</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Kathmandu district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0327</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Bhaktapur district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0326</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Lalitpur district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Kavrepalanchok district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0324</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Ramechhap district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0321</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Solukhumbu district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0111</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Okhaldhunga district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0113</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Khotang district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0112</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Bhojpur district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0110</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Sankhuwasabha district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0109</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Taplejung district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0101</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Dhankuta district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0107</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Sindhuli district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0320</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Udayapur district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0114</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Parsa district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0234</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Bara district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0233</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Rautahat district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0232</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Sarlahi district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0219</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Mahottari district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0218</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Dhanusha district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0217</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Siraha district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0216</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Saptari district: high flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0215</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Terhathum district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0108</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Panchthar district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0102</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Ilam district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0103</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Jhapa district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0104</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Morang district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0105</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Sunsari district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0106</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Dolpa district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0662</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Mustang district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0445</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Rukum East district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0552</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Rukum West district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0652</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Myagdi district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0444</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Baglung district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0443</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Parbat district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0442</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Syangja district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0441</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Gulmi district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0551</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Pyuthan district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0555</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Arghakhanchi district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0550</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Palpa district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0546</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Kapilbastu district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0549</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Rupandehi district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0548</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Nawalparasi West district: moderate flash flood risk on Kartik 13</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0547</value></geocode>
+    </area>
+  </info>
+</alert>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27</identifier>
+  <sender>ndrrma.gov.np</sender>
+  <sent>2026-10-27T11:34:58+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>National Disaster Risk Reduction and Management Authority (NDRRMA)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Disaster Risk Reduction and Management Authority (NDRRMA). Source: https://x.com/NDRRMA_Nepal/status/2114957760647581789</note>
+  <references>ndrrma.gov.np,np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26,2026-10-26T18:37:17+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>उच्च सतर्कताका लागि अनुरोध</event>
+    <responseType>Prepare</responseType>
+    <urgency>Expected</urgency>
+    <severity>Severe</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-27T11:34:58+05:45</effective>
+    <onset>2026-10-29T18:00:00+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण (NDRRMA) · गति मार्फत प्रसारित</senderName>
+    <headline>NDRRMA: 'अर्नब' चक्रवात थप शक्तिशाली हुँदै, अति शक्तिशाली बन्न सक्ने; नेपालमा प्रभाव बिहीबार (कात्तिक १२) रातिबाट; २९ देखि ३१ अक्टोबर उच्च सतर्कता</headline>
+    <description>अद्यावधिक, आधिकारिक (NDRRMA को अङ्ग्रेजी सूचना 'Request to Remain on High Alert', मिति मंगलबार, २७ अक्टोबर २०२६ / कात्तिक १०, @NDRRMA_Nepal मा बिहान ११:३४ मा प्रकाशित; कात्तिक ९ को नेपाली सूचनाको ठाउँमा): DHM को पोस्ट-मनसुन विशेष बुलेटिनअनुसार बंगालको खाडीमा रहेको 'अर्नब' चक्रवात थप शक्तिशाली हुँदै छ र अति शक्तिशाली (very severe) बन्न सक्छ। यो २८ अक्टोबर (कात्तिक ११) मा भारतमा जमिनमा प्रवेश गर्ने सम्भावना छ र नेपालमा प्रभाव बिहीबार, २९ अक्टोबर (कात्तिक १२) रातिबाट सुरु हुने देखिन्छ। शुक्रबार ३० र शनिबार ३१ अक्टोबर (कात्तिक १३ र १४) कोशी, बागमती, मधेश, गण्डकी र लुम्बिनी बढी प्रभावित हुने; धेरै स्थानमा चट्याङ र हावासहित मध्यमसम्म र थोरै स्थानमा भारी वर्षा। कर्णाली र सुदूरपश्चिमका केही स्थानमा मध्यम र एक-दुई स्थानमा भारी वर्षा सम्भव। उच्च पहाडी र हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी र हिमपहिरोको उच्च जोखिम। २९ देखि ३१ अक्टोबरसम्म उच्च सतर्कतामा रहन अनुरोध।</description>
+    <instruction>पर्यटक उच्च पहाडी र हिमाली क्षेत्रमा नजानुहोस्; गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्। अत्यावश्यक नपरी यात्रा नगर्नुहोस्; सडक, हवाई यातायात र दैनिक जीवन प्रभावित हुन सक्छ। बाढी आउन सक्ने नदी किनार जस्ता जोखिमयुक्त ठाउँमा नबस्नुहोस्। NDRRMA, DHM र सम्बन्धित निकायका पछिल्ला सूचना हेर्नुहोस्। मौसम जानकारी: ११५५; विपद्मा सहायता: १२३४ (NEOC/DEOC), १०० (नेपाल प्रहरी), १११४ (सशस्त्र प्रहरी), पर्यटक प्रहरी ११४४।</instruction>
+    <web>https://x.com/NDRRMA_Nepal/status/2114957760647581789</web>
+    <contact>NDRRMA · https://bipad.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NDRRMA_Nepal/status/2114957760647581789</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-27T11:34:58+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVnWxSZbgAACZDg.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>NDRRMA: 'अर्नब' चक्रवात अति शक्तिशाली बन्न सक्ने, प्रभाव कात्तिक १२ रातिबाट; कात्तिक १२ देखि १४ उच्च सतर्कता; हिमालमा हिमपहिरो जोखिम</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै प्रदेश)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Request for high alert</event>
+    <responseType>Prepare</responseType>
+    <urgency>Expected</urgency>
+    <severity>Severe</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-27T11:34:58+05:45</effective>
+    <onset>2026-10-29T18:00:00+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>National Disaster Risk Reduction and Management Authority (NDRRMA) · relayed by Gati</senderName>
+    <headline>NDRRMA: Cyclone 'Arnab' gaining strength and likely to become very severe; effects on Nepal from Thursday night, 29 Oct; high alert 29 to 31 Oct</headline>
+    <description>Update, official (NDRRMA English notice 'Request to Remain on High Alert', dated Tuesday 27 October 2026 / Kartik 10, posted on @NDRRMA_Nepal at 11:34 AM; replaces the Nepali notice of Kartik 9): according to DHM's special post-monsoon bulletin, Cyclone 'Arnab' in the Bay of Bengal is gaining strength and is likely to become very severe. It is likely to make landfall in India on 28 October, and its effects on Nepal are expected to begin on the night of Thursday, 29 October. Koshi, Bagmati, Madhesh, Gandaki and Lumbini are expected to be particularly affected on Friday 30 and Saturday 31 October, with rain of up to moderate intensity with thunder, lightning and wind at many places and heavy rain at a few places. In Karnali and Sudurpaschim, moderate rain with thunder, lightning and wind is likely at some places, with heavy rain possible at one or two. High hill and Himalayan areas face a high risk of heavy snowfall, snowstorms and avalanches. All concerned are requested to remain on high alert from 29 to 31 October.</description>
+    <instruction>Tourists should avoid travelling to high hill and Himalayan areas; those already there should stay in safe places. Avoid non-essential travel; road and air transport and daily life may be disrupted. Do not stay in high-risk areas such as riverbanks that may flood. Follow the latest forecasts and warnings from NDRRMA, DHM and other official agencies. Weather information: 1155; disaster help: 1234 (NEOC/DEOC), 100 (Nepal Police), 1114 (Armed Police Force), Tourist Police 1144.</instruction>
+    <web>https://x.com/NDRRMA_Nepal/status/2114957760647581789</web>
+    <contact>NDRRMA · https://bipad.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NDRRMA_Nepal/status/2114957760647581789</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-27T11:34:58+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HVnWxSZbgAACZDg.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>NDRRMA: Cyclone 'Arnab' may become very severe; effects from night of 29 Oct; high alert 29 to 31 Oct; avalanche risk in the mountains</value></parameter>
+    <area>
+      <areaDesc>Nepal (all provinces)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

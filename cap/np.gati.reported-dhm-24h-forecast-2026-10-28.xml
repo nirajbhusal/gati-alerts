@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.reported-dhm-24h-forecast-2026-10-28</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-28T06:40:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.thahakhabar.com/detail/310967</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>मौसम पूर्वानुमान</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-28T06:40:00+05:45</effective>
+    <onset>2026-10-28T06:40:00+05:45</onset>
+    <expires>2026-10-29T06:00:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित</senderName>
+    <headline>कात्तिक ११ (आज र आज राति): कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीमा साधारणतया बदली; राति हिमालमा मध्यम वर्षा/हिमपात र केही पहाड-तराईमा मध्यम वर्षा</headline>
+    <description>रिपोर्ट गरिएको (थाहाखबर र खबर निरन्तर, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ११ बिहानको पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव छ र बिहीबारदेखि 'अर्नब' चक्रवातको प्रभाव पर्ने। आज दिउँसो कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीमा साधारणतया बदली, कर्णाली र सुदूरपश्चिममा आंशिक बदली; हिमाली भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात। आज राति देशभर साधारणतया बदली; कोशी, कर्णाली र सुदूरपश्चिमका हिमाली भूभागका केही/थोरै स्थान र बागमती, गण्डकीका हिमाली भूभागका एक-दुई स्थानमा मध्यम वर्षा/हिमपात; कोशी र बागमतीका पहाड, मधेश र कोशीको तराईका एक-दुई स्थानमा मध्यम वर्षा। कात्तिक १२ देखि १४ को चेतावनीबारे DHM को आधिकारिक ५ दिने बुलेटिन र NDRRMA को उच्च सतर्कता सूचना हेर्नुहोस्।</description>
+    <instruction>पाकेको धान बिहीबार (कात्तिक १२) अगावै भित्र्याउनुहोस्; उच्च पहाडी र हिमाली यात्रा स्थगित गर्नुहोस्; DHM को पछिल्लो पूर्वानुमान हेर्नुहोस् (फोन ११५५)।</instruction>
+    <web>https://www.thahakhabar.com/detail/310967</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.thahakhabar.com/detail/310967</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-28T06:40:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://www.thahakhabar.com/detail/310967</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://khabarnirantar.com/59636/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>कात्तिक ११: पाँच प्रदेशमा साधारणतया बदली; आज राति हिमालमा मध्यम वर्षा/हिमपात, केही पहाड-तराईमा मध्यम वर्षा</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Weather forecast</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-28T06:40:00+05:45</effective>
+    <onset>2026-10-28T06:40:00+05:45</onset>
+    <expires>2026-10-29T06:00:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM) · relayed by Gati</senderName>
+    <headline>28 Oct (today and tonight): generally cloudy in Koshi, Madhesh, Bagmati, Gandaki and Lumbini; tonight moderate rain or snow in the mountains and moderate rain at a few hill and Terai places</headline>
+    <description>Reported (Thaha Khabar and Khabar Nirantar, both citing the DHM Meteorological Forecasting Division's forecast of the morning of Kartik 11): westerly winds have a partial influence, and Cyclone 'Arnab' is expected to affect Nepal from Thursday. This afternoon generally cloudy in Koshi, Madhesh, Bagmati, Gandaki and Lumbini, partly cloudy in Karnali and Sudurpaschim; light rain or snow at one or two places in the mountains. Tonight generally cloudy across the country; moderate rain or snow at a few places in the Koshi, Karnali and Sudurpaschim mountains and at one or two places in the Bagmati and Gandaki mountains; moderate rain at one or two places in the Koshi and Bagmati hills, Madhesh and the Koshi Terai. For the Kartik 12 to 14 warnings, see DHM's official 5-day bulletin and NDRRMA's high-alert notice.</description>
+    <instruction>Bring in ripe paddy before Thursday, Kartik 12 (29 Oct); put off high-hill and mountain travel; check DHM's latest forecast (phone 1155).</instruction>
+    <web>https://www.thahakhabar.com/detail/310967</web>
+    <contact>DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.thahakhabar.com/detail/310967</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-28T06:40:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://www.thahakhabar.com/detail/310967</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://khabarnirantar.com/59636/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>28 Oct: generally cloudy in five provinces; tonight moderate rain or snow in the mountains, moderate rain at a few hill and Terai places</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>
