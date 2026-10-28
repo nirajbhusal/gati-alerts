@@ -25,6 +25,8 @@
     if (!q) return `<b>${T("भूकम्प", "Earthquake")}:</b> ${T("NSC को M4 माथिको हालको भूकम्प छैन।", "No recent NSC quake above M4.")}`;
     const i = q.info[G.lang === "ne" ? "ne" : "en"] || q.info.en;
     return `<b>${T("पछिल्लो भूकम्प (M4 माथि)", "Latest quake (M4+)")}:</b> <a href="${R}alerts/${E(q.identifier)}/">${E(i.headline)}</a> <span class="meta">· ${T("स्रोत", "Source")}: <a href="${E(i.web)}" target="_blank" rel="noopener">NSC</a> · ${tm(q.sent)}</span>`; };
+  B.sos = (D) => { const c = D.ct; if (!c) return ""; const L = c.national.filter((x) => x.num !== "1149");
+    return `<b>${T("आपतकालीन नम्बर", "Emergency numbers")}:</b> ` + L.map((x) => `<a href="tel:${E(x.num)}">${E(T(x.ne, x.en))} ${N(x.num)}</a>`).join(" · ") + ` <span class="meta">· ${T("निकायले सूचीकृत गरेअनुसार", "as each agency lists them")}, <a href="${R}contacts/">${T("स्रोत", "sources")}</a> · ${T("जाँचेको", "checked")} ${E(N(c.checked))}</span>`; };
   /*BLOCKS*/
   Promise.all(["data/source-health.json", "data/alerts.json", "data/caan.json", "data/rivers.json", "data/contacts.json", "data/roads.json"].map(J)).then(([sh, al, caan, rv, ct, rd]) => {
     const D = { sh, al: al ? al.alerts : [], caan, rv, ct, rd };
