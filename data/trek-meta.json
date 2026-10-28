@@ -1,0 +1,39 @@
+{
+  "checked": "2026-10-28T13:40:00+05:45",
+  "checked_ne": "कात्तिक ११ (२८ अक्टोबर), दिउँसो १:४०",
+  "checked_en": "Kartik 11 (28 Oct), 1:40 PM NPT",
+  "flights": {
+    "lukla": {"ne": "लुक्ला उडान", "en": "Lukla flights", "links": [["Tribhuvan International Airport: flight information", "https://www.tiairport.com.np/flight-information"], ["CAAN", "https://caanepal.gov.np/"]]},
+    "jomsom": {"ne": "जोमसोम उडान", "en": "Jomsom flights", "links": [["CAAN", "https://caanepal.gov.np/"]]}
+  },
+  "hra": {
+    "source": "https://www.himalayanrescue.org/",
+    "source_name": "Himalayan Rescue Association Nepal (HRA)",
+    "checked_ne": "कात्तिक ११ (२८ अक्टोबर) मा जाँचेको",
+    "checked_en": "checked Kartik 11 (28 Oct)",
+    "posts": [
+      {"name": "HRA Pheriche aid post", "ne": "HRA फेरिचे उपचार केन्द्र", "ll": [27.8955, 86.8195], "treks": ["ebc"], "season_ne": "वसन्त र शरद् पदयात्रा मौसममा (वर्षमा दुई पटक)", "season_en": "Spring and autumn trekking seasons (twice a year)"},
+      {"name": "HRA Everest ER (Base Camp)", "ne": "HRA एभरेस्ट ER (आधार शिविर)", "ll": [28.0026, 86.8528], "treks": ["ebc"], "season_ne": "वसन्त आरोहण मौसम मात्र", "season_en": "Spring climbing season only"},
+      {"name": "HRA Manang aid post", "ne": "HRA मनाङ उपचार केन्द्र", "ll": [28.6667, 84.0167], "treks": ["annapurna"], "season_ne": "वसन्त र शरद् पदयात्रा मौसममा", "season_en": "Spring and autumn trekking seasons"}
+    ]
+  },
+  "treks": {
+    "ebc": {"start_ne": "लुक्ला", "start_en": "Lukla", "end_ne": "सगरमाथा आधार शिविर", "end_en": "Everest Base Camp", "flight": "lukla", "roads": []},
+    "mera": {"start_ne": "लुक्ला", "start_en": "Lukla", "end_ne": "मेरा", "end_en": "Mera", "flight": "lukla", "roads": []},
+    "numbur": {"roads": ["hq-charikot"]},
+    "rolwaling": {"roads": ["hq-charikot"]},
+    "tamakoshi": {"roads": ["hq-charikot"]},
+    "langtang": {"start_ne": "स्याफ्रुबेसी", "start_en": "Syabrubesi", "end_ne": "क्यान्जिन", "end_en": "Kyanjin Gompa", "roads": ["pasang-lhamu"]},
+    "gosaikunda": {"roads": ["pasang-lhamu"]},
+    "helambu": {"roads": []},
+    "manaslu": {"roads": ["abukhaireni-gorkha"]},
+    "annapurna": {"flight": "jomsom", "roads": ["dumre-besisahar", "hq-chame", "beni-jomsom", "jomsom-muktinath"]},
+    "abc": {"start_ne": "नयाँपुल", "start_en": "Nayapul", "end_ne": "अन्नपूर्ण आधार शिविर", "end_en": "Annapurna Base Camp", "roads": ["mugling-pokhara", "pokhara-baglung"]},
+    "poonhill": {"start_ne": "नयाँपुल", "start_en": "Nayapul", "end_ne": "पुनहिल", "end_en": "Poon Hill", "roads": ["mugling-pokhara", "pokhara-baglung"]},
+    "mardi": {"roads": ["mugling-pokhara"]},
+    "dhaulagiri": {"roads": ["pokhara-baglung", "baglung-beni"]},
+    "makalu": {"roads": ["hq-khandbari"]},
+    "kanchenjunga-s": {"roads": ["hq-phungling"]},
+    "kanchenjunga-n": {"roads": ["hq-phungling"]}
+  }
+}

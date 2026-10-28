@@ -1471,3 +1471,8 @@ header.top .gdate span:first-child{font-weight:600;color:var(--ink);font-size:16
 @media(max-width:600px){.hie{min-height:6em}}
 .hinfo .hib{font-size:var(--fs-6);line-height:1.5}.hinfo .hib b{font-weight:600}.hinfo .hiqn a{text-decoration:none!important;font-size:var(--fs-6)}
 .hinfo .hiac b{font-size:var(--fs-6)}.hinfo .hiac .hin{font-size:22px}
+
+/* trek check */
+.tkcf{display:flex;flex-wrap:wrap;gap:10px 16px;margin:6px 0 10px}.tkcf label{display:flex;flex-direction:column;font-size:.85rem;gap:3px}.tkcf select,.tkcf input{font:inherit;padding:6px 8px;border:1px solid var(--line,#ccc);border-radius:8px;background:var(--card,#fff);color:inherit;min-width:12rem}
+.tkprof{width:100%;height:auto;display:block;margin:6px 0 2px}.tkpA{fill:currentColor;opacity:.08;stroke:none}.tkpL{fill:none;stroke:currentColor;stroke-width:1.8}.tkpS{fill:var(--card,#fff);stroke:currentColor;stroke-width:1.5}.tkpT{font-size:11px;fill:currentColor;opacity:.7}
+.tkst ol{margin:6px 0;padding-left:1.4rem}.tkst li{margin:2px 0}.tksec{margin-top:14px;border-top:1px solid var(--line,#ddd);padding-top:10px}.tksec h3{font-size:1rem;margin:0 0 6px}.tkn,.tkdl{list-style:none;padding:0;margin:4px 0}.tkn li,.tkdl li{margin:0 0 8px}.tkn p{margin:2px 0}.tkplain p{margin:0}

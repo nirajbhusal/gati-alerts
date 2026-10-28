@@ -4,10 +4,10 @@ DHM's Cyclone 'Arnab' flood advisory (data/arnab-advisory.json).
 
 Trail geometry: OpenStreetMap contributors (ODbL 1.0), hiking route relations fetched from
 https://api.openstreetmap.org/api/0.6/relation/<id>/full.json on the build date. The Everest
-Base Camp line has no OSM route relation, so it is the OSM footpath network routed between
+Base Camp, Annapurna Base Camp and Poon Hill lines have no OSM route relation, so they are the OSM footpath network routed between
 named villages with the FOSSGIS OSRM foot profile (routing.openstreetmap.de, also OSM data).
 Lines are simplified for display; they are not for navigation.
-Usage: python scripts/make_treks.py /dir/with/<id>.json [ebc.json]
+Usage: python scripts/make_treks.py /dir/with/<id>.json (plus ebc.json, abc.json, poon.json routed lines)
 """
 import json, sys, pathlib
 from shapely.geometry import shape, mapping, MultiLineString, LineString
@@ -18,6 +18,8 @@ SRC = pathlib.Path(sys.argv[1])
 # id, slug, Nepali name, English name
 TREKS = [
     ("ebc", "ebc", "सगरमाथा आधार शिविर (लुक्ला–नाम्चे–गोरखशेप)", "Everest Base Camp (Lukla, Namche, Gorak Shep)"),
+    ("abc", "abc", "अन्नपूर्ण आधार शिविर (नयाँपुल–घान्द्रुक–छोम्रोङ)", "Annapurna Base Camp (Nayapul, Ghandruk, Chhomrong)"),
+    ("poon", "poonhill", "पुनहिल (नयाँपुल–उलेरी–घोरेपानी)", "Poon Hill (Nayapul, Ulleri, Ghorepani)"),
     (6829677, "mera", "मेरा पिक पदमार्ग", "Mera Peak trek"),
     (7837105, "numbur", "नुम्बुर चिज सर्किट", "Numbur Cheese Circuit"),
     (19876391, "rolwaling", "रोल्वालिङ (ताशी लाप्चा)", "Rolwaling (Tashi Labsa)"),
@@ -56,8 +58,8 @@ D = json.loads((ROOT / "data/districts.geojson").read_text(encoding="utf-8"))
 dg = [(f["properties"]["slug"], shape(f["geometry"])) for f in D["features"]]
 feats = []
 for rid, slug, ne, en in TREKS:
-    if rid == "ebc":
-        g = shape(json.load(open(sys.argv[2] if len(sys.argv) > 2 else SRC / "ebc.json"))); osm = None
+    if isinstance(rid, str):
+        g = shape(json.load(open(SRC / f"{rid}.json"))); osm = None
     else:
         g, tags = rel_lines(SRC / f"{rid}.json", rid); osm = f"https://www.openstreetmap.org/relation/{rid}"
     g = g.simplify(0.0006)
