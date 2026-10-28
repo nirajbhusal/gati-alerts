@@ -9,6 +9,15 @@
   B.quick = () => `<nav class="hiqn" aria-label="${E(T("छिटो जाँच", "Quick checks"))}"><a href="${R}route/">${T("सडक मार्ग जाँच्नुहोस्", "Check a road route")}</a><a href="${R}trek/">${T("पदमार्ग जाँच्नुहोस्", "Check a trek")}</a><a href="${R}affected/">${T("मेरो जिल्ला जाँच्नुहोस्", "Check my district")}</a></nav>`;
   B.fresh = (D) => { if (!D.sh) return ""; const S = D.sh.sources, L = [["dhm-hydrology", "DHM"], ["ndrrma", "NDRRMA"], ["nepal-police", T("नेपाल प्रहरी", "Nepal Police")], ["nsc", "NSC"], ["dor-navigate", "DoR NAVIGATE"]];
     return `<b>${T("स्रोतबाट पछिल्लो अद्यावधिक", "Last updated by source")}:</b> ` + L.filter(([k]) => S[k]).map(([k, n]) => { const s = S[k]; return `<span class="hifs">${n}: ${s.lastSuccess ? tm(s.lastSuccess) : `${T("पछिल्लो जाँचमा पुग्न सकिएन", "not reachable at last check")} (${tm(s.lastChecked)})`}</span>`; }).join(" · ") + ` · <a href="${R}sources/">${T("स्रोत स्थिति", "Source health")}</a>`; };
+  B.agency = (D) => { const act = (f) => D.al.filter((a) => !a.expired && f(a)), last = (xs) => xs.map((a) => a.sent).sort().pop();
+    const card = (ne, en, n, unit, href, srcH, when) => `<a class="hiac" href="${href}"><b>${E(T(ne, en))}</b><span class="hin">${N(n)}</span><span class="meta">${unit}</span><span class="meta">${srcH}${when ? " · " + when : ""}</span></a>`;
+    const dhm = act((a) => a.sender === "hydrology.gov.np"), nd = act((a) => a.sender === "ndrrma.gov.np"), rdA = act((a) => a.hazard === "road" && a.sender === "nepalpolice.gov.np");
+    const c = D.caan;
+    return `<div class="hiag">${card("जल तथा मौसम विज्ञान विभाग", "DHM", dhm.length, T("चालु सूचना", "active notices"), R + "weather/", "DHM", dhm.length ? tm(last(dhm)) : "")}
+      ${card("विपद् प्राधिकरण", "NDRRMA", nd.length, T("चालु सूचना", "active notices"), R + "alerts/", "NDRRMA", nd.length ? tm(last(nd)) : "")}
+      ${c ? card("नागरिक उड्डयन प्राधिकरण", "CAAN", c.notices, E(T(c.latest_ne, c.latest_en)), c.url, T("CAAN वेबसाइट, जाँचेको", "CAAN website, checked"), tm(c.checked)) : ""}
+      ${card("सडक", "Roads", rdA.length, T("नेपाल प्रहरीको चालु सडक अवरोध सूचना", "active Nepal Police road blockage notices"), R + "roads/", T("नेपाल प्रहरी", "Nepal Police"), rdA.length ? tm(last(rdA)) : (D.rd ? tm(D.rd.as_of) : ""))}</div>
+      <p class="meta">${T("प्रत्येक निकायको संख्या छुट्टै; कहिल्यै जोडिँदैन।", "Each agency's count is separate; never added together.")}</p>`; };
   /*BLOCKS*/
   Promise.all(["data/source-health.json", "data/alerts.json", "data/caan.json", "data/rivers.json", "data/contacts.json", "data/roads.json"].map(J)).then(([sh, al, caan, rv, ct, rd]) => {
     const D = { sh, al: al ? al.alerts : [], caan, rv, ct, rd };
