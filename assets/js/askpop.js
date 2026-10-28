@@ -106,10 +106,11 @@
       <div class="aqbody" id="aqp-ask" role="tabpanel" ${tab === "ask" ? "" : "hidden"}><p class="aqdisc"><a class="relaylink" href="${R}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p>
       <div class="aqhelp"><a href="tel:100" class="aqcall sm"><b>${G.num("100")}</b><span>${T("प्रहरी", "Police")}</span></a><a href="tel:1234" class="aqcall sm red"><b>${G.num("1234")}</b><span>${T("विपद् (NDRRMA)", "Disaster (NDRRMA)")}</span></a></div>
       <div class="aqlog" aria-live="polite">${keep || `<div class="aqmsg bot aqhello">${T("हजुर के जान्न चाहनुहुन्छ?", "What would you like to know?")}</div>`}</div>
-      <div class="aqchips" role="group" aria-label="${T("छिटो प्रश्न", "Quick questions")}">${chips()}</div></div>
-      <form class="aqform" ${tab === "ask" ? "" : "hidden"}><label class="sr-only" for="aqin">${T("प्रश्न लेख्नुहोस्", "Type a question")}</label><input id="aqin" type="text" autocomplete="off" placeholder="${T("जस्तै: सडक, नदी, बिदा…", "e.g. road, river, holiday…")}"><button type="submit" aria-label="${T("पठाउनुहोस्", "Send")}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></form>`;
+</div>
+      <div class="aqdock"><div class="aqchips" role="group" aria-label="${T("छिटो प्रश्न", "Quick questions")}">${chips()}</div>
+      <form class="aqform" ${tab === "ask" ? "" : "hidden"}><label class="sr-only" for="aqin">${T("प्रश्न लेख्नुहोस्", "Type a question")}</label><input id="aqin" type="text" autocomplete="off" placeholder="${T("जस्तै: गोरखा जाने सडक खुला छ?", "e.g. Is the road to Gorkha open?")}" enterkeyhint="send" maxlength="400"><button type="submit" aria-label="${T("पठाउनुहोस्", "Send")}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></form></div>`;
     log = panel.querySelector(".aqlog");
-    panel.querySelectorAll(".aqchip").forEach((c) => (c.onclick = () => ask(c.dataset.k, c.textContent)));
+    panel.querySelectorAll(".aqchip").forEach((c) => (c.onclick = () => ask(c.dataset.k, c.textContent, true)));
     panel.querySelector(".aqform").onsubmit = (e) => { e.preventDefault(); const i = panel.querySelector("#aqin"), q = i.value.trim(); if (!q) return; i.value = ""; const m = INT.find((x) => x[3].test(q)); ask(m ? m[0] : null, q); };
     const x = panel.querySelector(".aqx"); if (x) x.onclick = close;
     panel.querySelectorAll(".aqtabs [role=tab]").forEach((b, n, all) => { b.onclick = () => setTab(b.dataset.t);
@@ -117,12 +118,34 @@
     if (tab !== "ask") pane();
     log.onclick = (e) => { const b = e.target.closest("[data-do=pick]"); if (b && G.district) G.district.open(() => ask("district", T("के मेरो जिल्ला प्रभावित छ?", "Is my district affected?"))); };
   }
-  async function ask(k, q) {
-    log.insertAdjacentHTML("beforeend", `<div class="aqmsg me">${esc(q)}</div><div class="aqmsg bot aqwait">…</div>`);
-    const w = log.lastElementChild; log.scrollTop = log.scrollHeight;
-    w.innerHTML = k ? await answer(k) : soon(); w.classList.remove("aqwait");
-    w.scrollIntoView({ block: "nearest" });
+  /* Ask Gati with Claude, through Gati's Cloudflare Worker (data/ask-config.json "worker"). The key lives only in the Worker.
+     Any failure (not configured, offline, rate limited, timeout) returns null and the local answers above are used. */
+  async function claude(q) {
+    const cf = await J("data/ask-config.json"); if (!cf || !cf.worker) return { off: true };
+    if (navigator.onLine === false) return { err: "offline" };
+    try {
+      const ac = new AbortController(), to = setTimeout(() => ac.abort(), 20000);
+      const r = await fetch(cf.worker, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q, lang: G.lang }), signal: ac.signal }); clearTimeout(to);
+      if (r.status === 429) return { err: "busy" };
+      if (!r.ok) return { err: "down" }; const j = await r.json(); if (!j || typeof j.answer !== "string") return { err: "down" };
+      const cards = (j.citations || []).map((c) => `<div class="aqcard">${G.trustChip(c.trust || "Official")}<b>${esc(G.lang === "ne" && c.title_ne ? c.title_ne : c.title)}</b><span class="meta">${esc(c.agency || "")}${c.time ? " · " + G.npt(c.time) : ""}</span>${c.url ? link(c.url, T("स्रोत", "Source")) : ""}</div>`).join("");
+      return { html: `<p class="aqai">${esc(G.num(j.answer))}</p>${cards ? `<div class="aqcards">${cards}</div>` : `<p class="meta">${T("आधिकारिक स्रोत भेटिएन।", "No official source cited.")}</p>`}<p class="meta aqaim">${T("Claude ले गतिको आधिकारिक सूचनाबाट मात्र तयार गरेको उत्तर; स्रोत हेर्नुहोस्।", "Written by Claude from Gati's official items only; check the sources.")}</p>` };
+    } catch (e) { return { err: e && e.name === "AbortError" ? "slow" : "down" }; }
   }
+  const ERR = { offline: ["हजुर अफलाइन हुनुहुन्छ।", "You are offline."], busy: ["धेरै प्रश्न आए, केही बेरपछि फेरि सोध्नुहोस्।", "Too many questions right now, try again shortly."], slow: ["जवाफ आउन धेरै समय लाग्यो।", "The answer took too long."], down: ["प्रत्यक्ष जवाफ अहिले उपलब्ध छैन।", "Live answers are unavailable right now."] };
+  const note = (e) => `<p class="aqnote" role="note">${T(ERR[e][0] + " गतिमा सुरक्षित जानकारी देखाउँदै।", ERR[e][1] + " Showing Gati's saved information.")}</p>`;
+  const WAIT = () => `<span class="aqdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="aqwt">${T("आधिकारिक स्रोत हेर्दै…", "Checking official sources…")}</span>`;
+  async function ask(k, q, chip) {
+    log.insertAdjacentHTML("beforeend", `<div class="aqmsg me">${esc(q)}</div><div class="aqmsg bot aqwait" aria-busy="true">${WAIT()}</div>`);
+    const w = log.lastElementChild; log.scrollTop = log.scrollHeight;
+    const f = panel.querySelector(".aqform button"); if (f) f.disabled = true;
+    const ai = !chip ? await claude(q) : null;
+    w.innerHTML = ai && ai.html ? ai.html : (ai && ai.err ? note(ai.err) : "") + (k ? await answer(k) : soon()); w.classList.remove("aqwait"); w.removeAttribute("aria-busy");
+    if (f) f.disabled = false;
+    if (FULL) log.scrollTop = w.offsetTop - log.offsetTop - 8; else w.scrollIntoView({ block: "nearest" });
+  }
+  /* Phone keyboard: keep the input dock just above the on-screen keyboard (visualViewport), hide the tab bar while typing */
+  if (window.visualViewport) { const vv = visualViewport, fit = () => { const kb = Math.max(0, innerHeight - vv.height - vv.offsetTop); document.documentElement.style.setProperty("--kb", kb + "px"); document.documentElement.classList.toggle("kb-open", kb > 120); }; vv.addEventListener("resize", fit); vv.addEventListener("scroll", fit); }
   function open() { lastFocus = document.activeElement; panel.hidden = false; btn.setAttribute("aria-expanded", "true"); btn.hidden = true; document.body.classList.add("aq-open"); setTimeout(() => panel.querySelector("#aqin").focus(), 30); }
   function close() { panel.hidden = true; btn.hidden = false; btn.setAttribute("aria-expanded", "false"); document.body.classList.remove("aq-open"); (lastFocus && lastFocus.focus ? lastFocus : btn).focus(); }
   function init() {

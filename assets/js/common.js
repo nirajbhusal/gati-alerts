@@ -58,6 +58,38 @@
     ["map", "map/", ICON('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "नक्सा", "Map"],
     ["patro", "patro/", ICON('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M7.5 13h1M11.5 13h1M15.5 13h1M7.5 16.5h1M11.5 16.5h1"/>'), "पात्रो", "Patro"],
   ];
+  /* Menu line icons: one set, 24 grid, 1.8 stroke, round caps (same as the tab bar) */
+  const MI = {
+    home: '<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>',
+    alerts: '<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+    stories: '<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="M8 3.5h8"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>',
+    affected: '<circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>',
+    map: '<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>',
+    reports: '<path d="M4.5 5.5h15v10h-8l-4.5 4v-4h-2.5z"/><path d="M8.5 9.5h7M8.5 12.5h4.5"/>',
+    weather: '<path d="M7 18.5h10a4 4 0 0 0 .4-8 5.5 5.5 0 0 0-10.6 1.6A3.2 3.2 0 0 0 7 18.5z"/>',
+    air: '<path d="M3.5 9h11a2.5 2.5 0 1 0-2.5-2.5"/><path d="M3.5 13h15a2.5 2.5 0 1 1-2.5 2.5"/><path d="M3.5 17h6"/>',
+    rivers: '<path d="M3 8c2 0 2-1.5 4.5-1.5S9.5 8 12 8s2.5-1.5 4.5-1.5S19 8 21 8"/><path d="M3 13c2 0 2-1.5 4.5-1.5S9.5 13 12 13s2.5-1.5 4.5-1.5S19 13 21 13"/><path d="M3 18c2 0 2-1.5 4.5-1.5S9.5 18 12 18s2.5-1.5 4.5-1.5S19 18 21 18"/>',
+    earthquakes: '<path d="M2.5 12h4l2-5 3.5 11 3-8 1.5 2h5"/>',
+    roads: '<path d="M8 3.5 5 20.5M16 3.5l3 17"/><path d="M12 5v2.5M12 11v2.5M12 17v2.5"/>',
+    route: '<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h7.5a3 3 0 0 0 0-6h-7a3 3 0 0 1 0-6H16"/>',
+    trek: '<path d="m3 19.5 6.5-11 4 6 2.5-3.5 5 8.5z"/><path d="m8 11 1.5 1.5L11 11"/>',
+    contacts: '<path d="M6.5 3.5h3l1.5 4.5-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/>',
+    safety: '<path d="M12 3.5 5 6v5.5c0 4.3 3 7.6 7 9 4-1.4 7-4.7 7-9V6z"/><path d="m9 12 2 2 4-4"/>',
+    patro: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M7.5 13h1M11.5 13h1M15.5 13h1M7.5 16.5h1M11.5 16.5h1"/>',
+    ask: '<path d="M4.5 6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H10l-4.5 3.5v-3.5h0a1 1 0 0 1-1-1z"/><path d="M10 9.2a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2"/><path d="M12 14.3h0"/>',
+    report: '<path d="M12 4v10M7.5 9.5 12 14l4.5-4.5"/><path d="M4.5 16.5v3h15v-3"/>',
+    lite: '<rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 17.5h2"/>',
+    about: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h0"/>',
+    sources: '<path d="M9.5 14.5a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14.5 9.5a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+    api: '<path d="m8.5 7.5-4.5 4.5 4.5 4.5M15.5 7.5l4.5 4.5-4.5 4.5"/>',
+    log: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    contact: '<rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/>',
+    me: '<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/>',
+    close: '<path d="M6 6l12 12M18 6 6 18"/>',
+    chev: '<path d="m9.5 6 6 6-6 6"/>',
+  };
+  const MIC = (id, w = 20) => `<svg class="mic" viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${MI[id] || MI.about}</svg>`;
+  G.MIC = MIC;
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;
   /* Phone menu: every page grouped by purpose, Home as a full row, current page highlighted. Desktop keeps the inline row + More. */
@@ -65,7 +97,7 @@
     ["सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
     ["मौसम र जोखिम", "Weather and hazards", [["weather", "weather/", "मौसम", "Weather"], ["air", "air/", "हावाको गुणस्तर", "Air quality"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
     ["यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग जाँच", "Trek check"]]],
-    ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["ask", "ask/", "सोध्नुहोस्", "Ask"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
+    ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
     ["बारेमा", "About", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"]]],
   ];
   const mgroups = `<div class="mgroups"><a class="mghome" href="${ROOT}./"${PAGE === "home" ? ' aria-current="page"' : ""}>${b("गृहपृष्ठ", "Home")}</a>${GRP.map(([ne, en, it]) => `<div class="mg"><p class="mgh">${b(ne, en)}</p><div class="mgl">${it.map(([id, href, n, e]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(n, e)}</a>`).join("")}</div></div>`).join("")}</div>`;
@@ -84,9 +116,23 @@
     </div>
   </div>
   <nav class="main" id="mainnav" aria-label="Main"><div class="navtop"><a class="navtopbtn" href="${ROOT}me/"${PAGE === "me" ? ' aria-current="page"' : ""}>👤 ${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</a></div>${mgroups}<a class="navhome" href="${ROOT}" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
-    `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, SHORT[id] || en)}</a>`).join("")}
+    `<a${id === "ask" ? ' class="navask"' : ""} href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, SHORT[id] || en)}</a>`).join("")}
     <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
-      <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div><a class="mebtn navme" id="mebtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</span></a></nav>`;
+      <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, en)}</a>`).join("")}</div></div><a class="mebtn navme" id="mebtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</span></a></nav>`;
+  /* Phone menu drawer: a fixed sheet over the page (no layout shift), Ask Gati card on top, grouped icon rows, Profile & Settings at the bottom */
+  const cur = (id) => (id === PAGE ? ' aria-current="page"' : "");
+  const mrow = ([id, href, n, e]) => `<a class="mrow" href="${ROOT}${href}"${cur(id)}><span class="mri">${MIC(id, 22)}</span><span class="mrl">${b(n, e)}</span></a>`;
+  const drawer = document.createElement("div");
+  drawer.className = "mdrawer"; drawer.id = "mdrawer"; drawer.setAttribute("role", "dialog"); drawer.setAttribute("aria-modal", "true"); drawer.setAttribute("aria-label", "मेनु / Menu"); drawer.hidden = true;
+  drawer.innerHTML = `<div class="mdscrim" data-close></div><div class="mdsheet" tabindex="-1">
+    <div class="mdtop"><span class="mdtitle">${b("मेनु", "Menu")}</span><button type="button" class="mdx" data-close aria-label="बन्द गर्नुहोस् / Close">${MIC("close", 22)}</button></div>
+    <div class="mdscroll">
+      <a class="mdask" href="${ROOT}ask/"${cur("ask")}><span class="mdaski">${MIC("ask", 26)}</span><span class="mdaskt"><b>${b("गतिलाई सोध्नुहोस्", "Ask Gati")}</b><small>${b("आधिकारिक स्रोतबाट मात्र जवाफ", "Answers from official sources only")}</small></span>${MIC("chev", 18)}</a>
+      <nav aria-label="पृष्ठहरू / Pages">${mrow(["home", "./", "गृहपृष्ठ", "Home"])}
+      ${GRP.map(([ne, en, it]) => `<section class="mdg"><h2 class="mdh">${b(ne, en)}</h2>${it.map(mrow).join("")}</section>`).join("")}</nav>
+      <div class="mdfoot">${mrow(["me", "me/", "प्रोफाइल र सेटिङ", "Profile & Settings"])}</div>
+    </div></div>`;
+  document.body.append(drawer);
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
     <p class="fdisclaimer">${b("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</p>
@@ -169,7 +215,22 @@
   placeLang(); mqm.addEventListener && mqm.addEventListener("change", () => { placeLang(); fitNav(); });
   G.fitNav = fitNav; fitNav(); addEventListener("resize", fitNav); setTimeout(() => G.onLang(fitNav), 0); document.fonts && document.fonts.ready.then(fitNav);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !moremenu.hidden) { moremenu.hidden = true; morebtn.focus(); } });
-  mb.onclick = () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); };
+  /* Drawer open/close: focus moves in and is trapped, Esc or scrim closes, focus goes back to the menu button */
+  const sheet = drawer.querySelector(".mdsheet");
+  const focusables = () => [...drawer.querySelectorAll("a[href],button")].filter((e) => e.offsetParent);
+  let lastFocus = null;
+  const openDrawer = () => { lastFocus = document.activeElement; drawer.hidden = false; document.documentElement.classList.add("md-lock"); mb.setAttribute("aria-expanded", true);
+    requestAnimationFrame(() => { drawer.classList.add("on"); (drawer.querySelector(".mrow[aria-current], .mdask[aria-current]") || sheet).focus({ preventScroll: true }); const c = drawer.querySelector("[aria-current]"); if (c) c.scrollIntoView({ block: "nearest" }); }); };
+  const closeDrawer = (f = true) => { if (drawer.hidden) return; drawer.classList.remove("on"); mb.setAttribute("aria-expanded", false); document.documentElement.classList.remove("md-lock");
+    const done = () => { drawer.hidden = true; }; matchMedia("(prefers-reduced-motion: reduce)").matches ? done() : setTimeout(done, 200); if (f) (lastFocus && lastFocus.focus ? lastFocus : mb).focus(); };
+  G.closeDrawer = closeDrawer;
+  drawer.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) closeDrawer(); const a = e.target.closest("a[href]"); if (a && a.hash && a.pathname === location.pathname) closeDrawer(false); });
+  drawer.addEventListener("keydown", (e) => { if (e.key === "Escape") { e.stopPropagation(); closeDrawer(); } if (e.key !== "Tab") return; const f = focusables(); if (!f.length) return; const i = f.indexOf(document.activeElement);
+    if (e.shiftKey && (i <= 0)) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); } });
+  mb.setAttribute("aria-controls", "mdrawer"); mb.setAttribute("aria-haspopup", "dialog");
+  mb.innerHTML = `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
+  mb.onclick = () => (drawer.hidden ? openDrawer() : closeDrawer());
+  mqm.addEventListener && mqm.addEventListener("change", () => { if (!mqm.matches) closeDrawer(false); });
   /* Fix sweep 8: the phone menu closes with Escape (focus back on ☰) and when one of its in-page links is used */
   const closeNav = (f) => { if (!nav.classList.contains("open")) return; nav.classList.remove("open"); mb.setAttribute("aria-expanded", false); if (f) mb.focus(); };
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNav(true); });
