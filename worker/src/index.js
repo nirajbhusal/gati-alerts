@@ -41,7 +41,7 @@ export async function handle(req, env, fetcher = fetch) {
   /* some models refuse a forced tool; retry once with auto (the prompt still asks for the reply tool) */
   let r = await call({ type: "tool", name: "reply" });
   if (r.status === 400) { const t = await r.clone().text(); if (/tool_choice/.test(t)) r = await call({ type: "auto" }); }
-  if (!r.ok) { let msg = ""; try { msg = ((await r.json()).error || {}).message || ""; } catch (e) {} return json({ error: "upstream", status: r.status, detail: msg.slice(0, 200), ...(r.status === 401 ? { key_shape: { len: KEY.length, sk_ant: KEY.startsWith("sk-ant-"), raw_len: String(env.ANTHROPIC_API_KEY).length } } : {}) }, 502, cors); }
+  if (!r.ok) { let msg = ""; try { msg = ((await r.json()).error || {}).message || ""; } catch (e) {} return json({ error: "upstream", status: r.status, detail: msg.slice(0, 200) }, 502, cors); }
   const m = await r.json(), tu = (m.content || []).find((c) => c.type === "tool_use" && c.name === "reply"), text = tu ? JSON.stringify(tu.input) : (m.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
   const out = parseModel(text, items); if (!out) return json({ error: "bad_model_output" }, 502, cors);
   return json({ ...out, model: m.model, usage: m.usage, data_time: nowIso }, 200, { ...cors, "Cache-Control": "no-store" });
