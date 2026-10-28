@@ -20,7 +20,7 @@ test("worker: no key gives 503", async () => { const e = env({ ANTHROPIC_API_KEY
 
 import { clean, neDigits, STATUSES } from "../src/lib.js";
 test("card: structure, validation, no Gati-confirmed claims, Nepali digits", () => {
-  const it = [{ id: "A1", url: "u1", title: "t", agency: "Nepal Police", trust: "Official", time: "2026-10-28T02:15:00Z" }, { id: "A2", url: "u1", title: "t2", agency: "Nepal Police", trust: "Official", time: "2026-10-28T03:00:00Z" }, { id: "P1", url: "u2", title: "p", agency: "DoI", trust: "Reported", time: "2026-10-28T08:20:00Z" }];
+  const it = [{ id: "A1", kind: "alert", severity: "Moderate", onset: "2000-01-01T00:00:00Z", url: "u1", title: "t", agency: "Nepal Police", trust: "Official", time: "2026-10-28T02:15:00Z" }, { id: "A2", url: "u1", title: "t2", agency: "Nepal Police", trust: "Official", time: "2026-10-28T03:00:00Z" }, { id: "P1", url: "u2", title: "p", agency: "DoI", trust: "Reported", time: "2026-10-28T08:20:00Z" }];
   const o = parseModel(JSON.stringify({ status: "alert", headline: "नेपाल प्रहरी अनुसार सडक बन्द छ। गतिले यो पुष्टि गरेको छ।", points: [{ text: "शुल्क रु. 3,000 [P1]", cite: ["P1", "X9"] }, { text: "no cite", cite: [] }, { text: "dup", cite: ["A2"] }, { text: "4th", cite: ["A1"] }], todo: [], refer: ["NSC", "Bogus"], answer: "x", cite: ["A1"] }), it, true);
   assert.equal(o.card.status, "alert");
   assert.ok(!/गतिले\s*यो\s*पुष्टि गरेको/.test(o.card.headline));
@@ -34,7 +34,7 @@ test("card: structure, validation, no Gati-confirmed claims, Nepali digits", () 
   assert.equal(parseModel(JSON.stringify({ status: "clear", headline: "h", points: [], answer: "a", cite: [] }), it).card.status, "no_info");
   assert.equal(parseModel(JSON.stringify({ answer: "old style", cite: ["A1"] }), it).card.status, "caution");
   assert.equal(clean("Verified by Gati, open.", false).includes("Gati"), false);
-  assert.equal(neDigits("12"), "१२"); assert.equal(STATUSES.length, 4);
+  assert.equal(neDigits("12"), "१२"); assert.equal(STATUSES.length, 5);
 });
 
 import { noAdvice } from "../src/lib.js";
