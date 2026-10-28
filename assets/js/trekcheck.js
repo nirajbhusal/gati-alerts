@@ -8,8 +8,8 @@
   const KIND = { hospital: ["अस्पताल/स्वास्थ्य केन्द्र", "Hospital or clinic"], health_post: ["स्वास्थ्य चौकी", "Health post"], helipad: ["हेलिप्याड", "Helipad"], police: ["प्रहरी", "Police"] };
   const today = new Date(Date.now() + 345 * 60000).toISOString().slice(0, 10);
   let S = {}, P = new URLSearchParams(location.search);
-  Promise.all(["data/geo/treks.geojson", "data/geo/trekinfo.json", "data/trek-meta.json", "data/alerts.json", "data/arnab-advisory.json", "data/travel-advisory.json", "data/roads.json", "data/districts.json"].map(J)).then(([tk, ti, tm_, al, ar, ta, rd, ds]) => {
-    S = { tk, ti, meta: tm_, al: al ? al.alerts : [], ar, ta, rd, ds }; if (!tk || !ti) { box.innerHTML = `<p class="meta">${T("पदमार्ग जानकारी लोड भएन।", "Could not load trek data.")}</p>`; return; }
+  Promise.all(["data/geo/treks.geojson", "data/geo/trekinfo.json", "data/trek-meta.json", "data/alerts.json", "data/arnab-advisory.json", "data/travel-advisory.json", "data/roads.json", "data/districts.json", "data/trek-permits.json"].map(J)).then(([tk, ti, tm_, al, ar, ta, rd, ds, pm]) => {
+    S = { tk, ti, pm, meta: tm_, al: al ? al.alerts : [], ar, ta, rd, ds }; if (!tk || !ti) { box.innerHTML = `<p class="meta">${T("पदमार्ग जानकारी लोड भएन।", "Could not load trek data.")}</p>`; return; }
     draw(); G.onLang(draw);
   });
   function setP(k, v) { if (v) P.set(k, v); else P.delete(k); history.replaceState(null, "", location.pathname + "?" + P.toString() + location.hash); draw(); }
@@ -58,6 +58,17 @@
       if (m.flight && S.meta.flights[m.flight]) { const fl = S.meta.flights[m.flight]; h += `<p>${E(T(fl.ne, fl.en))}: ${fl.links.map(([n, u]) => `<a href="${E(u)}" target="_blank" rel="noopener">${E(n)}</a>`).join(" · ")} <span class="meta">${T("(लिङ्क मात्र; गतिले उडान स्थिति देखाउँदैन)", "(links only; Gati does not show flight status)")}</span></p>`; }
       h += `</section>`;
     }
+    /* permits and fees, quoted */
+    const pl = S.pm && (S.pm.treks[id] || []);
+    if (pl && pl.length) { const used = {};
+      h += `<section class="tksec"><h3>${T("अनुमति र शुल्क (आधिकारिक स्रोतले जनाएको)", "Permits and fees (as listed by official sources)")}</h3><ul class="tkn">${pl.map((k) => { const it = S.pm.items[k], so = S.pm.sources[it.src]; used[it.src] = so; return `<li><p>${E(T(it.ne, it.en))}</p><p class="meta">${G.trustChip(so.trust)} <a href="${E(so.u)}" target="_blank" rel="noopener">${E(T(so.ne, so.en))}</a>${so.secondary ? ` · ${T("उद्धृत", "quoted from")} <a href="${E(so.secondary)}" target="_blank" rel="noopener">NTB</a>` : ""}</p></li>`; }).join("")}</ul>`;
+      h += Object.values(used).filter((so) => so.note_en).map((so) => `<p class="meta">${E(T(so.note_ne, so.note_en))}</p>`).join("");
+      if (pl.some((k) => S.pm.items[k].src === "ntb_parks")) h += `<p class="meta">${E(T(S.pm.sources.dnpwc.ne, S.pm.sources.dnpwc.en))}: <a href="${E(S.pm.sources.dnpwc.u)}" target="_blank" rel="noopener">dnpwc.gov.np</a>. ${E(T(S.pm.sources.dnpwc.note_ne, S.pm.sources.dnpwc.note_en))}</p>`;
+      h += `<p class="meta">${T("अन्तिम जाँच", "Last checked")}: ${E(T(S.pm.checked_ne, S.pm.checked_en))}. ${T("शुल्क परिवर्तन हुन सक्छ; स्रोत पृष्ठ हेर्नुहोस्।", "Fees can change; the source page is the reference.")}</p></section>`; }
+    /* offline trek pack */
+    const sv = (() => { try { return JSON.parse(localStorage.getItem("gati-trekpack") || "{}")[id]; } catch (e) { return null; } })();
+    h += `<section class="tksec"><h3>${T("अफलाइन पदयात्रा प्याक", "Offline trek pack")}</h3><p class="meta">${T("यो पृष्ठ, उचाइ, सम्पर्क नम्बर र सूचना यही उपकरणमा सुरक्षित गर्छ। सञ्जाल नहुँदा अन्तिम सुरक्षित प्रति देखिन्छ, नयाँ होइन।", "Saves this page, the profile, contact numbers and notices on this device. Offline you see the last saved copy, not new updates.")}</p>
+      <p><button type="button" class="btn" id="tkPack">${T("यो पदयात्रा अफलाइन सुरक्षित गर्नुहोस्", "Save this trek offline")}</button> <span class="meta" id="tkPackS">${sv ? T("सुरक्षित", "Saved at") + " " + G.npt(sv) : ""}</span></p></section>`;
     /* help nearby */
     const hra = S.meta ? S.meta.hra.posts.filter((p) => p.treks.includes(id)) : [];
     h += `<section class="tksec"><h3>${T("नजिकको सहायता (रेखाबाट करिब ५ किमी)", "Help nearby (about 5 km of the line)")}</h3>`;
