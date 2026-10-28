@@ -46,7 +46,7 @@ Rules, all mandatory:
 2. Every fact must cite the id(s) of the item(s) it came from. Cite nothing when you have no information. Do not write ids like [A1] in the text.
 3. Attribute every fact to the agency: "Nepal Police अनुसार ...", "According to DHM ...". NEVER say that Gati confirmed, verified or checked anything (never write गतिले पुष्टि गरेको, गतिले प्रमाणित, "Gati confirms", "verified by Gati").
 4. Never add or sum counts across different agencies. Report each agency separately.
-5. If the items do not cover the question, status is no_info: say plainly that Gati has no official information on it and put the responsible agency in refer (DHM weather, rivers, floods; NDRRMA disasters; Nepal Police roads and safety; DoR road works; NSC earthquakes; Department of Immigration, NTB or DNPWC trekking permits; CAAN flights). If partly covered, fill not_covered with only what is missing ("Gati has no official information on X."); never tell the reader to check, look up or contact anything there.
+5. If the items do not cover the question, status is no_info: say plainly that Gati has no official information on it and put the responsible agency in refer (DHM weather, rivers, floods; NDRRMA disasters; Nepal Police roads and safety; DoR road works; NSC earthquakes; Department of Immigration, NTB or DNPWC trekking permits; CAAN flights). If partly covered, fill not_covered with only what is missing ("Gati has no official information on X."); never tell the reader to check, look up or contact anything there. Write not_covered in the REPLY LANGUAGE too.
 10. Status: alert only for warnings, closures or blockages in effect now. Forecasts, outlooks and advisories about coming days are caution. Fees, permits, rules, contacts and other neutral facts are info.
 6. Give no advice of your own. todo holds only instructions a cited source itself gives, attributed to it. Never write your own suggestion such as "check with", "plan ahead" or "stay safe". Never infer that a place falls inside an area unless an item says so.
 7. Reply in the language named in REPLY LANGUAGE. Nepali: natural Nepali, address the reader as हजुर (never तपाईं or तिमी), Devanagari numerals for every number, including inside amounts like रु. ३,०००. English: Western digits only.
@@ -62,7 +62,7 @@ const DEV = "०१२३४५६७८९";
 export const neDigits = (t) => String(t).replace(/[0-9]/g, (d) => DEV[d]);
 const BADCLAIM = [[/गतिले\s*(यो|यस|यी|सो)?\s*(कुरा)?\s*(पुष्टि|प्रमाणित|जाँच)\s*गरेको\s*(छ|हो|छैन)?/g, "स्रोतले जनाएको"], [/(?:has been |is )?(?:confirmed|verified) by Gati/gi, "per the source"], [/Gati (?:has )?(?:confirmed|verified)/gi, "the source says"], [/not confirmed by Gati/gi, "not officially confirmed"], [/गतिले पुष्टि नगरेको/g, "आधिकारिक पुष्टि नभएको"]];
 export function clean(t, ne) {
-  let x = String(t || "").replace(/\s*\[(?:[ARVFTPC]\d+(?:\s*,\s*)?)+\]/g, "").replace(/\s*\u2014\s*/g, ", ").replace(/तपाईं|तपाईँ|तपाई/g, "हजुर");
+  let x = String(t || "").replace(/^.*?(?:\.\.\.|…)\s*(?:no|wait|sorry|actually)[.,!]\s*/i, "").replace(/\s*\[(?:[ARVFTPC]\d+(?:\s*,\s*)?)+\]/g, "").replace(/\s*\u2014\s*/g, ", ").replace(/तपाईं|तपाईँ|तपाई/g, "हजुर");
   x = x.replace(BADCLAIM[4][0], BADCLAIM[4][1]).replace(BADCLAIM[3][0], BADCLAIM[3][1]);
   for (const [re, to] of BADCLAIM.slice(0, 3)) x = x.replace(re, to);
   if (ne) x = neDigits(x);
@@ -91,5 +91,5 @@ export function parseModel(text, items, ne = false) {
   const headline = clean(o.headline || String(o.answer).split(/(?<=[.।])\s/)[0], ne);
   const answer = clean(typeof o.answer === "string" && o.answer.trim() ? o.answer : [headline, ...points.map((p) => p.text)].join(" "), ne);
   const times = citations.map((c) => Date.parse(c.time)).filter((t) => !isNaN(t));
-  return { answer, citations, card: { v: 1, status, headline, points: fix(points), todo: fix(todo), not_covered: noAdvice(clean(o.not_covered || "", ne)), refer, reported: citations.some((c) => c.trust === "Reported"), as_of: times.length ? new Date(Math.max(...times)).toISOString() : null, ai: true } };
+  return { answer, citations, card: { v: 1, status, headline, points: fix(points), todo: fix(todo), not_covered: ((t) => (ne && t && !/[\u0900-\u097F]/.test(t) ? "" : t))(noAdvice(clean(o.not_covered || "", ne))), refer, reported: citations.some((c) => c.trust === "Reported"), as_of: times.length ? new Date(Math.max(...times)).toISOString() : null, ai: true } };
 }
