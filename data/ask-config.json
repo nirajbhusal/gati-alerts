@@ -1,1 +1,1 @@
-{"worker": "", "note": "Set worker to the deployed Worker URL ending in /ask (for example https://gati-ask.<account>.workers.dev/ask). Empty means Ask Gati uses local answers only."}
+{"worker": "https://gati-ask.nirajbhusal.workers.dev/ask", "note": "Set worker to the deployed Worker URL ending in /ask (for example https://gati-ask.<account>.workers.dev/ask). Empty means Ask Gati uses local answers only."}

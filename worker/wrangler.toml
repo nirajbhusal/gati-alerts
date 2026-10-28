@@ -16,4 +16,4 @@ DAILY_CAP = "2000"
 # Rate limit and daily cap counters. Create with: npx wrangler kv namespace create GATI_ASK_KV, then paste the id.
 [[kv_namespaces]]
 binding = "KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "429f2ab08c844cbcb616673a658aa681"
