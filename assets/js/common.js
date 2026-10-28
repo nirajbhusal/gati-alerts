@@ -35,7 +35,9 @@
     ["rivers", "rivers/", "नदी", "Rivers"],
     ["roads", "roads/", "सडक", "Roads"],
     ["route", "route/", "मार्ग जाँच", "Route check"],
+    ["trek", "trek/", "पदमार्ग", "Trekking"],
     ["weather", "weather/", "मौसम र हावा", "Weather & air"],
+    ["air", "air/", "हावाको गुणस्तर", "Air quality"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
     ["safety", "safety/", "के गर्ने", "What to do"],
@@ -44,13 +46,13 @@
     ["about", "about/", "बारेमा", "About"],
   ];
   /* shorter English labels for the desktop menu row only */
-  const SHORT = { route: "Route", weather: "Weather", contacts: "Emergency", safety: "Safety", log: "Changes" };
+  const SHORT = { trek: "Trek", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", safety: "Safety", log: "Changes" };
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
   const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
   const TABS = [
-    ["home", "?home=1", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
+    ["home", "./", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
     ["alerts", "alerts/", ICON('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'), "सूचना", "Alerts"],
     ["stories", "feed/", ICON('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="M8 3.5h8"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "सूचना फिड", "Feed"],
     ["map", "map/", ICON('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "नक्सा", "Map"],
@@ -58,6 +60,15 @@
   ];
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;
+  /* Phone menu: every page grouped by purpose, Home as a full row, current page highlighted. Desktop keeps the inline row + More. */
+  const GRP = [
+    ["सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
+    ["मौसम र जोखिम", "Weather and hazards", [["weather", "weather/", "मौसम", "Weather"], ["air", "air/", "हावाको गुणस्तर", "Air quality"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
+    ["यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग जाँच", "Trek check"]]],
+    ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["ask", "ask/", "सोध्नुहोस्", "Ask"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
+    ["बारेमा", "About", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"]]],
+  ];
+  const mgroups = `<div class="mgroups"><a class="mghome" href="${ROOT}./"${PAGE === "home" ? ' aria-current="page"' : ""}>${b("गृहपृष्ठ", "Home")}</a>${GRP.map(([ne, en, it]) => `<div class="mg"><p class="mgh">${b(ne, en)}</p><div class="mgl">${it.map(([id, href, n, e]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(n, e)}</a>`).join("")}</div></div>`).join("")}</div>`;
   const header = document.createElement("header");
   header.className = "top";
   header.innerHTML = `<a class="skip" href="#main">${b("मुख्य भागमा जानुहोस्", "Skip to content")}</a>
@@ -66,14 +77,13 @@
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="मेनु / Menu">☰</button>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्"><span class="lfull">${b("English", "नेपाली")}</span><span class="lshort" aria-hidden="true">${b("EN", "ने")}</span></button>
     </div>
-    <a class="brand" href="${ROOT}?home=1" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
+    <a class="brand" href="${ROOT}" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
     <div class="hr">
     <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
     <a class="mebtn profbtn bellbtn" id="profbtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings" title="प्रोफाइल र सेटिङ / Profile & Settings"${PAGE === "me" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><i class="bdot" hidden></i></a>
     </div>
   </div>
-  <p class="gdate" id="gdate" aria-live="off"><span>&nbsp;</span><span>&nbsp;</span><time>&nbsp;</time></p>
-  <nav class="main" id="mainnav" aria-label="Main"><div class="navtop"><a class="navtopbtn" href="${ROOT}me/"${PAGE === "me" ? ' aria-current="page"' : ""}>👤 ${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</a></div><a class="navhome" href="${ROOT}?home=1" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
+  <nav class="main" id="mainnav" aria-label="Main"><div class="navtop"><a class="navtopbtn" href="${ROOT}me/"${PAGE === "me" ? ' aria-current="page"' : ""}>👤 ${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</a></div>${mgroups}<a class="navhome" href="${ROOT}" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
     `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, SHORT[id] || en)}</a>`).join("")}
     <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
       <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")}</div></div><a class="mebtn navme" id="mebtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</span></a></nav>`;
@@ -96,8 +106,14 @@
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
   document.body.prepend(header); document.body.classList.add("ghdr");
+  /* Date block: below the pinned bar, scrolls away with the page so it never covers content */
+  if (document.body.dataset.page !== "embed") { const gd = document.createElement("div"); gd.className = "gdatebar"; gd.innerHTML = `<p class="gdate" id="gdate" aria-live="off"><span class="gbs">&nbsp;</span><span class="gsub">&nbsp;</span></p>`; header.after(gd); }
+  /* Home taps: remember for this session so the phone Feed redirect is skipped, without ?home=1 in the address bar */
+  document.addEventListener("click", (e) => { const a = e.target.closest && e.target.closest("a[href]"); if (!a) return; try { const hp = new URL(ROOT || "./", location.href).pathname; if (a.pathname === hp || a.pathname === hp + "index.html") sessionStorage.setItem("gati-home", "1"); } catch (x) {} }, true);
+  /* Clean address bar: drop a trailing index.html and leftover ?home or empty query */
+  try { const u = new URL(location.href); let ch = false; if (/\/index\.html$/.test(u.pathname)) { u.pathname = u.pathname.replace(/index\.html$/, ""); ch = true; } if (u.searchParams.has("home")) { sessionStorage.setItem("gati-home", "1"); u.searchParams.delete("home"); ch = true; } if (location.href.endsWith("?") || (u.search === "" && location.search !== "")) ch = true; if (ch) history.replaceState(history.state, "", u.pathname + u.search + u.hash); } catch (x) {}
   /* Breaking: official, active, issued in the last 24h, severity Moderate or higher. Dismissible per alert. */
-  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; header.after(brk);
+  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; (document.querySelector(".gdatebar") || header).after(brk);
   /* Fix sweep: paint the last Breaking bar from this browser's cache straight away, so content below does not jump when the fresh one arrives */
   const BRK_KEY = "gati-brk-cache";
   try { const c = JSON.parse(localStorage.getItem(BRK_KEY) || "null"); if (c && c.l === G.lang && Date.now() - c.t < 6 * 3600e3 && ["home", "alerts"].includes(document.body.dataset.page || "")) { brk.innerHTML = c.h; brk.hidden = !c.h; const bl = document.getElementById("breakinglist"); if (bl && c.lh && !bl.innerHTML.trim()) bl.innerHTML = c.lh; } } catch (e) {}
@@ -284,7 +300,7 @@
     navigator.serviceWorker.addEventListener("controllerchange", () => { if (!hadCtl || document.querySelector(".swtoast")) return;
       const t = document.createElement("button"); t.type = "button"; t.className = "swtoast"; t.textContent = "नयाँ संस्करण उपलब्ध · New version, tap to refresh"; t.onclick = () => location.reload(); document.body.append(t); }); }
   const off = document.createElement("div"); off.className = "offline"; off.setAttribute("role", "status"); off.hidden = true;
-  header.after(off);
+  (document.querySelector(".gdatebar") || header).after(off);
   const offDraw = () => {
     const last = localStorage.getItem("gati-last-sync");
     off.innerHTML = `<div class="wrap">${G.lang === "ne"
@@ -417,7 +433,7 @@
     const bs = b ? (ne ? `${BS.WN[w]}, ${N(b.d)} ${BS.MN[b.m - 1]} ${N(b.y)} वि.सं.` : `${BS.WE[w]}, ${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
     const ad = ne ? `${WS[w]}, ${N(d)} ${GN[m]} ${N(y)}` : `${WSE[w]}, ${d} ${GE[m]} ${y}`;
     const h12 = h % 12 || 12, tt = ne ? `${h < 4 ? "राति" : h < 12 ? "बिहान" : h < 17 ? "दिउँसो" : h < 20 ? "साँझ" : "राति"} ${N(h12)}:${N(mi)} नेपाली समय` : `${h12}:${mi} ${h < 12 ? "AM" : "PM"} NPT`;
-    el.innerHTML = `<span>${bs}</span><span>${ad}</span><time datetime="${t.toISOString().slice(0, 16)}+05:45">${tt}</time>`;
+    el.innerHTML = `<span class="gbs">${bs}</span><span class="gsub"><span>${ad}</span><span class="gsep" aria-hidden="true"></span><time datetime="${t.toISOString().slice(0, 16)}+05:45">${tt}</time></span>`;
     clearTimeout(tm); tm = setTimeout(draw, 60000 - (Date.now() % 60000) + 50); }
   if (window.BS) draw(); else { const s = document.createElement("script"); s.src = G.root + "assets/js/bs.js"; s.onload = draw; document.head.appendChild(s); }
   G.listeners.push(() => setTimeout(draw, 0));

@@ -1476,3 +1476,26 @@ header.top .gdate span:first-child{font-weight:600;color:var(--ink);font-size:16
 .tkcf{display:flex;flex-wrap:wrap;gap:10px 16px;margin:6px 0 10px}.tkcf label{display:flex;flex-direction:column;font-size:.85rem;gap:3px}.tkcf select,.tkcf input{font:inherit;padding:6px 8px;border:1px solid var(--line,#ccc);border-radius:8px;background:var(--card,#fff);color:inherit;min-width:12rem}
 .tkprof{width:100%;height:auto;display:block;margin:6px 0 2px}.tkpA{fill:currentColor;opacity:.08;stroke:none}.tkpL{fill:none;stroke:currentColor;stroke-width:1.8}.tkpS{fill:var(--card,#fff);stroke:currentColor;stroke-width:1.5}.tkpT{font-size:11px;fill:currentColor;opacity:.7}
 .tkst ol{margin:6px 0;padding-left:1.4rem}.tkst li{margin:2px 0}.tksec{margin-top:14px;border-top:1px solid var(--line,#ddd);padding-top:10px}.tksec h3{font-size:1rem;margin:0 0 6px}.tkn,.tkdl{list-style:none;padding:0;margin:4px 0}.tkn li,.tkdl li{margin:0 0 8px}.tkn p{margin:2px 0}.tkplain p{margin:0}
+
+/* Header v2: date block below the pinned bar (scrolls away), two lines */
+.gdatebar{background:var(--surface);border-bottom:1px solid var(--line,#E3E9EF)}
+.gdatebar .gdate{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:62px;margin:0 auto;padding:0 12px;border:0;white-space:nowrap;overflow:hidden;font-variant-numeric:tabular-nums;line-height:1.25}
+.gdatebar .gdate>*+*::before{content:none}
+.gdatebar .gbs{display:block;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:.01em;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.gdatebar .gsub{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--slate)}
+.gdatebar .gsep{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.45}
+.gdatebar time{color:var(--ink);font-weight:600}
+@media(max-width:420px){.gdatebar .gdate{height:58px}.gdatebar .gbs{font-size:16px}.gdatebar .gsub{font-size:13px;gap:8px}}
+html[data-theme=dark] .gdatebar{background:#0d1117;border-color:#222a33}
+/* grouped phone menu */
+.mgroups{display:none}
+@media(max-width:720px){
+ nav.main.open .mgroups{display:block;padding:4px 0 16px}
+ nav.main.open>a,nav.main.open>.more{display:none!important}
+ .mgroups .mghome{display:flex!important;align-items:center;min-height:52px;padding:0 16px!important;margin:4px 0 10px;border:1.5px solid var(--line);border-radius:12px;font-weight:700;font-size:var(--fs-4);color:var(--ink);text-decoration:none;background:var(--surface)}
+ .mg{margin:0 0 12px}
+ .mgh{margin:0 0 6px;padding:0 4px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--slate)}
+ .mgl{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+ .mgl a{display:flex!important;align-items:center;min-height:48px;padding:0 12px!important;border:1px solid var(--line);border-radius:10px;background:var(--surface2,var(--surface));color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;line-height:1.2}
+ .mgroups a[aria-current=page]{border-color:var(--saffron);box-shadow:inset 3px 0 0 var(--saffron);color:var(--ink);background:rgba(242,140,30,.10)}
+}
