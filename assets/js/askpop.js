@@ -109,7 +109,7 @@
       <div class="aqchips" role="group" aria-label="${T("छिटो प्रश्न", "Quick questions")}">${chips()}</div></div>
       <form class="aqform" ${tab === "ask" ? "" : "hidden"}><label class="sr-only" for="aqin">${T("प्रश्न लेख्नुहोस्", "Type a question")}</label><input id="aqin" type="text" autocomplete="off" placeholder="${T("जस्तै: सडक, नदी, बिदा…", "e.g. road, river, holiday…")}"><button type="submit" aria-label="${T("पठाउनुहोस्", "Send")}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></form>`;
     log = panel.querySelector(".aqlog");
-    panel.querySelectorAll(".aqchip").forEach((c) => (c.onclick = () => ask(c.dataset.k, c.textContent)));
+    panel.querySelectorAll(".aqchip").forEach((c) => (c.onclick = () => ask(c.dataset.k, c.textContent, true)));
     panel.querySelector(".aqform").onsubmit = (e) => { e.preventDefault(); const i = panel.querySelector("#aqin"), q = i.value.trim(); if (!q) return; i.value = ""; const m = INT.find((x) => x[3].test(q)); ask(m ? m[0] : null, q); };
     const x = panel.querySelector(".aqx"); if (x) x.onclick = close;
     panel.querySelectorAll(".aqtabs [role=tab]").forEach((b, n, all) => { b.onclick = () => setTab(b.dataset.t);
@@ -117,10 +117,23 @@
     if (tab !== "ask") pane();
     log.onclick = (e) => { const b = e.target.closest("[data-do=pick]"); if (b && G.district) G.district.open(() => ask("district", T("के मेरो जिल्ला प्रभावित छ?", "Is my district affected?"))); };
   }
-  async function ask(k, q) {
+  /* Ask Gati with Claude, through Gati's Cloudflare Worker (data/ask-config.json "worker"). The key lives only in the Worker.
+     Any failure (not configured, offline, rate limited, timeout) returns null and the local answers above are used. */
+  async function claude(q) {
+    const cf = await J("data/ask-config.json"); if (!cf || !cf.worker) return null;
+    try {
+      const ac = new AbortController(), to = setTimeout(() => ac.abort(), 20000);
+      const r = await fetch(cf.worker, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q, lang: G.lang }), signal: ac.signal }); clearTimeout(to);
+      if (!r.ok) return null; const j = await r.json(); if (!j || typeof j.answer !== "string") return null;
+      const cards = (j.citations || []).map((c) => `<div class="aqcard">${G.trustChip(c.trust || "Official")}<b>${esc(G.lang === "ne" && c.title_ne ? c.title_ne : c.title)}</b><span class="meta">${esc(c.agency || "")}${c.time ? " · " + G.npt(c.time) : ""}</span>${c.url ? link(c.url, T("स्रोत", "Source")) : ""}</div>`).join("");
+      return `<p class="aqai">${esc(G.num(j.answer))}</p>${cards ? `<div class="aqcards">${cards}</div>` : `<p class="meta">${T("आधिकारिक स्रोत भेटिएन।", "No official source cited.")}</p>`}<p class="meta aqaim">${T("Claude ले गतिको आधिकारिक सूचनाबाट मात्र तयार गरेको उत्तर; स्रोत हेर्नुहोस्।", "Written by Claude from Gati's official items only; check the sources.")}</p>`;
+    } catch (e) { return null; }
+  }
+  async function ask(k, q, chip) {
     log.insertAdjacentHTML("beforeend", `<div class="aqmsg me">${esc(q)}</div><div class="aqmsg bot aqwait">…</div>`);
     const w = log.lastElementChild; log.scrollTop = log.scrollHeight;
-    w.innerHTML = k ? await answer(k) : soon(); w.classList.remove("aqwait");
+    const ai = !chip ? await claude(q) : null;
+    w.innerHTML = ai || (k ? await answer(k) : soon()); w.classList.remove("aqwait");
     w.scrollIntoView({ block: "nearest" });
   }
   function open() { lastFocus = document.activeElement; panel.hidden = false; btn.setAttribute("aria-expanded", "true"); btn.hidden = true; document.body.classList.add("aq-open"); setTimeout(() => panel.querySelector("#aqin").focus(), 30); }
