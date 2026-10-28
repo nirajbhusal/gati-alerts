@@ -1,5 +1,5 @@
 /* Ask Gati Worker: POST /ask {q} -> {answer, citations[]}. Key comes from the ANTHROPIC_API_KEY secret only. */
-import { TOOL, FILES, corsHeaders, validQuestion, buildItems, SYSTEM, userMessage, parseModel } from "./lib.js";
+import { TOOL, FILES, corsHeaders, validQuestion, buildItems, SYSTEM, userMessage, parseModel, isNepali } from "./lib.js";
 
 const json = (o, status, h) => new Response(JSON.stringify(o), { status, headers: { "Content-Type": "application/json; charset=utf-8", ...(h || {}) } });
 const day = () => new Date(Date.now() + 345 * 60000).toISOString().slice(0, 10);
@@ -43,7 +43,7 @@ export async function handle(req, env, fetcher = fetch) {
   if (r.status === 400) { const t = await r.clone().text(); if (/tool_choice/.test(t)) r = await call({ type: "auto" }); }
   if (!r.ok) { let msg = ""; try { msg = ((await r.json()).error || {}).message || ""; } catch (e) {} return json({ error: "upstream", status: r.status, detail: msg.slice(0, 200) }, 502, cors); }
   const m = await r.json(), tu = (m.content || []).find((c) => c.type === "tool_use" && c.name === "reply"), text = tu ? JSON.stringify(tu.input) : (m.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
-  const out = parseModel(text, items); if (!out) return json({ error: "bad_model_output" }, 502, cors);
+  const out = parseModel(text, items, isNepali(body.q)); if (!out) return json({ error: "bad_model_output" }, 502, cors);
   return json({ ...out, model: m.model, usage: m.usage, data_time: nowIso }, 200, { ...cors, "Cache-Control": "no-store" });
 }
 export default { fetch: (req, env) => handle(req, env) };

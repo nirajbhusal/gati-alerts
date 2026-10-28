@@ -17,3 +17,22 @@ test("worker: model configurable", async () => { await handle(req("hi"), env({ M
 test("worker: bad origin 403, long question 400, rate limit 429", async () => { const e = env(); assert.equal((await handle(req("x", "https://evil.example"), e, fetcher)).status, 403); assert.equal((await handle(req("x".repeat(500)), e, fetcher)).status, 400); await handle(req("a"), e, fetcher); await handle(req("b"), e, fetcher); assert.equal((await handle(req("c"), e, fetcher)).status, 429); });
 test("worker: daily cap", async () => { const e = env({ DAILY_CAP: "1", PER_IP_PER_MIN: "99" }); assert.equal((await handle(req("a", undefined, "1"), e, fetcher)).status, 200); assert.equal((await handle(req("b", undefined, "2"), e, fetcher)).status, 429); });
 test("worker: no key gives 503", async () => { const e = env({ ANTHROPIC_API_KEY: "" }); assert.equal((await handle(req("a"), e, fetcher)).status, 503); });
+
+import { clean, neDigits, STATUSES } from "../src/lib.js";
+test("card: structure, validation, no Gati-confirmed claims, Nepali digits", () => {
+  const it = [{ id: "A1", url: "u1", title: "t", agency: "Nepal Police", trust: "Official", time: "2026-10-28T02:15:00Z" }, { id: "A2", url: "u1", title: "t2", agency: "Nepal Police", trust: "Official", time: "2026-10-28T03:00:00Z" }, { id: "P1", url: "u2", title: "p", agency: "DoI", trust: "Reported", time: "2026-10-28T08:20:00Z" }];
+  const o = parseModel(JSON.stringify({ status: "alert", headline: "नेपाल प्रहरी अनुसार सडक बन्द छ। गतिले यो पुष्टि गरेको छ।", points: [{ text: "शुल्क रु. 3,000 [P1]", cite: ["P1", "X9"] }, { text: "no cite", cite: [] }, { text: "dup", cite: ["A2"] }, { text: "4th", cite: ["A1"] }], todo: [], refer: ["NSC", "Bogus"], answer: "x", cite: ["A1"] }), it, true);
+  assert.equal(o.card.status, "alert");
+  assert.ok(!/गतिले\s*यो\s*पुष्टि गरेको/.test(o.card.headline));
+  assert.equal(o.card.points[0].text, "शुल्क रु. ३,०००");
+  assert.equal(o.card.points.length, 2);
+  assert.deepEqual(o.card.points[1].cite, ["A1"]);
+  assert.equal(o.citations.length, 2);
+  assert.equal(o.card.reported, true);
+  assert.deepEqual(o.card.refer.map((r) => r.key), ["NSC"]);
+  assert.equal(typeof o.answer, "string");
+  assert.equal(parseModel(JSON.stringify({ status: "clear", headline: "h", points: [], answer: "a", cite: [] }), it).card.status, "no_info");
+  assert.equal(parseModel(JSON.stringify({ answer: "old style", cite: ["A1"] }), it).card.status, "caution");
+  assert.equal(clean("Verified by Gati, open.", false).includes("Gati"), false);
+  assert.equal(neDigits("12"), "१२"); assert.equal(STATUSES.length, 4);
+});
