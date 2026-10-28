@@ -36,3 +36,15 @@ test("card: structure, validation, no Gati-confirmed claims, Nepali digits", () 
   assert.equal(clean("Verified by Gati, open.", false).includes("Gati"), false);
   assert.equal(neDigits("12"), "१२"); assert.equal(STATUSES.length, 4);
 });
+
+import { noAdvice } from "../src/lib.js";
+test("guards: no own advice in not_covered, alert only when in effect, info for fees", () => {
+  assert.equal(noAdvice("X स्रोतमा छैन; हजुरले आफैं DHM हेर्न सक्नुहुन्छ।"), "X स्रोतमा छैन");
+  assert.equal(noAdvice("Gati has no official information on Y. You can check with DoR."), "Gati has no official information on Y.");
+  const fut = [{ id: "A1", kind: "alert", url: "u", agency: "DHM", trust: "Official", severity: "Moderate", onset: "2999-01-01T00:00:00Z", expires: "2999-02-01T00:00:00Z", title: "t", text: "" }];
+  assert.equal(parseModel(JSON.stringify({ status: "alert", headline: "h", points: [], answer: "a", cite: ["A1"] }), fut).card.status, "caution");
+  const now = [{ ...fut[0], onset: "2000-01-01T00:00:00Z" }];
+  assert.equal(parseModel(JSON.stringify({ status: "alert", headline: "h", points: [], answer: "a", cite: ["A1"] }), now).card.status, "alert");
+  const fee = [{ id: "P1", kind: "permit", url: "p", agency: "DoI", trust: "Official", title: "f", text: "" }];
+  assert.equal(parseModel(JSON.stringify({ status: "caution", headline: "h", points: [], answer: "a", cite: ["P1"] }), fee).card.status, "info");
+});

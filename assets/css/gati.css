@@ -1609,3 +1609,5 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .aqsrcs ol{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}.aqx2{color:var(--slate);font-weight:400}
 .aqfoot{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.aqfoot .aqaim{font-size:12px;color:var(--slate);flex:1;min-width:160px}
 .aqfollow{gap:6px}.aqfollow .aqchip{font-size:13.5px;min-height:36px}
+
+.aqans.s-info .aqst{color:#1F57C3}html[data-theme=dark] .aqans.s-info .aqst{color:#7FA8FF}

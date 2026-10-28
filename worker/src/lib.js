@@ -29,14 +29,14 @@ export function buildItems(D, now = Date.now()) {
 
 /* Referral agencies: homepages already used and checked on the Gati site (NSC, DoR, NTB, DNPWC re-checked 28 Oct 2026) */
 export const REFER = { DHM: ["जल तथा मौसम विज्ञान विभाग", "Department of Hydrology and Meteorology", "https://www.dhm.gov.np/"], NDRRMA: ["राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण", "NDRRMA", "https://ndrrma.gov.np/"], "Nepal Police": ["नेपाल प्रहरी", "Nepal Police", "https://www.nepalpolice.gov.np/"], NSC: ["राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र", "National Earthquake Monitoring and Research Center (NSC)", "https://seismonepal.gov.np/"], DoR: ["सडक विभाग", "Department of Roads", "https://dor.gov.np/"], "Department of Immigration": ["अध्यागमन विभाग", "Department of Immigration", "https://immigration.gov.np/en/page/trekking-route"], NTB: ["नेपाल पर्यटन बोर्ड", "Nepal Tourism Board", "https://ntb.gov.np/"], DNPWC: ["राष्ट्रिय निकुञ्ज तथा वन्यजन्तु संरक्षण विभाग", "DNPWC", "https://dnpwc.gov.np/"], CAAN: ["नेपाल नागरिक उड्डयन प्राधिकरण", "CAAN", "https://caanepal.gov.np/"] };
-export const STATUSES = ["alert", "caution", "clear", "no_info"];
+export const STATUSES = ["alert", "caution", "clear", "info", "no_info"];
 const PT = { type: "object", properties: { text: { type: "string" }, cite: { type: "array", items: { type: "string" } } }, required: ["text", "cite"] };
 export const TOOL = { name: "reply", description: "Return the structured answer.", input_schema: { type: "object", properties: {
-  status: { type: "string", enum: STATUSES, description: "alert = a cited source says blocked, closed, warning or high risk now; caution = elevated or moderate risk, partial disruption, or advisory; clear = a cited source says open, normal or low risk; no_info = the items do not answer the question." },
+  status: { type: "string", enum: STATUSES, description: "alert = ONLY an active warning, closure or blockage in effect right now (current time inside its onset/expiry); caution = forecasts, outlooks, advisories, future or possible risk, partial disruption; clear = a cited source says open or normal now; info = neutral facts such as fees, permits, rules, contacts, holidays; no_info = the items do not answer the question." },
   headline: { type: "string", description: "One plain sentence, the direct answer first, attributed to the agency. Max about 20 words." },
   points: { type: "array", maxItems: 3, items: PT, description: "Up to 3 short key facts, each with the ids that support it." },
   todo: { type: "array", maxItems: 2, items: PT, description: "Only instructions a cited source itself gives, attributed ('NDRRMA asks...'). Empty if none." },
-  not_covered: { type: "string", description: "One short line on what part of the question the items do not cover, or empty." },
+  not_covered: { type: "string", description: "One short factual line naming only what Gati has no official information on, or empty. No suggestions, no 'you can check', no agency instructions." },
   refer: { type: "array", items: { type: "string", enum: Object.keys(REFER) }, description: "Responsible agency names when you refer the reader to one (always for no_info)." },
   answer: { type: "string", description: "The same answer as one short paragraph." },
   cite: { type: "array", items: { type: "string" }, description: "All item ids used." } }, required: ["status", "headline", "points", "answer", "cite"] } };
@@ -46,7 +46,8 @@ Rules, all mandatory:
 2. Every fact must cite the id(s) of the item(s) it came from. Cite nothing when you have no information. Do not write ids like [A1] in the text.
 3. Attribute every fact to the agency: "Nepal Police अनुसार ...", "According to DHM ...". NEVER say that Gati confirmed, verified or checked anything (never write गतिले पुष्टि गरेको, गतिले प्रमाणित, "Gati confirms", "verified by Gati").
 4. Never add or sum counts across different agencies. Report each agency separately.
-5. If the items do not cover the question, status is no_info: say plainly that Gati has no official information on it and put the responsible agency in refer (DHM weather, rivers, floods; NDRRMA disasters; Nepal Police roads and safety; DoR road works; NSC earthquakes; Department of Immigration, NTB or DNPWC trekking permits; CAAN flights). If partly covered, fill not_covered.
+5. If the items do not cover the question, status is no_info: say plainly that Gati has no official information on it and put the responsible agency in refer (DHM weather, rivers, floods; NDRRMA disasters; Nepal Police roads and safety; DoR road works; NSC earthquakes; Department of Immigration, NTB or DNPWC trekking permits; CAAN flights). If partly covered, fill not_covered with only what is missing ("Gati has no official information on X."); never tell the reader to check, look up or contact anything there.
+10. Status: alert only for warnings, closures or blockages in effect now. Forecasts, outlooks and advisories about coming days are caution. Fees, permits, rules, contacts and other neutral facts are info.
 6. Give no advice of your own. todo holds only instructions a cited source itself gives, attributed to it. Never write your own suggestion such as "check with", "plan ahead" or "stay safe". Never infer that a place falls inside an area unless an item says so.
 7. Reply in the language named in REPLY LANGUAGE. Nepali: natural Nepali, address the reader as हजुर (never तपाईं or तिमी), Devanagari numerals for every number, including inside amounts like रु. ३,०००. English: Western digits only.
 8. Never use em dashes. Plain words. Headline first, max about 20 words; each point max about 25 words.
@@ -67,6 +68,8 @@ export function clean(t, ne) {
   if (ne) x = neDigits(x);
   return x.replace(/\s{2,}/g, " ").trim();
 }
+const ADVICE = [/[^.।;]*(?:हजुर(?:ले)?\s*)?(?:आफैं|आफै|आफैँ)?[^.।;]*(?:हेर्न सक्नुहुन्छ|हेर्नुहोस्|जाँच्नुहोस्|सम्पर्क गर्नुहोस्|बुझ्नुहोस्|हेर्न सकिन्छ|सम्पर्क गर्न सक्नुहुन्छ)[^.।;]*[.।]?/g, /[^.;]*\b(?:you (?:can|may|should|could)|please|we recommend|consider|check with|contact|refer to|visit|plan ahead|stay safe)\b[^.;]*[.;]?/gi];
+export function noAdvice(t) { let x = String(t || ""); for (const re of ADVICE) x = x.replace(re, ""); return x.replace(/[;,]\s*$/, "").replace(/\s{2,}/g, " ").trim(); }
 export function parseModel(text, items, ne = false) {
   let o; const m = String(text || "").match(/\{[\s\S]*\}/);
   try { o = JSON.parse(m ? m[0] : text); } catch (e) { return null; }
@@ -81,9 +84,12 @@ export function parseModel(text, items, ne = false) {
   const fix = (L) => L.map((p) => ({ ...p, cite: [...new Set(p.cite.map(canon))] }));
   let status = STATUSES.includes(o.status) ? o.status : (citations.length ? "caution" : "no_info");
   if (!citations.length) status = "no_info";
+  const nowT = Date.now(), live = all.some((id) => { const x = byId[id]; if (x.kind === "road") return /status (closed|blocked|one.?way)/i.test(x.text) || /blocked|closed/i.test(x.title + x.text); if (x.kind === "alert") return (!x.onset || Date.parse(x.onset) <= nowT) && (!x.expires || Date.parse(x.expires) > nowT) && /Moderate|Severe|Extreme/.test(x.severity || ""); return false; });
+  if (status === "alert" && !live) status = "caution";
+  if (status !== "no_info" && all.length && all.every((id) => ["permit", "contact"].includes(byId[id].kind))) status = "info";
   const refer = [...new Set(Array.isArray(o.refer) ? o.refer : [])].filter((k) => REFER[k]).map((k) => ({ key: k, name: REFER[k][ne ? 0 : 1], url: REFER[k][2] }));
   const headline = clean(o.headline || String(o.answer).split(/(?<=[.।])\s/)[0], ne);
   const answer = clean(typeof o.answer === "string" && o.answer.trim() ? o.answer : [headline, ...points.map((p) => p.text)].join(" "), ne);
   const times = citations.map((c) => Date.parse(c.time)).filter((t) => !isNaN(t));
-  return { answer, citations, card: { v: 1, status, headline, points: fix(points), todo: fix(todo), not_covered: clean(o.not_covered || "", ne), refer, reported: citations.some((c) => c.trust === "Reported"), as_of: times.length ? new Date(Math.max(...times)).toISOString() : null, ai: true } };
+  return { answer, citations, card: { v: 1, status, headline, points: fix(points), todo: fix(todo), not_covered: noAdvice(clean(o.not_covered || "", ne)), refer, reported: citations.some((c) => c.trust === "Reported"), as_of: times.length ? new Date(Math.max(...times)).toISOString() : null, ai: true } };
 }
