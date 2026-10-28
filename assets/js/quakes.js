@@ -17,7 +17,7 @@
       <div class="kv"><span>${T("म्याग्निच्युड", "Magnitude")}: <b>${esc(G.num(q.ms))}</b></span><span>${T("गहिराइ", "Depth")}: <b>${q.depth != null ? G.num(q.depth) + " km" : T("स्रोत रेकर्डमा छैन", "not in source record")}</b></span><span>${G.npt(new Date(q.t).toISOString())}</span><span><a href="${esc(q.a.info.en.web)}" target="_blank" rel="noopener">${q.src} ↗</a></span></div></div></li>`).join("")}</ul>`
       : `<div class="na">${T("यो अवधिमा गतिमा भूकम्प रेकर्ड छैन।", "No quakes recorded in Gati in this period.")}</div>`);
     if (!map && window.L) {
-      map = window.L.map("qmap", { zoomSnap: 0.1, scrollWheelZoom: false }); map.attributionControl.setPrefix("").addAttribution("COD-AB / OCHA HDX · NSC · USGS");
+      map = window.L.map("qmap", { zoomSnap: 0.1, scrollWheelZoom: false }); map.attributionControl.setPrefix("").addAttribution("COD-AB / OCHA HDX · Open Knowledge Nepal · NSC · USGS");
       map.fitBounds([[26.35, 80.06], [30.48, 88.2]]);
       if (geo) window.L.geoJSON(geo, { style: { color: "#c9d3dd", weight: 0.7, fillColor: "#f4f7fa", fillOpacity: 1 }, interactive: false }).addTo(map);
     }

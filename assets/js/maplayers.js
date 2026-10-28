@@ -80,7 +80,7 @@
       let c = document.getElementById("mapcite");
       if (!c) { c = document.createElement("div"); c.id = "mapcite"; c.className = "card mapcite"; document.querySelector(".mapsec").append(c); }
       c.innerHTML = `<h3>${T("नक्साका तह र स्रोत", "Map layers and sources")}</h3><ul class="plist">
-        <li>${T("जिल्ला र प्रदेशको सीमा", "District and province boundaries")}: COD-AB, ${T("नापी विभाग", "Survey Department of Nepal")} / OCHA HDX (CC BY-IGO). ${T("प्रदेश सीमा जिल्लाबाट जोडेर बनाइएको।", "Provinces are dissolved from the districts.")}</li>
+        <li>${T("जिल्ला र प्रदेशको सीमा", "District and province boundaries")}: COD-AB, ${T("नापी विभाग", "Survey Department of Nepal")} / OCHA HDX (CC BY-IGO). ${T("प्रदेश सीमा जिल्लाबाट जोडेर बनाइएको।", "Provinces are dissolved from the districts.")} ${T("दार्चुलाको लिम्पियाधुरा, लिपुलेक र कालापानी क्षेत्र नेपालको २०७७ को आधिकारिक नक्सा अनुसार Open Knowledge Nepal LocalBoundaries (CC BY 4.0) बाट थपिएको।", "Darchula's Limpiyadhura, Lipulekh and Kalapani area follows Nepal's official map of 2020, added from Open Knowledge Nepal LocalBoundaries (CC BY 4.0).")}</li>
         <li>${T("सडक र नदी रेखा", "Road and river lines")}: © OpenStreetMap ${T("योगदानकर्ता", "contributors")} (ODbL). ${T("राजमार्ग नम्बर स्रोतमा नभएकाले देखाइएको छैन।", "Highway numbers are not shown: they are not in our cited road data.")}</li>
         <li>${T("भूकम्प", "Earthquakes")}: NSC / USGS (${T("गतिका भूकम्प सूचना", "Gati earthquake items")}).</li>
         ${health ? `<li>${T("अस्पताल र स्वास्थ्य चौकी", "Hospitals and health posts")}: <a href="${health.sourceUrl}" target="_blank" rel="noopener">${G.esc(health.source)}</a>, ${health.as_of}. ${G.esc(health.note)}</li>` : ""}

@@ -7,7 +7,7 @@
   function drawMap(P, alt) {
     if (!window.L || !RG) return;
     if (!map) {
-      map = L.map("rmap", { zoomSnap: 0.25, scrollWheelZoom: false, tap: true }); map.attributionControl.setPrefix("").addAttribution("© OpenStreetMap contributors (ODbL) · COD-AB / OCHA HDX");
+      map = L.map("rmap", { zoomSnap: 0.25, scrollWheelZoom: false, tap: true }); map.attributionControl.setPrefix("").addAttribution("© OpenStreetMap contributors (ODbL) · COD-AB / OCHA HDX · Open Knowledge Nepal");
       if (DG) L.geoJSON(DG, { style: { color: "#c3ccd6", weight: 0.7, fillColor: "#f3f6f9", fillOpacity: 1 }, interactive: false }).addTo(map);
       L.geoJSON(RG, { style: { color: "#cfd6de", weight: 3 }, interactive: false }).addTo(map);
     }

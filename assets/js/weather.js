@@ -32,7 +32,7 @@
     const w = warn[0];
     if (!map && window.L && geo) {
       map = L.map("wxmap", { zoomSnap: 0.1, scrollWheelZoom: false, attributionControl: true });
-      map.attributionControl.setPrefix("").addAttribution("COD-AB, Survey Department / OCHA HDX");
+      map.attributionControl.setPrefix("").addAttribution("COD-AB, Survey Department / OCHA HDX · Open Knowledge Nepal");
       map.fitBounds([[26.35, 80.06], [30.48, 88.2]]);
     }
     if (map) {
