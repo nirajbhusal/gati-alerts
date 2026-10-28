@@ -1435,3 +1435,21 @@ header.top .gdate>*+*::before{content:none}
 header.top .gdate span,header.top .gdate time{display:block;height:22px;line-height:22px;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 header.top .gdate span:first-child{font-weight:600;color:var(--ink);font-size:16px}
 @media(max-width:420px){header.top .gdate{font-size:14px;min-height:80px;padding:7px 8px 9px}header.top .gdate span:first-child{font-size:15px}}
+/* Arnab trekking map (trek/) */
+.tkph{min-height:640px}.tkph2{min-height:420px}
+.tkgrid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--s3,12px);margin-top:10px}
+#tkmap{height:460px;border-radius:12px;background:var(--surface2);border:1px solid var(--line)}
+.tkside{min-height:460px}.tkside #tkdet{min-height:200px}
+.tkdl{margin:6px 0;padding-left:18px}.tkdl li{margin:3px 0}
+.anLeg i.dash{display:inline-block;width:18px;height:0;border-top:3px dashed var(--ink);vertical-align:middle;margin-right:4px}
+.tklist{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.tkr{font:inherit;font-size:var(--fs-6);display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);cursor:pointer}
+.tkr i{width:14px;height:4px;border-radius:2px}.tkr[aria-pressed=true]{border-color:var(--saffron)}
+.tkn{list-style:none;margin:0;padding:0}.tkn li{padding:10px 0;border-bottom:1px solid var(--line)}.tkn li p{margin:4px 0}
+@media(max-width:760px){.tkgrid{grid-template-columns:1fr}#tkmap{height:380px}.tkside{min-height:0}.tkph{min-height:900px}}
+/* Home: Arnab trekking map card below Nepal Now */
+.tkcard{display:grid;grid-template-columns:200px minmax(0,1fr);gap:14px;align-items:center;margin:10px 0 12px;padding:10px 14px;text-decoration:none;color:var(--ink)}
+.tkcm{aspect-ratio:300/185;background:var(--surface2);border-radius:10px;overflow:hidden}.tkcm svg{display:block;width:100%;height:100%}
+.tkct{display:flex;flex-direction:column;gap:4px;min-width:0}.tkch{font-size:var(--fs-5)}.tkcd{font-size:var(--fs-6);color:var(--slate);min-height:2.6em}
+.tkcard .more{font-size:var(--fs-6);color:var(--link,#1a5fb4)}
+@media(max-width:600px){.tkcard{grid-template-columns:120px minmax(0,1fr);gap:10px;padding:8px 10px}.tkcd{min-height:3.9em}}
