@@ -72,6 +72,7 @@
     <a class="mebtn profbtn bellbtn" id="profbtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings" title="प्रोफाइल र सेटिङ / Profile & Settings"${PAGE === "me" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><i class="bdot" hidden></i></a>
     </div>
   </div>
+  <p class="gdate" id="gdate" aria-live="off"><span>&nbsp;</span><span>&nbsp;</span><time>&nbsp;</time></p>
   <nav class="main" id="mainnav" aria-label="Main"><div class="navtop"><a class="navtopbtn" href="${ROOT}me/"${PAGE === "me" ? ' aria-current="page"' : ""}>👤 ${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</a></div><a class="navhome" href="${ROOT}?home=1" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
     `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, SHORT[id] || en)}</a>`).join("")}
     <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
@@ -95,9 +96,8 @@
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
   document.body.prepend(header); document.body.classList.add("ghdr");
-  { const dl = document.createElement("p"); dl.className = "gdate"; dl.id = "gdate"; dl.setAttribute("aria-live", "off"); header.after(dl); }
   /* Breaking: official, active, issued in the last 24h, severity Moderate or higher. Dismissible per alert. */
-  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; (document.getElementById("gdate") || header).after(brk);
+  const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; header.after(brk);
   /* Fix sweep: paint the last Breaking bar from this browser's cache straight away, so content below does not jump when the fresh one arrives */
   const BRK_KEY = "gati-brk-cache";
   try { const c = JSON.parse(localStorage.getItem(BRK_KEY) || "null"); if (c && c.l === G.lang && Date.now() - c.t < 6 * 3600e3 && ["home", "alerts"].includes(document.body.dataset.page || "")) { brk.innerHTML = c.h; brk.hidden = !c.h; const bl = document.getElementById("breakinglist"); if (bl && c.lh && !bl.innerHTML.trim()) bl.innerHTML = c.lh; } } catch (e) {}
@@ -407,16 +407,16 @@
     catch (e) { if (c) return c.j; throw e; } };
 })();
 
-/* Slim date line under the header: today in Bikram Sambat, then Gregorian, then live Nepal time (UTC+5:45, no DST), whatever the device zone. */
+/* Date block directly below the logo, three lines: today in Bikram Sambat, then Gregorian, then live Nepal time (UTC+5:45, no DST), whatever the device zone. */
 (function () { const G = window.Gati, el = document.getElementById("gdate"); if (!G || !el) return;
   const GN = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"], GE = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const WS = ["आइत", "सोम", "मङ्गल", "बुध", "बिही", "शुक्र", "शनि"], WSE = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let tm = 0;
   function draw() { if (!window.BS) return; const ne = G.lang === "ne", N = (x) => G.num(String(x)), t = new Date(Date.now() + 345 * 60000);
     const y = t.getUTCFullYear(), m = t.getUTCMonth(), d = t.getUTCDate(), w = t.getUTCDay(), h = t.getUTCHours(), mi = String(t.getUTCMinutes()).padStart(2, "0"), b = BS.toBS(y, m + 1, d);
-    const bs = b ? (ne ? `${BS.WN[w]}, ${N(b.d)} ${BS.MN[b.m - 1]} ${N(b.y)}` : `${BS.WE[w]}, ${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
+    const bs = b ? (ne ? `${BS.WN[w]}, ${N(b.d)} ${BS.MN[b.m - 1]} ${N(b.y)} वि.सं.` : `${BS.WE[w]}, ${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
     const ad = ne ? `${WS[w]}, ${N(d)} ${GN[m]} ${N(y)}` : `${WSE[w]}, ${d} ${GE[m]} ${y}`;
-    const h12 = h % 12 || 12, tt = ne ? `${h < 4 ? "राति" : h < 12 ? "बिहान" : h < 17 ? "दिउँसो" : h < 20 ? "साँझ" : "राति"} ${N(h12)}:${N(mi)} NPT` : `${h12}:${mi} ${h < 12 ? "AM" : "PM"} NPT`;
+    const h12 = h % 12 || 12, tt = ne ? `${h < 4 ? "राति" : h < 12 ? "बिहान" : h < 17 ? "दिउँसो" : h < 20 ? "साँझ" : "राति"} ${N(h12)}:${N(mi)} नेपाली समय` : `${h12}:${mi} ${h < 12 ? "AM" : "PM"} NPT`;
     el.innerHTML = `<span>${bs}</span><span>${ad}</span><time datetime="${t.toISOString().slice(0, 16)}+05:45">${tt}</time>`;
     clearTimeout(tm); tm = setTimeout(draw, 60000 - (Date.now() % 60000) + 50); }
   if (window.BS) draw(); else { const s = document.createElement("script"); s.src = G.root + "assets/js/bs.js"; s.onload = draw; document.head.appendChild(s); }

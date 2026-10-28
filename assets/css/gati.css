@@ -1428,3 +1428,10 @@ a.mebtn{display:inline-flex;align-items:center;justify-content:center;position:r
 
 .mepage.mewait{min-height:100vh}.mepage.mewait .mesec{visibility:hidden}
 .mepage .ntsub .btn{white-space:normal;flex:1 1 140px;max-width:100%;height:auto;overflow:visible;text-overflow:clip;line-height:1.25;padding-top:8px;padding-bottom:8px}
+
+/* Date block below the logo: three roomy centred lines (BS date, AD date, Nepal time); fixed height so it never shifts layout */
+header.top .gdate{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:auto;min-height:82px;margin:0;padding:8px 12px 10px;line-height:1.35;font-size:15px;color:var(--slate);white-space:nowrap;overflow:hidden;border:0;border-bottom:1px solid var(--line,#E3E9EF);text-align:center;font-variant-numeric:tabular-nums}
+header.top .gdate>*+*::before{content:none}
+header.top .gdate span,header.top .gdate time{display:block;height:22px;line-height:22px;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+header.top .gdate span:first-child{font-weight:600;color:var(--ink);font-size:16px}
+@media(max-width:420px){header.top .gdate{font-size:14px;min-height:80px;padding:7px 8px 9px}header.top .gdate span:first-child{font-size:15px}}
