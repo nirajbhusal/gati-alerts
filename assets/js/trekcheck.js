@@ -81,5 +81,13 @@
   function bind() {
     const s = box.querySelector("#tkSel"), fr = box.querySelector("#tkFrom"), d = box.querySelector("#tkDate");
     if (s) s.onchange = () => setP("trek", s.value); if (fr) fr.onchange = () => setP("from", fr.value === "end" ? "end" : ""); if (d) d.onchange = () => setP("date", d.value);
+    const pk = box.querySelector("#tkPack"), ps = box.querySelector("#tkPackS");
+    if (pk) pk.onclick = () => { const id = P.get("trek"), at = new Date(Date.now()).toISOString(); ps.textContent = T("सुरक्षित गर्दै…", "Saving…");
+      const urls = [location.pathname + location.search, R + "trek/", R + "contacts/", "data/geo/treks.geojson", "data/geo/trekinfo.json", "data/trek-meta.json", "data/trek-permits.json", "data/alerts.json", "data/arnab-advisory.json", "data/travel-advisory.json", "data/roads.json", "data/contacts.json", "data/districts.json", "assets/js/trekcheck.js", "assets/js/trek.js", "assets/js/common.js", "assets/css/gati.css"].map((u) => { const x = new URL(u[0] === "/" || u.startsWith(R) ? u : R + u, location.href); return x.pathname + x.search; });
+      const done = (ok) => { if (!ok) { ps.textContent = T("सुरक्षित भएन (ब्राउजरले अफलाइन भण्डार दिएन)।", "Not saved (this browser did not allow offline storage)."); return; }
+        try { const m = JSON.parse(localStorage.getItem("gati-trekpack") || "{}"); m[id] = at; localStorage.setItem("gati-trekpack", JSON.stringify(m)); } catch (e) {} ps.textContent = T("सुरक्षित", "Saved at") + " " + G.npt(at).replace(/<[^>]+>/g, ""); };
+      const sw = navigator.serviceWorker && navigator.serviceWorker.controller;
+      if (sw) { const ch = new MessageChannel(); ch.port1.onmessage = (e) => done(e.data && e.data.ok); sw.postMessage({ type: "trekpack", urls }, [ch.port2]); }
+      else if (window.caches) caches.open("gati-trekpack").then((c) => c.addAll(urls)).then(() => done(true), () => done(false)); else done(false); };
   }
 })();
