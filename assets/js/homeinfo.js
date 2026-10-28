@@ -21,6 +21,10 @@
   B.rivers = (D) => { const v = D.rv; if (!v) return ""; const hot = v.gauges.filter((g) => g.level >= g.warning);
     const src = `<span class="meta">${T("स्रोत", "Source")}: <a href="${E(v.url)}" target="_blank" rel="noopener">DHM</a> · ${E(T(v.as_of_ne, v.as_of_en))}</span>`;
     return `<b>${T("नदी", "Rivers")}:</b> ` + (hot.length ? hot.map((g) => `${E(T(g.ne, g.en))} ${N(g.level)} m ${g.level >= g.danger ? `<span class="sev sev-Extreme">${T("खतरा तह", "danger level")}</span>` : `<span class="sev sev-Moderate">${T("चेतावनी तह", "warning level")}</span>`}`).join(" · ") : T("चेतावनी वा खतरा तहमा कुनै DHM मापन केन्द्र छैन।", "No DHM gauge at warning or danger level.")) + " " + src; };
+  B.quake = (D) => { const q = D.al.filter((a) => a.sender === "seismonepal.gov.np" && parseFloat((a.info.en.params || {})["gati:magnitude"]) >= 4).sort((a, b) => (a.sent < b.sent ? 1 : -1))[0];
+    if (!q) return `<b>${T("भूकम्प", "Earthquake")}:</b> ${T("NSC को M4 माथिको हालको भूकम्प छैन।", "No recent NSC quake above M4.")}`;
+    const i = q.info[G.lang === "ne" ? "ne" : "en"] || q.info.en;
+    return `<b>${T("पछिल्लो भूकम्प (M4 माथि)", "Latest quake (M4+)")}:</b> <a href="${R}alerts/${E(q.identifier)}/">${E(i.headline)}</a> <span class="meta">· ${T("स्रोत", "Source")}: <a href="${E(i.web)}" target="_blank" rel="noopener">NSC</a> · ${tm(q.sent)}</span>`; };
   /*BLOCKS*/
   Promise.all(["data/source-health.json", "data/alerts.json", "data/caan.json", "data/rivers.json", "data/contacts.json", "data/roads.json"].map(J)).then(([sh, al, caan, rv, ct, rd]) => {
     const D = { sh, al: al ? al.alerts : [], caan, rv, ct, rd };

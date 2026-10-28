@@ -1465,3 +1465,5 @@ header.top .gdate span:first-child{font-weight:600;color:var(--ink);font-size:16
 @media(max-width:760px){.hiag{grid-template-columns:repeat(2,minmax(0,1fr))}.hia{min-height:330px}}
 .hir{min-height:2.8em;margin:8px 0}
 @media(max-width:600px){.hir{min-height:4.4em}}
+.hiqk{min-height:2.8em;margin:8px 0}
+@media(max-width:600px){.hiqk{min-height:4.4em}}
