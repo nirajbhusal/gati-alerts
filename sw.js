@@ -1,7 +1,7 @@
 /* Gati service worker: offline last-known state. Push only behind a flag (needs VAPID keys and a sender).
    Pages and data: network first, fall back to the last copy saved. Assets: cache first, refreshed in the background. */
 const VERSION = "gati-v102";
-const BUILD = "20261028T1501"; /* written by scripts/stamp.py (pre-commit hook and render.py) */
+const BUILD = "20261028T1509"; /* written by scripts/stamp.py (pre-commit hook and render.py) */
 const CACHE_NAME = VERSION + "-" + BUILD;
 const CORE = ["./", "index.html", "sources/", "about/", "me/", "assets/js/me.js", "api/", "alerts/", "feed/", "stories/", "log/", "assets/js/log.js", "offline/", "data/navigate.json", "assets/js/navigate.js", "assets/js/bs.js", "data/weather.json", "data/calendar.json", "data/contacts.json", "weather/", "trek/", "assets/js/trek.js", "assets/js/trekcard.js", "assets/js/homemap.js", "assets/js/trekcheck.js", "assets/js/homeinfo.js", "data/caan.json", "data/geo/trekinfo.json", "data/trek-meta.json", "data/trek-permits.json", "data/geo/treks.geojson", "data/travel-advisory.json", "contacts/", "safety/", "route/", "assets/js/wxmodel.js", "earthquakes/", "air/", "assets/js/quakes.js", "assets/js/route.js", "assets/js/routeeng.js", "assets/js/nearby.js", "assets/js/askpop.js", "assets/js/watch.js", "assets/js/services.js", "assets/js/contacts.js", "data/contacts.json", "assets/js/weather.js", "data/weather.json", "map/", "rivers/", "roads/", "assets/js/stories.js", "assets/js/district.js", "patro/", "ask/", "patro/gati.ics", "assets/js/patro.js", "data/calendar.json", "assets/js/bs.js", "manifest.webmanifest",
   "assets/css/gati.css", "assets/fonts/fonts.css", "assets/js/common.js", "assets/js/home.js", "assets/js/sources.js",
