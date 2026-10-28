@@ -13,7 +13,9 @@
   const npt = (ms) => new Date(ms + 345 * 60000).toISOString().slice(0, 10);
   const today = npt(Date.now());
   box.style.setProperty("--hmar", `${W} / ${H}`);
-  let S = null, day = null, sel = null;
+  let S = null, day = null, sel = null, cat = "all";
+  const CATS = [["all", "सबै", "All", null], ["flood", "बाढी र वर्षा", "Floods and rain", ["flood"]], ["landslide", "पहिरो", "Landslides", ["landslide"]], ["road", "सडक", "Roads", ["road"]], ["earthquake", "भूकम्प", "Earthquakes", ["earthquake"]], ["weather", "मौसम", "Weather", ["weather"]]];
+  const FULL = { all: "", flood: "#hz=flood", landslide: "#hz=landslide", road: "#hz=road", earthquake: "#L=eq", weather: "#hz=weather" };
   const go = () => Promise.all(["data/districts.geojson", "data/alerts.json", "data/arnab-advisory.json", "data/roads.json", "data/rivers.json"].map((p) => fetch(R + p).then((r) => (r.ok ? r.json() : null)).catch(() => null))).then(([dg, al, ar, rd, rv]) => {
     if (!dg || !al) { box.querySelector(".hmw").innerHTML = `<p class="meta">${T("नक्सा लोड भएन।", "Map could not load.")}</p>`; return; }
     S = { dg, al: al.alerts, ar, rd, rv, paths: {}, cen: {} }; dg.features.forEach((f) => { S.paths[f.properties.code] = pth(f.geometry); S.cen[f.properties.code] = ctr(f.geometry); });
@@ -26,9 +28,9 @@
     const d = day || today, slug2code = {}; S.dg.features.forEach((f) => (slug2code[f.properties.slug] = f.properties.code));
     const on = (a) => { const st = npt(Date.parse(a.info.en.onset || a.info.en.effective || a.sent)), ex = a.expires ? npt(Date.parse(a.expires)) : "9999"; return day ? st <= d && d <= ex : !a.expired && Date.parse(a.expires || "2999-01-01") > Date.now(); };
     const L = S.al.filter((a) => a.trust === "Official" && !a.supersededBy && on(a)).map((a) => { const i = a.info[G.lang === "ne" ? "ne" : "en"] || a.info.en;
-      return { sev: a.severity, ag: AG[a.sender] ? T(...AG[a.sender]) : a.sender, head: i.headline, href: `${R}alerts/${a.identifier}/`, web: i.web, sent: a.sent, ds: a.districts, road: a.hazard === "road" }; });
-    if (day && S.ar) { const D = S.ar.days.find((x) => x.ad === day); if (D && D.ff) Object.entries(D.ff).forEach(([lv, sl]) => L.push({ sev: FF[lv], ag: "DHM", head: T(`${S.ar.event_ne}: आकस्मिक बाढी जोखिम, ${D.wd_ne} कात्तिक ${N(D.bs)}`, `${S.ar.event_en}: flash flood risk, ${D.wd_en} Kartik ${D.bs}`), web: S.ar.source.url, sent: S.ar.source.sent, ds: sl.map((s) => slug2code[s]).filter(Boolean), ff: lv })); }
-    return L;
+      return { sev: a.severity, ag: AG[a.sender] ? T(...AG[a.sender]) : a.sender, head: i.headline, href: `${R}alerts/${a.identifier}/`, web: i.web, sent: a.sent, ds: a.districts, road: a.hazard === "road", hz: a.hazard }; });
+    if (day && S.ar) { const D = S.ar.days.find((x) => x.ad === day); if (D && D.ff) Object.entries(D.ff).forEach(([lv, sl]) => L.push({ sev: FF[lv], ag: "DHM", head: T(`${S.ar.event_ne}: आकस्मिक बाढी जोखिम, ${D.wd_ne} कात्तिक ${N(D.bs)}`, `${S.ar.event_en}: flash flood risk, ${D.wd_en} Kartik ${D.bs}`), web: S.ar.source.url, sent: S.ar.source.sent, ds: sl.map((s) => slug2code[s]).filter(Boolean), ff: lv, hz: "flood" })); }
+    const C = CATS.find((c) => c[0] === cat); return C && C[3] ? L.filter((x) => C[3].includes(x.hz)) : L;
   }
   function draw() {
     const L = items(), top = {}, nat = L.filter((x) => !x.ds.length);
@@ -44,9 +46,11 @@
     const any = Object.keys(top).length > 0;
     const slider = day && S.ar ? `<div class="hmday" role="group" aria-label="${E(T("दिन", "Day"))}">${S.ar.days.map((d) => `<button type="button" data-d="${d.ad}"${d.ad === day ? ' aria-pressed="true"' : ' aria-pressed="false"'}>${T(d.wd_ne.slice(0, 3) + " " + N(d.bs), d.wd_en.slice(0, 3) + " " + d.bs)}</button>`).join("")}</div>` : "";
     const leg = `<div class="hmleg">${["Extreme", "Severe", "Moderate", "Minor"].map((s) => `<span><i class="s-${s}"></i>${E(T(G.SEV[s][0], G.SEV[s][1]))}</span>`).join("")}<span><i class="hmn"></i>${T("सूचना छैन", "No alert")}</span>${ic.length ? `<span><i class="hmli r"></i>${T("सडक अवरुद्ध", "Road blocked")}</span>` : ""}${hot.length ? `<span><i class="hmli v"></i>${T("नदी चेतावनी/खतरा तह", "River at warning/danger")}</span>` : ""}</div>`;
-    const head = `<div class="hmhead"><h2>${T("जिल्लाअनुसार आधिकारिक सूचना", "Official alerts by district")}</h2><a class="hmchip" href="${R}trek/">${T("पदमार्ग", "Trekking routes")} →</a></div>`;
+    const have = new Set(S.al.map((a) => a.hazard)); if (S.ar) have.add("flood");
+    const chips = `<div class="hmcats" role="group" aria-label="${E(T("प्रकार", "Category"))}">${CATS.filter((c) => !c[3] || c[3].some((h) => have.has(h))).map((c) => `<button type="button" data-k="${c[0]}" aria-pressed="${c[0] === cat}">${E(T(c[1], c[2]))}</button>`).join("")}</div>`;
+    const head = chips + `<div class="hmhead"><h2>${T("जिल्लाअनुसार आधिकारिक सूचना", "Official alerts by district")}</h2><span class="hmlinks"><a class="hmchip" href="${R}trek/">${T("पदमार्ग", "Trekking routes")} →</a><a class="hmchip hmfull" href="${R}map/${FULL[cat] || ""}">${T("पूरा नक्सा", "Full map")} →</a></span></div>`;
     const note = `<p class="meta hmnote">${T("हरेक जिल्लाको रङ: त्यस जिल्लालाई नाम लिएर जारी सक्रिय आधिकारिक सूचनामध्ये सबैभन्दा गम्भीर। देशव्यापी सूचना तल छुट्टै। जिल्लामा थिच्नुहोस्।", "Each district shows the most severe active official alert that names it. Nationwide notices are listed separately below. Tap a district.")}${day ? " " + E(T("कात्तिक " + N(S.ar.days.find((x) => x.ad === day).bs), "Kartik " + S.ar.days.find((x) => x.ad === day).bs + " (" + Number(day.slice(8)) + " Oct)")) : ""}</p>`;
-    if (!any && !nat.length) { box.innerHTML = `${head}<p class="hmnone">${T("सक्रिय आधिकारिक सूचना छैन", "No active alerts")}</p>${slider}`; bind(); return; }
+    if (!any && !nat.length) { box.innerHTML = `${head}<p class="hmnone">${cat === "all" ? T("सक्रिय आधिकारिक सूचना छैन", "No active alerts") : T("यो प्रकारको सक्रिय आधिकारिक सूचना छैन", "No active official alerts in this category")}</p>${slider}`; bind(); return; }
     box.innerHTML = `${head}${slider}<div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg">${dist}${ic.join("")}</svg></div>${leg}${note}
       ${nat.length ? `<details class="hmnat"><summary>${T("देशव्यापी आधिकारिक सूचना", "Nationwide official notices")}: ${[...new Set(nat.map((x) => x.ag))].map((a) => `${E(a)} ${N(nat.filter((x) => x.ag === a).length)}`).join(" · ")}</summary>${list(nat)}</details>` : ""}
       <div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div>`;
@@ -62,6 +66,7 @@
       <p><a href="${R}affected/#d=${E(c)}">${T("यो जिल्लाको पूरा विवरण", "Full district view")} →</a></p></div>`;
   }
   function bind() {
+    box.querySelectorAll(".hmcats button").forEach((b) => (b.onclick = () => { cat = b.dataset.k; draw(); }));
     box.querySelectorAll(".hmday button").forEach((b) => (b.onclick = () => { day = b.dataset.d; draw(); }));
     const pick = (c) => { sel = sel === c ? null : c; draw(); const sh = box.querySelector("#hmsheet"); if (sel && sh && sh.getBoundingClientRect().top > innerHeight - 80) sh.scrollIntoView({ behavior: "smooth", block: "nearest" }); };
     box.querySelectorAll(".hmd").forEach((p) => { p.onclick = () => pick(p.dataset.c); p.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(p.dataset.c); } }; });
