@@ -22,7 +22,7 @@
     const al = await J("data/alerts.json"), A = al ? al.alerts : [];
     if (k === "district") {
       const my = G.district && G.district.get();
-      if (!my) return `<p>${T("पहिले \"मेरो जिल्ला\" छान्नुहोस्, वा नजिकका सूचना हेर्नुहोस्।", "Choose \"My district\" first, or check what is near you.")}</p><div class="aqacts"><button type="button" class="aqbtn" data-do="pick">📍 ${T("जिल्ला छान्नुहोस्", "Choose district")}</button><a class="aqbtn" href="${R}?home=1#nearbyslot">${T("के म प्रभावित छु?", "Am I affected?")}</a></div>`;
+      if (!my) return `<p>${T("पहिले \"मेरो जिल्ला\" छान्नुहोस्, वा नजिकका सूचना हेर्नुहोस्।", "Choose \"My district\" first, or check what is near you.")}</p><div class="aqacts"><button type="button" class="aqbtn" data-do="pick">📍 ${T("जिल्ला छान्नुहोस्", "Choose district")}</button><a class="aqbtn" href="${R}#nearbyslot">${T("के म प्रभावित छु?", "Am I affected?")}</a></div>`;
       const n = await G.district.name(my), L = A.filter(live), mine = L.filter((a) => a.districts.includes(my)), nat = L.filter((a) => !a.districts.length && !a.areas.some((x) => x.circles.length));
       return `<p><b>📍 ${esc(n)}</b>: ${mine.length ? T(`${G.num(mine.length)} चालु सूचना यो जिल्लामा।`, `${mine.length} active alert(s) name this district.`) : T("यो जिल्लाको नाम लिएको चालु सूचना गतिमा छैन। यसको अर्थ खतरा छैन भन्ने होइन।", "No active alert in Gati names this district. That does not mean there is no risk.")}</p>` +
         mine.concat(nat).slice(0, 4).map((a) => `<div class="aqitem">${G.sevChip(a.severity)} <a href="${R}alerts/${esc(a.identifier)}/">${esc(a.info[G.lang].headline)}</a>${a.districts.length ? "" : ` <span class="meta">(${T("देशभर", "nationwide")})</span>`}${cite(a)}</div>`).join("") +
@@ -74,7 +74,7 @@
     if (tab === "call") { el.innerHTML = await answer("numbers"); return; }
     if (tab === "mine") {
       let w = { d: [], r: [] }; try { w = Object.assign(w, JSON.parse(localStorage.getItem("gati-watch") || "{}")); } catch (e) {}
-      el.innerHTML = `<div class="aqmsg bot" style="width:100%">${await answer("district")}</div><div class="aqwatch"><b>⭐ ${T("मेरो निगरानी सूची", "My watchlist")}</b><span>${G.num(String((w.d || []).length))} ${T("जिल्ला", "districts")} · ${G.num(String((w.r || []).length))} ${T("नदी", "rivers")}</span><a class="aqbtn" href="${R}?home=1#watch">${T("खोल्नुहोस्", "Open")}</a></div>`;
+      el.innerHTML = `<div class="aqmsg bot" style="width:100%">${await answer("district")}</div><div class="aqwatch"><b>⭐ ${T("मेरो निगरानी सूची", "My watchlist")}</b><span>${G.num(String((w.d || []).length))} ${T("जिल्ला", "districts")} · ${G.num(String((w.r || []).length))} ${T("नदी", "rivers")}</span><a class="aqbtn" href="${R}#watch">${T("खोल्नुहोस्", "Open")}</a></div>`;
       el.querySelectorAll("[data-do=pick]").forEach((b) => (b.onclick = () => G.district && G.district.open(() => pane())));
       return;
     }

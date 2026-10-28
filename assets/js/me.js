@@ -13,7 +13,7 @@
       <button type="button" class="btn" id="me-pick">${dn ? T("बदल्नुहोस्", "Change") : T("छान्नुहोस्", "Choose")}</button></div>
       <div id="me-rad">${G.affect ? G.affect.radiusUI(G.affect.getR()) : ""}</div>
       <p class="meta">${T("गृहपृष्ठ र 'के म प्रभावित छु?' मा प्रयोग हुन्छ।", "Used on Home and in 'Am I affected?'.")} <a href="${R}affected/${code ? "#d=" + encodeURIComponent(code) : ""}">${T("के म प्रभावित छु?", "Am I affected?")} →</a></p>
-      <div class="merow2"><span class="melab">⭐ ${T("मेरो निगरानी सूची", "My watchlist")}</span><b class="meval">${G.num(String(watch()))}</b><a href="${R}?home=1#watch">${T("हेर्नुहोस्", "Open")}</a></div>`;
+      <div class="merow2"><span class="melab">⭐ ${T("मेरो निगरानी सूची", "My watchlist")}</span><b class="meval">${G.num(String(watch()))}</b><a href="${R}#watch">${T("हेर्नुहोस्", "Open")}</a></div>`;
     $("me-pick").onclick = () => G.district.open(() => place());
     if (G.affect) G.affect.bindRadius($("me-rad"), () => dispatchEvent(new Event("gati:radius")));
   }

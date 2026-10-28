@@ -1,8 +1,12 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><script>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="ne"?"ne":"en"}catch(e){document.documentElement.lang="en"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>/* Item 14: on phones, first visit opens the Feed (/feed/); the choice is remembered (gati-view). */
-(function(){try{var q=new URLSearchParams(location.search),v=localStorage.getItem("gati-view");
-if(q.get("view")==="dashboard"){localStorage.setItem("gati-view","dashboard");return;}if(q.has("home"))return;
+<script>/* Item 14: on phones, first visit opens the Feed (/feed/); the choice is remembered (gati-view). Tapping Home sets a session flag (no ?home=1 in the address bar); old ?home=1 and index.html links still work and are cleaned. */
+(function(){try{var q=new URLSearchParams(location.search),v=localStorage.getItem("gati-view"),cl=false,p=location.pathname;
+if(q.has("home")){sessionStorage.setItem("gati-home","1");q.delete("home");cl=true;}
+if(q.get("view")==="dashboard"){localStorage.setItem("gati-view","dashboard");q.delete("view");cl=true;}
+if(/\/index\.html$/.test(p)){p=p.replace(/index\.html$/,"");cl=true;}
+if(cl){var s=q.toString();history.replaceState(null,"",p+(s?"?"+s:"")+location.hash);}
+if(sessionStorage.getItem("gati-home")==="1")return;
 if(matchMedia("(max-width:720px)").matches&&v!=="dashboard"&&!q.has("demo")){location.replace("feed/"+location.search);}}catch(e){}})();</script>
 
 <title>Gati | सही सूचना, सही समयमा ।</title>
