@@ -1463,3 +1463,5 @@ header.top .gdate span:first-child{font-weight:600;color:var(--ink);font-size:16
 .hiac{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);text-decoration:none;min-width:0}
 .hiac .hin{font-size:var(--fs-3);font-weight:700;line-height:1.1}.hiac .meta{font-size:12px;overflow-wrap:anywhere}
 @media(max-width:760px){.hiag{grid-template-columns:repeat(2,minmax(0,1fr))}.hia{min-height:330px}}
+.hir{min-height:2.8em;margin:8px 0}
+@media(max-width:600px){.hir{min-height:4.4em}}

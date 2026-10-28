@@ -18,6 +18,9 @@
       ${c ? card("नागरिक उड्डयन प्राधिकरण", "CAAN", c.notices, E(T(c.latest_ne, c.latest_en)), c.url, T("CAAN वेबसाइट, जाँचेको", "CAAN website, checked"), tm(c.checked)) : ""}
       ${card("सडक", "Roads", rdA.length, T("नेपाल प्रहरीको चालु सडक अवरोध सूचना", "active Nepal Police road blockage notices"), R + "roads/", T("नेपाल प्रहरी", "Nepal Police"), rdA.length ? tm(last(rdA)) : (D.rd ? tm(D.rd.as_of) : ""))}</div>
       <p class="meta">${T("प्रत्येक निकायको संख्या छुट्टै; कहिल्यै जोडिँदैन।", "Each agency's count is separate; never added together.")}</p>`; };
+  B.rivers = (D) => { const v = D.rv; if (!v) return ""; const hot = v.gauges.filter((g) => g.level >= g.warning);
+    const src = `<span class="meta">${T("स्रोत", "Source")}: <a href="${E(v.url)}" target="_blank" rel="noopener">DHM</a> · ${E(T(v.as_of_ne, v.as_of_en))}</span>`;
+    return `<b>${T("नदी", "Rivers")}:</b> ` + (hot.length ? hot.map((g) => `${E(T(g.ne, g.en))} ${N(g.level)} m ${g.level >= g.danger ? `<span class="sev sev-Extreme">${T("खतरा तह", "danger level")}</span>` : `<span class="sev sev-Moderate">${T("चेतावनी तह", "warning level")}</span>`}`).join(" · ") : T("चेतावनी वा खतरा तहमा कुनै DHM मापन केन्द्र छैन।", "No DHM gauge at warning or danger level.")) + " " + src; };
   /*BLOCKS*/
   Promise.all(["data/source-health.json", "data/alerts.json", "data/caan.json", "data/rivers.json", "data/contacts.json", "data/roads.json"].map(J)).then(([sh, al, caan, rv, ct, rd]) => {
     const D = { sh, al: al ? al.alerts : [], caan, rv, ct, rd };
