@@ -1,0 +1,62 @@
+{
+  "event_ne": "चक्रवात 'अर्नब'",
+  "event_en": "Cyclone 'Arnab'",
+  "checked": "2026-10-28T12:30:00+05:45",
+  "checked_ne": "कात्तिक ११, दिउँसो १२:३० (नेपाल समय)",
+  "checked_en": "Kartik 11 (28 Oct), 12:30 PM NPT",
+  "notices": [
+    {
+      "id": "ndrrma-high-alert-2026-10-27",
+      "agency": "NDRRMA",
+      "trust": "Official",
+      "ne_agency": "राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण",
+      "en_agency": "National Disaster Risk Reduction and Management Authority",
+      "sent": "2026-10-27T11:34:58+05:45",
+      "sent_ne": "कात्तिक १० (२७ अक्टोबर), बिहान ११:३४",
+      "sent_en": "Kartik 10 (27 Oct), 11:34 AM NPT",
+      "url": "https://x.com/NDRRMA_Nepal/status/2114957760647581789",
+      "url_label": "@NDRRMA_Nepal",
+      "days": [12, 13, 14],
+      "ne": "२९ देखि ३१ अक्टोबर (कात्तिक १२ देखि १४) उच्च सतर्कता। पर्यटक उच्च पहाडी र हिमाली क्षेत्रमा नजाने; गइसकेका भए सुरक्षित ठाउँमा रहने। अत्यावश्यक नपरी यात्रा नगर्ने; सडक र हवाई यातायात प्रभावित हुन सक्ने।",
+      "en": "High alert 29 to 31 Oct (Kartik 12 to 14). Tourists not to go to high hill and Himalayan areas; those already there to stay in safe places. No non-essential travel; road and air transport may be affected."
+    },
+    {
+      "id": "immigration-trekking-2026-10-27",
+      "agency": "Department of Immigration",
+      "trust": "Reported",
+      "ne_agency": "अध्यागमन विभाग (गृह मन्त्रालय)",
+      "en_agency": "Department of Immigration (Ministry of Home Affairs)",
+      "sent": "2026-10-27",
+      "sent_ne": "कात्तिक १० (२७ अक्टोबर); सूचनाको समय खुलेको छैन, रातोपाटीमा दिउँसो ४:५० मा प्रकाशित",
+      "sent_en": "Kartik 10 (27 Oct); notice time not stated, reported by Ratopati at 4:50 PM NPT",
+      "url": "https://www.ratopati.com/story/601620/immigration-urges-people-not-to-trek-from-november-12-to-14-permits-for-restricted-areas-suspended",
+      "url_label": "Ratopati",
+      "url2": "https://www.nagariknews.nagariknetwork.com/social-affairs/immigration-urges-people-not-to-trek-for-three-days-63-99.html",
+      "url2_label": "Nagarik News",
+      "days": [12, 13, 14],
+      "ne": "'अत्यन्त जरुरी सूचना': कात्तिक १२, १३ र १४ गते उच्च पहाडी तथा हिमाली क्षेत्रमा पदयात्रा नगर्न र नगराउन अनुरोध। ती दिनका लागि निषेधित क्षेत्रको पदयात्रा अनुमति जारी नहुने। पदयात्रामा गइसकेका सुरक्षित ठाउँमा रहन अनुरोध।",
+      "en": "'Very urgent notice': request not to trek, or arrange treks, in high hill and Himalayan areas on Kartik 12, 13 and 14. Restricted area trekking permits will not be issued for those days. Trekkers already on the trail are asked to stay in safe places."
+    },
+    {
+      "id": "moha-circular-2026-10-28",
+      "agency": "Ministry of Home Affairs",
+      "trust": "Reported",
+      "ne_agency": "गृह मन्त्रालय",
+      "en_agency": "Ministry of Home Affairs",
+      "sent": "2026-10-28",
+      "sent_ne": "कात्तिक ११ (२८ अक्टोबर); समय खुलेको छैन",
+      "sent_en": "Kartik 11 (28 Oct); time not stated",
+      "url": "https://www.sidhakura.com/detail/30400",
+      "url_label": "Sidhakura",
+      "days": [12, 13, 14],
+      "ne": "सबै जिल्ला प्रशासन कार्यालयलाई ९ बुँदे सर्कुलर: कात्तिक १२ देखि १४ उच्च सतर्कता; पर्यटक उच्च पहाडी र हिमाली क्षेत्रमा नजाने, गइसकेका भए सुरक्षित ठाउँमा रहने; आवश्यक परे स्थानीय प्रशासनले अग्रिम जानकारी दिएर सवारी आवागमन बन्द गर्न सक्ने; अत्यावश्यक नपरी यात्रा नगर्ने।",
+      "en": "9-point circular to all District Administration Offices: high alert Kartik 12 to 14; tourists not to go to high hill and Himalayan areas, those already there to stay in safe places; local administration may close roads to vehicles with advance notice; no non-essential travel."
+    }
+  ],
+  "none_found": [
+    {"agency": "Nepal Tourism Board", "ne": "नेपाल पर्यटन बोर्डको 'अर्नब' सम्बन्धी छुट्टै सूचना भेटिएन।", "en": "No separate 'Arnab' notice from Nepal Tourism Board found."},
+    {"agency": "CAAN", "ne": "नागरिक उड्डयन प्राधिकरण (CAAN) को उडान अवरोध सूचना भेटिएन।", "en": "No flight disruption notice from the Civil Aviation Authority (CAAN) found."}
+  ],
+  "note_ne": "पदमार्ग अनुसार छुट्टै आधिकारिक पदयात्रा सूचना छैन। प्रत्येक मार्गमा DHM को जिल्लागत आकस्मिक बाढी जोखिम मात्र देखाइएको छ। गतिले आफ्नो सल्लाह जारी गर्दैन।",
+  "note_en": "There is no official route-by-route trekking advisory. Each route shows only DHM's district flash flood risk. Gati does not issue its own advice."
+}
