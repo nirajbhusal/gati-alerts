@@ -4,8 +4,8 @@ main = "src/index.js"
 compatibility_date = "2026-10-01"
 
 [vars]
-MODEL = "claude-haiku-4-5"            # or "claude-sonnet-4-5" for higher quality, about 3x the cost
-MAX_TOKENS = "900"
+MODEL = "claude-haiku-5-5"            # tested 28 Oct 2026; "claude-sonnet-5-5" also works (about 20x the cost)
+MAX_TOKENS = "1500"
 DATA_BASE = "https://nirajbhusal.github.io/gati-alerts/"
 ALLOWED_ORIGINS = "https://nirajbhusal.github.io,http://localhost:8933,http://127.0.0.1:8933"
 MAX_QUESTION_CHARS = "400"

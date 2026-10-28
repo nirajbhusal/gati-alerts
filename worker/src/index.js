@@ -1,5 +1,5 @@
 /* Ask Gati Worker: POST /ask {q} -> {answer, citations[]}. Key comes from the ANTHROPIC_API_KEY secret only. */
-import { FILES, corsHeaders, validQuestion, buildItems, SYSTEM, userMessage, parseModel } from "./lib.js";
+import { TOOL, FILES, corsHeaders, validQuestion, buildItems, SYSTEM, userMessage, parseModel } from "./lib.js";
 
 const json = (o, status, h) => new Response(JSON.stringify(o), { status, headers: { "Content-Type": "application/json; charset=utf-8", ...(h || {}) } });
 const day = () => new Date(Date.now() + 345 * 60000).toISOString().slice(0, 10);
@@ -35,11 +35,14 @@ export async function handle(req, env, fetcher = fetch) {
   if (!env.ANTHROPIC_API_KEY) return json({ error: "not_configured" }, 503, cors);
   const items = buildItems(await loadData(env, fetcher));
   const nowIso = new Date(Date.now() + 345 * 60000).toISOString().slice(0, 16) + "+05:45";
-  const r = await fetcher("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-    body: JSON.stringify({ model: env.MODEL || "claude-haiku-4-5", max_tokens: +env.MAX_TOKENS || 900, temperature: 0, system: SYSTEM, messages: [{ role: "user", content: userMessage(items, body.q.trim(), nowIso) }] }) });
-  if (!r.ok) return json({ error: "upstream", status: r.status }, 502, cors);
-  const m = await r.json(), text = (m.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
+  const call = (tc) => fetcher("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
+    body: JSON.stringify({ model: env.MODEL || "claude-haiku-5-5", max_tokens: +env.MAX_TOKENS || 1500, ...(env.TEMPERATURE !== undefined && env.TEMPERATURE !== "" ? { temperature: +env.TEMPERATURE } : {}), system: SYSTEM, tools: [TOOL], tool_choice: tc, messages: [{ role: "user", content: userMessage(items, body.q.trim(), nowIso) }] }) });
+  /* some models refuse a forced tool; retry once with auto (the prompt still asks for the reply tool) */
+  let r = await call({ type: "tool", name: "reply" });
+  if (r.status === 400) { const t = await r.clone().text(); if (/tool_choice/.test(t)) r = await call({ type: "auto" }); }
+  if (!r.ok) { let msg = ""; try { msg = ((await r.json()).error || {}).message || ""; } catch (e) {} return json({ error: "upstream", status: r.status, detail: msg.slice(0, 200) }, 502, cors); }
+  const m = await r.json(), tu = (m.content || []).find((c) => c.type === "tool_use" && c.name === "reply"), text = tu ? JSON.stringify(tu.input) : (m.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
   const out = parseModel(text, items); if (!out) return json({ error: "bad_model_output" }, 502, cors);
-  return json({ ...out, model: m.model, data_time: nowIso }, 200, { ...cors, "Cache-Control": "no-store" });
+  return json({ ...out, model: m.model, usage: m.usage, data_time: nowIso }, 200, { ...cors, "Cache-Control": "no-store" });
 }
 export default { fetch: (req, env) => handle(req, env) };

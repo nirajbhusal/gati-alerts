@@ -1533,3 +1533,4 @@ html[data-theme=dark] .hmd{stroke:#0d1117}html[data-theme=dark] .hmd:not(.s-Mino
 .aqai{margin:0 0 8px;line-height:1.5;white-space:pre-wrap}
 .aqcards{display:grid;gap:6px}.aqcard{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13.5px}.aqcard b{flex:1 1 100%;font-weight:600;line-height:1.35}.aqcard .meta{font-size:12px}
 .aqaim{font-size:11.5px;margin-top:6px}
+.aqpanel.full .aqlog{height:min(58vh,560px);overflow-y:auto;overscroll-behavior:contain;padding-right:2px}

@@ -134,7 +134,7 @@
     const w = log.lastElementChild; log.scrollTop = log.scrollHeight;
     const ai = !chip ? await claude(q) : null;
     w.innerHTML = ai || (k ? await answer(k) : soon()); w.classList.remove("aqwait");
-    w.scrollIntoView({ block: "nearest" });
+    if (FULL) log.scrollTop = w.offsetTop - log.offsetTop - 8; else w.scrollIntoView({ block: "nearest" });
   }
   function open() { lastFocus = document.activeElement; panel.hidden = false; btn.setAttribute("aria-expanded", "true"); btn.hidden = true; document.body.classList.add("aq-open"); setTimeout(() => panel.querySelector("#aqin").focus(), 30); }
   function close() { panel.hidden = true; btn.hidden = false; btn.setAttribute("aria-expanded", "false"); document.body.classList.remove("aq-open"); (lastFocus && lastFocus.focus ? lastFocus : btn).focus(); }
