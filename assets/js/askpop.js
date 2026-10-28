@@ -157,7 +157,7 @@
     const cf = await J("data/ask-config.json"); if (!cf || !cf.worker) return { off: true };
     if (navigator.onLine === false) return { err: "offline" };
     try {
-      const ac = new AbortController(), to = setTimeout(() => ac.abort(), 20000);
+      const ac = new AbortController(), to = setTimeout(() => ac.abort(), 30000);
       const r = await fetch(cf.worker, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q, lang: G.lang }), signal: ac.signal }); clearTimeout(to);
       if (r.status === 429) return { err: "busy" };
       if (!r.ok) return { err: "down" }; const j = await r.json(); if (!j || typeof j.answer !== "string") return { err: "down" };
