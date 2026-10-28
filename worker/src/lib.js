@@ -49,6 +49,6 @@ export function parseModel(text, items) {
   try { o = JSON.parse(m ? m[0] : text); } catch (e) { return null; }
   if (!o || typeof o.answer !== "string") return null;
   const byId = Object.fromEntries(items.map((x) => [x.id, x]));
-  const citations = [...new Set(Array.isArray(o.cite) ? o.cite : [])].map((id) => byId[id]).filter(Boolean).map((x) => ({ id: x.id, title: x.title, title_ne: x.title_ne || null, agency: x.agency, trust: x.trust, url: x.url, time: x.time }));
-  return { answer: o.answer.replace(/\s*\u2014\s*/g, ", ").replace(/तपाईं|तपाईँ|तपाई/g, "हजुर").trim(), citations };
+  const citations = [...new Set(Array.isArray(o.cite) ? o.cite : [])].map((id) => byId[id]).filter(Boolean).filter((x, i, a) => a.findIndex((y) => y.url === x.url) === i).map((x) => ({ id: x.id, title: x.title, title_ne: x.title_ne || null, agency: x.agency, trust: x.trust, url: x.url, time: x.time }));
+  return { answer: o.answer.replace(/\s*\[(?:[ARVFTPC]\d+(?:\s*,\s*)?)+\]/g, "").replace(/\s*\u2014\s*/g, ", ").replace(/तपाईं|तपाईँ|तपाई/g, "हजुर").trim(), citations };
 }
