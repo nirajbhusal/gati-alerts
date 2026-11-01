@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-rivers-warning-level-2026-10-31</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-31T13:06:51+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Flood Forecasting</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2116413159166857408</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>नदी सतर्कता तह पार</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-31T11:10:00+05:45</effective>
+    <onset>2026-10-31T11:10:00+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM (कात्तिक १४): कोड्कु (झरुवारसी), रोशी (पनौती), बागमती (खोकना) र लाल बकैया (झुरेलीबजार) ले सतर्कता तह पार, बढ्दो क्रममा</headline>
+    <description>आधिकारिक (DHM बाढी पूर्वानुमान महाशाखा, @DHM_FloodEWS, कात्तिक १४ / ३१ अक्टोबर): बिहान ११:१० मा ललितपुरको कोड्कु खोला झरुवारसी; बिहान ११:५० मा काभ्रेको रोशी खोला पनौती र ललितपुरको बागमती नदी खोकना; दिउँसो १ बजे मकवानपुरको लाल बकैया खोला झुरेलीबजारले सतर्कता तह पार गरेको र बढ्दो क्रममा रहेकाले नदी छेउछाउका बासिन्दालाई सतर्क रहन अनुरोध। कुनै पनि केन्द्रले खतरा तह पार गरेको सूचना आएन। DHM ले साँझदेखि मौसम सुधार हुने र कात्तिक १५ देखि प्रमुख नदी सामान्य हुने जनाएको छ; यी केन्द्रको पछिल्लो तह गतिले पुष्टि गर्न सकेको छैन।</description>
+    <instruction>(अवधि सकिएको) नदी किनार र खोला तर्ने ठाउँबाट टाढा रहनुहोस्। बाढी सूचना: ११५५(२)।</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2116413159166857408</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2116413159166857408</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T11:50:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV8Cb9KawAEmqV5.png</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/DHM_FloodEWS/status/2116407190538096855</value></parameter>
+    <parameter><valueName>gati:sourceUrl3</valueName><value>https://x.com/DHM_FloodEWS/status/2116430436029309120</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM (कात्तिक १४): कोड्कु, रोशी, बागमती (खोकना) र लाल बकैयाले सतर्कता तह पार गरेका थिए</value></parameter>
+    <area>
+      <areaDesc>ललितपुर: कोड्कु खोला, झरुवारसी</areaDesc>
+      <circle>27.64,85.34 2</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+    <area>
+      <areaDesc>ललितपुर: बागमती नदी, खोकना</areaDesc>
+      <circle>27.64,85.29 2</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+    <area>
+      <areaDesc>काभ्रेपलाञ्चोक: रोशी खोला, पनौती</areaDesc>
+      <circle>27.58,85.52 2</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0324</value></geocode>
+    </area>
+    <area>
+      <areaDesc>मकवानपुर: लाल बकैया खोला, झुरेलीबजार</areaDesc>
+      <circle>27.30,85.13 4</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0331</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>River above warning level</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-10-31T11:10:00+05:45</effective>
+    <onset>2026-10-31T11:10:00+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Flood Forecasting · relayed by Gati</senderName>
+    <headline>DHM (Kartik 14): Kodku (Jharuwarasi), Roshi (Panauti), Bagmati (Khokana) and Lal Bakaiya (Jhurelibazar) crossed the warning level and were rising</headline>
+    <description>Official (DHM Flood Forecasting Division, @DHM_FloodEWS, Kartik 14 / 31 Oct): at 11:10 AM the Kodku Khola at Jharuwarasi (Lalitpur); at 11:50 AM the Roshi Khola at Panauti (Kavre) and the Bagmati River at Khokana (Lalitpur); and at 1:00 PM the Lal Bakaiya Khola at Jhurelibazar (Makwanpur) crossed the warning level and were rising; people near the rivers were asked to stay alert. No station was reported above the danger level. DHM said the weather would improve from the evening and major rivers would be normal from Kartik 15; Gati could not confirm the latest levels at these stations.</description>
+    <instruction>(Period ended) Keep away from riverbanks and stream crossings. Flood information: 1155(2).</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2116413159166857408</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2116413159166857408</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T11:50:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV8Cb9KawAEmqV5.png</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/DHM_FloodEWS/status/2116407190538096855</value></parameter>
+    <parameter><valueName>gati:sourceUrl3</valueName><value>https://x.com/DHM_FloodEWS/status/2116430436029309120</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM (Kartik 14): Kodku, Roshi, Bagmati (Khokana) and Lal Bakaiya crossed the warning level</value></parameter>
+    <area>
+      <areaDesc>Lalitpur: Kodku Khola at Jharuwarasi</areaDesc>
+      <circle>27.64,85.34 2</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Lalitpur: Bagmati River at Khokana</areaDesc>
+      <circle>27.64,85.29 2</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0325</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Kavrepalanchok: Roshi Khola at Panauti</areaDesc>
+      <circle>27.58,85.52 2</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0324</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Makwanpur: Lal Bakaiya Khola at Jhurelibazar</areaDesc>
+      <circle>27.30,85.13 4</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0331</value></geocode>
+    </area>
+  </info>
+</alert>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-mustang-jomsom-korala-2026-11-01</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-01T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2116703396698931520</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Monitor</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-01T07:00:00+05:45</effective>
+    <onset>2026-11-01T07:00:00+05:45</onset>
+    <expires>2026-11-02T09:00:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>मुस्ताङ: जोमसोम–कोरला सडकखण्ड जोमसोम (घरपझोङ-४) र चैले (वारागुङ मुक्तिक्षेत्र-३) मा एकतर्फी सुचारु</headline>
+    <description>आधिकारिक: नेपाल प्रहरीको 'विपद्को कारण मुख्य राजमार्ग अवरोध' सूची, कात्तिक १५ बिहान ७:०० बजेसम्म (@NepalPoliceHQ): कात्तिक १४ बिहान ६:३० मा घरपझोङ गाउँपालिका–४ जोमसोम (पर्यटक चेकपोस्टबाट करिब १ कि.मि. अगाडि) मा पहिरो र बिहान ७:३० मा वारागुङ मुक्तिक्षेत्र गाउँपालिका–३ चैलेमा अविरल वर्षाले जोमसोम–कोरला सडकखण्ड अवरुद्ध भएकोमा अहिले दुवै ठाउँमा एकतर्फी सुचारु। NDRRMA को कात्तिक १४ को बुलेटिनमा यो सडक पूर्ण अवरुद्ध थियो।</description>
+    <instruction>एकतर्फी मात्र चल्छ; ढिलाइ हुन सक्छ, प्रहरीको निर्देशन पालना गर्नुहोस् (१००)।</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2116703396698931520</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2116703396698931520</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-01T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>मुस्ताङ: जोमसोम–कोरला सडक जोमसोम र चैलेमा एकतर्फी सुचारु</value></parameter>
+    <area>
+      <areaDesc>मुस्ताङ जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0445</value></geocode>
+    </area>
+    <area>
+      <areaDesc>घरपझोङ-४ जोमसोम र वारागुङ मुक्तिक्षेत्र-३ चैले (अनुमानित स्थान)</areaDesc>
+      <circle>28.86,83.78 12</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Monitor</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-01T07:00:00+05:45</effective>
+    <onset>2026-11-01T07:00:00+05:45</onset>
+    <expires>2026-11-02T09:00:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Mustang: Jomsom–Korala road one way at Jomsom (Gharapjhong-4) and Chaile (Baragung Muktikshetra-3)</headline>
+    <description>Official: Nepal Police list 'main highway obstructions due to disasters', to 7:00 AM Kartik 15 (1 Nov) (@NepalPoliceHQ): the Jomsom–Korala road, blocked on Kartik 14 (31 Oct) by a landslide at 6:30 AM at Gharapjhong Rural Municipality-4, Jomsom (about 1 km before the tourist checkpost) and by continuous rain at 7:30 AM at Chaile, Baragung Muktikshetra-3, is now open one way at a time at both places. NDRRMA's Kartik 14 bulletin had listed it as fully blocked.</description>
+    <instruction>Traffic one way at a time; expect delays and follow police instructions (100).</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2116703396698931520</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2116703396698931520</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-01T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Mustang: Jomsom–Korala road one way at Jomsom and Chaile</value></parameter>
+    <area>
+      <areaDesc>Mustang district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0445</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Gharapjhong-4 Jomsom and Baragung Muktikshetra-3 Chaile (approximate location)</areaDesc>
+      <circle>28.86,83.78 12</circle>
+    </area>
+  </info>
+</alert>

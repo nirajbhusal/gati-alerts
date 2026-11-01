@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-surkhet-karnali-aulise-2026-11-01</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-01T07:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2116703396698931520</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Monitor</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-01T07:00:00+05:45</effective>
+    <onset>2026-11-01T07:00:00+05:45</onset>
+    <expires>2026-11-02T09:00:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>सुर्खेत: कर्णाली राजमार्ग बराहताल-७ औलिसेमा पहिरोपछि एकतर्फी सुचारु</headline>
+    <description>आधिकारिक: नेपाल प्रहरीको 'विपद्को कारण मुख्य राजमार्ग अवरोध' सूची, कात्तिक १५ बिहान ७:०० बजेसम्म (@NepalPoliceHQ): कात्तिक १४ बिहान ५:५५ बजे सुर्खेतको बराहताल गाउँपालिका–७ औलिसेमा पहिरो खसेको कर्णाली राजमार्ग अहिले एकतर्फी सुचारु। NDRRMA को कात्तिक १४ को बुलेटिनमा यो खण्ड पूर्ण अवरुद्ध थियो।</description>
+    <instruction>एकतर्फी मात्र चल्छ; ढिलाइ हुन सक्छ, प्रहरीको निर्देशन पालना गर्नुहोस् (१००)।</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2116703396698931520</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2116703396698931520</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-01T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>सुर्खेत: कर्णाली राजमार्ग औलिसेमा एकतर्फी सुचारु</value></parameter>
+    <area>
+      <areaDesc>सुर्खेत जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0659</value></geocode>
+    </area>
+    <area>
+      <areaDesc>औलिसे, बराहताल गाउँपालिका-७ (अनुमानित स्थान)</areaDesc>
+      <circle>28.66,81.55 6</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Monitor</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-01T07:00:00+05:45</effective>
+    <onset>2026-11-01T07:00:00+05:45</onset>
+    <expires>2026-11-02T09:00:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Surkhet: Karnali Highway one way at Aulise, Barahatal-7 after a landslide</headline>
+    <description>Official: Nepal Police list 'main highway obstructions due to disasters', to 7:00 AM Kartik 15 (1 Nov) (@NepalPoliceHQ): the Karnali Highway at Aulise, Barahatal Rural Municipality-7, Surkhet, hit by a landslide at 5:55 AM on Kartik 14 (31 Oct), is now open one way at a time. NDRRMA's Kartik 14 bulletin had listed it as fully blocked.</description>
+    <instruction>Traffic one way at a time; expect delays and follow police instructions (100).</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2116703396698931520</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2116703396698931520</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-01T07:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Surkhet: Karnali Highway one way at Aulise</value></parameter>
+    <area>
+      <areaDesc>Surkhet district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0659</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Aulise, Barahatal Rural Municipality-7 (approximate location)</areaDesc>
+      <circle>28.66,81.55 6</circle>
+    </area>
+  </info>
+</alert>

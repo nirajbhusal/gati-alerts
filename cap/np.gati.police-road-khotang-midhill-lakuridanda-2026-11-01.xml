@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-khotang-midhill-lakuridanda-2026-11-01</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-01T09:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-01T09:00:00+05:45</effective>
+    <onset>2026-11-01T09:00:00+05:45</onset>
+    <expires>2026-11-02T09:00:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>खोटाङ: मध्यपहाडी लोकमार्ग हलेसी तुवाचुङ-१ लाकुरीडाँडामा पहिरोले करिब १५ मिटर पूर्ण अवरुद्ध</headline>
+    <description>आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।१५ (कात्तिक १५) बिहान ९:०० बजेसम्म: कात्तिक १४ बिहान ७:५० बजे खोटाङको हलेसी तुवाचुङ नगरपालिका–१ लाकुरीडाँडामा वर्षाका कारण माथिबाट लेदोसहितको पहिरो झरी मध्यपहाडी लोकमार्गको करिब १५ मिटर बाटो पूर्ण रूपमा अवरुद्ध। कात्तिक १५ बिहान ७ बजेको प्रहरी सूचीमा पनि पूर्ण अवरोध।</description>
+    <instruction>यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-01T09:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NepalPoliceHQ/status/2116703396698931520</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>खोटाङ: मध्यपहाडी लोकमार्ग लाकुरीडाँडामा पहिरोले पूर्ण अवरुद्ध</value></parameter>
+    <area>
+      <areaDesc>खोटाङ जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0112</value></geocode>
+    </area>
+    <area>
+      <areaDesc>लाकुरीडाँडा, हलेसी तुवाचुङ-१ (अनुमानित स्थान)</areaDesc>
+      <circle>27.17,86.60 6</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-01T09:00:00+05:45</effective>
+    <onset>2026-11-01T09:00:00+05:45</onset>
+    <expires>2026-11-02T09:00:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Khotang: Mid-Hill Highway fully blocked for about 15 m by a landslide at Lakuridanda, Halesi Tuwachung-1</headline>
+    <description>Official: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-15 (Kartik 15 / 1 Nov): at 7:50 AM on Kartik 14 (31 Oct) a landslide with debris fell on the Mid-Hill Highway at Lakuridanda, Halesi Tuwachung Municipality-1, Khotang, fully blocking about 15 m of road. Still listed as fully blocked in the police list to 7 AM Kartik 15.</description>
+    <instruction>Do not use this road; check with local police before travelling (100).</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-01T09:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NepalPoliceHQ/status/2116703396698931520</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Khotang: Mid-Hill Highway fully blocked by a landslide at Lakuridanda</value></parameter>
+    <area>
+      <areaDesc>Khotang district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0112</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Lakuridanda, Halesi Tuwachung-1 (approximate location)</areaDesc>
+      <circle>27.17,86.60 6</circle>
+    </area>
+  </info>
+</alert>

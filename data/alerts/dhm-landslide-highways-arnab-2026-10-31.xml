@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-landslide-highways-arnab-2026-10-31</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-31T09:10:19+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Flood Forecasting</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2116370908936069131</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Geo</category>
+    <event>राजमार्ग पहिरो जोखिम पूर्वसूचना</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-31T09:10:19+05:45</effective>
+    <onset>2026-10-31T09:10:19+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM: तालागाउँ, पूर्व-पश्चिम राजमार्गको दाउन्ने खण्ड र बीपी राजमार्गको रोशी गाउँपालिका खण्डमा पहिरोको उच्च जोखिम (कात्तिक १४)</headline>
+    <description>आधिकारिक (DHM बाढी पूर्वानुमान महाशाखा/भौगर्भिक तथा जल उत्पन्न विपद् अनुसन्धान शाखाको 'प्रमुख राजमार्गहरूमा पहिरो जोखिम आंकलन तथा पूर्वसूचना', मिति २०८३ कात्तिक १४, @DHM_FloodEWS मा बिहान ९:१० मा प्रकाशित): कात्तिक १३ देखिको निरन्तर वर्षाका आधारमा तालागाउँ, पूर्व-पश्चिम राजमार्गको दाउन्ने सडक खण्ड र बीपी राजमार्गअन्तर्गत रोशी गाउँपालिकाभित्रको सडक खण्डमा पहिरोको उच्च जोखिम देखिएको; यात्रा गर्दा उच्च सजगता अपनाउन अनुरोध। सूचना मौसम पूर्वानुमान र प्रारम्भिक आंकलनमा आधारित। सोही दिन बिहान ४:५५ मा बीपी राजमार्ग रोशी-९ पिनथली र रोशी-८ गिम्दीबेँसीमा लेदोसहितको पहिरोले पूर्ण अवरुद्ध भएको नेपाल प्रहरीले जनाएको छ (छुट्टै सूचना हेर्नुहोस्)।</description>
+    <instruction>(अवधि सकिएको) यी खण्डमा यात्रा गर्नुअघि प्रहरीको सडक सूचना हेर्नुहोस्।</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2116370908936069131</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2116370908936069131</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T09:10:19+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>landslide</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV7byJvaMAA_pA_.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: तालागाउँ, पूर्व-पश्चिम राजमार्गको दाउन्ने र बीपी राजमार्गको रोशी खण्डमा पहिरोको उच्च जोखिम (कात्तिक १४)</value></parameter>
+    <area>
+      <areaDesc>काभ्रेपलाञ्चोक जिल्ला: बीपी राजमार्ग, रोशी गाउँपालिका खण्ड</areaDesc>
+      <circle>27.45,85.62 6</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0324</value></geocode>
+    </area>
+    <area>
+      <areaDesc>पूर्व-पश्चिम राजमार्ग: दाउन्ने खण्ड (नवलपरासी पश्चिम, अनुमानित स्थान); तालागाउँको स्थान सूचनामा खुलेको छैन</areaDesc>
+      <circle>27.62,83.75 6</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0547</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Geo</category>
+    <event>Highway landslide risk advisory</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Possible</certainty>
+    <effective>2026-10-31T09:10:19+05:45</effective>
+    <onset>2026-10-31T09:10:19+05:45</onset>
+    <expires>2026-10-31T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Flood Forecasting · relayed by Gati</senderName>
+    <headline>DHM: high landslide risk at Talagaun, the Daunne section of the East-West Highway and the Roshi Rural Municipality section of the BP Highway (Kartik 14)</headline>
+    <description>Official (DHM Flood Forecasting Division / Geological and Water-induced Disaster Research Section, 'Landslide risk assessment and early warning for major highways', dated 2083 Kartik 14, posted on @DHM_FloodEWS at 9:10 AM on 31 Oct): based on continuous rain since Kartik 13, high landslide risk was assessed at Talagaun, the Daunne section of the East-West Highway and the BP Highway section in Roshi Rural Municipality; travellers were asked to take great care. The notice is based on the weather forecast and a preliminary assessment. Nepal Police reported the BP Highway fully blocked at Roshi-9 Pinthali and Roshi-8 Gimdibesi by debris at 4:55 AM the same day (see the separate notice).</description>
+    <instruction>(Period ended) Check the latest Nepal Police road notice before travelling on these sections.</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2116370908936069131</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2116370908936069131</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T09:10:19+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>landslide</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV7byJvaMAA_pA_.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: high landslide risk at Talagaun, Daunne (East-West Hwy) and Roshi section of BP Hwy (Kartik 14)</value></parameter>
+    <area>
+      <areaDesc>Kavrepalanchok district: BP Highway, Roshi Rural Municipality section</areaDesc>
+      <circle>27.45,85.62 6</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0324</value></geocode>
+    </area>
+    <area>
+      <areaDesc>East-West Highway: Daunne section (Nawalparasi West, approximate location); Talagaun's location is not stated in the notice</areaDesc>
+      <circle>27.62,83.75 6</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0547</value></geocode>
+    </area>
+  </info>
+</alert>

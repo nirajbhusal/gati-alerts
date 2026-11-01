@@ -1,7 +1,1735 @@
 {
- "generated": "2026-10-28T03:29:06+00:00",
- "count": 50,
+ "generated": "2026-11-01T03:33:48+00:00",
+ "count": 63,
  "alerts": [
+  {
+   "identifier": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T09:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": "nepalpolice.gov.np,np.gati.police-road-aarughat-soti-2026-10-28-0800,2026-10-28T08:00:00+05:45",
+   "file": "data/alerts/police-road-aarughat-soti-2026-11-01-0900.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+     "description": "अद्यावधिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।१५ (कात्तिक १५) बिहान ९:०० बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो अझै पूर्ण रूपमा अवरुद्ध (सूचीमा 'सोतीदेखि मान्बु जाने पुल')। 'अर्नब' को वर्षापछि यो सूचीमा अरू चार पूर्ण अवरोध पनि छन् (छुट्टै सूचना हेर्नुहोस्)।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "सोती, आरुघाट-२/३ (अनुमानित स्थान)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+     "description": "Update: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-15 (Kartik 15 / 1 Nov): the iron motorable bridge at Soti linking Aarughat-2 and 3, swept away by the Budhi Gandaki flood of Asoj 25, still leaves the road fully blocked (listed as 'bridge from Soti to Manbu'). After the 'Arnab' rain the list now also has four other full blockages (see separate notices).",
+     "instruction": "Do not use this road; check with local police before travelling (100).",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "Soti, Aarughat-2/3 (approximate location)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला",
+     "en": "Gorkha district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.05,84.81 3"
+     ],
+     "ne": "सोती, आरुघाट-२/३ (अनुमानित स्थान)",
+     "en": "Soti, Aarughat-2/3 (approximate location)"
+    }
+   ],
+   "refIds": [
+    "np.gati.police-road-aarughat-soti-2026-10-28-0800"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-21",
+     "msgType": "Alert",
+     "sent": "2026-10-21T18:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-23",
+     "msgType": "Update",
+     "sent": "2026-10-23T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25",
+     "msgType": "Update",
+     "sent": "2026-10-25T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25-1900",
+     "msgType": "Update",
+     "sent": "2026-10-25T19:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-kavre-bp-roshi-2026-11-01",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T09:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": null,
+   "file": "data/alerts/police-road-kavre-bp-roshi-2026-11-01.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "काभ्रे: बीपी राजमार्ग रोशी-९ पिनथली र रोशी-८ गिम्दीबेँसीमा लेदोसहितको पहिरोले पूर्ण अवरुद्ध",
+     "description": "आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।१५ (कात्तिक १५) बिहान ९:०० बजेसम्म: कात्तिक १४ बिहान करिब ४:५५ बजे काभ्रेको रोशी गाउँपालिका–९ पिनथली र ८ गिम्दीबेँसीस्थित बीपी राजमार्गमा खहरे खोलाबाट ढुङ्गा-माटोसहितको लेदो आई बाटो पूर्ण रूपमा अवरुद्ध। कात्तिक १५ बिहान ७ बजेको प्रहरी सूचीमा पनि पूर्ण अवरोध। NDRRMA को कात्तिक १४ को बुलेटिन (#२३०९) अनुसार इलाका प्रहरी कार्यालय मंगलटार र प्रहरी चौकी कटुञ्जेबेँसीको टोली खटिएको।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "काभ्रे: बीपी राजमार्ग रोशी-९ पिनथली र रोशी-८ गिम्दीबेँसीमा पहिरोले पूर्ण अवरुद्ध"
+     },
+     "areas": [
+      {
+       "desc": "काभ्रेपलाञ्चोक जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "रोशी-९ पिनथली र रोशी-८ गिम्दीबेँसी, बीपी राजमार्ग (अनुमानित स्थान)",
+       "circles": [
+        "27.45,85.62 5"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Kavre: BP Highway fully blocked by debris at Roshi-9 Pinthali and Roshi-8 Gimdibesi",
+     "description": "Official: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-15 (Kartik 15 / 1 Nov): at about 4:55 AM on Kartik 14 (31 Oct) a debris flow of stones and mud from the Khahare Khola fully blocked the BP Highway at Roshi Rural Municipality-9 Pinthali and 8 Gimdibesi, Kavre. Still listed as fully blocked in the police list to 7 AM Kartik 15. NDRRMA's Kartik 14 bulletin (#2309) says police teams from Mangaltar and Katunjebesi were deployed.",
+     "instruction": "Do not use this road; check with local police before travelling (100).",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "Kavre: BP Highway fully blocked by debris at Roshi-9 Pinthali and Roshi-8 Gimdibesi"
+     },
+     "areas": [
+      {
+       "desc": "Kavrepalanchok district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "Roshi-9 Pinthali and Roshi-8 Gimdibesi, BP Highway (approximate location)",
+       "circles": [
+        "27.45,85.62 5"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0324"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0324",
+     "circles": [],
+     "ne": "काभ्रेपलाञ्चोक जिल्ला",
+     "en": "Kavrepalanchok district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "27.45,85.62 5"
+     ],
+     "ne": "रोशी-९ पिनथली र रोशी-८ गिम्दीबेँसी, बीपी राजमार्ग (अनुमानित स्थान)",
+     "en": "Roshi-9 Pinthali and Roshi-8 Gimdibesi, BP Highway (approximate location)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-khotang-midhill-lakuridanda-2026-11-01",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T09:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": null,
+   "file": "data/alerts/police-road-khotang-midhill-lakuridanda-2026-11-01.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "खोटाङ: मध्यपहाडी लोकमार्ग हलेसी तुवाचुङ-१ लाकुरीडाँडामा पहिरोले करिब १५ मिटर पूर्ण अवरुद्ध",
+     "description": "आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।१५ (कात्तिक १५) बिहान ९:०० बजेसम्म: कात्तिक १४ बिहान ७:५० बजे खोटाङको हलेसी तुवाचुङ नगरपालिका–१ लाकुरीडाँडामा वर्षाका कारण माथिबाट लेदोसहितको पहिरो झरी मध्यपहाडी लोकमार्गको करिब १५ मिटर बाटो पूर्ण रूपमा अवरुद्ध। कात्तिक १५ बिहान ७ बजेको प्रहरी सूचीमा पनि पूर्ण अवरोध।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "खोटाङ: मध्यपहाडी लोकमार्ग लाकुरीडाँडामा पहिरोले पूर्ण अवरुद्ध"
+     },
+     "areas": [
+      {
+       "desc": "खोटाङ जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0112"
+       }
+      },
+      {
+       "desc": "लाकुरीडाँडा, हलेसी तुवाचुङ-१ (अनुमानित स्थान)",
+       "circles": [
+        "27.17,86.60 6"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Khotang: Mid-Hill Highway fully blocked for about 15 m by a landslide at Lakuridanda, Halesi Tuwachung-1",
+     "description": "Official: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-15 (Kartik 15 / 1 Nov): at 7:50 AM on Kartik 14 (31 Oct) a landslide with debris fell on the Mid-Hill Highway at Lakuridanda, Halesi Tuwachung Municipality-1, Khotang, fully blocking about 15 m of road. Still listed as fully blocked in the police list to 7 AM Kartik 15.",
+     "instruction": "Do not use this road; check with local police before travelling (100).",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "Khotang: Mid-Hill Highway fully blocked by a landslide at Lakuridanda"
+     },
+     "areas": [
+      {
+       "desc": "Khotang district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0112"
+       }
+      },
+      {
+       "desc": "Lakuridanda, Halesi Tuwachung-1 (approximate location)",
+       "circles": [
+        "27.17,86.60 6"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0112"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0112",
+     "circles": [],
+     "ne": "खोटाङ जिल्ला",
+     "en": "Khotang district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "27.17,86.60 6"
+     ],
+     "ne": "लाकुरीडाँडा, हलेसी तुवाचुङ-१ (अनुमानित स्थान)",
+     "en": "Lakuridanda, Halesi Tuwachung-1 (approximate location)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-lalitpur-bagmati-corridor-2026-11-01",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T09:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": null,
+   "file": "data/alerts/police-road-lalitpur-bagmati-corridor-2026-11-01.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "ललितपुर: बल्खु, सुन्दरीघाटस्थित बागमती करिडोर सडक पानीको बहाव बढेर पूर्ण अवरुद्ध",
+     "description": "आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।१५ (कात्तिक १५) बिहान ९:०० बजेसम्म: कात्तिक १४ (प्रहरी सूचनामा बिहान ८:१५; बिहान ७ बजेको सूचीमा ६:२०) ललितपुर महानगरपालिका–२ बल्खु, सुन्दरीघाटस्थित बागमती करिडोरको बाटोमा अविरल वर्षाले पानीको बहाव बढेर बाटो पूर्ण रूपमा अवरुद्ध। कात्तिक १५ बिहान ७ बजेको सूचीमा पनि पूर्ण अवरोध।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "ललितपुर: बल्खु, सुन्दरीघाटको बागमती करिडोर सडक पूर्ण अवरुद्ध"
+     },
+     "areas": [
+      {
+       "desc": "ललितपुर जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "बल्खु, सुन्दरीघाट, ललितपुर महानगरपालिका-२ (अनुमानित स्थान)",
+       "circles": [
+        "27.685,85.293 1"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Lalitpur: Bagmati corridor road at Balkhu, Sundarighat fully blocked by high water",
+     "description": "Official: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-15 (Kartik 15 / 1 Nov): on Kartik 14 (31 Oct; 8:15 AM in the notice, 6:20 AM in the 7 AM list) rising water after continuous rain fully blocked the Bagmati corridor road at Balkhu, Sundarighat, Lalitpur Metropolitan City-2. Still listed as fully blocked in the police list to 7 AM Kartik 15.",
+     "instruction": "Do not use this road; check with local police before travelling (100).",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "Lalitpur: Bagmati corridor road at Balkhu, Sundarighat fully blocked"
+     },
+     "areas": [
+      {
+       "desc": "Lalitpur district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "Balkhu, Sundarighat, Lalitpur Metropolitan City-2 (approximate location)",
+       "circles": [
+        "27.685,85.293 1"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0325"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0325",
+     "circles": [],
+     "ne": "ललितपुर जिल्ला",
+     "en": "Lalitpur district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "27.685,85.293 1"
+     ],
+     "ne": "बल्खु, सुन्दरीघाट, ललितपुर महानगरपालिका-२ (अनुमानित स्थान)",
+     "en": "Balkhu, Sundarighat, Lalitpur Metropolitan City-2 (approximate location)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-lalitpur-kantilokpath-2026-11-01",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T09:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": null,
+   "file": "data/alerts/police-road-lalitpur-kantilokpath-2026-11-01.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "ललितपुर: कान्तिलोकपथ बागमती गाउँपालिका-३ पाङ्दुर र टार्कुचेमा पहिरोले पूर्ण अवरुद्ध",
+     "description": "आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।१५ (कात्तिक १५) बिहान ९:०० बजेसम्म: कात्तिक १४ बिहान ६:२० बजे ललितपुरको बागमती गाउँपालिका–३ पाङ्दुर र टार्कुचेस्थित कान्तिलोकपथमा माथिबाट पहिरो झरी बाटो पूर्ण रूपमा अवरुद्ध। कात्तिक १५ बिहान ७ बजेको सूचीमा पनि पूर्ण अवरोध। NDRRMA को कात्तिक १४ को बुलेटिन (#२३०९) अनुसार ढुङ्गा पन्छाउने काम भइरहेको।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "ललितपुर: कान्तिलोकपथ पाङ्दुर र टार्कुचेमा पहिरोले पूर्ण अवरुद्ध"
+     },
+     "areas": [
+      {
+       "desc": "ललितपुर जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "पाङ्दुर र टार्कुचे, बागमती गाउँपालिका-३ (अनुमानित स्थान)",
+       "circles": [
+        "27.50,85.31 4"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-01T09:00:00+05:45",
+     "onset": "2026-11-01T09:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Lalitpur: Kantilokpath fully blocked by a landslide at Pangdur and Tarkuche, Bagmati Rural Municipality-3",
+     "description": "Official: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-15 (Kartik 15 / 1 Nov): at 6:20 AM on Kartik 14 (31 Oct) a landslide fully blocked the Kantilokpath at Pangdur and Tarkuche, Bagmati Rural Municipality-3, Lalitpur. Still listed as fully blocked in the police list to 7 AM Kartik 15. NDRRMA's Kartik 14 bulletin (#2309) says work to clear the rocks was under way.",
+     "instruction": "Do not use this road; check with local police before travelling (100).",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-01T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:summary160": "Lalitpur: Kantilokpath fully blocked by a landslide at Pangdur and Tarkuche"
+     },
+     "areas": [
+      {
+       "desc": "Lalitpur district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "Pangdur and Tarkuche, Bagmati Rural Municipality-3 (approximate location)",
+       "circles": [
+        "27.50,85.31 4"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0325"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0325",
+     "circles": [],
+     "ne": "ललितपुर जिल्ला",
+     "en": "Lalitpur district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "27.50,85.31 4"
+     ],
+     "ne": "पाङ्दुर र टार्कुचे, बागमती गाउँपालिका-३ (अनुमानित स्थान)",
+     "en": "Pangdur and Tarkuche, Bagmati Rural Municipality-3 (approximate location)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-mustang-jomsom-korala-2026-11-01",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T07:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2116703396698931520",
+   "references": null,
+   "file": "data/alerts/police-road-mustang-jomsom-korala-2026-11-01.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Monitor",
+     "urgency": "Immediate",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-01T07:00:00+05:45",
+     "onset": "2026-11-01T07:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "मुस्ताङ: जोमसोम–कोरला सडकखण्ड जोमसोम (घरपझोङ-४) र चैले (वारागुङ मुक्तिक्षेत्र-३) मा एकतर्फी सुचारु",
+     "description": "आधिकारिक: नेपाल प्रहरीको 'विपद्को कारण मुख्य राजमार्ग अवरोध' सूची, कात्तिक १५ बिहान ७:०० बजेसम्म (@NepalPoliceHQ): कात्तिक १४ बिहान ६:३० मा घरपझोङ गाउँपालिका–४ जोमसोम (पर्यटक चेकपोस्टबाट करिब १ कि.मि. अगाडि) मा पहिरो र बिहान ७:३० मा वारागुङ मुक्तिक्षेत्र गाउँपालिका–३ चैलेमा अविरल वर्षाले जोमसोम–कोरला सडकखण्ड अवरुद्ध भएकोमा अहिले दुवै ठाउँमा एकतर्फी सुचारु। NDRRMA को कात्तिक १४ को बुलेटिनमा यो सडक पूर्ण अवरुद्ध थियो।",
+     "instruction": "एकतर्फी मात्र चल्छ; ढिलाइ हुन सक्छ, प्रहरीको निर्देशन पालना गर्नुहोस् (१००)।",
+     "web": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:sourceTime": "2026-11-01T07:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "मुस्ताङ: जोमसोम–कोरला सडक जोमसोम र चैलेमा एकतर्फी सुचारु"
+     },
+     "areas": [
+      {
+       "desc": "मुस्ताङ जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      },
+      {
+       "desc": "घरपझोङ-४ जोमसोम र वारागुङ मुक्तिक्षेत्र-३ चैले (अनुमानित स्थान)",
+       "circles": [
+        "28.86,83.78 12"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Monitor",
+     "urgency": "Immediate",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-01T07:00:00+05:45",
+     "onset": "2026-11-01T07:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Mustang: Jomsom–Korala road one way at Jomsom (Gharapjhong-4) and Chaile (Baragung Muktikshetra-3)",
+     "description": "Official: Nepal Police list 'main highway obstructions due to disasters', to 7:00 AM Kartik 15 (1 Nov) (@NepalPoliceHQ): the Jomsom–Korala road, blocked on Kartik 14 (31 Oct) by a landslide at 6:30 AM at Gharapjhong Rural Municipality-4, Jomsom (about 1 km before the tourist checkpost) and by continuous rain at 7:30 AM at Chaile, Baragung Muktikshetra-3, is now open one way at a time at both places. NDRRMA's Kartik 14 bulletin had listed it as fully blocked.",
+     "instruction": "Traffic one way at a time; expect delays and follow police instructions (100).",
+     "web": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:sourceTime": "2026-11-01T07:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:sourceUrl2": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:summary160": "Mustang: Jomsom–Korala road one way at Jomsom and Chaile"
+     },
+     "areas": [
+      {
+       "desc": "Mustang district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0445"
+       }
+      },
+      {
+       "desc": "Gharapjhong-4 Jomsom and Baragung Muktikshetra-3 Chaile (approximate location)",
+       "circles": [
+        "28.86,83.78 12"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Minor",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0445"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0445",
+     "circles": [],
+     "ne": "मुस्ताङ जिल्ला",
+     "en": "Mustang district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.86,83.78 12"
+     ],
+     "ne": "घरपझोङ-४ जोमसोम र वारागुङ मुक्तिक्षेत्र-३ चैले (अनुमानित स्थान)",
+     "en": "Gharapjhong-4 Jomsom and Baragung Muktikshetra-3 Chaile (approximate location)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-palpa-kaligandaki-rampur-2026-11-01",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T07:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2116703396698931520",
+   "references": null,
+   "file": "data/alerts/police-road-palpa-kaligandaki-rampur-2026-11-01.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Monitor",
+     "urgency": "Immediate",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-01T07:00:00+05:45",
+     "onset": "2026-11-01T07:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "पाल्पा: कालीगण्डकी करिडोर रामपुर-१ मा पहिरोपछि एकतर्फी सुचारु",
+     "description": "आधिकारिक: नेपाल प्रहरीको 'विपद्को कारण मुख्य राजमार्ग अवरोध' सूची, कात्तिक १५ बिहान ७:०० बजेसम्म (@NepalPoliceHQ): कात्तिक १४ बिहान ७:०० बजे पाल्पाको रामपुर नगरपालिका–१ मा पहिरो खसेको कालीगण्डकी करिडोर अहिले एकतर्फी सुचारु।",
+     "instruction": "एकतर्फी मात्र चल्छ; ढिलाइ हुन सक्छ, प्रहरीको निर्देशन पालना गर्नुहोस् (१००)।",
+     "web": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:sourceTime": "2026-11-01T07:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:summary160": "पाल्पा: कालीगण्डकी करिडोर रामपुर-१ मा एकतर्फी सुचारु"
+     },
+     "areas": [
+      {
+       "desc": "पाल्पा जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0546"
+       }
+      },
+      {
+       "desc": "रामपुर नगरपालिका-१ (अनुमानित स्थान)",
+       "circles": [
+        "27.86,83.95 4"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Monitor",
+     "urgency": "Immediate",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-01T07:00:00+05:45",
+     "onset": "2026-11-01T07:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Palpa: Kaligandaki corridor one way at Rampur-1 after a landslide",
+     "description": "Official: Nepal Police list 'main highway obstructions due to disasters', to 7:00 AM Kartik 15 (1 Nov) (@NepalPoliceHQ): the Kaligandaki corridor at Rampur Municipality-1, Palpa, hit by a landslide at 7:00 AM on Kartik 14 (31 Oct), is now open one way at a time.",
+     "instruction": "Traffic one way at a time; expect delays and follow police instructions (100).",
+     "web": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:sourceTime": "2026-11-01T07:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:summary160": "Palpa: Kaligandaki corridor one way at Rampur-1"
+     },
+     "areas": [
+      {
+       "desc": "Palpa district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0546"
+       }
+      },
+      {
+       "desc": "Rampur Municipality-1 (approximate location)",
+       "circles": [
+        "27.86,83.95 4"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Minor",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0546"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0546",
+     "circles": [],
+     "ne": "पाल्पा जिल्ला",
+     "en": "Palpa district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "27.86,83.95 4"
+     ],
+     "ne": "रामपुर नगरपालिका-१ (अनुमानित स्थान)",
+     "en": "Rampur Municipality-1 (approximate location)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-surkhet-karnali-aulise-2026-11-01",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-01T07:00:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://x.com/NepalPoliceHQ/status/2116703396698931520",
+   "references": null,
+   "file": "data/alerts/police-road-surkhet-karnali-aulise-2026-11-01.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Monitor",
+     "urgency": "Immediate",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-01T07:00:00+05:45",
+     "onset": "2026-11-01T07:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "सुर्खेत: कर्णाली राजमार्ग बराहताल-७ औलिसेमा पहिरोपछि एकतर्फी सुचारु",
+     "description": "आधिकारिक: नेपाल प्रहरीको 'विपद्को कारण मुख्य राजमार्ग अवरोध' सूची, कात्तिक १५ बिहान ७:०० बजेसम्म (@NepalPoliceHQ): कात्तिक १४ बिहान ५:५५ बजे सुर्खेतको बराहताल गाउँपालिका–७ औलिसेमा पहिरो खसेको कर्णाली राजमार्ग अहिले एकतर्फी सुचारु। NDRRMA को कात्तिक १४ को बुलेटिनमा यो खण्ड पूर्ण अवरुद्ध थियो।",
+     "instruction": "एकतर्फी मात्र चल्छ; ढिलाइ हुन सक्छ, प्रहरीको निर्देशन पालना गर्नुहोस् (१००)।",
+     "web": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:sourceTime": "2026-11-01T07:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:summary160": "सुर्खेत: कर्णाली राजमार्ग औलिसेमा एकतर्फी सुचारु"
+     },
+     "areas": [
+      {
+       "desc": "सुर्खेत जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0659"
+       }
+      },
+      {
+       "desc": "औलिसे, बराहताल गाउँपालिका-७ (अनुमानित स्थान)",
+       "circles": [
+        "28.66,81.55 6"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Monitor",
+     "urgency": "Immediate",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-01T07:00:00+05:45",
+     "onset": "2026-11-01T07:00:00+05:45",
+     "expires": "2026-11-02T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Surkhet: Karnali Highway one way at Aulise, Barahatal-7 after a landslide",
+     "description": "Official: Nepal Police list 'main highway obstructions due to disasters', to 7:00 AM Kartik 15 (1 Nov) (@NepalPoliceHQ): the Karnali Highway at Aulise, Barahatal Rural Municipality-7, Surkhet, hit by a landslide at 5:55 AM on Kartik 14 (31 Oct), is now open one way at a time. NDRRMA's Kartik 14 bulletin had listed it as fully blocked.",
+     "instruction": "Traffic one way at a time; expect delays and follow police instructions (100).",
+     "web": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NepalPoliceHQ/status/2116703396698931520",
+      "gati:sourceTime": "2026-11-01T07:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HWAKgJ-a4AAflrn.jpg",
+      "gati:summary160": "Surkhet: Karnali Highway one way at Aulise"
+     },
+     "areas": [
+      {
+       "desc": "Surkhet district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0659"
+       }
+      },
+      {
+       "desc": "Aulise, Barahatal Rural Municipality-7 (approximate location)",
+       "circles": [
+        "28.66,81.55 6"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Minor",
+   "expires": "2026-11-02T09:00:00+05:45",
+   "districts": [
+    "NP0659"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0659",
+     "circles": [],
+     "ne": "सुर्खेत जिल्ला",
+     "en": "Surkhet district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.66,81.55 6"
+     ],
+     "ne": "औलिसे, बराहताल गाउँपालिका-७ (अनुमानित स्थान)",
+     "en": "Aulise, Barahatal Rural Municipality-7 (approximate location)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.dhm-5day-bulletin-2026-10-31",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-31T18:52:50+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division official X account @NMD_Weather. Source: https://x.com/NMD_Weather/status/2116517502775869552",
+   "references": "hydrology.gov.np,np.gati.dhm-5day-bulletin-2026-10-27,2026-10-27T08:31:00+05:45",
+   "file": "data/alerts/dhm-5day-bulletin-2026-10-31.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान बुलेटिन (५ दिने)",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Minor",
+     "certainty": "Likely",
+     "effective": "2026-10-31T18:00:00+05:45",
+     "onset": "2026-10-31T18:00:00+05:45",
+     "expires": "2026-11-04T23:59:00+05:45",
+     "contact": "Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155",
+     "senderName": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "DHM: 'अर्नब' को अवशेषको प्रभाव घट्दै, मौसम क्रमिक सुधार; कात्तिक १५ बिहानदेखि देशभर कुनै चेतावनी छैन",
+     "description": "अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको ५ दिने बुलेटिन, जारी २०८३ कात्तिक १४ साँझ ६:०० बजे, @NMD_Weather मा साँझ ६:५२ मा; कात्तिक १० को बुलेटिनको ठाउँमा): पश्चिम नेपाल नजिक रहेको न्यून चापीय क्षेत्र ('अर्नब' चक्रवातको अवशेष) को प्रभाव कम हुँदै गएको र मौसम क्रमिक रूपमा सुधार हुने। कात्तिक १४ राति: हिमाली भूभागको थोरै स्थानमा हल्का वर्षा/हिमपात, पहाड र लुम्बिनीको तराईका एक-दुई स्थानमा हल्का वर्षा; चेतावनी नक्सामा उत्तरी हिमाली भाग पहेँलो (अद्यावधिक रहनुहोस्) कात्तिक १५ बिहानसम्म। कात्तिक १५ (आइतबार) र १६ (सोमबार): देशभर आंशिक बदली, हिमाली र पहाडी भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; कात्तिक १५ बिहानदेखि १७ बिहानसम्म देशभर हरियो (चेतावनी छैन)। कात्तिक १७ र १८: कोशी, बागमती, गण्डकीका हिमाली र पहाडी भूभागमा आंशिक बदली, बाँकी मुख्यतया सफा। तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो।",
+     "instruction": "बिहान हुस्सु/कुहिरोमा सवारी चलाउँदा सावधानी अपनाउनुहोस्; हिमालमा यात्रा गर्नुअघि पछिल्लो पूर्वानुमान हेर्नुहोस् (फोन ११५५)।",
+     "web": "https://x.com/NMD_Weather/status/2116517502775869552",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2116517502775869552",
+      "gati:sourceTime": "2026-10-31T18:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV9hceIaoAA0Dge.jpg",
+      "gati:summary160": "DHM: 'अर्नब' को प्रभाव घट्दै, मौसम सुधार; कात्तिक १५ बिहानदेखि देशभर चेतावनी छैन; बिहान हुस्सु/कुहिरो"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला); कात्तिक १४ साँझदेखि १५ बिहानसम्म उत्तरी हिमाली भाग पहेँलो; कात्तिक १५ बिहानदेखि सबै हरियो",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast bulletin (5 days)",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Minor",
+     "certainty": "Likely",
+     "effective": "2026-10-31T18:00:00+05:45",
+     "onset": "2026-10-31T18:00:00+05:45",
+     "expires": "2026-11-04T23:59:00+05:45",
+     "contact": "Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati",
+     "headline": "DHM: effect of Cyclone 'Arnab' remnants weakening, weather gradually improving; no warning anywhere in Nepal from the morning of Kartik 15 (1 Nov)",
+     "description": "Update, official (DHM Meteorological Forecasting Division 5-day bulletin, issued 2083 Kartik 14 at 6:00 PM, posted on @NMD_Weather at 6:52 PM; replaces the Kartik 10 bulletin): the low-pressure area near western Nepal (remnant of Cyclone 'Arnab') is weakening and the weather is expected to improve gradually. Night of Kartik 14 (31 Oct): light rain or snow at a few places in the mountains and light rain at one or two places in the hills and the Lumbini Terai; the warning map shows the northern mountain areas yellow (be updated) until the morning of Kartik 15. Kartik 15 (Sun 1 Nov) and 16 (Mon 2 Nov): partly cloudy, light rain or snow at one or two places in the hills and mountains; the maps from the morning of Kartik 15 to the morning of Kartik 17 are green (no warning) everywhere. Kartik 17 and 18 (3 and 4 Nov): partly cloudy over the Koshi, Bagmati and Gandaki hills and mountains, mainly fair elsewhere. Mist or fog in the morning in the Terai, valleys and gorges.",
+     "instruction": "Drive carefully in morning mist and fog; check the latest forecast before travelling in the mountains (phone 1155).",
+     "web": "https://x.com/NMD_Weather/status/2116517502775869552",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NMD_Weather/status/2116517502775869552",
+      "gati:sourceTime": "2026-10-31T18:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV9hceIaoAA0Dge.jpg",
+      "gati:summary160": "DHM: 'Arnab' remnants weakening, weather improving; no warning anywhere from the morning of Kartik 15 (1 Nov); morning fog"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts); northern mountains yellow from the evening of Kartik 14 to the morning of Kartik 15; all green from the morning of Kartik 15",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Minor",
+   "expires": "2026-11-04T23:59:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला); कात्तिक १४ साँझदेखि १५ बिहानसम्म उत्तरी हिमाली भाग पहेँलो; कात्तिक १५ बिहानदेखि सबै हरियो",
+     "en": "Nepal (all districts); northern mountains yellow from the evening of Kartik 14 to the morning of Kartik 15; all green from the morning of Kartik 15"
+    }
+   ],
+   "refIds": [
+    "np.gati.dhm-5day-bulletin-2026-10-27"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-25",
+     "msgType": "Alert",
+     "sent": "2026-10-25T08:41:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-26",
+     "msgType": "Update",
+     "sent": "2026-10-26T08:22:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T08:31:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-31",
+     "msgType": "Update",
+     "sent": "2026-10-31T18:52:50+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.dhm-rivers-warning-level-2026-10-31",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-31T13:06:51+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2116413159166857408",
+   "references": null,
+   "file": "data/alerts/dhm-rivers-warning-level-2026-10-31.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "नदी सतर्कता तह पार",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-31T11:10:00+05:45",
+     "onset": "2026-10-31T11:10:00+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "DHM (कात्तिक १४): कोड्कु (झरुवारसी), रोशी (पनौती), बागमती (खोकना) र लाल बकैया (झुरेलीबजार) ले सतर्कता तह पार, बढ्दो क्रममा",
+     "description": "आधिकारिक (DHM बाढी पूर्वानुमान महाशाखा, @DHM_FloodEWS, कात्तिक १४ / ३१ अक्टोबर): बिहान ११:१० मा ललितपुरको कोड्कु खोला झरुवारसी; बिहान ११:५० मा काभ्रेको रोशी खोला पनौती र ललितपुरको बागमती नदी खोकना; दिउँसो १ बजे मकवानपुरको लाल बकैया खोला झुरेलीबजारले सतर्कता तह पार गरेको र बढ्दो क्रममा रहेकाले नदी छेउछाउका बासिन्दालाई सतर्क रहन अनुरोध। कुनै पनि केन्द्रले खतरा तह पार गरेको सूचना आएन। DHM ले साँझदेखि मौसम सुधार हुने र कात्तिक १५ देखि प्रमुख नदी सामान्य हुने जनाएको छ; यी केन्द्रको पछिल्लो तह गतिले पुष्टि गर्न सकेको छैन।",
+     "instruction": "(अवधि सकिएको) नदी किनार र खोला तर्ने ठाउँबाट टाढा रहनुहोस्। बाढी सूचना: ११५५(२)।",
+     "web": "https://x.com/DHM_FloodEWS/status/2116413159166857408",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2116413159166857408",
+      "gati:sourceTime": "2026-10-31T11:50:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV8Cb9KawAEmqV5.png",
+      "gati:sourceUrl2": "https://x.com/DHM_FloodEWS/status/2116407190538096855",
+      "gati:sourceUrl3": "https://x.com/DHM_FloodEWS/status/2116430436029309120",
+      "gati:summary160": "DHM (कात्तिक १४): कोड्कु, रोशी, बागमती (खोकना) र लाल बकैयाले सतर्कता तह पार गरेका थिए"
+     },
+     "areas": [
+      {
+       "desc": "ललितपुर: कोड्कु खोला, झरुवारसी",
+       "circles": [
+        "27.64,85.34 2"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "ललितपुर: बागमती नदी, खोकना",
+       "circles": [
+        "27.64,85.29 2"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "काभ्रेपलाञ्चोक: रोशी खोला, पनौती",
+       "circles": [
+        "27.58,85.52 2"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "मकवानपुर: लाल बकैया खोला, झुरेलीबजार",
+       "circles": [
+        "27.30,85.13 4"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0331"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "River above warning level",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-10-31T11:10:00+05:45",
+     "onset": "2026-10-31T11:10:00+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Flood Forecasting · relayed by Gati",
+     "headline": "DHM (Kartik 14): Kodku (Jharuwarasi), Roshi (Panauti), Bagmati (Khokana) and Lal Bakaiya (Jhurelibazar) crossed the warning level and were rising",
+     "description": "Official (DHM Flood Forecasting Division, @DHM_FloodEWS, Kartik 14 / 31 Oct): at 11:10 AM the Kodku Khola at Jharuwarasi (Lalitpur); at 11:50 AM the Roshi Khola at Panauti (Kavre) and the Bagmati River at Khokana (Lalitpur); and at 1:00 PM the Lal Bakaiya Khola at Jhurelibazar (Makwanpur) crossed the warning level and were rising; people near the rivers were asked to stay alert. No station was reported above the danger level. DHM said the weather would improve from the evening and major rivers would be normal from Kartik 15; Gati could not confirm the latest levels at these stations.",
+     "instruction": "(Period ended) Keep away from riverbanks and stream crossings. Flood information: 1155(2).",
+     "web": "https://x.com/DHM_FloodEWS/status/2116413159166857408",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2116413159166857408",
+      "gati:sourceTime": "2026-10-31T11:50:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV8Cb9KawAEmqV5.png",
+      "gati:sourceUrl2": "https://x.com/DHM_FloodEWS/status/2116407190538096855",
+      "gati:sourceUrl3": "https://x.com/DHM_FloodEWS/status/2116430436029309120",
+      "gati:summary160": "DHM (Kartik 14): Kodku, Roshi, Bagmati (Khokana) and Lal Bakaiya crossed the warning level"
+     },
+     "areas": [
+      {
+       "desc": "Lalitpur: Kodku Khola at Jharuwarasi",
+       "circles": [
+        "27.64,85.34 2"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "Lalitpur: Bagmati River at Khokana",
+       "circles": [
+        "27.64,85.29 2"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0325"
+       }
+      },
+      {
+       "desc": "Kavrepalanchok: Roshi Khola at Panauti",
+       "circles": [
+        "27.58,85.52 2"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "Makwanpur: Lal Bakaiya Khola at Jhurelibazar",
+       "circles": [
+        "27.30,85.13 4"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0331"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "flood",
+   "severity": "Moderate",
+   "expires": "2026-10-31T23:59:00+05:45",
+   "districts": [
+    "NP0324",
+    "NP0325",
+    "NP0331"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0325",
+     "circles": [
+      "27.64,85.34 2"
+     ],
+     "ne": "ललितपुर: कोड्कु खोला, झरुवारसी",
+     "en": "Lalitpur: Kodku Khola at Jharuwarasi"
+    },
+    {
+     "code": "NP0325",
+     "circles": [
+      "27.64,85.29 2"
+     ],
+     "ne": "ललितपुर: बागमती नदी, खोकना",
+     "en": "Lalitpur: Bagmati River at Khokana"
+    },
+    {
+     "code": "NP0324",
+     "circles": [
+      "27.58,85.52 2"
+     ],
+     "ne": "काभ्रेपलाञ्चोक: रोशी खोला, पनौती",
+     "en": "Kavrepalanchok: Roshi Khola at Panauti"
+    },
+    {
+     "code": "NP0331",
+     "circles": [
+      "27.30,85.13 4"
+     ],
+     "ne": "मकवानपुर: लाल बकैया खोला, झुरेलीबजार",
+     "en": "Makwanpur: Lal Bakaiya Khola at Jhurelibazar"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.dhm-ffs-arnab-advisory-2026-10-31",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-31T11:51:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2116411345214321035",
+   "references": "hydrology.gov.np,np.gati.dhm-ffs-arnab-advisory-2026-10-27,2026-10-27T18:10:00+05:45",
+   "file": "data/alerts/dhm-ffs-arnab-advisory-2026-10-31.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "बाढी जोखिम पूर्वसूचना ('अर्नब' चक्रवात)",
+     "responseType": "Monitor",
+     "urgency": "Expected",
+     "severity": "Moderate",
+     "certainty": "Likely",
+     "effective": "2026-10-31T11:51:00+05:45",
+     "onset": "2026-10-31T11:51:00+05:45",
+     "expires": "2026-11-01T08:00:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "DHM बाढी पूर्वानुमान (कात्तिक १४): कर्णाली, बबई, पश्चिम राप्ती, नारायणी, बागमती, कमला, कन्काई र कोशी जलाधारमा जलसतह उल्लेख्य बढ्न सक्ने (मध्यम जोखिम); कात्तिक १५ देखि १८ सामान्य",
+     "description": "अद्यावधिक, आधिकारिक (DHM बाढी पूर्वानुमान महाशाखाको 'चक्रवात अर्नबको सम्भावित प्रभाव: बाढी तथा अन्य जलजन्य जोखिम आंकलन तथा पूर्वसूचना', मिति २०८३ कात्तिक १४, @DHM_FloodEWS मा बिहान ११:५१ मा प्रकाशित; कात्तिक १० को सूचनाको ठाउँमा): कात्तिक १४ (शनिबार) कर्णाली, बबई, पश्चिम राप्ती, नारायणी, बागमती, कमला, कन्काई, कोशी नदी र आसपासका जलाधारमा मध्यम/भारी वर्षासँगै जलसतह उल्लेख्य रूपमा बढ्न सक्ने, मध्यम जोखिमको सम्भावना। कात्तिक १५, १६, १७ र १८ गते देशभरका प्रमुख नदीमा जलसतह सामान्य रहने। प्रमुख नदी सतर्कता तहभन्दा माथि पुग्ने सम्भावना न्यून; कोशी, नारायणी र कर्णाली जलाधारका उच्च हिमाली क्षेत्रमा हिमपात र हिमपहिरोको जोखिम। आकस्मिक बाढी जोखिम नक्सामा कात्तिक १५ र १६ का लागि सबै जिल्ला न्यून जोखिम (हरियो) छन्।",
+     "instruction": "कात्तिक १५ देखि प्रमुख नदी सामान्य हुने अनुमान छ, तर वर्षापछि पनि खोलानाला र पहिरो जाने भिरमा सतर्क रहनुहोस्। बाढी सूचना: ११५५(२)।",
+     "web": "https://x.com/DHM_FloodEWS/status/2116411345214321035",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2116411345214321035",
+      "gati:sourceTime": "2026-10-31T11:51:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV8A4GMaAAA1OwB.jpg",
+      "gati:summary160": "DHM बाढी पूर्वानुमान: कात्तिक १४ आठ जलाधारमा जलसतह उल्लेख्य बढ्न सक्ने (मध्यम जोखिम); कात्तिक १५–१८ प्रमुख नदी सामान्य"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै जिल्ला)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Flood risk advisory (Cyclone 'Arnab')",
+     "responseType": "Monitor",
+     "urgency": "Expected",
+     "severity": "Moderate",
+     "certainty": "Likely",
+     "effective": "2026-10-31T11:51:00+05:45",
+     "onset": "2026-10-31T11:51:00+05:45",
+     "expires": "2026-11-01T08:00:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Flood Forecasting · relayed by Gati",
+     "headline": "DHM flood forecasting (Kartik 14): rivers in the Karnali, Babai, West Rapti, Narayani, Bagmati, Kamala, Kankai and Koshi basins may rise significantly (moderate risk); normal from Kartik 15 to 18",
+     "description": "Update, official (DHM Flood Forecasting Division, 'Possible impact of Cyclone Arnab: flood and other hydrological risk assessment and early warning', dated 2083 Kartik 14, posted on @DHM_FloodEWS at 11:51 AM on 31 Oct; replaces the Kartik 10 advisory): on Kartik 14 (Sat 31 Oct) moderate to heavy rain in the Karnali, Babai, West Rapti, Narayani, Bagmati, Kamala, Kankai, Koshi and nearby basins could raise river levels significantly; moderate risk likely. On Kartik 15, 16, 17 and 18 (1 to 4 Nov) water levels in major rivers across the country are expected to stay normal. Major rivers are unlikely to go above the warning level; snowfall and avalanche risk in the high Himalaya of the Koshi, Narayani and Karnali basins. The flash flood maps for Kartik 15 and 16 show low risk (green) in every district.",
+     "instruction": "Major rivers are expected to be normal from Kartik 15, but stay careful near streams and landslide-prone slopes after the rain. Flood information: 1155(2).",
+     "web": "https://x.com/DHM_FloodEWS/status/2116411345214321035",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2116411345214321035",
+      "gati:sourceTime": "2026-10-31T11:51:00+05:45",
+      "gati:hazard": "flood",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV8A4GMaAAA1OwB.jpg",
+      "gati:summary160": "DHM flood forecast: Kartik 14 rivers may rise in 8 basins (moderate risk); Kartik 15 to 18 major rivers normal"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all districts)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "flood",
+   "severity": "Moderate",
+   "expires": "2026-11-01T08:00:00+05:45",
+   "districts": [],
+   "expired": true,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै जिल्ला)",
+     "en": "Nepal (all districts)"
+    }
+   ],
+   "refIds": [
+    "np.gati.dhm-ffs-arnab-advisory-2026-10-27"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.dhm-ffs-arnab-advisory-2026-10-27",
+     "msgType": "Alert",
+     "sent": "2026-10-27T18:10:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-ffs-arnab-advisory-2026-10-31",
+     "msgType": "Update",
+     "sent": "2026-10-31T11:51:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.dhm-landslide-highways-arnab-2026-10-31",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-10-31T09:10:19+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2116370908936069131",
+   "references": null,
+   "file": "data/alerts/dhm-landslide-highways-arnab-2026-10-31.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "राजमार्ग पहिरो जोखिम पूर्वसूचना",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Possible",
+     "effective": "2026-10-31T09:10:19+05:45",
+     "onset": "2026-10-31T09:10:19+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "DHM: तालागाउँ, पूर्व-पश्चिम राजमार्गको दाउन्ने खण्ड र बीपी राजमार्गको रोशी गाउँपालिका खण्डमा पहिरोको उच्च जोखिम (कात्तिक १४)",
+     "description": "आधिकारिक (DHM बाढी पूर्वानुमान महाशाखा/भौगर्भिक तथा जल उत्पन्न विपद् अनुसन्धान शाखाको 'प्रमुख राजमार्गहरूमा पहिरो जोखिम आंकलन तथा पूर्वसूचना', मिति २०८३ कात्तिक १४, @DHM_FloodEWS मा बिहान ९:१० मा प्रकाशित): कात्तिक १३ देखिको निरन्तर वर्षाका आधारमा तालागाउँ, पूर्व-पश्चिम राजमार्गको दाउन्ने सडक खण्ड र बीपी राजमार्गअन्तर्गत रोशी गाउँपालिकाभित्रको सडक खण्डमा पहिरोको उच्च जोखिम देखिएको; यात्रा गर्दा उच्च सजगता अपनाउन अनुरोध। सूचना मौसम पूर्वानुमान र प्रारम्भिक आंकलनमा आधारित। सोही दिन बिहान ४:५५ मा बीपी राजमार्ग रोशी-९ पिनथली र रोशी-८ गिम्दीबेँसीमा लेदोसहितको पहिरोले पूर्ण अवरुद्ध भएको नेपाल प्रहरीले जनाएको छ (छुट्टै सूचना हेर्नुहोस्)।",
+     "instruction": "(अवधि सकिएको) यी खण्डमा यात्रा गर्नुअघि प्रहरीको सडक सूचना हेर्नुहोस्।",
+     "web": "https://x.com/DHM_FloodEWS/status/2116370908936069131",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2116370908936069131",
+      "gati:sourceTime": "2026-10-31T09:10:19+05:45",
+      "gati:hazard": "landslide",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV7byJvaMAA_pA_.jpg",
+      "gati:summary160": "DHM: तालागाउँ, पूर्व-पश्चिम राजमार्गको दाउन्ने र बीपी राजमार्गको रोशी खण्डमा पहिरोको उच्च जोखिम (कात्तिक १४)"
+     },
+     "areas": [
+      {
+       "desc": "काभ्रेपलाञ्चोक जिल्ला: बीपी राजमार्ग, रोशी गाउँपालिका खण्ड",
+       "circles": [
+        "27.45,85.62 6"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "पूर्व-पश्चिम राजमार्ग: दाउन्ने खण्ड (नवलपरासी पश्चिम, अनुमानित स्थान); तालागाउँको स्थान सूचनामा खुलेको छैन",
+       "circles": [
+        "27.62,83.75 6"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0547"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Highway landslide risk advisory",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Possible",
+     "effective": "2026-10-31T09:10:19+05:45",
+     "onset": "2026-10-31T09:10:19+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Flood Forecasting · relayed by Gati",
+     "headline": "DHM: high landslide risk at Talagaun, the Daunne section of the East-West Highway and the Roshi Rural Municipality section of the BP Highway (Kartik 14)",
+     "description": "Official (DHM Flood Forecasting Division / Geological and Water-induced Disaster Research Section, 'Landslide risk assessment and early warning for major highways', dated 2083 Kartik 14, posted on @DHM_FloodEWS at 9:10 AM on 31 Oct): based on continuous rain since Kartik 13, high landslide risk was assessed at Talagaun, the Daunne section of the East-West Highway and the BP Highway section in Roshi Rural Municipality; travellers were asked to take great care. The notice is based on the weather forecast and a preliminary assessment. Nepal Police reported the BP Highway fully blocked at Roshi-9 Pinthali and Roshi-8 Gimdibesi by debris at 4:55 AM the same day (see the separate notice).",
+     "instruction": "(Period ended) Check the latest Nepal Police road notice before travelling on these sections.",
+     "web": "https://x.com/DHM_FloodEWS/status/2116370908936069131",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/DHM_FloodEWS/status/2116370908936069131",
+      "gati:sourceTime": "2026-10-31T09:10:19+05:45",
+      "gati:hazard": "landslide",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HV7byJvaMAA_pA_.jpg",
+      "gati:summary160": "DHM: high landslide risk at Talagaun, Daunne (East-West Hwy) and Roshi section of BP Hwy (Kartik 14)"
+     },
+     "areas": [
+      {
+       "desc": "Kavrepalanchok district: BP Highway, Roshi Rural Municipality section",
+       "circles": [
+        "27.45,85.62 6"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0324"
+       }
+      },
+      {
+       "desc": "East-West Highway: Daunne section (Nawalparasi West, approximate location); Talagaun's location is not stated in the notice",
+       "circles": [
+        "27.62,83.75 6"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0547"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "landslide",
+   "severity": "Moderate",
+   "expires": "2026-10-31T23:59:00+05:45",
+   "districts": [
+    "NP0324",
+    "NP0547"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0324",
+     "circles": [
+      "27.45,85.62 6"
+     ],
+     "ne": "काभ्रेपलाञ्चोक जिल्ला: बीपी राजमार्ग, रोशी गाउँपालिका खण्ड",
+     "en": "Kavrepalanchok district: BP Highway, Roshi Rural Municipality section"
+    },
+    {
+     "code": "NP0547",
+     "circles": [
+      "27.62,83.75 6"
+     ],
+     "ne": "पूर्व-पश्चिम राजमार्ग: दाउन्ने खण्ड (नवलपरासी पश्चिम, अनुमानित स्थान); तालागाउँको स्थान सूचनामा खुलेको छैन",
+     "en": "East-West Highway: Daunne section (Nawalparasi West, approximate location); Talagaun's location is not stated in the notice"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-29",
+   "sender": "ndrrma.gov.np",
+   "sent": "2026-10-29T13:56:55+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Disaster Risk Reduction and Management Authority (NDRRMA). Source: https://x.com/NDRRMA_Nepal/status/2115718257755967580",
+   "references": "ndrrma.gov.np,np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27,2026-10-27T11:34:58+05:45",
+   "file": "data/alerts/ndrrma-high-alert-cyclone-arnab-2026-10-29.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "उच्च सतर्कताका लागि अनुरोध",
+     "responseType": "Prepare",
+     "urgency": "Immediate",
+     "severity": "Severe",
+     "certainty": "Likely",
+     "effective": "2026-10-29T13:56:55+05:45",
+     "onset": "2026-10-29T13:56:55+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "NDRRMA · https://bipad.gov.np/",
+     "senderName": "राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण (NDRRMA) · गति मार्फत प्रसारित",
+     "headline": "NDRRMA: 'अर्नब' चक्रवातको प्रभाव नेपालमा सुरु; धेरैजसो भागमा मध्यमदेखि भारी वर्षा; ३१ अक्टोबर (कात्तिक १४) सम्म उच्च सतर्कता",
+     "description": "अद्यावधिक, आधिकारिक (NDRRMA को अङ्ग्रेजी सूचना, बिहीबार २९ अक्टोबर / कात्तिक १२, @NDRRMA_Nepal मा दिउँसो १:५६ मा प्रकाशित; कात्तिक १० को सूचनाको ठाउँमा): 'अर्नब' चक्रवातको प्रभाव नेपालमा देखिन थालेको छ; देशका धेरैजसो भागमा मध्यमदेखि भारी वर्षाको सम्भावना र उच्च पहाडी तथा हिमाली क्षेत्रमा भारी हिमपात, हिमआँधी र हिमपहिरोको जोखिम बढेको छ। सबै निकाय, संस्था र समुदायलाई ३१ अक्टोबर २०२६ सम्म उच्च सतर्कतामा रहन अनुरोध। सोही दिन दिउँसो १:११ को नेपाली पोस्टमा कात्तिक १२ देखि १४ सम्म हिमाली र उच्च पहाडी भेगमा पर्वतारोहण तथा पदयात्रा नगर्न र यी तीन दिन धान नकाट्न अनुरोध गरिएको थियो। यो उच्च सतर्कता अवधि कात्तिक १४ (३१ अक्टोबर) राति सकियो।",
+     "instruction": "(अवधि सकिएको) पर्यटक उच्च पहाडी र हिमाली क्षेत्रमा नजानुहोस्; गइसकेका भए सुरक्षित ठाउँमा रहनुहोस्। अत्यावश्यक नपरी यात्रा नगर्नुहोस्। बाढी आउन सक्ने नदी किनारमा नबस्नुहोस्। मौसम जानकारी: ११५५; विपद्मा सहायता: १२३४, १०० (नेपाल प्रहरी), १११४ (सशस्त्र प्रहरी), ११४४ (पर्यटक प्रहरी)।",
+     "web": "https://x.com/NDRRMA_Nepal/status/2115718257755967580",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NDRRMA_Nepal/status/2115718257755967580",
+      "gati:sourceTime": "2026-10-29T13:56:55+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVyKe1naAAAxHT1.jpg",
+      "gati:sourceUrl2": "https://x.com/NDRRMA_Nepal/status/2115706927326089411",
+      "gati:summary160": "NDRRMA: 'अर्नब' को प्रभाव सुरु, धेरैजसो भागमा मध्यमदेखि भारी वर्षा; ३१ अक्टोबरसम्म उच्च सतर्कता (अवधि सकियो)"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल (सबै प्रदेश)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Request for high alert",
+     "responseType": "Prepare",
+     "urgency": "Immediate",
+     "severity": "Severe",
+     "certainty": "Likely",
+     "effective": "2026-10-29T13:56:55+05:45",
+     "onset": "2026-10-29T13:56:55+05:45",
+     "expires": "2026-10-31T23:59:00+05:45",
+     "contact": "NDRRMA · https://bipad.gov.np/",
+     "senderName": "National Disaster Risk Reduction and Management Authority (NDRRMA) · relayed by Gati",
+     "headline": "NDRRMA: effects of Cyclone 'Arnab' now felt in Nepal; moderate to heavy rain across most of the country; high alert until 31 Oct",
+     "description": "Update, official (NDRRMA English notice, Thursday 29 October / Kartik 12, posted on @NDRRMA_Nepal at 1:56 PM; replaces the Kartik 10 notice): the effects of Cyclone 'Arnab' are being felt in Nepal, with moderate to heavy rainfall expected across most of the country and an increased risk of heavy snowfall, snowstorms and avalanches in the high hills and Himalaya. All authorities, organisations and communities are urged to remain on high alert and take precautions until 31 October 2026. A Nepali post the same day (1:11 PM) asked people not to climb or trek in the Himalayan and high-hill areas and not to harvest paddy on Kartik 12 to 14. This high-alert period ended on the night of Kartik 14 (31 Oct).",
+     "instruction": "(Period ended) Tourists should avoid the high hills and Himalaya and stay in safe places if already there. Avoid non-essential travel. Do not stay on riverbanks that may flood. Weather information: 1155; disaster help: 1234, 100 (Nepal Police), 1114 (Armed Police Force), 1144 (Tourist Police).",
+     "web": "https://x.com/NDRRMA_Nepal/status/2115718257755967580",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://x.com/NDRRMA_Nepal/status/2115718257755967580",
+      "gati:sourceTime": "2026-10-29T13:56:55+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://pbs.twimg.com/media/HVyKe1naAAAxHT1.jpg",
+      "gati:sourceUrl2": "https://x.com/NDRRMA_Nepal/status/2115706927326089411",
+      "gati:summary160": "NDRRMA: 'Arnab' effects felt in Nepal, moderate to heavy rain; high alert until 31 Oct (period has ended)"
+     },
+     "areas": [
+      {
+       "desc": "Nepal (all provinces)",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Severe",
+   "expires": "2026-10-31T23:59:00+05:45",
+   "districts": [],
+   "expired": true,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल (सबै प्रदेश)",
+     "en": "Nepal (all provinces)"
+    }
+   ],
+   "refIds": [
+    "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26",
+     "msgType": "Alert",
+     "sent": "2026-10-26T18:37:17+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T11:34:58+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-29",
+     "msgType": "Update",
+     "sent": "2026-10-29T13:56:55+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
    "sender": "nepalpolice.gov.np",
@@ -104,7 +1832,7 @@
    "districts": [
     "NP0436"
    ],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": "NP0436",
@@ -160,9 +1888,15 @@
      "msgType": "Update",
      "sent": "2026-10-28T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-01-0900"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-28",
@@ -252,7 +1986,7 @@
    "severity": "Unknown",
    "expires": "2026-10-29T06:00:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -1538,8 +3272,21 @@
     }
    ],
    "refIds": [],
-   "chain": [],
-   "supersededBy": null
+   "chain": [
+    {
+     "id": "np.gati.dhm-ffs-arnab-advisory-2026-10-27",
+     "msgType": "Alert",
+     "sent": "2026-10-27T18:10:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-ffs-arnab-advisory-2026-10-31",
+     "msgType": "Update",
+     "sent": "2026-10-31T11:51:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": "np.gati.dhm-ffs-arnab-advisory-2026-10-31"
   },
   {
    "identifier": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27",
@@ -1627,7 +3374,7 @@
    "severity": "Severe",
    "expires": "2026-10-31T23:59:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -1651,9 +3398,15 @@
      "msgType": "Update",
      "sent": "2026-10-27T11:34:58+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-29",
+     "msgType": "Update",
+     "sent": "2026-10-29T13:56:55+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-29"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-10-27",
@@ -1743,7 +3496,7 @@
    "severity": "Severe",
    "expires": "2026-11-01T08:00:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -1773,9 +3526,15 @@
      "msgType": "Update",
      "sent": "2026-10-27T08:31:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-31",
+     "msgType": "Update",
+     "sent": "2026-10-31T18:52:50+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-31"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
@@ -1935,9 +3694,15 @@
      "msgType": "Update",
      "sent": "2026-10-28T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-01-0900"
   },
   {
    "identifier": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26",
@@ -2025,7 +3790,7 @@
    "severity": "Severe",
    "expires": "2026-10-31T23:59:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -2047,9 +3812,15 @@
      "msgType": "Update",
      "sent": "2026-10-27T11:34:58+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-29",
+     "msgType": "Update",
+     "sent": "2026-10-29T13:56:55+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-27"
+   "supersededBy": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-29"
   },
   {
    "identifier": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
@@ -2137,7 +3908,7 @@
    "severity": "Severe",
    "expires": "2026-10-31T23:59:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -2253,7 +4024,7 @@
    "severity": "Moderate",
    "expires": "2026-10-31T08:00:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -2283,9 +4054,15 @@
      "msgType": "Update",
      "sent": "2026-10-27T08:31:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-31",
+     "msgType": "Update",
+     "sent": "2026-10-31T18:52:50+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-27"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-31"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-26",
@@ -2546,9 +4323,15 @@
      "msgType": "Update",
      "sent": "2026-10-28T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-01-0900"
   },
   {
    "identifier": "np.gati.nsc-quake-1382-2026-10-25",
@@ -2815,9 +4598,15 @@
      "msgType": "Update",
      "sent": "2026-10-28T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-01-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-10-25",
@@ -2905,7 +4694,7 @@
    "severity": "Minor",
    "expires": "2026-10-30T08:00:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -2933,9 +4722,15 @@
      "msgType": "Update",
      "sent": "2026-10-27T08:31:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-31",
+     "msgType": "Update",
+     "sent": "2026-10-31T18:52:50+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-27"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-10-31"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-25",
@@ -3314,9 +5109,15 @@
      "msgType": "Update",
      "sent": "2026-10-28T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-01-0900"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-23",
@@ -3676,9 +5477,15 @@
      "msgType": "Update",
      "sent": "2026-10-28T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-10-28-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-01-0900"
   },
   {
    "identifier": "np.gati.dhm-river-levels-2026-10-21",

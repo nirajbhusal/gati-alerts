@@ -172,8 +172,8 @@
     "bagmati": "moderate",
     "kamala": "moderate"
    },
-   "ne": "नारायणी, कोशी, बागमती, कमला तथा आसपासका जलाधारमा मुलतः हल्कादेखि मध्यम सम्म वर्षा हुन सक्ने। पछिल्लो करीव तीन दिनको वर्षाका कारण प्रमुख नदीहरूमा जलसतह उच्चतम विन्दुमा पुग्ने तर सतर्कता तह आसपास सम्म मात्र पुग्न सक्ने देखिन्छ। हालको अनुसार खतरा तह पार हुने संभावना न्युन रहेको छ। मध्यम जोखिमको संभावना।",
-   "en": "Mostly light to moderate rain in the Narayani, Koshi, Bagmati, Kamala and nearby basins. After about three days of rain, major rivers may peak but reach only around the warning level. As of now, the chance of crossing the danger level is low. Moderate risk likely.",
+   "ne": "(कात्तिक १४ को अद्यावधिक सूचना) कर्णाली, बबई, पश्चिम राप्ती, नारायणी, बागमती, कमला, कन्काई, कोशी नदी र आसपासका जलाधारमा मध्यम/भारी वर्षासँगै नदीको जलसतह उल्लेख्य रूपमा बढ्न सक्ने। अन्य नदीमा जलसतह सामान्य मात्र वृद्धि। मध्यम जोखिमको संभावना।",
+   "en": "(Kartik 14 update) Moderate to heavy rain in the Karnali, Babai, West Rapti, Narayani, Bagmati, Kamala, Kankai, Koshi and nearby basins may raise river levels significantly; other rivers only a normal rise. Moderate risk likely.",
    "ff": {
     "moderate": [
      "manang",
@@ -225,19 +225,15 @@
    "ad": "2026-11-01",
    "wd_ne": "आइतबार",
    "wd_en": "Sunday",
-   "level": "low",
-   "basins": {
-    "koshi": "low",
-    "bagmati": "low",
-    "narayani": "low"
-   },
-   "ne": "कोशी, बागमती तथा नारायणी जलाधारका केही स्थानमा हल्का वर्षा हुन सक्ने। न्युन जोखिमको संभावना।",
-   "en": "Light rain possible at some places in the Koshi, Bagmati and Narayani basins. Low risk likely.",
+   "level": "normal",
+   "basins": {},
+   "ne": "(कात्तिक १४ को अद्यावधिक सूचना) देशभरका प्रमुख नदीहरूमा जलसतह सामान्य अवस्थामा रहने। आकस्मिक बाढी नक्सामा सबै जिल्ला न्यून जोखिम।",
+   "en": "(Kartik 14 update) Water levels in major rivers across the country expected to stay normal. Flash flood map: low risk in every district.",
    "ff": null
   }
  ],
- "ff_note_ne": "आकस्मिक बहाव (Flash Flood) जोखिम पूर्वानुमान: सम्बन्धित दिन बिहान ८ बजेदेखि २४ घण्टा। कात्तिक ११ र १५ का लागि नक्सा छैन।",
- "ff_note_en": "Flash flood risk forecast: 24 hours from 8 AM on that day. No district map for Kartik 11 or 15.",
+ "ff_note_ne": "आकस्मिक बहाव (Flash Flood) जोखिम पूर्वानुमान: सम्बन्धित दिन बिहान ८ बजेदेखि २४ घण्टा। कात्तिक ११ का लागि नक्सा छैन। कात्तिक १२–१४ का जिल्ला कात्तिक १० को सूचनाबाट; कात्तिक १४ को अद्यावधिक सूचनाले कात्तिक १५ र १६ मा सबै जिल्ला न्यून जोखिम देखाएको छ।",
+ "ff_note_en": "Flash flood risk forecast: 24 hours from 8 AM on that day. No district map for Kartik 11. District lists for Kartik 12 to 14 are from the Kartik 10 advisory; the Kartik 14 update shows low risk in every district on Kartik 15 and 16.",
  "risks": [
   [
    "प्रमुख नदीहरू: हालको प्रारम्भिक आंकलन अनुसार प्रमुख नदीहरूमा जलसतह खतरा तहभन्दा माथि पुग्ने सम्भावना देखिएको छैन। तथापि, वर्षाको वास्तविक मात्रा र नदीको अवस्थाअनुसार जोखिम परिवर्तन हुन सक्छ।",
@@ -257,5 +253,14 @@
  "hotline": "1155(2)",
  "hotline_ne": "टोल फ्री नम्बर ११५५(२) पुनः सुचारु गरिएको।",
  "hotline_en": "Toll-free number 1155(2) has been restarted.",
- "note_en": "Preliminary hydrological risk assessment; DHM will issue detailed bulletins until the system ends."
+ "note_en": "Preliminary hydrological risk assessment (Kartik 10), updated by DHM on Kartik 14: major rivers normal from Kartik 15 (1 Nov). The Arnab event has passed.",
+ "update": {
+  "id": "dhm-ffs-arnab-2083-07-14",
+  "url": "https://x.com/DHM_FloodEWS/status/2116411345214321035",
+  "sent": "2026-10-31T11:51:00+05:45",
+  "sent_ne": "कात्तिक १४, बिहान ११:५१ (नेपाल समय)",
+  "sent_en": "Kartik 14 (31 Oct), 11:51 AM NPT",
+  "ne": "DHM को कात्तिक १४ को अद्यावधिक सूचना: कात्तिक १४ आठ जलाधारमा मध्यम जोखिम; कात्तिक १५ देखि १८ सम्म प्रमुख नदीमा जलसतह सामान्य; कात्तिक १५ र १६ सबै जिल्लामा आकस्मिक बाढी न्यून जोखिम।",
+  "en": "DHM update of Kartik 14: moderate risk in eight basins on Kartik 14; major rivers normal from Kartik 15 to 18; flash flood risk low in every district on Kartik 15 and 16."
+ }
 }

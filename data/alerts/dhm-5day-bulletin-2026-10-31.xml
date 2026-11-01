@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-5day-bulletin-2026-10-31</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-31T18:52:50+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division official X account @NMD_Weather. Source: https://x.com/NMD_Weather/status/2116517502775869552</note>
+  <references>hydrology.gov.np,np.gati.dhm-5day-bulletin-2026-10-27,2026-10-27T08:31:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>मौसम पूर्वानुमान बुलेटिन (५ दिने)</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-31T18:00:00+05:45</effective>
+    <onset>2026-10-31T18:00:00+05:45</onset>
+    <expires>2026-11-04T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM: 'अर्नब' को अवशेषको प्रभाव घट्दै, मौसम क्रमिक सुधार; कात्तिक १५ बिहानदेखि देशभर कुनै चेतावनी छैन</headline>
+    <description>अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको ५ दिने बुलेटिन, जारी २०८३ कात्तिक १४ साँझ ६:०० बजे, @NMD_Weather मा साँझ ६:५२ मा; कात्तिक १० को बुलेटिनको ठाउँमा): पश्चिम नेपाल नजिक रहेको न्यून चापीय क्षेत्र ('अर्नब' चक्रवातको अवशेष) को प्रभाव कम हुँदै गएको र मौसम क्रमिक रूपमा सुधार हुने। कात्तिक १४ राति: हिमाली भूभागको थोरै स्थानमा हल्का वर्षा/हिमपात, पहाड र लुम्बिनीको तराईका एक-दुई स्थानमा हल्का वर्षा; चेतावनी नक्सामा उत्तरी हिमाली भाग पहेँलो (अद्यावधिक रहनुहोस्) कात्तिक १५ बिहानसम्म। कात्तिक १५ (आइतबार) र १६ (सोमबार): देशभर आंशिक बदली, हिमाली र पहाडी भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; कात्तिक १५ बिहानदेखि १७ बिहानसम्म देशभर हरियो (चेतावनी छैन)। कात्तिक १७ र १८: कोशी, बागमती, गण्डकीका हिमाली र पहाडी भूभागमा आंशिक बदली, बाँकी मुख्यतया सफा। तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो।</description>
+    <instruction>बिहान हुस्सु/कुहिरोमा सवारी चलाउँदा सावधानी अपनाउनुहोस्; हिमालमा यात्रा गर्नुअघि पछिल्लो पूर्वानुमान हेर्नुहोस् (फोन ११५५)।</instruction>
+    <web>https://x.com/NMD_Weather/status/2116517502775869552</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NMD_Weather/status/2116517502775869552</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T18:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV9hceIaoAA0Dge.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: 'अर्नब' को प्रभाव घट्दै, मौसम सुधार; कात्तिक १५ बिहानदेखि देशभर चेतावनी छैन; बिहान हुस्सु/कुहिरो</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला); कात्तिक १४ साँझदेखि १५ बिहानसम्म उत्तरी हिमाली भाग पहेँलो; कात्तिक १५ बिहानदेखि सबै हरियो</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Weather forecast bulletin (5 days)</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-31T18:00:00+05:45</effective>
+    <onset>2026-10-31T18:00:00+05:45</onset>
+    <expires>2026-11-04T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati</senderName>
+    <headline>DHM: effect of Cyclone 'Arnab' remnants weakening, weather gradually improving; no warning anywhere in Nepal from the morning of Kartik 15 (1 Nov)</headline>
+    <description>Update, official (DHM Meteorological Forecasting Division 5-day bulletin, issued 2083 Kartik 14 at 6:00 PM, posted on @NMD_Weather at 6:52 PM; replaces the Kartik 10 bulletin): the low-pressure area near western Nepal (remnant of Cyclone 'Arnab') is weakening and the weather is expected to improve gradually. Night of Kartik 14 (31 Oct): light rain or snow at a few places in the mountains and light rain at one or two places in the hills and the Lumbini Terai; the warning map shows the northern mountain areas yellow (be updated) until the morning of Kartik 15. Kartik 15 (Sun 1 Nov) and 16 (Mon 2 Nov): partly cloudy, light rain or snow at one or two places in the hills and mountains; the maps from the morning of Kartik 15 to the morning of Kartik 17 are green (no warning) everywhere. Kartik 17 and 18 (3 and 4 Nov): partly cloudy over the Koshi, Bagmati and Gandaki hills and mountains, mainly fair elsewhere. Mist or fog in the morning in the Terai, valleys and gorges.</description>
+    <instruction>Drive carefully in morning mist and fog; check the latest forecast before travelling in the mountains (phone 1155).</instruction>
+    <web>https://x.com/NMD_Weather/status/2116517502775869552</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NMD_Weather/status/2116517502775869552</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T18:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV9hceIaoAA0Dge.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: 'Arnab' remnants weakening, weather improving; no warning anywhere from the morning of Kartik 15 (1 Nov); morning fog</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts); northern mountains yellow from the evening of Kartik 14 to the morning of Kartik 15; all green from the morning of Kartik 15</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

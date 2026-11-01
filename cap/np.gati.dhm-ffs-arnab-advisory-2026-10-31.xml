@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-ffs-arnab-advisory-2026-10-31</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-10-31T11:51:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Flood Forecasting</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Flood Forecasting official X account @DHM_FloodEWS. Source: https://x.com/DHM_FloodEWS/status/2116411345214321035</note>
+  <references>hydrology.gov.np,np.gati.dhm-ffs-arnab-advisory-2026-10-27,2026-10-27T18:10:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>बाढी जोखिम पूर्वसूचना ('अर्नब' चक्रवात)</event>
+    <responseType>Monitor</responseType>
+    <urgency>Expected</urgency>
+    <severity>Moderate</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-31T11:51:00+05:45</effective>
+    <onset>2026-10-31T11:51:00+05:45</onset>
+    <expires>2026-11-01T08:00:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, बाढी पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM बाढी पूर्वानुमान (कात्तिक १४): कर्णाली, बबई, पश्चिम राप्ती, नारायणी, बागमती, कमला, कन्काई र कोशी जलाधारमा जलसतह उल्लेख्य बढ्न सक्ने (मध्यम जोखिम); कात्तिक १५ देखि १८ सामान्य</headline>
+    <description>अद्यावधिक, आधिकारिक (DHM बाढी पूर्वानुमान महाशाखाको 'चक्रवात अर्नबको सम्भावित प्रभाव: बाढी तथा अन्य जलजन्य जोखिम आंकलन तथा पूर्वसूचना', मिति २०८३ कात्तिक १४, @DHM_FloodEWS मा बिहान ११:५१ मा प्रकाशित; कात्तिक १० को सूचनाको ठाउँमा): कात्तिक १४ (शनिबार) कर्णाली, बबई, पश्चिम राप्ती, नारायणी, बागमती, कमला, कन्काई, कोशी नदी र आसपासका जलाधारमा मध्यम/भारी वर्षासँगै जलसतह उल्लेख्य रूपमा बढ्न सक्ने, मध्यम जोखिमको सम्भावना। कात्तिक १५, १६, १७ र १८ गते देशभरका प्रमुख नदीमा जलसतह सामान्य रहने। प्रमुख नदी सतर्कता तहभन्दा माथि पुग्ने सम्भावना न्यून; कोशी, नारायणी र कर्णाली जलाधारका उच्च हिमाली क्षेत्रमा हिमपात र हिमपहिरोको जोखिम। आकस्मिक बाढी जोखिम नक्सामा कात्तिक १५ र १६ का लागि सबै जिल्ला न्यून जोखिम (हरियो) छन्।</description>
+    <instruction>कात्तिक १५ देखि प्रमुख नदी सामान्य हुने अनुमान छ, तर वर्षापछि पनि खोलानाला र पहिरो जाने भिरमा सतर्क रहनुहोस्। बाढी सूचना: ११५५(२)।</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2116411345214321035</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2116411345214321035</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T11:51:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV8A4GMaAAA1OwB.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM बाढी पूर्वानुमान: कात्तिक १४ आठ जलाधारमा जलसतह उल्लेख्य बढ्न सक्ने (मध्यम जोखिम); कात्तिक १५–१८ प्रमुख नदी सामान्य</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Flood risk advisory (Cyclone 'Arnab')</event>
+    <responseType>Monitor</responseType>
+    <urgency>Expected</urgency>
+    <severity>Moderate</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-10-31T11:51:00+05:45</effective>
+    <onset>2026-10-31T11:51:00+05:45</onset>
+    <expires>2026-11-01T08:00:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Flood Forecasting · relayed by Gati</senderName>
+    <headline>DHM flood forecasting (Kartik 14): rivers in the Karnali, Babai, West Rapti, Narayani, Bagmati, Kamala, Kankai and Koshi basins may rise significantly (moderate risk); normal from Kartik 15 to 18</headline>
+    <description>Update, official (DHM Flood Forecasting Division, 'Possible impact of Cyclone Arnab: flood and other hydrological risk assessment and early warning', dated 2083 Kartik 14, posted on @DHM_FloodEWS at 11:51 AM on 31 Oct; replaces the Kartik 10 advisory): on Kartik 14 (Sat 31 Oct) moderate to heavy rain in the Karnali, Babai, West Rapti, Narayani, Bagmati, Kamala, Kankai, Koshi and nearby basins could raise river levels significantly; moderate risk likely. On Kartik 15, 16, 17 and 18 (1 to 4 Nov) water levels in major rivers across the country are expected to stay normal. Major rivers are unlikely to go above the warning level; snowfall and avalanche risk in the high Himalaya of the Koshi, Narayani and Karnali basins. The flash flood maps for Kartik 15 and 16 show low risk (green) in every district.</description>
+    <instruction>Major rivers are expected to be normal from Kartik 15, but stay careful near streams and landslide-prone slopes after the rain. Flood information: 1155(2).</instruction>
+    <web>https://x.com/DHM_FloodEWS/status/2116411345214321035</web>
+    <contact>DHM Flood Forecasting · 1155(2) · https://www.dhm.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/DHM_FloodEWS/status/2116411345214321035</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-10-31T11:51:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>flood</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://pbs.twimg.com/media/HV8A4GMaAAA1OwB.jpg</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM flood forecast: Kartik 14 rivers may rise in 8 basins (moderate risk); Kartik 15 to 18 major rivers normal</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>
