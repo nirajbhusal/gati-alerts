@@ -28,7 +28,7 @@
     let c = el.querySelector(":scope > .skycap");
     if (!S.on || el.matches("header.top")) { if (c) c.remove(); return; }
     const w = WXL[S.wx] || WXL.clear, src = S.src;
-    const who = !src ? T("DHM बुलेटिन उपलब्ध छैन", "DHM bulletin not available") : src.k === "preview" ? T("पूर्वावलोकन", "Preview") : `DHM${src.k === "observed" ? T(" अवलोकन", " observation") : ""}, ${hm(src.t)}`;
+    const who = !src ? T("DHM बुलेटिन उपलब्ध छैन", "DHM bulletin not available") : src.k === "preview" ? `${T("पूर्वावलोकन", "Preview")}, DHM ${hm(src.t)}` : `DHM${src.k === "observed" ? T(" अवलोकन", " observation") : ""}, ${hm(src.t)}`;
     const dn = S.dist ? T(S.dist.ne, S.dist.en) : "";
     const txt = `${T("आकाशको झल्को", "Sky look")}: ${T(w[0], w[1])}${dn ? " · " + dn : ""} · ${who}`;
     if (!c) { c = document.createElement(el.matches(".tdrow") ? "span" : "p"); c.className = "skycap"; el.appendChild(c); }
@@ -76,7 +76,7 @@
   }
   let DATA = null;
   function mood() {
-    const f = Q.get("wx"); if (WXS.includes(f)) { S.wx = f; S.src = { t: new Date().toISOString(), k: "preview" }; return; }
+    const f = Q.get("wx"); if (WXS.includes(f)) { S.wx = f; S.src = { t: DATA && DATA.WX && DATA.WX.bulletin5 ? DATA.WX.bulletin5.issued : new Date().toISOString(), k: "preview" }; return; }
     if (!DATA) { S.wx = "clear"; S.src = null; return; }
     const code = (G.district && G.district.get && G.district.get()) || "", D = DATA.D.find((d) => d.code === code) || DATA.D.find((d) => d.id === "kathmandu");
     S.dist = D; const r = D ? moodOf(DATA.WX, D, nptHour()) : null; S.wx = r ? r.wx : "clear"; S.src = r ? r.src : null;

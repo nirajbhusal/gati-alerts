@@ -1661,32 +1661,31 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .aqnoinfo{margin:0;padding:8px 10px;border-radius:10px;background:var(--surface2);font-size:14px}
 @media(prefers-reduced-motion:reduce){.aqprog i{transition:none}}
 .aqlog .aqchip{border:1px solid var(--line)!important;background:var(--surface)!important}
-/* Ambient sky (assets/js/sky.js): header and weather card only. Low-alpha layers under the content (z-index -1 in an isolated host), never over text. */
+/* Ambient sky (assets/js/sky.js): header and weather card only. Low-alpha layers under the content (z-index -1 in an isolated host), never over text.
+   Light and paper themes get pale tints that keep dark text contrast; the dark theme gets matching deeper tints. Night never forces dark mode. */
 .skyhost{position:relative;isolation:isolate}
 .skyfx{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:inherit}
 .skyfx>*{position:absolute;inset:0}
-header.top .skyfx.sky-dawn{background:linear-gradient(100deg,rgba(255,170,120,.16),rgba(255,214,170,.07) 45%,transparent 75%)}
-header.top .skyfx.sky-dusk{background:linear-gradient(100deg,transparent 30%,rgba(255,150,110,.10) 70%,rgba(170,110,190,.16))}
-header.top .skyfx.sky-night{background:linear-gradient(180deg,rgba(4,10,26,.35),rgba(4,10,26,.15))}
-.card .skyfx.sky-dawn,.tdrow .skyfx.sky-dawn{background:linear-gradient(100deg,rgba(255,176,120,.12),rgba(255,214,170,.05) 50%,transparent 80%)}
-.card .skyfx.sky-dusk,.tdrow .skyfx.sky-dusk{background:linear-gradient(100deg,transparent 35%,rgba(255,160,120,.07) 70%,rgba(160,120,200,.10))}
-.card .skyfx.sky-night,.tdrow .skyfx.sky-night{background:linear-gradient(180deg,rgba(40,52,110,.07),transparent 70%)}
-.skyns{left:auto!important;width:min(240px,60%);height:auto!important;bottom:auto!important}
-.skymoon{fill:rgba(255,246,214,.55)}.skystar circle{fill:rgba(255,255,255,.6)}
-.card .skymoon,.tdrow .skymoon{fill:rgba(120,120,170,.22)}.card .skystar circle,.tdrow .skystar circle{fill:rgba(90,100,160,.3)}
-html[data-theme=dark] .card .skymoon,html[data-theme=dark] .tdrow .skymoon{fill:rgba(255,246,214,.28)}html[data-theme=dark] .card .skystar circle,html[data-theme=dark] .tdrow .skystar circle{fill:rgba(255,255,255,.35)}
+.skyfx.sky-dawn{background:linear-gradient(100deg,rgba(255,170,110,.16),rgba(255,214,170,.07) 50%,transparent 80%)}
+.skyfx.sky-dusk{background:linear-gradient(100deg,transparent 30%,rgba(255,160,120,.09) 70%,rgba(160,120,200,.13))}
+.skyfx.sky-night{background:linear-gradient(180deg,rgba(60,72,140,.09),rgba(60,72,140,.02) 80%)}
+html[data-theme=dark] .skyfx.sky-dawn{background:linear-gradient(100deg,rgba(255,150,100,.12),transparent 70%)}
+html[data-theme=dark] .skyfx.sky-dusk{background:linear-gradient(100deg,transparent 35%,rgba(190,110,170,.12))}
+html[data-theme=dark] .skyfx.sky-night{background:linear-gradient(180deg,rgba(2,6,20,.35),transparent 85%)}
+.skyns{left:auto!important;width:min(220px,55%);height:auto!important;bottom:auto!important}
+.skymoon{fill:rgba(110,110,170,.28)}.skystar circle{fill:rgba(90,100,160,.35)}
+html[data-theme=dark] .skymoon{fill:rgba(255,246,214,.45)}html[data-theme=dark] .skystar circle{fill:rgba(255,255,255,.5)}
 @media(prefers-reduced-motion:no-preference){.skystar{animation:skytw 6s ease-in-out infinite alternate}}
 @keyframes skytw{from{opacity:.55}to{opacity:1}}
 /* Sky mood from DHM: cloudy = light grey haze, rain = a few thin lines, fog = soft mist, clear = nothing */
-.skycloud{background:linear-gradient(180deg,rgba(170,180,195,.16),rgba(170,180,195,.05) 70%)}
-header.top .skycloud{background:linear-gradient(180deg,rgba(200,210,225,.14),rgba(200,210,225,.04))}
-.skyrain{background:repeating-linear-gradient(105deg,transparent 0 34px,rgba(120,150,190,.22) 34px 35px,transparent 35px 71px);opacity:.8}
-header.top .skyrain{background:repeating-linear-gradient(105deg,transparent 0 34px,rgba(210,225,255,.20) 34px 35px,transparent 35px 71px)}
-.skyfog{background:linear-gradient(180deg,transparent 20%,rgba(220,226,232,.22) 55%,rgba(220,226,232,.10) 90%),radial-gradient(60% 40% at 30% 70%,rgba(230,234,240,.18),transparent)}
-header.top .skyfog{background:linear-gradient(180deg,transparent 15%,rgba(225,232,240,.13) 60%,rgba(225,232,240,.06))}
-html[data-theme=dark] .card .skyfog,html[data-theme=dark] .tdrow .skyfog{background:linear-gradient(180deg,transparent 20%,rgba(200,210,225,.08) 60%,transparent)}
-@media(prefers-reduced-motion:no-preference){.skyrain{animation:skyrn 1.6s linear infinite;background-size:200% 200%}.skyfog{animation:skyfg 24s ease-in-out infinite alternate}}
-@keyframes skyrn{from{background-position:0 0}to{background-position:-18px 70px}}
+.skycloud{background:linear-gradient(180deg,rgba(130,140,158,.14),rgba(130,140,158,.04) 75%)}
+.skyrain{background:repeating-linear-gradient(105deg,transparent 0 34px,rgba(80,110,160,.20) 34px 35px,transparent 35px 71px)}
+.skyfog{background:linear-gradient(180deg,transparent 15%,rgba(150,162,180,.14) 55%,rgba(150,162,180,.06) 90%),radial-gradient(60% 45% at 30% 70%,rgba(150,162,180,.10),transparent)}
+html[data-theme=dark] .skycloud{background:linear-gradient(180deg,rgba(170,180,200,.10),transparent 80%)}
+html[data-theme=dark] .skyrain{background:repeating-linear-gradient(105deg,transparent 0 34px,rgba(190,210,250,.16) 34px 35px,transparent 35px 71px)}
+html[data-theme=dark] .skyfog{background:linear-gradient(180deg,transparent 15%,rgba(200,210,225,.09) 60%,transparent)}
+@media(prefers-reduced-motion:no-preference){.skyrain{animation:skyrn 1.6s linear infinite}.skyfog{animation:skyfg 24s ease-in-out infinite alternate}}
+@keyframes skyrn{from{background-position:0 0}to{background-position:-19px 71px}}
 @keyframes skyfg{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
 .skycap{display:block;grid-column:1/-1;margin:6px 0 0;font-size:var(--fs-6,.78rem);color:var(--slate)}
 #wx5>.skycap{margin-top:var(--s3,10px)}
