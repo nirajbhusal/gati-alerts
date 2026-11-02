@@ -19,11 +19,26 @@
     fx.className = `skyfx sky-${S.phase} wx-${S.wx}`;
     fx.innerHTML = (S.phase === "night" ? NIGHT : "") + (S.wx === "rain" ? '<i class="skyrain"></i>' : S.wx === "fog" ? '<i class="skyfog"></i>' : S.wx === "cloudy" ? '<i class="skycloud"></i>' : "");
   }
+  /* Caption on the weather card: mood, source and time, e.g. "आकाशको झल्को: बदली · DHM, बिहान ८:००". Gati relays DHM, it issues nothing. */
+  const T = (ne, en) => (G.lang === "ne" ? ne : en);
+  const WXL = { clear: ["सफा", "clear"], cloudy: ["बदली", "cloudy"], rain: ["वर्षा", "rain"], fog: ["हुस्सु, कुहिरो", "mist or fog"] };
+  function hm(iso) { const t = new Date(Date.parse(iso) + 345 * 6e4), h = t.getUTCHours(), m = String(t.getUTCMinutes()).padStart(2, "0"), h12 = h % 12 || 12;
+    return G.lang === "ne" ? `${h < 4 ? "राति" : h < 12 ? "बिहान" : h < 17 ? "दिउँसो" : h < 20 ? "साँझ" : "राति"} ${G.num(h12 + ":" + m)}` : `${h12}:${m} ${h < 12 ? "AM" : "PM"}`; }
+  function caption(el) {
+    let c = el.querySelector(":scope > .skycap");
+    if (!S.on || el.matches("header.top")) { if (c) c.remove(); return; }
+    const w = WXL[S.wx] || WXL.clear, src = S.src;
+    const who = !src ? T("DHM बुलेटिन उपलब्ध छैन", "DHM bulletin not available") : src.k === "preview" ? T("पूर्वावलोकन", "Preview") : `DHM${src.k === "observed" ? T(" अवलोकन", " observation") : ""}, ${hm(src.t)}`;
+    const dn = S.dist ? T(S.dist.ne, S.dist.en) : "";
+    const txt = `${T("आकाशको झल्को", "Sky look")}: ${T(w[0], w[1])}${dn ? " · " + dn : ""} · ${who}`;
+    if (!c) { c = document.createElement(el.matches(".tdrow") ? "span" : "p"); c.className = "skycap"; el.appendChild(c); }
+    if (c.textContent !== txt) { c.textContent = txt; c.title = T("यो रङ DHM को आधिकारिक मौसम र नेपाल समयअनुसार मात्र हो; सूचना होइन।", "This tint follows DHM's official weather and Nepal time only; it is not an alert."); }
+  }
   function hosts() { return [document.querySelector("header.top"), document.querySelector("#today .td-wx"), document.getElementById("wx5")].filter(Boolean); }
   let apply = function () {
     const f = Q.get("sky"); S.phase = PH.includes(f) ? f : phaseOf(nptHour());
     H.dataset.sky = S.on ? S.phase : "off"; H.dataset.skyWx = S.on ? S.wx : "";
-    hosts().forEach(host);
+    hosts().forEach((e) => { host(e); caption(e); });
   };
   /* Weather mood from the official DHM data in data/weather.json, for my district (gati-district) or Kathmandu.
      Today's 5-day bulletin text is split into clauses; a clause counts if it names the district or its province,
@@ -87,8 +102,9 @@
   const get = (p) => G.json(p).catch(() => null);
   Promise.all([get("data/weather.json"), get("data/districts.json"), get("data/alerts.json")]).then(([WX, D, AL]) => { DATA = { WX, D: D || [], AL }; apply(); });
   addEventListener("gati:district", () => apply());
+  G.listeners && G.listeners.push(() => setTimeout(() => apply(), 0));
   /* the weather card is drawn later and redrawn on language change */
-  const mo = new MutationObserver(() => { const h = hosts(); if (h.some((e) => !e.querySelector(":scope > .skyfx") === S.on)) apply(); });
+  const mo = new MutationObserver(() => { if (hosts().some((e) => !e.querySelector(":scope > .skyfx") === S.on || (S.on && !e.matches("header.top") && !e.querySelector(":scope > .skycap")))) apply(); });
   mo.observe(document.body, { childList: true, subtree: true });
   setInterval(() => apply(), 5 * 6e4);
 })();

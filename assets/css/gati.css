@@ -1688,3 +1688,5 @@ html[data-theme=dark] .card .skyfog,html[data-theme=dark] .tdrow .skyfog{backgro
 @media(prefers-reduced-motion:no-preference){.skyrain{animation:skyrn 1.6s linear infinite;background-size:200% 200%}.skyfog{animation:skyfg 24s ease-in-out infinite alternate}}
 @keyframes skyrn{from{background-position:0 0}to{background-position:-18px 70px}}
 @keyframes skyfg{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
+.skycap{display:block;grid-column:1/-1;margin:6px 0 0;font-size:var(--fs-6,.78rem);color:var(--slate)}
+#wx5>.skycap{margin-top:var(--s3,10px)}
