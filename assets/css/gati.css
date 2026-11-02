@@ -1661,3 +1661,6 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .aqnoinfo{margin:0;padding:8px 10px;border-radius:10px;background:var(--surface2);font-size:14px}
 @media(prefers-reduced-motion:reduce){.aqprog i{transition:none}}
 .aqlog .aqchip{border:1px solid var(--line)!important;background:var(--surface)!important}
+
+/* homemap blocked-road marker: white no-entry bar instead of a cross */
+.hmi path.hmbar{stroke-width:2.4;stroke-linecap:round}
