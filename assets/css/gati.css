@@ -738,9 +738,9 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 .fcard h2,.fcard .fmain h2,.rail a,.rail button{color:var(--ink)!important}
 .aqhead b,.aqhead h2,.aqhead strong,.aqhead small,.aqhead span{color:var(--ink)!important}.aqhead small,.aqhead span{color:var(--slate)!important}
 /* Official logo */
-.brand img.logo{width:auto;height:40px;border-radius:0;display:block}.brand .logo-d{display:none}
-.brand img.logo-d{display:none}html[data-theme=dark] .brand img.logo-l{display:none}html[data-theme=dark] .brand img.logo-d{display:block}
-@media(max-width:440px){.brand img.logo{height:34px}}
+.brand .logo{width:auto;height:40px;border-radius:0;display:block}.brand .logo-d{display:none}
+.brand .logo-d{display:none}html[data-theme=dark] .brand .logo-l{display:none}html[data-theme=dark] .brand .logo-d{display:block}
+@media(max-width:440px){.brand .logo{height:34px}}
 .aqhead img,.mecard-top img{border-radius:10px;background:none!important}
 /* Tagline */
 .brand .tagline{display:block;font-size:var(--fs-6);color:var(--slate)!important;line-height:1.2;padding-left:12px;margin-left:2px;border-left:1px solid var(--line);white-space:nowrap}
@@ -1064,7 +1064,7 @@ main a:not([class]),main p a,main li a:not([class*=btn]),.meta a,.alinks a,.src 
 .mecard,.hhero{background:var(--navy)!important}
 .aqhead{border-bottom-color:var(--line)!important}.disc,.topnote{border-left-color:var(--navy)!important}
 /* Night Navy header: white mark and controls */
-header.top .brand img.logo-l{display:none!important}header.top .brand img.logo-d{display:block!important}
+header.top .brand .logo-l{display:none!important}header.top .brand .logo-d{display:block!important}
 header.top .tagline{color:#C9D2E3!important}
 header.top .bar .mebtn,header.top .bar .langbtn,header.top .bar .menubtn{color:#fff!important;background:transparent!important;border-color:rgba(255,255,255,.3)!important}
 header.top .bar .mebtn svg{stroke:#fff}
@@ -1142,7 +1142,7 @@ body:not(.storypage) > main#main{min-height:100vh;min-height:100dvh}
 html{scroll-padding-top:calc(var(--hdr,72px) + 12px);scroll-padding-bottom:96px}@media(min-width:721px){html{--hdr:96px}}
 /* Fix sweep 10: Light and Paper get a light header and a light My Gati card; navy stays for Dark and primary buttons */
 html:not([data-theme=dark]) header.top{background:var(--surface)!important;backdrop-filter:none;-webkit-backdrop-filter:none;border-top:0;border-bottom:1px solid var(--line);box-shadow:none;color:var(--navy)}
-html:not([data-theme=dark]) header.top .brand img.logo-l{display:block!important}html:not([data-theme=dark]) header.top .brand img.logo-d{display:none!important}
+html:not([data-theme=dark]) header.top .brand .logo-l{display:block!important}html:not([data-theme=dark]) header.top .brand .logo-d{display:none!important}
 html:not([data-theme=dark]) header.top .tagline{color:var(--slate)!important}
 html:not([data-theme=dark]) header.top .bar .mebtn,html:not([data-theme=dark]) header.top .bar .langbtn,html:not([data-theme=dark]) header.top .bar .menubtn{color:var(--navy)!important;border-color:var(--line)!important}
 html:not([data-theme=dark]) header.top .bar .mebtn svg{stroke:var(--navy)}
@@ -1326,7 +1326,7 @@ nav.main .moremenu a[hidden]{display:none!important}
 @media(max-width:359px){header.top .bar .brand .tagline{display:none!important}}
 /* header v2: bigger logo, top breathing room (safe area), search in the right cluster, larger menu targets */
 header.top .bar{padding-top:calc(14px + env(safe-area-inset-top,0px))!important;padding-bottom:10px!important}
-header.top .bar .brand img.logo{height:52px!important;width:auto!important}
+header.top .bar .brand .logo{height:52px!important;width:auto!important}
 header.top .bar .brand{gap:14px!important}
 header.top .bar .brand .tagline{font-size:var(--fs-5)!important}
 header.top .bar .hr{gap:8px}
@@ -1345,7 +1345,7 @@ header.top .bar .hr{gap:8px}
   header.top .bar .hr{grid-area:r;justify-self:end;gap:2px}
   header.top .bar .hr .srchbtn{display:inline-grid!important;place-items:center}
   header.top .bar .brand{grid-area:b;position:static!important;transform:none!important;display:contents!important}
-  header.top .bar .brand img.logo{grid-area:b;height:42px!important;justify-self:center}
+  header.top .bar .brand .logo{grid-area:b;height:42px!important;justify-self:center}
   header.top .bar .brand .tagline{grid-area:t;display:block!important;justify-self:center;max-width:none!important;white-space:nowrap!important;overflow:visible!important;font-size:var(--fs-6)!important;line-height:1.25!important;text-align:center}
   body[data-page=home] header.top .bar .brand .tagline{display:block!important}
   nav.main.open>a,nav.main.open .moremenu a{min-height:48px;display:flex!important;align-items:center;padding:0 14px!important;font-size:var(--fs-4)!important;border-radius:10px}
@@ -1725,3 +1725,15 @@ html[data-theme=dark] .pcall{background:#c4413a}
 .clist2{max-width:880px}.ccall span,.ccall:hover span{text-decoration:none}.ccall{text-decoration:none!important}
 .ccall,.ccall span,.pcall,.pcall b,.pcall span{text-decoration:none!important;color:#fff!important}
 @media(max-width:520px){.crow{padding:10px}.ctools{gap:var(--s2)}}
+
+/* animated logo mark: the ग stays still, the three signal arcs pulse outward in turn, then rest (assets/js/common.js layers logo-h-base + arc1..3) */
+.brand .lgw{position:relative;aspect-ratio:351/160;flex:none}
+.brand .lgw img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.brand .lga{opacity:1;animation:lgpulse 3.2s ease-in-out infinite both}
+.brand .lga.a2{animation-delay:.28s}.brand .lga.a3{animation-delay:.56s}
+@keyframes lgpulse{0%{opacity:1}9%{opacity:.3}24%,100%{opacity:1}}
+html.alert-hot .brand .lga{animation-duration:1.6s}
+html.alert-hot .brand .lga.a2{animation-delay:.16s}html.alert-hot .brand .lga.a3{animation-delay:.32s}
+html.alert-hot .brand .lga{animation-name:lgpulsehot}
+@keyframes lgpulsehot{0%{opacity:1}12%{opacity:.15}30%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.brand .lga{animation:none!important;opacity:1}}

@@ -109,7 +109,7 @@
     <button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="मेनु / Menu">☰</button>
     <button class="langbtn" type="button" id="langbtn" aria-label="Switch language / भाषा बदल्नुहोस्"><span class="lfull">${b("English", "नेपाली")}</span><span class="lshort" aria-hidden="true">${b("EN", "ने")}</span></button>
     </div>
-    <a class="brand" href="${ROOT}" aria-label="गति Gati"><img class="logo logo-l" src="${ROOT}assets/img/brand/logo-h.png" alt="" width="88" height="40"><img class="logo logo-d" src="${ROOT}assets/img/brand/logo-h-white.png" alt="" width="88" height="40"><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
+    <a class="brand" href="${ROOT}" aria-label="गति Gati"><span class="logo logo-l lgw" aria-hidden="true"><img class="lgb" src="${ROOT}assets/img/brand/logo-h-base.png" alt="" width="88" height="40"><img class="lga a1" src="${ROOT}assets/img/brand/logo-h-arc1.png" alt="" width="88" height="40"><img class="lga a2" src="${ROOT}assets/img/brand/logo-h-arc2.png" alt="" width="88" height="40"><img class="lga a3" src="${ROOT}assets/img/brand/logo-h-arc3.png" alt="" width="88" height="40"></span><span class="logo logo-d lgw" aria-hidden="true"><img class="lgb" src="${ROOT}assets/img/brand/logo-h-white-base.png" alt="" width="88" height="40"><img class="lga a1" src="${ROOT}assets/img/brand/logo-h-white-arc1.png" alt="" width="88" height="40"><img class="lga a2" src="${ROOT}assets/img/brand/logo-h-white-arc2.png" alt="" width="88" height="40"><img class="lga a3" src="${ROOT}assets/img/brand/logo-h-white-arc3.png" alt="" width="88" height="40"></span><small class="tagline">${b("सही सूचना, सही समयमा ।", "The right alert, right on time.")}</small></a>
     <div class="hr">
     <button class="mebtn srchbtn" type="button" id="srchbtn" aria-haspopup="dialog" aria-label="खोज्नुहोस् / Search (/)" title="खोज्नुहोस् / Search (/)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
     <a class="mebtn profbtn bellbtn" id="profbtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings" title="प्रोफाइल र सेटिङ / Profile & Settings"${PAGE === "me" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><i class="bdot" hidden></i></a>
@@ -266,6 +266,11 @@
       .filter((a) => (a.districts.length ? a.districts.some((c) => D.includes(c)) : p.nation) && (!p.hz.length || p.hz.includes(a.hazard || "other")) && (SEVR[a.severity] || 0) >= (SEVR[p.min] || 0))
       .sort((x, y) => (y.sent > x.sent ? 1 : -1)).map((a) => Object.assign({ unread: !seen || Date.parse(a.sent) > Date.parse(seen) }, a));
     return { items, unread: items.filter((x) => x.unread).length, D, seen }; };
+  /* logo signal pulses faster only while a Severe/Extreme alert is active for the user's own district */
+  G.logoHot = async () => { try { const m = G.district && G.district.get && G.district.get(); if (!m) return; const al = (await G.json("data/alerts.json")).alerts || [];
+    const hot = al.some((a) => Date.parse(a.expires) > Date.now() && !a.supersededBy && a.msgType !== "Cancel" && (a.info.en.params || {})["gati:demo"] !== "true" && (SEVR[a.severity] || 0) >= 3 && (a.districts || []).includes(m));
+    document.documentElement.classList.toggle("alert-hot", hot); } catch (e) {} };
+  setTimeout(() => G.logoHot(), 1500);
   async function localNotify() { const p = G.notifPrefs();
     if (!p.local || !("Notification" in window) || Notification.permission !== "granted" || G.inQuiet(p) || !("serviceWorker" in navigator)) return;
     const { items } = await G.inbox(); let done = []; try { done = JSON.parse(localStorage.getItem(NDONE) || "[]"); } catch (e) {}
