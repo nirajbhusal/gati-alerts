@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><script>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="ne"?"ne":"en"}catch(e){document.documentElement.lang="en"}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>आपतकालीन नम्बर · Emergency numbers · गति Gati</title><meta name="description" content="Gati: tap-to-call emergency numbers in Nepal, each verified from an official source.">
-<meta property="og:title" content="आपतकालीन नम्बर · Emergency numbers · गति Gati"><meta property="og:description" content="Gati: tap-to-call emergency numbers in Nepal, each verified from an official source."><meta property="og:type" content="website">
+<title>आपतकालीन नम्बर · Emergency numbers · गति Gati</title><meta name="description" content="Gati: tap-to-call emergency numbers in Nepal, each with its source and time.">
+<meta property="og:title" content="आपतकालीन नम्बर · Emergency numbers · गति Gati"><meta property="og:description" content="Gati: tap-to-call emergency numbers in Nepal, each with its source and time."><meta property="og:type" content="website">
 <meta property="og:url" content="https://nirajbhusal.github.io/gati-alerts/contacts/"><meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="preload" href="../assets/fonts/mukta-latin-bef5c820.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/inter-latin-f11d729b.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-5591b6d0.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-7cefa967.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../assets/css/gati.css">
@@ -11,12 +11,16 @@
 <meta property="og:image:alt" content="गति Gati: सही सूचना, सही समयमा । The right alert, right on time.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="आपतकालीन नम्बर · Emergency numbers · गति Gati">
-<meta name="twitter:description" content="Gati: tap-to-call emergency numbers in Nepal, each verified from an official source.">
+<meta name="twitter:description" content="Gati: tap-to-call emergency numbers in Nepal, each with its source and time.">
 <meta name="twitter:image" content="https://nirajbhusal.github.io/gati-alerts/assets/img/brand/og-cover.png">
 </head><body data-page="contacts" data-root="../"><main id="main" class="wrap dash">
-<div class="hero"><h1><span class="ne-only">आपतकालीन नम्बर</span><span class="en-only">Emergency numbers</span></h1><p class="lead"><span class="ne-only">थिचेर फोन गर्नुहोस्। हरेक नम्बर आधिकारिक स्रोतबाट पुष्टि गरिएको।</span><span class="en-only">Tap to call. Every number is checked against an official source.</span></p><section class="gdash" id="gdash" aria-label="सारांश · Summary"></section></div>
-<div class="ctools"><label class="srch"><span class="sr-only"><span class="ne-only">खोज्नुहोस्</span><span class="en-only">Search</span></span><input id="csearch" type="search" autocomplete="off"></label><div class="mydist" id="mydist"></div></div>
-<section id="clist" class="clist" aria-live="polite"></section>
-<section class="card" id="cdist" style="margin-top:var(--s4)"></section>
+<div class="hero"><h1><span class="ne-only">आपतकालीन नम्बर</span><span class="en-only">Emergency numbers</span></h1><p class="lead"><span class="ne-only">थिचेर फोन गर्नुहोस्। हरेक नम्बरसँग स्रोत र समय। गतिले नम्बर जारी गर्दैन, स्रोतबाट जस्ताको तस्तै राख्छ।</span><span class="en-only">Tap to call. Every number shows its source and time. Gati does not issue numbers; it relays them as listed.</span></p><section class="gdash" id="gdash" aria-label="सारांश · Summary"></section></div>
+<section class="cpin" id="cpin" aria-label="राष्ट्रिय आपतकालीन · National emergency"></section>
+<div class="ctools"><label class="srch"><span class="sr-only"><span class="ne-only">खोज्नुहोस्</span><span class="en-only">Search</span></span><input id="csearch" type="search" autocomplete="off" enterkeyhint="search"></label><label class="cdf"><span id="cdlab" class="sr-only"></span><select id="cdsel"></select></label><div class="mydist" id="mydist"></div></div>
+<div class="cchips" id="cchips" role="group" aria-label="वर्ग · Category"></div>
+<section id="cdist"></section>
+<p class="meta ccount" id="ccount" aria-live="polite"></p>
+<div id="clist" class="clist2"></div>
+<p class="ctoast" id="ctoast" role="status" hidden></p>
 <p class="meta" id="cnote"></p>
 </main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/dash.js"></script><script src="../assets/js/district.js"></script><script src="../assets/js/contacts.js"></script></body></html>
