@@ -1692,3 +1692,9 @@ html[data-theme=dark] .skyfog{background:linear-gradient(180deg,transparent 15%,
 @keyframes skyfg{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
 .skycap{display:block;grid-column:1/-1;margin:6px 0 0;font-size:var(--fs-6,.78rem);color:var(--slate)}
 #wx5>.skycap{margin-top:var(--s3,10px)}
+/* About: SDG icons and EW4All text badge */
+.sdglist{list-style:none;padding:0;margin:0 0 8px}.sdglist li{display:flex;gap:12px;align-items:flex-start;margin:0 0 12px}.sdglist img{flex:none;border-radius:4px}
+.ew4all{border-left:4px solid #0a97d9}.ew4tag{display:inline-block;margin:0 0 6px;padding:2px 10px;border:1px solid #0a97d9;border-radius:999px;color:#0a6d9e;font-weight:600;font-size:var(--fs-5)}
+html[data-theme=dark] .ew4tag{color:#7cc8ef}
+.abtoc{font-size:var(--fs-5);line-height:1.9;margin:0 0 16px}.pillars td{vertical-align:top;padding:6px 8px}
+.sdgstrip{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:24px 0 8px;padding:10px 12px;border-top:1px solid var(--line);color:var(--slate);font-size:var(--fs-5);text-decoration:none}.sdgicons{display:flex;gap:4px}.sdgicons img{border-radius:3px}.ew4b{padding:1px 8px;border:1px solid #0a97d9;border-radius:999px;color:#0a6d9e;font-weight:600}html[data-theme=dark] .ew4b{color:#7cc8ef}
