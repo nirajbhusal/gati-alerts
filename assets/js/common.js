@@ -561,5 +561,8 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) draw(); });
 })();
 
-/* Ambient sky (header and weather card only), loaded after the shell */
-(function () { const G = window.Gati; if (!G || G.sky) return; const s = document.createElement("script"); s.src = G.root + "assets/js/sky.js"; s.defer = true; document.body.appendChild(s); })();
+/* Ambient sky (header and weather card only), loaded after the shell. gati-sky = "off" turns it off (Profile and settings, Display). */
+(function () { const G = window.Gati; if (!G || G.sky) return;
+  G.skyOn = () => { try { return localStorage.getItem("gati-sky") !== "off"; } catch (e) { return true; } };
+  G.setSky = (on) => { try { if (on) localStorage.removeItem("gati-sky"); else localStorage.setItem("gati-sky", "off"); } catch (e) {} if (G.sky) G.sky.apply(); };
+  const s = document.createElement("script"); s.src = G.root + "assets/js/sky.js"; s.defer = true; document.body.appendChild(s); })();

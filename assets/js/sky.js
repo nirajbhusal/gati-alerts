@@ -22,7 +22,7 @@
   function hosts() { return [document.querySelector("header.top"), document.querySelector("#today .td-wx"), document.getElementById("wx5")].filter(Boolean); }
   let apply = function () {
     const f = Q.get("sky"); S.phase = PH.includes(f) ? f : phaseOf(nptHour());
-    H.dataset.sky = S.on ? S.phase : "off";
+    H.dataset.sky = S.on ? S.phase : "off"; H.dataset.skyWx = S.on ? S.wx : "";
     hosts().forEach(host);
   };
   /* Weather mood from the official DHM data in data/weather.json, for my district (gati-district) or Kathmandu.
@@ -66,12 +66,26 @@
     const code = (G.district && G.district.get && G.district.get()) || "", D = DATA.D.find((d) => d.code === code) || DATA.D.find((d) => d.id === "kathmandu");
     S.dist = D; const r = D ? moodOf(DATA.WX, D, nptHour()) : null; S.wx = r ? r.wx : "clear"; S.src = r ? r.src : null;
   }
+  /* Safety: off when the user turned it off (localStorage gati-sky = "off", toggle in Profile and settings, Display),
+     and automatically off while a Severe or Extreme alert is active for my district (any district when none is chosen,
+     and alerts with no district list), or today's DHM bulletin level is red, so the alert stands out.
+     Preview: ?redalert=1 simulates that alert, ?redalert=0 ignores it. Reduced motion: CSS keeps every layer static. */
+  function redAlert() {
+    const f = Q.get("redalert"); if (f === "1") return true; if (f === "0" || !DATA) return false;
+    const now = Date.now(), code = (G.district && G.district.get && G.district.get()) || "";
+    const al = (DATA.AL && DATA.AL.alerts) || [];
+    const hit = al.some((a) => (a.severity === "Severe" || a.severity === "Extreme") && !a.expired && !a.supersededBy && Date.parse(a.expires) > now
+      && (!code || !(a.districts && a.districts.length) || a.districts.includes(code)));
+    const b5 = DATA.WX && DATA.WX.bulletin5, ad = new Date(now + 345 * 6e4).toISOString().slice(0, 10);
+    const d = b5 && b5.days && b5.days.find((x) => x.ad === ad);
+    return hit || !!(d && d.level === "red");
+  }
   const apply0 = apply;
-  apply = () => { mood(); apply0(); };
+  apply = () => { S.alert = redAlert(); S.user = G.skyOn(); S.on = S.user && !S.alert && Q.get("sky") !== "off"; mood(); apply0(); };
   G.sky = { state: S, apply: () => apply() };
   apply();
   const get = (p) => G.json(p).catch(() => null);
-  Promise.all([get("data/weather.json"), get("data/districts.json")]).then(([WX, D]) => { DATA = { WX, D: D || [] }; apply(); });
+  Promise.all([get("data/weather.json"), get("data/districts.json"), get("data/alerts.json")]).then(([WX, D, AL]) => { DATA = { WX, D: D || [], AL }; apply(); });
   addEventListener("gati:district", () => apply());
   /* the weather card is drawn later and redrawn on language change */
   const mo = new MutationObserver(() => { const h = hosts(); if (h.some((e) => !e.querySelector(":scope > .skyfx") === S.on)) apply(); });
