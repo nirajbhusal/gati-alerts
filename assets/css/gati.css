@@ -1655,3 +1655,9 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .rab{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-style:normal;font-size:12px;font-weight:700;color:#fff;margin-right:6px;vertical-align:-3px}.rab.ra{background:#0B1424}.rab.rb{background:#DC143C}
 .rpick label>span{display:flex;align-items:center}
 .rsrc{font-size:13px;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.aqsug{margin-top:10px;gap:6px}.aqsug:empty{display:none}.aqsugl{width:100%;font-size:12.5px;font-weight:600;color:var(--slate)}.aqsug .aqchip{font-size:13.5px;min-height:36px;text-align:left}
+.aqwait{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.aqprog{flex:1 1 100%;height:3px;border-radius:3px;background:var(--line);overflow:hidden}.aqprog i{display:block;height:100%;width:2%;background:var(--ink);transition:width .5s linear}
+.aqstop{margin-left:auto;min-height:32px;padding:4px 12px}.aqretry{margin-left:6px;min-height:32px;padding:4px 12px}
+.aqnoinfo{margin:0;padding:8px 10px;border-radius:10px;background:var(--surface2);font-size:14px}
+@media(prefers-reduced-motion:reduce){.aqprog i{transition:none}}
+.aqlog .aqchip{border:1px solid var(--line)!important;background:var(--surface)!important}

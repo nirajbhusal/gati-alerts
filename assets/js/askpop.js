@@ -64,7 +64,7 @@
     return "";
   }
   const na = () => `<p class="meta">${T("उपलब्ध छैन।", "Not available.")}</p>`;
-  const soon = () => `<p>${T("यो प्रश्नको उत्तर अहिले दिन सकिँदैन। पूर्ण \"गतिलाई सोध्नुहोस्\" छिट्टै आउँदैछ। तलका विषय छान्नुहोस्:", "I can't answer that yet. Full Ask Gati is coming soon. Try one of these topics:")}</p>`;
+  const soon = () => `<p>${T("गतिको तथ्याङ्कमा यो प्रश्नको उत्तर भेटिएन। तलका विषय छान्नुहोस् वा प्रश्न अलि फरक तरिकाले सोध्नुहोस्:", "I could not find an answer to that in Gati's data. Try one of the topics below, or ask in a different way:")}</p>`;
 
   let panel, log, btn, lastFocus, tab = "ask" /* fixed: overlay is chat only */;
   const TABS = [["ask", "💬", "सोध्नुहोस्", "Ask"], ["wx", "⛅", "मौसम र हावा", "Weather & air"], ["call", "☎", "सम्पर्क", "Contacts"], ["mine", "📍", "मेरो जिल्ला", "My district"]];
@@ -90,6 +90,24 @@
         <div class="aqcite"><span class="trust t-Model">🧮 ${T("मोडेल", "Model")}</span><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo ↗</a><span>${f ? G.npt(f.current.time + ":00+05:45") : ""}</span></div><div class="aqacts"><a class="aqbtn" href="${R}weather/">${T("मौसम र हावा पृष्ठ", "Weather and air page")}</a></div>`;
     }
   }
+  /* Suggested questions from the page and live data (blocked roads, weather warnings, my district) */
+  async function suggest() {
+    const out = [], add = (ne, en) => { if (out.length < 4 && !out.some((x) => x[1] === en)) out.push([ne, en]); };
+    const rd = await J("data/roads.json"), al = await J("data/alerts.json"), A = al ? al.alerts.filter(live) : [];
+    const bad = rd ? rd.routes.filter((x) => x.status === "blocked" || x.status === "oneway") : [];
+    const roadQ = () => { bad.slice(0, 1).forEach((x) => add(`${x.name_ne} अहिले खुला छ?`, `Is ${x.name_en} open now?`)); add("काठमाडौँ–पोखरा सडक खुला छ?", "Is Kathmandu–Pokhara open?"); if (A.some((a) => a.hazard === "road")) add("अहिले कुन सडक अवरुद्ध छन्?", "Which roads are blocked right now?"); };
+    const wxQ = () => add("आउँदा ५ दिनमा मौसम चेतावनी छ?", "Any weather warning in the next 5 days?");
+    if (PAGE === "route" || PAGE === "roads") roadQ();
+    if (PAGE === "weather" || PAGE === "air") wxQ();
+    if (PAGE === "rivers") add("कुन नदी चेतावनी तहमाथि छ?", "Which river is above warning level?");
+    if (PAGE === "trek") add("पदयात्रा रोकिएको छ?", "Is trekking suspended?");
+    const my = G.district && G.district.get && G.district.get();
+    if (my) { try { const n = await G.district.name(my); add(`${n} मा अहिले चेतावनी छ?`, `Any alert in ${n} right now?`); } catch (e) {} }
+    roadQ(); wxQ(); add("विपद्मा कुन नम्बरमा फोन गर्ने?", "Which number do I call in a disaster?");
+    return out;
+  }
+  async function fillSuggest() { const el = log && log.querySelector(".aqsug"); if (!el) return; const L = await suggest();
+    el.innerHTML = L.length ? `<span class="aqsugl">${T("सुझाव गरिएका प्रश्न", "Suggested questions")}</span>` + L.map(([ne, en]) => `<button type="button" class="aqchip aqfq" data-fq="${esc(T(ne, en))}">${esc(T(ne, en))}</button>`).join("") : ""; }
   function chips() { return INT.map(([k, ne, en]) => `<button type="button" class="aqchip" data-k="${k}">${T(ne, en)}</button>`).join(""); }
   function build(host) {
     panel = document.createElement("div");
@@ -105,7 +123,7 @@
       <div class="aqpane" id="aqp-x" role="tabpanel" ${tab === "ask" ? "hidden" : ""}></div>
       <div class="aqbody" id="aqp-ask" role="tabpanel" ${tab === "ask" ? "" : "hidden"}><p class="aqdisc"><a class="relaylink" href="${R}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p>
       <div class="aqhelp"><a href="tel:100" class="aqcall sm"><b>${G.num("100")}</b><span>${T("प्रहरी", "Police")}</span></a><a href="tel:1234" class="aqcall sm red"><b>${G.num("1234")}</b><span>${T("विपद् (NDRRMA)", "Disaster (NDRRMA)")}</span></a></div>
-      <div class="aqlog" aria-live="polite">${keep || `<div class="aqmsg bot aqhello">${T("हजुर के जान्न चाहनुहुन्छ?", "What would you like to know?")}</div>`}</div>
+      <div class="aqlog" aria-live="polite">${keep || `<div class="aqmsg bot aqhello">${T("हजुर के जान्न चाहनुहुन्छ?", "What would you like to know?")}<div class="aqchips aqsug" role="group"></div></div>`}</div>
 </div>
       <div class="aqdock"><div class="aqchips" role="group" aria-label="${T("छिटो प्रश्न", "Quick questions")}">${chips()}</div>
       <form class="aqform" ${tab === "ask" ? "" : "hidden"}><label class="sr-only" for="aqin">${T("प्रश्न लेख्नुहोस्", "Type a question")}</label><input id="aqin" type="text" autocomplete="off" placeholder="${T("जस्तै: गोरखा जाने सडक खुला छ?", "e.g. Is the road to Gorkha open?")}" enterkeyhint="send" maxlength="400"><button type="submit" aria-label="${T("पठाउनुहोस्", "Send")}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button></form></div>`;
@@ -116,7 +134,10 @@
     panel.querySelectorAll(".aqtabs [role=tab]").forEach((b, n, all) => { b.onclick = () => setTab(b.dataset.t);
       b.onkeydown = (e) => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { const j = (n + (e.key === "ArrowRight" ? 1 : all.length - 1)) % all.length; setTab(all[j].dataset.t); panel.querySelector(`#aqt-${all[j].dataset.t}`).focus(); } }; });
     if (tab !== "ask") pane();
-    log.addEventListener("click", (e) => { const f = e.target.closest("[data-fq]"); if (f) { const q = f.dataset.fq, m = INT.find((x) => x[3].test(q)); ask(m ? m[0] : null, q); return; }
+    fillSuggest();
+    log.addEventListener("click", (e) => { const rt = e.target.closest("[data-retry]"); if (rt) { const q = rt.dataset.retry, m = INT.find((x) => x[3].test(q)); ask(m ? m[0] : null, q); return; }
+      const cx = e.target.closest("[data-cancel]"); if (cx && inflight) { inflight.abort(); return; }
+      const f = e.target.closest("[data-fq]"); if (f) { const q = f.dataset.fq, m = INT.find((x) => x[3].test(q)); ask(m ? m[0] : null, q); return; }
       const cp = e.target.closest("[data-copy]"); if (cp) { const t = shareText(cp.closest(".aqans")); const ok = () => { cp.textContent = T("कपी भयो", "Copied"); setTimeout(() => (cp.textContent = T("उत्तर सेयर गर्नुहोस्", "Share answer")), 2000); };
         if (navigator.share) navigator.share({ text: t }).catch(() => {}); else if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, () => {}); } });
     log.onclick = (e) => { const b = e.target.closest("[data-do=pick]"); if (b && G.district) G.district.open(() => ask("district", T("के मेरो जिल्ला प्रभावित छ?", "Is my district affected?"))); };
@@ -124,8 +145,8 @@
   /* Ask Gati with Claude, through Gati's Cloudflare Worker (data/ask-config.json "worker"). The key lives only in the Worker.
      Any failure (not configured, offline, rate limited, timeout) returns null and the local answers above are used. */
   /* Structured answer card (Worker card v1): status badge, headline, cited points, source to-dos, not covered, sources, time, follow-ups */
-  const ST = { alert: ["Severe", "सतर्क: अवरोध वा चेतावनी", "Alert: blocked or warning", '<path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h0"/>'], caution: ["Moderate", "सावधानी", "Caution", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.5h0"/>'], clear: ["Clear", "खुला वा सामान्य", "Open or normal", '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.5 2.8 2.8L16 10"/>'], info: ["Info", "जानकारी", "Information", '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h0"/>'], no_info: ["Unknown", "आधिकारिक जानकारी छैन", "No official information", '<circle cx="12" cy="12" r="8.5"/><path d="M9.8 9.5a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4v.5M12 16.8h0"/>'] };
-  const SC = (k) => (k === "Clear" ? "#2E8B57" : k === "Info" ? "#2F6FED" : G.SEVCOLOR[k]);
+  const ST = G.VERDICT; /* shared with Route check (common.js) */
+  const SC = G.verdictColor;
   const ago = (iso) => { const m = Math.round((Date.now() - Date.parse(iso)) / 6e4); if (!(m >= 0)) return ""; const n = (x) => G.num(String(x));
     if (m < 60) return T(`${n(Math.max(1, m))} मिनेट अघि`, `${Math.max(1, m)} min ago`); const h = Math.round(m / 60); if (h < 48) return T(`${n(h)} घण्टा अघि`, `${h} hour${h > 1 ? "s" : ""} ago`); const d = Math.round(h / 24); return T(`${n(d)} दिन अघि`, `${d} days ago`); };
   const when = (iso) => iso ? `<time datetime="${esc(iso)}">${ago(iso)} <span class="aqx2">(${esc(G.npt(iso))})</span></time>` : "";
@@ -140,6 +161,7 @@
     return `<article class="aqans s-${c.status}" style="--sc:${SC(st[0])}" aria-label="${T("उत्तर", "Answer")}">
       <p class="aqst"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st[3]}</svg>${T(st[1], st[2])}</p>
       <h3 class="aqhl">${esc(c.headline)}</h3>
+      ${c.status === "no_info" ? `<p class="aqnoinfo">${T("गतिसँग यस विषयमा कुनै आधिकारिक सूचना छैन। यसको अर्थ सुरक्षित वा असुरक्षित भन्ने होइन; जिम्मेवार निकायसँग बुझ्नुहोस् वा १०० / १२३४ मा फोन गर्नुहोस्।", "Gati has no official notice on this. That does not mean it is safe or unsafe; check with the responsible agency or call 100 / 1234.")}</p>` : ""}
       ${c.reported ? `<p class="aqrep">${T("केही जानकारी सञ्चारमाध्यमको हो, आधिकारिक पुष्टि भएको छैन।", "Some of this is reported, not officially confirmed.")}</p>` : ""}
       ${c.points && c.points.length ? `<ul class="aqpts">${c.points.map(li).join("")}</ul>` : ""}
       ${c.todo && c.todo.length ? `<div class="aqtodo"><b>${T("आधिकारिक स्रोतले के गर्न भनेको छ", "What official sources say to do")}</b><ul>${c.todo.map(li).join("")}</ul></div>` : ""}
@@ -153,28 +175,34 @@
   }
   const shareText = (el) => { const h = el.querySelector(".aqhl"), pts = [...el.querySelectorAll(".aqpts li")].map((l) => "• " + l.childNodes[0].textContent.trim()), srcs = [...el.querySelectorAll(".aqsrcs a[href^=http]")].map((a) => a.href);
     return [h ? h.textContent : "", ...pts, srcs.length ? T("स्रोत: ", "Sources: ") + [...new Set(srcs)].join(" ") : "", T("गति: AI ले आधिकारिक स्रोतबाट लेखेको उत्तर", "Gati: AI answer from official sources") + " https://nirajbhusal.github.io/gati-alerts/ask/"].filter(Boolean).join("\n"); };
+  let inflight = null;
   async function claude(q) {
     const cf = await J("data/ask-config.json"); if (!cf || !cf.worker) return { off: true };
     if (navigator.onLine === false) return { err: "offline" };
     try {
-      const ac = new AbortController(), to = setTimeout(() => ac.abort(), 30000);
+      const ac = new AbortController(), to = setTimeout(() => { ac.timedOut = true; ac.abort(); }, 30000); inflight = ac;
       const r = await fetch(cf.worker, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q, lang: G.lang }), signal: ac.signal }); clearTimeout(to);
       if (r.status === 429) return { err: "busy" };
       if (!r.ok) return { err: "down" }; const j = await r.json(); if (!j || typeof j.answer !== "string") return { err: "down" };
       const cards = (j.citations || []).map((c) => `<div class="aqcard">${G.trustChip(c.trust || "Official")}<b>${esc(G.lang === "ne" && c.title_ne ? c.title_ne : c.title)}</b><span class="meta">${esc(c.agency || "")}${c.time ? " · " + G.npt(c.time) : ""}</span>${c.url ? link(c.url, T("स्रोत", "Source")) : ""}</div>`).join("");
       if (j.card && j.card.v === 1) return { html: cardHtml(j) };
       return { html: `<p class="aqai">${esc(G.num(j.answer))}</p>${cards ? `<div class="aqcards">${cards}</div>` : `<p class="meta">${T("आधिकारिक स्रोत भेटिएन।", "No official source cited.")}</p>`}<p class="meta aqaim">${T("Claude ले गतिको आधिकारिक सूचनाबाट मात्र तयार गरेको उत्तर; स्रोत हेर्नुहोस्।", "Written by Claude from Gati's official items only; check the sources.")}</p>` };
-    } catch (e) { return { err: e && e.name === "AbortError" ? "slow" : "down" }; }
+    } catch (e) { return { err: e && e.name === "AbortError" ? (inflight && !inflight.timedOut ? "cancel" : "slow") : "down" }; } finally { inflight = null; }
   }
-  const ERR = { offline: ["हजुर अफलाइन हुनुहुन्छ।", "You are offline."], busy: ["धेरै प्रश्न आए, केही बेरपछि फेरि सोध्नुहोस्।", "Too many questions right now, try again shortly."], slow: ["जवाफ आउन धेरै समय लाग्यो।", "The answer took too long."], down: ["प्रत्यक्ष जवाफ अहिले उपलब्ध छैन।", "Live answers are unavailable right now."] };
-  const note = (e) => `<p class="aqnote" role="note">${T(ERR[e][0] + " गतिमा सुरक्षित जानकारी देखाउँदै।", ERR[e][1] + " Showing Gati's saved information.")}</p>`;
-  const WAIT = () => `<span class="aqdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="aqwt">${T("आधिकारिक स्रोत हेर्दै…", "Checking official sources…")}</span>`;
+  const ERR = { offline: ["हजुर अफलाइन हुनुहुन्छ।", "You are offline."], busy: ["धेरै प्रश्न आए, केही बेरपछि फेरि सोध्नुहोस्।", "Too many questions right now, try again shortly."], slow: ["जवाफ आउन धेरै समय लाग्यो।", "The answer took too long."], down: ["प्रत्यक्ष जवाफ अहिले उपलब्ध छैन।", "Live answers are unavailable right now."], cancel: ["हजुरले रोक्नुभयो।", "You stopped this answer."] };
+  const note = (e, q) => `<p class="aqnote" role="note">${T(ERR[e][0] + " गतिमा सुरक्षित जानकारी देखाउँदै।", ERR[e][1] + " Showing Gati's saved information.")}${q && e !== "offline" ? ` <button type="button" class="aqbtn aqretry" data-retry="${esc(q)}">↻ ${T("फेरि प्रयास गर्नुहोस्", "Try again")}</button>` : ""}</p>`;
+  const STAGE = [[0, "आधिकारिक स्रोत हेर्दै…", "Checking official sources…"], [3, "नेपाल प्रहरी, DHM र NDRRMA का सूचना पढ्दै…", "Reading Nepal Police, DHM and NDRRMA items…"], [9, "उत्तर लेख्दै, स्रोत जोड्दै…", "Writing the answer and attaching sources…"], [18, "अझै काम गर्दै; ३० सेकेन्डसम्म लाग्न सक्छ।", "Still working; this can take up to 30 seconds."]];
+  const WAIT = (ai) => `<span class="aqdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="aqwt">${T(STAGE[0][1], STAGE[0][2])}</span>${ai ? `<span class="aqprog" aria-hidden="true"><i></i></span><button type="button" class="aqbtn aqstop" data-cancel>${T("रोक्नुहोस्", "Stop")}</button>` : ""}`;
   async function ask(k, q, chip) {
-    log.insertAdjacentHTML("beforeend", `<div class="aqmsg me">${esc(q)}</div><div class="aqmsg bot aqwait" aria-busy="true">${WAIT()}</div>`);
+    log.insertAdjacentHTML("beforeend", `<div class="aqmsg me">${esc(q)}</div><div class="aqmsg bot aqwait" aria-busy="true">${WAIT(!chip)}</div>`);
     const w = log.lastElementChild; log.scrollTop = log.scrollHeight;
+    const t0 = Date.now(), tick = setInterval(() => { const sec = (Date.now() - t0) / 1000, st = STAGE.filter((x) => sec >= x[0]).pop(), el = w.querySelector(".aqwt"), pb = w.querySelector(".aqprog i");
+      if (el && el.dataset.s !== String(st[0])) { el.dataset.s = st[0]; el.textContent = T(st[1], st[2]); } if (pb) pb.style.width = Math.min(95, (sec / 30) * 100) + "%"; }, 500);
     const f = panel.querySelector(".aqform button"); if (f) f.disabled = true;
     const ai = !chip ? await claude(q) : null;
-    w.innerHTML = ai && ai.html ? ai.html : (ai && ai.err ? note(ai.err) : "") + (k ? await answer(k) : soon()); w.classList.remove("aqwait"); w.removeAttribute("aria-busy");
+    clearInterval(tick);
+    w.innerHTML = ai && ai.html ? ai.html : (ai && ai.err ? note(ai.err, q) : "") + (k ? await answer(k) : soon() + `<div class="aqchips">${chips()}</div>`); w.classList.remove("aqwait"); w.removeAttribute("aria-busy");
+    w.querySelectorAll(".aqchip[data-k]").forEach((c) => (c.onclick = () => ask(c.dataset.k, c.textContent, true)));
     if (f) f.disabled = false;
     if (FULL) log.scrollTop = w.offsetTop - log.offsetTop - 8; else w.scrollIntoView({ block: "nearest" });
   }
