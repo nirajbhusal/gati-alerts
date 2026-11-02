@@ -1,6 +1,6 @@
 /* Profile & Settings (me/): one page for what used to be the My Gati drawer and the Settings sheet.
    Same storage keys as before: gati-district, gati-district-recent, gati-aff-radius (affectcore), gati-watch,
-   gati-push-district, gati-notif-seen, gati-lang, gati-theme-pref, gati-cal, gati-tsize. Nothing leaves this browser. */
+   gati-push-district, gati-notif-seen, gati-lang, gati-theme-pref, gati-cal, gati-tsize, gati-sky. Nothing leaves this browser. */
 (function () {
   const G = window.Gati; if (!G || document.body.dataset.page !== "me") return;
   const R = G.root, E = G.esc, T = (ne, en) => (G.lang === "ne" ? ne : en), $ = (id) => document.getElementById(id);
@@ -27,11 +27,12 @@
     const box = $("me-display");
     box.innerHTML = `<h3>${T("भाषा", "Language")}</h3>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang, T("भाषा", "Language"))}
       <h3>${T("रूप", "Theme")}</h3>${seg("theme", G.THEMES.map(([k, ne, en]) => [k, T(ne, en)]), G.themePref, T("रूप", "Theme"))}
+      <h3>${T("आकाशको झल्को", "Sky look")}</h3>${seg("sky", [["on", T("खुला", "On")], ["off", T("बन्द", "Off")]], G.skyOn && !G.skyOn() ? "off" : "on", T("आकाशको झल्को", "Sky look"))}<p class="meta">${T("हेडर र मौसम कार्डमा समय र DHM मौसमअनुसार हल्का रङ। गम्भीर सूचना हुँदा आफैँ बन्द हुन्छ।", "A light tint in the header and weather card by time of day and DHM weather. Turns off by itself during a severe alert.")}</p>
       <h3>${T("अङ्क", "Numerals")}</h3><p class="meta">${T("अङ्क भाषासँगै बदलिन्छन्: नेपालीमा ०१२३, अङ्ग्रेजीमा 0123।", "Numerals follow the language: ०१२३ in Nepali, 0123 in English.")}</p>
       <h3>${T("मिति", "Calendar")}</h3>${seg("cal", [["bs", T("वि.सं.", "BS")], ["ad", T("ई.सं.", "AD")]], G.cal === "bs" ? "bs" : "ad", T("मिति", "Calendar"))}
       <h3>${T("अक्षरको आकार", "Text size")}</h3><span class="tsize setseg" role="group" aria-label="${T("अक्षरको आकार", "Text size")}"><button type="button" data-ts="-1" aria-label="${T("सानो अक्षर", "Smaller text")}">A−</button><button type="button" data-ts="0" aria-label="${T("सामान्य अक्षर", "Default text size")}">A</button><button type="button" data-ts="1" aria-label="${T("ठूलो अक्षर", "Larger text")}">A+</button><output>${G.num(String(G.textSize()))}%</output></span>`;
     box.querySelectorAll(".setseg[data-k] button").forEach((b) => (b.onclick = () => { const k = b.parentElement.dataset.k, v = b.dataset.v;
-      if (k === "lang") G.setLang(v); else if (k === "cal") { G.setCal(v); alerts(); } else if (k === "theme") G.setTheme(v);
+      if (k === "lang") G.setLang(v); else if (k === "cal") { G.setCal(v); alerts(); } else if (k === "theme") G.setTheme(v); else if (k === "sky" && G.setSky) G.setSky(v === "on");
       display(); const nb = box.querySelector(`[data-k="${k}"] [data-v="${v}"]`); if (nb) nb.focus(); }));
     G.bindTsize(box); G.setTextSize(G.textSize());
   }
