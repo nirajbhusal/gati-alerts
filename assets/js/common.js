@@ -247,28 +247,84 @@
   G.bindThemePicker = (el) => el.querySelectorAll(".thsw").forEach((b) => (b.onclick = () => { G.setTheme(b.dataset.th); el.querySelectorAll(".thsw").forEach((x) => x.setAttribute("aria-checked", x.dataset.th === G.themePref)); }));
   /* Notifications tab: pushes received (stored by sw.js in the Cache API under gati-pushlog), newest first, plus district subscription */
   const pushLog = () => ("caches" in window ? caches.open("gati-pushlog").then((c) => c.match("pushlog")).then((r) => (r ? r.json() : [])).catch(() => []) : Promise.resolve([]));
-  /* Alerts and notifications section of the Profile & Settings page (me/) */
+  /* Notification centre (in-app, works without any server): active official alerts from data/alerts.json that match this browser's
+     choices (followed districts + my district, categories, minimum severity). Unread = sent after the last visit to the centre.
+     Optional browser notifications are shown only while a Gati tab is open and only after the person taps "Turn on"; never prompted on load.
+     Background push stays behind the push flag until a sender service exists. Gati relays; every item keeps its source and source time. */
+  const NP = "gati-notif-prefs", NSEEN = "gati-notif-seen", NDONE = "gati-notif-shown";
+  const SEVR = { Extreme: 4, Severe: 3, Moderate: 2, Minor: 1, Unknown: 0 };
+  G.notifPrefs = () => { let p = {}; try { p = JSON.parse(localStorage.getItem(NP) || "{}"); } catch (e) {} return { hz: p.hz || [], min: p.min || "Unknown", qf: p.qf || "", qt: p.qt || "", local: !!p.local, nation: p.nation !== false }; };
+  const savePrefs = (p) => { try { localStorage.setItem(NP, JSON.stringify(p)); } catch (e) {} };
+  const followed = () => { let w = {}; try { w = JSON.parse(localStorage.getItem("gati-watch") || "{}"); } catch (e) {} const d = (w.d || []).slice(), m = G.district && G.district.get && G.district.get(); if (m && !d.includes(m)) d.unshift(m); return d; };
+  const nptMin = () => { const d = new Date(Date.now() + 345 * 6e4); return d.getUTCHours() * 60 + d.getUTCMinutes(); };
+  const hm = (s) => { const m = /^(\d\d):(\d\d)$/.exec(s || ""); return m ? +m[1] * 60 + +m[2] : -1; };
+  G.inQuiet = (p) => { const f = hm(p.qf), t = hm(p.qt), n = nptMin(); if (f < 0 || t < 0 || f === t) return false; return f < t ? n >= f && n < t : n >= f || n < t; };
+  G.inbox = async () => { const p = G.notifPrefs(), D = followed(); let al = [];
+    try { al = (await G.json("data/alerts.json")).alerts; } catch (e) { return { items: [], unread: 0, D }; }
+    const seen = (() => { try { return localStorage.getItem(NSEEN) || ""; } catch (e) { return ""; } })();
+    const items = al.filter((a) => Date.parse(a.expires) > Date.now() && !a.supersededBy && a.msgType !== "Cancel" && (a.info.en.params || {})["gati:demo"] !== "true")
+      .filter((a) => (a.districts.length ? a.districts.some((c) => D.includes(c)) : p.nation) && (!p.hz.length || p.hz.includes(a.hazard || "other")) && (SEVR[a.severity] || 0) >= (SEVR[p.min] || 0))
+      .sort((x, y) => (y.sent > x.sent ? 1 : -1)).map((a) => Object.assign({ unread: !seen || Date.parse(a.sent) > Date.parse(seen) }, a));
+    return { items, unread: items.filter((x) => x.unread).length, D, seen }; };
+  async function localNotify() { const p = G.notifPrefs();
+    if (!p.local || !("Notification" in window) || Notification.permission !== "granted" || G.inQuiet(p) || !("serviceWorker" in navigator)) return;
+    const { items } = await G.inbox(); let done = []; try { done = JSON.parse(localStorage.getItem(NDONE) || "[]"); } catch (e) {}
+    const fresh = items.filter((a) => !done.includes(a.identifier)).slice(0, 3); if (!fresh.length) return;
+    const reg = await navigator.serviceWorker.getRegistration(); if (!reg) return;
+    fresh.forEach((a) => { const i = a.info[G.lang] || a.info.ne; reg.showNotification(i.headline, { body: `${(i.senderName || "").split(" · ")[0]} · ${G.npt(i.params["gati:sourceTime"] || a.sent)}`, tag: a.identifier, data: { url: `${ROOT}alerts/${a.identifier}/` }, icon: `${ROOT}assets/img/brand/favicon-64.png` }); });
+    try { localStorage.setItem(NDONE, JSON.stringify(done.concat(fresh.map((a) => a.identifier)).slice(-300))); } catch (e) {} }
   G.drawNotif = drawNotif;
-  async function drawNotif(box) { const L = (a, b) => (G.lang === "ne" ? a : b), E = G.esc;
+  async function drawNotif(box) { const L = (a, b) => (G.lang === "ne" ? a : b), E = G.esc, p = G.notifPrefs();
     const list = (await pushLog()).sort((x, y) => (y.received || "").localeCompare(x.received || ""));
     let DL = []; try { DL = await G.json("data/districts.json"); } catch (e) {}
+    const dn = (c) => { const d = DL.find((x) => x.code === c) || {}; return L(d.ne || c, d.en || c); };
+    const ib = await G.inbox(), perm = "Notification" in window ? Notification.permission : "unsupported";
+    const HZ = [["flood", "बाढी", "Flood"], ["landslide", "पहिरो", "Landslide"], ["earthquake", "भूकम्प", "Earthquake"], ["weather", "मौसम", "Weather"], ["road", "सडक", "Road"], ["fire", "आगलागी", "Fire"], ["glof", "हिमताल", "GLOF"]];
     const on = G.push && G.push.on(), mine = (() => { try { return localStorage.getItem("gati-push-district") || ""; } catch (e) { return ""; } })(), cur = mine || (G.district && G.district.get && G.district.get()) || "";
-    const lastN = list[0] && (list[0].received || list[0].sent), mineName = mine ? L((DL.find((d) => d.code === mine) || {}).ne || mine, (DL.find((d) => d.code === mine) || {}).en || mine) : "";
-    box.innerHTML = `<div class="gdash gdin"><div class="gdc"><h3 class="gdh">${L("सारांश", "Summary")}</h3><div class="gdtiles"><div class="gdt"><b>${G.num(String(list.length))}</b><span>${L("यो उपकरणमा आएका पुस", "pushes received on this device")}</span></div><div class="gdt"><b style="--c:${mine ? "#F28C1E" : "#8F9BB3"}">${mine ? E(mineName) : L("छैन", "None")}</b><span>${L("सदस्यता", "Subscription")}</span></div><div class="gdt"><b class="sm">${lastN ? G.ago(lastN) : L("छैन", "None")}</b><span>${L("पछिल्लो पुस", "Latest push")}</span></div></div><p class="gdsrc">${L("स्रोत", "Source")}: ${L("यही ब्राउजरको पुस लग", "this browser's push log")}</p></div></div>
-    <section><h3>${L("जिल्लाका सूचना", "District alerts")}</h3>
-      <p class="meta">${on ? L("चालु आधिकारिक सूचना आउँदा यो जिल्लाका लागि पुस सूचना पाउनुहोस्।", "Get a push when an official alert covers this district.") : L("पुस सूचना अझै सुरु भएको छैन; कुञ्जी (VAPID) र पठाउने सेवा तयार भएपछि खुल्छ।", "Push is not on yet; it opens once the keys (VAPID) and a sender are set up.")}</p>
-      <div class="ntsub"><label class="sr-only" for="ntd">${L("जिल्ला", "District")}</label><select id="ntd" ${on ? "" : "disabled"}>${DL.map((d) => `<option value="${E(d.code)}"${d.code === cur ? " selected" : ""}>${E(L(d.ne, d.en))}</option>`).join("")}</select>
-      <button type="button" class="btn" id="ntgo" ${on ? "" : "disabled"}>${mine ? L("बदल्नुहोस्", "Change") : L("सदस्यता लिनुहोस्", "Subscribe")}</button></div>
-      ${mine ? `<p class="meta">${L("सदस्यता", "Subscribed")}: ${E(L((DL.find((d) => d.code === mine) || {}).ne || mine, (DL.find((d) => d.code === mine) || {}).en || mine))}</p>` : ""}<p class="meta" id="ntmsg" role="status"></p></section>
-      <section><h3>${L("आएका सूचना", "Received")}</h3>${list.length ? `<ul class="ntlist">${list.map((n) => `<li><a href="${E(n.url || G.root)}"><b>${E(n.title || "")}</b>${n.body ? `<span>${E(n.body)}</span>` : ""}<span class="meta">${L("स्रोत", "Source")}: ${E(n.source || "")} · ${G.npt(n.sent || n.received)}</span></a></li>`).join("")}</ul>`
-        : `<p class="ntempty">🔔 ${L("अहिलेसम्म कुनै पुस सूचना आएको छैन। सदस्यता लिएपछि यहाँ देखिन्छ, नयाँ माथि।", "No push notifications yet. Once you subscribe they show here, newest first.")}</p>`}</section>`;
-    const go = box.querySelector("#ntgo"); if (go && on) go.onclick = async () => { const r = await G.push.subscribe(box.querySelector("#ntd").value); box.querySelector("#ntmsg").textContent = r.msg; };
+    box.innerHTML = `<section class="ntc"><h3>🔔 ${L("सूचना केन्द्र", "Notification centre")} ${ib.unread ? `<span class="ntbadge">${G.num(String(ib.unread))} ${L("नयाँ", "new")}</span>` : ""}</h3>
+      <p class="meta">${ib.D.length ? `${L("हजुरले पछ्याएका जिल्ला", "Districts you follow")}: ${ib.D.map((c) => E(dn(c))).join(", ")}` : L("कुनै जिल्ला पछ्याइएको छैन। माथि मेरो जिल्ला छान्नुहोस् वा फिडमा 'पछ्याउनुहोस्' थिच्नुहोस्।", "No district followed yet. Choose My district above or tap Follow in the Feed.")}</p>
+      ${ib.items.length ? `<ul class="ntlist">${ib.items.slice(0, 30).map((a) => { const i = a.info[G.lang] || a.info.ne; return `<li class="${a.unread ? "ntnew" : ""}"><a href="${ROOT}alerts/${E(a.identifier)}/">${a.unread ? `<span class="ntdot" aria-label="${L("नयाँ", "New")}"></span>` : ""}${G.sevChip(a.severity)} <b>${E(i.headline)}</b><span class="meta">${L("स्रोत", "Source")}: ${E((i.senderName || "").split(" · ")[0])} · ${L("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || a.sent)}</span></a></li>`; }).join("")}</ul>`
+        : `<p class="ntempty">${L("हजुरका छनोटसँग मिल्ने कुनै चालु सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", "No active alert matches your choices. This is not an all clear.")}</p>`}
+      ${ib.unread ? `<p><button type="button" class="btn" id="ntread">${L("सबै पढिसकेँ", "Mark all as read")}</button></p>` : ""}</section>
+    <section class="ntc"><h3>${L("के के सूचना चाहिन्छ", "What to notify about")}</h3>
+      <h4>${L("प्रकार", "Category")} <span class="meta">(${L("कुनै नछाने सबै", "none chosen means all")})</span></h4><div class="fopts">${HZ.map(([k, ne, en]) => `<button type="button" class="fopt" data-hz="${k}" aria-pressed="${p.hz.includes(k)}">${L(ne, en)}</button>`).join("")}</div>
+      <h4>${L("न्यूनतम गम्भीरता", "Minimum severity")}</h4><div class="fopts">${["Unknown", "Minor", "Moderate", "Severe", "Extreme"].map((k) => `<button type="button" class="fopt" data-min="${k}" aria-pressed="${p.min === k}">${G.sevChip(k)}</button>`).join("")}</div>
+      <label class="ftog"><input type="checkbox" id="ntnat"${p.nation ? " checked" : ""}> ${L("देशभरका सूचना पनि", "Also nationwide alerts")}</label>
+      <h4>${L("शान्त समय (नेपाली समय)", "Quiet hours (NPT)")}</h4><p class="ntq"><input type="time" id="ntqf" value="${E(p.qf)}" aria-label="${L("देखि", "From")}"> ${L("देखि", "to")} <input type="time" id="ntqt" value="${E(p.qt)}" aria-label="${L("सम्म", "Until")}"> ${L("सम्म", "")}</p>
+      <p class="meta">${L("शान्त समयमा ब्राउजर सूचना देखाइँदैन; सूचना केन्द्रमा भने रहन्छ।", "During quiet hours no browser notification is shown; the alert still waits in the centre.")}</p></section>
+    <section class="ntc"><h3>${L("ब्राउजर सूचना", "Browser notifications")}</h3>
+      <p class="meta">${L("गति खुला भएको बेला नयाँ मिल्ने सूचना आएमा यो उपकरणमा देखाउँछ। हजुरले थिचेपछि मात्र अनुमति माग्छ।", "Shows a notification on this device when a new matching alert arrives while Gati is open. Permission is asked only when you tap the button.")}</p>
+      <p>${perm === "unsupported" ? `<span class="meta">${L("यो ब्राउजरमा उपलब्ध छैन", "Not available in this browser")}</span>` : perm === "denied" ? `<span class="meta">${L("ब्राउजरमा रोकिएको छ; ब्राउजर सेटिङबाट खोल्नुहोस्।", "Blocked in the browser; allow it from browser settings.")}</span>`
+        : `<button type="button" class="btn" id="ntlocal" aria-pressed="${p.local && perm === "granted"}">${p.local && perm === "granted" ? L("बन्द गर्नुहोस्", "Turn off") : L("खोल्नुहोस्", "Turn on")}</button> <button type="button" class="fopt" id="nttest"${perm === "granted" ? "" : " disabled"}>${L("परीक्षण सूचना पठाउनुहोस्", "Send a test notification")}</button>`}</p>
+      <p class="meta" id="ntmsg" role="status"></p></section>
+    <section class="ntc"><h3>${L("पृष्ठभूमि पुस (परीक्षणमा)", "Background push (in testing)")}</h3>
+      <p class="meta">${on ? L("चालु आधिकारिक सूचना आउँदा यो जिल्लाका लागि पुस सूचना पाउनुहोस्।", "Get a push when an official alert covers this district.") : L("गति बन्द हुँदा पनि आउने पुस अझै सुरु भएको छैन; कुञ्जी (VAPID) र पठाउने सेवा तयार भएपछि खुल्छ।", "Push while Gati is closed is not on yet; it opens once the keys (VAPID) and a sender are set up.")}</p>
+      ${on ? `<div class="ntsub"><label class="sr-only" for="ntd">${L("जिल्ला", "District")}</label><select id="ntd">${DL.map((d) => `<option value="${E(d.code)}"${d.code === cur ? " selected" : ""}>${E(L(d.ne, d.en))}</option>`).join("")}</select> <button type="button" class="btn" id="ntgo">${mine ? L("बदल्नुहोस्", "Change") : L("सदस्यता लिनुहोस्", "Subscribe")}</button></div>` : ""}
+      ${list.length ? `<h4>${L("आएका पुस", "Pushes received")}</h4><ul class="ntlist">${list.map((n) => `<li><a href="${E(n.url || G.root)}"><b>${E(n.title || "")}</b>${n.body ? `<span>${E(n.body)}</span>` : ""}<span class="meta">${L("स्रोत", "Source")}: ${E(n.source || "")} · ${G.npt(n.sent || n.received)}</span></a></li>`).join("")}</ul>` : ""}</section>`;
+    const re = () => drawNotif(box), msg = (t) => { const m = box.querySelector("#ntmsg"); if (m) m.textContent = t; };
+    const upd = (f) => { const q = G.notifPrefs(); f(q); savePrefs(q); re(); };
+    box.querySelectorAll("[data-hz]").forEach((b) => (b.onclick = () => upd((q) => { const k = b.dataset.hz; q.hz = q.hz.includes(k) ? q.hz.filter((x) => x !== k) : q.hz.concat(k); })));
+    box.querySelectorAll("[data-min]").forEach((b) => (b.onclick = () => upd((q) => (q.min = b.dataset.min))));
+    box.querySelector("#ntnat").onchange = (e) => upd((q) => (q.nation = e.target.checked));
+    ["ntqf", "ntqt"].forEach((id) => (box.querySelector("#" + id).onchange = (e) => { const q = G.notifPrefs(); q[id === "ntqf" ? "qf" : "qt"] = e.target.value; savePrefs(q); }));
+    const rd = box.querySelector("#ntread"); if (rd) rd.onclick = () => { G.markNotifSeen(); re(); };
+    const lc = box.querySelector("#ntlocal"); if (lc) lc.onclick = async () => { const q = G.notifPrefs();
+      if (q.local && Notification.permission === "granted") { q.local = false; savePrefs(q); return re(); }
+      const r = await Notification.requestPermission(); if (r !== "granted") { msg(L("अनुमति दिइएन", "Permission not given")); return; }
+      q.local = true; savePrefs(q); try { const { items } = await G.inbox(); localStorage.setItem(NDONE, JSON.stringify(items.map((a) => a.identifier))); } catch (e) {} re(); };
+    const ts = box.querySelector("#nttest"); if (ts) ts.onclick = async () => { const reg = "serviceWorker" in navigator && (await navigator.serviceWorker.getRegistration());
+      const t = L("गति परीक्षण सूचना", "Gati test notification"), bd = L("यो परीक्षण मात्र हो। वास्तविक सूचनामा स्रोत र स्रोतको समय हुन्छ।", "This is only a test. Real notifications show the source and source time.");
+      if (reg) reg.showNotification(t, { body: bd, tag: "gati-test", data: { url: ROOT + "me/" }, icon: ROOT + "assets/img/brand/favicon-64.png" }); else new Notification(t, { body: bd });
+      msg(L("परीक्षण सूचना पठाइयो", "Test notification sent")); };
+    const go = box.querySelector("#ntgo"); if (go && on) go.onclick = async () => { const r = await G.push.subscribe(box.querySelector("#ntd").value); msg(r.msg); };
+    markDot();
   }
   const setbtn = header.querySelector("#profbtn");
-  const NSEEN = "gati-notif-seen";
-  const markDot = () => pushLog().then((L) => { const seen = localStorage.getItem(NSEEN) || ""; const unread = L.some((x) => (x.received || "") > seen); const d = setbtn.querySelector(".bdot"); if (d) d.hidden = !unread; setbtn.setAttribute("aria-label", (unread ? "प्रोफाइल र सेटिङ, नयाँ सूचना / Profile & Settings, new notifications" : "प्रोफाइल र सेटिङ / Profile & Settings")); }).catch(() => {});
+  const markDot = () => Promise.all([pushLog(), G.inbox()]).then(([PL, ib]) => { const seen = localStorage.getItem(NSEEN) || ""; const n = ib.unread + PL.filter((x) => (x.received || "") > seen).length;
+    let d = setbtn.querySelector(".bdot"); if (d) { d.hidden = !n; d.textContent = n ? (n > 9 ? "9+" : G.num(String(n))) : ""; d.classList.toggle("bnum", !!n); }
+    setbtn.setAttribute("aria-label", n ? `प्रोफाइल र सेटिङ, ${n} नयाँ सूचना / Profile & Settings, ${n} new notifications` : "प्रोफाइल र सेटिङ / Profile & Settings"); }).catch(() => {});
   G.markNotifSeen = () => { try { localStorage.setItem(NSEEN, new Date().toISOString()); } catch (e) {} markDot(); };
-  markDot();
+  addEventListener("load", () => { markDot(); localNotify().catch(() => {}); });
   /* Accessibility: text size A- / A / A+ (87.5% to 150%, saved) */
   const TS = [87.5, 100, 112.5, 125, 137.5, 150];
   let ts = parseFloat(pref("gati-tsize", "")); if (!TS.includes(ts)) ts = pref("gati-text", "") === "large" ? 125 : 100;

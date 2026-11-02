@@ -21,8 +21,7 @@
     const box = $("me-alerts");
     box.innerHTML = `<div id="me-ntpane"></div><p class="meta">🔔 ${T("सूचना पाउने अर्को तरिका", "Another way to get alerts")}: <a href="${R}atom.xml">CAP Atom feed</a> · <a href="${R}feed.xml">RSS</a></p>`;
     const pr = G.drawNotif ? G.drawNotif($("me-ntpane")) : Promise.resolve();
-    if (G.markNotifSeen) G.markNotifSeen();
-    return pr;
+    return pr.then(() => { if (G.markNotifSeen) G.markNotifSeen(); });
   }
   function display() {
     const box = $("me-display");
