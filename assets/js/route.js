@@ -43,8 +43,13 @@
   const RS = { open: ["खुला", "Open", "ok"], blocked: ["अवरुद्ध", "Blocked", "bad"], oneway: ["एकतर्फी", "One-way", "warn"], none: ["पुष्टि छैन", "Not confirmed", "nc"] };
   const f = document.getElementById("rfrom"), t = document.getElementById("rto");
   const ids = Object.keys(N).filter((k) => adj[k] || N[k].noroad);
+  const POP = [["ktm", "pokhara"], ["ktm", "narayanghat"], ["ktm", "birgunj"], ["ktm", "biratnagar"], ["ktm", "gorkha"], ["pokhara", "jomsom"], ["ktm", "kodari"], ["nepalgunj", "surkhet"], ["butwal", "pokhara"], ["dhangadhi", "mahendranagar"]].filter(([a, b]) => N[a] && N[b] && adj[a] && adj[b]);
+  const QP = new URLSearchParams(location.search), qf = QP.get("from"), qt = QP.get("to");
+  function pops() { const el = document.getElementById("rpop"); if (!el) return;
+    el.innerHTML = `<span class="rpopl">${T("धेरै हेरिने मार्ग", "Popular routes")}</span>` + POP.map(([a, b]) => `<button type="button" class="aqchip rpopb${f.value === a && t.value === b ? " on" : ""}" data-a="${a}" data-b="${b}" aria-pressed="${f.value === a && t.value === b}">${esc(T(N[a].ne, N[a].en))} → ${esc(T(N[b].ne, N[b].en))}</button>`).join("");
+    el.querySelectorAll(".rpopb").forEach((x) => (x.onclick = () => { f.value = x.dataset.a; t.value = x.dataset.b; go(); })); }
   function opts() {
-    const keep = [f.value || localStorage.getItem("gati-rfrom") || "ktm", t.value || localStorage.getItem("gati-rto") || "pokhara"];
+    const keep = [f.value || (N[qf] ? qf : "") || localStorage.getItem("gati-rfrom") || "ktm", t.value || (N[qt] ? qt : "") || localStorage.getItem("gati-rto") || "pokhara"];
     const o = ids.slice().sort((a, b) => T(N[a].ne, N[a].en).localeCompare(T(N[b].ne, N[b].en))).map((k) => `<option value="${k}">${esc(T(N[k].ne, N[k].en))}</option>`).join("");
     f.innerHTML = o; t.innerHTML = o; f.value = keep[0]; t.value = keep[1];
   }
@@ -56,25 +61,36 @@
     if (nr.length) { out.innerHTML = `<div class="na">${nr.map((k) => esc(T(N[k].ne, N[k].en))).join(", ")}: ${T("गतिको सडक तथ्याङ्कमा सडक जोडिएको छैन (OpenStreetMap मा सदरमुकामसम्म सडक पुगेको देखिँदैन)। हवाई वा पैदल मार्ग मात्र हुन सक्छ; पुष्टि भएको छैन।", "No road link in Gati's road data (OpenStreetMap shows no road reaching the HQ). It may be air or trail only; not confirmed.")}</div>`; return; }
     const RTS = EN.routes(f.value, t.value), P = RTS.length ? RTS[0].P : null;
     if (!P) { out.innerHTML = `<div class="na">${T("गतिको सडक तथ्याङ्कमा यी दुई ठाउँ जोड्ने बाटो छैन।", "Gati's road data has no path between these places.")}</div>`; return; }
+    const VK = { bad: "alert", unk: "caution", ok: "clear", nc: "no_info" };
+    const srcLine = (rt) => { const ss = (rt.sources || ["pol"]).map((k) => RD.sources[k]).filter(Boolean); return `<p class="rsrc">${G.trustChip("Official")} ${ss.map((x) => `<a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(T(x.ne, x.en))} ↗</a>`).join(" · ")} <span class="meta">· ${esc(T(RD.as_of_ne, RD.as_of_en))}</span></p>`; };
     const CL = { terai: ["तराई", "Terai"], hill: ["पहाडी", "Hill"], mountain: ["हिमाली/कच्ची", "Mountain/earthen"] };
     const head = (r) => ({ ok: T("बाटोका सबै खण्ड खुला देखिन्छन्।", "Every corridor on the way shows open."), unk: T("केही खण्ड एकतर्फी छन्।", "Some corridors are one-way."), nc: T("केही खण्डको आधिकारिक स्थिति आएको छैन (हल्का हरियो): सामान्यतया खुला, तर पुष्टि नभएको।", "Some corridors have no official status (light green): usually open, not confirmed."), bad: T("बाटोमा अवरुद्ध खण्ड छ।", "A corridor on the way is blocked.") }[r.st]);
     const etaLine = (r) => `<p class="reta"><b>${EN.fmtKm(r.km)}</b> · <b>${EN.eta(r.h)}</b> <span class="retal">${T("अनुमानित, सामान्य अवस्थामा", "Estimate, normal conditions")}</span></p>${r.blocked ? `<p class="rblk">⛔ ${T("अवरुद्ध खण्ड छ; यो समय लागू हुँदैन।", "Includes a blocked corridor; this time does not apply.")}</p>` : ""}`;
     const steps = (r) => `<ol class="rsteps">${r.groups.map((g) => { const s = RS[g.rt.status] || RS.none; return `<li class="rstep r-${s[2]}"><div class="rdot" aria-hidden="true"></div><div><div class="rtop"><b>${esc(T(N[g.from].ne, N[g.from].en))} → ${esc(T(N[g.to].ne, N[g.to].en))}</b><span class="tag rs-${esc(g.rt.status)}">${T(s[0], s[1])}</span></div>
-        <p class="meta">${esc(T(g.rt.name_ne, g.rt.name_en))} · ${EN.fmtKm(g.km)} · ${EN.eta(g.h)} · ${T(CL[g.cls][0], CL[g.cls][1])}</p><p>${esc(T(g.rt.note_ne, g.rt.note_en))}</p></div></li>`; }).join("")}</ol>`;
+        <p class="meta">${esc(T(g.rt.name_ne, g.rt.name_en))} · ${EN.fmtKm(g.km)} · ${EN.eta(g.h)} · ${T(CL[g.cls][0], CL[g.cls][1])}</p><p>${esc(T(g.rt.note_ne, g.rt.note_en))}</p>${srcLine(g.rt)}</div></li>`; }).join("")}</ol>`;
     const via = (r) => r.P.map(([a]) => esc(T(N[a].ne, N[a].en))).concat(esc(T(N[t.value].ne, N[t.value].en))).join(" → ");
-    const alts = RTS.slice(1);
-    out.innerHTML = `<section class="card rsum r-${RTS[0].st}"><p class="bigmsg">${head(RTS[0])}</p>${etaLine(RTS[0])}<p class="meta">${esc(T(RD.as_of_ne, RD.as_of_en))} · ${T("मानिएको गति: तराई ४०–५५, पहाडी २५–३५, हिमाली/कच्ची १२–२० कि.मि./घण्टा मानेर; प्रत्यक्ष ट्राफिक होइन।", "Speeds assumed: Terai 40–55, hill 25–35, mountain/earthen 12–20 km/h; not live traffic.")}</p>
+    const alts = RTS.slice(1), better = RTS[0].st === "bad" ? alts.findIndex((r) => r.st !== "bad") : -1;
+    const cnt = {}; RTS[0].groups.forEach((g) => (cnt[g.rt.status] = (cnt[g.rt.status] || 0) + 1));
+    const tally = ["blocked", "oneway", "none", "open"].filter((k) => cnt[k]).map((k) => `<span class="tag rs-${k}">${G.num(String(cnt[k]))} ${T(...(G.ROADST[k] || G.ROADST.none))}</span>`).join(" ");
+    out.innerHTML = `<section class="card rsum r-${RTS[0].st}"><div class="rverd">${G.verdictBadge(VK[RTS[0].st])}<button type="button" class="aqbtn rshare" id="rshare">${T("मार्ग सेयर गर्नुहोस्", "Share route")}</button></div>
+      <p class="rod"><b>${esc(T(N[f.value].ne, N[f.value].en))}</b> → <b>${esc(T(N[t.value].ne, N[t.value].en))}</b></p><p class="bigmsg">${head(RTS[0])}</p><p class="rtally">${tally}</p>
+      ${better >= 0 ? `<p class="rbetter">${T(`विकल्प ${G.num(better + 1)} मा अवरुद्ध खण्ड छैन; तल हेर्नुहोस्।`, `Option ${better + 1} has no blocked corridor; see below.`)}</p>` : ""}${etaLine(RTS[0])}<p class="meta">${esc(T(RD.as_of_ne, RD.as_of_en))} · ${T("मानिएको गति: तराई ४०–५५, पहाडी २५–३५, हिमाली/कच्ची १२–२० कि.मि./घण्टा मानेर; प्रत्यक्ष ट्राफिक होइन।", "Speeds assumed: Terai 40–55, hill 25–35, mountain/earthen 12–20 km/h; not live traffic.")}</p>
       <p><a class="more" href="${R}map/?route=${encodeURIComponent(f.value + "," + t.value)}">${T("नक्सामा हेर्नुहोस् →", "View on map →")}</a></p></section>
       ${steps(RTS[0])}
       <section class="card ralts"><h2>${T("वैकल्पिक मार्ग", "Alternative routes")}</h2>${alts.length ? alts.map((r, k) => `<details class="ralt r-${r.st}"><summary><b>${T(`विकल्प ${G.num(k + 1)}`, `Option ${k + 1}`)}</b>: ${via(r)}<br>${etaLine(r)}<span class="tag rs-${r.st === "ok" ? "open" : r.st === "bad" ? "blocked" : r.st === "unk" ? "oneway" : "none"}">${head(r)}</span></summary>${steps(r)}</details>`).join("")
         : `<p class="meta">${T("गतिको सडक तथ्याङ्कमा फरक वैकल्पिक मार्ग छैन।", "No distinct alternative route in Gati's road data.")}</p>`}</section>
       <p><a class="btn" href="${R}roads/">${T("सबै सडक र स्रोत हेर्नुहोस् →", "See all roads and sources →")}</a></p>`;
     drawMap(P, alts.map((r) => r.P));
+    try { const u = new URL(location.href); u.searchParams.set("from", f.value); u.searchParams.set("to", t.value); history.replaceState(null, "", u); } catch (e) {}
+    pops();
+    const sb = document.getElementById("rshare"); if (sb) sb.onclick = () => { const txt = `${T(N[f.value].ne, N[f.value].en)} → ${T(N[t.value].ne, N[t.value].en)}: ${(sb.closest(".rsum").querySelector(".vbadge") || {}).textContent || ""}. ${head(RTS[0])} ${T(RD.as_of_ne, RD.as_of_en)}. ${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}`;
+      const done = () => { sb.textContent = T("लिङ्क कपी भयो", "Link copied"); setTimeout(() => (sb.textContent = T("मार्ग सेयर गर्नुहोस्", "Share route")), 2000); };
+      if (navigator.share) navigator.share({ title: T("मार्ग जाँच", "Route check"), text: txt, url: location.href }).catch(() => {}); else if (navigator.clipboard) navigator.clipboard.writeText(txt + " " + location.href).then(done, () => {}); };
     document.getElementById("rnote").textContent = T("गतिको सडक तथ्याङ्कमा भएका मुख्य करिडोर मात्र। स्थानीय सडक समावेश छैन।", "Only the main corridors in Gati's road data. Local roads are not included.");
   }
   f.onchange = t.onchange = draw;
-  document.getElementById("rgo").onclick = () => { draw(); const o = document.getElementById("rout"), h = o.querySelector(".rsum,.na");
+  const go = () => { draw(); const o = document.getElementById("rout"), h = o.querySelector(".rsum,.na");
     o.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-    if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); } }; document.getElementById("rswap").onclick = () => { [f.value, t.value] = [t.value, f.value]; draw(); };
+    if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); } }; document.getElementById("rgo").onclick = go; document.getElementById("rswap").onclick = () => { [f.value, t.value] = [t.value, f.value]; draw(); };
   opts(); draw(); G.onLang(() => { opts(); draw(); });
 })();

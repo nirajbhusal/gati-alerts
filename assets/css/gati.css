@@ -1643,3 +1643,15 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .ntlist li.ntnew{border-left:3px solid var(--saffron,#F28C1E);padding-left:6px}
 .ntdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--saffron,#F28C1E);margin-right:6px;vertical-align:middle}
 .ntq input[type=time]{font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+
+/* upd-1102: shared verdict badge (Ask Gati + Route check), route pickers, popular routes, per-step source */
+.vbadge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px 4px 9px;border-radius:999px;font-size:14px;font-weight:700;color:var(--sc);background:color-mix(in srgb,var(--sc) 12%,transparent);border:1px solid color-mix(in srgb,var(--sc) 35%,transparent)}
+.vbadge.v-caution{color:#A85A00}html[data-theme=dark] .vbadge.v-caution{color:#F5A54A}html[data-theme=dark] .vbadge.v-alert{color:#FF7A70}html[data-theme=dark] .vbadge.v-clear{color:#5CCB8E}
+.rverd{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.rod{margin:8px 0 0;font-size:var(--fs-4,17px)}
+.rtally{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.rbetter{margin:6px 0;padding:8px 10px;border-radius:10px;background:var(--surface2);font-weight:600}
+.rpop{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:var(--s3,12px)}.rpopl{font-size:var(--fs-s,13px);font-weight:600;color:var(--slate);margin-right:4px;width:100%}
+.rpopb{min-height:36px}.rpopb.on{outline:2px solid var(--ink);outline-offset:-2px}
+@media(max-width:600px){.rpop{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:-4px;padding:0 4px 4px}.rpop::-webkit-scrollbar{display:none}.rpopl{display:none}.rpopb{flex:none;white-space:nowrap}}
+.rab{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-style:normal;font-size:12px;font-weight:700;color:#fff;margin-right:6px;vertical-align:-3px}.rab.ra{background:#0B1424}.rab.rb{background:#DC143C}
+.rpick label>span{display:flex;align-items:center}
+.rsrc{font-size:13px;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}

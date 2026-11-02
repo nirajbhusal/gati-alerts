@@ -376,6 +376,10 @@
               Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"] };
   G.sevChip = (s) => { const v = G.SEV[s] || G.SEV.Unknown; return `<span class="sev sev-${G.SEV[s] ? s : "Unknown"}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>`; };
   G.trustChip = (t) => { const v = G.TRUST[t]; return v ? `<span class="trust t-${t}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>` : ""; };
+  /* Shared verdict scale for Ask Gati answers and Route check: alert (blocked or warning) / caution / clear (open) / info / no_info */
+  G.VERDICT = { alert: ["Severe", "सतर्क: अवरोध वा चेतावनी", "Alert: blocked or warning", '<path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h0"/>'], caution: ["Moderate", "सावधानी", "Caution", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.5h0"/>'], clear: ["Clear", "खुला वा सामान्य", "Open or normal", '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.5 2.8 2.8L16 10"/>'], info: ["Info", "जानकारी", "Information", '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h0"/>'], no_info: ["Unknown", "आधिकारिक जानकारी छैन", "No official information", '<circle cx="12" cy="12" r="8.5"/><path d="M9.8 9.5a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4v.5M12 16.8h0"/>'] };
+  G.verdictColor = (k) => (k === "Clear" ? "#2E8B57" : k === "Info" ? "#2F6FED" : G.SEVCOLOR[k]);
+  G.verdictBadge = (k) => { const v = G.VERDICT[k] || G.VERDICT.no_info; return `<span class="vbadge v-${G.VERDICT[k] ? k : "no_info"}" style="--sc:${G.verdictColor(v[0])}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${v[3]}</svg>${G.lang === "ne" ? v[1] : v[2]}</span>`; };
   /* Source health: planned | ok | stale | down. Stale = last success older than 3x pollMinutes. */
   G.srcStatus = (src, h) => {
     if (src.status === "planned" || !src.url) return "planned";
