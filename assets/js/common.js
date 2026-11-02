@@ -560,3 +560,6 @@
   G.listeners.push(() => setTimeout(draw, 0));
   document.addEventListener("visibilitychange", () => { if (!document.hidden) draw(); });
 })();
+
+/* Ambient sky (header and weather card only), loaded after the shell */
+(function () { const G = window.Gati; if (!G || G.sky) return; const s = document.createElement("script"); s.src = G.root + "assets/js/sky.js"; s.defer = true; document.body.appendChild(s); })();

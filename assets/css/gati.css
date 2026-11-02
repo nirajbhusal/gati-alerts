@@ -1661,3 +1661,19 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .aqnoinfo{margin:0;padding:8px 10px;border-radius:10px;background:var(--surface2);font-size:14px}
 @media(prefers-reduced-motion:reduce){.aqprog i{transition:none}}
 .aqlog .aqchip{border:1px solid var(--line)!important;background:var(--surface)!important}
+/* Ambient sky (assets/js/sky.js): header and weather card only. Low-alpha layers under the content (z-index -1 in an isolated host), never over text. */
+.skyhost{position:relative;isolation:isolate}
+.skyfx{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:inherit}
+.skyfx>*{position:absolute;inset:0}
+header.top .skyfx.sky-dawn{background:linear-gradient(100deg,rgba(255,170,120,.16),rgba(255,214,170,.07) 45%,transparent 75%)}
+header.top .skyfx.sky-dusk{background:linear-gradient(100deg,transparent 30%,rgba(255,150,110,.10) 70%,rgba(170,110,190,.16))}
+header.top .skyfx.sky-night{background:linear-gradient(180deg,rgba(4,10,26,.35),rgba(4,10,26,.15))}
+.card .skyfx.sky-dawn,.tdrow .skyfx.sky-dawn{background:linear-gradient(100deg,rgba(255,176,120,.12),rgba(255,214,170,.05) 50%,transparent 80%)}
+.card .skyfx.sky-dusk,.tdrow .skyfx.sky-dusk{background:linear-gradient(100deg,transparent 35%,rgba(255,160,120,.07) 70%,rgba(160,120,200,.10))}
+.card .skyfx.sky-night,.tdrow .skyfx.sky-night{background:linear-gradient(180deg,rgba(40,52,110,.07),transparent 70%)}
+.skyns{left:auto!important;width:min(240px,60%);height:auto!important;bottom:auto!important}
+.skymoon{fill:rgba(255,246,214,.55)}.skystar circle{fill:rgba(255,255,255,.6)}
+.card .skymoon,.tdrow .skymoon{fill:rgba(120,120,170,.22)}.card .skystar circle,.tdrow .skystar circle{fill:rgba(90,100,160,.3)}
+html[data-theme=dark] .card .skymoon,html[data-theme=dark] .tdrow .skymoon{fill:rgba(255,246,214,.28)}html[data-theme=dark] .card .skystar circle,html[data-theme=dark] .tdrow .skystar circle{fill:rgba(255,255,255,.35)}
+@media(prefers-reduced-motion:no-preference){.skystar{animation:skytw 6s ease-in-out infinite alternate}}
+@keyframes skytw{from{opacity:.55}to{opacity:1}}
