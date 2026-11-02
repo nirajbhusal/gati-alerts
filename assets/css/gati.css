@@ -1737,3 +1737,7 @@ html.alert-hot .brand .lga.a2{animation-delay:.16s}html.alert-hot .brand .lga.a3
 html.alert-hot .brand .lga{animation-name:lgpulsehot}
 @keyframes lgpulsehot{0%{opacity:1}12%{opacity:.15}30%,100%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.brand .lga{animation:none!important;opacity:1}}
+.hmleg i.hmli.v.ok{background:#6b8fb8}.hmleg i.hmli.q{background:#7c3aed;border-radius:50%}
+.hmsvg .hmv.ok circle{fill:#6b8fb8}.hmsvg .hmq circle{fill:#7c3aed;fill-opacity:.55;stroke:#fff;stroke-width:1}
+.hmsvg .hmaq text{font-size:10px;font-weight:700;fill:#fff;paint-order:stroke;stroke:#0006;stroke-width:2px}.hmsvg .hmaq rect{stroke:#fff;stroke-width:1}
+.hmcx{margin:4px 0;font-size:12.5px}.hmaqleg b{margin-right:4px}
