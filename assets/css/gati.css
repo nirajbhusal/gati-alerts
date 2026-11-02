@@ -1743,4 +1743,4 @@ html.alert-hot .brand .lga{animation-name:lgpulsehot}
 .hwdots{display:flex;gap:3px;flex-shrink:0}.hwdot{display:inline-block;width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px}
 .hwmap{width:100%;height:auto;max-height:200px;margin:8px 0;background:var(--surface)}
 .hwseg,.hwal{font-size:var(--fs-5);list-style:none;padding:0;margin:0 0 8px}.hwseg li{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}.hwal li{padding:4px 0}
-.hwcard h4{margin:10px 0 4px;font-size:var(--fs-5)}.hwcall{display:flex;gap:8px;margin-top:8px}
+.hwcard p{font-size:var(--fs-5)}.hwcard h4{margin:10px 0 4px;font-size:var(--fs-5)}.hwcall{display:flex;gap:8px;margin-top:8px}
