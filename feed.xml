@@ -4,12 +4,51 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-11-01T03:33:48+00:00</updated>
+  <updated>2026-11-02T03:35:07+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-11-02-0900</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-11-02T09:00:00+05:45</updated>
+    <published>2026-11-02T09:00:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-03T09:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-11-02-0900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-11-02-0900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-11-02</id>
+    <title>DHM: no weather warning anywhere in Nepal for all five days, Kartik 16 to 20 (2 to 6 Nov)</title>
+    <updated>2026-11-02T08:03:05+05:45</updated>
+    <published>2026-11-02T08:03:05+05:45</published>
+    <summary>[Official] Minor · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-11-06T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-5day-bulletin-2026-11-02.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-5day-bulletin-2026-11-02/" rel="related" type="text/html"/>
+    <link href="https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12399" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-special-bulletin-1-cyclone-murasu-2026-11-01</id>
+    <title>DHM special bulletin 1: Cyclone 'Murasu' has formed over the Bay of Bengal; no significant impact on Nepal's weather expected so far</title>
+    <updated>2026-11-01T17:10:13+05:45</updated>
+    <published>2026-11-01T17:10:13+05:45</published>
+    <summary>[Official] Unknown · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-11-03T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-special-bulletin-1-cyclone-murasu-2026-11-01.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-special-bulletin-1-cyclone-murasu-2026-11-01/" rel="related" type="text/html"/>
+    <link href="https://x.com/NMD_Weather/status/2116854065712050320" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.police-road-aarughat-soti-2026-11-01-0900</id>
     <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>

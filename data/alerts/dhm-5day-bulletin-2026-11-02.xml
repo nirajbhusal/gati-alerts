@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-5day-bulletin-2026-11-02</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-11-02T08:03:05+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division (dhm.gov.np/mfd). Source: https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12399</note>
+  <references>hydrology.gov.np,np.gati.dhm-5day-bulletin-2026-10-31,2026-10-31T18:52:50+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>मौसम पूर्वानुमान बुलेटिन (५ दिने)</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-02T08:00:00+05:45</effective>
+    <onset>2026-11-02T08:00:00+05:45</onset>
+    <expires>2026-11-06T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM: कात्तिक १६ देखि २० सम्म पाँचै दिन देशभर कुनै मौसम चेतावनी छैन (हरियो)</headline>
+    <description>अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको 'आगामी पाँच दिनका लागि मौसम चेतावनी', जारी २०८३ कार्तिक १६ बिहान ८:०० बजे, dhm.gov.np/mfd मा; कात्तिक १४ साँझको बुलेटिनको ठाउँमा): कात्तिक १६ (सोमबार, २ नोभेम्बर) देखि कात्तिक २० (शुक्रबार, ६ नोभेम्बर) सम्म पाँचै दिनको चेतावनी नक्सामा देशभर हरियो (चेतावनी छैन)। आज दिउँसो लुम्बिनी प्रदेशसहित देशका हिमाली र पहाडी भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपातको सम्भावना; राति र बिहानपख तराई, उपत्यका र खोँचमा थोरै स्थानमा हुस्सु/कुहिरो। DHM को ३ दिने पूर्वानुमान नक्साअनुसार कात्तिक १७ र १८ मा कोशी, बागमती र गण्डकीका पहाडी-हिमाली भागमा एक-दुई स्थानमा हल्का वर्षा, बाँकी भागमा मुख्यतया सफा। DHM ले कात्तिक १५ साँझ जारी गरेको 'मुरासु' चक्रवात विशेष बुलेटिनअनुसार नेपालको मौसममा उल्लेखनीय प्रभाव पर्ने सम्भावना देखिएको छैन (छुट्टै सूचना हेर्नुहोस्)।</description>
+    <instruction>बिहान हुस्सु/कुहिरोमा सवारी चलाउँदा सावधानी अपनाउनुहोस्; हिमालमा यात्रा गर्नुअघि पछिल्लो पूर्वानुमान हेर्नुहोस् (फोन ११५५)।</instruction>
+    <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12399</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12399</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-02T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://dhm.gov.np/mfd/api/image/weather-map/2026/11/02/warning-map-day-1-1793586149050.png</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NMD_Weather/status/2117084219075928446</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: कात्तिक १६ देखि २० सम्म देशभर मौसम चेतावनी छैन; हिमाल-पहाडमा एक-दुई स्थानमा हल्का वर्षा/हिमपात; बिहान हुस्सु/कुहिरो</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला); कात्तिक १६ देखि २० सम्म सबै हरियो</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Weather forecast bulletin (5 days)</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-02T08:00:00+05:45</effective>
+    <onset>2026-11-02T08:00:00+05:45</onset>
+    <expires>2026-11-06T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati</senderName>
+    <headline>DHM: no weather warning anywhere in Nepal for all five days, Kartik 16 to 20 (2 to 6 Nov)</headline>
+    <description>Update, official (DHM Meteorological Forecasting Division 'weather warning for the next five days', issued 2083 Kartik 16 at 8:00 AM on dhm.gov.np/mfd; replaces the Kartik 14 evening bulletin): the warning maps for all five days, Kartik 16 (Mon 2 Nov) to Kartik 20 (Fri 6 Nov), are green (no warning) across the country. Today light rain or snow is possible at one or two places in the mountains and hills, including Lumbini Province; mist or fog at a few places in the Terai, valleys and gorges at night and early morning. DHM's 3-day forecast maps show light rain at one or two places in the Koshi, Bagmati and Gandaki hills and mountains on Kartik 17 and 18, mainly fair elsewhere. DHM's special bulletin on Cyclone 'Murasu' issued on the evening of Kartik 15 says no significant impact on Nepal's weather is expected (see separate notice).</description>
+    <instruction>Drive carefully in morning mist and fog; check the latest forecast before travelling in the mountains (phone 1155).</instruction>
+    <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12399</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12399</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-02T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://dhm.gov.np/mfd/api/image/weather-map/2026/11/02/warning-map-day-1-1793586149050.png</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NMD_Weather/status/2117084219075928446</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: no weather warning anywhere for Kartik 16 to 20 (2 to 6 Nov); light rain or snow at a few places in hills and mountains; morning fog</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts); all green from Kartik 16 to 20</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

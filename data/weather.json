@@ -1,72 +1,65 @@
 {
- "checked": "2026-11-01T09:30:00+05:45",
+ "checked": "2026-11-02T09:20:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
   "url": "https://www.mfd.gov.np/",
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
-  "reachable": false
+  "reachable": true
  },
- "note_ne": "dhm.gov.np/mfd को पृष्ठ खुल्यो (HTTP 200) तर बुलेटिनको पाठ त्यहाँबाट पढ्न सकिएन; dhm.gov.np/hydrology खुलेन (कात्तिक १५, बिहान ९:३० NPT मा जाँचिएको)। त्यसैले कात्तिक १४ साँझ ६ बजेको आधिकारिक ५ दिने बुलेटिन DHM को आधिकारिक X खाता @NMD_Weather बाट लिइएको छ। DHM ले कात्तिक १५ बिहान बिहानको हुस्सु/कुहिरो मध्यान्नसम्म हट्दै जाने र पहाड-हिमालमा घाम लागेको जनाएको छ।",
- "note_en": "The dhm.gov.np/mfd page loaded (HTTP 200) but the bulletin text could not be read from it, and dhm.gov.np/hydrology did not load (checked 1 Nov 2026, 9:30 AM NPT). The official 5-day bulletin issued at 6 PM Kartik 14 is therefore taken from DHM's official X account @NMD_Weather. On the morning of Kartik 15 DHM said morning mist and fog would clear by midday, with sunshine already in the hills and mountains.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो र कात्तिक १६ बिहान ८ बजेको ५ दिने मौसम चेतावनी त्यहीँबाट लिइएको छ (कात्तिक १६, बिहान ९:२० NPT मा जाँचिएको)। dhm.gov.np/hydrology खुलेन। DHM ले कात्तिक १५ साँझ ५ बजे बंगालको खाडीमा बनेको 'मुरासु' चक्रवातबारे विशेष बुलेटिन जारी गरी नेपालको मौसममा उल्लेखनीय प्रभाव पर्ने सम्भावना नदेखिएको जनाएको छ।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded, and the 5-day weather warning issued at 8 AM Kartik 16 is taken from it (checked 2 Nov 2026, 9:20 AM NPT). dhm.gov.np/hydrology did not load. At 5 PM on Kartik 15 DHM issued a special bulletin on Cyclone 'Murasu' over the Bay of Bengal, saying no significant impact on Nepal's weather is expected.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
  "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",
  "rainfallUrl": "https://www.dhm.gov.np/hydrology/rainfall-watch",
  "bulletin5": {
-  "id": "np.gati.dhm-5day-bulletin-2026-10-31",
-  "issued": "2026-10-31T18:00:00+05:45",
-  "posted": "2026-10-31T18:52:50+05:45",
-  "url": "https://x.com/NMD_Weather/status/2116517502775869552",
+  "id": "np.gati.dhm-5day-bulletin-2026-11-02",
+  "issued": "2026-11-02T08:00:00+05:45",
+  "posted": "2026-11-02T08:03:05+05:45",
+  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12399",
   "trust": "Official",
   "days": [
-   {
-    "bs": "कात्तिक १४",
-    "ad": "2026-10-31",
-    "level": "yellow",
-    "ne": "राति हिमाली भूभागको थोरै स्थानमा हल्का वर्षा/हिमपात; पहाड र लुम्बिनीको तराईका एक-दुई स्थानमा हल्का वर्षा; उत्तरी हिमाली भाग पहेँलो (कात्तिक १५ बिहानसम्म)",
-    "en": "At night light rain or snow at a few places in the mountains, light rain at one or two places in the hills and the Lumbini Terai; northern mountain areas yellow until the morning of Kartik 15",
-    "provinces": [
-     "NP01",
-     "NP03",
-     "NP04",
-     "NP06",
-     "NP07"
-    ]
-   },
-   {
-    "bs": "कात्तिक १५",
-    "ad": "2026-11-01",
-    "level": "green",
-    "ne": "देशभर आंशिक बदली; हिमाली र पहाडी भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; राति गण्डकी, कर्णाली र सुदूरपश्चिमका हिमाल-पहाडमा एक-दुई स्थानमा हल्का",
-    "en": "Partly cloudy; light rain or snow at one or two places in the hills and mountains; at night light at one or two places in the Gandaki, Karnali and Sudurpaschim hills and mountains"
-   },
    {
     "bs": "कात्तिक १६",
     "ad": "2026-11-02",
     "level": "green",
-    "ne": "देशभर आंशिक बदली; हिमाली र पहाडी भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात",
-    "en": "Partly cloudy; light rain or snow at one or two places in the hills and mountains"
+    "ne": "लुम्बिनी प्रदेशसहित हिमाली र पहाडी भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; राति र बिहानपख तराई, उपत्यका र खोँचमा थोरै स्थानमा हुस्सु/कुहिरो",
+    "en": "Light rain or snow at one or two places in the mountains and hills, including Lumbini Province; mist or fog at a few places in the Terai, valleys and gorges at night and early morning"
    },
    {
     "bs": "कात्तिक १७",
     "ad": "2026-11-03",
     "level": "green",
-    "ne": "कोशी, बागमती, गण्डकीका हिमाल-पहाडमा आंशिक बदली, बाँकी मुख्यतया सफा; ती प्रदेशका हिमाल-पहाडमा एक-दुई स्थानमा हल्का वर्षा/हिमपात",
-    "en": "Partly cloudy over the Koshi, Bagmati and Gandaki hills and mountains, mainly fair elsewhere; light rain or snow at one or two places there"
+    "ne": "कोशी, बागमती र गण्डकीका पहाडी-हिमाली भागमा एक-दुई स्थानमा हल्का वर्षा; बाँकी मुख्यतया सफा",
+    "en": "Light rain at one or two places in the Koshi, Bagmati and Gandaki hills and mountains; mainly fair elsewhere"
    },
    {
     "bs": "कात्तिक १८",
     "ad": "2026-11-04",
     "level": "green",
-    "ne": "कोशी, बागमती, गण्डकीका हिमाल-पहाडमा आंशिक बदली, बाँकी मुख्यतया सफा; कोशीका हिमाल-पहाडमा एक-दुई स्थानमा हल्का वर्षा/हिमपात",
-    "en": "Partly cloudy over the Koshi, Bagmati and Gandaki hills and mountains, mainly fair elsewhere; light rain or snow at one or two places in the Koshi hills and mountains"
+    "ne": "कोशी, बागमती र गण्डकीका पहाडी-हिमाली भागमा एक-दुई स्थानमा हल्का वर्षा; बाँकी मुख्यतया सफा",
+    "en": "Light rain at one or two places in the Koshi, Bagmati and Gandaki hills and mountains; mainly fair elsewhere"
+   },
+   {
+    "bs": "कात्तिक १९",
+    "ad": "2026-11-05",
+    "level": "green",
+    "ne": "देशभर चेतावनी छैन (हरियो); DHM ले यो दिनको विस्तृत पाठ दिएको छैन",
+    "en": "No warning anywhere (green); DHM gave no detailed text for this day"
+   },
+   {
+    "bs": "कात्तिक २०",
+    "ad": "2026-11-06",
+    "level": "green",
+    "ne": "देशभर चेतावनी छैन (हरियो); DHM ले यो दिनको विस्तृत पाठ दिएको छैन",
+    "en": "No warning anywhere (green); DHM gave no detailed text for this day"
    }
   ],
-  "advisory_ne": "'अर्नब' चक्रवातको अवशेष (न्यून चापीय क्षेत्र) को प्रभाव कम हुँदै मौसम क्रमिक सुधार हुँदै; तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो। पछिल्लो मौसमी सूचना नियमित हेर्न अनुरोध।",
-  "advisory_en": "The remnant low of Cyclone 'Arnab' is weakening and the weather is gradually improving; morning mist or fog in the Terai, valleys and gorges. DHM asks everyone to keep following the latest forecasts.",
-  "map_note_ne": "DHM नक्साका रङ जिल्लास्तरमा स्पष्ट पढ्न सकिँदैन, त्यसैले प्रदेश देखाइएको छ। कात्तिक १४ साँझदेखि १५ बिहानसम्म ती प्रदेशका उत्तरी हिमाली भाग मात्र पहेँलो छन् (पूरा प्रदेश होइन); कात्तिक १५ बिहानदेखि १७ बिहानसम्म देशभर हरियो।",
-  "map_note_en": "The colours on DHM's map cannot be read clearly at district level, so provinces are shown. From the evening of Kartik 14 to the morning of Kartik 15 only the northern mountain areas of those provinces are yellow (not the whole provinces); from the morning of Kartik 15 to the morning of Kartik 17 the whole country is green.",
-  "url_map": "https://x.com/NMD_Weather/status/2116517502775869552"
+  "advisory_ne": "पाँचै दिन देशभर कुनै मौसम चेतावनी छैन। तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो। बंगालको खाडीको 'मुरासु' चक्रवातको नेपालमा उल्लेखनीय प्रभाव पर्ने सम्भावना हालसम्म देखिएको छैन; DHM ले अनुगमन गरिरहेको छ।",
+  "advisory_en": "No weather warning anywhere for all five days. Morning mist or fog in the Terai, valleys and gorges. Cyclone 'Murasu' over the Bay of Bengal is not expected to have a significant impact on Nepal so far; DHM is monitoring it.",
+  "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक १६ देखि २० सम्म पाँचै दिन सबै जिल्ला हरियो। दिन २ र ३ को विवरण DHM को ३ दिने पूर्वानुमान नक्साबाट लिइएको।",
+  "map_note_en": "DHM's 5-day warning maps show every district green on all five days, Kartik 16 to 20. The day 2 and 3 details come from DHM's 3-day forecast maps.",
+  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/02/warning-map-day-1-1793586149050.png"
  }
 }
