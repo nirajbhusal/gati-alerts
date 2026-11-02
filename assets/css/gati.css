@@ -1677,3 +1677,14 @@ header.top .skyfx.sky-night{background:linear-gradient(180deg,rgba(4,10,26,.35),
 html[data-theme=dark] .card .skymoon,html[data-theme=dark] .tdrow .skymoon{fill:rgba(255,246,214,.28)}html[data-theme=dark] .card .skystar circle,html[data-theme=dark] .tdrow .skystar circle{fill:rgba(255,255,255,.35)}
 @media(prefers-reduced-motion:no-preference){.skystar{animation:skytw 6s ease-in-out infinite alternate}}
 @keyframes skytw{from{opacity:.55}to{opacity:1}}
+/* Sky mood from DHM: cloudy = light grey haze, rain = a few thin lines, fog = soft mist, clear = nothing */
+.skycloud{background:linear-gradient(180deg,rgba(170,180,195,.16),rgba(170,180,195,.05) 70%)}
+header.top .skycloud{background:linear-gradient(180deg,rgba(200,210,225,.14),rgba(200,210,225,.04))}
+.skyrain{background:repeating-linear-gradient(105deg,transparent 0 34px,rgba(120,150,190,.22) 34px 35px,transparent 35px 71px);opacity:.8}
+header.top .skyrain{background:repeating-linear-gradient(105deg,transparent 0 34px,rgba(210,225,255,.20) 34px 35px,transparent 35px 71px)}
+.skyfog{background:linear-gradient(180deg,transparent 20%,rgba(220,226,232,.22) 55%,rgba(220,226,232,.10) 90%),radial-gradient(60% 40% at 30% 70%,rgba(230,234,240,.18),transparent)}
+header.top .skyfog{background:linear-gradient(180deg,transparent 15%,rgba(225,232,240,.13) 60%,rgba(225,232,240,.06))}
+html[data-theme=dark] .card .skyfog,html[data-theme=dark] .tdrow .skyfog{background:linear-gradient(180deg,transparent 20%,rgba(200,210,225,.08) 60%,transparent)}
+@media(prefers-reduced-motion:no-preference){.skyrain{animation:skyrn 1.6s linear infinite;background-size:200% 200%}.skyfog{animation:skyfg 24s ease-in-out infinite alternate}}
+@keyframes skyrn{from{background-position:0 0}to{background-position:-18px 70px}}
+@keyframes skyfg{from{transform:translateX(-3%)}to{transform:translateX(3%)}}

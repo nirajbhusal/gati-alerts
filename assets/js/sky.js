@@ -17,18 +17,64 @@
     if (!fx) { fx = document.createElement("div"); fx.className = "skyfx"; fx.setAttribute("aria-hidden", "true"); el.prepend(fx); }
     const k = S.phase + "|" + S.wx; if (fx.dataset.k === k) return; fx.dataset.k = k;
     fx.className = `skyfx sky-${S.phase} wx-${S.wx}`;
-    fx.innerHTML = (S.phase === "night" ? NIGHT : "") + (S.wx === "rain" ? '<i class="skyrain"></i>' : S.wx === "fog" ? '<i class="skyfog"></i>' : "");
+    fx.innerHTML = (S.phase === "night" ? NIGHT : "") + (S.wx === "rain" ? '<i class="skyrain"></i>' : S.wx === "fog" ? '<i class="skyfog"></i>' : S.wx === "cloudy" ? '<i class="skycloud"></i>' : "");
   }
   function hosts() { return [document.querySelector("header.top"), document.querySelector("#today .td-wx"), document.getElementById("wx5")].filter(Boolean); }
-  function apply() {
+  let apply = function () {
     const f = Q.get("sky"); S.phase = PH.includes(f) ? f : phaseOf(nptHour());
     H.dataset.sky = S.on ? S.phase : "off";
     hosts().forEach(host);
+  };
+  /* Weather mood from the official DHM data in data/weather.json, for my district (gati-district) or Kathmandu.
+     Today's 5-day bulletin text is split into clauses; a clause counts if it names the district or its province,
+     the district's terrain (Terai, valleys, hills/mountains) or no place at all. Isolated rain ("one or two places")
+     that does not name the district gives a cloudy haze. Fog/mist counts only at night and in the morning (before 11).
+     The DHM observation (note_en, last 12 h) counts when it names the district. Priority: rain > fog > cloudy > clear.
+     Preview: ?wx=clear|cloudy|rain|fog. */
+  const WXS = ["clear", "cloudy", "rain", "fog"];
+  const TERAI = "jhapa morang sunsari udayapur saptari siraha dhanusha mahottari sarlahi rautahat bara parsa chitwan nawalparasi-west rupandehi kapilbastu dang banke bardiya kailali kanchanpur".split(" ");
+  const VALLEY = "kathmandu lalitpur bhaktapur kaski surkhet dang chitwan".split(" ");
+  const PROV = { koshi: /koshi/, madhesh: /madhesh/, bagmati: /bagmati/, gandaki: /gandaki/, lumbini: /lumbini/, karnali: /karnali/, sudurpaschim: /sudurpa(s|sh)c?him|far.?west/ };
+  function moodOf(WX, D, h) {
+    const b5 = WX && WX.bulletin5; if (!b5 || !b5.days || !b5.days.length) return null;
+    const ad = new Date(Date.now() + 345 * 6e4).toISOString().slice(0, 10), day = b5.days.find((d) => d.ad === ad);
+    if (!day) return null;
+    const name = D.en.toLowerCase(), terai = TERAI.includes(D.id), valley = VALLEY.includes(D.id), morn = h < 11 || h >= 19;
+    const rank = { clear: 0, cloudy: 1, fog: 2, rain: 3 }; let best = "clear", src = { t: b5.issued, k: "bulletin" };
+    const up = (m, s2) => { if (rank[m] > rank[best]) { best = m; if (s2) src = s2; } };
+    String(day.en || "").toLowerCase().split(/[;.]/).forEach((c) => {
+      if (!c.trim()) return;
+      const named = c.includes(name) || (PROV[D.province] && PROV[D.province].test(c));
+      const geo = /terai|plain|valley|gorge|hill|mountain|himalaya|province|district/.test(c);
+      const mine = named || !geo || (/terai|plain/.test(c) && terai) || (/valley|gorge/.test(c) && valley) || (/hill|mountain|himalaya/.test(c) && !terai);
+      if (!mine) return;
+      const iso = /one or two places|a few places|isolated|some places/.test(c) && !named;
+      if (/rain|shower|drizzle|thunder/.test(c)) up(iso ? "cloudy" : "rain");
+      if (/fog|mist/.test(c) && (morn || !/night|morning/.test(c))) up("fog");
+      if (/cloud|overcast|partly|snow/.test(c)) up("cloudy");
+    });
+    const ob = WX.observed, note = String(WX.note_en || "").toLowerCase();
+    if (ob && ob.time && Date.now() - Date.parse(ob.time) < 12 * 36e5) {
+      const m = note.match(/past 12 hours[^.]*/); if (m && m[0].includes(name) && /rain/.test(m[0])) up("rain", { t: ob.time, k: "observed" });
+    }
+    return { wx: best, src };
   }
-  G.sky = { state: S, apply };
+  let DATA = null;
+  function mood() {
+    const f = Q.get("wx"); if (WXS.includes(f)) { S.wx = f; S.src = { t: new Date().toISOString(), k: "preview" }; return; }
+    if (!DATA) { S.wx = "clear"; S.src = null; return; }
+    const code = (G.district && G.district.get && G.district.get()) || "", D = DATA.D.find((d) => d.code === code) || DATA.D.find((d) => d.id === "kathmandu");
+    S.dist = D; const r = D ? moodOf(DATA.WX, D, nptHour()) : null; S.wx = r ? r.wx : "clear"; S.src = r ? r.src : null;
+  }
+  const apply0 = apply;
+  apply = () => { mood(); apply0(); };
+  G.sky = { state: S, apply: () => apply() };
   apply();
+  const get = (p) => G.json(p).catch(() => null);
+  Promise.all([get("data/weather.json"), get("data/districts.json")]).then(([WX, D]) => { DATA = { WX, D: D || [] }; apply(); });
+  addEventListener("gati:district", () => apply());
   /* the weather card is drawn later and redrawn on language change */
   const mo = new MutationObserver(() => { const h = hosts(); if (h.some((e) => !e.querySelector(":scope > .skyfx") === S.on)) apply(); });
   mo.observe(document.body, { childList: true, subtree: true });
-  setInterval(apply, 5 * 6e4);
+  setInterval(() => apply(), 5 * 6e4);
 })();
