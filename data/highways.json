@@ -1,0 +1,290 @@
+{
+ "title_ne": "यात्रा अघि जान्नुहोस्",
+ "title_en": "Know before you go",
+ "rule_ne": "यहाँ आधिकारिक स्रोत मात्र: नेपाल प्रहरी, सडक विभाग, NDRRMA/NEOC र DHM। सामाजिक सञ्जाल वा सञ्चारमाध्यमका दाबी समावेश छैनन्। आधिकारिक खतरा सूचना नभेटिएको राजमार्गमा खतरा विवरण राखिएको छैन।",
+ "rule_en": "Official sources only: Nepal Police, Department of Roads, NDRRMA/NEOC and DHM. No social media or news claims. Where no official hazard notice was found, no hazard line is shown.",
+ "geometry_note_ne": "रेखा: OpenStreetMap सडक डेटा (सरल पारिएको), आधार नक्सा मात्र।",
+ "geometry_note_en": "Lines: OpenStreetMap road data (simplified), base map only.",
+ "safety": {
+  "src_ne": "NDRRMA पहिरो र बाढी सुरक्षा निर्देशिका (सारांश, शब्दशः होइन)",
+  "src_en": "NDRRMA landslide and flood safety guides (summary, not verbatim)",
+  "links": [
+   "https://ndrrma.gov.np/en/guides/13",
+   "https://ndrrma.gov.np/np/guides/2"
+  ],
+  "steps": [
+   [
+    "यात्रा अघि नेपाल प्रहरी र सडक विभागको सूचना हेर्नुहोस्।",
+    "Check Nepal Police and Department of Roads notices before you travel."
+   ],
+   [
+    "लगातार भारी वर्षामा भिर र खोल्सा नजिक नबस्नुहोस्, यात्रा नगर्नुहोस्।",
+    "During heavy rain, do not stay or travel near steep slopes and gullies."
+   ],
+   [
+    "भिरमा चर्का, ढुंगा खस्ने, धमिलो पानी आउने जस्ता संकेत देखे तुरुन्त टाढा जानुहोस्।",
+    "Leave at once if you see cracks, falling stones or suddenly muddy water on a slope."
+   ],
+   [
+    "बगिरहेको पानीमा नहिँड्नुहोस्, गाडी नचलाउनुहोस्।",
+    "Do not walk or drive through moving water."
+   ],
+   [
+    "पहिरो गइसकेपछि थप खस्न सक्छ; अधिकारीले नभनेसम्म नफर्कनुहोस्।",
+    "More may fall after a slide; do not return until officials say it is safe."
+   ]
+  ]
+ },
+ "tracks": [
+  {
+   "id": "prithvi",
+   "name_ne": "पृथ्वी राजमार्ग",
+   "name_en": "Prithvi Highway",
+   "routes": [
+    "prithvi",
+    "mugling-pokhara"
+   ],
+   "districts": [
+    "Kathmandu",
+    "Dhading",
+    "Chitwan",
+    "Gorkha",
+    "Tanahu",
+    "Kaski"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "narayangadh-mugling",
+   "name_ne": "नारायणगढ–मुग्लिन सडक",
+   "name_en": "Narayangadh–Mugling road",
+   "routes": [
+    "mugling-narayanghat"
+   ],
+   "districts": [
+    "Chitwan",
+    "Tanahu"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "tribhuvan",
+   "name_ne": "त्रिभुवन राजपथ",
+   "name_en": "Tribhuvan Rajpath",
+   "routes": [
+    "ktm-hetauda",
+    "pathlaiya-birgunj"
+   ],
+   "districts": [
+    "Kathmandu",
+    "Makwanpur",
+    "Bara",
+    "Parsa"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "bp",
+   "name_ne": "बीपी राजमार्ग",
+   "name_en": "BP Highway",
+   "routes": [
+    "bp"
+   ],
+   "districts": [
+    "Bhaktapur",
+    "Kavrepalanchok",
+    "Sindhuli",
+    "Mahottari"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "east-west",
+   "name_ne": "पूर्व–पश्चिम (महेन्द्र) राजमार्ग",
+   "name_en": "East–West (Mahendra) Highway",
+   "routes": [
+    "itahari-kakarbhitta",
+    "bardibas-itahari",
+    "pathlaiya-bardibas",
+    "hetauda-pathlaiya",
+    "narayanghat-hetauda",
+    "narayanghat-butwal",
+    "butwal-nepalgunj",
+    "nepalgunj-dhangadhi",
+    "attariya-mahendranagar"
+   ],
+   "districts": [
+    "Jhapa",
+    "Morang",
+    "Sunsari",
+    "Saptari",
+    "Siraha",
+    "Dhanusha",
+    "Mahottari",
+    "Sarlahi",
+    "Rautahat",
+    "Bara",
+    "Makwanpur",
+    "Chitwan",
+    "Nawalparasi East",
+    "Nawalparasi West",
+    "Rupandehi",
+    "Kapilbastu",
+    "Dang",
+    "Banke",
+    "Bardiya",
+    "Kailali",
+    "Kanchanpur"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "siddhartha",
+   "name_ne": "सिद्धार्थ राजमार्ग (सिद्धबाबा खण्डसहित)",
+   "name_en": "Siddhartha Highway (incl. Siddhababa section)",
+   "routes": [
+    "butwal-palpa",
+    "palpa-pokhara",
+    "butwal-lumbini"
+   ],
+   "districts": [
+    "Rupandehi",
+    "Palpa",
+    "Syangja",
+    "Kaski"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "karnali",
+   "name_ne": "कर्णाली राजमार्ग",
+   "name_en": "Karnali Highway",
+   "routes": [
+    "karnali"
+   ],
+   "districts": [
+    "Surkhet",
+    "Dailekh",
+    "Kalikot",
+    "Jumla"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "besisahar-manang",
+   "name_ne": "डुम्रे–बेसीशहर–मनाङ सडक",
+   "name_en": "Dumre–Besisahar–Manang road",
+   "routes": [
+    "dumre-besisahar",
+    "hq-chame"
+   ],
+   "districts": [
+    "Tanahu",
+    "Lamjung",
+    "Manang"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "beni-jomsom",
+   "name_ne": "बेनी–जोमसोम सडक (कालीगण्डकी करिडोर)",
+   "name_en": "Beni–Jomsom road (Kaligandaki corridor)",
+   "routes": [
+    "pokhara-baglung",
+    "baglung-beni",
+    "beni-jomsom",
+    "jomsom-muktinath"
+   ],
+   "districts": [
+    "Kaski",
+    "Parbat",
+    "Baglung",
+    "Myagdi",
+    "Mustang"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "pasang-lhamu",
+   "name_ne": "पासाङल्हामु राजमार्ग",
+   "name_en": "Pasang Lhamu Highway",
+   "routes": [
+    "pasang-lhamu"
+   ],
+   "districts": [
+    "Kathmandu",
+    "Nuwakot",
+    "Rasuwa"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "araniko",
+   "name_ne": "अरनिको राजमार्ग",
+   "name_en": "Araniko Highway",
+   "routes": [
+    "araniko"
+   ],
+   "districts": [
+    "Kathmandu",
+    "Bhaktapur",
+    "Kavrepalanchok",
+    "Sindhupalchok"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "rapti",
+   "name_ne": "राप्ती राजमार्ग",
+   "name_en": "Rapti Highway",
+   "routes": [
+    "rapti"
+   ],
+   "districts": [
+    "Dang"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "ratna",
+   "name_ne": "रत्न राजमार्ग",
+   "name_en": "Ratna Highway",
+   "routes": [
+    "ratna"
+   ],
+   "districts": [
+    "Banke",
+    "Surkhet"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "mechi",
+   "name_ne": "मेची राजमार्ग",
+   "name_en": "Mechi Highway",
+   "routes": [
+    "mechi"
+   ],
+   "districts": [
+    "Jhapa",
+    "Ilam"
+   ],
+   "hazard": null
+  },
+  {
+   "id": "koshi",
+   "name_ne": "कोशी राजमार्ग",
+   "name_en": "Koshi Highway",
+   "routes": [
+    "koshi-south",
+    "koshi-north"
+   ],
+   "districts": [
+    "Morang",
+    "Sunsari",
+    "Dhankuta"
+   ],
+   "hazard": null
+  }
+ ]
+}
