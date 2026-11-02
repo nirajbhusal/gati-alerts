@@ -1611,3 +1611,14 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .aqfollow{gap:6px}.aqfollow .aqchip{font-size:13.5px;min-height:36px}
 
 .aqans.s-info .aqst{color:#1F57C3}html[data-theme=dark] .aqans.s-info .aqst{color:#7FA8FF}
+/* Feed filters (feed-notif-1102) */
+.fchips{position:absolute;top:48px;left:0;right:0;z-index:5;max-width:560px;margin:0 auto;display:flex;gap:8px;align-items:center;justify-content:center;font-size:var(--fs-6);pointer-events:none}.fchips[hidden]{display:none}
+.fchips>*{pointer-events:auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.fclr{font:inherit;cursor:pointer}
+.fcount{display:inline-grid;place-items:center;min-width:18px;height:18px;border-radius:9px;background:var(--saffron,#F28C1E);color:#111;font-size:11px;padding:0 4px}
+.fopts{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.fopt{font:inherit;font-size:var(--fs-5);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;min-height:34px}
+.fopt[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);font-weight:600}
+.fopt[aria-pressed="true"]::before{content:"✓ "}
+.ftog{display:inline-flex;gap:6px;align-items:center;font-size:var(--fs-5);min-height:34px}
+.sheet h4{margin:10px 0 2px;font-size:var(--fs-5)}

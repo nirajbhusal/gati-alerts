@@ -155,8 +155,43 @@
     const old = d.alerts.filter((a) => !isActive(a) && Date.parse(a.sent) >= cut).sort((x, y) => (y.sent > x.sent ? 1 : -1));
     const my = G.district ? G.district.get() : "";
     const mine = (a) => my && a.districts.includes(my);
-    items = act.filter(mine).concat(act.filter((a) => !mine(a)), old.filter(mine), old.filter((a) => !mine(a))); draw();
-  }).catch(() => { items = []; draw(); });
+    ALL = act.filter(mine).concat(act.filter((a) => !mine(a)), old.filter(mine), old.filter((a) => !mine(a))); apply();
+  }).catch(() => { ALL = []; apply(); });
+  /* Filters: category (hazard), severity, agency, only active, my district only. Saved in this browser; URL ?hz=&sev=&ag=&act=1&mine=1 also works. */
+  const FK = "gati-feed-filter";
+  let ALL = [], F = (() => { try { return JSON.parse(localStorage.getItem(FK) || "{}"); } catch (e) { return {}; } })();
+  (() => { const q = new URLSearchParams(location.search); ["hz", "sev", "ag"].forEach((k) => { if (q.get(k)) F[k] = q.get(k).split(","); }); ["act", "mine"].forEach((k) => { if (q.get(k)) F[k] = q.get(k) === "1"; }); })();
+  const agk = (a) => { const n = agency(a.info.en || a.info.ne); if (/^BIPAD/.test(n)) return "BIPAD"; const m = n.match(/\(([A-Z]{2,})\)/); return m ? m[1] : n.replace(/ Headquarters$/, ""); };
+  const fsave = () => { try { localStorage.setItem(FK, JSON.stringify(F)); } catch (e) {} };
+  const nF = () => (F.hz || []).length + (F.sev || []).length + (F.ag || []).length + (F.act ? 1 : 0) + (F.mine ? 1 : 0);
+  const pass = (a) => { const my = G.district ? G.district.get() : "";
+    return (!(F.hz || []).length || F.hz.includes(a.hazard || "other")) && (!(F.sev || []).length || F.sev.includes(G.SEV[a.severity] ? a.severity : "Unknown"))
+      && (!(F.ag || []).length || F.ag.includes(agk(a))) && (!F.act || isActive(a)) && (!F.mine || (my && (a.districts.includes(my) || !a.districts.length))); };
+  const fb = document.getElementById("ffilt"), chips = document.getElementById("fchips");
+  function apply() { items = ALL.filter(pass); draw(); fdraw(); }
+  function fdraw() { const n = nF();
+    fb.innerHTML = `<span aria-hidden="true">⚲</span> ${T("छान्नुहोस्", "Filter")}${n ? ` <b class="fcount">${G.num(String(n))}</b>` : ""}`;
+    fb.setAttribute("aria-label", T("फिड छान्नुहोस्", "Filter the feed") + (n ? ` (${n})` : ""));
+    chips.innerHTML = n ? `<span>${G.num(String(items.length))} / ${G.num(String(ALL.length))} ${T("सूचना", "alerts")}</span> <button type="button" class="fclr" id="fclr">${T("सबै देखाउनुहोस्", "Show all")} ✕</button>` : "";
+    chips.hidden = !n; const c = document.getElementById("fclr"); if (c) c.onclick = () => { F = {}; fsave(); apply(); }; }
+  const chip = (grp, v, lab) => `<button type="button" class="fopt" data-g="${grp}" data-v="${esc(v)}" aria-pressed="${(F[grp] || []).includes(v)}">${lab}</button>`;
+  fb.onclick = () => {
+    const hz = [...new Set(ALL.map((a) => a.hazard || "other"))], ags = [...new Set(ALL.map(agk))].sort();
+    openSheet(`<h3>${T("फिड छान्नुहोस्", "Filter the feed")}</h3>
+      <h4>${T("प्रकार", "Category")}</h4><div class="fopts">${hz.map((h) => chip("hz", h, esc(T(...(HZN[h] || ["अन्य", "Other"]))))).join("")}</div>
+      <h4>${T("गम्भीरता", "Severity")}</h4><div class="fopts">${Object.keys(SR).map((s) => chip("sev", s, G.sevChip(s))).join("")}</div>
+      <h4>${T("स्रोत निकाय", "Source agency")}</h4><div class="fopts">${ags.map((g) => chip("ag", g, esc(g))).join("")}</div>
+      <div class="fopts"><label class="ftog"><input type="checkbox" id="fact"${F.act ? " checked" : ""}> ${T("चालु मात्र", "Only active")}</label>
+      <label class="ftog"><input type="checkbox" id="fmine"${F.mine ? " checked" : ""}> ${T("मेरो जिल्ला मात्र", "My district only")}</label></div>
+      <p class="meta">${T("छनोट यही ब्राउजरमा मात्र सुरक्षित हुन्छ। म्याद सकिएका सूचना हटाइँदैनन्, संग्रहमा रहन्छन्।", "Choices are saved in this browser only. Expired alerts are never removed; they stay in the archive.")}</p>
+      <p><button type="button" class="btn" id="fdone">${T("देखाउनुहोस्", "Show")}</button> <button type="button" class="stbtn" id="freset">${T("सबै हटाउनुहोस्", "Clear all")}</button></p>`, T("छान्नुहोस्", "Filter"));
+    sb.querySelectorAll(".fopt").forEach((o) => (o.onclick = () => { const g = o.dataset.g, v = o.dataset.v, L = F[g] || []; F[g] = L.includes(v) ? L.filter((x) => x !== v) : L.concat(v); o.setAttribute("aria-pressed", F[g].includes(v)); fsave(); apply(); }));
+    sb.querySelector("#fact").onchange = (e) => { F.act = e.target.checked; fsave(); apply(); };
+    sb.querySelector("#fmine").onchange = (e) => { if (e.target.checked && !G.district.get()) { e.target.checked = false; closeSheet(); G.district.open(() => { F.mine = true; fsave(); location.reload(); }); return; } F.mine = e.target.checked; fsave(); apply(); };
+    sb.querySelector("#fdone").onclick = closeSheet;
+    sb.querySelector("#freset").onclick = () => { F = {}; fsave(); apply(); closeSheet(); };
+  };
+  G.onLang(fdraw); fdraw();
   G.onLang(draw);
   draw();
 })();
