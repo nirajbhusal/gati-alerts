@@ -36,7 +36,7 @@
     const ks = k.split(" ").filter((w) => w.length >= 3); return ks.length > 0 && ks.every((w) => x._s.split(" ").some((t) => t.startsWith(w) || (w.length >= 4 && t.includes(w))));
   };
   const IC = { phone: '<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>', copy: '<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>' };
-  const stime = (x) => (x.source_time_ne ? T(x.source_time_ne, x.source_time_en) : C.checked ? T("जाँच", "checked") + " " + G.num(C.checked) : "");
+  const stime = (x) => (x.source_time_ne ? T(x.source_time_ne, x.source_time_en) : (x.checked || C.checked) ? T("जाँच", "checked") + " " + G.num(x.checked || C.checked) : "");
   const sn = (n) => { const a = String(n || "").split(" · "); return a.length === 2 && /[\u0900-\u097F]/.test(a[0]) ? T(a[0], a[1]) : n || ""; };
   const row = (x) => {
     const tel = x.tel || x.num, c = CAT[x.cat] || ["", ""], sub = [x.role_ne ? T(x.role_ne, x.role_en) : "", x.district || x.agency_ne !== x.ne ? T(x.agency_ne, x.agency_en) : ""].filter(Boolean).join(" · ");

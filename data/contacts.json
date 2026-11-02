@@ -9,7 +9,8 @@
    "srcName": "NTA National Numbering Allocation Plan",
    "cat": "police",
    "agency": "Nepal Police",
-   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html"
+   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html",
+   "checked": "2026-10-22"
   },
   {
    "num": "101",
@@ -18,7 +19,8 @@
    "src": "https://nta.gov.np/uploads/contents/National%20Numbering%20Allocation%20Plan.pdf",
    "srcName": "NTA National Numbering Allocation Plan",
    "cat": "fire",
-   "agency": "Fire Brigade"
+   "agency": "Fire Brigade",
+   "checked": "2026-10-22"
   },
   {
    "num": "102",
@@ -28,7 +30,8 @@
    "srcName": "NTA National Numbering Allocation Plan",
    "cat": "ambulance",
    "agency": "Ambulance",
-   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html"
+   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html",
+   "checked": "2026-10-22"
   },
   {
    "num": "1234",
@@ -42,7 +45,8 @@
    "src2Name": "MoHA",
    "cat": "ndrrma",
    "agency": "Disaster helpline (24 h, toll free)",
-   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html"
+   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html",
+   "checked": "2026-10-22"
   },
   {
    "num": "103",
@@ -52,7 +56,8 @@
    "srcName": "NTA National Numbering Allocation Plan",
    "cat": "police",
    "agency": "Traffic Police (Kathmandu Valley)",
-   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html"
+   "src_also": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html",
+   "checked": "2026-10-22"
   },
   {
    "num": "104",
@@ -61,7 +66,8 @@
    "src": "https://nta.gov.np/uploads/contents/National%20Numbering%20Allocation%20Plan.pdf",
    "srcName": "NTA National Numbering Allocation Plan",
    "cat": "helpline",
-   "agency": "Child rescue"
+   "agency": "Child rescue",
+   "checked": "2026-10-22"
   },
   {
    "num": "1144",
