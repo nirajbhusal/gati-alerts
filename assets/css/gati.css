@@ -1661,3 +1661,8 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 .aqnoinfo{margin:0;padding:8px 10px;border-radius:10px;background:var(--surface2);font-size:14px}
 @media(prefers-reduced-motion:reduce){.aqprog i{transition:none}}
 .aqlog .aqchip{border:1px solid var(--line)!important;background:var(--surface)!important}
+
+/* About: SDG icons and EW4All text badge */
+.sdglist{list-style:none;padding:0;margin:0 0 8px}.sdglist li{display:flex;gap:12px;align-items:flex-start;margin:0 0 12px}.sdglist img{flex:none;border-radius:4px}
+.ew4all{border-left:4px solid #0a97d9}.ew4tag{display:inline-block;margin:0 0 6px;padding:2px 10px;border:1px solid #0a97d9;border-radius:999px;color:#0a6d9e;font-weight:600;font-size:var(--fs-5)}
+html[data-theme=dark] .ew4tag{color:#7cc8ef}
