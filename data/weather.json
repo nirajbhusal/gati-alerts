@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-02T09:20:00+05:45",
+ "checked": "2026-11-02T15:55:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,8 +7,8 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": true
  },
- "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो र कात्तिक १६ बिहान ८ बजेको ५ दिने मौसम चेतावनी त्यहीँबाट लिइएको छ (कात्तिक १६, बिहान ९:२० NPT मा जाँचिएको)। dhm.gov.np/hydrology खुलेन। DHM ले कात्तिक १५ साँझ ५ बजे बंगालको खाडीमा बनेको 'मुरासु' चक्रवातबारे विशेष बुलेटिन जारी गरी नेपालको मौसममा उल्लेखनीय प्रभाव पर्ने सम्भावना नदेखिएको जनाएको छ।",
- "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded, and the 5-day weather warning issued at 8 AM Kartik 16 is taken from it (checked 2 Nov 2026, 9:20 AM NPT). dhm.gov.np/hydrology did not load. At 5 PM on Kartik 15 DHM issued a special bulletin on Cyclone 'Murasu' over the Bay of Bengal, saying no significant impact on Nepal's weather is expected.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक १६ बिहान ८ बजेको ५ दिने मौसम चेतावनी नै सबैभन्दा पछिल्लो हो, दिउँसो ३:५५ NPT सम्म नयाँ चेतावनी वा विशेष बुलेटिन आएको छैन। DHM (@NMD_Weather, कात्तिक १६ बिहान ७:२०): पछिल्लो १२ घण्टामा सिन्धुली, सिन्धुपाल्चोक, गोरखा, रुकुम पश्चिम, दैलेख र दार्चुलाका एक-दुई स्थानमा हल्का वर्षा; तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो, मध्यान्हसम्म सुधार हुने। dhm.gov.np/hydrology खुलेन। DHM ले कात्तिक १५ साँझ ५ बजे 'मुरासु' चक्रवातबारे विशेष बुलेटिन जारी गरी नेपालको मौसममा उल्लेखनीय प्रभाव पर्ने सम्भावना नदेखिएको जनाएको छ।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 16 is still the latest, with no new warning or special bulletin as of 3:55 PM NPT. DHM (@NMD_Weather, 7:20 AM Kartik 16): light rain at one or two places in Sindhuli, Sindhupalchok, Gorkha, Rukum West, Dailekh and Darchula in the past 12 hours; morning mist or fog in the Terai, valleys and gorges, clearing by midday. dhm.gov.np/hydrology did not load. At 5 PM on Kartik 15 DHM issued a special bulletin on Cyclone 'Murasu', saying no significant impact on Nepal's weather is expected.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
  "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",
@@ -61,5 +61,10 @@
   "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक १६ देखि २० सम्म पाँचै दिन सबै जिल्ला हरियो। दिन २ र ३ को विवरण DHM को ३ दिने पूर्वानुमान नक्साबाट लिइएको।",
   "map_note_en": "DHM's 5-day warning maps show every district green on all five days, Kartik 16 to 20. The day 2 and 3 details come from DHM's 3-day forecast maps.",
   "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/02/warning-map-day-1-1793586149050.png"
+ },
+ "observed": {
+  "time": "2026-11-02T07:20:00+05:45",
+  "url": "https://x.com/NMD_Weather/status/2117068637098127716",
+  "trust": "Official"
  }
 }
