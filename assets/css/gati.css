@@ -1636,3 +1636,10 @@ html[data-theme=dark] .mdask{background:#1a2c40}
 @media(max-width:480px){.ftop>strong{font-size:var(--fs-5)}.ftop .ftr .stbtn{padding:4px 9px}}
 .feed.flist~.fchips,.fchips{}
 .fendl .fmain{position:static;padding:16px 0}
+/* Notification centre */
+.bellbtn .bdot.bnum{width:auto;min-width:17px;height:17px;top:4px;right:4px;border-radius:9px;font-size:10px;line-height:17px;text-align:center;color:#111;font-weight:700;padding:0 4px}
+.ntc{margin:14px 0}.ntc h4{margin:10px 0 2px;font-size:var(--fs-5)}
+.ntbadge{display:inline-block;margin-left:6px;font-size:var(--fs-6);background:var(--saffron,#F28C1E);color:#111;border-radius:999px;padding:1px 8px;vertical-align:middle}
+.ntlist li.ntnew{border-left:3px solid var(--saffron,#F28C1E);padding-left:6px}
+.ntdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--saffron,#F28C1E);margin-right:6px;vertical-align:middle}
+.ntq input[type=time]{font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
