@@ -40,13 +40,14 @@
     ["air", "air/", "हावाको गुणस्तर", "Air quality"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
+    ["health", "health/", "अस्पताल बेड र रगत", "Hospital beds & blood"],
     ["safety", "safety/", "के गर्ने", "What to do"],
     ["sources", "sources/", "स्रोत", "Sources"],
     ["log", "log/", "परिवर्तन लग", "Change log"],
     ["about", "about/", "बारेमा", "About"],
   ];
   /* shorter English labels for the desktop menu row only */
-  const SHORT = { trek: "Trek", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", safety: "Safety", log: "Changes" };
+  const SHORT = { trek: "Trek", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
