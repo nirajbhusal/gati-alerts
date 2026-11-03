@@ -1,0 +1,99 @@
+{
+ "source_ne": "नेपाल आयल निगम लिमिटेड",
+ "source_en": "Nepal Oil Corporation (NOC)",
+ "url": "https://noc.org.np/retailprice",
+ "trust": "Official",
+ "unit_ne": "रु. प्रति लिटर",
+ "unit_en": "NPR per litre",
+ "effective": "2026-10-31",
+ "fetched": "2026-11-03T13:03+05:45",
+ "checked": "2026-11-03T13:03+05:45",
+ "reachable": true,
+ "groups": [
+  {
+   "name_ne": "पहिलो वर्ग",
+   "name_en": "First group",
+   "noc_label": "Category 3",
+   "depots": [
+    {
+     "ne": "काठमाडौं",
+     "en": "Kathmandu"
+    },
+    {
+     "ne": "पोखरा",
+     "en": "Pokhara"
+    },
+    {
+     "ne": "दिपायल",
+     "en": "Dipayal"
+    }
+   ],
+   "price": {
+    "petrol": 200.0,
+    "diesel": 200.0
+   }
+  },
+  {
+   "name_ne": "दोस्रो वर्ग",
+   "name_en": "Second group",
+   "noc_label": "Category 1",
+   "depots": [
+    {
+     "ne": "वीरगन्ज",
+     "en": "Birgunj"
+    },
+    {
+     "ne": "विराटनगर",
+     "en": "Biratnagar"
+    },
+    {
+     "ne": "चाराली",
+     "en": "Charali"
+    },
+    {
+     "ne": "महेन्द्रनगर (धनुषा)",
+     "en": "Mahendranagar (Dhanusa)"
+    },
+    {
+     "ne": "अमलेखगन्ज",
+     "en": "Amlekhjung"
+    },
+    {
+     "ne": "भलवारी",
+     "en": "Bhalwari"
+    },
+    {
+     "ne": "नेपालगन्ज",
+     "en": "Nepalgung"
+    },
+    {
+     "ne": "धनगढी",
+     "en": "Dhangadhi"
+    }
+   ],
+   "price": {
+    "petrol": 197.5,
+    "diesel": 197.5
+   }
+  },
+  {
+   "name_ne": "तेस्रो वर्ग",
+   "name_en": "Third group",
+   "noc_label": "Category 2",
+   "depots": [
+    {
+     "ne": "सुर्खेत",
+     "en": "Surkhet"
+    },
+    {
+     "ne": "दाङ",
+     "en": "Dang"
+    }
+   ],
+   "price": {
+    "petrol": 199.0,
+    "diesel": 199.0
+   }
+  }
+ ]
+}
