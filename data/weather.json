@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-03T09:25:00+05:45",
+ "checked": "2026-11-03T09:15:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,8 +7,8 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": true
  },
- "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक १७ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी सबैभन्दा पछिल्लो हो: कात्तिक १७ देखि २१ सम्म देशभर हरियो (चेतावनी छैन)। बिहान ९:२५ NPT सम्म नयाँ विशेष बुलेटिन आएको छैन। DHM (@NMD_Weather, कात्तिक १६ साँझ ६:४०): राति मौसम सम्बन्धी चेतावनी जारी गरिएको छैन। DHM को नदी निगरानी (hydrology.gov.np) अनुसार बिहान ९ बजेतिर सबै मापन केन्द्र चेतावनी तहभन्दा तल। 'मुरासु' चक्रवातबारे DHM को कात्तिक १५ को विशेष बुलेटिनअनुसार नेपालमा उल्लेखनीय प्रभाव पर्ने सम्भावना देखिएको छैन।",
- "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 17 is the latest: green (no warning) everywhere from Kartik 17 to 21 (3 to 7 Nov). No new special bulletin as of 9:25 AM NPT. DHM (@NMD_Weather, 6:40 PM Kartik 16): no weather warning issued for the night. DHM river watch (hydrology.gov.np): every gauge below warning level at about 9 AM. DHM's Kartik 15 special bulletin on Cyclone 'Murasu' says no significant impact on Nepal is expected.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक १७ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी सबैभन्दा पछिल्लो हो: कात्तिक १७ देखि २१ सम्म देशभर हरियो (चेतावनी छैन)। बिहान ९:१५ NPT सम्म नयाँ विशेष बुलेटिन आएको छैन। DHM (@NMD_Weather, कात्तिक १६ साँझ ६:४०): राति मौसम सम्बन्धी चेतावनी जारी गरिएको छैन। DHM को नदी निगरानी (hydrology.gov.np) अनुसार बिहान ९ बजेतिर सबै मापन केन्द्र चेतावनी तहभन्दा तल। 'मुरासु' चक्रवातबारे DHM को कात्तिक १५ को विशेष बुलेटिनअनुसार नेपालमा उल्लेखनीय प्रभाव पर्ने सम्भावना देखिएको छैन।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 17 is the latest: green (no warning) everywhere from Kartik 17 to 21 (3 to 7 Nov). No new special bulletin as of 9:15 AM NPT. DHM (@NMD_Weather, 6:40 PM Kartik 16): no weather warning issued for the night. DHM river watch (hydrology.gov.np): every gauge below warning level at about 9 AM. DHM's Kartik 15 special bulletin on Cyclone 'Murasu' says no significant impact on Nepal is expected.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
  "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",
