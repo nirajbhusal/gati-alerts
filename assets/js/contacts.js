@@ -35,6 +35,7 @@
     if (/[\u0900-\u097F]/.test(s)) return false; /* Nepali script: exact form only */
     const ks = k.split(" ").filter((w) => w.length >= 3); return ks.length > 0 && ks.every((w) => x._s.split(" ").some((t) => t.startsWith(w) || (w.length >= 4 && t.includes(w))));
   };
+  const CI = {all: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>', police: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M12 8.5l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.3-2.4 1.3.5-2.6-1.9-1.8 2.6-.4z"/></svg>', apf: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M8.5 12h7M12 8.5v7"/></svg>', army: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h16"/><path d="M7 20V9l5-5 5 5v11"/><path d="M10 20v-5h4v5"/></svg>', ambulance: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 16V8a1 1 0 0 1 1-1h10v9"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/><path d="M8.5 9.5v4M6.5 11.5h4"/></svg>', fire: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 .3 1.6 1 2.6 2 3 0-3 .5-5.5.5-8z"/></svg>', hospital: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>', ndrrma: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l9.5 16.5h-19z"/><path d="M12 9.5v4.5M12 17v.2"/></svg>', dao: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 20h18M5 20V10h14v10M12 3l9 5H3z"/><path d="M9 14v3M12 14v3M15 14v3"/></svg>', local: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>', relief: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>', helpline: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-2 2-5 2"/></svg>'};
   const IC = { phone: '<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>', copy: '<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>' };
   const stime = (x) => (x.source_time_ne ? T(x.source_time_ne, x.source_time_en) : (x.checked || C.checked) ? T("जाँच", "checked") + " " + G.num(x.checked || C.checked) : "");
   const sn = (n) => { const a = String(n || "").split(" · "); return a.length === 2 && /[\u0900-\u097F]/.test(a[0]) ? T(a[0], a[1]) : n || ""; };
@@ -45,6 +46,17 @@
       <p class="csrc">${G.trustChip(x.trust)} ${T("स्रोत", "Source")}: <a href="${esc(x.src)}" target="_blank" rel="noopener">${esc(sn(x.srcName))}</a>${x.src2 ? ` · <a href="${esc(x.src2)}" target="_blank" rel="noopener">${esc(x.src2Name)}</a>` : ""}${stime(x) ? " · " + esc(stime(x)) : ""}</p></div>
       <div class="cact"><a class="ccall cbtn" href="tel:${esc(tel)}" aria-label="${esc(T("फोन गर्नुहोस्", "Call"))} ${esc(x.num)}, ${esc(T(x.ne, x.en))}">${IC.phone}<span>${G.num(x.num)}</span></a><button type="button" class="ccopy" data-n="${esc(x.num)}" aria-label="${esc(T("नम्बर कपी गर्नुहोस्", "Copy number"))} ${esc(x.num)}" title="${esc(T("कपी", "Copy"))}">${IC.copy}</button></div></li>`;
   };
+  const RM = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hdr = () => { const h = document.querySelector("header.top"); return h ? Math.max(0, h.getBoundingClientRect().bottom) : 0; };
+  /* after a chip tap: keep the chip fully visible inside its row (row-relative, not page offsetLeft), then bring the results heading
+     just below the sticky header if it is off screen. One scroll each, smooth unless reduced motion. */
+  function reveal(b) {
+    const row = $("cchips"), rr = row.getBoundingClientRect(), br = b.getBoundingClientRect(), pad = 16;
+    let dx = 0; if (br.left < rr.left + pad) dx = br.left - rr.left - pad; else if (br.right > rr.right - pad) dx = br.right - rr.right + pad;
+    if (dx) row.scrollBy({ left: dx, behavior: RM() ? "auto" : "smooth" });
+    const tgt = $("ccount"), top = tgt.getBoundingClientRect().top, h = hdr() + 8;
+    if (top < h || top > innerHeight * 0.7) scrollTo({ top: scrollY + top - h - row.offsetHeight - 8, behavior: RM() ? "auto" : "smooth" });
+  }
   function draw() {
     q.placeholder = T("नाम, ठाउँ वा नम्बर खोज्नुहोस् (जस्तै: प्रहरी, rasuwa, 1234)", "Search name, place or number (e.g. police, रसुवा, 1234)");
     const s = q.value.trim();
@@ -52,9 +64,15 @@
     $("cpin").innerHTML = `<p class="cpinh">${T("राष्ट्रिय आपतकालीन", "National emergency")}</p><div class="cpinrow">${PIN.map((n) => ALL.find((x) => x.num === n && !x.district)).filter(Boolean).map((x) => `<a class="pcall" href="tel:${x.num}"><b>${G.num(x.num)}</b><span>${esc(T(x.ne, x.en).split(" (")[0])}</span></a>`).join("")}</div>`;
     /* filters */
     const cats = Object.keys(CAT).filter((k) => ALL.some((x) => x.cat === k && (!dist || !x.district || x.district === dist)));
-    $("cchips").innerHTML = [["", ["सबै", "All"]], ...cats.map((k) => [k, CAT[k]])].map(([k, v]) => `<button type="button" class="cchip" data-cat="${k}" aria-pressed="${cat === k}">${esc(T(v[0], v[1]))}</button>`).join("");
-    $("cchips").querySelectorAll(".cchip").forEach((b) => (b.onclick = () => { cat = b.dataset.cat; draw(); }));
-    const on = $("cchips").querySelector('[aria-pressed="true"]'); if (on && cat) $("cchips").scrollLeft = on.offsetLeft - 16;
+    /* chips: rebuild only when the set or language changes, so the row keeps its scroll position and the tapped chip keeps focus */
+    const ck = G.lang + "|" + cats.join(",");
+    if ($("cchips").dataset.k !== ck) {
+      $("cchips").dataset.k = ck;
+      $("cchips").innerHTML = [["", ["सबै", "All"]], ...cats.map((k) => [k, CAT[k]])].map(([k, v]) => `<button type="button" class="cchip" data-cat="${k}" aria-pressed="false"><span class="cico" aria-hidden="true">${CI[k] || CI.all}</span><span>${esc(T(v[0], v[1]))}</span></button>`).join("");
+      $("cchips").querySelectorAll(".cchip").forEach((b) => (b.onclick = () => { if (cat === b.dataset.cat) return; cat = b.dataset.cat; draw(); reveal(b); }));
+    }
+    if (cat && !cats.includes(cat)) cat = "";
+    $("cchips").querySelectorAll(".cchip").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cat === cat)));
     const ds = Object.keys(C.districts || {}).filter((k) => dById[k]);
     const my = dByCode[G.district.get()];
     $("cdsel").innerHTML = `<option value="">${T("सबै जिल्ला", "All districts")}</option>` + ds.map((k) => `<option value="${k}"${k === dist ? " selected" : ""}>${esc(T(dById[k].ne, dById[k].en))}${my && my.id === k ? " · " + T("मेरो जिल्ला", "My district") : ""} (${G.num(String(C.districts[k].length))})</option>`).join("");
@@ -65,16 +83,16 @@
     const groups = dist ? [...dg, nat] : [nat, ...dg]; /* chosen district first, national after */
     $("ccount").textContent = T(`${G.num(String(L.length))} नम्बर`, `${L.length} number${L.length === 1 ? "" : "s"}`);
     $("clist").innerHTML = L.length ? groups.map(([k, h]) => { const r = L.filter((x) => x.district === k); return r.length ? `<section class="cgrp"><h2>${esc(h)} <span>${G.num(String(r.length))}</span></h2><ul>${r.map(row).join("")}</ul></section>` : ""; }).join("")
-      : `<div class="na">${T("मिल्ने नम्बर भेटिएन। अर्को शब्द वा सबै जिल्ला छानेर हेर्नुहोस्।", "No matching number. Try another word or choose All districts.")}</div>`;
+      : `<div class="na naempty"><svg class="naill" viewBox="0 0 120 72" width="120" height="72" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="8" width="44" height="56" rx="8"/><path d="M42 20h20M42 30h14"/><circle cx="74" cy="46" r="12"/><path d="M83 55l10 10"/><path d="M70 46h8"/></svg>${T("मिल्ने नम्बर भेटिएन। अर्को शब्द वा सबै जिल्ला छानेर हेर्नुहोस्।", "No matching number. Try another word or choose All districts.")}</div>`;
     $("clist").querySelectorAll(".ccopy").forEach((b) => (b.onclick = async () => {
       const n = b.dataset.n; try { await navigator.clipboard.writeText(n); } catch (e) { const t = document.createElement("textarea"); t.value = n; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); }
       b.classList.add("ok"); b.setAttribute("title", T("कपी भयो", "Copied")); const f = $("ctoast"); f.textContent = T(`${G.num(n)} कपी भयो`, `${n} copied`); f.hidden = false; setTimeout(() => { b.classList.remove("ok"); f.hidden = true; }, 1600);
     }));
     G.district.name(G.district.get()).then((n) => {
-      $("mydist").innerHTML = `<button type="button" class="dpick" id="myd">📍 ${T("मेरो जिल्ला", "My district")}: <b>${n ? esc(n) : T("छान्नुहोस्", "Choose")}</b> ▾</button>`;
+      const mh = `<button type="button" class="dpick" id="myd">📍 ${T("मेरो जिल्ला", "My district")}: <b>${n ? esc(n) : T("छान्नुहोस्", "Choose")}</b> ▾</button>`; if ($("mydist").innerHTML !== mh) $("mydist").innerHTML = mh;
       $("myd").onclick = () => G.district.open(() => { const m = dByCode[G.district.get()]; dist = m && C.districts[m.id] ? m.id : ""; draw(); });
       const mine = my && C.districts[my.id];
-      $("cdist").innerHTML = my && !mine ? `<div class="na"><strong>${esc(n)}: ${T("जिल्लाका नम्बर उपलब्ध छैनन्", "district numbers not available")}</strong>. ${esc(T(C.districts_note_ne, C.districts_note_en))} <a class="callbtn sm" href="tel:1234">☎ ${G.num("1234")} · DEOC</a></div>` : "";
+      const cd = my && !mine ? `<div class="na"><strong>${esc(n)}: ${T("जिल्लाका नम्बर उपलब्ध छैनन्", "district numbers not available")}</strong>. ${esc(T(C.districts_note_ne, C.districts_note_en))} <a class="callbtn sm" href="tel:1234">☎ ${G.num("1234")} · DEOC</a></div>` : ""; if ($("cdist").innerHTML !== cd) $("cdist").innerHTML = cd;
     });
     $("cnote").innerHTML = esc(T(C.scope_ne, C.scope_en)) + " " + esc(T("विपद् हेल्पलाइन १२३४ ले पुरानो ११४९ लाई प्रतिस्थापन गरेको हो (NDRRMA)।", "Disaster helpline 1234 replaced the older 1149 (NDRRMA).")) +
       (C.imported_from ? ` ${T("रसुवा बुलेटिनबाट ल्याइएका नम्बर", "Numbers from the Rasuwa bulletin")}: <a href="${esc(C.imported_from.url)}" target="_blank" rel="noopener">${T("सम्पर्क पृष्ठ", "contact page")}</a> · ${T("अन्तिम जाँच", "last checked")} ${G.num(C.checked)}.` : "");

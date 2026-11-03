@@ -1754,3 +1754,11 @@ html.alert-hot .brand .lga{animation-name:lgpulsehot}
 .ftbl{display:grid;gap:0;margin:8px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden}.ftr{display:grid;grid-template-columns:1fr auto auto;gap:12px;padding:10px 12px;border-top:1px solid var(--line);align-items:center}.ftr:first-child{border-top:0}.ftr span[role=cell]:not(:first-child),.fth span:not(:first-child){text-align:right;min-width:72px;font-variant-numeric:tabular-nums}.fth{font-size:12.5px;font-weight:700;color:var(--slate)}
 .fform{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));margin:8px 0}.fform label{display:grid;gap:4px;font-size:13px;font-weight:600}.fform input,.fform select{width:100%;max-width:100%;min-width:0;box-sizing:border-box;font:inherit;font-size:15px;min-height:44px;padding:0 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}.fform .fchk{display:flex;align-items:center;gap:8px;align-self:end;min-height:44px}.fform .fchk input{min-height:0;width:20px;height:20px}
 .fout{margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px}.fbig{font-size:18px;font-weight:700;margin:0 0 4px}
+/* anchors and in-page jumps land below the sticky header */
+html{scroll-padding-top:88px}@media(min-width:900px){html{scroll-padding-top:120px}}#misinfo,.cgrp,#ccount{scroll-margin-top:96px}@media(min-width:900px){#misinfo,.cgrp,#ccount{scroll-margin-top:128px}}
+.cchips{overscroll-behavior-x:contain;scroll-padding-inline:16px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.cchip{display:inline-flex;align-items:center;gap:6px}
+@media(prefers-reduced-motion:no-preference){.cchips{scroll-behavior:smooth}}
+/* hand-made inline icons (decorative, aria-hidden; labels stay as text) */
+.cico{display:inline-flex;color:var(--slate)}.cchip[aria-pressed=true] .cico{color:#fff}.cico svg{display:block}
+.naempty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}.naill{color:var(--slate);opacity:.7}
+.hmnone{display:flex;align-items:center;gap:8px}.hmnoi{flex:none;color:#16a34a}
