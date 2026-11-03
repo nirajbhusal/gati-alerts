@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-dhading-prithvi-majhimtar-2026-11-03</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-03T09:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters (citing the Mugling Road Project, West Section, Mugling, Dhading). Source: https://www.nepalpolice.gov.np/notices/1141/ ; also Nepal Police on X, 9:06 PM NPT 2 Nov 2026: https://x.com/NepalPoliceHQ/status/2117275831752159555</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-03T09:00:00+05:45</effective>
+    <onset>2026-11-03T09:00:00+05:45</onset>
+    <expires>2026-11-03T11:00:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>धादिङ, मझिमटार: पृथ्वी राजमार्ग आज बिहान ९ देखि ११ बजेसम्म सबै सवारीका लागि बन्द</headline>
+    <description>आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।१७ (कात्तिक १७) बिहान ९ बजेसम्म: मुग्लिन सडक योजना (पश्चिम खण्ड), मुग्लिन, धादिङको सूचनाअनुसार बेनीघाट रोराङ गाउँपालिका–९ मझिमटारस्थित पृथ्वी राजमार्गमा आकाशे पुल निर्माण तथा सडक स्तरोन्नतिका लागि बिहान ९:०० देखि ११:०० बजेसम्म सबै सवारी साधनको आवागमनमा पूर्ण रोक। (प्रहरीको सूचनामा मिति '२०८२/०८/१७' छापिएको छ; नेपाल प्रहरीले कात्तिक १६ राति X मा 'भोलि बिहान ९ देखि ११ बजेसम्म' बन्द हुने जनाएकाले यो कात्तिक १७, मङ्गलबार ३ नोभेम्बरका लागि हो।)</description>
+    <instruction>त्यो समयमा वैकल्पिक मार्ग प्रयोग गर्नुहोस् वा पर्खनुहोस्; सावधानीपूर्वक सवारी चलाउनुहोस् र ट्राफिक नियम पालना गर्नुहोस् (प्रहरी १००)।</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-03T09:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NepalPoliceHQ/status/2117275831752159555</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>धादिङ, मझिमटार: पृथ्वी राजमार्ग आज बिहान ९ देखि ११ बजेसम्म सबै सवारीका लागि बन्द (आकाशे पुल निर्माण)</value></parameter>
+    <area>
+      <areaDesc>धादिङ जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+    <area>
+      <areaDesc>मझिमटार, बेनीघाट रोराङ–९, पृथ्वी राजमार्ग (अनुमानित स्थान)</areaDesc>
+      <circle>27.82,84.75 4</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-03T09:00:00+05:45</effective>
+    <onset>2026-11-03T09:00:00+05:45</onset>
+    <expires>2026-11-03T11:00:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Dhading, Majhimtar: Prithvi Highway closed to all traffic today 9 to 11 AM</headline>
+    <description>Official: Nepal Police notice 'road blockages', to 9 AM 2083-07-17 (Kartik 17 / 3 Nov): citing the Mugling Road Project (West Section), Mugling, Dhading, all vehicles are stopped on the Prithvi Highway at Majhimtar, Benighat Rorang Rural Municipality-9, from 9:00 to 11:00 AM for footbridge construction and road upgrading. (The police notice prints the date as '2082/08/17'; Nepal Police said on X on the night of Kartik 16 that the road closes 'tomorrow 9 to 11 AM', so this is for Kartik 17, Tuesday 3 Nov.)</description>
+    <instruction>Use an alternative route or wait during that window; drive carefully and follow traffic rules (police 100).</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-03T09:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://x.com/NepalPoliceHQ/status/2117275831752159555</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Dhading, Majhimtar: Prithvi Highway closed to all traffic today 9 to 11 AM (footbridge construction)</value></parameter>
+    <area>
+      <areaDesc>Dhading district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Majhimtar, Benighat Rorang-9, Prithvi Highway (approximate location)</areaDesc>
+      <circle>27.82,84.75 4</circle>
+    </area>
+  </info>
+</alert>
