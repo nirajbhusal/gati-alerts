@@ -1,4 +1,4 @@
-/* Cyclone Arnab: trekking routes coloured by DHM district flash flood risk, plus official travel notices. Gati relays, never issues. */
+/* Trekking routes coloured by DHM district flash flood risk, plus official travel notices. Gati relays, never issues. */
 (function () {
   const box = document.getElementById("trek"), nbox = document.getElementById("tknotices"), G = window.Gati; if (!box || !G) return;
   const R = document.body.dataset.root || "./";

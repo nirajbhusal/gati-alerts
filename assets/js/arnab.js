@@ -49,7 +49,7 @@
   }
   function draw() {
     const D = A.days[day];
-    box.innerHTML = `<div class="sechead" style="margin-top:0"><h2>${E(T("चक्रवात 'अर्नब': बाढी पूर्वसूचना नक्सा", "Cyclone 'Arnab': flood advisory map"))}</h2>${G.trustChip(A.trust)}</div>
+    box.innerHTML = `<div class="sechead" style="margin-top:0"><h2>${E(T("विगतको सूचना: चक्रवात 'अर्नब' बाढी पूर्वसूचना नक्सा (समाप्त)", "Past advisory: Cyclone 'Arnab' flood map (ended)"))}</h2>${G.trustChip(A.trust)}</div>
       <div class="anSum"><p><b>${E(T("विशेष सूचना", "Special advisory"))}:</b> ${E(T("कात्तिक ११ देखि १५ सम्म नारायणी, बागमती, कमला र कोशी जलाधारमा उल्लेख्य वर्षा र जलसतह बढ्न सक्ने। सबैभन्दा बढी: कात्तिक १३ र १४ (मध्यम जोखिम)। प्रमुख नदी खतरा तह पार गर्ने सम्भावना न्युन।", "Kartik 11 to 15: significant rain and rising rivers possible in the Narayani, Bagmati, Kamala and Koshi basins. Peak: Kartik 13 and 14 (moderate risk). Major rivers unlikely to cross the danger level."))}</p>
       <p class="meta">${E(T(A.hotline_ne, A.hotline_en))} <a href="tel:1155">☎ ${N(1155)}</a></p></div>
       <div class="anDays" role="group" aria-label="${T("दिन", "Day")}">${A.days.map((d, i) => `<button type="button" class="anDay" aria-pressed="${i === day}" data-i="${i}"><b>${T("कात्तिक " + N(d.bs), "Kartik " + d.bs)}</b><span>${E(T(d.wd_ne, d.wd_en.slice(0, 3)))} ${AD(d.ad)}</span><i style="background:${LV[d.level][3]}"></i></button>`).join("")}</div>

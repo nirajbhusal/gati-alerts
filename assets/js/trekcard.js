@@ -1,4 +1,4 @@
-/* Home: compact Cyclone Arnab trekking map card below Nepal Now. Static SVG, links to trek/. Gati relays, never issues. */
+/* Home: compact trekking map card below Nepal Now. Static SVG, links to trek/. Gati relays, never issues. */
 (function () {
   const card = document.getElementById("arnabcard"), G = window.Gati; if (!card || !G) return;
   const T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, N = (s) => G.num(String(s));
