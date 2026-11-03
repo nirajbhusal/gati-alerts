@@ -1803,3 +1803,6 @@ main .gd5 li,main .gd5 li b{font-size:var(--r-meta)}
 .ftop>strong{font-size:var(--r-title);white-space:nowrap}
 .fchips{top:62px}
 @media(max-width:480px){.ftop>strong{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.ftop{padding:8px 10px;gap:6px;justify-content:flex-end}.ftop .ftr{gap:4px}.ftop .ftr .stbtn,.ftop .ftr .dpick{padding:4px 9px}}
+/* Phone header: search, bell and profile as 44px tap targets, icons without rings so three fit beside the logo */
+@media(max-width:440px){header.top .bar .hr{gap:0!important}header.top .bar .hr .mebtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;border-color:transparent!important}
+header.top .bar .hr .bellbtn .bdot.bnum{top:2px;right:2px}header.top .bar .menubtn,header.top .bar .langbtn{min-width:44px!important;min-height:44px!important}}
