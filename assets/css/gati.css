@@ -1788,3 +1788,12 @@ main p:not([class]),main li:not([class]),main td,main dd,main dt,main summary,.l
 .meta,.hmnote,.hmcx,.hmleg,.hiac .meta,.fth,.fform label,.hform label,.csub,.csrc,.ccount,.cpinh,.mxhint,.hinfo .hib,.hmnat{font-size:var(--r-meta)!important}
 .card h3,.sechead h3,.hmhead h2,.dcard h3,.hlh b,.mdtitle{font-size:var(--r-title)}
 main .gd5 li,main .gd5 li b{font-size:var(--r-meta)}
+/* Alerts & notifications page */
+.ntpage .fopt,.ntpage .ftog,.ntpage .ntbtn,.ntpage select,.ntpage input[type=time],.ntarch summary{min-height:44px}
+.ntpage .ftog input{width:22px;height:22px}.ntpage .ftog{margin-right:12px}
+.ntpage .ntc h3,.ntpage #nt-list h3{font-size:var(--r-title);margin:14px 0 6px}
+.nthead{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
+.ntrow{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.ntdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--saffron,#F28C1E);margin-right:4px}
+.ntarch{margin-top:14px}.ntarch summary{display:flex;align-items:center;cursor:pointer}
+.ntq{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
