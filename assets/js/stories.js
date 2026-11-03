@@ -104,7 +104,7 @@
   function followSheet(a) {
     if (!a.districts.length) { openSheet(`<h3>${T("जिल्ला पछ्याउनुहोस्", "Follow district")}</h3><p>${T("यो सूचना देशभरका लागि हो।", "This alert covers all of Nepal.")}</p>`, T("पछ्याउनुहोस्", "Follow")); return; }
     Promise.all(a.districts.map((c) => G.district.name(c).then((n) => [c, n]))).then((L) => { const w = wget();
-      openSheet(`<h3>${T("जिल्ला पछ्याउनुहोस्", "Follow district")}</h3><p class="meta">${T("पछ्याएका जिल्ला मेरो सूची र सूचना केन्द्रमा देखिन्छन्। यही ब्राउजरमा मात्र।", "Followed districts show in My watchlist and the notification centre. This browser only.")}</p>
+      openSheet(`<h3>${T("जिल्ला पछ्याउनुहोस्", "Follow district")}</h3><p class="meta">${T("पछ्याएका जिल्ला मेरो सूची र सूचना पृष्ठमा देखिन्छन्। यही ब्राउजरमा मात्र।", "Followed districts show in My watchlist and on the notifications page. This browser only.")}</p><p><a class="btn" href="${G.root}notifications/">🔔 ${T("सूचना र नोटिफिकेसन", "Alerts & notifications")}</a></p>
         <div class="fopts">${L.map(([c, n]) => `<button type="button" class="fopt" data-c="${esc(c)}" aria-pressed="${w.d.includes(c)}">📍 ${esc(n)}</button>`).join("")}</div><p><a href="${R}me/">${T("मेरो सूची", "My watchlist")} →</a></p>`, T("पछ्याउनुहोस्", "Follow"));
       sb.querySelectorAll(".fopt[data-c]").forEach((o) => (o.onclick = () => { const w = wget(), c = o.dataset.c; w.d = w.d.includes(c) ? w.d.filter((x) => x !== c) : w.d.concat(c); try { localStorage.setItem("gati-watch", JSON.stringify(w)); } catch (e) {} o.setAttribute("aria-pressed", w.d.includes(c)); }));
     });
