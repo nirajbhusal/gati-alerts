@@ -1748,3 +1748,7 @@ html.alert-hot .brand .lga{animation-name:lgpulsehot}
 .hwmap{width:100%;height:auto;max-height:200px;margin:8px 0;background:var(--surface)}
 .hwseg,.hwal{font-size:var(--fs-5);list-style:none;padding:0;margin:0 0 8px}.hwseg li{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}.hwal li{padding:4px 0}
 .hwcard p{font-size:var(--fs-5)}.hwcard h4{margin:10px 0 4px;font-size:var(--fs-5)}.hwcall{display:flex;gap:8px;margin-top:8px}
+/* anchors and in-page jumps land below the sticky header */
+html{scroll-padding-top:88px}@media(min-width:900px){html{scroll-padding-top:120px}}#misinfo,.cgrp,#ccount{scroll-margin-top:96px}@media(min-width:900px){#misinfo,.cgrp,#ccount{scroll-margin-top:128px}}
+.cchips{overscroll-behavior-x:contain;scroll-padding-inline:16px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.cchip{display:inline-flex;align-items:center;gap:6px}
+@media(prefers-reduced-motion:no-preference){.cchips{scroll-behavior:smooth}}
