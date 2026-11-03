@@ -1769,3 +1769,8 @@ html{scroll-padding-top:88px}@media(min-width:900px){html{scroll-padding-top:120
 .meta,.hmnote,.hmcx,.hmleg,.hiac .meta,.fth,.fform label,.hform label,.csub,.csrc,.ccount,.cpinh,.mxhint{font-size:var(--fs-6)!important;line-height:1.5}
 .hinfo .hib{font-size:var(--fs-5)}.hinfo .hiqn a{font-size:var(--fs-6)}
 .hiv{font-size:var(--fs-5)}.hin{font-size:var(--fs-4)}html[lang=ne] .hin{font-size:var(--fs-3)}
+/* bigger header logo (both languages); the animated arcs are layered images inside .lgw and scale with it */
+header.top .bar .brand .logo{height:66px!important}
+@media(max-width:720px){header.top .bar .brand .logo{height:54px!important}}
+@media(max-width:359px){header.top .bar .brand .logo{height:46px!important}}
+html{scroll-padding-top:100px}@media(min-width:900px){html{scroll-padding-top:140px}}#misinfo,.cgrp,#ccount{scroll-margin-top:108px}@media(min-width:900px){#misinfo,.cgrp,#ccount{scroll-margin-top:148px}}
