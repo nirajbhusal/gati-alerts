@@ -1787,3 +1787,4 @@ main p:not([class]),main li:not([class]),main td,main dd,main dt,main summary,.l
 .hiv,.cchip,.hmcats button,.hltabs button,.hmchip,.ccat,.tag,.ccall span,.pcall span,.hiqn a,.hinfo .hiqn a,.fform input,.fform select,.hform input,.hform select,main input,main select,main button{font-size:var(--r-label)}
 .meta,.hmnote,.hmcx,.hmleg,.hiac .meta,.fth,.fform label,.hform label,.csub,.csrc,.ccount,.cpinh,.mxhint,.hinfo .hib,.hmnat{font-size:var(--r-meta)!important}
 .card h3,.sechead h3,.hmhead h2,.dcard h3,.hlh b,.mdtitle{font-size:var(--r-title)}
+.gd5 li{font-size:var(--r-meta)}.gd5 li b{font-size:var(--r-meta)}
