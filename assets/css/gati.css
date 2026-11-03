@@ -1797,3 +1797,9 @@ main .gd5 li,main .gd5 li b{font-size:var(--r-meta)}
 .ntdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--saffron,#F28C1E);margin-right:4px}
 .ntarch{margin-top:14px}.ntarch summary{display:flex;align-items:center;cursor:pointer}
 .ntq{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+/* Feed top bar: own rules so the fuel table .ftr grid and body role size do not apply */
+.ftop .ftr{display:flex;flex-wrap:nowrap;grid-template-columns:none;gap:6px;padding:0;border:0;align-items:center;font-size:var(--r-label)}
+.ftop .ftr .stbtn,.ftop .ftr .dpick{min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;font-size:var(--r-label);padding:4px 12px}
+.ftop>strong{font-size:var(--r-title);white-space:nowrap}
+.fchips{top:62px}
+@media(max-width:480px){.ftop>strong{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.ftop{padding:8px 10px;gap:6px;justify-content:flex-end}.ftop .ftr{gap:4px}.ftop .ftr .stbtn,.ftop .ftr .dpick{padding:4px 9px}}
