@@ -37,7 +37,6 @@
     ["route", "route/", "मार्ग जाँच", "Route check"],
     ["trek", "trek/", "पदमार्ग", "Trekking"],
     ["weather", "weather/", "मौसम र हावा", "Weather & air"],
-    ["air", "air/", "हावाको गुणस्तर", "Air quality"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
     ["health", "health/", "अस्पताल बेड र रगत", "Hospital beds & blood"],
@@ -96,7 +95,7 @@
   /* Phone menu: every page grouped by purpose, Home as a full row, current page highlighted. Desktop keeps the inline row + More. */
   const GRP = [
     ["सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
-    ["मौसम र जोखिम", "Weather and hazards", [["weather", "weather/", "मौसम", "Weather"], ["air", "air/", "हावाको गुणस्तर", "Air quality"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
+    ["मौसम र जोखिम", "Weather and hazards", [["weather", "weather/", "मौसम र हावा", "Weather & air"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
     ["यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग जाँच", "Trek check"]]],
     ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
     ["बारेमा", "About", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"]]],
