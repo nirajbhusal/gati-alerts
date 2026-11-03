@@ -1752,3 +1752,7 @@ html.alert-hot .brand .lga{animation-name:lgpulsehot}
 html{scroll-padding-top:88px}@media(min-width:900px){html{scroll-padding-top:120px}}#misinfo,.cgrp,#ccount{scroll-margin-top:96px}@media(min-width:900px){#misinfo,.cgrp,#ccount{scroll-margin-top:128px}}
 .cchips{overscroll-behavior-x:contain;scroll-padding-inline:16px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.cchip{display:inline-flex;align-items:center;gap:6px}
 @media(prefers-reduced-motion:no-preference){.cchips{scroll-behavior:smooth}}
+/* hand-made inline icons (decorative, aria-hidden; labels stay as text) */
+.cico{display:inline-flex;color:var(--slate)}.cchip[aria-pressed=true] .cico{color:#fff}.cico svg{display:block}
+.naempty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}.naill{color:var(--slate);opacity:.7}
+.hmnone{display:flex;align-items:center;gap:8px}.hmnoi{flex:none;color:#16a34a}
