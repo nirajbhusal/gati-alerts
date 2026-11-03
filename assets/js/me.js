@@ -19,9 +19,9 @@
   }
   function alerts() {
     const box = $("me-alerts");
-    box.innerHTML = `<div id="me-ntpane"></div><p class="meta">🔔 ${T("सूचना पाउने अर्को तरिका", "Another way to get alerts")}: <a href="${R}atom.xml">CAP Atom feed</a> · <a href="${R}feed.xml">RSS</a></p>`;
-    const pr = G.drawNotif ? G.drawNotif($("me-ntpane")) : Promise.resolve();
-    return pr.then(() => { if (G.markNotifSeen) G.markNotifSeen(); });
+    box.innerHTML = `<p>${T("सूचनाको सूची र सबै सूचना सेटिङ अब एउटै ठाउँमा छन्।", "The notification list and all notification settings are now in one place.")}</p>
+      <p><a class="btn" href="${R}notifications/">🔔 ${T("सूचना र नोटिफिकेसन खोल्नुहोस्", "Open Alerts & notifications")}</a></p>`;
+    return Promise.resolve();
   }
   function display() {
     const box = $("me-display");
