@@ -429,7 +429,7 @@
   function riverHi() {
     const box = $("rivhi"); if (box === NIL) return;
     const gs = [...gauges.gauges].sort((a, b) => gaugePct(b) - gaugePct(a)).slice(0, 3);
-    box.innerHTML = `<ul class="hilist">${gs.map((g) => `<li><span class="hin">${G.esc(T(g.ne, g.en))}</span><span class="hiv" style="color:${GSC[gaugeState(g)]}">${G.num(g.level.toFixed(1))} ${T("मि.", "m")} · ${T(...GSW[gaugeState(g)])}</span></li>`).join("")}</ul>
+    box.innerHTML = `<ul class="hilist">${gs.map((g) => `<li><span class="hin">${G.esc(T(g.ne, g.en))}</span> <span class="hiv" style="color:${GSC[gaugeState(g)]}">${G.num(g.level.toFixed(1))} ${T("मि.", "m")} · ${T(...GSW[gaugeState(g)])}</span></li>`).join("")}</ul>
       <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">DHM</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))} ${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>`;
   }
   function roadHi() {
@@ -438,7 +438,7 @@
     const rs = [...roads.routes].sort((a, b) => order[a.status] - order[b.status]).slice(0, 4);
     const rc = roads.routes.reduce((m, r) => ((m[r.status] = (m[r.status] || 0) + 1), m), {});
     box.innerHTML = `<p class="hisum">${T(`${G.num(rc.open || 0)}/${G.num(roads.routes.length)} मुख्य सडक खुला`, `${rc.open || 0} of ${roads.routes.length} main roads open`)}</p>
-      <ul class="hilist">${rs.map((r) => `<li><span class="hin">${G.esc(ne() ? r.name_ne : r.name_en)}</span><span class="hiv" style="color:${RC[r.status]}">${G.esc(rw(r.status))}</span></li>`).join("")}</ul>
+      <ul class="hilist">${rs.map((r) => `<li><span class="hin">${G.esc(ne() ? r.name_ne : r.name_en)}</span> <span class="hiv" style="color:${RC[r.status]}">${G.esc(rw(r.status))}</span></li>`).join("")}</ul>
       <p class="meta">${G.esc(ne() ? roads.as_of_ne : roads.as_of_en)}</p>`;
   }
   function wxHome() {
