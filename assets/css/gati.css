@@ -1776,3 +1776,14 @@ header.top .bar .brand .logo{height:66px!important}
 html{scroll-padding-top:100px}@media(min-width:900px){html{scroll-padding-top:140px}}#misinfo,.cgrp,#ccount{scroll-margin-top:108px}@media(min-width:900px){#misinfo,.cgrp,#ccount{scroll-margin-top:148px}}
 /* home highlight rows: name and status always separated (wraps under on narrow screens instead of touching) */
 .hilist li{flex-wrap:wrap;column-gap:16px;row-gap:2px;align-items:baseline}.hilist .hin{flex:1 1 12em;min-width:0}.hilist .hiv{flex:0 0 auto;margin-left:auto}
+/* type roles (Nov 2026), set from the home Roads card: title = "सडक", summary = "१५/८० मुख्य सडक खुला", body = road name, label = status, meta = checked time.
+   NE body is one step larger than EN, as on the card. Page H1/H2 keep their own sizes. */
+:root{--r-title:var(--fs-4);--r-sum:var(--fs-3);--r-body:var(--fs-4);--r-label:var(--fs-5);--r-meta:var(--fs-6)}
+html[lang=ne]{--r-body:var(--fs-3)}
+body{font-size:var(--r-body)!important}
+main p:not([class]),main li:not([class]),main td,main dd,main dt,main summary,.lead,.hli,.crow,.cname,.hmsh,.hml li,.fout,.ftr{font-size:var(--r-body)}
+.hisum,.fbig,.aqhl{font-size:var(--r-sum)!important}
+.hin{font-size:var(--r-body)!important}
+.hiv,.cchip,.hmcats button,.hltabs button,.hmchip,.ccat,.tag,.ccall span,.pcall span,.hiqn a,.hinfo .hiqn a,.fform input,.fform select,.hform input,.hform select,main input,main select,main button{font-size:var(--r-label)}
+.meta,.hmnote,.hmcx,.hmleg,.hiac .meta,.fth,.fform label,.hform label,.csub,.csrc,.ccount,.cpinh,.mxhint,.hinfo .hib,.hmnat{font-size:var(--r-meta)!important}
+.card h3,.sechead h3,.hmhead h2,.dcard h3,.hlh b,.mdtitle{font-size:var(--r-title)}
