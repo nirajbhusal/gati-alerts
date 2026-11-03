@@ -40,14 +40,15 @@
     ["weather", "weather/", "मौसम र हावा", "Weather & air"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
-    ["health", "health/", "अस्पताल बेड र रगत", "Hospital beds & blood"],
+    ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"],
+    ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"],
     ["safety", "safety/", "के गर्ने", "What to do"],
     ["sources", "sources/", "स्रोत", "Sources"],
     ["log", "log/", "परिवर्तन लग", "Change log"],
     ["about", "about/", "बारेमा", "About"],
   ];
   /* shorter English labels for the desktop menu row only */
-  const SHORT = { notifications: "Notifications", trek: "Trek", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
+  const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trek", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
@@ -75,6 +76,8 @@
     roads: '<path d="M8 3.5 5 20.5M16 3.5l3 17"/><path d="M12 5v2.5M12 11v2.5M12 17v2.5"/>',
     route: '<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h7.5a3 3 0 0 0 0-6h-7a3 3 0 0 1 0-6H16"/>',
     trek: '<path d="m3 19.5 6.5-11 4 6 2.5-3.5 5 8.5z"/><path d="m8 11 1.5 1.5L11 11"/>',
+    health: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/>',
+    fuel: '<path d="M5 20.5V5.5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M4 20.5h12M7.5 7.5h5v4h-5z"/><path d="M15 10h2a1.5 1.5 0 0 1 1.5 1.5V17a1.5 1.5 0 0 0 3 0V9l-3-3"/>',
     contacts: '<path d="M6.5 3.5h3l1.5 4.5-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/>',
     safety: '<path d="M12 3.5 5 6v5.5c0 4.3 3 7.6 7 9 4-1.4 7-4.7 7-9V6z"/><path d="m9 12 2 2 4-4"/>',
     patro: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M7.5 13h1M11.5 13h1M15.5 13h1M7.5 16.5h1M11.5 16.5h1"/>',
@@ -99,7 +102,7 @@
     ["सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
     ["मौसम र जोखिम", "Weather and hazards", [["weather", "weather/", "मौसम र हावा", "Weather & air"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
     ["यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग जाँच", "Trek check"]]],
-    ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
+    ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"], ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
     ["बारेमा", "About", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"]]],
   ];
   const mgroups = `<div class="mgroups"><a class="mghome" href="${ROOT}./"${PAGE === "home" ? ' aria-current="page"' : ""}>${b("गृहपृष्ठ", "Home")}</a>${GRP.map(([ne, en, it]) => `<div class="mg"><p class="mgh">${b(ne, en)}</p><div class="mgl">${it.map(([id, href, n, e]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(n, e)}</a>`).join("")}</div></div>`).join("")}</div>`;
