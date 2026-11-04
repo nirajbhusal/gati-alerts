@@ -1821,6 +1821,10 @@ header.top .bar .hr .bellbtn .bdot.bnum{top:2px;right:2px}header.top .bar .menub
 .hgdots{display:flex;gap:6px}.hgdots i{width:22px;height:10px;border-radius:5px;background:var(--c)}
 .hgag{list-style:none;margin:0;padding:0;display:grid;gap:4px}.hgag li{display:flex;gap:6px;align-items:baseline;font-size:var(--r-label)}.hgag li{flex-wrap:wrap}.hgag li b{margin-left:auto}.hgag li .meta{flex-basis:100%;margin-top:-2px}
 .hgt .meta{font-size:var(--r-meta)}
+.hgsv{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.hgsv{grid-template-columns:repeat(2,minmax(0,1fr))}.hgsv>.hgt:nth-child(3){grid-column:span 2}.hgsv>.hgt:nth-child(4){grid-column:auto}}
+.hgcall{display:grid;grid-template-columns:1fr 1fr;gap:6px}.hgcall a{display:flex;flex-direction:column;justify-content:center;min-height:44px;padding:4px 8px;border:1px solid var(--line);border-radius:10px;text-decoration:none!important;color:var(--ink)!important;font-size:var(--r-meta)}.hgcall a b{font-size:var(--r-label)}
+.hinfo .hgcall a,.hinfo a.hgt,.hinfo a.hgt *{text-decoration:none!important}
 /* Tihar 2083: a thin header strip only. Brass and cream, so it cannot be read as a severity badge
    (those stay red, orange and yellow). No motion. The lamp glow is a static blur and turns off
    when the visitor asks for less motion. Alerts, the Breaking bar and trust labels are untouched. */

@@ -41,8 +41,18 @@
     if (!q) return `<b>${T("भूकम्प", "Earthquake")}:</b> ${T("NSC को M4 माथिको हालको भूकम्प छैन।", "No recent NSC quake above M4.")}`;
     const i = q.info[G.lang === "ne" ? "ne" : "en"] || q.info.en;
     return `<b>${T("पछिल्लो भूकम्प (M4 माथि)", "Latest quake (M4+)")}:</b> <a href="${R}alerts/${E(q.identifier)}/">${E(i.headline)}</a> <span class="meta">· ${T("स्रोत", "Source")}: <a href="${E(i.web)}" target="_blank" rel="noopener">NSC</a> · ${tm(q.sent)}</span>`; };
-  B.sos = (D) => { const c = D.ct; if (!c) return ""; const L = c.national.filter((x) => x.num !== "1149");
-    return `<b>${T("आपतकालीन नम्बर", "Emergency numbers")}:</b> ` + L.map((x) => `<a href="tel:${E(x.num)}">${E(T(x.ne, x.en))} ${N(x.num)}</a>`).join(" · ") + ` <span class="meta">· ${T("निकायले सूचीकृत गरेअनुसार", "as each agency lists them")}, <a href="${R}contacts/">${T("स्रोत", "sources")}</a> · ${T("जाँचेको", "checked")} ${E(N(c.checked))}</span>`; };
+  /* Services row: fuel price (NOC), hospital beds and blood (MoHP), emergency numbers. Each with its own source and time. */
+  const IC2 = { fuel: '<path d="M5 20.5V5.5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M4 20.5h12M7.5 7.5h5v4h-5z"/><path d="M15 10h2a1.5 1.5 0 0 1 1.5 1.5V17a1.5 1.5 0 0 0 3 0V9l-3-3"/>',
+    bed: '<path d="M3 18.5V7M3 14h18v4.5M21 14v-2.5a3 3 0 0 0-3-3h-7v5.5"/><circle cx="7" cy="11" r="2"/>', drop: '<path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0c0-4.1 6-10.5 6-10.5z"/><path d="M12 11v6M9 14h6"/>',
+    phone: '<path d="M6.5 3.5h3l1.5 4.5-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/>' };
+  const ic2 = (k) => `<svg class="hgi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC2[k]}</svg>`;
+  B.sos = (D) => { const out = [];
+    const f = D.fu, g0 = f && f.groups && f.groups[0];
+    if (g0) out.push(`<a class="hgt" href="${R}fuel/"><span class="hgh">${ic2("fuel")}<b>${T("इन्धन मूल्य", "Fuel price")}</b></span><span class="hgbig">${T("रु.", "NPR")} ${N(g0.price.petrol)} <small>${T("पेट्रोल/लिटर", "petrol/litre")}</small></span><span class="hgkey">${T("डिजेल", "Diesel")} ${N(g0.price.diesel)} · ${E(T(g0.name_ne, g0.name_en))}</span><span class="meta">${T("स्रोत", "Source")}: NOC · ${T("लागू", "effective")} ${E(G.npt(f.effective).split(" · ")[0])}</span></a>`);
+    const h = D.hl; if (h && h.beds) out.push(`<a class="hgt" href="${R}health/"><span class="hgh">${ic2("bed")}<b>${T("अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood")}</b></span><span class="hgbig">${N(h.beds.items.length)} <small>${T("अस्पताल", "hospitals")}</small> · ${N((h.blood.items || []).length)} <small>${T("ब्लड बैंक", "blood banks")}</small></span><span class="hgkey">${T("नि:शुल्क बेड र रगतको मौज्दात हेर्नुहोस्", "See free beds and blood stock")}</span><span class="meta">${T("स्रोत", "Source")}: ${T("स्वास्थ्य मन्त्रालय", "MoHP")} · ${T("जाँचेको", "checked")} ${tm(h.checked)}</span></a>`);
+    const c = D.ct; if (c) { const L = c.national.filter((x) => x.num !== "1149").slice(0, 4);
+      out.push(`<div class="hgt"><span class="hgh">${ic2("phone")}<b>${T("आपतकालीन नम्बर", "Emergency numbers")}</b></span><span class="hgcall">${L.map((x) => `<a href="tel:${E(x.num)}"><b>${N(x.num)}</b> ${E(T(x.ne, x.en))}</a>`).join("")}</span><span class="meta"><a href="${R}contacts/">${T("सबै नम्बर", "All numbers")}</a> · ${T("निकायले सूचीकृत", "as listed by the agencies")}</span></div>`); }
+    return `<div class="hglg hgsv">${out.join("")}</div>`; };
   /*BLOCKS*/
   Promise.all(["data/source-health.json", "data/alerts.json", "data/caan.json", "data/rivers.json", "data/contacts.json", "data/roads.json", "data/weather.json", "data/fuel.json", "data/health.json"].map(J)).then(([sh, al, caan, rv, ct, rd, wx, fu, hl]) => {
     const D = { sh, al: al ? al.alerts : [], caan, rv, ct, rd, wx, fu, hl };
