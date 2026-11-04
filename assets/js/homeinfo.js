@@ -9,16 +9,32 @@
   B.quick = () => `<nav class="hiqn" aria-label="${E(T("छिटो जाँच", "Quick checks"))}"><a href="${R}route/">${T("सडक मार्ग जाँच्नुहोस्", "Check a road route")}</a><a href="${R}trek/">${T("पदमार्ग जाँच्नुहोस्", "Check a trek")}</a><a href="${R}affected/">${T("मेरो जिल्ला जाँच्नुहोस्", "Check my district")}</a></nav>`;
   B.fresh = (D) => { if (!D.sh) return ""; const S = D.sh.sources, L = [["dhm-hydrology", "DHM"], ["ndrrma", "NDRRMA"], ["nepal-police", T("नेपाल प्रहरी", "Nepal Police")], ["nsc", "NSC"], ["dor-navigate", "DoR NAVIGATE"]];
     return `<b>${T("स्रोतबाट पछिल्लो अद्यावधिक", "Last updated by source")}:</b> ` + L.filter(([k]) => S[k]).map(([k, n]) => { const s = S[k]; return `<span class="hifs">${n}: ${s.lastSuccess ? tm(s.lastSuccess) : `${T("पछिल्लो जाँचमा पुग्न सकिएन", "not reachable at last check")} (${tm(s.lastChecked)})`}</span>`; }).join(" · ") + ` · <a href="${R}sources/">${T("स्रोत स्थिति", "Source health")}</a>`; };
-  B.agency = (D) => { const act = (f) => D.al.filter((a) => !a.expired && f(a)), last = (xs) => xs.map((a) => a.sent).sort().pop();
-    const card = (ne, en, n, unit, href, srcH, when) => `<a class="hiac" href="${href}"><b>${E(T(ne, en))}</b><span class="hin">${N(n)}</span><span class="meta">${unit}</span><span class="meta">${srcH}${when ? " · " + when : ""}</span></a>`;
-    const dhm = act((a) => a.sender === "hydrology.gov.np"), nd = act((a) => a.sender === "ndrrma.gov.np"), rdA = act((a) => a.hazard === "road" && a.sender === "nepalpolice.gov.np");
-    const c = D.caan;
-    return `<div class="hiag">${card("DHM", "DHM", dhm.length, T("चालु सूचना", "active notices"), R + "weather/", "DHM", dhm.length ? tm(last(dhm)) : "")}
-      ${card("NDRRMA", "NDRRMA", nd.length, T("चालु सूचना", "active notices"), R + "alerts/", "NDRRMA", nd.length ? tm(last(nd)) : "")}
-      ${c ? card("CAAN", "CAAN", c.notices, E(T(c.latest_ne, c.latest_en)), c.url, T("CAAN वेबसाइट, जाँचेको", "CAAN website, checked"), tm(c.checked)) : ""}
-      ${card("सडक", "Roads", rdA.length, T("नेपाल प्रहरीको चालु सडक अवरोध सूचना", "active Nepal Police road blockage notices"), R + "roads/", T("नेपाल प्रहरी", "Nepal Police"), rdA.length ? tm(last(rdA)) : (D.rd ? tm(D.rd.as_of) : ""))}</div>
-      <p class="meta">${T("प्रत्येक निकायको संख्या छुट्टै; कहिल्यै जोडिँदैन।", "Each agency's count is separate; never added together.")}</p>`; };
-  B.rivers = (D) => { const v = D.rv; if (!v) return ""; const hot = v.gauges.filter((g) => g.level >= g.warning);
+  /* Today at a glance: one tile per source, each with its own small graphic, source and time. Counts stay per agency, never added. */
+  const IC = { river: '<path d="M3 8c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/><path d="M3 13c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/><path d="M3 18c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/>',
+    road: '<path d="M8 3 5 21M16 3l3 18"/><path d="M12 4v3M12 10.5v3M12 17v3"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>',
+    bell: '<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>' };
+  G.hic = (k) => `<svg class="hgi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k] || ""}</svg>`;
+  const tile = (ic, ne, en, href, big, graphic, src) => `<a class="hgt" href="${href}"><span class="hgh">${G.hic(ic)}<b>${T(ne, en)}</b></span><span class="hgbig">${big}</span>${graphic}<span class="meta">${src}</span></a>`;
+  const LV = { green: ["#2E9E5B", "चेतावनी छैन", "No warning"], yellow: ["#E8B500", "सतर्क", "Be aware"], orange: ["#F28C1E", "तयार रहनुहोस्", "Be prepared"], red: ["#D7263D", "कदम चाल्नुहोस्", "Take action"] };
+  B.agency = (D) => { const act = (f) => D.al.filter((a) => !a.expired && Date.parse(a.expires) > Date.now() && !a.supersededBy && f(a)), last = (xs) => xs.map((a) => a.sent).sort().pop();
+    const out = [];
+    const v = D.rv; if (v && v.gauges.length) { const g = v.gauges, ok = g.filter((x) => x.level < x.warning).length;
+      out.push(tile("river", "नदी", "Rivers", R + "rivers/", `${N(ok)}/${N(g.length)} <small>${T("गेज चेतावनी तहमुनि", "gauges below warning")}</small>`,
+        `<span class="hgbars" aria-hidden="true">${g.map((x) => `<i style="--h:${Math.min(100, Math.round((x.level / x.danger) * 100))}%;--c:${x.level >= x.danger ? "#D7263D" : x.level >= x.warning ? "#F28C1E" : "#2E9E5B"}" title="${E(T(x.ne, x.en))}"></i>`).join("")}</span><span class="hgkey">${T("बार = सतह, खतरा तहको तुलनामा", "Bar = level against danger line")}</span>`,
+        `${T("स्रोत", "Source")}: <span>DHM</span> · ${E(T(v.as_of_ne, v.as_of_en))}`)); }
+    const b5 = D.wx && D.wx.bulletin5; if (b5 && b5.days) { const worst = b5.days.reduce((m, d) => (["green", "yellow", "orange", "red"].indexOf(d.level) > ["green", "yellow", "orange", "red"].indexOf(m) ? d.level : m), "green"), lv = LV[worst] || LV.green;
+      out.push(tile("sun", "५ दिनको चेतावनी", "5-day warning", R + "weather/", `<small>${T(lv[1], lv[2])}</small>`,
+        `<span class="hgdots" aria-hidden="true">${b5.days.map((d) => `<i style="--c:${(LV[d.level] || LV.green)[0]}"></i>`).join("")}</span>`,
+        `${T("स्रोत", "Source")}: DHM · ${T("जारी", "issued")} ${tm(b5.issued)}`)); }
+    const rd = D.rd; if (rd && rd.routes) { const c = { open: 0, oneway: 0, blocked: 0, none: 0 }; rd.routes.forEach((r) => (c[r.status] = (c[r.status] || 0) + 1)); const n = rd.routes.length, pc = (k) => ((c[k] || 0) / n) * 100;
+      out.push(tile("road", "सडक", "Roads", R + "roads/", `${N(c.open)}/${N(n)} <small>${T("मुख्य सडक खुला", "main roads open")}</small>`,
+        `<span class="hgstack" aria-hidden="true"><i style="width:${pc("open")}%;--c:#2E9E5B"></i><i style="width:${pc("oneway")}%;--c:#F28C1E"></i><i style="width:${pc("blocked")}%;--c:#D7263D"></i><i style="width:${pc("none")}%;--c:#C9D3DD"></i></span><span class="hgkey">${T("एकतर्फी", "One way")} ${N(c.oneway)} · ${T("बन्द", "Blocked")} ${N(c.blocked || 0)} · ${T("पुष्टि छैन", "Not confirmed")} ${N(c.none)}</span>`,
+        `${T("स्रोत", "Source")}: ${T("नेपाल प्रहरी", "Nepal Police")} · ${E(T(rd.as_of_ne, rd.as_of_en))}`)); }
+    const dhm = act((a) => a.sender === "hydrology.gov.np"), nd = act((a) => a.sender === "ndrrma.gov.np"), pol = act((a) => a.sender === "nepalpolice.gov.np"), c = D.caan;
+    const row = (n, cnt, when) => `<li><span>${n}</span><b>${N(cnt)}</b>${when ? `<span class="meta">${when}</span>` : ""}</li>`;
+    out.push(`<a class="hgt" href="${R}alerts/"><span class="hgh">${G.hic("bell")}<b>${T("चालु सूचना, निकाय अनुसार", "Active notices by agency")}</b></span><ul class="hgag">${row("DHM", dhm.length, dhm.length ? tm(last(dhm)) : "")}${row("NDRRMA", nd.length, nd.length ? tm(last(nd)) : "")}${row(T("नेपाल प्रहरी", "Nepal Police"), pol.length, pol.length ? tm(last(pol)) : "")}${c ? row("CAAN", c.notices, T("जाँचेको", "checked") + " " + tm(c.checked)) : ""}</ul><span class="meta">${T("प्रत्येक निकायको संख्या छुट्टै; कहिल्यै जोडिँदैन।", "Each agency's count is separate; never added together.")}</span></a>`);
+    return `<h2 class="hgt0">${T("आजको झलक", "Today at a glance")}</h2><div class="hglg">${out.join("")}</div>`; };
+  B.rivers = (D) => { const v = D.rv; if (!v) return ""; const hot = v.gauges.filter((g) => g.level >= g.warning); if (!hot.length) return "";
     const src = `<span class="meta">${T("स्रोत", "Source")}: <a href="${E(v.url)}" target="_blank" rel="noopener">DHM</a> · ${E(T(v.as_of_ne, v.as_of_en))}</span>`;
     return `<b>${T("नदी", "Rivers")}:</b> ` + (hot.length ? hot.map((g) => `${E(T(g.ne, g.en))} ${N(g.level)} m ${g.level >= g.danger ? `<span class="sev sev-Extreme">${T("खतरा तह", "danger level")}</span>` : `<span class="sev sev-Moderate">${T("चेतावनी तह", "warning level")}</span>`}`).join(" · ") : T("चेतावनी वा खतरा तहमा कुनै DHM मापन केन्द्र छैन।", "No DHM gauge at warning or danger level.")) + " " + src; };
   B.quake = (D) => { const q = D.al.filter((a) => a.sender === "seismonepal.gov.np" && parseFloat((a.info.en.params || {})["gati:magnitude"]) >= 4).sort((a, b) => (a.sent < b.sent ? 1 : -1))[0];
@@ -28,8 +44,8 @@
   B.sos = (D) => { const c = D.ct; if (!c) return ""; const L = c.national.filter((x) => x.num !== "1149");
     return `<b>${T("आपतकालीन नम्बर", "Emergency numbers")}:</b> ` + L.map((x) => `<a href="tel:${E(x.num)}">${E(T(x.ne, x.en))} ${N(x.num)}</a>`).join(" · ") + ` <span class="meta">· ${T("निकायले सूचीकृत गरेअनुसार", "as each agency lists them")}, <a href="${R}contacts/">${T("स्रोत", "sources")}</a> · ${T("जाँचेको", "checked")} ${E(N(c.checked))}</span>`; };
   /*BLOCKS*/
-  Promise.all(["data/source-health.json", "data/alerts.json", "data/caan.json", "data/rivers.json", "data/contacts.json", "data/roads.json"].map(J)).then(([sh, al, caan, rv, ct, rd]) => {
-    const D = { sh, al: al ? al.alerts : [], caan, rv, ct, rd };
+  Promise.all(["data/source-health.json", "data/alerts.json", "data/caan.json", "data/rivers.json", "data/contacts.json", "data/roads.json", "data/weather.json", "data/fuel.json", "data/health.json"].map(J)).then(([sh, al, caan, rv, ct, rd, wx, fu, hl]) => {
+    const D = { sh, al: al ? al.alerts : [], caan, rv, ct, rd, wx, fu, hl };
     const draw = () => Object.keys(B).forEach((k) => { const el = box.querySelector(`[data-b="${k}"]`); if (el) { try { el.innerHTML = B[k](D); } catch (e) { el.innerHTML = ""; } } });
     draw(); G.onLang(draw);
   });
