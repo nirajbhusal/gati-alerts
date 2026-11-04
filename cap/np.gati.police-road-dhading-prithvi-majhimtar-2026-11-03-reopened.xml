@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-dhading-prithvi-majhimtar-2026-11-03-reopened</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-03T12:38:41+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters (citing the Mugling Road Project, West Section, Mugling, Dhading). Source: Nepal Police on X, 12:38 PM NPT 3 Nov 2026: https://x.com/NepalPoliceHQ/status/2117510509859852734 ; closure notice: https://www.nepalpolice.gov.np/notices/1141/</note>
+  <references>nepalpolice.gov.np,np.gati.police-road-dhading-prithvi-majhimtar-2026-11-03,2026-11-03T09:00:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>AllClear</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-03T12:38:41+05:45</effective>
+    <onset>2026-11-03T12:38:41+05:45</onset>
+    <expires>2026-11-03T23:59:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>धादिङ, मझिमटार: पृथ्वी राजमार्ग पूर्ण रूपमा सुचारु</headline>
+    <description>अद्यावधिक, आधिकारिक: नेपाल प्रहरी (X, कात्तिक १७ दिउँसो १२:३८): आकाशे पुल निर्माण तथा सडक स्तरोन्नतिका लागि सवारी आवागमनमा रोक लगाइएको धादिङको मझिमटारस्थित पृथ्वी राजमार्ग पूर्ण रूपमा सुचारु। कात्तिक १८ बिहान ५:४० बजेसम्मको प्रहरीको सडक अवरोध सूचनामा पनि यो बन्द छैन।</description>
+    <instruction>सावधानीपूर्वक सवारी चलाउनुहोस् र ट्राफिक नियम पालना गर्नुहोस् (प्रहरी १००)।</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2117510509859852734</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2117510509859852734</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-03T12:38:41+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>धादिङ, मझिमटार: पृथ्वी राजमार्ग पूर्ण रूपमा सुचारु</value></parameter>
+    <area>
+      <areaDesc>धादिङ जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+    <area>
+      <areaDesc>मझिमटार, बेनीघाट रोराङ–९, पृथ्वी राजमार्ग (अनुमानित स्थान)</areaDesc>
+      <circle>27.82,84.75 4</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>AllClear</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-03T12:38:41+05:45</effective>
+    <onset>2026-11-03T12:38:41+05:45</onset>
+    <expires>2026-11-03T23:59:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Dhading, Majhimtar: Prithvi Highway fully reopened</headline>
+    <description>Update, official: Nepal Police (X, 12:38 PM Kartik 17 / 3 Nov): the Prithvi Highway at Majhimtar, Dhading, where traffic was stopped for footbridge construction and road upgrading, has fully reopened. The closure is also no longer on Nepal Police's road-blockage notice to 5:40 AM Kartik 18 (4 Nov).</description>
+    <instruction>Drive carefully and follow traffic rules (police 100).</instruction>
+    <web>https://x.com/NepalPoliceHQ/status/2117510509859852734</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://x.com/NepalPoliceHQ/status/2117510509859852734</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-03T12:38:41+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Dhading, Majhimtar: Prithvi Highway fully reopened</value></parameter>
+    <area>
+      <areaDesc>Dhading district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0330</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Majhimtar, Benighat Rorang-9, Prithvi Highway (approximate location)</areaDesc>
+      <circle>27.82,84.75 4</circle>
+    </area>
+  </info>
+</alert>
