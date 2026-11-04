@@ -1833,7 +1833,7 @@ header.top .bar .hr .bellbtn .bdot.bnum{top:2px;right:2px}header.top .bar .menub
 .hgn{position:absolute;top:10px;right:12px;font-size:var(--r-meta);font-weight:700;color:var(--slate)}
 @media(max-width:600px){.hgsteps{grid-template-columns:minmax(0,1fr)}.hgsteps a{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:10px;padding:10px 12px}.hgsteps a small{flex-basis:100%;padding-left:40px;margin-top:-6px}}
 .hinfo .hgsteps a,.hinfo .hgsteps a *,.hinfo a.hgt,.hinfo a.hgt *,.hinfo .hgcall a,.hinfo .hgcall a *{text-decoration:none!important;color:var(--ink)!important}.hinfo .hgsteps a svg,.hinfo .hgt .hgi{color:var(--teal,#0F6F78)!important}.hinfo .hgsteps small,.hinfo .hgt .meta,.hinfo .hgkey,.hinfo .hgbig small{color:var(--slate)!important}
-.gdgrid.gd-home>:last-child:nth-child(odd){grid-column:1/-1}
+.gdgrid.gd-home>:last-child{grid-column:1/-1}
 /* Tihar 2083: a thin header strip only. Brass and cream, so it cannot be read as a severity badge
    (those stay red, orange and yellow). No motion. The lamp glow is a static blur and turns off
    when the visitor asks for less motion. Alerts, the Breaking bar and trust labels are untouched. */
