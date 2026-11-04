@@ -6,7 +6,15 @@
   const tm = (iso) => (iso ? `<time datetime="${E(iso)}">${E(G.npt(iso))}</time>` : T("समय छैन", "no time"));
   const J = (p) => fetch(R + p).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   const B = {};
-  B.quick = () => `<nav class="hiqn" aria-label="${E(T("छिटो जाँच", "Quick checks"))}"><a href="${R}route/">${T("सडक मार्ग जाँच्नुहोस्", "Check a road route")}</a><a href="${R}trek/">${T("पदमार्ग जाँच्नुहोस्", "Check a trek")}</a><a href="${R}affected/">${T("मेरो जिल्ला जाँच्नुहोस्", "Check my district")}</a></nav>`;
+  /* Before you travel: three illustrated steps, each a 44px link (replaces the three quick-check pills) */
+  const STEP = { pin: '<path d="M12 21s-6.5-5.8-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/>',
+    route: '<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8 18h6.5a3.5 3.5 0 0 0 0-7h-5a3.5 3.5 0 0 1 0-7H16"/>',
+    trek: '<path d="M2.5 19.5 9 8l4 6 2.5-3.5 6 9z"/><path d="M14.5 6.5l1-2 1 2"/>' };
+  const sic = (k) => `<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${STEP[k]}</svg>`;
+  B.quick = () => `<section class="hgtrav" aria-label="${E(T("यात्रा अघि", "Before you travel"))}"><h2 class="hgt0">${T("यात्रा अघि", "Before you travel")}</h2><ol class="hgsteps">
+    <li><a href="${R}affected/"><span class="hgn">${N(1)}</span>${sic("pin")}<b>${T("मेरो जिल्ला जाँच्नुहोस्", "Check my district")}</b><small>${T("चालु आधिकारिक सूचना", "Active official alerts")}</small></a></li>
+    <li><a href="${R}route/"><span class="hgn">${N(2)}</span>${sic("route")}<b>${T("सडक मार्ग जाँच्नुहोस्", "Check a road route")}</b><small>${T("प्रहरीको सडक अवस्था", "Police road status")}</small></a></li>
+    <li><a href="${R}trek/"><span class="hgn">${N(3)}</span>${sic("trek")}<b>${T("पदमार्ग जाँच्नुहोस्", "Check a trek")}</b><small>${T("मौसम, अनुमति, सम्पर्क", "Weather, permits, contacts")}</small></a></li></ol></section>`;
   B.fresh = (D) => { if (!D.sh) return ""; const S = D.sh.sources, L = [["dhm-hydrology", "DHM"], ["ndrrma", "NDRRMA"], ["nepal-police", T("नेपाल प्रहरी", "Nepal Police")], ["nsc", "NSC"], ["dor-navigate", "DoR NAVIGATE"]];
     return `<b>${T("स्रोतबाट पछिल्लो अद्यावधिक", "Last updated by source")}:</b> ` + L.filter(([k]) => S[k]).map(([k, n]) => { const s = S[k]; return `<span class="hifs">${n}: ${s.lastSuccess ? tm(s.lastSuccess) : `${T("पछिल्लो जाँचमा पुग्न सकिएन", "not reachable at last check")} (${tm(s.lastChecked)})`}</span>`; }).join(" · ") + ` · <a href="${R}sources/">${T("स्रोत स्थिति", "Source health")}</a>`; };
   /* Today at a glance: one tile per source, each with its own small graphic, source and time. Counts stay per agency, never added. */
