@@ -12,7 +12,7 @@
   const SEVS = G.SEVORDER, sevL = (s) => L(G.SEV[s][0], G.SEV[s][1]);
   /* reserved heights (px) per page at 390 / wide; content is laid out to fit inside */
   const CFG = {
-    home: { at: ".hhead", h: [1350, 840], b: ["agency", "roads", "rivers", "wx5"] },
+    home: { at: ".hhead", h: [1350, 840], b: ["agency", "roads"] },
     alerts: { h: [715, 384], b: ["agency", "trust"] },
     earthquakes: { h: [498, 302], b: ["quakes"] },
     roads: { h: null, b: ["roadmap", "roads"] } /* reserved in gati.css per width and language */,
