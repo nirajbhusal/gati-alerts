@@ -1,7 +1,7 @@
 {
- "as_of": "2026-11-04",
- "as_of_ne": "नोभेम्बर ४ (कात्तिक १८), बिहान ८:४० देखि ८:५० NPT बीचको पठन",
- "as_of_en": "4 Nov (Kartik 18), readings 8:40 to 8:50 AM NPT",
+ "as_of": "2026-11-05",
+ "as_of_ne": "नोभेम्बर ५ (कात्तिक १९), बिहान ८:४० देखि ९:१० NPT बीचको पठन",
+ "as_of_en": "5 Nov (Kartik 19), readings 8:40 to 9:10 AM NPT",
  "source_ne": "जल तथा मौसम विज्ञान विभाग (DHM) नदी निगरानी, hydrology.gov.np",
  "source_en": "DHM river watch, hydrology.gov.np",
  "url": "https://hydrology.gov.np/",
@@ -14,7 +14,7 @@
     27.71,
     84.43
    ],
-   "level": 3.77,
+   "level": 3.66,
    "warning": 7.3,
    "danger": 9.0
   },
@@ -26,7 +26,7 @@
     28.65,
     81.29
    ],
-   "level": 4.46,
+   "level": 4.4,
    "warning": 10.0,
    "danger": 10.8
   },
@@ -38,7 +38,7 @@
     26.71,
     87.88
    ],
-   "level": 2.45,
+   "level": 2.48,
    "warning": 3.8,
    "danger": 4.3
   },
@@ -50,7 +50,7 @@
     28.36,
     81.71
    ],
-   "level": 2.15,
+   "level": 2.17,
    "warning": 5.5,
    "danger": 6.8
   },
@@ -62,7 +62,7 @@
     29.17,
     80.26
    ],
-   "level": 3.73,
+   "level": 3.7,
    "warning": 6.8,
    "danger": 8.0
   }

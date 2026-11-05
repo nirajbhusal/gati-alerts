@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-04T09:15:00+05:45",
+ "checked": "2026-11-05T09:30:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,60 +7,60 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": true
  },
- "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक १८ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी सबैभन्दा पछिल्लो हो: कात्तिक १८ देखि २२ सम्म देशभर हरियो (चेतावनी छैन)। बिहान ९:१५ NPT सम्म नयाँ विशेष बुलेटिन आएको छैन। DHM (@NMD_Weather, कात्तिक १७ साँझ ६:२०): राति मौसम सम्बन्धी चेतावनी जारी गरिएको छैन। DHM (@NMD_Weather, कात्तिक १७ दिउँसो १२:१०): अघिल्लो २४ घण्टामा सबैभन्दा बढी वर्षा सोलुखुम्बुको टासीगाउँमा १०.२ मि.मि.। DHM को नदी निगरानी (hydrology.gov.np) अनुसार बिहान ८:४० देखि ८:५० बजेतिर सबै ३३५ मापन केन्द्र चेतावनी तहभन्दा तल।",
- "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 18 is the latest: green (no warning) everywhere from Kartik 18 to 22 (4 to 8 Nov). No new special bulletin as of 9:15 AM NPT. DHM (@NMD_Weather, 6:20 PM Kartik 17): no weather warning issued for the night. DHM (@NMD_Weather, 12:10 PM Kartik 17): the highest 24-hour rainfall was 10.2 mm at Tashigaun, Solukhumbu. DHM river watch (hydrology.gov.np): all 335 gauges below warning level at about 8:40 to 8:50 AM.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक १९ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी सबैभन्दा पछिल्लो हो: कात्तिक १९ देखि २३ सम्म देशभर हरियो (चेतावनी छैन)। DHM ले कात्तिक १८ साँझ ६ बजे तिहार विशेष मौसम बुलेटिन–१ जारी गरेको: तिहारभर (कात्तिक २१ देखि २५) पश्चिमी वायुको सामान्य प्रभाव मात्र, हिमाल-पहाडका एक-दुई स्थानमा हल्का वर्षा/हिमपात र तराई, उपत्यका तथा खोँचमा बिहानपख हुस्सु/कुहिरो। DHM को नदी निगरानी (hydrology.gov.np) अनुसार बिहान ८:४० देखि ९:१० बजेतिर गृहपृष्ठका ५ मापन केन्द्र चेतावनी तहभन्दा तल र स्थिर।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 19 is the latest: green (no warning) everywhere from Kartik 19 to 23 (5 to 9 Nov). DHM issued Tihar Special Weather Bulletin 1 at 6 PM Kartik 18: only a weak westerly influence through Tihar (Kartik 21 to 25, 7 to 11 Nov), light rain or snow at one or two places in the mountains and hills, and morning mist or fog in the Terai, valleys and gorges. DHM river watch (hydrology.gov.np): the 5 homepage gauges were below warning level and steady at about 8:40 to 9:10 AM.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
  "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",
  "rainfallUrl": "https://www.dhm.gov.np/hydrology/rainfall-watch",
  "bulletin5": {
-  "id": "np.gati.dhm-5day-bulletin-2026-11-04",
-  "issued": "2026-11-04T08:00:00+05:45",
-  "posted": "2026-11-04T07:14:11+05:45",
-  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12403",
+  "id": "np.gati.dhm-5day-bulletin-2026-11-05",
+  "issued": "2026-11-05T08:00:00+05:45",
+  "posted": "2026-11-05T07:31:16+05:45",
+  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12406",
   "trust": "Official",
   "days": [
-   {
-    "bs": "कात्तिक १८",
-    "ad": "2026-11-04",
-    "level": "green",
-    "ne": "गण्डकी, बागमती र कोशीका पहाडी-हिमाली भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईका केही स्थानमा हुस्सु/कुहिरो",
-    "en": "Light rain or snow at some places in the Gandaki, Bagmati and Koshi hills and mountains; mist or fog at some places in the Terai"
-   },
    {
     "bs": "कात्तिक १९",
     "ad": "2026-11-05",
     "level": "green",
-    "ne": "गण्डकी, बागमती र कोशीका पहाडी-हिमाली भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईका केही स्थानमा हुस्सु/कुहिरो",
-    "en": "Light rain or snow at some places in the Gandaki, Bagmati and Koshi hills and mountains; mist or fog at some places in the Terai"
+    "ne": "हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईका केही स्थानमा हुस्सु/कुहिरो",
+    "en": "Light rain or snow at some places in the mountains and hills; mist or fog at some places in the Terai"
    },
    {
     "bs": "कात्तिक २०",
     "ad": "2026-11-06",
     "level": "green",
-    "ne": "कर्णाली, गण्डकी, बागमती र कोशीका हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात",
-    "en": "Light rain or snow at some places in the Karnali, Gandaki, Bagmati and Koshi mountains and hills"
+    "ne": "हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईका केही स्थानमा हुस्सु/कुहिरो",
+    "en": "Light rain or snow at some places in the mountains and hills; mist or fog at some places in the Terai"
    },
    {
     "bs": "कात्तिक २१",
     "ad": "2026-11-07",
     "level": "green",
-    "ne": "पश्चिमदेखि पूर्वसम्मका हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात",
-    "en": "Light rain or snow at some places in the mountains and hills from west to east"
+    "ne": "काग तिहार: हिमाल-पहाडमा आंशिक बादल, तराईमा मुख्यतया सफा; हिमाल-पहाडका थोरै वा एक-दुई स्थानमा हल्का वर्षा/हिमपात; बिहानपख हुस्सु/कुहिरो",
+    "en": "Kag Tihar: partly cloudy in the mountains and hills, mainly fair in the Terai; light rain or snow at a few or one or two places in the mountains and hills; morning mist or fog"
    },
    {
     "bs": "कात्तिक २२",
     "ad": "2026-11-08",
     "level": "green",
-    "ne": "पश्चिमदेखि पूर्वसम्मका हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात",
-    "en": "Light rain or snow at some places in the mountains and hills from west to east"
+    "ne": "लक्ष्मी पूजा: हिमाल-पहाडमा आंशिक बादल, तराईमा मुख्यतया सफा; हिमालका थोरै र पहाडका एक-दुई स्थानमा हल्का वर्षा/हिमपात; बिहानपख हुस्सु/कुहिरो",
+    "en": "Laxmi Puja: partly cloudy in the mountains and hills, mainly fair in the Terai; light rain or snow at a few places in the mountains and one or two in the hills; morning mist or fog"
+   },
+   {
+    "bs": "कात्तिक २३",
+    "ad": "2026-11-09",
+    "level": "green",
+    "ne": "औँसी: हिमाल-पहाडमा आंशिक बादल, तराईमा मुख्यतया सफा; हिमालका एक-दुई स्थानमा हल्का वर्षा/हिमपात; बिहानपख हुस्सु/कुहिरो",
+    "en": "Aunsi: partly cloudy in the mountains and hills, mainly fair in the Terai; light rain or snow at one or two places in the mountains; morning mist or fog"
    }
   ],
   "advisory_ne": "पाँचै दिन देशभर कुनै मौसम चेतावनी छैन। हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईमा बिहानपख हुस्सु/कुहिरो।",
   "advisory_en": "No weather warning anywhere for all five days. Light rain or snow at some places in the mountains and hills; morning mist or fog in the Terai.",
-  "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक १८ देखि २२ सम्म पाँचै दिन सबै जिल्ला हरियो। दिनको विवरण नक्साका संकेतबाट लिइएको; DHM ले विस्तृत पाठ दिएको छैन।",
-  "map_note_en": "DHM's 5-day warning maps show every district green on all five days, Kartik 18 to 22. Day details are read from the map symbols; DHM gave no detailed text.",
-  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/04/warning-map-day-1-1793757212166.png"
+  "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक १९ देखि २३ सम्म पाँचै दिन सबै जिल्ला हरियो। कात्तिक १९ र २० को विवरण नक्साका संकेतबाट; कात्तिक २१ देखि २३ को विवरण DHM को तिहार विशेष मौसम बुलेटिन–१ बाट।",
+  "map_note_en": "DHM's 5-day warning maps show every district green on all five days, Kartik 19 to 23. Kartik 19 and 20 details are read from the map symbols; Kartik 21 to 23 details come from DHM's Tihar Special Weather Bulletin 1.",
+  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/05/warning-map-day-1-1793844320948.png"
  },
  "observed": {
   "time": "2026-11-03T18:20:00+05:45",

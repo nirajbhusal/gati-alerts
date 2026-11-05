@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-tihar-special-bulletin-1-2026-11-04</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-11-04T18:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division (dhm.gov.np/mfd), also posted by @NMD_Weather: https://x.com/NMD_Weather/status/2117958352890413234. Source: https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12405</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>विशेष मौसम बुलेटिन</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-04T18:00:00+05:45</effective>
+    <onset>2026-11-07T00:00:00+05:45</onset>
+    <expires>2026-11-11T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM तिहार विशेष मौसम बुलेटिन–१: तिहारभर पश्चिमी वायुको सामान्य प्रभाव मात्र; हिमाल-पहाडमा एक-दुई स्थानमा हल्का वर्षा/हिमपात</headline>
+    <description>आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको 'तिहार विशेष मौसम बुलेटिन–१', जारी २०८३।०७।१८ साँझ ६:०० बजे, dhm.gov.np/mfd र @NMD_Weather मा): यस वर्ष तिहारको समयमा पश्चिमी वायुको सामान्य प्रभाव मात्र रहने। कात्तिक २१ (शनिबार, काग तिहार) देखि कात्तिक २५ (बुधबार, भाइटीका) सम्म हिमाली र पहाडी भू-भागमा आंशिक बादल र तराईमा मौसम मुख्यतया सफा। हिमाली भू-भागका थोरै वा एक-दुई स्थानमा (कात्तिक २१, २२ र २५ मा पहाडी भू-भागका एक-दुई स्थानमा पनि) हल्का वर्षा/हिमपातको सम्भावना। कात्तिक २४ (गोवर्धन पूजा) मा कोशी प्रदेशको तराईमा पनि आंशिक बादल। तराई, उपत्यका र खोँचहरूमा बिहानपख थोरै स्थानमा हुस्सु/कुहिरो। यो चेतावनी होइन; DHM को पछिल्लो ५ दिने चेतावनीमा देशभर हरियो छ।</description>
+    <instruction>बिहान हुस्सु/कुहिरोमा सवारी चलाउँदा सावधानी अपनाउनुहोस्; तिहारमा हिमाली यात्रा गर्नुअघि पछिल्लो पूर्वानुमान हेर्नुहोस् (फोन ११५५)।</instruction>
+    <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12405</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12405</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-04T18:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://dhm.gov.np/mfd/api/image/editor-media/2026/11/image-1793795252866.png</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM तिहार बुलेटिन: कात्तिक २१-२५ पश्चिमी वायुको सामान्य प्रभाव मात्र; हिमाल-पहाडमा एक-दुई स्थानमा हल्का वर्षा/हिमपात; तराईमा बिहान हुस्सु</value></parameter>
+    <area>
+      <areaDesc>नेपाल (सबै जिल्ला); कात्तिक २१ देखि २५ सम्म (तिहार)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Special weather bulletin</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-04T18:00:00+05:45</effective>
+    <onset>2026-11-07T00:00:00+05:45</onset>
+    <expires>2026-11-11T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati</senderName>
+    <headline>DHM Tihar Special Weather Bulletin 1: only a weak westerly influence through Tihar; light rain or snow at one or two places in the mountains and hills</headline>
+    <description>Official (DHM Meteorological Forecasting Division 'Tihar Special Weather Bulletin 1', issued 6:00 PM 2083-07-18 / 4 Nov on dhm.gov.np/mfd and @NMD_Weather): only a weak westerly influence is expected during Tihar this year. From Kartik 21 (Sat 7 Nov, Kag Tihar) to Kartik 25 (Wed 11 Nov, Bhai Tika): partly cloudy in the mountains and hills, mainly fair in the Terai. Light rain or snow is possible at a few or one or two places in the mountains (also at one or two places in the hills on Kartik 21, 22 and 25). On Kartik 24 (Gobardhan Puja) the Terai of Koshi Province is also partly cloudy. Morning mist or fog at a few places in the Terai, valleys and gorges. This is not a warning; DHM's latest 5-day warning is green nationwide.</description>
+    <instruction>Drive carefully in morning mist and fog; check the latest forecast before travelling in the mountains during Tihar (phone 1155).</instruction>
+    <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12405</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12405</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-04T18:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://dhm.gov.np/mfd/api/image/editor-media/2026/11/image-1793795252866.png</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM Tihar bulletin: weak westerly influence only, Kartik 21 to 25 (7 to 11 Nov); light rain or snow at one or two places in hills and mountains; morning fog</value></parameter>
+    <area>
+      <areaDesc>Nepal (all districts); Kartik 21 to 25 (Tihar)</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>
