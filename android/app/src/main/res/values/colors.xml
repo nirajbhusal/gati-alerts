@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navy">#0B1424</color>
+    <color name="navy_deep">#0E2A47</color>
+    <color name="teal">#0F7C86</color>
+    <color name="teal_pressed">#0C6670</color>
+    <color name="paper">#F7F9FB</color>
+    <color name="ink">#1C2834</color>
+    <color name="muted">#4A5A68</color>
+    <color name="icon_red">#E2362B</color>
+    <color name="white">#FFFFFF</color>
+</resources>
