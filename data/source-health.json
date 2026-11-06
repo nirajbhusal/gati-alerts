@@ -2,80 +2,96 @@
  "sources": {
   "dhm-hydrology": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-05T03:27:40+00:00",
-   "lastResult": "HTTPError: Not Found"
+   "lastChecked": "2026-11-06T03:27:58Z",
+   "lastResult": "HTTPError: Not Found",
+   "status": "down"
   },
   "dhm-mfd": {
-   "lastSuccess": "2026-11-05T03:27:42+00:00",
-   "lastChecked": "2026-11-05T03:27:42+00:00",
-   "lastResult": "HTTP 200"
+   "lastSuccess": "2026-11-06T03:27:59Z",
+   "lastChecked": "2026-11-06T03:27:59Z",
+   "lastResult": "HTTP 200",
+   "status": "ok"
   },
   "neoc": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-05T03:27:44+00:00",
-   "lastResult": "HTTPError: Internal Server Error"
+   "lastChecked": "2026-11-06T03:28:01Z",
+   "lastResult": "HTTPError: Internal Server Error",
+   "status": "down"
   },
   "ndrrma": {
-   "lastSuccess": "2026-11-05T03:27:44+00:00",
-   "lastChecked": "2026-11-05T03:27:44+00:00",
-   "lastResult": "HTTP 200"
+   "lastSuccess": "2026-11-06T03:28:01Z",
+   "lastChecked": "2026-11-06T03:28:01Z",
+   "lastResult": "HTTP 200",
+   "status": "ok"
   },
   "nepal-police": {
-   "lastSuccess": "2026-11-05T03:27:46+00:00",
-   "lastChecked": "2026-11-05T03:27:46+00:00",
-   "lastResult": "HTTP 200"
+   "lastSuccess": "2026-11-06T03:28:02Z",
+   "lastChecked": "2026-11-06T03:28:02Z",
+   "lastResult": "HTTP 200",
+   "status": "ok"
   },
   "bipad": {
-   "lastSuccess": "2026-11-05T03:27:49+00:00",
-   "lastChecked": "2026-11-05T03:27:49+00:00",
-   "lastResult": "HTTP 200"
+   "lastSuccess": "2026-11-06T03:28:09Z",
+   "lastChecked": "2026-11-06T03:28:09Z",
+   "lastResult": "HTTP 200",
+   "status": "ok"
   },
   "nsc": {
-   "lastSuccess": "2026-11-05T03:27:51+00:00",
-   "lastChecked": "2026-11-05T03:27:51+00:00",
-   "lastResult": "HTTP 200"
+   "lastSuccess": "2026-11-06T03:28:10Z",
+   "lastChecked": "2026-11-06T03:28:10Z",
+   "lastResult": "HTTP 200",
+   "status": "ok"
   },
   "usgs": {
-   "lastSuccess": "2026-11-05T03:27:54+00:00",
-   "lastChecked": "2026-11-05T03:27:54+00:00",
-   "lastResult": "HTTP 200"
+   "lastSuccess": "2026-11-06T03:28:13Z",
+   "lastChecked": "2026-11-06T03:28:13Z",
+   "lastResult": "HTTP 200",
+   "status": "ok"
   },
   "doe-air": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-05T03:27:54+00:00",
-   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+   "lastChecked": "2026-11-06T03:28:13Z",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
+   "status": "down"
   },
   "edcd": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-05T03:28:02+00:00",
-   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)"
+   "lastChecked": "2026-11-06T03:28:21Z",
+   "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
+   "status": "down"
   },
   "lightning": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned"
+   "lastResult": "planned",
+   "status": "planned"
   },
   "forest-fire": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned"
+   "lastResult": "planned",
+   "status": "planned"
   },
   "avalanche": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned"
+   "lastResult": "planned",
+   "status": "planned"
   },
   "glof": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned"
+   "lastResult": "planned",
+   "status": "planned"
   },
   "dor-navigate": {
-   "lastSuccess": "2026-11-05T03:28:10+00:00",
-   "lastChecked": "2026-11-05T03:28:10+00:00",
-   "lastResult": "HTTP 200"
+   "lastSuccess": "2026-11-06T03:28:29Z",
+   "lastChecked": "2026-11-06T03:28:29Z",
+   "lastResult": "HTTP 200",
+   "status": "ok"
   }
  },
- "checkedAt": "2026-11-05T03:28:14+00:00",
- "note": "Checked from an automated server outside Nepal; some .gov.np sites block or time out for such servers even when they are up for people in Nepal."
+ "checkedAt": "2026-11-06T03:28:31Z",
+ "note": "Checked by GitHub Actions runners (outside Nepal). Some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
+ "writtenAt": "2026-11-06T03:28:31Z"
 }

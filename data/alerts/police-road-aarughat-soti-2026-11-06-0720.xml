@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-aarughat-soti-2026-11-06-0720</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-06T07:20:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/</note>
+  <references>nepalpolice.gov.np,np.gati.police-road-aarughat-soti-2026-11-05-0900,2026-11-05T09:00:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-06T07:20:00+05:45</effective>
+    <onset>2026-11-06T07:20:00+05:45</onset>
+    <expires>2026-11-07T07:20:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द</headline>
+    <description>अद्यावधिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।२० (कात्तिक २०) बिहान ७:२० बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो अझै पूर्ण रूपमा अवरुद्ध। देशभरको सूचीमा जारी अवरोध यो मात्र।</description>
+    <instruction>यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-06T07:20:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द</value></parameter>
+    <area>
+      <areaDesc>गोरखा जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0436</value></geocode>
+    </area>
+    <area>
+      <areaDesc>सोती, आरुघाट-२/३ (अनुमानित स्थान)</areaDesc>
+      <circle>28.05,84.81 3</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-06T07:20:00+05:45</effective>
+    <onset>2026-11-06T07:20:00+05:45</onset>
+    <expires>2026-11-07T07:20:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</headline>
+    <description>Update: Nepal Police notice 'road blockages', to 7:20 AM 2083-07-20 (Kartik 20 / 6 Nov): the iron motorable bridge at Soti linking Aarughat-2 and 3, swept away by the Budhi Gandaki flood of Asoj 25, still leaves the road fully blocked. It remains the only item on the nationwide notice.</description>
+    <instruction>Do not use this road; check with local police before travelling (100).</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-06T07:20:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</value></parameter>
+    <area>
+      <areaDesc>Gorkha district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0436</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Soti, Aarughat-2/3 (approximate location)</areaDesc>
+      <circle>28.05,84.81 3</circle>
+    </area>
+  </info>
+</alert>

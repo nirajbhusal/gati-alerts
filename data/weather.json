@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-05T09:30:00+05:45",
+ "checked": "2026-11-06T09:20:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,32 +7,25 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": true
  },
- "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक १९ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी सबैभन्दा पछिल्लो हो: कात्तिक १९ देखि २३ सम्म देशभर हरियो (चेतावनी छैन)। DHM ले कात्तिक १८ साँझ ६ बजे तिहार विशेष मौसम बुलेटिन–१ जारी गरेको: तिहारभर (कात्तिक २१ देखि २५) पश्चिमी वायुको सामान्य प्रभाव मात्र, हिमाल-पहाडका एक-दुई स्थानमा हल्का वर्षा/हिमपात र तराई, उपत्यका तथा खोँचमा बिहानपख हुस्सु/कुहिरो। DHM को नदी निगरानी (hydrology.gov.np) अनुसार बिहान ८:४० देखि ९:१० बजेतिर गृहपृष्ठका ५ मापन केन्द्र चेतावनी तहभन्दा तल र स्थिर।",
- "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 19 is the latest: green (no warning) everywhere from Kartik 19 to 23 (5 to 9 Nov). DHM issued Tihar Special Weather Bulletin 1 at 6 PM Kartik 18: only a weak westerly influence through Tihar (Kartik 21 to 25, 7 to 11 Nov), light rain or snow at one or two places in the mountains and hills, and morning mist or fog in the Terai, valleys and gorges. DHM river watch (hydrology.gov.np): the 5 homepage gauges were below warning level and steady at about 8:40 to 9:10 AM.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक २० बिहान ८ बजे जारी ५ दिने मौसम चेतावनी सबैभन्दा पछिल्लो हो: कात्तिक २० देखि २४ सम्म देशभर हरियो (चेतावनी छैन)। कात्तिक १९ साँझ ६ बजेको बुलेटिन (१२४०७) लाई यसले प्रतिस्थापन गर्छ। DHM को नदी निगरानी (dhm.gov.np/hydrology/river-watch) अनुसार बिहान करिब ८:४० देखि ९:०० बजेतिर गृहपृष्ठका ५ मापन केन्द्र चेतावनी तहभन्दा तल (देवघाट स्थिर, चिसापानी स्थिर, मैनाचुली स्थिर, चेपाङ घट्दो, परिगाउँ स्थिर)।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 20 is the latest: green (no warning) everywhere from Kartik 20 to 24 (6 to 10 Nov). It replaces the Kartik 19 6 PM bulletin (12407). DHM river watch (dhm.gov.np/hydrology/river-watch): the 5 homepage gauges were below warning level at about 8:40 to 9:00 AM (Devghat steady, Chisapani steady, Mainachuli steady, Chepang falling, Parigaon steady).",
  "rainfall": null,
- "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठ खुलेन।",
- "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall page could not be reached.",
+ "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन। DHM को वर्षा पृष्ठको तालिका खाली देखियो।",
+ "rainfall_note_en": "24 h station rainfall: not available. DHM's rainfall table appeared empty.",
  "rainfallUrl": "https://www.dhm.gov.np/hydrology/rainfall-watch",
  "bulletin5": {
-  "id": "np.gati.dhm-5day-bulletin-2026-11-05",
-  "issued": "2026-11-05T08:00:00+05:45",
-  "posted": "2026-11-05T07:31:16+05:45",
-  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12406",
+  "id": "np.gati.dhm-5day-bulletin-2026-11-06",
+  "issued": "2026-11-06T08:00:00+05:45",
+  "posted": "2026-11-06T07:35:19+05:45",
+  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12409",
   "trust": "Official",
   "days": [
-   {
-    "bs": "कात्तिक १९",
-    "ad": "2026-11-05",
-    "level": "green",
-    "ne": "हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईका केही स्थानमा हुस्सु/कुहिरो",
-    "en": "Light rain or snow at some places in the mountains and hills; mist or fog at some places in the Terai"
-   },
    {
     "bs": "कात्तिक २०",
     "ad": "2026-11-06",
     "level": "green",
-    "ne": "हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईका केही स्थानमा हुस्सु/कुहिरो",
-    "en": "Light rain or snow at some places in the mountains and hills; mist or fog at some places in the Terai"
+    "ne": "हिमाल-पहाडमा आंशिक बादल, अन्यत्र मुख्यतया सफा; हिमालका एक-दुई स्थानमा हल्का वर्षा/हिमपात; बिहानपख हुस्सु/कुहिरो",
+    "en": "Partly cloudy in the mountains and hills, mainly fair elsewhere; light rain or snow at one or two places in the mountains; morning mist or fog"
    },
    {
     "bs": "कात्तिक २१",
@@ -54,13 +47,20 @@
     "level": "green",
     "ne": "औँसी: हिमाल-पहाडमा आंशिक बादल, तराईमा मुख्यतया सफा; हिमालका एक-दुई स्थानमा हल्का वर्षा/हिमपात; बिहानपख हुस्सु/कुहिरो",
     "en": "Aunsi: partly cloudy in the mountains and hills, mainly fair in the Terai; light rain or snow at one or two places in the mountains; morning mist or fog"
+   },
+   {
+    "bs": "कात्तिक २४",
+    "ad": "2026-11-10",
+    "level": "green",
+    "ne": "हिमाल-पहाडमा आंशिक बादल, तराईमा मुख्यतया सफा; हिमालका एक-दुई स्थानमा हल्का वर्षा/हिमपात; बिहानपख हुस्सु/कुहिरो",
+    "en": "Partly cloudy in the mountains and hills, mainly fair in the Terai; light rain or snow at one or two places in the mountains; morning mist or fog"
    }
   ],
   "advisory_ne": "पाँचै दिन देशभर कुनै मौसम चेतावनी छैन। हिमाली-पहाडी भागका केही स्थानमा हल्का वर्षा/हिमपात; तराईमा बिहानपख हुस्सु/कुहिरो।",
   "advisory_en": "No weather warning anywhere for all five days. Light rain or snow at some places in the mountains and hills; morning mist or fog in the Terai.",
-  "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक १९ देखि २३ सम्म पाँचै दिन सबै जिल्ला हरियो। कात्तिक १९ र २० को विवरण नक्साका संकेतबाट; कात्तिक २१ देखि २३ को विवरण DHM को तिहार विशेष मौसम बुलेटिन–१ बाट।",
-  "map_note_en": "DHM's 5-day warning maps show every district green on all five days, Kartik 19 to 23. Kartik 19 and 20 details are read from the map symbols; Kartik 21 to 23 details come from DHM's Tihar Special Weather Bulletin 1.",
-  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/05/warning-map-day-1-1793844320948.png"
+  "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक २० देखि २४ सम्म पाँचै दिन सबै जिल्ला हरियो। दिन विवरण DHM को ३ दिने सिनप्टिक बुलेटिन र तिहार विशेष बुलेटिन–१ का संकेतबाट।",
+  "map_note_en": "DHM's 5-day warning maps show every district green on all five days, Kartik 20 to 24. Day details draw on DHM's 3-day synoptic bulletin and Tihar Special Bulletin 1.",
+  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/06/warning-map-day-1-1793930555912.png"
  },
  "observed": {
   "time": "2026-11-03T18:20:00+05:45",
