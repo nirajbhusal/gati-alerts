@@ -4,12 +4,38 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-11-06T03:28:31+00:00</updated>
+  <updated>2026-11-08T03:23:10+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-11-08</id>
+    <title>DHM: no weather warning anywhere in Nepal for all five days, Kartik 22 to 26 (8 to 12 Nov)</title>
+    <updated>2026-11-08T07:18:34+05:45</updated>
+    <published>2026-11-08T07:18:34+05:45</published>
+    <summary>[Official] Minor · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-11-12T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-5day-bulletin-2026-11-08.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-5day-bulletin-2026-11-08/" rel="related" type="text/html"/>
+    <link href="https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12413" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-11-07-2049</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-11-07T20:49:00+05:45</updated>
+    <published>2026-11-07T20:49:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-08T20:49:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-11-07-2049.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-11-07-2049/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.dhm-5day-bulletin-2026-11-06</id>
     <title>DHM: no weather warning anywhere in Nepal for all five days, Kartik 20 to 24 (6 to 10 Nov)</title>
@@ -34,6 +60,19 @@
     <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
     <author>
       <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1383-2026-11-06</id>
+    <title>Earthquake: 4.2 ML, Humla (NSC)</title>
+    <updated>2026-11-06T07:10:00+05:45</updated>
+    <published>2026-11-06T07:10:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-11-07T07:10:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.nsc-quake-1383-2026-11-06.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.nsc-quake-1383-2026-11-06/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
     </author>
   </entry>
   <entry>
