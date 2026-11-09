@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-09-0500</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-09T05:00:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-09T05:00:00+05:45</effective>
+    <onset>2026-11-09T05:00:00+05:45</onset>
+    <expires>2026-11-10T08:40:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>चितवन, घोप्टे भिर: पृथ्वी लोकमार्ग सुख्खा पहिरोले पूर्ण रूपमा बन्द</headline>
+    <description>आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।२३ (कात्तिक २३) बिहान ८:४० बजेसम्म: कात्तिक २३ बिहान ५:०० बजे चितवन, इच्छाकामना गाउँपालिका–४ घोप्टे भिर स्थित पृथ्वी लोकमार्ग सडक खण्डमा माथिबाट सुख्खा पहिरो आई बाटो पूर्ण रूपमा अवरुद्ध।</description>
+    <instruction>यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-09T05:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>चितवन, घोप्टे भिर: पृथ्वी लोकमार्ग सुख्खा पहिरोले पूर्ण रूपमा बन्द</value></parameter>
+    <area>
+      <areaDesc>चितवन जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0335</value></geocode>
+    </area>
+    <area>
+      <areaDesc>घोप्टे भिर, इच्छाकामना–४, पृथ्वी लोकमार्ग (अनुमानित स्थान)</areaDesc>
+      <circle>27.80,84.55 5</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Avoid</responseType>
+    <urgency>Immediate</urgency>
+    <severity>Moderate</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-09T05:00:00+05:45</effective>
+    <onset>2026-11-09T05:00:00+05:45</onset>
+    <expires>2026-11-10T08:40:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Chitwan, Ghopte Bhir: Prithvi Highway fully blocked by a dry landslide</headline>
+    <description>Official: Nepal Police notice 'road blockages', to 8:40 AM 2083-07-23 (Kartik 23 / 9 Nov): at 5:00 AM on Kartik 23 (9 Nov) a dry landslide from above fully blocked the Prithvi Highway section at Ghopte Bhir, Ichchhakamana Rural Municipality-4, Chitwan.</description>
+    <instruction>Do not use this road; check with local police before travelling (100).</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-09T05:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Chitwan, Ghopte Bhir: Prithvi Highway fully blocked by a dry landslide</value></parameter>
+    <area>
+      <areaDesc>Chitwan district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0335</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Ghopte Bhir, Ichchhakamana-4, Prithvi Highway (approximate location)</areaDesc>
+      <circle>27.80,84.55 5</circle>
+    </area>
+  </info>
+</alert>
