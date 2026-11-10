@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-09T09:15:00+05:45",
+ "checked": "2026-11-10T09:15:00+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,26 +7,19 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": true
  },
- "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक २३ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी (१२४१५) सबैभन्दा पछिल्लो हो: कात्तिक २३ देखि २७ सम्म देशभर हरियो (चेतावनी छैन)। यसले कात्तिक २२ साँझको बुलेटिन (१२४१४) लाई प्रतिस्थापन गर्छ। नयाँ विशेष बुलेटिन छैन (पछिल्लो: तिहार विशेष बुलेटिन–१)। DHM को नदी निगरानी (dhm.gov.np/hydrology/river-watch) अनुसार बिहान करिब ८:४५ देखि ९:०० बजेतिर सूचीमा भएका सबै केन्द्र चेतावनी तहभन्दा तल; गृहपृष्ठका ५ केन्द्र स्थिर।",
- "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 23 (12415) is the latest: green (no warning) everywhere from Kartik 23 to 27 (9 to 13 Nov). It replaces the Kartik 22 evening bulletin (12414). No new special bulletin (latest is Tihar Special Bulletin 1). DHM river watch (dhm.gov.np/hydrology/river-watch): every listed station was below warning level at about 8:45 to 9:00 AM; the 5 homepage gauges were steady.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक २४ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी (१२४१७) सबैभन्दा पछिल्लो हो: कात्तिक २४ देखि २८ सम्म देशभर हरियो (चेतावनी छैन), केवल कात्तिक २५ मा गण्डकी, बागमती र कोशीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्)। यसले कात्तिक २३ बिहान (१२४१५) र साँझ (१२४१६) का बुलेटिनलाई प्रतिस्थापन गर्छ। नयाँ विशेष बुलेटिन छैन। DHM को नदी निगरानी (dhm.gov.np/hydrology/river-watch) अनुसार बिहान करिब ८:४० देखि ८:५० बजेतिर सबै ३३४ केन्द्र चेतावनी तहभन्दा तल; गृहपृष्ठका ५ केन्द्र स्थिर।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 24 (12417) is the latest: green (no warning) across the country from Kartik 24 to 28 (10 to 14 Nov), except Kartik 25 (11 Nov), when parts of the northern mountain districts of Gandaki, Bagmati and Koshi are yellow (be updated). It replaces the Kartik 23 morning (12415) and evening (12416) bulletins. No new special bulletin. DHM river watch (dhm.gov.np/hydrology/river-watch): all 334 stations were below warning level at about 8:40 to 8:50 AM; the 5 homepage gauges were steady.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन।",
  "rainfall_note_en": "24 h station rainfall: not available.",
  "rainfallUrl": "https://www.dhm.gov.np/hydrology/rainfall-watch",
  "bulletin5": {
-  "id": "np.gati.dhm-5day-bulletin-2026-11-09",
-  "issued": "2026-11-09T08:00:00+05:45",
-  "posted": "2026-11-09T07:45:28+05:45",
-  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12415",
+  "id": "np.gati.dhm-5day-bulletin-2026-11-10",
+  "issued": "2026-11-10T08:00:00+05:45",
+  "posted": "2026-11-10T07:54:35+05:45",
+  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12417",
   "trust": "Official",
   "days": [
-   {
-    "bs": "कात्तिक २३",
-    "ad": "2026-11-09",
-    "level": "green",
-    "ne": "औँसी: हिमाली भागमा आंशिक बादल, अन्यत्र मुख्यतया सफा; गण्डकी र कर्णालीका हिमाली भागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो",
-    "en": "Aunsi: Partly cloudy in the mountains, mainly fair elsewhere; light rain or snow at one or two places in the mountains of Gandaki and Karnali; morning mist or fog in the Terai, valleys and gorges"
-   },
    {
     "bs": "कात्तिक २४",
     "ad": "2026-11-10",
@@ -37,9 +30,14 @@
    {
     "bs": "कात्तिक २५",
     "ad": "2026-11-11",
-    "level": "green",
-    "ne": "DHM को ५ दिने नक्सामा चेतावनी छैन (हरियो); बिहानपख हुस्सु/कुहिरो सम्भव",
-    "en": "No warning on DHM's 5-day map (green); morning mist or fog possible"
+    "level": "yellow",
+    "ne": "DHM को ५ दिने नक्सामा गण्डकी, बागमती र कोशीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्), हिमपातको चिह्नसहित; अन्यत्र हरियो",
+    "en": "On DHM's 5-day map parts of the northern mountain districts of Gandaki, Bagmati and Koshi are yellow (be updated), with snow symbols; green elsewhere",
+    "provinces": [
+     "NP01",
+     "NP03",
+     "NP04"
+    ]
    },
    {
     "bs": "कात्तिक २६",
@@ -54,13 +52,20 @@
     "level": "green",
     "ne": "DHM को ५ दिने नक्सामा चेतावनी छैन (हरियो); बिहानपख हुस्सु/कुहिरो सम्भव",
     "en": "No warning on DHM's 5-day map (green); morning mist or fog possible"
+   },
+   {
+    "bs": "कात्तिक २८",
+    "ad": "2026-11-14",
+    "level": "green",
+    "ne": "DHM को ५ दिने नक्सामा चेतावनी छैन (हरियो); बिहानपख हुस्सु/कुहिरो सम्भव",
+    "en": "No warning on DHM's 5-day map (green); morning mist or fog possible"
    }
   ],
-  "advisory_ne": "पाँचै दिन देशभर कुनै मौसम चेतावनी छैन। हिमाली-पहाडी भागका एक-दुई स्थानमा हल्का वर्षा/हिमपात; तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो।",
-  "advisory_en": "No weather warning anywhere for all five days. Light rain or snow at one or two places in the mountains and hills; morning mist or fog in the Terai, valleys and gorges.",
-  "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक २३ देखि २७ सम्म पाँचै दिन सबै जिल्ला हरियो। कात्तिक २३ को दिन विवरण DHM को कात्तिक २२ बिहानको देशव्यापी पूर्वानुमानबाट।",
-  "map_note_en": "DHM's 5-day warning maps show every district green on all five days, Kartik 23 to 27. The Kartik 23 day detail comes from DHM's Kartik 22 morning country forecast.",
-  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/09/warning-map-day-1-1794190460776.png"
+  "advisory_ne": "कात्तिक २५ मा उत्तरी हिमाली जिल्लाका केही भागमा पहेँलो (अद्यावधिक रहनुहोस्; हिमपात), बाँकी चार दिन देशभर कुनै मौसम चेतावनी छैन। तराई, उपत्यका र खोँचमा बिहानपख हुस्सु/कुहिरो।",
+  "advisory_en": "Yellow (be updated; snow) in parts of the northern mountain districts on Kartik 25; no weather warning anywhere on the other four days. Morning mist or fog in the Terai, valleys and gorges.",
+  "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक २४ देखि २८ सम्म हरियो, केवल कात्तिक २५ मा गण्डकी, बागमती र कोशीका उत्तरी हिमाली भाग (पूरा प्रदेश होइन) पहेँलो। नक्साका रङ जिल्लास्तरमा स्पष्ट पढ्न सकिँदैन, त्यसैले प्रदेश देखाइएको छ।",
+  "map_note_en": "DHM's 5-day warning maps are green from Kartik 24 to 28, except Kartik 25, when the northern mountain areas of Gandaki, Bagmati and Koshi (not the whole provinces) are yellow. The map colours cannot be read clearly at district level, so provinces are shown.",
+  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/10/warning-map-day-1-1794278643172.png"
  },
  "observed": {
   "time": "2026-11-03T18:20:00+05:45",

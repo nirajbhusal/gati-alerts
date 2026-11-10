@@ -1,16 +1,16 @@
 {
- "as_of": "2026-11-09T09:15:00+05:45",
- "as_of_ne": "नोभेम्बर ९ (कात्तिक २३), बिहान ९:१५ NPT मा जाँचेको",
- "as_of_en": "checked 9 Nov (Kartik 23), 9:15 AM NPT",
- "rule_en": "Open = not on Nepal Police's nationwide road-blockage notice (official, to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15; the Kartik 16 to 23 lists had not been published when checked). Where sources conflict or nothing confirms it: grey dashed = not confirmed.",
- "rule_ne": "खुला = नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म, आधिकारिक) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म; जाँच गर्दा कात्तिक १६ देखि २३ सम्मको सूची आएको थिएन) मा यो मार्ग छैन। स्रोत बाझिएमा वा पुष्टि नभएमा खैरो टुटेको रेखा = स्थिति पुष्टि भएन।",
+ "as_of": "2026-11-10T09:15:00+05:45",
+ "as_of_ne": "नोभेम्बर १० (कात्तिक २४), बिहान ९:१५ NPT मा जाँचेको",
+ "as_of_en": "checked 10 Nov (Kartik 24), 9:15 AM NPT",
+ "rule_en": "Open = not on Nepal Police's nationwide road-blockage notice (official, to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15; the Kartik 16 to 24 lists had not been published when checked). Where sources conflict or nothing confirms it: grey dashed = not confirmed.",
+ "rule_ne": "खुला = नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म, आधिकारिक) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म; जाँच गर्दा कात्तिक १६ देखि २४ सम्मको सूची आएको थिएन) मा यो मार्ग छैन। स्रोत बाझिएमा वा पुष्टि नभएमा खैरो टुटेको रेखा = स्थिति पुष्टि भएन।",
  "geometry_note_en": "Road lines follow the real roads, from OpenStreetMap road data (simplified).",
  "geometry_note_ne": "सडकको रेखा OpenStreetMap को सडक डेटाबाट बनाइएको, सरल पारिएको।",
  "bulletin_file": "https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js",
  "sources": {
   "pol": {
-   "ne": "नेपाल प्रहरी: बाटो अवरुद्ध सूचना, कात्तिक २१ (७ नोभेम्बर) राति ८:४९ बजेसम्म; राजमार्ग अवरोध सूची, कात्तिक १५ बिहान ७ बजेसम्म",
-   "en": "Nepal Police: road blockage notice, to 8:40 AM Kartik 23 (9 Nov); highway obstruction list, to 7 AM Kartik 15",
+   "ne": "नेपाल प्रहरी: बाटो अवरुद्ध सूचना, कात्तिक २४ (१० नोभेम्बर) बिहान ८:५५ बजेसम्म; राजमार्ग अवरोध सूची, कात्तिक १५ बिहान ७ बजेसम्म",
+   "en": "Nepal Police: road blockage notice, to 8:55 AM Kartik 24 (10 Nov); highway obstruction list, to 7 AM Kartik 15",
    "u": "https://www.nepalpolice.gov.np/notices/1141/"
   },
   "dor": {
@@ -884,8 +884,8 @@
    ],
    "name_ne": "काठमाडौँ–गजुरी–मुग्लिङ (पृथ्वी)",
    "name_en": "Kathmandu–Gajuri–Mugling (Prithvi)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा जारी पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (राक्से) र चितवन (घोप्टे भिर)। धादिङको बेनीघाट रोराङ–९ मझिमटारमा कात्तिक १७ बिहान ९ देखि ११ बजेसम्म आकाशे पुल निर्माणका लागि तोकिएको बन्द सकियो: नेपाल प्रहरीले कात्तिक १७ दिउँसो १२:३८ मा पृथ्वी राजमार्ग त्यहाँ पूर्ण रूपमा सुचारु भएको जनाएको। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The planned closure at Majhimtar, Benighat Rorang-9, Dhading (9 to 11 AM Kartik 17, footbridge construction) has ended: Nepal Police said at 12:38 PM Kartik 17 (3 Nov) that the highway there has fully reopened. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा जारी पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (राक्से); चितवन (घोप्टे भिर) को अवरोध अब सूचीमा छैन। धादिङको बेनीघाट रोराङ–९ मझिमटारमा कात्तिक १७ बिहान ९ देखि ११ बजेसम्म आकाशे पुल निर्माणका लागि तोकिएको बन्द सकियो: नेपाल प्रहरीले कात्तिक १७ दिउँसो १२:३८ मा पृथ्वी राजमार्ग त्यहाँ पूर्ण रूपमा सुचारु भएको जनाएको। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The planned closure at Majhimtar, Benighat Rorang-9, Dhading (9 to 11 AM Kartik 17, footbridge construction) has ended: Nepal Police said at 12:38 PM Kartik 17 (3 Nov) that the highway there has fully reopened. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -924,8 +924,8 @@
    ],
    "name_ne": "मुग्लिङ–पोखरा",
    "name_en": "Mugling–Pokhara",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -942,7 +942,7 @@
   },
   {
    "id": "mugling-narayanghat",
-   "status": "blocked",
+   "status": "open",
    "segs": [
     [
      "mugling",
@@ -951,8 +951,8 @@
    ],
    "name_ne": "मुग्लिङ–नारायणघाट",
    "name_en": "Mugling–Narayanghat",
-   "note_ne": "अवरुद्ध: नेपाल प्रहरीको सडक अवरोध सूचना (आधिकारिक, कात्तिक २३ बिहान ८:४० बजेसम्म) मा चितवनको इच्छाकामना गाउँपालिका–४ घोप्टे भिरमा कात्तिक २३ बिहान करिब ५ बजेदेखि सुख्खा पहिरोले पृथ्वी लोकमार्ग पूर्ण रूपमा अवरुद्ध। सडक विभाग NAVIGATE मा मेल खाने नयाँ रेकर्ड भेटिएन। यात्रा अघि स्थानीय प्रहरीसँग (१००) बुझ्नुहोस्।",
-   "note_en": "Blocked: Nepal Police's road-blockage notice (official, to 8:40 AM Kartik 23 / 9 Nov) lists the Prithvi Highway fully blocked by a dry landslide at Ghopte Bhir, Ichchhakamana Rural Municipality-4, Chitwan, since about 5 AM on Kartik 23. DoR NAVIGATE had no matching new record when checked. Check with local police (100) before travelling.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (आधिकारिक, कात्तिक २४ बिहान ८:५५ बजेसम्म) मा अब यो मार्ग छैन। कात्तिक २३ को सूचनामा चितवनको घोप्टे भिरमा पृथ्वी लोकमार्ग अवरुद्ध थियो; अहिले सूचीमा छैन, तर प्रहरीले खुलेको भनी छुट्टै घोषणा गरेको भेटिएन। यात्रा अघि स्थानीय प्रहरीसँग (१००) बुझ्नुहोस्।",
+   "note_en": "Open: no longer on Nepal Police's road-blockage notice (official, to 8:55 AM Kartik 24 / 10 Nov). The Kartik 23 notice listed the Prithvi Highway blocked at Ghopte Bhir, Chitwan; it is no longer listed, but police have not made a separate statement that it reopened. Check with local police (100) before travelling.",
    "sources": [
     "pol"
    ]
@@ -968,8 +968,8 @@
    ],
    "name_ne": "नारायणघाट–बुटवल",
    "name_en": "Narayanghat–Butwal",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1000,8 +1000,8 @@
    ],
    "name_ne": "काठमाडौँ–हेटौँडा (त्रिभुवन राजपथ)",
    "name_en": "Kathmandu–Hetauda (Tribhuvan Rajpath)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet).",
    "sources": [
     "pol"
    ],
@@ -1027,8 +1027,8 @@
    ],
    "name_ne": "काठमाडौँ–सिन्धुली–बर्दिबास (बीपी)",
    "name_en": "Kathmandu–Sindhuli–Bardibas (BP)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) मा अब यो मार्ग छैन। कात्तिक १४ मा रोशी-९ पिन्थली र रोशी-८ गिम्दीबेँसीमा आएको लेदो र पहिरो हटाएपछि कात्तिक १५ बेलुकादेखि यातायात सञ्चालन भएको जिल्ला प्रहरी कार्यालय काभ्रेले जनाएको (शिलापत्र र गोठालो खबरले रिपोर्ट गरेको)। रोशी खोला किनारमा अस्थायी डाइभर्सनबाट सडक चल्ने भएकाले वर्षा हुँदा फेरि अवरुद्ध हुन सक्छ।",
-   "note_en": "Open: no longer on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov). The debris and landslide at Roshi-9 Pinthali and Roshi-8 Gimdibesi that blocked the road on Kartik 14 were cleared and traffic resumed on the evening of Kartik 15 (1 Nov), District Police Office Kavre said (reported by Shilapatra and Gothalo Khabar). The road runs on temporary diversions along the Roshi Khola, so rain can block it again.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) मा अब यो मार्ग छैन। कात्तिक १४ मा रोशी-९ पिन्थली र रोशी-८ गिम्दीबेँसीमा आएको लेदो र पहिरो हटाएपछि कात्तिक १५ बेलुकादेखि यातायात सञ्चालन भएको जिल्ला प्रहरी कार्यालय काभ्रेले जनाएको (शिलापत्र र गोठालो खबरले रिपोर्ट गरेको)। रोशी खोला किनारमा अस्थायी डाइभर्सनबाट सडक चल्ने भएकाले वर्षा हुँदा फेरि अवरुद्ध हुन सक्छ।",
+   "note_en": "Open: no longer on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov). The debris and landslide at Roshi-9 Pinthali and Roshi-8 Gimdibesi that blocked the road on Kartik 14 were cleared and traffic resumed on the evening of Kartik 15 (1 Nov), District Police Office Kavre said (reported by Shilapatra and Gothalo Khabar). The road runs on temporary diversions along the Roshi Khola, so rain can block it again.",
    "sources": [
     "pol",
     "dor"
@@ -1051,8 +1051,8 @@
    ],
    "name_ne": "नारायणघाट–हेटौँडा",
    "name_en": "Narayanghat–Hetauda",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1078,8 +1078,8 @@
    ],
    "name_ne": "हेटौँडा–पथलैया",
    "name_en": "Hetauda–Pathlaiya",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet).",
    "sources": [
     "pol"
    ],
@@ -1151,8 +1151,8 @@
    ],
    "name_ne": "पोखरा–बागलुङ",
    "name_en": "Pokhara–Baglung",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet).",
    "sources": [
     "pol"
    ]
@@ -1168,8 +1168,8 @@
    ],
    "name_ne": "बुटवल–पाल्पा (सिद्धार्थ)",
    "name_en": "Butwal–Palpa (Siddhartha)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH47 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH47 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH47 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH47 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1194,8 +1194,8 @@
    ],
    "name_ne": "बुटवल–नेपालगन्ज (पूर्व–पश्चिम)",
    "name_en": "Butwal–Nepalgunj (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1231,8 +1231,8 @@
    ],
    "name_ne": "नेपालगन्ज–धनगढी (पूर्व–पश्चिम)",
    "name_en": "Nepalgunj–Dhangadhi (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1259,8 +1259,8 @@
    ],
    "name_ne": "पथलैया–बर्दिबास (पूर्व–पश्चिम)",
    "name_en": "Pathlaiya–Bardibas (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1296,8 +1296,8 @@
    ],
    "name_ne": "बर्दिबास–इटहरी (पूर्व–पश्चिम)",
    "name_en": "Bardibas–Itahari (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1331,8 +1331,8 @@
    ],
    "name_ne": "इटहरी–काँकडभिट्टा (पूर्व–पश्चिम)",
    "name_en": "Itahari–Kakarbhitta (East–West)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २३ बिहान ८:४० बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध तीनवटा: आरुघाट (सोती पुल, गोरखा), गुल्मी (कालीगण्डकी करिडोर, राक्से) र चितवन (पृथ्वी लोकमार्ग, घोप्टे भिर)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:40 AM Kartik 23 / 9 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists three full blockages: Aarughat (Soti bridge, Gorkha), Gulmi (Kaligandaki corridor, Rakse) and Chitwan (Prithvi Highway, Ghopte Bhir). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से); कात्तिक २३ को चितवन (घोप्टे भिर) अवरोध अब सूचीमा छैन। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH01 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH01 as opened (checked 22 Oct).",
    "sources": [
     "pol",
     "dor"
@@ -1702,8 +1702,8 @@
    ],
    "name_ne": "कर्णाली राजमार्ग: सुर्खेत–मान्म–जुम्ला",
    "name_en": "Karnali Highway: Surkhet–Manma–Jumla",
-   "note_ne": "आंशिक खुला: नेपाल प्रहरीको कात्तिक १५ बिहान ७ बजेसम्मको राजमार्ग सूचीअनुसार कात्तिक १४ बिहान ५:५५ मा सुर्खेतको बराहताल गाउँपालिका–७ औलिसेमा पहिरो खसेको कर्णाली राजमार्ग एकतर्फी सुचारु। बाँकी खण्डको अवस्था सूचीमा छैन। यो पछिल्लो सूची हो; कात्तिक १६ देखि २३ सम्मको सूची जाँच गर्दासम्म (कात्तिक २२ बिहान ९:०५) आएको थिएन।",
-   "note_en": "Partly open: Nepal Police's highway list to 7 AM Kartik 15 (1 Nov) shows the Karnali Highway open one way at Aulise, Barahatal Rural Municipality-7, Surkhet, after a landslide at 5:55 AM on Kartik 14. The rest of the route is not covered by the list. This is the latest list; the Kartik 16 to 23 lists had not been published when checked (9:15 AM Kartik 23).",
+   "note_ne": "आंशिक खुला: नेपाल प्रहरीको कात्तिक १५ बिहान ७ बजेसम्मको राजमार्ग सूचीअनुसार कात्तिक १४ बिहान ५:५५ मा सुर्खेतको बराहताल गाउँपालिका–७ औलिसेमा पहिरो खसेको कर्णाली राजमार्ग एकतर्फी सुचारु। बाँकी खण्डको अवस्था सूचीमा छैन। यो पछिल्लो सूची हो; कात्तिक १६ देखि २४ सम्मको सूची जाँच गर्दासम्म (कात्तिक २२ बिहान ९:०५) आएको थिएन।",
+   "note_en": "Partly open: Nepal Police's highway list to 7 AM Kartik 15 (1 Nov) shows the Karnali Highway open one way at Aulise, Barahatal Rural Municipality-7, Surkhet, after a landslide at 5:55 AM on Kartik 14. The rest of the route is not covered by the list. This is the latest list; the Kartik 16 to 24 lists had not been published when checked (9:15 AM Kartik 23).",
    "sources": [
     "pol",
     "dor"
@@ -1733,8 +1733,8 @@
    ],
    "name_ne": "जोमसोम–कागबेनी–मुक्तिनाथ",
    "name_en": "Jomsom–Kagbeni–Muktinath",
-   "note_ne": "आंशिक खुला: नेपाल प्रहरीको कात्तिक १५ बिहान ७ बजेसम्मको राजमार्ग सूचीअनुसार जोमसोम–कोरला सडकखण्ड घरपझोङ–४ जोमसोम (पर्यटक चेकपोस्टबाट करिब १ कि.मि. अगाडि) र वारागुङ मुक्तिक्षेत्र–३ चैलेमा एकतर्फी सुचारु। जोमसोम–कागबेनी खण्ड यही सडकमा पर्छ; मुक्तिनाथ खण्डको छुट्टै सूचना छैन। यो पछिल्लो सूची हो; कात्तिक १६ देखि २३ सम्मको सूची जाँच गर्दासम्म (कात्तिक २२ बिहान ९:०५) आएको थिएन।",
-   "note_en": "Partly open: Nepal Police's highway list to 7 AM Kartik 15 (1 Nov) shows the Jomsom–Korala road open one way at Gharapjhong-4, Jomsom (about 1 km before the tourist checkpost) and at Chaile, Baragung Muktikshetra-3. The Jomsom–Kagbeni stretch is part of that road; there is no separate notice for the Muktinath stretch. This is the latest list; the Kartik 16 to 23 lists had not been published when checked (9:15 AM Kartik 23).",
+   "note_ne": "आंशिक खुला: नेपाल प्रहरीको कात्तिक १५ बिहान ७ बजेसम्मको राजमार्ग सूचीअनुसार जोमसोम–कोरला सडकखण्ड घरपझोङ–४ जोमसोम (पर्यटक चेकपोस्टबाट करिब १ कि.मि. अगाडि) र वारागुङ मुक्तिक्षेत्र–३ चैलेमा एकतर्फी सुचारु। जोमसोम–कागबेनी खण्ड यही सडकमा पर्छ; मुक्तिनाथ खण्डको छुट्टै सूचना छैन। यो पछिल्लो सूची हो; कात्तिक १६ देखि २४ सम्मको सूची जाँच गर्दासम्म (कात्तिक २२ बिहान ९:०५) आएको थिएन।",
+   "note_en": "Partly open: Nepal Police's highway list to 7 AM Kartik 15 (1 Nov) shows the Jomsom–Korala road open one way at Gharapjhong-4, Jomsom (about 1 km before the tourist checkpost) and at Chaile, Baragung Muktikshetra-3. The Jomsom–Kagbeni stretch is part of that road; there is no separate notice for the Muktinath stretch. This is the latest list; the Kartik 16 to 24 lists had not been published when checked (9:15 AM Kartik 23).",
    "sources": [
     "pol",
     "dor"
