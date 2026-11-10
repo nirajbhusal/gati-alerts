@@ -17,6 +17,11 @@
    "ne": "सडक विभाग NAVIGATE ड्यासबोर्ड",
    "en": "DoR NAVIGATE dashboard",
    "u": "https://navigate.dor.gov.np/dashboard"
+  },
+  "chitwan-dpo": {
+   "ne": "चितवन जिल्ला प्रहरी कार्यालय, द काठमाडौँ पोस्ट मार्फत: मलेखु–मुग्लिन खण्ड कात्तिक २४ बिहान ७:४५ बजे दुवै दिशामा सुचारु",
+   "en": "Chitwan District Police Office, via The Kathmandu Post: Malekhu–Mugling section reopened in both directions at 7:45 AM Kartik 24 (10 Nov)",
+   "u": "https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu"
   }
  },
  "nodes": {
@@ -884,9 +889,10 @@
    ],
    "name_ne": "काठमाडौँ–गजुरी–मुग्लिङ (पृथ्वी)",
    "name_en": "Kathmandu–Gajuri–Mugling (Prithvi)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा जारी पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (राक्से); चितवन (घोप्टे भिर) को अवरोध अब सूचीमा छैन। धादिङको बेनीघाट रोराङ–९ मझिमटारमा कात्तिक १७ बिहान ९ देखि ११ बजेसम्म आकाशे पुल निर्माणका लागि तोकिएको बन्द सकियो: नेपाल प्रहरीले कात्तिक १७ दिउँसो १२:३८ मा पृथ्वी राजमार्ग त्यहाँ पूर्ण रूपमा सुचारु भएको जनाएको। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse); the Chitwan (Ghopte Bhir) blockage listed on 9 Nov is no longer listed. The planned closure at Majhimtar, Benighat Rorang-9, Dhading (9 to 11 AM Kartik 17, footbridge construction) has ended: Nepal Police said at 12:38 PM Kartik 17 (3 Nov) that the highway there has fully reopened. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
+   "note_ne": "खुला: पृथ्वी लोकमार्गको मलेखु–मुग्लिन खण्ड (चितवन, इच्छाकामना–४ घोप्टे भिर) कात्तिक २४ बिहान ७:४५ बजे दुवै दिशामा सुचारु। स्रोत: चितवन जिल्ला प्रहरी कार्यालय, द काठमाडौँ पोस्ट मार्फत; कात्तिक २३ राति करिब ११:१५ बजेको पहिरो हटाएपछि बाटो खोलिएको। उही भीर कात्तिक २३ मा दुई पटक खसेकाले यात्रा अघि स्थानीय प्रहरीसँग (१००) बुझ्नुहोस्। नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) मा पनि यो अवरोध छैन। सूचनामा जारी पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (राक्से)। धादिङको बेनीघाट रोराङ–९ मझिमटारमा कात्तिक १७ बिहान ९ देखि ११ बजेसम्म आकाशे पुल निर्माणका लागि तोकिएको बन्द सकियो: नेपाल प्रहरीले कात्तिक १७ दिउँसो १२:३८ मा पृथ्वी राजमार्ग त्यहाँ पूर्ण रूपमा सुचारु भएको जनाएको। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: the Malekhu–Mugling section of the Prithvi Highway (Ghopte Bhir, Ichchhakamana-4, Chitwan) reopened in both directions at 7:45 AM Kartik 24 (10 Nov). Source: Chitwan District Police Office, via The Kathmandu Post, after the landslide of about 11:15 PM Kartik 23 (9 Nov) was cleared. The same slope came down twice on 9 Nov, so check with local police (100) before travelling. The blockage is also no longer on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse). The planned closure at Majhimtar, Benighat Rorang-9, Dhading (9 to 11 AM Kartik 17, footbridge construction) has ended: Nepal Police said at 12:38 PM Kartik 17 (3 Nov) that the highway there has fully reopened. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
    "sources": [
+    "chitwan-dpo",
     "pol",
     "dor"
    ],
@@ -951,8 +957,8 @@
    ],
    "name_ne": "मुग्लिङ–नारायणघाट",
    "name_en": "Mugling–Narayanghat",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (आधिकारिक, कात्तिक २४ बिहान ८:५५ बजेसम्म) मा अब यो मार्ग छैन। कात्तिक २३ को सूचनामा चितवनको घोप्टे भिरमा पृथ्वी लोकमार्ग अवरुद्ध थियो; अहिले सूचीमा छैन, तर प्रहरीले खुलेको भनी छुट्टै घोषणा गरेको भेटिएन। यात्रा अघि स्थानीय प्रहरीसँग (१००) बुझ्नुहोस्।",
-   "note_en": "Open: no longer on Nepal Police's road-blockage notice (official, to 8:55 AM Kartik 24 / 10 Nov). The Kartik 23 notice listed the Prithvi Highway blocked at Ghopte Bhir, Chitwan; it is no longer listed, but police have not made a separate statement that it reopened. Check with local police (100) before travelling.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २४ बिहान ८:५५ बजेसम्म) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म) मा यो मार्ग छैन। सूचनामा अब पूर्ण अवरोध दुईवटा: आरुघाट (सोती पुल, गोरखा) र गुल्मी (कालीगण्डकी करिडोर, राक्से)। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)।",
+   "note_en": "Open: not on Nepal Police's nationwide road-blockage notice (to 8:55 AM Kartik 24 / 10 Nov) or its latest highway list (to 7 AM Kartik 15). The notice now lists two full blockages: Aarughat (Soti bridge, Gorkha) and Gulmi (Kaligandaki corridor, Rakse). The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet).",
    "sources": [
     "pol"
    ]
