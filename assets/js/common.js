@@ -529,6 +529,75 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) draw(); });
 })();
 
+/* Tihar 2083. On from Kag Tihar (7 Nov 2026, Kartik 21) through the end of Bhai Tika
+   (11 Nov 2026, Kartik 25), Nepal time (UTC+5:45), then off by itself. ?theme=tihar forces it.
+   Day names follow the Nepal Panchanga Nirnayak Bikas Samiti notice for 2083: this year
+   Kukur Tihar and Laxmi Puja share Kartik 22, and Gai Puja is Kartik 23. */
+(function () {
+  const G = window.Gati; if (!G) return;
+  const header = document.querySelector("header.top"); if (!header) return;
+  const START = "2026-11-07", END = "2026-11-11";
+  const DAYS = {
+    "2026-11-07": ["काग तिहार", "Kag Tihar"],
+    "2026-11-08": ["कुकुर तिहार र लक्ष्मी पूजा", "Kukur Tihar and Laxmi Puja"],
+    "2026-11-09": ["गाई पूजा", "Gai Puja"],
+    "2026-11-10": ["गोवर्धन पूजा र म्ह पूजा", "Govardhan Puja and Mha Puja"],
+    "2026-11-11": ["भाइटीका", "Bhai Tika"],
+  };
+  const nptISO = () => { const t = new Date(Date.now() + 345 * 60000), p = (n) => String(n).padStart(2, "0"); return t.getUTCFullYear() + "-" + p(t.getUTCMonth() + 1) + "-" + p(t.getUTCDate()); };
+  const forced = () => { try { return new URLSearchParams(location.search).get("theme") === "tihar"; } catch (e) { return false; } };
+  /* Hand-drawn garland: marigold, a stem, and a small oil lamp. Brass and cream, never severity red or orange. */
+  const GARLAND = `<svg class="tihargarland" viewBox="0 0 1056 22" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs><pattern id="gatiTiharRow" width="88" height="22" patternUnits="userSpaceOnUse">
+      <path class="tihar-stem" d="M0 13.5C12 10 18 17 32 13.2S58 9.5 88 13.5" stroke-width="1.15" stroke-linecap="round"/>
+      <ellipse class="tihar-leaf" cx="12" cy="14.5" rx="5" ry="2" transform="rotate(-32 12 14.5)"/>
+      <g transform="translate(34,12)">
+        <ellipse class="tihar-petal" cx="0" cy="-4.6" rx="2.05" ry="3.7"/>
+        <ellipse class="tihar-petal" cx="0" cy="-4.6" rx="2.05" ry="3.7" transform="rotate(45)"/>
+        <ellipse class="tihar-petal" cx="0" cy="-4.6" rx="2.05" ry="3.7" transform="rotate(90)"/>
+        <ellipse class="tihar-petal" cx="0" cy="-4.6" rx="2.05" ry="3.7" transform="rotate(135)"/>
+        <circle class="tihar-core" r="1.85"/>
+      </g>
+      <g transform="translate(58,1.2)">
+        <ellipse class="tihar-glow" cx="10" cy="8" rx="4.2" ry="5"/>
+        <path class="tihar-bowl" d="M3.2 13.2c0 4 2.8 6.2 6.8 6.2s6.8-2.2 6.8-6.2c0-.7-.5-1.2-1.3-1.2H4.5c-.8 0-1.3.5-1.3 1.2z"/>
+        <path class="tihar-rim" d="M1.4 12.4h17.2" stroke-width="1.25" stroke-linecap="round"/>
+        <path class="tihar-flame" d="M10 12.2c1.35 0 2.3-1.45 1.85-3.05C11.35 7.5 10 4.6 10 4.6S8.65 7.5 8.15 9.15C7.7 10.75 8.65 12.2 10 12.2z"/>
+        <path class="tihar-flamecore" d="M10 11.4c.55 0 .9-.65.65-1.35C10.45 9.3 10 8 10 8s-.45 1.3-.65 2.05c-.25.7.1 1.35.65 1.35z"/>
+      </g>
+    </pattern></defs>
+    <rect width="1056" height="22" fill="url(#gatiTiharRow)"/>
+  </svg>`;
+  const RANGOLI = `<svg class="tiharrangoli" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+    <circle class="tihar-core" cx="12" cy="12" r="1.7"/>
+    <g class="tihar-rangoli" fill="none" stroke-width="1.15">
+      <circle cx="12" cy="12" r="4.6"/>
+      <circle cx="12" cy="12" r="8.2"/>
+      <path d="M12 3.2v17.6M3.2 12h17.6M5.8 5.8l12.4 12.4M18.2 5.8 5.8 18.2"/>
+    </g>
+  </svg>`;
+  const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
+  let bar = null, tm = 0;
+  function paint() {
+    const iso = nptISO(), day = DAYS[iso], on = forced() || (iso >= START && iso <= END);
+    document.documentElement.classList.toggle("tihar", on);
+    if (on) document.documentElement.dataset.tiharDay = day ? day[1] : "";
+    else delete document.documentElement.dataset.tiharDay;
+    if (!on) { if (bar) { bar.remove(); bar = null; } return; }
+    if (!bar) { bar = document.createElement("div"); bar.className = "tiharbar"; bar.innerHTML = GARLAND + `<p class="tiharday">${RANGOLI}<span class="tihargreet"></span><span class="tihartoday"></span></p>`; header.appendChild(bar); }
+    const greet = bar.querySelector(".tihargreet"), today = bar.querySelector(".tihartoday");
+    const ghtml = b("तिहारको शुभकामना, हजुर", "Tihar greetings");
+    const thtml = day ? `· आज ${day[0]} · ${day[1]}` : "";
+    if (greet.innerHTML !== ghtml) greet.innerHTML = ghtml;
+    if (today.textContent !== thtml) today.textContent = thtml;
+    today.hidden = !day;
+  }
+  paint();
+  const tick = () => { paint(); clearTimeout(tm); tm = setTimeout(tick, 60000 - (Date.now() % 60000) + 80); };
+  tm = setTimeout(tick, 60000 - (Date.now() % 60000) + 80);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) paint(); });
+})();
+
 /* Ambient sky (header and weather card only), loaded after the shell. gati-sky = "off" turns it off (Profile and settings, Display). */
 (function () { const G = window.Gati; if (!G || G.sky) return;
   G.skyOn = () => { try { return localStorage.getItem("gati-sky") !== "off"; } catch (e) { return true; } };
