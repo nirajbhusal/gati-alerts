@@ -5,7 +5,7 @@
    "ne": "जल तथा मौसम विज्ञान विभाग (DHM), जल विज्ञान",
    "en": "Department of Hydrology and Meteorology (DHM), Hydrology"
   },
-  "url": "https://www.dhm.gov.np/hydrology",
+  "url": "https://dhm.gov.np/hydrology/river-watch",
   "feedType": "html",
   "pollMinutes": 30,
   "hazards": [
