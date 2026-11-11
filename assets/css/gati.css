@@ -2005,3 +2005,11 @@ html[data-theme] main#main figure .bkcap-d,html[data-theme] main#main figure .bk
 .bkfold{border:1px solid var(--line);border-radius:14px;padding:4px 14px;background:var(--surface)}
 .bkfold>summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
 .bkfold[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+
+/* brand kit downloads */
+.bkdl{display:flex;flex-wrap:wrap;gap:10px}
+.bkdl .btn,.bkdl .btn small{text-decoration:none}
+.bkdl .btn small{font-weight:400;opacity:.8;margin-left:4px}
+.bkfiles{margin:8px 0 14px}
+.bkfiles>summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.bkfiles a{white-space:nowrap}

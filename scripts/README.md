@@ -47,3 +47,7 @@ Everything here uses the Python standard library unless a row says otherwise. Ru
 ## Tests
 
 `python -m unittest discover scripts/tests` covers `broadcast.py`. The Worker has its own tests in `worker/`.
+
+## Brand kit
+
+`make_brand_kit.py` builds everything in `assets/brand/` (vector and PNG logos, icons, social media images, the brand guidelines PDF, the maintainer's visiting card and the two zip files), refreshes the site's own icons and rewrites the file list on the About page. It needs `pip install fonttools uharfbuzz segno`, Node and Playwright (`cd tests && npm ci`). The drawing is in `brand/make_svg.py`, the layouts in `brand/render.cjs`. Run it only when the brand changes.
