@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: "17,47 * * * *"   # safety net, in case a push run was missed
   workflow_dispatch:
+    inputs:
+      test:
+        description: "Only post one labelled test message to Telegram and Viber (no alerts are sent, nothing is recorded)"
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency:
@@ -41,7 +46,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Test message only
+        if: github.event_name == 'workflow_dispatch' && inputs.test
+        run: python scripts/broadcast.py --test
       - name: Open the state branch
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.test) }}
         run: |
           git config user.name "gati-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -52,18 +61,19 @@ jobs:
           fi
       - name: Count what is due
         id: plan
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.test) }}
         run: echo "due=$(python scripts/broadcast.py --count --state "$STATE")" >> "$GITHUB_OUTPUT"
       - name: Check the state can be saved (stops here, before sending, if it cannot)
-        if: steps.plan.outputs.due != '0'
+        if: steps.plan.outputs.due != '0' && steps.plan.outputs.due != ''
         run: |
           date -u +%Y-%m-%dT%H:%M:%SZ > state/last-run.txt
           git -C state add -A && git -C state commit -q -m "Broadcast run started"
           git -C state push -q origin bot/broadcast-state
       - name: Send
-        if: steps.plan.outputs.due != '0'
+        if: steps.plan.outputs.due != '0' && steps.plan.outputs.due != ''
         run: python scripts/broadcast.py --state "$STATE"
       - name: Save what was sent
-        if: steps.plan.outputs.due != '0'
+        if: steps.plan.outputs.due != '0' && steps.plan.outputs.due != ''
         run: |
           git -C state add -A
           git -C state diff --cached --quiet || git -C state commit -q -m "Broadcast state $(date -u +%Y-%m-%dT%H:%MZ)"
