@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-10T09:15:00+05:45",
+ "checked": "2026-11-11T15:00:56+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,17 +7,17 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": true
  },
- "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक २४ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी (१२४१७) सबैभन्दा पछिल्लो हो: कात्तिक २४ देखि २८ सम्म देशभर हरियो (चेतावनी छैन), केवल कात्तिक २५ मा गण्डकी, बागमती र कोशीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्)। यसले कात्तिक २३ बिहान (१२४१५) र साँझ (१२४१६) का बुलेटिनलाई प्रतिस्थापन गर्छ। नयाँ विशेष बुलेटिन छैन। DHM को नदी निगरानी (dhm.gov.np/hydrology/river-watch) अनुसार बिहान करिब ८:४० देखि ८:५० बजेतिर सबै ३३४ केन्द्र चेतावनी तहभन्दा तल; गृहपृष्ठका ५ केन्द्र स्थिर।",
- "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 24 (12417) is the latest: green (no warning) across the country from Kartik 24 to 28 (10 to 14 Nov), except Kartik 25 (11 Nov), when parts of the northern mountain districts of Gandaki, Bagmati and Koshi are yellow (be updated). It replaces the Kartik 23 morning (12415) and evening (12416) bulletins. No new special bulletin. DHM river watch (dhm.gov.np/hydrology/river-watch): all 334 stations were below warning level at about 8:40 to 8:50 AM; the 5 homepage gauges were steady.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; कात्तिक २५ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी (१२४१९) सबैभन्दा पछिल्लो हो। नक्साका रङ १२४१७ बाट बदलिएका छैनन्: कात्तिक २४ देखि २८ सम्म देशभर हरियो (चेतावनी छैन), केवल कात्तिक २५ मा गण्डकी, बागमती र कोशीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्)। यसले कात्तिक २४ बिहान (१२४१७) र साँझ (१२४१८) का बुलेटिनलाई प्रतिस्थापन गर्छ। नयाँ विशेष बुलेटिन छैन। DHM को नदी निगरानी (dhm.gov.np/hydrology/river-watch) अनुसार बिहान करिब ८:४० देखि ८:५० बजेतिर सबै ३३४ केन्द्र चेतावनी तहभन्दा तल; गृहपृष्ठका ५ केन्द्र स्थिर।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Kartik 25 (12419) is the latest. Map colours are unchanged from 12417: green (no warning) across the country from Kartik 24 to 28 (10 to 14 Nov), except Kartik 25 (11 Nov), when parts of the northern mountain districts of Gandaki, Bagmati and Koshi are yellow (be updated). It replaces the Kartik 24 morning (12417) and evening (12418) bulletins. No new special bulletin. DHM river watch (dhm.gov.np/hydrology/river-watch): all 334 stations were below warning level at about 8:40 to 8:50 AM; the 5 homepage gauges were steady.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन।",
  "rainfall_note_en": "24 h station rainfall: not available.",
  "rainfallUrl": "https://www.dhm.gov.np/hydrology/rainfall-watch",
  "bulletin5": {
   "id": "np.gati.dhm-5day-bulletin-2026-11-10",
-  "issued": "2026-11-10T08:00:00+05:45",
-  "posted": "2026-11-10T07:54:35+05:45",
-  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12417",
+  "issued": "2026-11-11T08:00:00+05:45",
+  "posted": "2026-11-11T07:09:29+05:45",
+  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12419",
   "trust": "Official",
   "days": [
    {
@@ -65,7 +65,8 @@
   "advisory_en": "Yellow (be updated; snow) in parts of the northern mountain districts on Kartik 25; no weather warning anywhere on the other four days. Morning mist or fog in the Terai, valleys and gorges.",
   "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा कात्तिक २४ देखि २८ सम्म हरियो, केवल कात्तिक २५ मा गण्डकी, बागमती र कोशीका उत्तरी हिमाली भाग (पूरा प्रदेश होइन) पहेँलो। नक्साका रङ जिल्लास्तरमा स्पष्ट पढ्न सकिँदैन, त्यसैले प्रदेश देखाइएको छ।",
   "map_note_en": "DHM's 5-day warning maps are green from Kartik 24 to 28, except Kartik 25, when the northern mountain areas of Gandaki, Bagmati and Koshi (not the whole provinces) are yellow. The map colours cannot be read clearly at district level, so provinces are shown.",
-  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/10/warning-map-day-1-1794278643172.png"
+  "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/10/warning-map-day-1-1794278643172.png",
+  "mfd_id": "12419"
  },
  "observed": {
   "time": "2026-11-03T18:20:00+05:45",
