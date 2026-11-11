@@ -8,6 +8,8 @@ The items below belong to others and keep their own terms.
 | Item | Where | Licence / terms |
 |---|---|---|
 | Leaflet | `assets/vendor/leaflet/` | BSD 2-Clause |
+| protomaps-leaflet 5.1.0 | `assets/vendor/protomaps-leaflet/` | BSD 3-Clause (licence file included) |
+| Offline street map | `data/offline/basemap.pmtiles` | Map data © OpenStreetMap contributors, ODbL; tiles built by Protomaps. Cut by `scripts/make_offline_map.py`. |
 | Mukta typeface | `assets/fonts/` | SIL Open Font License 1.1 |
 | Inter typeface | `assets/fonts/` | SIL Open Font License 1.1 |
 | CAP 1.2 schema | `schema/CAP-v1.2.xsd` | OASIS open standard, unchanged copy, copyright OASIS Open |

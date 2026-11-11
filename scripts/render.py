@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 import io, segno
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://nirajbhusal.github.io/gati-alerts/"
+from country import SITE
 FONT = ROOT / "scripts/fonts"
 NPT = dt.timezone(dt.timedelta(hours=5, minutes=45))
 DEV = str.maketrans("0123456789", "०१२३४५६७८९")

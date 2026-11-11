@@ -58,7 +58,7 @@
       const today = new Date(Date.now() + 5.75 * 36e5).toISOString().slice(0, 10);
       const L = c.entries.filter((e) => e.type === "holiday" && e.date_ad >= today).sort((a, b) => a.date_ad.localeCompare(b.date_ad)).slice(0, 5);
       if (!L.length) return `<p>${T("आउँदा बिदा गतिको पात्रोमा छैनन्।", "No upcoming holidays in Gati's Patro.")}</p>`;
-      return L.map((e) => `<div class="aqitem aqrow"><span>🗓 ${esc(T(e.title_ne, e.title_en))}</span><span class="meta">${G.npt ? G.npt(e.date_ad + "T00:00:00+05:45").split(" · ")[0] : e.date_ad}</span></div>`).join("") +
+      return L.map((e) => `<div class="aqitem aqrow"><span>🗓 ${esc(T(e.title_ne, e.title_en))}</span><span class="meta">${G.npt ? G.npt(e.date_ad + "T00:00:00" + G.tzIso).split(" · ")[0] : e.date_ad}</span></div>`).join("") +
         `<div class="aqcite">${G.trustChip(L[0].trust)}<span>${esc(L[0].source)}</span>${link(L[0].sourceUrl, T("स्रोत", "Source"))}</div><div class="aqacts"><a class="aqbtn" href="${R}patro/">${T("पात्रो", "Patro")}</a></div>`;
     }
     return "";
@@ -87,7 +87,7 @@
       if (!f && !a) { m.innerHTML = `<p class="meta">${T("उपलब्ध छैन।", "Not available.")}</p>`; return; }
       const v = a ? a.current.us_aqi : null, col = v == null ? "#999" : v <= 50 ? "#00a651" : v <= 100 ? "#d4b000" : v <= 150 ? "#f7941d" : v <= 200 ? "#e2231a" : "#8f3f97";
       m.innerHTML = `<div class="aqtiles">${f ? `<div class="aqtile"><b>${G.num(String(Math.round(f.current.temperature_2m)))}°C</b><span>${T("काठमाडौँ अहिले", "Kathmandu now")}</span></div>` : ""}${a ? `<div class="aqtile" style="--c:${col}"><b style="color:${col}">${G.num(String(v))}</b><span>US AQI · PM2.5 ${G.num(String(a.current.pm2_5))}</span></div>` : ""}</div>
-        <div class="aqcite"><span class="trust t-Model">🧮 ${T("मोडेल", "Model")}</span><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo ↗</a><span>${f ? G.npt(f.current.time + ":00+05:45") : ""}</span></div><div class="aqacts"><a class="aqbtn" href="${R}weather/">${T("मौसम र हावा पृष्ठ", "Weather and air page")}</a></div>`;
+        <div class="aqcite"><span class="trust t-Model">🧮 ${T("मोडेल", "Model")}</span><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo ↗</a><span>${f ? G.npt(f.current.time + ":00" + G.tzIso) : ""}</span></div><div class="aqacts"><a class="aqbtn" href="${R}weather/">${T("मौसम र हावा पृष्ठ", "Weather and air page")}</a></div>`;
     }
   }
   /* Suggested questions from the page and live data (blocked roads, weather warnings, my district) */
@@ -174,7 +174,7 @@
     </article>`;
   }
   const shareText = (el) => { const h = el.querySelector(".aqhl"), pts = [...el.querySelectorAll(".aqpts li")].map((l) => "• " + l.childNodes[0].textContent.trim()), srcs = [...el.querySelectorAll(".aqsrcs a[href^=http]")].map((a) => a.href);
-    return [h ? h.textContent : "", ...pts, srcs.length ? T("स्रोत: ", "Sources: ") + [...new Set(srcs)].join(" ") : "", T("गति: AI ले आधिकारिक स्रोतबाट लेखेको उत्तर", "Gati: AI answer from official sources") + " https://nirajbhusal.github.io/gati-alerts/ask/"].filter(Boolean).join("\n"); };
+    return [h ? h.textContent : "", ...pts, srcs.length ? T("स्रोत: ", "Sources: ") + [...new Set(srcs)].join(" ") : "", T("गति: AI ले आधिकारिक स्रोतबाट लेखेको उत्तर", "Gati: AI answer from official sources") + " " + G.country.site + "ask/"].filter(Boolean).join("\n"); };
   let inflight = null;
   async function claude(q) {
     const cf = await J("data/ask-config.json"); if (!cf || !cf.worker) return { off: true };

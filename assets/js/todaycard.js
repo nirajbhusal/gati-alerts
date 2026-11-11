@@ -59,11 +59,11 @@
         const txt = `${T("काठमाडौं–पोखरा", "Kathmandu to Pokhara")}: <b style="color:${CC[worst]}">${T(L[worst][0], L[worst][1])}</b>${rest ? `, ${rest}` : ""}`;
         rows.push(row("rt", "route/", T("मार्ग", "Route"), `<span class="tdtxt">${txt}</span>`, `${E(T("नेपाल प्रहरी", "Nepal Police"))} · ${E(T(RD.as_of_ne, RD.as_of_en))} ${G.trustChip("Official")}${G.staleChip(RD.as_of)}`, G.isStale(RD.as_of))); } }
     /* rivers: level vs warning and danger for the stations closest to danger */
-    if (RV) { const st = stale(RV.as_of + "T23:59:00+05:45", 24), top = [...RV.gauges].sort((a, b) => b.level / b.danger - a.level / a.danger).slice(0, 3);
+    if (RV) { const st = stale(RV.as_of + "T23:59:00" + G.tzIso, 24), top = [...RV.gauges].sort((a, b) => b.level / b.danger - a.level / a.danger).slice(0, 3);
       const gauge = (g) => { const mx = g.danger * 1.15, col = g.level >= g.danger ? "#D93025" : g.level >= g.warning ? "#F28C1E" : "#2F6FED";
         return `<span class="tdgg"><span class="tdggn">${E(T(g.ne, g.en))}</span><span class="tdggb"><i style="width:${Math.min(100, g.level / mx * 100).toFixed(0)}%;background:${col}"></i><u style="left:${(g.warning / mx * 100).toFixed(0)}%" title="${T("चेतावनी", "Warning")}"></u><u class="d" style="left:${(g.danger / mx * 100).toFixed(0)}%" title="${T("खतरा", "Danger")}"></u></span><span class="tdggv">${N(g.level.toFixed(1))}/${N(g.danger.toFixed(1))} m</span></span>`; };
       rows.push(row("rv", "rivers/", T("नदी", "Rivers"), `<span class="tdggs">${top.map(gauge).join("")}</span><span class="tdkey"><span><u></u>${T("चेतावनी", "Warning")}</span><span><u class="d"></u>${T("खतरा तह", "Danger level")}</span></span>`,
-        `DHM · ${st ? LC() : ""}${E(T(RV.as_of_ne, RV.as_of_en))} ${G.trustChip("Official")}${G.staleChip(RV.as_of + "T12:00:00+05:45")}`, st || G.isStale(RV.as_of + "T12:00:00+05:45"))); }
+        `DHM · ${st ? LC() : ""}${E(T(RV.as_of_ne, RV.as_of_en))} ${G.trustChip("Official")}${G.staleChip(RV.as_of + "T12:00:00" + G.tzIso)}`, st || G.isStale(RV.as_of + "T12:00:00" + G.tzIso))); }
     /* latest quake with magnitude chip */
     const q = AL ? AL.alerts.filter((a) => a.hazard === "earthquake").sort((a, b) => b.sent.localeCompare(a.sent))[0] : null;
     if (q) { const qi = q.info[G.lang] || q.info.ne, mg = ((q.info.en.params || {})["gati:magnitude"]) || "", mv = parseFloat(mg) || 0, ar = q.areas[0] ? (q.areas[0][G.lang] || q.areas[0].en) : "";
@@ -88,7 +88,7 @@
   const q = `latitude=${ll[0].toFixed(3)}&longitude=${ll[1].toFixed(3)}&timezone=Asia%2FKathmandu`;
   Promise.all([fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?${q}&current=us_aqi`).then((r) => r.ok ? r.json() : null).catch(() => null),
     fetch(`https://api.open-meteo.com/v1/forecast?${q}&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=6`).then((r) => r.ok ? r.json() : null).catch(() => null)]).then(([a, s]) => {
-    aq = { v: a && a.current ? a.current.us_aqi : null, t: a && a.current ? a.current.time + "+05:45" : "" };
+    aq = { v: a && a.current ? a.current.us_aqi : null, t: a && a.current ? a.current.time + G.tzIso : "" };
     if (s && s.daily) { const hm = (x) => x.slice(11, 16); sun = { r: hm(s.daily.sunrise[0]), s: hm(s.daily.sunset[0]) }; fc = { time: s.daily.time, tmax: s.daily.temperature_2m_max, tmin: s.daily.temperature_2m_min, rain: s.daily.precipitation_probability_max, t: new Date().toISOString() }; }
     draw(); });
   G.onLang(() => { if (f) dn = T(f.properties.ne, f.properties.en); draw(); });

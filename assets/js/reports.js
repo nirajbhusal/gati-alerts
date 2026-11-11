@@ -2,7 +2,7 @@
    Unverified reports are never listed here; we show only how many are still pending. Read-only, unauthenticated API. */
 (async function () {
   const G = window.Gati, el = document.getElementById("list"), pend = document.getElementById("pending");
-  const REPO = "nirajbhusal/gati-alerts";
+  const REPO = G.country.repository;
   let items = [], failed = false, pending = null;
   try {
     items = (await G.gh(`https://api.github.com/repos/${REPO}/issues?state=all&per_page=50&labels=verified`, { headers: { Accept: "application/vnd.github+json" } })).filter((i) => !i.pull_request && !i.labels.some((l) => l.name.toLowerCase() === "retracted"))
@@ -31,7 +31,7 @@
     if (pend) pend.innerHTML = pending === null ? "" : (G.lang === "ne"
       ? `<strong>${G.num(pending)}</strong> रिपोर्ट मोडेरेटरले जाँच्न बाँकी छन्। जाँच नसकिएसम्म ती यहाँ देखाइँदैनन्।`
       : `<strong>${pending}</strong> report${pending === 1 ? " is" : "s are"} waiting for a moderator to check. They are not shown here until checked.`);
-    if (failed) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "GitHub बाट रिपोर्ट ल्याउन सकिएन (सायद API को सीमा नाघ्यो)। केही बेरपछि फेरि हेर्नुहोस्, नत्र" : "Could not load reports from GitHub (possibly the API rate limit). Try again later or"} <a href="https://github.com/nirajbhusal/gati-alerts/issues?q=label%3Averified">GitHub ${G.lang === "ne" ? "मा हेर्नुहोस्" : "issues"}</a>.</div>`; return; }
+    if (failed) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "GitHub बाट रिपोर्ट ल्याउन सकिएन (सायद API को सीमा नाघ्यो)। केही बेरपछि फेरि हेर्नुहोस्, नत्र" : "Could not load reports from GitHub (possibly the API rate limit). Try again later or"} <a href="https://github.com/${REPO}/issues?q=label%3Averified">GitHub ${G.lang === "ne" ? "मा हेर्नुहोस्" : "issues"}</a>.</div>`; return; }
     if (!items.length) { el.innerHTML = `<div class="empty">${G.lang === "ne" ? "अहिलेसम्म मोडेरेटरले जाँचेको कुनै नागरिक रिपोर्ट छैन।" : "No verified citizen reports yet."}</div>`; return; }
     el.innerHTML = items.map((i) => {
       const o = parse(i.body), st = status(i.labels);

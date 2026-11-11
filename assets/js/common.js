@@ -5,6 +5,15 @@
   const saved = localStorage.getItem("gati-lang");
   const G = (window.Gati = { root: ROOT, lang: saved === "en" ? "en" : "ne", /* Nepali is the default for a first visit; a saved gati-lang wins */ listeners: [] });
   document.documentElement.lang = G.lang;
+  /* country:begin (written by scripts/country.py from data/country.json; edit that file, not this block) */
+  G.country = {"code":"NP","name":{"ne":"नेपाल","en":"Nepal"},"project":{"name":{"ne":"गति","en":"Gati"},"identifierPrefix":"np.gati"},"site":"https://nirajbhusal.github.io/gati-alerts/","repository":"nirajbhusal/gati-alerts","languages":{"primary":"ne","secondary":"en","regional":["mai","bho","new","the","taj"]},"timezone":{"name":"Asia/Kathmandu","offsetMinutes":345,"label":"NPT"},"map":{"bounds":[[26.3,80.0],[30.48,88.2]],"maxBounds":[[25.5,79],[31.2,89]],"center":[28.2,84.1],"zoom":6},"adminLevels":{"district":{"geocode":"NP-DISTRICT","file":"data/districts.json","geometry":"data/districts.geojson"}},"helplines":[{"number":"100","ne":"प्रहरी","en":"Police"},{"number":"101","ne":"दमकल","en":"Fire"},{"number":"102","ne":"एम्बुलेन्स","en":"Ambulance"},{"number":"1234","ne":"विपद्","en":"Disaster"}],"law":{"ne":"विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४","en":"Disaster Risk Reduction and Management Act 2074 (2017)"},"sources":"data/sources.json"};
+  /* country:end */
+  /* Derived from the country facts: time zone offset, and the helpline links used in the footer and on pages. */
+  G.tzMs = G.country.timezone.offsetMinutes * 60000;
+  G.tzIso = ((m) => (m < 0 ? "-" : "+") + String(Math.floor(Math.abs(m) / 60)).padStart(2, "0") + ":" + String(Math.abs(m) % 60).padStart(2, "0"))(G.country.timezone.offsetMinutes);
+  G.helplinesHtml = (short) => G.country.helplines.map((h) => `<a href="tel:${h.number}">${short ? h.number : `<span class="ne-only">${h.ne} ${h.number.replace(/[0-9]/g, (d) => "०१२३४५६७८९"[d])}</span><span class="en-only">${h.en} ${h.number}</span>`}</a>`).join("");
+  /* Pages mark a helpline block with data-helplines ("short" = numbers only); the static links inside are the no-script fallback. */
+  document.querySelectorAll("[data-helplines]").forEach((el) => { el.innerHTML = G.helplinesHtml(el.dataset.helplines === "short"); });
   /* Agency names, defined first so every page script (Today card included) can use them, even on cached loads */
   const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
   G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
@@ -49,7 +58,7 @@
   ];
   /* shorter English labels for the desktop menu row only */
   const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trekking", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
-  G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
+  G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
   const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
@@ -143,15 +152,14 @@
   footer.innerHTML = `<div class="wrap">
     <p class="fdisclaimer">${b("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</p>
     <div class="helplines" aria-label="Emergency helplines">
-      <a href="tel:100">${b("प्रहरी १००", "Police 100")}</a><a href="tel:101">${b("दमकल १०१", "Fire 101")}</a>
-      <a href="tel:102">${b("एम्बुलेन्स १०२", "Ambulance 102")}</a><a href="tel:1234">${b("विपद् १२३४", "Disaster 1234")}</a></div>
+      ${G.helplinesHtml()}</div>
     <div>${b("गति एउटा स्वतन्त्र नागरिक परियोजना हो, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",
              "Gati is an independent citizen project, not an official system of any government agency. Maintainer: Niraj Bhusal.")}
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
       · <a href="${ROOT}report/">${b("रिपोर्ट गर्नुहोस्", "Report")}</a> · <a href="${ROOT}reports/">${b("नागरिक रिपोर्ट", "Reports")}</a>
-      · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}lite/">Lite</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
+      · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">Lite</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
       · <a href="${ROOT}atom.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
-      · <a href="https://github.com/nirajbhusal/gati-alerts">GitHub</a></div></div>`;
+      · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
   tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
   tabs.innerHTML = TABS.map(([id, href, ic, ne, en]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
@@ -194,7 +202,7 @@
     const onset = first && first.info && first.info.en && Date.parse(first.info.en.onset || first.info.en.effective || "");
     if (!isNaN(onset)) times.push(onset);
     if (!times.length || Date.now() - Math.min.apply(null, times) <= 3 * 864e5) return null;
-    const npt = (ms) => { const t = new Date(ms + 345 * 60000); return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate(), h: t.getUTCHours(), mi: t.getUTCMinutes() }; };
+    const npt = (ms) => { const t = new Date(ms + G.tzMs); return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate(), h: t.getUTCHours(), mi: t.getUTCMinutes() }; };
     const key = (p) => p.y + "-" + p.m + "-" + p.d;
     const s = npt(Math.min.apply(null, times)), u = npt(Date.parse(a.sent)), today = npt(Date.now()), yday = npt(Date.now() - 864e5);
     const bs = BS.toBS(s.y, s.m, s.d); if (!bs) return null;
@@ -350,7 +358,7 @@
   const MON_EN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   /* Format any ISO time in Nepal Time (UTC+5:45). */
   G.npt = (iso) => {
-    const d = new Date(new Date(iso).getTime() + 345 * 60000);
+    const d = new Date(new Date(iso).getTime() + G.tzMs);
     const day = d.getUTCDate(), m = d.getUTCMonth(), y = d.getUTCFullYear();
     let h = d.getUTCHours(); const mi = String(d.getUTCMinutes()).padStart(2, "0");
     const bs = G.cal === "bs" && window.BS ? window.BS.toBS(y, m + 1, day) : null;
@@ -563,12 +571,12 @@
   const GN = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"], GE = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const WS = ["आइत", "सोम", "मङ्गल", "बुध", "बिही", "शुक्र", "शनि"], WSE = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let tm = 0;
-  function draw() { if (!window.BS) return; const ne = G.lang === "ne", N = (x) => G.num(String(x)), t = new Date(Date.now() + 345 * 60000);
+  function draw() { if (!window.BS) return; const ne = G.lang === "ne", N = (x) => G.num(String(x)), t = new Date(Date.now() + G.tzMs);
     const y = t.getUTCFullYear(), m = t.getUTCMonth(), d = t.getUTCDate(), w = t.getUTCDay(), h = t.getUTCHours(), mi = String(t.getUTCMinutes()).padStart(2, "0"), b = BS.toBS(y, m + 1, d);
     const bs = b ? (ne ? `${BS.WN[w]}, ${N(b.d)} ${BS.MN[b.m - 1]} ${N(b.y)} वि.सं.` : `${BS.WE[w]}, ${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
     const ad = ne ? `${WS[w]}, ${N(d)} ${GN[m]} ${N(y)}` : `${WSE[w]}, ${d} ${GE[m]} ${y}`;
     const h12 = h % 12 || 12, tt = ne ? `${h < 4 ? "राति" : h < 12 ? "बिहान" : h < 17 ? "दिउँसो" : h < 20 ? "साँझ" : "राति"} ${N(h12)}:${N(mi)} नेपाली समय` : `${h12}:${mi} ${h < 12 ? "AM" : "PM"} NPT`;
-    el.innerHTML = `<span class="gbs">${bs}</span><span class="gsub"><span>${ad}</span><span class="gsep" aria-hidden="true"></span><time datetime="${t.toISOString().slice(0, 16)}+05:45">${tt}</time></span>`;
+    el.innerHTML = `<span class="gbs">${bs}</span><span class="gsub"><span>${ad}</span><span class="gsep" aria-hidden="true"></span><time datetime="${t.toISOString().slice(0, 16)}" + G.tzIso>${tt}</time></span>`;
     clearTimeout(tm); tm = setTimeout(draw, 60000 - (Date.now() % 60000) + 50); }
   if (window.BS) draw(); else { const s = document.createElement("script"); s.src = G.root + "assets/js/bs.js"; s.onload = draw; document.head.appendChild(s); }
   G.listeners.push(() => setTimeout(draw, 0));
@@ -586,7 +594,7 @@
 (function () {
   const RAIN_NPT = "2026-11-11";
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const npt = new Date(Date.now() + 345 * 60000);
+  const npt = new Date(Date.now() + window.Gati.tzMs);
   const p = (n) => String(n).padStart(2, "0");
   if (npt.getUTCFullYear() + "-" + p(npt.getUTCMonth() + 1) + "-" + p(npt.getUTCDate()) !== RAIN_NPT) return;
   const layer = document.createElement("div");

@@ -18,23 +18,28 @@ Read from it today:
 
 | Reader | Fields used |
 |---|---|
+| `scripts/country.py` | Loads the file for other scripts, and writes it into `assets/js/common.js` as `G.country` |
+| `scripts/build.py`, `scripts/render.py`, `scripts/social_meta.py` | `site`, CAP identifier prefix, district geocode name |
 | `scripts/broadcast.py` | `site`, `helplines` |
+| `scripts/make_offline_map.py` | `map.maxBounds`, district geometry (to cut the offline map) |
+| `assets/js/common.js` and page scripts | `repository`, `site`, time zone offset, map bounds and centre, helplines in the footer and on the report and contact pages |
 
-Everything else below is still hard-coded and has to be changed by hand. Moving these to read `country.json` is the
-next step, one page at a time, so that a fork becomes a config change.
+After editing `data/country.json`, run `python scripts/country.py` (CI fails if you forget), then
+`python scripts/make_offline_map.py` to rebuild the offline map for your country.
+
+What is listed below is still hard-coded and has to be changed by hand.
 
 ## Still hard-coded
 
 | What | Where |
 |---|---|
-| Site address and repository | `README.md`, page `<meta>` tags, `assets/js/report.js`, `assets/js/reports.js`, `worker/wrangler.toml`, `.github/ISSUE_TEMPLATE/` |
-| Emergency numbers 100, 101, 102, 1234 | Page HTML (`report/`, `contact/`, `contacts/`, `offline/`), `assets/js/common.js`, `data/contacts.json` |
+| Site address and repository | `README.md`, the `<meta>` tags and links inside page HTML, `assets/js/embed.js`, `worker/wrangler.toml`, `.github/ISSUE_TEMPLATE/`, the policy files, User-Agent strings in fetch scripts |
+| Emergency numbers in running text | Page HTML and messages in `assets/js/askpop.js`, `affected.js`, `highways.js`, `contacts.js`; `data/contacts.json` |
 | Agencies and their domains | `data/sources.json`, the agency table at the top of `assets/js/common.js`, `worker/src/lib.js` |
 | Districts and boundaries | `data/districts.json`, `data/districts.geojson`, `data/localunits.geojson`, `data/geo/` |
-| Map bounds and centre | `assets/js/mapx.js`, `assets/js/report.js`, `assets/js/homemap.js` |
-| Time zone (UTC+5:45) and Bikram Sambat calendar | `assets/js/common.js`, `assets/js/bs.js`, `assets/js/patro.js`, `worker/src/index.js` |
+| Bikram Sambat calendar, and the time zone in two standalone files | `assets/js/bs.js`, `assets/js/patro.js`, `assets/js/embed.js`, `worker/src/index.js` |
 | The two languages (Nepali, English) | Every page uses `ne-only` / `en-only` spans; scripts use `T(ne, en)` |
-| CAP profile (`np.gati.*` identifiers, `NP-DISTRICT` geocode) | `scripts/build.py`, `docs/CAP.md`, `data/alerts/` |
+| CAP profile inside the alert files (`np.gati.*` identifiers, `NP-DISTRICT` geocode) | `data/alerts/`, `docs/CAP.md`, ingest scripts |
 | Country-specific pages | `patro/`, `trek/`, `fuel/`, `health/`, `route/` |
 
 ## Suggested order for a fork

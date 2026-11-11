@@ -2,7 +2,7 @@
    Active alerts first, then alerts sent in the last 30 days marked expired/superseded, then an "all caught up" card.
    Everything comes from data/alerts.json (the CAP messages). Nothing is invented. */
 (function () {
-  const G = window.Gati, b = G.b, esc = G.esc, R = G.root, SITE = "https://nirajbhusal.github.io/gati-alerts/";
+  const G = window.Gati, b = G.b, esc = G.esc, R = G.root, SITE = G.country.site;
   const feed = document.getElementById("feed"), sheet = document.getElementById("sheet"), sb = document.getElementById("sheetbody");
   const dash = document.getElementById("stdash");
   try { localStorage.setItem("gati-view", "stories"); } catch (e) {}

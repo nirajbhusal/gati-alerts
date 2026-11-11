@@ -1,6 +1,8 @@
 # Privacy policy
 
-Last updated: 2026-11-11. This describes the live site at https://nirajbhusal.github.io/gati-alerts/ and the code
+[नेपालीमा](PRIVACY.ne.md) · On the site: https://nirajbhusal.github.io/gati-alerts/privacy/
+
+Last updated: 2026-11-11. If the English and Nepali texts differ, the English text is the reference. This describes the live site at https://nirajbhusal.github.io/gati-alerts/ and the code
 in this repository. A fork run by someone else must publish its own policy.
 
 ## In short
@@ -13,7 +15,8 @@ in this repository. A fork run by someone else must publish its own policy.
 
 The site saves your choices in the browser's local storage: language, theme, chosen district, watched places,
 which notifications you have read, calendar view, regional interface language and similar preferences. A service worker keeps an offline copy
-of pages and data, and of map tiles you have already looked at. None of this is sent to Gati. Clearing site data in your browser removes it.
+of pages and data, and of map tiles you have already looked at. The offline street map is downloaded only if you
+press the button to save it. None of this is sent to Gati. Clearing site data in your browser removes it.
 
 ## Location
 

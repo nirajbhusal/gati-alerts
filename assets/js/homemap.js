@@ -10,7 +10,7 @@
   const polys = (g) => (g.type === "Polygon" ? [g.coordinates] : g.coordinates);
   const pth = (g) => polys(g).map((p) => p.map((r) => "M" + r.map(([x, y]) => X(x) + " " + Y(y)).join("L") + "Z").join("")).join("");
   const ctr = (g) => { let sx = 0, sy = 0, n = 0; polys(g).forEach((p) => p[0].forEach(([x, y]) => { sx += x; sy += y; n++; })); return [sx / n, sy / n]; };
-  const npt = (ms) => new Date(ms + 345 * 60000).toISOString().slice(0, 10);
+  const npt = (ms) => new Date(ms + G.tzMs).toISOString().slice(0, 10);
   const today = npt(Date.now());
   box.style.setProperty("--hmar", `${W} / ${H}`);
   let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false;
@@ -66,7 +66,7 @@
       const pts = (AQ || []).map((d, k) => [d && d.current && d.current.us_aqi, CITIES[k], d && d.current && d.current.time]).filter((x) => x[0] != null);
       pts.forEach(([v, c]) => { const b = aqBand(v); cx.push(`<g class="hmi hmaq" transform="translate(${X(c[3])},${Y(c[2])})"><title>${E(T(c[0], c[1]))}: US AQI ${E(N(Math.round(v)))}</title><rect x="-13" y="-8" width="26" height="16" rx="8" style="fill:${b[1]}"/><text y="4" text-anchor="middle">${E(N(Math.round(v)))}</text></g>`); });
       const aqleg = `<div class="hmleg hmaqleg"><b>${T("हावा (US AQI)", "Air (US AQI)")}</b>${AQBANDS.map((b, k) => `<span><i style="background:${b[1]}"></i>${E(N(k ? AQBANDS[k - 1][0] + 1 : 0))}${k < 5 ? "–" + E(N(b[0])) : "+"} ${E(T(b[2], b[3]))}</span>`).join("")}</div>`;
-      cxtxt = aqleg + `<p class="meta hmcx">${pts.length ? `${T("हावाको गुणस्तर", "Air quality")}: ${pts.map(([v, c]) => `${E(T(c[0], c[1]))} ${E(N(Math.round(v)))}`).join(" · ")}<br>${G.trustChip("Model")} ${T("स्रोत", "Source")}: <a href="${AQURL}" target="_blank" rel="noopener">Open-Meteo (CAMS)</a> · ${G.npt(pts[0][2] + "+05:45")}. ` : AQ ? T("हावाको तथ्याङ्क अहिले उपलब्ध छैन। ", "Air quality data is not available right now. ") : T("हावाको तथ्याङ्क लोड हुँदैछ… ", "Loading air quality… ")}${T("यो मोडेल अनुमान हो, आधिकारिक मापन होइन। आधिकारिक स्टेसन मापन", "This is a model estimate, not an official measurement. Official station readings")}: <a href="https://pollution.gov.np/portal/" target="_blank" rel="noopener">${T("वातावरण विभाग", "Department of Environment")} (pollution.gov.np)</a></p>`; }
+      cxtxt = aqleg + `<p class="meta hmcx">${pts.length ? `${T("हावाको गुणस्तर", "Air quality")}: ${pts.map(([v, c]) => `${E(T(c[0], c[1]))} ${E(N(Math.round(v)))}`).join(" · ")}<br>${G.trustChip("Model")} ${T("स्रोत", "Source")}: <a href="${AQURL}" target="_blank" rel="noopener">Open-Meteo (CAMS)</a> · ${G.npt(pts[0][2] + G.tzIso)}. ` : AQ ? T("हावाको तथ्याङ्क अहिले उपलब्ध छैन। ", "Air quality data is not available right now. ") : T("हावाको तथ्याङ्क लोड हुँदैछ… ", "Loading air quality… ")}${T("यो मोडेल अनुमान हो, आधिकारिक मापन होइन। आधिकारिक स्टेसन मापन", "This is a model estimate, not an official measurement. Official station readings")}: <a href="https://pollution.gov.np/portal/" target="_blank" rel="noopener">${T("वातावरण विभाग", "Department of Environment")} (pollution.gov.np)</a></p>`; }
     ic.push(...cx);
     const any = Object.keys(top).length > 0;
     const slider = day && S.ar ? `<div class="hmday" role="group" aria-label="${E(T("दिन", "Day"))}">${S.ar.days.map((d) => `<button type="button" data-d="${d.ad}"${d.ad === day ? ' aria-pressed="true"' : ' aria-pressed="false"'}>${T(d.wd_ne.slice(0, 3) + " " + N(d.bs), d.wd_en.slice(0, 3) + " " + d.bs)}</button>`).join("")}</div>` : "";

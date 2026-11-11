@@ -2,7 +2,7 @@
    When data/report-config.json names a Worker, people can also send without an account (worker/src/report.js). */
 (async function () {
   const G = window.Gati, $ = (id) => document.getElementById(id);
-  const REPO = "https://github.com/nirajbhusal/gati-alerts";
+  const REPO = "https://github.com/" + G.country.repository;
   // Option values must match .github/ISSUE_TEMPLATE/report.yml exactly.
   const HAZ = ["बाढी / Flood", "पहिरो / Landslide", "सडक अवरोध / Road blocked", "पुल क्षति / Bridge damage", "भारी वर्षा / Heavy rain",
     "हिमताल/हिमपहिरो / Glacial lake or avalanche", "भूकम्प / Earthquake", "आगलागी / Fire", "बिजुली/सञ्चार अवरोध / Power or telecom outage", "अन्य / Other"];
@@ -31,7 +31,7 @@
     if (fly) map.setView([la, lo], 14);
   };
   if (window.L) {
-    map = L.map("pickmap").setView([28.2, 84.1], 6);
+    map = L.map("pickmap").setView(G.country.map.center, G.country.map.zoom);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
     map.on("click", (e) => setPin(e.latlng.lat, e.latlng.lng));

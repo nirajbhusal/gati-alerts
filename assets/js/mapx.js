@@ -24,19 +24,58 @@
   const writeHash = () => { const q = new URLSearchParams(); Object.keys(S).forEach((k) => { const a = LISTS.includes(k) ? S[k].join(",") : S[k], b = LISTS.includes(k) ? DEF[k].join(",") : DEF[k]; if (a !== b) q.set(k, a); }); history.replaceState(null, "", "#" + q.toString()); };
   readHash();
   /* ---- map ---- */
-  const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: [[25.5, 79], [31.2, 89]] }).fitBounds([[26.3, 80.0], [30.48, 88.2]]);
+  const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: G.country.map.maxBounds }).fitBounds(G.country.map.bounds);
   const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-  /* Offline base map: when background tiles cannot load, draw the district outlines Gati already keeps offline,
-     so alerts, rivers and roads still sit on a readable map. Tiles seen before come back from the service worker cache. */
+  /* Offline base map. When background tiles cannot load:
+     1. if the person has saved the offline street map (data/offline/basemap.pmtiles, kept by the service worker), draw it;
+     2. otherwise draw the district outlines Gati already keeps offline.
+     Tiles seen before also come back from the service worker cache. Country borders are not drawn from the street
+     data; Gati's own district outlines are used instead. */
+  const OFFMAP = "gati-offmap", PMURL = new URL(R + "data/offline/basemap.pmtiles", location.href).href;
+  const offmapSaved = async () => { try { return !!(await (await caches.open(OFFMAP)).match(PMURL)); } catch (e) { return false; } };
+  const loadScript = (src) => new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
   let offBase = null, tileErr = 0, offNote = null;
-  const offlineBase = () => { if (offBase || !DIST) return;
+  const offlineBase = async () => { if (offBase || !DIST) return; offBase = true;
     map.createPane("offbase").style.zIndex = 150;   /* under the tile pane (200), so real tiles cover it when they load */
-    offBase = L.geoJSON(DIST, { pane: "offbase", interactive: false, style: { color: "#8a94a3", weight: 0.8, fillColor: "#e8ecf1", fillOpacity: 1 } }).addTo(map);
+    let street = false;
+    if (await offmapSaved()) { try {
+      if (!window.protomapsL) await loadScript(R + "assets/vendor/protomaps-leaflet/protomaps-leaflet.js");
+      const pl = window.protomapsL.leafletLayer({ url: PMURL, flavor: G.theme === "dark" ? "dark" : "light", lang: G.lang, maxDataZoom: 11, pane: "offbase", attribution: "© OpenStreetMap, Protomaps" });
+      pl.paintRules = (pl.paintRules || []).filter((r) => r.dataLayer !== "boundaries");
+      pl.addTo(map); street = true;
+      L.geoJSON(DIST, { pane: "offbase", interactive: false, style: { color: "#8a94a3", weight: 0.8, fill: false } }).addTo(map);
+    } catch (e) { street = false; } }
+    if (!street) offBase = L.geoJSON(DIST, { pane: "offbase", interactive: false, style: { color: "#8a94a3", weight: 0.8, fillColor: "#e8ecf1", fillOpacity: 1 } }).addTo(map);
     offNote = L.control({ position: "bottomleft" }); offNote.onAdd = () => { const d = L.DomUtil.create("div", "leaflet-control-attribution"); d.setAttribute("role", "status");
-      d.textContent = T("अफलाइन नक्सा: जिल्ला सिमाना मात्र", "Offline map: district outlines only"); return d; }; offNote.addTo(map); };
+      d.textContent = street ? T("अफलाइन नक्सा (सडक र बस्ती)", "Offline map (roads and towns)") : T("अफलाइन नक्सा: जिल्ला सिमाना मात्र", "Offline map: district outlines only"); return d; }; offNote.addTo(map); };
   tiles.on("tileerror", () => { if (++tileErr >= 3 || !navigator.onLine) offlineBase(); });
   tiles.on("tileload", () => { tileErr = 0; });
   if (!navigator.onLine) offlineBase();
+  /* Save / remove the offline street map. One file, fetched only when the person asks for it. */
+  if ("caches" in window) (async () => {
+    let info = null; try { info = await G.json("data/offline/basemap.json"); } catch (e) {}
+    if (!info || !info.bytes) return;
+    const mb = G.num(String(Math.round(info.bytes / 1e6)));
+    const ctl = L.control({ position: "topleft" });
+    ctl.onAdd = () => { const d = L.DomUtil.create("div", "leaflet-bar"), b = L.DomUtil.create("button", "", d); b.type = "button"; b.id = "offmapbtn";
+      b.style.cssText = "background:var(--card,#fff);color:inherit;border:0;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer;border-radius:4px;max-width:210px;text-align:left";
+      L.DomEvent.disableClickPropagation(d);
+      const paint = async (busy) => { const has = await offmapSaved();
+        b.textContent = busy || (has ? "✓ " + T("अफलाइन नक्सा सुरक्षित छ · हटाउनुहोस्", "Offline map saved · remove") : "⬇ " + T(`अफलाइन नक्सा राख्नुहोस् (${mb} MB)`, `Save offline map (${mb} MB)`));
+        b.title = T("सडक र बस्तीसहितको नेपालको नक्सा यही फोनमा राख्छ, इन्टरनेट नहुँदा काम लाग्छ।", "Keeps a map of Nepal with roads and towns on this device, for when there is no internet."); };
+      b.onclick = async () => { const c = await caches.open(OFFMAP);
+        if (await offmapSaved()) { await c.delete(PMURL); return paint(); }
+        if (!confirm(T(`करिब ${mb} MB डाउनलोड हुन्छ। मोबाइल डाटा खर्च हुन सक्छ। जारी राख्ने?`, `This downloads about ${mb} MB and may use mobile data. Continue?`))) return;
+        b.disabled = true;
+        try { const res = await fetch(PMURL, { cache: "no-store" }); if (!res.ok || !res.body) throw 0;
+          const rd = res.body.getReader(), parts = []; let got = 0;
+          for (;;) { const { done, value } = await rd.read(); if (done) break; parts.push(value); got += value.length; paint(T("डाउनलोड हुँदै", "Downloading") + " " + G.num(String(Math.round(got / info.bytes * 100))) + "%"); }
+          await c.put(PMURL, new Response(new Blob(parts, { type: "application/octet-stream" }), { headers: { "Content-Type": "application/octet-stream", "Content-Length": String(got) } }));
+        } catch (e) { alert(T("डाउनलोड हुन सकेन। फेरि प्रयास गर्नुहोस्।", "The download failed. Please try again.")); }
+        b.disabled = false; paint(); };
+      paint(); G.onLang(() => paint()); return d; };
+    ctl.addTo(map);
+  })();
   L.control.scale({ imperial: false }).addTo(map);
   const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
   if (PROV) L.geoJSON(PROV, { style: { color: "#5f6670", weight: 1, opacity: 0.6, fill: false, dashArray: "4 4" }, interactive: false }).addTo(LG.prov);
@@ -54,7 +93,7 @@
       .then((d) => { aqData = d ? (Array.isArray(d) ? d : [d]) : []; draw(); }).catch(() => { aqData = []; draw(); }); }
   const counts = {};
   let ITEMS = [], selId = null;
-  const RV_STALE = RV && RV.as_of ? (now - Date.parse(RV.as_of + "T23:59:00+05:45")) > 1728e5 : false;
+  const RV_STALE = RV && RV.as_of ? (now - Date.parse(RV.as_of + "T23:59:00" + G.tzIso)) > 1728e5 : false;
   const llOf = (a) => { for (const ar of a.areas) for (const c of ar.circles) { const [la, lo] = c.split(" ")[0].split(",").map(Number); if (!isNaN(la)) return [la, lo]; } return null; };
   const bOf = (a) => { const ll = llOf(a); if (ll) return L.latLngBounds([ll, ll]); const fs = a.districts.map((d) => distF[d]).filter(Boolean); return fs.length ? L.geoJSON({ type: "FeatureCollection", features: fs }).getBounds() : null; };
   const reg = (it) => { it.id = it.k + ":" + ITEMS.length; ITEMS.push(it); };
@@ -98,9 +137,9 @@
       L.circleMarker([la, lo], { radius: Math.min(18, 4 + Math.max(0, m - 3) * 4), color: "#7c3aed", weight: 1.5, fillColor: "#7c3aed", fillOpacity: 0.3 }).bindPopup(pop(a)).addTo(LG.eq); })));
     /* air */
     if (on("aq")) { if (!aqData) loadAQ(); else aqData.forEach((d, k) => { const v = d && d.current && d.current.us_aqi; if (v == null) return; const c = CITIES[k];
-      reg({ k: "aq", col: aqCol(v), title: T(c[0], c[1]), sub: "US AQI " + G.num(String(Math.round(v))), agency: "Open-Meteo (CAMS)", trust: "Model", url: "https://open-meteo.com/en/docs/air-quality-api", time: d.current.time + "+05:45", act: true, b: L.latLngBounds([[c[2], c[3]], [c[2], c[3]]]), html: `<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}` });
+      reg({ k: "aq", col: aqCol(v), title: T(c[0], c[1]), sub: "US AQI " + G.num(String(Math.round(v))), agency: "Open-Meteo (CAMS)", trust: "Model", url: "https://open-meteo.com/en/docs/air-quality-api", time: d.current.time + G.tzIso, act: true, b: L.latLngBounds([[c[2], c[3]], [c[2], c[3]]]), html: `<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}` });
       L.marker([c[2], c[3]], { icon: L.divIcon({ className: "mxaq", html: `<span style="background:${aqCol(v)}">${G.num(String(Math.round(v)))}</span>`, iconSize: [34, 22] }) })
-        .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + "+05:45")}</span><br><a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.aq); }); }
+        .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + G.tzIso)}</span><br><a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.aq); }); }
     counts.aq = aqData ? aqData.filter((d) => d && d.current && d.current.us_aqi != null).length : null;
     /* facilities */
     const inB = (p) => { if (!S.d && !S.pr) return true; return focusB ? focusB.contains([p[0], p[1]]) : true; };

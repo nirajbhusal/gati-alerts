@@ -60,7 +60,7 @@
     /* weather */
     const b5 = WX && WX.bulletin5, prov = [...new Set(codes.map((c) => c.slice(0, 4)))];
     const wxBody = b5 ? `<ol class="afwx">${b5.days.map((d) => { const hit = d.level !== "green" && (!d.provinces || d.provinces.some((p) => prov.includes(p))); const lvl = hit ? d.level : "green";
-      return `<li class="lv-${lvl}"><i></i><b>${E(G.lang === "ne" ? d.bs : new Date(d.ad + "T12:00:00+05:45").toLocaleDateString("en-GB", { day: "numeric", month: "short" }))}</b><span>${T(lvl === "green" ? "हरियो" : lvl === "yellow" ? "पहेँलो" : lvl === "orange" ? "सुन्तले" : lvl === "red" ? "रातो" : lvl, lvl === "green" ? "Green" : lvl[0].toUpperCase() + lvl.slice(1))}</span></li>`; }).join("")}</ol>${v.wx.length ? `<p>${E(T(v.wx[0].ne, v.wx[0].en))}</p>` : `<p>${T("यो क्षेत्रका लागि ५ दिनमा DHM चेतावनी छैन।", "No DHM warning for this area in the 5 days.")}</p>`}` : `<p>${T("DHM बुलेटिन अहिले उपलब्ध छैन।", "DHM bulletin not available right now.")}</p>`;
+      return `<li class="lv-${lvl}"><i></i><b>${E(G.lang === "ne" ? d.bs : new Date(d.ad + "T12:00:00" + G.tzIso).toLocaleDateString("en-GB", { day: "numeric", month: "short" }))}</b><span>${T(lvl === "green" ? "हरियो" : lvl === "yellow" ? "पहेँलो" : lvl === "orange" ? "सुन्तले" : lvl === "red" ? "रातो" : lvl, lvl === "green" ? "Green" : lvl[0].toUpperCase() + lvl.slice(1))}</span></li>`; }).join("")}</ol>${v.wx.length ? `<p>${E(T(v.wx[0].ne, v.wx[0].en))}</p>` : `<p>${T("यो क्षेत्रका लागि ५ दिनमा DHM चेतावनी छैन।", "No DHM warning for this area in the 5 days.")}</p>`}` : `<p>${T("DHM बुलेटिन अहिले उपलब्ध छैन।", "DHM bulletin not available right now.")}</p>`;
     /* rivers near */
     const cs = codes.map((c) => distF[c] && centre(distF[c].geometry)).filter(Boolean);
     const gs = RV ? RV.gauges.map((g) => ({ g, km: Math.min(...cs.map((c) => hav(c[0], c[1], g.ll[0], g.ll[1]))) })).filter((x) => x.km <= 60 || codes.includes((DL || []).find((d) => d.id === x.g.district)?.code)).sort((a, b) => a.km - b.km) : [];
@@ -115,7 +115,7 @@
       const el = document.getElementById("afair"); if (!el) return; const x = a && a.current && a.current.us_aqi; if (x == null) { el.innerHTML = `<p>${T("अहिले उपलब्ध छैन", "Not available right now")}</p>`; return; }
       const B = [[50, "#00a651", "राम्रो", "Good"], [100, "#d4b000", "मध्यम", "Moderate"], [150, "#f7941d", "संवेदनशीललाई हानिकारक", "Unhealthy for sensitive groups"], [200, "#e2231a", "हानिकारक", "Unhealthy"], [999, "#8f3f97", "धेरै हानिकारक", "Very unhealthy"]].find((b) => x <= b[0]);
       el.innerHTML = `<p><span class="afst" style="--c:${B[1]}"><i></i>US AQI ${G.num(String(Math.round(x)))} · ${T(B[2], B[3])}</span> <span class="meta">${T("मोडेल अनुमान", "Model estimate")}</span></p>`;
-      const t = document.getElementById("afairt"); if (t) t.textContent = G.npt(a.current.time + "+05:45"); }).catch(() => { const el = document.getElementById("afair"); if (el) el.innerHTML = `<p>${T("अहिले उपलब्ध छैन", "Not available right now")}</p>`; });
+      const t = document.getElementById("afairt"); if (t) t.textContent = G.npt(a.current.time + G.tzIso); }).catch(() => { const el = document.getElementById("afair"); if (el) el.innerHTML = `<p>${T("अहिले उपलब्ध छैन", "Not available right now")}</p>`; });
   }
   function miniMap(codes, v, gs, qs, rts) {
     if (!DG || !codes.length) return "";

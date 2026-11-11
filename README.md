@@ -31,7 +31,9 @@ It is a parallel project to the verified [Rasuwa–Bhotekoshi bulletin](https://
 | `.github/workflows/poll.yml` | Polls official sources every 2 hours and opens a pull request for review. Never commits to `main`. |
 | `.github/workflows/broadcast.yml`, `scripts/broadcast.py` | Sends new official alerts to Telegram, Viber, WhatsApp and SMS once secrets are set. See [docs/BROADCAST.md](docs/BROADCAST.md). |
 | `worker/` | Optional Cloudflare Worker: Ask Gati and the no-account report intake. See [worker/README.md](worker/README.md). |
-| `data/country.json` | Country facts for this deployment. See [docs/FORKING.md](docs/FORKING.md). |
+| `data/country.json`, `scripts/country.py` | Country facts for this deployment, shared by scripts and pages. See [docs/FORKING.md](docs/FORKING.md). |
+| `data/offline/`, `scripts/make_offline_map.py` | Offline street map of Nepal (about 36 MB) that people can save from the map page. |
+| `privacy/`, `*.ne.md` | Privacy page on the site in Nepali and English; Nepali versions of the policy files. |
 | `data/i18n/`, `assets/js/locale.js` | Regional interface languages over Nepali. See [docs/LANGUAGES.md](docs/LANGUAGES.md). |
 | `.github/ISSUE_TEMPLATE/report.yml` | Citizen report issue form |
 | `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md), [DPG](docs/DPG.md), [BROADCAST](docs/BROADCAST.md), [FORKING](docs/FORKING.md), [LANGUAGES](docs/LANGUAGES.md) |

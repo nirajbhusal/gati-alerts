@@ -34,7 +34,7 @@
   /* 2. Weather: DHM 5-day strip */
   {
     const b = WX && WX.bulletin5;
-    slides.push({ k: "weather", t: T("मौसम: DHM ५ दिने", "Weather: DHM 5-day"), body: b ? `<ol class="dswx">${b.days.map((d) => `<li class="lv-${d.level}"><b>${E(T(d.bs, new Date(d.ad + "T12:00:00+05:45").toLocaleDateString("en-GB", { day: "numeric", month: "short" })))}</b><i></i><span>${E(T(...({ yellow: ["पहेँलो", "Yellow"], orange: ["सुन्तले", "Orange"], red: ["रातो", "Red"] }[d.level] || ["हरियो", "Green"])))}</span></li>`).join("")}</ol><p class="dssum">${E(T(b.days.find((d) => d.level !== "green")?.ne || b.days[0].ne, b.days.find((d) => d.level !== "green")?.en || b.days[0].en))}</p>` : na(T("DHM बुलेटिन", "DHM bulletin"), WX && WX.checked ? G.npt(WX.checked) : ""),
+    slides.push({ k: "weather", t: T("मौसम: DHM ५ दिने", "Weather: DHM 5-day"), body: b ? `<ol class="dswx">${b.days.map((d) => `<li class="lv-${d.level}"><b>${E(T(d.bs, new Date(d.ad + "T12:00:00" + G.tzIso).toLocaleDateString("en-GB", { day: "numeric", month: "short" })))}</b><i></i><span>${E(T(...({ yellow: ["पहेँलो", "Yellow"], orange: ["सुन्तले", "Orange"], red: ["रातो", "Red"] }[d.level] || ["हरियो", "Green"])))}</span></li>`).join("")}</ol><p class="dssum">${E(T(b.days.find((d) => d.level !== "green")?.ne || b.days[0].ne, b.days.find((d) => d.level !== "green")?.en || b.days[0].en))}</p>` : na(T("DHM बुलेटिन", "DHM bulletin"), WX && WX.checked ? G.npt(WX.checked) : ""),
       foot: foot(b ? `<a href="${E(b.url)}" target="_blank" rel="noopener">DHM @NMD_Weather</a>` : "DHM", b ? `${T("जारी", "issued")} ${G.npt(b.issued)}` : "", G.trustChip("Official"), "weather/", T("मौसम", "Weather")) });
   }
   /* 3. Roads: status bar per corridor */
@@ -47,9 +47,9 @@
   /* 4. Rivers: level against warning and danger */
   {
     const gs = RV ? RV.gauges : [];
-    slides.push({ stale: RV ? G.isStale(RV.as_of + "T12:00:00+05:45") : false, k: "rivers", t: T("नदी सतह", "River levels"), body: gs.length ? `<ul class="dsriv">${gs.map((g) => { const mx = g.danger * 1.15, c = g.level >= g.danger ? "#D93025" : g.level >= g.warning ? "#F28C1E" : "#2F6FED";
+    slides.push({ stale: RV ? G.isStale(RV.as_of + "T12:00:00" + G.tzIso) : false, k: "rivers", t: T("नदी सतह", "River levels"), body: gs.length ? `<ul class="dsriv">${gs.map((g) => { const mx = g.danger * 1.15, c = g.level >= g.danger ? "#D93025" : g.level >= g.warning ? "#F28C1E" : "#2F6FED";
       return `<li><span class="dslab">${E(T(g.ne, g.en))}</span><span class="dsrb"><i class="lvl" style="width:${Math.min(100, (g.level / mx) * 100).toFixed(1)}%;background:${c}"></i><i class="mk w" style="left:${((g.warning / mx) * 100).toFixed(1)}%"></i><i class="mk d" style="left:${((g.danger / mx) * 100).toFixed(1)}%"></i></span><b>${G.num(g.level.toFixed(1))} m</b></li>`; }).join("")}</ul><div class="dsleg"><span><i class="mk w"></i>${T("चेतावनी तह", "Warning")}</span><span><i class="mk d"></i>${T("खतरा तह", "Danger")}</span></div>` : na(T("नदी सतह", "River levels"), ""),
-      foot: foot(RV ? E(T(RV.source_ne, RV.source_en)) : "DHM", RV ? E(T(RV.as_of_ne, RV.as_of_en)) : "", G.trustChip("Official") + (RV ? G.staleChip(RV.as_of + "T12:00:00+05:45") : ""), "rivers/", T("नदी", "Rivers")) });
+      foot: foot(RV ? E(T(RV.source_ne, RV.source_en)) : "DHM", RV ? E(T(RV.as_of_ne, RV.as_of_en)) : "", G.trustChip("Official") + (RV ? G.staleChip(RV.as_of + "T12:00:00" + G.tzIso) : ""), "rivers/", T("नदी", "Rivers")) });
   }
   /* 5. Earthquakes: latest on a mini map */
   {
@@ -86,7 +86,7 @@
     const BAND = [[50, "#00a651", "राम्रो", "Good"], [100, "#d4b000", "मध्यम", "Moderate"], [150, "#f7941d", "संवेदनशीललाई हानिकारक", "Unhealthy for sensitive groups"], [200, "#e2231a", "हानिकारक", "Unhealthy"], [300, "#8f3f97", "धेरै हानिकारक", "Very unhealthy"], [999, "#7e0023", "खतरनाक", "Hazardous"]];
     const b = BAND.find((x) => v <= x[0]), pct = Math.min(1, v / 300);
     document.getElementById("dsair").innerHTML = `<div class="dsaq"><svg viewBox="0 0 120 70" class="dsgauge" role="img" aria-label="AQI ${v}"><path d="M10 60a50 50 0 0 1 100 0" fill="none" stroke="var(--line)" stroke-width="12" stroke-linecap="round"/><path d="M10 60a50 50 0 0 1 100 0" fill="none" stroke="${b[1]}" stroke-width="12" stroke-linecap="round" pathLength="100" stroke-dasharray="${(pct * 100).toFixed(1)} 100"/><text x="60" y="56" text-anchor="middle" font-size="22" font-weight="700" fill="currentColor">${G.num(String(Math.round(v)))}</text></svg><div><p class="dsbig" style="font-size:1.2rem">${T(b[2], b[3])}</p><p class="meta">US AQI · PM2.5 ${G.num(String(a.current.pm2_5))} µg/m³</p><p class="meta">${T("मोडेल अनुमान, मापन होइन", "Model estimate, not a measurement")}</p></div></div>`;
-    document.getElementById("dsairt").textContent = G.npt(a.current.time + "+05:45");
+    document.getElementById("dsairt").textContent = G.npt(a.current.time + G.tzIso);
   } catch (e) { const el = document.getElementById("dsair"); if (el) el.innerHTML = na("AQI", G.npt(new Date().toISOString())); }
   }
   draw(); G.onLang && G.onLang(() => draw());

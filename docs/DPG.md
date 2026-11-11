@@ -34,7 +34,6 @@ It is a self-assessment prepared for a registry application; it is not a certifi
 - Reporting without a GitHub account is built (`worker/`) but only works once the Worker is deployed and configured.
 - `data/country.json` now holds the country facts, but most pages still hard-code them, so a fork for another
   country needs manual changes. See [FORKING.md](FORKING.md).
-- The policy files are in English only; a Nepali privacy page on the site is still to be written.
 - Maithili and Bhojpuri interface words are drafts awaiting native review; Tharu, Nepal Bhasa and Tamang need
   translators. See [LANGUAGES.md](LANGUAGES.md).
 - "Gati" is a working name pending a trademark check.

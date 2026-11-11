@@ -17,9 +17,9 @@
       const isAct = (a) => !a.expired && !a.supersededBy && Date.parse(a.expires) > Date.now();
       (AL ? AL.alerts : []).forEach((a) => { const n = a.info.ne || {}, e = a.info.en || {}; add("alert", n.headline, e.headline, `alerts/${a.identifier}/`, { alt: [n.description, e.description, (a.areas || []).map((x) => x.en + " " + x.ne).join(" "), a.hazard, G.agencyOf(a)].join(" "), trust: a.trust, time: a.sent, sev: a.severity, act: isAct(a) }); });
       (RD ? RD.routes : []).forEach((r) => add("road", r.name_ne, r.name_en, `route/`, { alt: r.id, status: r.status, time: RD.as_of, trust: "Official" }));
-      (RV ? RV.gauges : []).forEach((g) => add("river", g.ne, g.en, `rivers/`, { alt: g.district, time: RV.as_of + "T12:00:00+05:45", trust: "Official" }));
+      (RV ? RV.gauges : []).forEach((g) => add("river", g.ne, g.en, `rivers/`, { alt: g.district, time: RV.as_of + "T12:00:00" + G.tzIso, trust: "Official" }));
       (CT ? Object.values(CT).filter(Array.isArray).flat() : []).forEach((c) => c.num && add("contact", `${c.ne} ${c.num}`, `${c.en} ${c.num}`, `tel:${c.num}`, { alt: c.num, trust: "Official" }));
-      (CAL ? CAL.entries : []).filter((e) => e.type === "holiday").forEach((e) => add("holiday", e.title_ne, e.title_en, `patro/`, { alt: e.date_bs + " " + e.date_ad, time: e.date_ad + "T00:00:00+05:45", trust: e.trust, dateOnly: true }));
+      (CAL ? CAL.entries : []).filter((e) => e.type === "holiday").forEach((e) => add("holiday", e.title_ne, e.title_en, `patro/`, { alt: e.date_bs + " " + e.date_ad, time: e.date_ad + "T00:00:00" + G.tzIso, trust: e.trust, dateOnly: true }));
       (G.PAGES || []).forEach(([id, href, ne, en]) => add("page", ne, en, href, { alt: id }));
       try { const h = await fetch(R + "safety/").then((r) => r.text()); const d = new DOMParser().parseFromString(h, "text/html");
         d.querySelectorAll("article.scard").forEach((c) => add("safety", (c.querySelector("h2 .ne-only") || {}).textContent, (c.querySelector("h2 .en-only") || {}).textContent, `safety/#${c.id}`, { alt: c.id + " " + c.textContent })); } catch (e) {}

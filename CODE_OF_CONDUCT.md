@@ -1,5 +1,7 @@
 # Code of Conduct
 
+[नेपालीमा](CODE_OF_CONDUCT.ne.md)
+
 Gati relays disaster information. People may arrive here worried, grieving or in a hurry. We want every
 contributor, reporter and reader to be treated with respect.
 
