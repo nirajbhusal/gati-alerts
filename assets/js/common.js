@@ -148,9 +148,11 @@
       <div class="mdfoot">${mrow(["me", "me/", "प्रोफाइल र सेटिङ", "Profile & Settings"])}</div>
     </div></div>`;
   document.body.append(drawer);
+  const OCTOVERSE = "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/";
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
     <p class="fdisclaimer">${b("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</p>
+    ${PAGE === "home" ? `<p class="frecog" style="margin:0 0 12px;font-weight:600">★ ${b('<a href="'+OCTOVERSE+'" rel="noopener">GitHub Octoverse २०२६</a> मा उल्लेखित', 'Featured in <a href="'+OCTOVERSE+'" rel="noopener">GitHub Octoverse 2026</a>')} · <a href="${ROOT}about/#recognition">${b("थप", "More")}</a></p>` : ""}
     <div class="helplines" aria-label="Emergency helplines">
       ${G.helplinesHtml()}</div>
     <div>${b("गति एउटा स्वतन्त्र नागरिक परियोजना हो, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",

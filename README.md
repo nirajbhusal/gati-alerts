@@ -103,9 +103,16 @@ See also [CONTRIBUTING](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md),
 
 ## Brand
 
-Logo concept A "Ga-Signal", Himal Navy `#0E2A47`, River Teal `#0F7C86`, Glacier `#7FD1D8` (Signal Amber only in the logo arcs),
-CAP severity scale Extreme `#7A0019`, Severe `#C81E1E`, Moderate `#E8770E`, Minor `#F5C518`, Info `#2B6CB0`. Fonts: Mukta, Inter.
+Mark: a white "ग" with three signal arcs on Gati Red `#E2362B`; wordmark in Navy `#0B1424`. Interface colours: Crimson
+`#DC143C`, River Teal `#0F7C86`, Glacier `#7FD1D8`, Snow `#F7F9FB`, Ink `#14202B`. CAP severity scale (reserved for
+severity only): Extreme `#8E1B14`, Severe `#D93025`, Moderate `#F28C1E`, Minor `#F2C94C`, Info `#8F9BB3`. Fonts: Mukta, Inter.
+The full brand kit, with logo downloads and usage rules, is on the [About page](https://nirajbhusal.github.io/gati-alerts/about/#brand).
 
-Maintainer: Niraj Bhusal. Corrections and hazard reports go through GitHub (see Citizen reports above). Emergencies: 100, 101, 102, 1234.
+## Recognition
+
+Gati is named in the opening of GitHub's [Octoverse 2026](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/)
+report (28 October 2026). This is a mention, not an endorsement.
+
+Maintainer: Niraj Bhusal ([X](https://x.com/nirajbhusal), [LinkedIn](https://www.linkedin.com/in/niraj)). Corrections and hazard reports go through GitHub (see Citizen reports above). Emergencies: 100, 101, 102, 1234.
 
 Name note: the repo is `gati-alerts` because `nirajbhusal/gati` already hosts a separate project (Nepali Patro PWA).
