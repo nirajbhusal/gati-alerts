@@ -124,7 +124,7 @@ function cardTall(bleed) {
   const W = 54 + bleed * 2, H = 90 + bleed * 2, p = 6 + bleed;
   const qr = fs.readFileSync(path.join(TMP, "..", "gati-qr.svg"), "utf8");
   const row = (k, v) => `<div><div style="font-size:4.6pt;font-weight:700;letter-spacing:.14em;color:${C.glacier}">${k}</div><div style="font-size:7.2pt;color:#fff;font-weight:500;margin-top:.2mm">${v}</div></div>`;
-  const rings = (color, o) => `<svg viewBox="0 0 400 400" style="position:absolute;left:${bleed - 4}mm;bottom:${bleed + 31}mm;width:58mm;height:58mm" fill="none" stroke="${color}" stroke-linecap="round" stroke-width="15">
+  const rings = (color, o) => `<svg viewBox="0 0 400 400" style="position:absolute;left:${bleed - 4}mm;bottom:${bleed + 31}mm;width:51mm;height:51mm" fill="none" stroke="${color}" stroke-linecap="round" stroke-width="15">
 <path d="M70 250 A80 80 0 0 1 150 330" opacity="${o}"/><path d="M70 170 A160 160 0 0 1 230 330" opacity="${o * 0.65}"/><path d="M70 90 A240 240 0 0 1 310 330" opacity="${o * 0.35}"/><circle cx="70" cy="330" r="13" fill="${color}" stroke="none" opacity="${o}"/></svg>`;
   return `<style>${BASE}@page{size:${W}mm ${H}mm;margin:0}body{width:${W}mm}
 .side{width:${W}mm;height:${H}mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}</style>
