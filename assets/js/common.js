@@ -35,39 +35,48 @@
   const NAV = [
     ["alerts", "alerts/", "सूचना", "Alerts"],
     ["map", "map/", "नक्सा", "Map"],
-    ["stories", "feed/", "फिड", "Feed"],
-    ["patro", "patro/", "पात्रो", "Patro"],
+    ["weather", "weather/", "मौसम र हावा", "Weather"],
+    ["roads", "roads/", "सडक", "Roads"],
+    ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency"],
     ["ask", "ask/", "सोध्नुहोस्", "Ask"],
   ];
-  /* "More" menu (desktop) and extra links in the mobile menu */
+  /* "More" menu (desktop). Pages in the same area also link to each other through the strip under the header (AREAS). */
   const MORE = [
-    ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"],
+    ["stories", "feed/", "फिड", "Feed"],
     ["rivers", "rivers/", "नदी", "Rivers"],
-    ["roads", "roads/", "सडक", "Roads"],
+    ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
     ["route", "route/", "मार्ग जाँच", "Route check"],
     ["trek", "trek/", "पदमार्ग", "Trekking"],
-    ["weather", "weather/", "मौसम र हावा", "Weather & air"],
-    ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
-    ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"],
-    ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"],
     ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"],
+    ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"],
     ["safety", "safety/", "के गर्ने", "What to do"],
+    ["patro", "patro/", "पात्रो", "Patro"],
     ["sources", "sources/", "स्रोत", "Sources"],
     ["log", "log/", "परिवर्तन लग", "Change log"],
     ["about", "about/", "बारेमा", "About"],
   ];
+  /* Areas: pages that belong together. Used for the phone menu groups, the bottom bar highlight and the strip of sibling links. */
+  const AREAS = [
+    ["alerts", "सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["notifications", "notifications/", "मेरा लागि", "For me"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"]]],
+    ["hazards", "मौसम र जोखिम", "Hazards", [["weather", "weather/", "मौसम र हावा", "Weather & air"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
+    ["travel", "यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग", "Trekking"], ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"]]],
+    ["help", "सहायता", "Help", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"], ["safety", "safety/", "के गर्ने", "What to do"]]],
+    ["reports", "नागरिक रिपोर्ट", "Reports", [["report", "report/", "रिपोर्ट गर्नुहोस्", "Report a hazard"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
+    ["about", "बारेमा र थप", "About and more", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["patro", "patro/", "पात्रो", "Patro"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
+  ];
+  const areaOf = (id) => AREAS.find((a) => a[3].some((x) => x[0] === id));
   /* shorter English labels for the desktop menu row only */
   const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trekking", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
-  G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
+  G.PAGES = [...NAV, ...MORE, ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
   const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
   const TABS = [
     ["home", "./", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
     ["alerts", "alerts/", ICON('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'), "सूचना", "Alerts"],
-    ["stories", "feed/", ICON('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="M8 3.5h8"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "सूचना फिड", "Feed"],
     ["map", "map/", ICON('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "नक्सा", "Map"],
-    ["patro", "patro/", ICON('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M7.5 13h1M11.5 13h1M15.5 13h1M7.5 16.5h1M11.5 16.5h1"/>'), "पात्रो", "Patro"],
+    ["weather", "weather/", ICON('<path d="M7.5 16a4 4 0 0 1 .4-7.98A5.5 5.5 0 0 1 18.4 9.6 3.25 3.25 0 0 1 17.5 16z"/><path d="m9 18.5-.8 2M13 18.5l-.8 2M17 18.5l-.8 2"/>'), "जोखिम", "Hazards", "hazards"],
+    ["roads", "roads/", ICON('<path d="M8.5 4 5 20M15.5 4 19 20"/><path d="M12 5v2.5M12 10.5V13M12 16.5V19"/>'), "यात्रा", "Travel", "travel"],
   ];
   /* Menu line icons: one set, 24 grid, 1.8 stroke, round caps (same as the tab bar) */
   const MI = {
@@ -107,13 +116,7 @@
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;
   /* Phone menu: every page grouped by purpose, Home as a full row, current page highlighted. Desktop keeps the inline row + More. */
-  const GRP = [
-    ["सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
-    ["मौसम र जोखिम", "Weather and hazards", [["weather", "weather/", "मौसम र हावा", "Weather & air"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
-    ["यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग", "Trekking"]]],
-    ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"], ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
-    ["बारेमा", "About", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"]]],
-  ];
+  const GRP = AREAS.map(([, ne, en, it]) => [ne, en, it]);
   const mgroups = `<div class="mgroups"><a class="mghome" href="${ROOT}./"${PAGE === "home" ? ' aria-current="page"' : ""}>${b("गृहपृष्ठ", "Home")}</a>${GRP.map(([ne, en, it]) => `<div class="mg"><p class="mgh">${b(ne, en)}</p><div class="mgl">${it.map(([id, href, n, e]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(n, e)}</a>`).join("")}</div></div>`).join("")}</div>`;
   const header = document.createElement("header");
   header.className = "top";
@@ -148,6 +151,25 @@
       <div class="mdfoot">${mrow(["me", "me/", "प्रोफाइल र सेटिङ", "Profile & Settings"])}</div>
     </div></div>`;
   document.body.append(drawer);
+  /* Strip of sibling links at the top of a page, so pages in one area work like tabs of one section. */
+  (() => { const ar = areaOf(PAGE), main = document.getElementById("main"); if (!ar || !main || ar[3].length < 2 || PAGE === "map") return;
+    const nav = document.createElement("nav"); nav.className = "sibs"; nav.setAttribute("aria-label", ar[1] + " / " + ar[2]);
+    nav.innerHTML = `<span class="sibs-t">${b(ar[1], ar[2])}</span>` + ar[3].map(([id, href, ne, en]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("");
+    main.prepend(nav); const cur = nav.querySelector("[aria-current]"); if (cur && cur.offsetLeft + cur.offsetWidth > nav.clientWidth) nav.scrollLeft = cur.offsetLeft - 60; })();
+  /* Long lists show their first items with a "Show all" button. Any search or filter on the page, or a link to an
+     item further down, opens the full list, so nothing can be hidden from a search. */
+  (() => { const main = document.getElementById("main"); if (!main) return;
+    const RULES = [["#expired", 10], ["ol#updates", 8], ["ul.archive", 20], ["ul.hlist", 20], ["ol#log", 25]];
+    const setup = (box, n) => { if (box.dataset.pg) return; box.dataset.pg = n; box.classList.add("pgcut", "pg" + n);
+      const btn = document.createElement("button"); btn.type = "button"; btn.className = "btn alt pgmore";
+      const lab = () => { const extra = box.children.length - n; btn.hidden = extra <= 0 || !box.classList.contains("pgcut"); btn.innerHTML = b(`सबै देखाउनुहोस् (थप ${G.num ? G.num(String(extra)) : extra})`, `Show all (${extra} more)`); };
+      const open = () => { box.classList.remove("pgcut"); btn.hidden = true; };
+      btn.onclick = open; box.after(btn); lab(); new MutationObserver(lab).observe(box, { childList: true });
+      main.addEventListener("input", open); main.addEventListener("change", open);
+      const jump = () => { try { const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1))); if (el && box.contains(el)) { open(); el.scrollIntoView(); } } catch (e) {} };
+      addEventListener("hashchange", jump); jump(); };
+    const scan = () => RULES.forEach(([sel, n]) => main.querySelectorAll(sel).forEach((box) => box.children.length > n + 3 && setup(box, n)));
+    scan(); new MutationObserver(scan).observe(main, { childList: true, subtree: true }); })();
   const OCTOVERSE = "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/";
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
@@ -164,7 +186,7 @@
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
   tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
-  tabs.innerHTML = TABS.map(([id, href, ic, ne, en]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
+  tabs.innerHTML = TABS.map(([id, href, ic, ne, en, area]) => `<a href="${ROOT}${href}"${id === PAGE || (area ? (areaOf(PAGE) || [])[0] === area : id === "alerts" && PAGE !== "map" && (areaOf(PAGE) || [])[0] === "alerts") ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
   document.body.prepend(header); document.body.classList.add("ghdr");
@@ -193,7 +215,7 @@
   /* Stale chip: data whose source time is older than 24 h, in the Reported colour */
   G.isStale = (iso, h = 24) => !iso || Date.now() - Date.parse(iso) > h * 36e5;
   G.staleChip = (iso, h = 24) => { if (!G.isStale(iso, h)) return ""; const d = new Date(Date.parse(iso) + 345 * 6e4), MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"], MN = ["जनवरी","फेब्रुअरी","मार्च","अप्रिल","मे","जुन","जुलाई","अगस्ट","सेप्टेम्बर","अक्टोबर","नोभेम्बर","डिसेम्बर"];
-    return `<span class="stalechip">पुरानो · Stale since ${G.lang === "ne" ? MN[d.getUTCMonth()] + " " + G.num(String(d.getUTCDate())) : d.getUTCDate() + " " + MO[d.getUTCMonth()]}</span>`; };
+    return `<span class="stalechip">${G.lang === "ne" ? "पुरानो · " + MN[d.getUTCMonth()] + " " + G.num(String(d.getUTCDate())) + " देखि" : "Stale since " + d.getUTCDate() + " " + MO[d.getUTCMonth()]}</span>`; };
   G.affChip = (codes) => { const c = (codes || []).filter(Boolean); return `<a class="afx" href="${ROOT}affected/${c.length ? "#d=" + encodeURIComponent(c[0]) + (c.length > 1 ? "&ds=" + encodeURIComponent(c.join(",")) : "") : ""}"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>${G.lang === "ne" ? "के म प्रभावित छु?" : "Am I affected?"}</a>`; };
   /* A road closure that is a CAP Update, still in force, whose chain started more than 3 days ago. */
   G.roadOngoing = (a) => {
