@@ -69,14 +69,14 @@
   const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trekking", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
   G.PAGES = [...NAV, ...MORE, ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
-  /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
+  /* Mobile bottom bar: Home, Alerts, Feed, Map, Hazards. Line icons (24px, 1.8 stroke). Travel is in the menu and the home features. */
   const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
   const TABS = [
     ["home", "./", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
     ["alerts", "alerts/", ICON('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'), "सूचना", "Alerts"],
+    ["stories", "feed/", ICON('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="M8 3.5h8"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "फिड", "Feed"],
     ["map", "map/", ICON('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "नक्सा", "Map"],
     ["weather", "weather/", ICON('<path d="M7.5 16a4 4 0 0 1 .4-7.98A5.5 5.5 0 0 1 18.4 9.6 3.25 3.25 0 0 1 17.5 16z"/><path d="m9 18.5-.8 2M13 18.5l-.8 2M17 18.5l-.8 2"/>'), "जोखिम", "Hazards", "hazards"],
-    ["roads", "roads/", ICON('<path d="M8.5 4 5 20M15.5 4 19 20"/><path d="M12 5v2.5M12 10.5V13M12 16.5V19"/>'), "यात्रा", "Travel", "travel"],
   ];
   /* Menu line icons: one set, 24 grid, 1.8 stroke, round caps (same as the tab bar) */
   const MI = {
@@ -186,7 +186,7 @@
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
   tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
-  tabs.innerHTML = TABS.map(([id, href, ic, ne, en, area]) => `<a href="${ROOT}${href}"${id === PAGE || (area ? (areaOf(PAGE) || [])[0] === area : id === "alerts" && PAGE !== "map" && (areaOf(PAGE) || [])[0] === "alerts") ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
+  tabs.innerHTML = TABS.map(([id, href, ic, ne, en, area]) => `<a href="${ROOT}${href}"${id === PAGE || (area ? (areaOf(PAGE) || [])[0] === area : id === "alerts" && PAGE !== "map" && PAGE !== "stories" && (areaOf(PAGE) || [])[0] === "alerts") ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
   document.body.prepend(header); document.body.classList.add("ghdr");
