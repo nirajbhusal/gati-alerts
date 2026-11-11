@@ -19,6 +19,7 @@
   const now = Date.now();
   const PAGE = document.body.dataset.page, RT = G.root;
   const allAlerts = data.alerts;
+  G.alertById = Object.fromEntries(allAlerts.map((a) => [a.identifier, a]));
   if (PAGE === "home") data.alerts = data.alerts.filter((a) => now - Date.parse(a.sent) <= 7 * 864e5);
   data.alerts.forEach((a) => (a.expired = new Date(a.expires).getTime() < now));
   const NIL = document.createElement("div");
@@ -77,8 +78,10 @@
     return `<article class="card alert s-${a.severity}${a.expired ? " expired" : ""}${!a.expired && now - Date.parse(a.sent) < 864e5 ? " fresh" : ""}" id="${G.esc(a.identifier)}">
       <div class="ahead">${G.sevChip(a.severity)}
         ${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag live">${T("चालु", "Active")}</span>`}
+        ${G.roadOngoingChip(a)}
         <span class="tag">${G.esc(i.event)}</span></div>
       <h4>${G.esc(i.headline)}</h4>
+      ${G.roadOngoingLine(a)}
       <p class="aarea">📍 ${G.esc(areas)}</p>
       <p class="atime">🕒 ${T("स्रोतको समय", "Source time")}: <strong>${G.npt(i.params["gati:sourceTime"] || a.sent)}</strong></p>
       <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.esc((i.senderName || "").split(" — ")[0])}</span></div>

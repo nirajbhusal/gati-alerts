@@ -695,10 +695,10 @@ a{color:#0B1424}html[data-theme=dark] a{color:#8fb8ff}
 .card,.svcard,.scard,.pside,.pmain{box-shadow:none!important;border-color:transparent!important;background:var(--surface)}
 .hdate{margin:20px 0 4px;color:var(--slate);font-size:var(--fs-4)}
 .qstrip{margin:8px 0 12px}.qs{background:var(--surface2)!important;border:0!important;box-shadow:none!important;color:var(--ink)!important}.qs span{background:none!important;color:var(--slate)!important;width:22px}
-.svcard{padding:8px 0;margin:8px 0 28px}.svhead h2{font-weight:600}
+.svcard{padding:8px 0;margin:8px 0 28px}.svhead h2{font-weight:600;font-size:var(--r-title)}
 .svi{background:none!important;box-shadow:none!important;color:var(--ink)!important;width:44px!important;height:44px!important}
-.svt:hover .svi{transform:none;box-shadow:none;color:var(--crimson)!important}.svl{color:var(--slate)}
-.svmore,.svsearch input{background:var(--surface2);border:0}
+.svt{min-height:44px}.svt:hover .svi{transform:none;box-shadow:none;color:var(--crimson)!important}.svl{color:var(--slate);font-size:var(--r-body)}
+.svmore,.svsearch input{background:var(--surface2);border:0;min-height:44px}
 .aqfab{background:#0B1424!important}
 .aqhead,html[data-theme=crimson] .aqhead{background:var(--surface)!important;color:var(--ink)!important;border-bottom:1px solid var(--line)!important}
 .aqhead *{color:inherit}.aqmsg.me,.aqform button{background:#0B1424}.aqtabs{border-bottom:0}
@@ -795,6 +795,8 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .brktag{font-size:var(--fs-6);font-weight:700;letter-spacing:.02em;color:var(--crimson);text-transform:uppercase}
 .brkh{font-weight:600;color:var(--ink)!important;flex:1 1 14em;text-decoration:none}.brkh:hover{text-decoration:underline}
 .brkm{font-size:var(--fs-6);color:var(--slate)}
+.breaking li .ongline,.brklist li .ongline{flex:1 1 100%;margin:0}
+.ongline{margin:2px 0 0;font-size:var(--r-meta);color:var(--slate)}
 .brkx{margin-left:auto;width:32px;height:32px;border-radius:50%;border:0;background:none;color:var(--slate);font-size:var(--fs-3);cursor:pointer}.brkx:hover{background:var(--surface2)}
 .brksec{margin:8px 0 24px}.brksec h2{font-size:var(--fs-3);margin:0 0 8px}.brklist{list-style:none;margin:0;padding:0;display:grid;gap:8px}.brklist li{background:var(--surface2);border-radius:0 12px 12px 0;padding:10px 12px}
 /* Map with filters */
@@ -860,10 +862,11 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .hslider .dslider{margin:20px 0 36px}.hslider .dslide{flex-basis:100%}
 .halerts .sechead h2{font-size:var(--fs-3);font-weight:600}
 .hfeatures{margin:48px 0 24px;padding-top:32px;border-top:1px solid var(--line)}
+.homev3 > .hfeatures{margin:4px 0 12px;padding-top:0;border-top:0}
 .hleft>.hfeatures{margin:8px 0 32px;padding-top:24px}
 .homev3 .hero{display:none}
 @media(max-width:960px){.hcols{display:flex;flex-direction:column;gap:0}.hleft,.hright{display:contents}
-  .hdist{order:1}.hslider{order:2}.hleft>.hfeatures{order:2;width:100%}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
+  .hdist{order:1}.hslider{order:2}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
 .hcols>*,.hleft>*,.hslider,.halerts,.hdist{min-width:0;max-width:100%}@media(max-width:960px){.hslider,.halerts,.hdist{width:100%}}
 /* Am I affected */
 .afchip{display:inline-flex;align-items:center;gap:8px;margin:8px 0 0;font-size:var(--fs-5);font-weight:600;color:var(--ink)!important;text-decoration:none;padding:6px 14px;border-radius:999px;background:var(--surface2)}
