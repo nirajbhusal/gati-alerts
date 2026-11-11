@@ -92,27 +92,30 @@ const PROFILES = [["x", 400], ["linkedin", 400], ["facebook", 720], ["instagram"
 function card(bleed) {
   const W = 90 + bleed * 2, H = 54 + bleed * 2, p = 6 + bleed;
   const qr = fs.readFileSync(path.join(TMP, "..", "gati-qr.svg"), "utf8");
-  const row = (k, v) => `<div style="display:flex;gap:2mm;align-items:baseline"><span style="width:13.5mm;font-size:5.6pt;letter-spacing:.09em;text-transform:uppercase;color:${C.slate}">${k}</span><span style="font-size:7.4pt;color:${C.ink};font-weight:500">${v}</span></div>`;
+  const row = (k, v) => `<div style="display:flex;gap:1.6mm;align-items:baseline"><span style="width:5.2mm;font-size:5pt;font-weight:700;letter-spacing:.08em;color:${C.red}">${k}</span><span style="font-size:6.9pt;color:${C.ink};font-weight:500">${v}</span></div>`;
+  /* the signal arcs, sent out by the QR code towards the contact details */
+  const waves = `<svg viewBox="0 0 68 120" style="height:13mm;width:7.4mm" fill="none" stroke="${C.red}" stroke-linecap="round" stroke-width="7">
+<path d="M8 44 A22 22 0 0 1 8 76"/><path d="M24 26 A46 46 0 0 1 24 94" opacity=".65"/><path d="M40 8 A70 70 0 0 1 40 112" opacity=".35"/></svg>`;
   return `<style>${BASE}@page{size:${W}mm ${H}mm;margin:0}body{width:${W}mm}
 .side{width:${W}mm;height:${H}mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}</style>
-<div class="side" style="background:${C.navy}">${motif("#fff", 0.07)}
-<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
-<div style="height:19mm;width:${19 * 1080 / 512}mm">${svg("gati-logo-horizontal-white")}</div>
-<div style="width:9mm;height:.5mm;border-radius:9px;background:${C.orange};margin:3.2mm 0 2.6mm"></div>
-<div class="ne" style="font-weight:700;font-size:9.5pt;color:#fff">सही सूचना, सही समयमा ।</div>
-<div style="font-size:6.4pt;color:#C9D3DF;margin-top:.8mm">The right alert, right on time.</div></div></div>
+<div class="side" style="background:${C.red}">
+<div style="position:absolute;right:${bleed - 10}mm;top:${bleed - 13}mm;width:80mm;height:80mm">${svg("gati-glyph-white")}</div>
+<div style="position:absolute;left:0;top:0;bottom:0;width:${bleed + 31}mm;background:${C.navy}"></div>
+<div style="position:absolute;left:${p}mm;bottom:${p}mm;width:23mm">
+<div style="width:13mm;height:${13 * 232 / 386}mm">${svg("gati-wordmark-white")}</div>
+<div style="font-size:4.6pt;font-weight:600;letter-spacing:.42em;color:#C9D3DF;margin-top:1.3mm">GATI</div>
+<div style="width:6mm;height:.45mm;border-radius:9px;background:${C.orange};margin:2.4mm 0 2mm"></div>
+<div class="ne" style="font-weight:700;font-size:6.6pt;line-height:1.3;color:#fff">सही सूचना,<br>सही समयमा ।</div>
+<div style="font-size:4.9pt;line-height:1.35;color:#C9D3DF;margin-top:.9mm">The right alert,<br>right on time.</div></div></div>
 <div class="side" style="background:#fff">
-<div style="position:absolute;left:0;top:0;bottom:0;width:${bleed + 2.2}mm;background:${C.red}"></div>
-<div style="position:absolute;left:${p + 3.2}mm;top:${p}mm;right:${p}mm;bottom:${p}mm;display:flex;flex-direction:column;justify-content:space-between">
-<div style="display:flex;justify-content:space-between;align-items:flex-start">
-<div><div style="font-size:14pt;font-weight:700;color:${C.navy};letter-spacing:-.01em;line-height:1.1">Niraj Bhusal</div>
-<div class="ne" style="font-size:9pt;font-weight:600;color:${C.slate};line-height:1.25;margin-top:.5mm">निरज भुसाल</div>
-<div style="font-size:7pt;color:${C.ink};margin-top:1.5mm">Creator and maintainer, <span class="ne" style="font-weight:700">गति</span> <b>Gati</b></div></div>
-<div style="width:10.5mm;height:10.5mm">${svg("gati-mark")}</div></div>
-<div style="display:inline-flex;align-self:flex-start;align-items:center;gap:1.2mm;border:.25mm solid ${C.mist};border-radius:9mm;padding:.9mm 2.4mm;font-size:6.2pt;font-weight:600;color:${C.navy}"><span style="color:${C.red};font-size:7pt">★</span>Featured in GitHub Octoverse 2026</div>
-<div style="display:flex;justify-content:space-between;align-items:flex-end">
-<div style="display:flex;flex-direction:column;gap:.75mm">${row("Web", SITE)}${row("X", "x.com/nirajbhusal")}${row("LinkedIn", "linkedin.com/in/nirajbhusal")}${row("GitHub", "github.com/nirajbhusal")}</div>
-<div style="width:13.5mm;height:13.5mm">${qr}</div></div></div></div>`;
+<div style="position:absolute;right:${bleed - 9}mm;top:${bleed - 12}mm;width:44mm;height:44mm;opacity:.06">${svg("gati-glyph-red")}</div>
+<div style="position:absolute;left:${p}mm;top:${p}mm;right:${p}mm;bottom:${p}mm;display:flex;flex-direction:column;justify-content:space-between">
+<div><div style="font-size:17pt;font-weight:700;color:${C.navy};letter-spacing:-.035em;line-height:.98">Niraj<br>Bhusal</div>
+<div style="display:flex;align-items:center;gap:1.8mm;margin-top:1.8mm"><span class="ne" style="font-size:8pt;font-weight:600;color:${C.slate};line-height:1.2">निरज भुसाल</span><span style="width:.25mm;height:3mm;background:${C.mist}"></span><span style="font-size:6.3pt;color:${C.ink}">Creator and maintainer, <span class="ne" style="font-weight:700">गति</span> <b>Gati</b></span></div>
+<div style="display:inline-flex;align-items:center;gap:1.2mm;margin-top:2mm;background:${C.navy};border-radius:9mm;padding:.9mm 2.6mm .9mm 2.2mm;font-size:5.6pt;font-weight:600;color:#fff"><span style="color:${C.orange};font-size:6.4pt">★</span>Featured in GitHub Octoverse 2026</div></div>
+<div style="display:flex;align-items:center;gap:1.6mm">
+<div style="width:13mm;height:13mm;flex:none">${qr}</div>${waves}
+<div style="display:flex;flex-direction:column;gap:.7mm;margin-left:1.2mm">${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("IN", "linkedin.com/in/nirajbhusal")}${row("GIT", "github.com/nirajbhusal")}</div></div></div></div>`;
 }
 
 /* ---------- brand guidelines ---------- */
