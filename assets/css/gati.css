@@ -2015,3 +2015,53 @@ html[data-theme] main#main figure .bkcap-d,html[data-theme] main#main figure .bk
 .bkfiles{margin:8px 0 14px}
 .bkfiles>summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
 .bkfiles a{white-space:nowrap}
+
+/* home map, redesigned: larger map, a "right now" panel beside it, clearer districts */
+.hmgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.hmgrid .hmw{max-width:none}
+.hmland{filter:drop-shadow(0 1px 1.5px rgba(20,32,43,.22))}
+.hmd{fill:#EBDCD6;stroke:#fff;stroke-width:.9;stroke-linejoin:round}
+html[data-theme=light] .hmd{fill:#DDE5EC}
+.hmd.s-Minor,.hmd.s-Moderate,.hmd.s-Severe,.hmd.s-Extreme{stroke:#fff;stroke-width:1.2}
+.hmd:hover{opacity:1;filter:brightness(.93)}
+.hmleg i.hmn{background:#EBDCD6}html[data-theme=light] .hmleg i.hmn{background:#DDE5EC}html[data-theme=dark] .hmleg i.hmn{background:#1f2730}
+.hmlab{display:none;font:600 9.5px Inter,Mukta,sans-serif;fill:var(--ink);text-anchor:middle;paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.hmside h3{font-size:var(--fs-6);letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin:0 0 8px;font-weight:700}
+html[lang=ne] .hmside h3{letter-spacing:0}
+.hmstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 16px}
+.hmst{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface);display:flex;flex-direction:column;gap:2px;min-width:0}
+.hmst b{font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--slate)}
+.hmst span{font-size:var(--fs-6);color:var(--slate);line-height:1.3}
+.hmst.a b{color:#B4560A}.hmst.r b,.hmst.n b{color:var(--ink)}.hmst.v b{color:#B3261E}
+html[data-theme=dark] .hmst.a b{color:#F2A65A}html[data-theme=dark] .hmst.v b{color:#FF8A80}
+.hmdl{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:6px}
+.hmdl button{width:100%;display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.hmdl button:hover{border-color:var(--slate)}.hmdl button[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.hmdl i{width:12px;height:12px;border-radius:50%;flex:none}
+.hmdl i.s-Minor{background:#F2C94C}.hmdl i.s-Moderate{background:#F28C1E}.hmdl i.s-Severe{background:#D93025}.hmdl i.s-Extreme{background:#8E1B14}
+.hmdl span{font-weight:600;flex:1;min-width:0}.hmdl em{font-style:normal;font-size:var(--fs-6);color:var(--slate);white-space:nowrap}
+.hmcalm{margin:0 0 8px;padding:10px 12px;border:1px dashed var(--line);border-radius:12px;color:var(--slate);font-size:var(--r-meta)}
+@media(max-width:899px){.hmstats{grid-template-columns:repeat(4,minmax(0,1fr))}.hmst{padding:8px}.hmst b{font-size:1.25rem}.hmside h3:first-child{display:none}}
+@media(max-width:480px){.hmstats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:900px){
+  .hmgrid{grid-template-columns:minmax(0,1.75fr) minmax(270px,1fr);gap:22px;align-items:start}
+  .hmlab{display:block}
+  .hmap{padding:18px 20px;min-height:calc(min(100vw - 60px, 1040px) * 0.36 + 250px)}
+  .hmside{border-left:1px solid var(--line);padding-left:22px}
+}
+
+/* map page: the map comes first and fits the shape of the country; the agency summary folds below */
+@media(min-width:861px){#mxmap{height:clamp(440px,calc(100vh - 250px),640px);min-height:0}}
+#mxmap{background:var(--surface2,#eef0f2);border:1px solid var(--line)}
+html[data-theme=dark] #mxmap{background:#0F182A}
+.mxlab.prov{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#4A5A6A}
+html[lang=ne] .mxlab.prov{letter-spacing:0;font-size:12px}
+.mxoffc{border:0!important;box-shadow:none!important;background:none!important}
+.mxoffb{background:var(--surface,#fff);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;max-width:230px;text-align:left;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+#mxmap .leaflet-bar{border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+#mxmap .leaflet-bar a{width:36px;height:36px;line-height:36px;color:var(--ink);background:var(--surface,#fff)}
+.mxsum{margin:18px 0 8px;border:1px solid var(--line);border-radius:14px;padding:4px 14px;background:var(--surface)}
+.mxsum>summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.mxsum[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+.mxsum .gdash{min-height:0!important;margin:0}
+.mxsum .gdash>.card,.mxsum .gdash .gcard{border:0;box-shadow:none;padding-left:0;padding-right:0;background:none}
