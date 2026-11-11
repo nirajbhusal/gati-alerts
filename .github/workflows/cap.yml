@@ -1,0 +1,26 @@
+# Read-only CAP validation. Does not commit, push, or deploy.
+# Pages still publishes the main branch. ci/poll.yml is held and is not installed.
+name: Validate CAP
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 0 * * *"   # daily 06:00 NPT
+permissions:
+  contents: read
+concurrency:
+  group: cap-validate
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install lxml==5.3.0
+      - name: Validate every CAP file against the OASIS CAP 1.2 XSD + Gati profile
+        run: python scripts/build.py --check

@@ -1,17 +1,17 @@
-# Pages is served from the main branch (legacy build), so this workflow only validates and
-# rebuilds feed.xml and data/alerts.json; the branch push then republishes the site.
-name: Validate CAP and rebuild feed
+# Same workflow as .github/workflows/cap.yml. Validation only: no commit and no deploy.
+# ci/poll.yml stays in this folder and is not installed.
+name: Validate CAP
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: "15 0 * * *"   # daily 05:00 NPT: refresh expiry flags and feed timestamp
+    - cron: "15 0 * * *"   # daily 06:00 NPT
 permissions:
-  contents: write
+  contents: read
 concurrency:
-  group: cap-build
+  group: cap-validate
   cancel-in-progress: false
 jobs:
   build:
@@ -24,14 +24,3 @@ jobs:
       - run: pip install lxml==5.3.0
       - name: Validate every CAP file against the OASIS CAP 1.2 XSD + Gati profile
         run: python scripts/build.py --check
-      - name: DoR NAVIGATE road closures (daily; keeps last good data on failure)
-        run: python scripts/fetch_navigate.py
-      - name: Regenerate feed.xml and data/alerts.json
-        run: python scripts/build.py
-      - name: Commit regenerated feed (main only)
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: |
-          git config user.name "gati-bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add feed.xml data/alerts.json data/navigate.json data/source-health.json data/raw/navigate-*.json
-          git diff --cached --quiet || (git commit -m "Rebuild CAP feed [skip ci]" && git push)

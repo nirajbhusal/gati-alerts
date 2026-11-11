@@ -27,14 +27,11 @@ It is a parallel project to the verified [Rasuwa–Bhotekoshi bulletin](https://
 | `schema/CAP-v1.2.xsd` | OASIS CAP 1.2 schema (unchanged copy) |
 | `scripts/build.py` | Validate (XSD + Gati profile) and regenerate feed/JSON |
 | `scripts/seed_from_bulletin.py`, `data/seed/` | One-off seeder used to create the first CAP files from bulletin data |
-| `ci/cap.yml (→ .github/workflows/cap.yml)` | CI: validate → build → commit feed → deploy GitHub Pages (also daily) |
+| `.github/workflows/cap.yml` | Daily and on-push CAP validation only. It does not commit or deploy. `ci/poll.yml` is held and is not installed. |
 | `.github/ISSUE_TEMPLATE/report.yml` | Citizen report issue form |
 | `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md) |
 
-> **Install the CI workflow:** the account token used to create this repo lacks GitHub's `workflow` scope, so the
-> Action is shipped as [`ci/cap.yml`](ci/cap.yml). To enable it, move it to `.github/workflows/cap.yml` (GitHub web UI,
-> or `gh auth refresh -s workflow` then push), and switch *Settings → Pages → Source* to **GitHub Actions**. Until then
-> Pages deploys from the `main` branch and `feed.xml`/`data/alerts.json` are rebuilt locally with `scripts/build.py`.
+> **CAP validation** runs from [`.github/workflows/cap.yml`](.github/workflows/cap.yml). It checks the CAP files and does not commit. Pages still publishes the `main` branch. [`ci/poll.yml`](ci/poll.yml) is held and is not installed. `feed.xml` and `data/alerts.json` are rebuilt locally with `scripts/build.py`.
 
 ## Run locally
 

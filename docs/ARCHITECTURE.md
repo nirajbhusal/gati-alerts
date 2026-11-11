@@ -9,7 +9,7 @@ Gati (MVP) is a fully static site on GitHub Pages. There is no server, database 
  data/alerts/*.xml  (CAP 1.2, one file/message)     prefilled GitHub issue form URL
           │  git push / PR                                  │  reporter submits with own account
           ▼                                                 ▼
- ci/cap.yml staged, not yet a workflow           Issue + labels reported, citizen-report
+ .github/workflows/cap.yml validates, no commit     Issue + labels reported, citizen-report
    1. XSD validation (schema/CAP-v1.2.xsd)                  │  moderator relabels (docs/VERIFICATION.md)
    2. Gati profile checks                                   ▼
    3. scripts/build.py → feed.xml + data/alerts.json  /reports/ reads GitHub REST API in the browser
@@ -27,7 +27,7 @@ Gati (MVP) is a fully static site on GitHub Pages. There is no server, database 
 | Report | `report/index.html`, `assets/js/report.js` | GPS via `navigator.geolocation`, pin via Leaflet, rounded to 4 decimals. Builds `issues/new?template=report.yml&labels=…&<field-id>=…`. The form does not ask for a phone number or email, and contact never enters the URL. |
 | Reports | `reports/index.html`, `assets/js/reports.js` | Lists only `GET /repos/nirajbhusal/gati-alerts/issues?labels=verified&state=all` (minus `retracted`). Unverified reports are never listed; a search-API count of open `reported` issues is shown instead. Emails and phone numbers are scrubbed before display |
 | Feed | `scripts/build.py` | lxml XMLSchema validation, Atom 1.0 (`feed.xml`), JSON mirror |
-| CI/CD | `ci/cap.yml` (not installed; see below) | Staged for push, pull request, manual and daily runs. GitHub Pages currently publishes the `main` branch. The workflow file is not under `.github/workflows/`. |
+| CI/CD | `.github/workflows/cap.yml` | Push, pull request, manual and daily CAP validation. Read-only: it does not commit. Pages publishes the `main` branch. `ci/poll.yml` is held and is not installed. |
 
 ## Data model (JSON mirror)
 
@@ -52,10 +52,9 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 
 ## Pollers (GitHub Actions)
 
-- `.github/workflows/poll.yml` (staged at `ci/poll.yml` until moved; the box token lacks the `workflow` scope) runs `scripts/poll.py` at :05 and :35 UTC. DHM sources (pollMinutes 30) are polled every run; others (120) on the first run of each even UTC hour. `workflow_dispatch` polls all.
-- A changed normalised content hash writes `data/raw/<id>/<UTC ISO>.json`. Health is written only on a status change, a new snapshot, or every 6 h. The workflow commits only when files changed.
-- Fetch errors are recorded in health, never fatal. `concurrency: poll-sources` prevents overlap. `data/raw` is an archive: never delete (see data/raw/README.md).
-- `ci/cap.yml` (to be moved to `.github/workflows/cap.yml`) now omits the Pages artifact deploy, since Pages builds from the main branch.
+- `ci/poll.yml` is held and is not installed. It would run `scripts/poll.py` at :05 and :35 UTC and commit when a source changed. Leave it uninstalled until that is wanted.
+- `.github/workflows/cap.yml` validates CAP files on push, pull request, manual run, and daily. It has `contents: read` and does not commit.
+- `data/raw` is an archive: never delete (see data/raw/README.md).
 
 ## Data split (item 3)
 
