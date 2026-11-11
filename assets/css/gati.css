@@ -1858,8 +1858,8 @@ a.wxsrc{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 
 .hlang button{min-height:40px;padding:6px 11px;font:inherit;font-size:var(--fs-5);font-weight:600;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);cursor:pointer}
 .hlang button[aria-pressed=true]{border-color:var(--crimson);box-shadow:inset 0 0 0 1px var(--crimson);background:var(--surface2)}
 .hlang button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-/* ===== Paper theme: crimson-tinted paper. Cards stay near white so alert text and severity colours keep their contrast. ===== */
-html[data-theme=paper]{--snow:#F9E8E5;--surface:#FFF8F6;--surface2:#F4DFDB;--line:#EBD3CE;--ink:#2A1E1E;--slate:#6B5553}
+/* ===== Paper theme: paper with a very light crimson warmth. Cards stay near white so alert text and severity colours keep their contrast. ===== */
+html[data-theme=paper]{--snow:#FCF6F4;--surface:#FFFCFB;--surface2:#F8EFEC;--line:#EFE4E0;--ink:#2A2321;--slate:#6B5E5B}
 
 /* ===== Sibling strip: pages of one area link to each other like tabs ===== */
 .sibs{display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;margin:10px 0 4px;padding:2px 0 6px;-webkit-overflow-scrolling:touch}
