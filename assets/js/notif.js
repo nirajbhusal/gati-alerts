@@ -15,7 +15,7 @@
   const dn = (c) => { const d = DL.find((x) => x.code === c) || {}; return L(d.ne || c, d.en || c); };
   const item = (a, unread) => { const i = a.info[G.lang] || a.info.ne;
     return `<li class="${unread ? "ntnew" : ""}"><a href="${R}alerts/${E(a.identifier)}/" data-id="${E(a.identifier)}">${unread ? `<span class="ntdot" aria-label="${L("नपढिएको", "Unread")}"></span>` : ""}<span class="ntrow">${G.sevChip(a.severity)} <b>${E(i.headline)}</b></span>`
-      + `<span class="meta">${a.districts.length ? E(a.districts.map(dn).join(", ")) : L("देशभर", "Nationwide")} · ${L("स्रोत", "Source")}: ${E((i.senderName || "").split(" · ")[0])} · ${L("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || a.sent)}</span></a></li>`; };
+      + `<span class="meta">${a.districts.length ? E(a.districts.map(dn).join(", ")) : L("देशभर", "Nationwide")} · ${L("स्रोत", "Source")}: ${E(G.agencyOf(a))} · ${L("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || a.sent)}</span></a></li>`; };
 
   async function list() { const box = $("nt-list"), ib = await G.inbox();
     let al = []; try { al = (await G.json("data/alerts.json")).alerts || []; } catch (e) {}

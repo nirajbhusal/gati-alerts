@@ -17,6 +17,11 @@
   /* Agency names, defined first so every page script (Today card included) can use them, even on cached loads */
   const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
   G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
+  /* Lists and cards show the short agency name once, as a label; the full name stays on the alert's own page and in
+     Details. A headline that starts with that same short name ("DHM: …") drops the repeat. */
+  G.agencyFull = (i) => String((i && i.senderName) || "").split(" — ")[0].split(" · ")[0];
+  G.headline = (a, i) => { const h = String((i && i.headline) || ""), s = String(G.agencyOf(a) || ""); return /^[A-Z]{2,8}$/.test(s) && h.indexOf(s + ":") === 0 ? h.slice(s.length + 1).trim().replace(/^[a-z]/, (c) => c.toUpperCase()) : h; };
+  G.srcLabel = (a, i) => `<abbr class="srcl" title="${String(G.agencyFull(i)).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]))}">${String(G.agencyOf(a)).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]))}</abbr>`;
   /* Display preferences, kept in this browser only. */
   const pref = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
   /* Numerals follow the language (Nepali: Devanagari, English: Western). The old gati-num override is dropped. */

@@ -80,11 +80,11 @@
         ${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag live">${T("चालु", "Active")}</span>`}
         ${G.roadOngoingChip(a)}
         <span class="tag">${G.esc(i.event)}</span></div>
-      <h4>${G.esc(i.headline)}</h4>
+      <h4>${G.esc(G.headline(a, i))}</h4>
       ${G.roadOngoingLine(a)}
       <p class="aarea">📍 ${G.esc(areas)}</p>
       <p class="atime">🕒 ${T("स्रोतको समय", "Source time")}: <strong>${G.npt(i.params["gati:sourceTime"] || a.sent)}</strong></p>
-      <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.esc((i.senderName || "").split(" — ")[0])}</span></div>
+      <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.srcLabel(a, i)} · ${T("गति मार्फत", "relayed by Gati")}</span></div>
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
       ${i.instruction && !a.expired ? `<div class="instr"><strong>${T("के गर्ने", "What to do")}:</strong> ${G.esc(i.instruction)}</div>` : ""}
       ${a.hazard !== "earthquake" && !a.expired ? `<p class="afxrow">${G.affChip(a.districts)}</p>` : ""}

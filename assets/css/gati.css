@@ -1957,3 +1957,10 @@ html[data-theme=dark] .aqdi{box-shadow:0 6px 18px rgba(0,0,0,.55)}
 .storypage .ftop .ftr{min-width:0;flex-shrink:1}
 /* On a phone the district pill is the pin alone; its name is in the button's label for screen readers */
 @media (max-width:480px){.storypage .ftop .dpick b{display:none!important}.storypage .ftop .flane button{padding:4px 9px}}
+
+/* ===== Short source label and DHM 24-hour forecast row ===== */
+abbr.srcl{text-decoration:none;font-weight:700;cursor:help;border-bottom:1px dotted var(--slate)}
+.tdrow .td24{display:block}
+.tdrow .td24c{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-top:4px;color:var(--slate);font-size:var(--fs-5)}
+.tdrow.tdwarn{border-left:4px solid #F28C1E;padding-left:10px}
+.tdflag{color:#B45309}
