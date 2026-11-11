@@ -136,5 +136,7 @@
   const h = new URLSearchParams(location.hash.slice(1)); const my = G.district && G.district.get();
   if (h.get("r")) render({ r: h.get("r") }); else if (h.get("d")) render({ d: h.get("d"), u: h.get("u") || "" }); else if (my) go({ d: my });
   addEventListener("gati:radius", () => { buildInput(); render(Object.fromEntries(new URLSearchParams(location.hash.slice(1)))); });
+  /* Back, forward, or a link to another district or route on this same page */
+  addEventListener("hashchange", () => { const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); if (q.d || q.r) render(q); });
   G.onLang(() => { buildInput(); const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
 })();

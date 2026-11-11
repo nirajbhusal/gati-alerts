@@ -1988,3 +1988,12 @@ abbr.srcl{text-decoration:none;font-weight:700;cursor:help;border-bottom:1px dot
 html[data-theme=dark] .patro .pmonth .pwh.hol,html[data-theme=dark] .patro .pmonth .pday.hol:not(.today) .pbig{color:#FF8A80!important}
 .patro .pmonth .pday.today{box-shadow:inset 0 0 0 2px var(--crimson)!important}
 .patro #plegend{font-size:var(--fs-6);line-height:1.7;margin-top:12px}
+
+/* Dark theme: status colours set inline for light backgrounds need lighter equivalents */
+html[data-theme=dark] .rl-s[style*="1d4ed8"]{color:#93B4FF!important}
+html[data-theme=dark] .rl-s[style*="b45309"]{color:#FDBA74!important}
+html[data-theme=dark] .rl-s[style*="b91c1c"]{color:#FCA5A5!important}
+/* Brand kit logo captions sit on fixed light or dark tiles, so their colour must not follow the theme */
+.bkcap{font-size:var(--fs-5);margin-top:6px}
+html[data-theme] main#main figure .bkcap-l,html[data-theme] main#main figure .bkcap-l span{color:#4A5A6A!important}
+html[data-theme] main#main figure .bkcap-d,html[data-theme] main#main figure .bkcap-d span{color:#CFE3F1!important}

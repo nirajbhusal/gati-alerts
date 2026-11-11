@@ -4,7 +4,7 @@
   const box = document.getElementById("hinfo"), G = window.Gati; if (!box || !G) return;
   const R = G.root, T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, N = (s) => G.num(String(s));
   const tm = (iso) => (iso ? `<time datetime="${E(iso)}">${E(G.npt(iso))}</time>` : T("समय छैन", "no time"));
-  const J = (p) => fetch(R + p).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const J = (p) => G.rawJson(p).catch(() => null)   /* shared loader: one download per file per page */;
   const B = {};
   /* Before you travel: three illustrated steps, each a 44px link (replaces the three quick-check pills) */
   const STEP = { pin: '<path d="M12 21s-6.5-5.8-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/>',
