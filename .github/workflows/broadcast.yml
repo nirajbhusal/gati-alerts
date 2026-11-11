@@ -1,0 +1,70 @@
+# Sends new official alerts to Telegram, Viber, WhatsApp and SMS. See docs/BROADCAST.md.
+# Does nothing until the channel secrets are added in Settings -> Secrets and variables -> Actions.
+# What has been sent is recorded on the bot/broadcast-state branch, never on main.
+name: Broadcast alerts
+on:
+  push:
+    branches: [main]
+    paths: ["data/alerts.json"]
+  schedule:
+    - cron: "17,47 * * * *"   # safety net, in case a push run was missed
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: broadcast-alerts
+  cancel-in-progress: false
+env:
+  STATE: state/broadcast-state.json
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  VIBER_AUTH_TOKEN: ${{ secrets.VIBER_AUTH_TOKEN }}
+  VIBER_FROM: ${{ secrets.VIBER_FROM }}
+  WHATSAPP_TOKEN: ${{ secrets.WHATSAPP_TOKEN }}
+  WHATSAPP_PHONE_NUMBER_ID: ${{ secrets.WHATSAPP_PHONE_NUMBER_ID }}
+  WHATSAPP_RECIPIENTS: ${{ secrets.WHATSAPP_RECIPIENTS }}
+  WHATSAPP_TEMPLATE: ${{ vars.WHATSAPP_TEMPLATE }}
+  SMS_TOKEN: ${{ secrets.SMS_TOKEN }}
+  SMS_FROM: ${{ secrets.SMS_FROM }}
+  SMS_RECIPIENTS: ${{ secrets.SMS_RECIPIENTS }}
+  SMS_API_URL: ${{ vars.SMS_API_URL }}
+  TELEGRAM_MIN_SEVERITY: ${{ vars.TELEGRAM_MIN_SEVERITY }}
+  VIBER_MIN_SEVERITY: ${{ vars.VIBER_MIN_SEVERITY }}
+  WHATSAPP_MIN_SEVERITY: ${{ vars.WHATSAPP_MIN_SEVERITY }}
+  SMS_MIN_SEVERITY: ${{ vars.SMS_MIN_SEVERITY }}
+jobs:
+  broadcast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Open the state branch
+        run: |
+          git config user.name "gati-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin bot/broadcast-state:bot/broadcast-state 2>/dev/null; then
+            git worktree add -q state bot/broadcast-state
+          else
+            git worktree add -q --orphan -b bot/broadcast-state state
+          fi
+      - name: Count what is due
+        id: plan
+        run: echo "due=$(python scripts/broadcast.py --count --state "$STATE")" >> "$GITHUB_OUTPUT"
+      - name: Check the state can be saved (stops here, before sending, if it cannot)
+        if: steps.plan.outputs.due != '0'
+        run: |
+          date -u +%Y-%m-%dT%H:%M:%SZ > state/last-run.txt
+          git -C state add -A && git -C state commit -q -m "Broadcast run started"
+          git -C state push -q origin bot/broadcast-state
+      - name: Send
+        if: steps.plan.outputs.due != '0'
+        run: python scripts/broadcast.py --state "$STATE"
+      - name: Save what was sent
+        if: steps.plan.outputs.due != '0'
+        run: |
+          git -C state add -A
+          git -C state diff --cached --quiet || git -C state commit -q -m "Broadcast state $(date -u +%Y-%m-%dT%H:%MZ)"
+          git -C state push -q origin bot/broadcast-state

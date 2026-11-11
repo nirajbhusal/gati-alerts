@@ -30,7 +30,7 @@
     const dec = Math.asin(Math.sin(lam * rad) * Math.sin(23.44 * rad));
     const cw = (Math.sin(-0.833 * rad) - Math.sin(LAT * rad) * Math.sin(dec)) / (Math.cos(LAT * rad) * Math.cos(dec));
     const w = Math.acos(cw) / rad;
-    const toNPT = (j) => { const d = new Date((j - 2440587.5) * DAY + 345 * 60000); return `${d.getUTCHours()}:${String(d.getUTCMinutes()).padStart(2, "0")}`; };
+    const toNPT = (j) => { const d = new Date((j - 2440587.5) * DAY + G.tzMs); return `${d.getUTCHours()}:${String(d.getUTCMinutes()).padStart(2, "0")}`; };
     return [toNPT(Jtr - w / 360), toNPT(Jtr + w / 360)];
   }
   const ms = (s) => Date.parse(s + "T00:00:00Z");
@@ -41,7 +41,7 @@
       : s.from_md <= s.to_md ? md >= s.from_md && md <= s.to_md : md >= s.from_md || md <= s.to_md);
   }
   function alertsOn(adIso) {
-    const a0 = ms(adIso) - 345 * 60000, a1 = a0 + DAY;
+    const a0 = ms(adIso) - G.tzMs, a1 = a0 + DAY;
     return alerts.filter((a) => {
       const i = a.info.en, s = Date.parse(i.onset || i.effective || a.sent), e = Date.parse(a.expires);
       return s < a1 && e > a0 && a.msgType !== "Cancel";
@@ -111,7 +111,7 @@
   }
   function side() {
     const el = document.getElementById("pside"); if (!el) return;
-    const td = day(Date.UTC(t.y, t.m - 1, t.d)), nowt = new Date(Date.now() + 345 * 60000);
+    const td = day(Date.UTC(t.y, t.m - 1, t.d)), nowt = new Date(Date.now() + G.tzMs);
     const up = (cal.entries || []).filter((e) => e.type === "holiday" && e.date_ad > td.ad).sort((a, b) => a.date_ad.localeCompare(b.date_ad)).slice(0, 5);
     const hh = String(nowt.getUTCHours()).padStart(2, "0"), mm = String(nowt.getUTCMinutes()).padStart(2, "0");
     el.innerHTML = `<div class="ptoday"><div class="ptile"><b>${G.num(td.bs.d)}</b><span>${T(BS.WN[td.wd], BS.WE[td.wd])}</span></div>

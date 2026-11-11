@@ -1,0 +1,20 @@
+{
+  "_note": "One place for the facts that make this deployment Nepal's. A fork for another country starts by editing this file. See docs/FORKING.md for what reads it today and what is still hard-coded.",
+  "code": "NP",
+  "name": { "ne": "नेपाल", "en": "Nepal" },
+  "project": { "name": { "ne": "गति", "en": "Gati" }, "identifierPrefix": "np.gati" },
+  "site": "https://nirajbhusal.github.io/gati-alerts/",
+  "repository": "nirajbhusal/gati-alerts",
+  "languages": { "primary": "ne", "secondary": "en", "regional": ["mai", "bho", "new", "the", "taj"] },
+  "timezone": { "name": "Asia/Kathmandu", "offsetMinutes": 345, "label": "NPT" },
+  "map": { "bounds": [[26.3, 80.0], [30.48, 88.2]], "maxBounds": [[25.5, 79], [31.2, 89]], "center": [28.2, 84.1], "zoom": 6 },
+  "adminLevels": { "district": { "geocode": "NP-DISTRICT", "file": "data/districts.json", "geometry": "data/districts.geojson" } },
+  "helplines": [
+    { "number": "100", "ne": "प्रहरी", "en": "Police" },
+    { "number": "101", "ne": "दमकल", "en": "Fire" },
+    { "number": "102", "ne": "एम्बुलेन्स", "en": "Ambulance" },
+    { "number": "1234", "ne": "विपद्", "en": "Disaster" }
+  ],
+  "law": { "ne": "विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४", "en": "Disaster Risk Reduction and Management Act 2074 (2017)" },
+  "sources": "data/sources.json"
+}

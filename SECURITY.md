@@ -1,5 +1,7 @@
 # Security policy
 
+[नेपालीमा](SECURITY.ne.md)
+
 Gati relays public safety information, so integrity matters more than anything else: a false or altered alert
 could put people at risk.
 

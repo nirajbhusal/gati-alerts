@@ -24,3 +24,7 @@ jobs:
       - run: pip install lxml==5.3.0
       - name: Validate every CAP file against the OASIS CAP 1.2 XSD + Gati profile
         run: python scripts/build.py --check
+      - name: Country facts in common.js match data/country.json
+        run: python scripts/country.py --check
+      - name: Broadcast script tests
+        run: python -m unittest discover scripts/tests

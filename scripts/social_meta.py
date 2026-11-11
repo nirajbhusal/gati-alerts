@@ -2,7 +2,7 @@
 Run after render.py. Alert permalinks get their own generated share.png from render.py and are skipped here."""
 import html, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://nirajbhusal.github.io/gati-alerts/"
+from country import SITE
 OG = SITE + "assets/img/brand/og-cover.png"
 DEF_DESC = "सही सूचना, सही समयमा । The right alert, right on time. Gati relays official disaster alerts for Nepal with source and time."
 

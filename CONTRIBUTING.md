@@ -1,5 +1,7 @@
 # Contributing to Gati
 
+[नेपालीमा](CONTRIBUTING.ne.md)
+
 धन्यवाद! Thank you for helping. Nepali or English is welcome in issues and pull requests.
 
 By taking part you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).

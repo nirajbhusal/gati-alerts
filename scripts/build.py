@@ -13,7 +13,7 @@ import json, sys, pathlib, datetime as dt
 from lxml import etree
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://nirajbhusal.github.io/gati-alerts/"
+from country import SITE, PREFIX, GEOCODE
 NS = {"c": "urn:oasis:names:tc:emergency:cap:1.2"}
 TRUST = {"Official", "Verified", "Reported", "Unverified"}
 SCHEMA = etree.XMLSchema(etree.parse(str(ROOT / "schema/CAP-v1.2.xsd")))
@@ -77,7 +77,7 @@ def main(check=False):
         root = doc.getroot()
         errs = profile_errors(root)
         ident = t(root, "c:identifier") or ""
-        if ident != "np.gati." + f.stem: errs.append(f"identifier {ident!r} must be 'np.gati.{f.stem}'")
+        if ident != PREFIX + "." + f.stem: errs.append(f"identifier {ident!r} must be '{PREFIX}.{f.stem}'")
         if ident in seen: errs.append(f"duplicate identifier {ident}")
         seen.add(ident)
         if errs:
@@ -104,10 +104,10 @@ def main(check=False):
         a["hazard"] = en["params"].get("gati:hazard")
         a["severity"] = en["severity"]
         a["expires"] = en["expires"]
-        a["districts"] = sorted({ar["geocodes"]["NP-DISTRICT"] for ar in en["areas"] if "NP-DISTRICT" in ar["geocodes"]})
+        a["districts"] = sorted({ar["geocodes"][GEOCODE] for ar in en["areas"] if GEOCODE in ar["geocodes"]})
         a["expired"] = dt.datetime.fromisoformat(en["expires"]) < now
         # Split: geometry lives once in data/districts.geojson, keyed by NP-DISTRICT code.
-        a["areas"] = [{"code": ar["geocodes"].get("NP-DISTRICT"), "circles": ar["circles"],
+        a["areas"] = [{"code": ar["geocodes"].get(GEOCODE), "circles": ar["circles"],
                        "ne": ne_ar["desc"], "en": ar["desc"]}
                       for ar, ne_ar in zip(en["areas"], a["info"]["ne"]["areas"])]
         for lang in a["info"]:

@@ -1,4 +1,4 @@
-# Ask Gati Worker. Deploy: see worker/README.md. The Anthropic key is a secret (wrangler secret put ANTHROPIC_API_KEY), never in this file or the static site.
+# Gati Worker (Ask Gati and report intake). Deploy: see worker/README.md. The Anthropic key is a secret (wrangler secret put ANTHROPIC_API_KEY), never in this file or the static site.
 name = "gati-ask"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
@@ -12,6 +12,13 @@ MAX_QUESTION_CHARS = "400"
 PER_IP_PER_MIN = "6"
 PER_IP_PER_DAY = "60"
 DAILY_CAP = "2000"
+
+# Anonymous report intake (POST /report). Needs the GITHUB_TOKEN secret; without it the route answers 503 and the site keeps the GitHub-only form.
+REPORT_REPO = "nirajbhusal/gati-alerts"
+REPORT_PER_IP_PER_HOUR = "3"
+REPORT_PER_IP_PER_DAY = "10"
+REPORT_DAILY_CAP = "300"
+PHOTO_KEEP_DAYS = "30"
 
 # Rate limit and daily cap counters. Create with: npx wrangler kv namespace create GATI_ASK_KV, then paste the id.
 [[kv_namespaces]]

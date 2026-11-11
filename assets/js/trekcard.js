@@ -8,7 +8,7 @@
   const polys = (g) => (g.type === "Polygon" ? [g.coordinates] : g.coordinates);
   const pth = (g) => polys(g).map((p) => p.map((r) => "M" + r.map(([x, y]) => X(x) + " " + Y(y)).join("L") + "Z").join("")).join("");
   const lns = (g) => (g.type === "LineString" ? [g.coordinates] : g.coordinates).map((l) => "M" + l.map(([x, y]) => X(x) + " " + Y(y)).join("L")).join("");
-  const today = new Date(Date.now() + 345 * 60000).toISOString().slice(0, 10);
+  const today = new Date(Date.now() + G.tzMs).toISOString().slice(0, 10);
   let A, DG, TK;
   Promise.all(["data/arnab-advisory.json", "data/districts.geojson", "data/geo/treks.geojson"].map((p) => fetch(G.root + p).then((r) => (r.ok ? r.json() : null)).catch(() => null))).then(([a, d, t]) => {
     A = a; DG = d; TK = t; if (!A || !DG || !TK) return;

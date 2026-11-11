@@ -22,7 +22,7 @@
       fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?${q}&current=us_aqi,pm2_5,pm10&hourly=us_aqi&forecast_days=2`).then((r) => r.ok ? r.json() : null).catch(() => null)]);
     draw();
   }
-  const tstr = (s) => G.npt(s + ":00+05:45");
+  const tstr = (s) => G.npt(s + ":00" + G.tzIso);
   function draw() {
     const p = at, nm = esc(T(p.ne, p.en)) + (p.fallback ? ` <span class="meta">(${T("जिल्ला छानिएको छैन", "no district chosen")})</span>` : "");
     const m = document.getElementById("wxmodel");
