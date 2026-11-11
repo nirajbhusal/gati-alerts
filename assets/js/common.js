@@ -48,7 +48,7 @@
     ["about", "about/", "बारेमा", "About"],
   ];
   /* shorter English labels for the desktop menu row only */
-  const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trek", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
+  const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trekking", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
   G.PAGES = [...NAV, ...MORE, ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
   /* Mobile bottom bar: line icons (24px, 1.8 stroke). Home opens the real home page (?home skips the Feed redirect). */
@@ -101,7 +101,7 @@
   const GRP = [
     ["सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
     ["मौसम र जोखिम", "Weather and hazards", [["weather", "weather/", "मौसम र हावा", "Weather & air"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
-    ["यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग जाँच", "Trek check"]]],
+    ["यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग", "Trekking"]]],
     ["सेवा", "Services", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"], ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"], ["safety", "safety/", "के गर्ने", "What to do"], ["patro", "patro/", "पात्रो", "Patro"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],
     ["बारेमा", "About", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"]]],
   ];
