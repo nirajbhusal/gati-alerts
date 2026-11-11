@@ -85,7 +85,7 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 
 ## Dashboard (item 12)
 
-- Header buttons: numerals (१२३/123, overrides the language default), dates (BS/AD), dark mode. Stored in localStorage (`gati-num`, `gati-cal`, `gati-theme`).
+- Header controls: dates (BS/AD) and theme. Numerals follow the language, Devanagari in Nepali and Western digits in English, with no separate numeral toggle. Stored in localStorage (`gati-cal`, `gati-theme`).
 - `assets/js/bs.js`: BS/AD conversion. Month lengths for BS 2000 to 2090 come from nepali-date-converter 3.4.0 (MIT), which matches bikram-sambat 1.8.1 (Apache-2.0) for 2000 to 2083. Years after 2083 are marked provisional. Checked against NSC's dual dates (2083-06-21 = 2026-10-07), DHM (Asoj 25 = 11 Oct 2026) and the 2083 MoHA holiday notice as reported (Poush 10 = 25 Dec 2026).
 - Gauge sparklines read `data/river-history.json`. It is empty until DHM snapshots can be parsed, so each gauge shows "no history yet".
 - The severity chart leaves out Unknown (Info). District search accepts Nepali or English names.

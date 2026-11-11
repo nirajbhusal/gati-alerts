@@ -78,6 +78,7 @@ moderator dashboard would follow. Until then, no secrets are stored in this repo
 - Each CAP message has its own `<expires>` time. Active messages stay up until then. After that they stay in the archive and are not deleted.
 - District polygons are simplified outlines for display, not legal boundaries. Station location for Aarughat is approximate.
 - Dates are shown in Gregorian + NPT; Bikram Sambat appears where the source text gives it.
+- Numerals follow the language: Devanagari when the page is in Nepali, Western digits when it is in English. There is no separate numeral control.
 - Reporting needs a GitHub account; the Reports page uses the unauthenticated GitHub API (60 requests/hour per IP).
 
 ## Brand
