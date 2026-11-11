@@ -1806,6 +1806,34 @@ main .gd5 li,main .gd5 li b{font-size:var(--r-meta)}
 /* Phone header: search, bell and profile as 44px tap targets, icons without rings so three fit beside the logo */
 @media(max-width:440px){header.top .bar .hr{gap:0!important}header.top .bar .hr .mebtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;border-color:transparent!important}
 header.top .bar .hr .bellbtn .bdot.bnum{top:2px;right:2px}header.top .bar .menubtn,header.top .bar .langbtn{min-width:44px!important;min-height:44px!important}}
+/* Home: Today at a glance */
+.hia{min-height:0}.hgt0{font-size:var(--r-title);margin:4px 0 8px}
+.hglg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media(max-width:900px){.hglg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.hglg>.hgt:nth-child(3),.hglg>.hgt:nth-child(4){grid-column:span 2}}
+.hglg>.hgt{padding:10px}
+.hgt{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink)!important;text-decoration:none!important;min-width:0;min-height:44px}
+.hgh{display:flex;align-items:center;gap:8px}.hgh b{font-size:var(--r-title)}.hgi{flex:none;color:var(--teal,#0F6F78)}
+.hgbig{font-size:var(--r-sum);font-weight:700;line-height:1.2}.hgbig small{font-size:var(--r-label);font-weight:500;color:var(--slate)}
+.hgbars{display:flex;align-items:flex-end;gap:6px;height:34px;border-bottom:1px dashed var(--line)}.hgbars i{flex:1;height:var(--h);min-height:3px;background:var(--c);border-radius:4px 4px 0 0}
+.hgstack{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line)}.hgstack i{display:block;background:var(--c)}
+.hgkey{font-size:var(--r-meta);color:var(--slate)}
+.hgdots{display:flex;gap:6px}.hgdots i{width:22px;height:10px;border-radius:5px;background:var(--c)}
+.hgag{list-style:none;margin:0;padding:0;display:grid;gap:4px}.hgag li{display:flex;gap:6px;align-items:baseline;font-size:var(--r-label)}.hgag li{flex-wrap:wrap}.hgag li b{margin-left:auto}.hgag li .meta{flex-basis:100%;margin-top:-2px}
+.hgt .meta{font-size:var(--r-meta)}
+.hgsv{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.hgsv{grid-template-columns:repeat(2,minmax(0,1fr))}.hgsv>.hgt:nth-child(3){grid-column:span 2}.hgsv>.hgt:nth-child(4){grid-column:auto}}
+.hgcall{display:grid;grid-template-columns:1fr 1fr;gap:6px}.hgcall a{display:flex;flex-direction:column;justify-content:center;min-height:44px;padding:4px 8px;border:1px solid var(--line);border-radius:10px;text-decoration:none!important;color:var(--ink)!important;font-size:var(--r-meta)}.hgcall a b{font-size:var(--r-label)}
+.hinfo .hgcall a,.hinfo a.hgt,.hinfo a.hgt *{text-decoration:none!important}
+/* Home: Before you travel steps */
+.hiq{min-height:0!important}
+.hgsteps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;counter-reset:none}
+.hgsteps a{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:44px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink)!important;text-decoration:none!important}
+.hgsteps a svg{color:var(--teal,#0F6F78)}.hgsteps b{font-size:var(--r-label)}.hgsteps small{font-size:var(--r-meta);color:var(--slate)}
+.hgn{position:absolute;top:10px;right:12px;font-size:var(--r-meta);font-weight:700;color:var(--slate)}
+@media(max-width:600px){.hgsteps{grid-template-columns:minmax(0,1fr)}.hgsteps a{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:10px;padding:10px 12px}.hgsteps a small{flex-basis:100%;padding-left:40px;margin-top:-6px}}
+.hinfo .hgsteps a,.hinfo .hgsteps a *,.hinfo a.hgt,.hinfo a.hgt *,.hinfo .hgcall a,.hinfo .hgcall a *{text-decoration:none!important;color:var(--ink)!important}.hinfo .hgsteps a svg,.hinfo .hgt .hgi{color:var(--teal,#0F6F78)!important}.hinfo .hgsteps small,.hinfo .hgt .meta,.hinfo .hgkey,.hinfo .hgbig small{color:var(--slate)!important}
+.gdgrid.gd-home>:last-child{grid-column:1/-1}
 /* Tihar 2083: a thin header strip only. Brass and cream, so it cannot be read as a severity badge
    (those stay red, orange and yellow). No motion. The lamp glow is a static blur and turns off
    when the visitor asks for less motion. Alerts, the Breaking bar and trust labels are untouched. */
