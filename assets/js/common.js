@@ -164,12 +164,12 @@
   /* Long lists show their first items with a "Show all" button. Any search or filter on the page, or a link to an
      item further down, opens the full list, so nothing can be hidden from a search. */
   (() => { const main = document.getElementById("main"); if (!main) return;
-    const RULES = [["#expired", 10], ["ol#updates", 8], ["ul.archive", 20], ["ul.hlist", 20], ["ol#log", 25]];
+    const RULES = [["#expired", 5], ["ol#updates", 8], ["ul.archive", 10], ["ul.hlist", 20], ["ol#log", 25], ["#srcHealth tbody", 12]];
     const setup = (box, n) => { if (box.dataset.pg) return; box.dataset.pg = n; box.classList.add("pgcut", "pg" + n);
       const btn = document.createElement("button"); btn.type = "button"; btn.className = "btn alt pgmore";
       const lab = () => { const extra = box.children.length - n; btn.hidden = extra <= 0 || !box.classList.contains("pgcut"); btn.innerHTML = b(`सबै देखाउनुहोस् (थप ${G.num ? G.num(String(extra)) : extra})`, `Show all (${extra} more)`); };
       const open = () => { box.classList.remove("pgcut"); btn.hidden = true; };
-      btn.onclick = open; box.after(btn); lab(); new MutationObserver(lab).observe(box, { childList: true });
+      btn.onclick = open; (box.tagName === "TBODY" ? box.closest("table") : box).after(btn); lab(); new MutationObserver(lab).observe(box, { childList: true });
       main.addEventListener("input", open); main.addEventListener("change", open);
       const jump = () => { try { const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1))); if (el && box.contains(el)) { open(); el.scrollIntoView(); } } catch (e) {} };
       addEventListener("hashchange", jump); jump(); };
@@ -447,10 +447,18 @@
     if (age > 3 * src.pollMinutes) return "stale";
     return h.lastChecked && h.lastChecked > h.lastSuccess ? "stale" : "ok";
   };
-  const rawJson = (p) => fetch(ROOT + p, { cache: "no-cache" }).then((r) => {
-    if (p === "data/alerts.json" && navigator.onLine) try { localStorage.setItem("gati-last-sync", new Date().toISOString()); } catch (e) {}
-    return r.json();
-  });
+  /* Several scripts on one page ask for the same file (the home page asked for alerts.json about ten times).
+     Each file is downloaded once per burst and every caller gets its own parsed copy, so one script changing its
+     copy cannot affect another. The shared download is forgotten after 20 seconds, so later refreshes still fetch. */
+  const JTXT = {};
+  const rawText = (p) => { const hit = JTXT[p]; if (hit && Date.now() - hit.t < 20000) return hit.p;
+    const req = fetch(ROOT + p, { cache: "no-cache" }).then((r) => {
+      if (p === "data/alerts.json" && navigator.onLine) try { localStorage.setItem("gati-last-sync", new Date().toISOString()); } catch (e) {}
+      return r.text(); });
+    JTXT[p] = { t: Date.now(), p: req }; req.catch(() => { if (JTXT[p] && JTXT[p].p === req) delete JTXT[p]; });
+    return req; };
+  const rawJson = (p) => rawText(p).then((s) => JSON.parse(s));
+  G.rawJson = rawJson;   /* the file as published, without the road overlay G.json adds to roads.json */
   /* DoR NAVIGATE overlay: data/navigate.json "routes" (resolved by scripts/fetch_navigate.py: newer report wins,
      disagreement in the same window = not confirmed with both sources) is applied on top of data/roads.json. */
   G.json = (p) => p !== "data/roads.json" ? rawJson(p) : Promise.all([rawJson(p), rawJson("data/navigate.json").catch(() => null)]).then(([RD, NV]) => {

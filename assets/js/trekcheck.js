@@ -2,7 +2,7 @@
 (function () {
   const box = document.getElementById("tkcheck"), G = window.Gati; if (!box || !G) return;
   const R = G.root, T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, N = (s) => G.num(String(s));
-  const J = (p) => fetch(R + p).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const J = (p) => G.rawJson(p).catch(() => null)   /* shared loader: one download per file per page */;
   const tm = (iso) => (iso ? `<time datetime="${E(iso)}">${G.npt(iso)}</time>` : "");
   const LV = { low: ["Minor", "न्युन जोखिम", "Low risk"], moderate: ["Moderate", "मध्यम जोखिम", "Moderate risk"], high: ["Severe", "उच्च जोखिम", "High risk"] };
   const KIND = { hospital: ["अस्पताल/स्वास्थ्य केन्द्र", "Hospital or clinic"], health_post: ["स्वास्थ्य चौकी", "Health post"], helipad: ["हेलिप्याड", "Helipad"], police: ["प्रहरी", "Police"] };

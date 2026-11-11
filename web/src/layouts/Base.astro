@@ -1,0 +1,48 @@
+---
+/* The shell every page shares: head tags, share tags, fonts, the first-paint theme script and the site scripts.
+   The header, menu and footer are still drawn by assets/js/common.js, as on the hand-written pages. */
+import country from "../../../data/country.json";
+
+const { page, titleNe, titleEn, path, maxWidth = "780px", scripts = [] } = Astro.props;
+const root = "../";
+const title = `${titleNe} · ${titleEn} — ${country.project.name.ne} ${country.project.name.en}`;
+const desc = "सही सूचना, सही समयमा । The right alert, right on time. Gati relays official disaster alerts for Nepal with source and time.";
+const og = country.site + "assets/img/brand/og-cover.png";
+const fonts = ["mukta-latin-bef5c820", "inter-latin-f11d729b", "mukta-devanagari-5591b6d0", "mukta-devanagari-7cefa967"];
+---
+<!doctype html>
+<html lang="ne">
+<head>
+<title>{title}</title>
+<meta charset="utf-8">
+<script is:inline>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="en"?"en":"ne"}catch(e){document.documentElement.lang="ne"}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B1424">
+<link rel="icon" href={root + "assets/img/brand/favicon-32.png"} sizes="32x32" type="image/png">
+<link rel="icon" href={root + "assets/img/brand/favicon-64.png"} sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href={root + "assets/img/brand/apple-touch-icon.png"}>
+<link rel="stylesheet" href={root + "assets/fonts/fonts.css"}>
+{fonts.map((f) => <link rel="preload" href={`${root}assets/fonts/${f}.woff2`} as="font" type="font/woff2" crossorigin>)}
+<link rel="alternate" type="application/atom+xml" title="Gati CAP feed" href={root + "atom.xml"}>
+<link rel="stylesheet" href={root + "assets/css/gati.css"}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={desc}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={country.site + path}>
+<meta property="og:site_name" content="Gati">
+<meta property="og:image" content={og}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="गति Gati: सही सूचना, सही समयमा । The right alert, right on time.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={desc}>
+<meta name="twitter:image" content={og}>
+</head>
+<body data-page={page} data-root={root}>
+<main id="main" class="wrap" style={`max-width:${maxWidth}`}>
+<slot />
+</main>
+{["bs", "common", "dash", ...scripts].map((s) => <script is:inline src={`${root}assets/js/${s}.js`}></script>)}
+</body>
+</html>

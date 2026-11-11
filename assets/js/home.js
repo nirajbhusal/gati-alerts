@@ -95,7 +95,7 @@
         ${a.expired && i.instruction ? `<p><strong>${T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>
         <p class="meta">CAP: urgency ${en.urgency} · severity ${en.severity} · certainty ${en.certainty} · sender <code>${G.esc(a.sender)}</code><br>
-        <a href="${RT}cap/${G.esc(a.identifier)}.xml">CAP 1.2 XML</a> · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("डेटा स्रोत", "Data provenance")}</a></p>
+        <a href="${RT}cap/${G.esc(a.identifier)}.xml">CAP 1.2 XML</a>${i.params["gati:bulletinFile"] ? ` · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("डेटा स्रोत", "Data provenance")}</a>` : ""}</p>
       </details></article>`;
   }
 
