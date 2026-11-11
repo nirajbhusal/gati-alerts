@@ -54,7 +54,9 @@ jobs:
       - name: Pages built from templates match the repository
         run: cd web && npm run check
       - name: Install the test browser
-        run: cd tests && npx playwright install --with-deps chromium
+        # The browser only: GitHub's runners already carry the system libraries it needs. Asking for extra system
+        # packages as well made the first run fail when the package servers could not be reached.
+        run: cd tests && (npx playwright install chromium || (sleep 20 && npx playwright install chromium))
       - name: Every page loads in Nepali and English without a script error
         run: node tests/smoke.cjs
       - name: Assemble the site
