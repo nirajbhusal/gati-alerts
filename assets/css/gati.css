@@ -1902,3 +1902,16 @@ main#main .sibs a{color:var(--ink)!important;text-decoration:none!important}
 main#main .ntlist li a,main#main .ntlist li a *{text-decoration:none!important}
 main#main .ntlist li a{color:var(--ink)!important}
 main#main .ntlist li a:hover b,main#main .ntlist li a:focus-visible b{text-decoration:underline!important}
+
+/* ===== Feed: one alert reads on one screen =====
+   Headline is capped so the "what to do" line stays in view; the full headline is in Details. */
+.fcard .fmain h2{font-size:clamp(1.3rem,5.6vw,1.75rem)!important;line-height:1.28;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.fcard .fend h2{display:block;-webkit-line-clamp:unset;overflow:visible}
+.fcard .fmain .fins{margin:.5em 0 .7em;padding:10px 12px;border-radius:12px;font-size:var(--fs-4);line-height:1.45}
+.fhero{position:relative}
+.fpos{position:absolute;right:0;top:0;font-size:var(--fs-6);font-weight:700;color:var(--slate);background:var(--surface2);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.fhero .ftags{padding-right:64px}
+.fcard .fend .fdisc{color:var(--ink)!important;font-weight:600}
+.fcard .fend .btn{margin-top:4px}
+/* Top bar: district, filter and list. Home is already in the bottom bar. */
+.storypage #stdash{display:none}
