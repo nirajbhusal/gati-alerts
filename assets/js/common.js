@@ -341,15 +341,28 @@
   G.roadLegend = (counts) => `<p class="rdleg">${["open", "oneway", "blocked", "none"].map((k) => `<span><i class="rdsw rd-${k}"></i>${G.lang === "ne" ? G.ROADST[k][0] : G.ROADST[k][1]}${counts ? ` <b>${G.num(String(counts[k] || 0))}</b>` : ""}</span>`).join("")}</p>`;
   G.SEVCOLOR = { Extreme: "#8E1B14", Severe: "#D93025", Moderate: "#F28C1E", Minor: "#F2C94C", Unknown: "#8F9BB3" };
   G.TRUST = { Official: ["आधिकारिक", "Official", "🛡"], Verified: ["प्रमाणित", "Verified", "✓"], Reported: ["रिपोर्ट गरिएको", "Reported", "❝"],
-              Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"] };
+              Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"],
+              Model: ["मोडेल", "Model", "🧮"] };
   G.sevChip = (s) => { const v = G.SEV[s] || G.SEV.Unknown; return `<span class="sev sev-${G.SEV[s] ? s : "Unknown"}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>`; };
   G.trustChip = (t) => { const v = G.TRUST[t]; return v ? `<span class="trust t-${t}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>` : ""; };
+  /* Routine forecast highlight only. A match is not a warning and never becomes a CAP alert. */
+  G.stormFlag = (text) => {
+    const s = String(text || "");
+    const hail = /असिना|\bhail\b/i.test(s), thunder = /मेघगर्जन|चट्याङ|चट्याङ्ग|thunder|lightning/i.test(s);
+    if (!hail && !thunder) return "";
+    const ne = G.lang === "ne";
+    const label = hail && thunder ? (ne ? "मेघगर्जन, चट्याङ वा असिना उल्लेख छ" : "Mentions thunderstorm, lightning or hail")
+      : hail ? (ne ? "असिना उल्लेख छ" : "Mentions hail") : (ne ? "मेघगर्जन वा चट्याङ उल्लेख छ" : "Mentions thunderstorm or lightning");
+    const svg = `<svg class="wxbolt" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.2 2.2 5 13.2h6.2L9.6 21.8 19.2 9.6h-6.4L13.2 2.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
+    return `<p class="wxflag">${svg}<span>${label}. ${ne ? "यो चेतावनी होइन।" : "This is not a warning."}</span></p>`;
+  };
   /* Shared verdict scale for Ask Gati answers and Route check: alert (blocked or warning) / caution / clear (open) / info / no_info */
   G.VERDICT = { alert: ["Severe", "सतर्क: अवरोध वा चेतावनी", "Alert: blocked or warning", '<path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h0"/>'], caution: ["Moderate", "सावधानी", "Caution", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.5h0"/>'], clear: ["Clear", "खुला वा सामान्य", "Open or normal", '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.5 2.8 2.8L16 10"/>'], info: ["Info", "जानकारी", "Information", '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h0"/>'], no_info: ["Unknown", "आधिकारिक जानकारी छैन", "No official information", '<circle cx="12" cy="12" r="8.5"/><path d="M9.8 9.5a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4v.5M12 16.8h0"/>'] };
   G.verdictColor = (k) => (k === "Clear" ? "#2E8B57" : k === "Info" ? "#2F6FED" : G.SEVCOLOR[k]);
   G.verdictBadge = (k) => { const v = G.VERDICT[k] || G.VERDICT.no_info; return `<span class="vbadge v-${G.VERDICT[k] ? k : "no_info"}" style="--sc:${G.verdictColor(v[0])}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${v[3]}</svg>${G.lang === "ne" ? v[1] : v[2]}</span>`; };
   /* Source health: planned | ok | stale | down. Stale = last success older than 3x pollMinutes. */
   G.srcStatus = (src, h) => {
+    if (src.status === "listed") return "listed";
     if (src.status === "planned" || !src.url) return "planned";
     h = h || {};
     if (!h.lastSuccess) return "down";
@@ -534,3 +547,26 @@
   G.skyOn = () => { try { return localStorage.getItem("gati-sky") !== "off"; } catch (e) { return true; } };
   G.setSky = (on) => { try { if (on) localStorage.removeItem("gati-sky"); else localStorage.setItem("gati-sky", "off"); } catch (e) {} if (G.sky) G.sky.apply(); };
   const s = document.createElement("script"); s.src = G.root + "assets/js/sky.js"; s.defer = true; document.body.appendChild(s); })();
+
+/* Decorative rain for one Nepal day. TODO: delete this block after 11 Nov 2026.
+   RAIN_NPT is the only date. Asia/Kathmandu is UTC+5:45, so it stops at 00:00 NPT on 12 Nov. */
+(function () {
+  const RAIN_NPT = "2026-11-11";
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const npt = new Date(Date.now() + 345 * 60000);
+  const p = (n) => String(n).padStart(2, "0");
+  if (npt.getUTCFullYear() + "-" + p(npt.getUTCMonth() + 1) + "-" + p(npt.getUTCDate()) !== RAIN_NPT) return;
+  const layer = document.createElement("div");
+  layer.className = "rainday";
+  layer.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 26; i++) {
+    const drop = document.createElement("i");
+    drop.style.left = (i * 3.7 + (i % 5) * 1.3) + "%";
+    drop.style.animationDuration = (0.75 + (i % 7) * 0.08) + "s";
+    drop.style.animationDelay = (-(i % 9) * 0.13) + "s";
+    layer.appendChild(drop);
+  }
+  document.body.prepend(layer);
+  const left = ((23 - npt.getUTCHours()) * 3600 + (59 - npt.getUTCMinutes()) * 60 + (60 - npt.getUTCSeconds())) * 1000;
+  setTimeout(() => layer.remove(), Math.max(1000, left));
+})();

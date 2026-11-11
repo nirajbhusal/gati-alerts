@@ -204,7 +204,7 @@ table{border-collapse:collapse;width:100%;font-size:var(--fs-4)}td,th{border-bot
 .srct td{overflow-wrap:anywhere;word-break:normal}.srct td:first-child{width:42%}
 .sst{display:inline-block;padding:.1rem .5rem;border-radius:999px;font-size:var(--fs-5);font-weight:600;white-space:nowrap}
 .sst-ok{background:#E3F4EC;color:#0B6B3A}.sst-stale{background:#FFF4E5;color:#7A3E00}
-.sst-down{background:#FDE8E8;color:#9B1C1C}.sst-planned{background:#EEF1F5;color:#4A5568}
+.sst-down{background:#FDE8E8;color:#9B1C1C}.sst-planned,.sst-listed{background:#EEF1F5;color:#4A5568}
 @media (max-width:560px){.srct thead{display:none}.srct,.srct tbody,.srct tr,.srct td{display:block;width:100%}
 .srct tr{border-bottom:1px solid #E3E8EE;padding:.4rem 0}.srct td{border:0;padding:.15rem 0}}
 .vchain{font-size:var(--fs-5);margin:.5rem 0;padding:.45rem .6rem;border-left:3px solid #6b3fa0;background:#F6F2FB;border-radius:6px;line-height:1.6}
@@ -1834,3 +1834,17 @@ header.top .bar .hr .bellbtn .bdot.bnum{top:2px;right:2px}header.top .bar .menub
 @media(max-width:600px){.hgsteps{grid-template-columns:minmax(0,1fr)}.hgsteps a{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:10px;padding:10px 12px}.hgsteps a small{flex-basis:100%;padding-left:40px;margin-top:-6px}}
 .hinfo .hgsteps a,.hinfo .hgsteps a *,.hinfo a.hgt,.hinfo a.hgt *,.hinfo .hgcall a,.hinfo .hgcall a *{text-decoration:none!important;color:var(--ink)!important}.hinfo .hgsteps a svg,.hinfo .hgt .hgi{color:var(--teal,#0F6F78)!important}.hinfo .hgsteps small,.hinfo .hgt .meta,.hinfo .hgkey,.hinfo .hgbig small{color:var(--slate)!important}
 .gdgrid.gd-home>:last-child{grid-column:1/-1}
+/* DHM 24 h forecast: same type sizes as the home Roads card. A forecast is not a warning. */
+.wxcast h2{font-size:var(--r-title);font-weight:600;margin:0 0 8px}
+.wxcast .hisum{margin:10px 0 4px}
+.wxcast .hin{margin:0 0 8px}
+a.wxsrc{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 0}
+.wxflag{display:flex;align-items:center;gap:8px;min-height:44px;margin:4px 0;font-size:var(--r-label);font-weight:600}
+.wxflag svg{flex:none}
+.wxmore{margin:4px 0 8px}
+.wxmore summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-size:var(--r-label);font-weight:600}
+/* Decorative rain for one Nepal date. TODO: delete .rainday after 11 Nov 2026. */
+.rainday{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.rainday i{position:absolute;top:-14%;width:1px;height:16px;background:linear-gradient(to bottom, transparent, rgba(70,110,150,.35));animation:raindrop 1.05s linear infinite}
+@keyframes raindrop{to{transform:translateY(120vh)}}
+@media (prefers-reduced-motion: reduce){.rainday{display:none}}

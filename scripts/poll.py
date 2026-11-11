@@ -41,8 +41,8 @@ def parse(s):
 
 def status(src, h, t):
     """Same rule as G.srcStatus in assets/js/common.js."""
-    if src.get("status") == "planned" or not src.get("url"):
-        return "planned"
+    if src.get("status") in ("planned", "listed") or not src.get("url"):
+        return src.get("status") if src.get("status") in ("planned", "listed") else "planned"
     ls = parse(h.get("lastSuccess"))
     if not ls:
         return "down"
@@ -105,7 +105,7 @@ def main():
     new_snaps, report = 0, []
     for s in sources:
         sid = s["id"]
-        if s.get("status") == "planned" or not s.get("url"):
+        if s.get("status") in ("planned", "listed") or not s.get("url"):
             continue
         if GROUP == "dhm" and not sid.startswith("dhm"):
             continue

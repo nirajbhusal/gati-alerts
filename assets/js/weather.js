@@ -10,6 +10,31 @@
   const src = (a) => { const i = a.info[G.lang]; return `<p class="meta">${T("स्रोत", "Source")}: <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(i.senderName.split(" — ")[0])}</a>${i.params["gati:sourceUrl2"] ? ` · <a href="${esc(i.params["gati:sourceUrl2"])}" target="_blank" rel="noopener">${T("दोस्रो स्रोत", "Second source")}</a>` : ""} · ${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || a.sent)} · ${G.trustChip(a.trust)}</p>`; };
   let map, layer;
   function draw() {
+    const cast = document.getElementById("wxcast");
+    const f24 = wx && wx.forecast24;
+    if (cast) {
+      if (!f24) cast.innerHTML = "";
+      else {
+        const c = f24.country, k = f24.kathmandu;
+        const deg = (a, b) => (a == null || b == null) ? "" : ` ${G.num(a)}-${G.num(b)}°C`;
+        const rain = k.day_rain_pct == null ? "" : ` · ${T("वर्षाको सम्भावना", "Rain chance")} ${G.num(k.day_rain_pct)}%`;
+        const blob = [c.day_ne, c.day_en, c.night_ne, c.night_en, k.day_ne, k.day_en, k.night_ne, k.night_en].join("\n");
+        cast.innerHTML = `<h2><span class="ne-only">DHM पूर्वानुमान, चेतावनी होइन</span><span class="en-only">DHM forecast, not a warning</span></h2>
+          <p class="hisum">${esc(T(k.name_ne, k.name_en))}</p>
+          <p class="hin"><b>${T("आज दिउँसो", "This afternoon")}. </b>${esc(T(k.day_ne, k.day_en))}${deg(k.day_from_c, k.day_to_c)}${rain}</p>
+          <p class="hin"><b>${T("आज राति", "Tonight")}. </b>${esc(T(k.night_ne, k.night_en))}${deg(k.night_from_c, k.night_to_c)}</p>
+          ${G.stormFlag(blob)}
+          <details class="wxmore">
+            <summary><span class="ne-only">थप हेर्नुहोस्</span><span class="en-only">See more</span></summary>
+            <p class="hisum">${T("देशको २४ घण्टा", "Country, 24 hours")}</p>
+            <p class="hin"><b>${T("आज दिउँसो", "This afternoon")}. </b>${esc(T(c.day_ne, c.day_en))}</p>
+            <p class="hin"><b>${T("आज राति", "Tonight")}. </b>${esc(T(c.night_ne, c.night_en))}</p>
+            <p class="meta"><a class="wxsrc" href="${esc(c.url)}" target="_blank" rel="noopener">${T("देशको पूर्वानुमान", "Country forecast")} ↗</a></p>
+          </details>
+          <p class="meta"><a class="wxsrc" href="${esc(k.url)}" target="_blank" rel="noopener">${T("सहरको पूर्वानुमान", "City forecast")} ↗</a></p>
+          <p class="meta">${T("जारी", "Issued")} ${G.npt(c.issued)}. ${T("यो नियमित पूर्वानुमान हो। यसबाट चेतावनी बनाइँदैन।", "This is a routine forecast. It is not turned into a warning.")}</p>`;
+      }
+    }
     const fc = act[0] || items[0];
     document.getElementById("wxfc").innerHTML = `<h2 style="margin-top:0">${T("पूर्वानुमान", "Forecast")}</h2>` + (fc ? `
       <div class="ahead">${G.sevChip(fc.severity)}${Date.parse(fc.expires) > now ? `<span class="tag live">${T("चालु", "Active")}</span>` : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}</div>

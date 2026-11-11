@@ -33,7 +33,8 @@
   ],
   "trustDefault": "Official",
   "contact": "https://www.dhm.gov.np/",
-  "status": "active"
+  "status": "active",
+  "note": "Nepal's only official weather warning voice in Gati."
  },
  {
   "id": "neoc",
@@ -120,7 +121,8 @@
   "trustDefault": "Official",
   "contact": "https://seismonepal.gov.np/",
   "status": "active",
-  "ingest": "scripts/ingest_quakes.py"
+  "ingest": "scripts/ingest_quakes.py",
+  "note": "NEMRC. seismonepal.gov.np responded HTTP 200 on 11 Nov 2026. seismology.gov.np did not resolve."
  },
  {
   "id": "usgs",
@@ -137,7 +139,8 @@
   "trustDefault": "Official",
   "contact": "https://earthquake.usgs.gov/",
   "status": "active",
-  "ingest": "scripts/ingest_quakes.py"
+  "ingest": "scripts/ingest_quakes.py",
+  "note": "Supplementary to Nepal's NEMRC (seismonepal.gov.np). Counts are never summed with NSC. Public page https://earthquake.usgs.gov/ responded HTTP 200 on 11 Nov 2026."
  },
  {
   "id": "doe-air",
@@ -254,5 +257,124 @@
   "trustDefault": "Official",
   "contact": "https://navigate.dor.gov.np/dashboard",
   "status": "active"
+ },
+ {
+  "id": "wmo-alert-hub",
+  "agency": {
+   "ne": "WMO Alert Hub (पूरक)",
+   "en": "WMO Alert Hub (supplementary)"
+  },
+  "url": "https://www.alert-hub.org/alert-hubs",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": ["weather", "multi-hazard"],
+  "trustDefault": "Official",
+  "contact": "https://alertingauthority.wmo.int/authorities.php?recId=109",
+  "status": "listed",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "Checked 11 Nov 2026. https://alerthub.wmo.int/ did not resolve. Alert-Hub.Org says it operates the WMO Alert Hub. The WMO Register of Alerting Authorities lists DHM Nepal with CAP Feed URL blank, so no DHM Nepal CAP feed was found on the hub. Not ingested. Not summed with DHM."
+ },
+ {
+  "id": "rimes",
+  "agency": {
+   "ne": "RIMES (क्षेत्रीय सन्दर्भ, पूरक)",
+   "en": "RIMES (regional context, supplementary)"
+  },
+  "url": "https://www.rimes.int/",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": ["weather"],
+  "trustDefault": "Official",
+  "contact": "https://www.rimes.int/",
+  "status": "listed",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "Regional context only. Not a Nepal weather warning. Not ingested."
+ },
+ {
+  "id": "icimod",
+  "agency": {
+   "ne": "ICIMOD (हिन्दुकुश हिमालय, पूरक)",
+   "en": "ICIMOD (Hindu Kush Himalaya, supplementary)"
+  },
+  "url": "https://www.icimod.org/",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": ["flood", "glof", "air-quality"],
+  "trustDefault": "Official",
+  "contact": "https://www.icimod.org/",
+  "status": "listed",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "HKH floods, GLOF and air. Not Nepal's flood warning, which stays with DHM hydrology. Not ingested. Not summed with DHM."
+ },
+ {
+  "id": "gdacs",
+  "agency": {
+   "ne": "GDACS (विश्व विपद् सूचना, पूरक)",
+   "en": "GDACS (global disaster alerts, supplementary)"
+  },
+  "url": "https://www.gdacs.org/",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": ["multi-hazard"],
+  "trustDefault": "Official",
+  "contact": "https://www.gdacs.org/",
+  "status": "listed",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "Global disaster alerts. Not ingested. Never summed with Nepali agency counts."
+ },
+ {
+  "id": "nasa-firms",
+  "agency": {
+   "ne": "NASA FIRMS (डढेलो, पूरक)",
+   "en": "NASA FIRMS (fires, supplementary)"
+  },
+  "url": "https://firms.modaps.eosdis.nasa.gov/",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": ["forest-fire"],
+  "trustDefault": "Official",
+  "contact": "https://firms.modaps.eosdis.nasa.gov/",
+  "status": "listed",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "Satellite fire detections. Not a Nepal forest-fire warning. Not ingested."
+ },
+ {
+  "id": "open-meteo",
+  "agency": {
+   "ne": "Open-Meteo (मोडेल डेटा, पूरक)",
+   "en": "Open-Meteo (model data, supplementary)"
+  },
+  "url": "https://open-meteo.com/",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": ["weather"],
+  "trustDefault": "Model",
+  "contact": "https://open-meteo.com/",
+  "status": "listed",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "Model data, not an official warning. The weather view already shows an Open-Meteo model, labelled Model, separate from DHM."
+ },
+ {
+  "id": "ecmwf",
+  "agency": {
+   "ne": "ECMWF (मोडेल डेटा, पूरक)",
+   "en": "ECMWF (model data, supplementary)"
+  },
+  "url": "https://www.ecmwf.int/",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": ["weather"],
+  "trustDefault": "Model",
+  "contact": "https://www.ecmwf.int/",
+  "status": "listed",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "Model data, not an official warning. Not ingested as a warning."
  }
 ]
