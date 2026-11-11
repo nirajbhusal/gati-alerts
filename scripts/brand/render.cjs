@@ -119,12 +119,12 @@ function card(bleed) {
 <svg viewBox="0 0 400 400" style="position:absolute;right:${bleed - 14}mm;top:50%;width:62mm;height:62mm;transform:translateY(-50%)" fill="none" stroke="${C.red}" stroke-linecap="round" stroke-width="22" aria-hidden="true">
 <path d="M150 150 A70 70 0 0 1 150 250" opacity=".09"/><path d="M215 95 A150 150 0 0 1 215 305" opacity=".065"/><path d="M280 40 A230 230 0 0 1 280 360" opacity=".04"/></svg>
 <div style="position:absolute;left:${p}mm;top:${p}mm;right:${p}mm;bottom:${p}mm;display:flex;flex-direction:column;justify-content:space-between">
-<div style="display:flex;justify-content:space-between;align-items:flex-start">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;position:relative">
 <div><div style="font:700 15pt/1 Sora;color:${C.navy};letter-spacing:-.03em;white-space:nowrap">Niraj Bhusal</div>
 <div class="ne" style="font-size:7.8pt;font-weight:600;color:${C.slate};line-height:1.2;margin-top:1.2mm">निरज भुसाल</div>
 <div style="font-size:6.1pt;color:${C.ink};margin-top:1.6mm">Creator and maintainer, <span class="ne" style="font-weight:700">गति</span> <b>Gati</b></div>
 <div style="display:inline-flex;align-items:center;gap:1.3mm;margin-top:1.9mm;background:${C.navy};border-radius:9mm;padding:1mm 2.8mm 1mm 2.2mm;font:600 5.2pt Sora;color:#fff;white-space:nowrap"><span style="color:${C.orange};font-size:6.4pt;line-height:1">★</span><span><b style="font-weight:700">Top Open Source Project of the Year 2026</b> <span style="color:#C9D3DF">· GitHub Octoverse</span></span></div></div>
-<div style="height:7mm;width:${7 * 1080 / 512}mm">${svg("gati-logo-horizontal")}</div></div>
+<div style="height:7mm;width:${7 * 1080 / 512}mm;flex:none;position:absolute;right:0;top:0">${svg("gati-logo-horizontal")}</div></div>
 <div style="display:flex;justify-content:space-between;align-items:flex-end">
 <div style="display:flex;flex-direction:column;gap:${PHONE ? 0.5 : 0.8}mm;border-left:.45mm solid ${C.red};padding-left:2.4mm">${PHONE ? row("TEL", PHONE) : ""}${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("IN", "linkedin.com/in/nirajbhusal")}${row("GIT", "github.com/nirajbhusal")}</div>
 <div style="width:13mm;height:13mm;background:#fff;box-shadow:0 0 0 1.2mm #fff;position:relative">${qr}</div></div></div></div>`;
