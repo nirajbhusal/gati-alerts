@@ -1970,3 +1970,29 @@ abbr.srcl{text-decoration:none;font-weight:700;cursor:help;border-bottom:1px dot
 .tdrow.td-nowc .tdk{font-style:italic}
 .tdrow.tdmodel-hi{border-left:4px dashed #8F9BB3;padding-left:10px}
 .tdmodelnote{font-weight:600}
+
+/* ===== Patro on a phone: today first, a two-row toolbar, the month, then upcoming holidays and season notes ===== */
+.pics{margin:10px 0 0}
+@media (max-width:959px){
+  .patro .playout{display:flex;flex-direction:column;gap:0}
+  .patro .pside,.patro .pmain{display:contents}
+  .patro .pside>.ptoday{order:1}.patro .pside>.ptev{order:2}.patro .pside>.ptclock{order:3;margin-bottom:6px}
+  .patro .pmain>.ptools{order:4}.patro .pmain>#pgrid{order:5}
+  .patro .pside>h3{order:6;margin-top:18px}.patro .pside>.pup{order:7}.patro .pside>.meta{order:8}
+  .patro #pgrid{display:flex;flex-direction:column}.patro #pgrid>.pseasons{order:2;margin:14px 0 0}
+  /* toolbar: ‹ month › on one line; Today, calendar type and view on the next; the .ics link moves under the legend */
+  .patro .ptools{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0}
+  .patro .ptools h2{order:0;flex:1 1 0;min-width:0;width:auto;margin:0;text-align:center;font-size:var(--fs-3);line-height:1.2}
+  .patro .ptools #pprev{order:-1}.patro .ptools #pnext{order:1}
+  .patro .ptools #ptoday{order:2}.patro .ptools #pcal{order:3;margin-left:auto}.patro .ptools #pview{order:4}
+  .patro .ptools::after{content:"";order:1;flex-basis:100%;height:0}
+  .patro .ptools a[href$=".ics"]{display:none}
+  .patro .ptools .sbtn,.patro .ptools .seg button{min-height:40px;padding:6px 10px}
+}
+@media (min-width:960px){.pics{display:none}}
+/* Saturdays and public holidays in red, as on a printed patro; today clearly ringed */
+.patro .pmonth .pwh.hol{color:#C81E1E!important}
+.patro .pmonth .pday.hol:not(.today) .pbig{color:#C81E1E!important}
+html[data-theme=dark] .patro .pmonth .pwh.hol,html[data-theme=dark] .patro .pmonth .pday.hol:not(.today) .pbig{color:#FF8A80!important}
+.patro .pmonth .pday.today{box-shadow:inset 0 0 0 2px var(--crimson)!important}
+.patro #plegend{font-size:var(--fs-6);line-height:1.7;margin-top:12px}
