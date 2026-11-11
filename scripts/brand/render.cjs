@@ -64,7 +64,8 @@ const profile = (s, bg) => `<style>${BASE}body{width:${s}px;height:${s}px;backgr
 <div style="width:${s * 0.7}px;height:${s * 0.7}px;margin-left:${s * 0.035}px">${svg("gati-glyph-white")}</div>`;
 const plain = (name, s, pad = 0, bg = "transparent") => `<style>${BASE}body{width:${s}px;height:${s}px;background:${bg};padding:${pad}px}</style>${svg(name)}`;
 
-const HEAD = ["आधिकारिक विपद् सूचना,<br>स्रोत र समयसहित", "Nepal's official disaster alerts, with source and time"];
+/* the large line on thumbnails and posts is the tagline */
+const HEAD = ["सही सूचना, सही समयमा ।", "The right alert, right on time."];
 const SOCIAL = [
   /* covers and headers */
   ["social/covers/x-header-1500x500", { w: 1500, h: 500, layout: "wide" }],
