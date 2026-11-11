@@ -119,35 +119,6 @@ function card(bleed) {
 <div style="display:flex;flex-direction:column;gap:.7mm;margin-left:1.2mm">${PHONE ? row("TEL", PHONE) : ""}${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("IN", "linkedin.com/in/nirajbhusal")}${row("GIT", "github.com/nirajbhusal")}</div></div></div></div>`;
 }
 
-/* second design: upright card, light front, navy back */
-function cardTall(bleed) {
-  const W = 54 + bleed * 2, H = 90 + bleed * 2, p = 6 + bleed;
-  const qr = fs.readFileSync(path.join(TMP, "..", "gati-qr.svg"), "utf8");
-  const row = (k, v) => `<div><div style="font-size:4.6pt;font-weight:700;letter-spacing:.14em;color:${C.glacier}">${k}</div><div style="font-size:7.2pt;color:#fff;font-weight:500;margin-top:.2mm">${v}</div></div>`;
-  const rings = (color, o) => `<svg viewBox="0 0 400 400" style="position:absolute;left:${bleed - 4}mm;bottom:${bleed + 31}mm;width:51mm;height:51mm" fill="none" stroke="${color}" stroke-linecap="round" stroke-width="15">
-<path d="M70 250 A80 80 0 0 1 150 330" opacity="${o}"/><path d="M70 170 A160 160 0 0 1 230 330" opacity="${o * 0.65}"/><path d="M70 90 A240 240 0 0 1 310 330" opacity="${o * 0.35}"/><circle cx="70" cy="330" r="13" fill="${color}" stroke="none" opacity="${o}"/></svg>`;
-  return `<style>${BASE}@page{size:${W}mm ${H}mm;margin:0}body{width:${W}mm}
-.side{width:${W}mm;height:${H}mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}</style>
-<div class="side" style="background:${C.snow}">${rings(C.red, 1)}
-<div style="position:absolute;left:${p}mm;top:${p}mm;width:10mm;height:10mm">${svg("gati-mark")}</div>
-<div style="position:absolute;right:${p}mm;top:${p + 0.6}mm;text-align:right"><div style="width:9mm;height:${9 * 232 / 386}mm;margin-left:auto">${svg("gati-wordmark")}</div><div style="font-size:3.8pt;font-weight:600;letter-spacing:.42em;color:${C.slate};margin-top:1mm;margin-right:-.42em">GATI</div></div>
-<div style="position:absolute;left:${p}mm;right:${p}mm;bottom:${p}mm">
-<div style="font-size:20pt;font-weight:700;color:${C.navy};letter-spacing:-.04em;line-height:.96">Niraj<br>Bhusal</div>
-<div class="ne" style="font-size:8.4pt;font-weight:600;color:${C.slate};margin-top:1.4mm">निरज भुसाल</div>
-<div style="width:7mm;height:.45mm;border-radius:9px;background:${C.red};margin:2.2mm 0"></div>
-<div style="font-size:6.2pt;line-height:1.4;color:${C.ink}">Creator and maintainer,<br><span class="ne" style="font-weight:700">गति</span> <b>Gati</b></div></div></div>
-<div class="side" style="background:${C.navy}">
-<div style="position:absolute;right:${bleed - 16}mm;top:${bleed - 10}mm;width:52mm;height:52mm;opacity:.07">${svg("gati-glyph-white")}</div>
-<div style="position:absolute;left:${p}mm;top:${p}mm;right:${p}mm;bottom:${p}mm;display:flex;flex-direction:column;justify-content:space-between">
-<div><div class="ne" style="font-weight:700;font-size:9.4pt;line-height:1.25;color:#fff">सही सूचना,<br>सही समयमा ।</div>
-<div style="font-size:5.6pt;color:#C9D3DF;margin-top:1mm">The right alert, right on time.</div>
-<div style="display:inline-flex;align-items:center;gap:1.1mm;margin-top:3mm;border:.25mm solid #33415A;border-radius:9mm;padding:.8mm 2.2mm .8mm 1.9mm;font-size:5pt;font-weight:600;color:#fff;white-space:nowrap"><span style="color:${C.orange};font-size:5.8pt">★</span>Featured in GitHub Octoverse 2026</div></div>
-<div style="display:flex;flex-direction:column;gap:1.5mm">${PHONE ? row("PHONE", PHONE) : ""}${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("LINKEDIN", "linkedin.com/in/nirajbhusal")}${row("GITHUB", "github.com/nirajbhusal")}</div>
-<div style="display:flex;align-items:flex-end;justify-content:space-between">
-<div style="background:#fff;border-radius:1.6mm;padding:1.2mm;width:14mm;height:14mm">${qr}</div>
-<div style="font-size:4.6pt;letter-spacing:.14em;font-weight:700;color:${C.glacier};text-align:right;line-height:1.5">SCAN FOR<br>LIVE ALERTS</div></div></div></div>`;
-}
-
 /* ---------- brand guidelines ---------- */
 function guidelines() {
   const sw = (name, hex, use, fg = "#fff") => `<div class="sw"><div style="background:${hex};color:${fg}"><b>${name}</b><br><code>${hex}</code></div><p>${use}</p></div>`;
@@ -302,13 +273,12 @@ table{border-collapse:collapse;width:100%;font-size:9pt}td,th{text-align:left;pa
   await load(guidelines());
   await page.pdf({ path: path.join(OUT, "print/gati-brand-guidelines.pdf"), preferCSSPageSize: true, printBackground: true });
   /* visiting card: trim size, print size with 3 mm bleed, and previews */
-  for (const [fn, bleed, name] of [[card, 0, "niraj-bhusal-visiting-card"], [card, 3, "niraj-bhusal-visiting-card-print-3mm-bleed"],
-    [cardTall, 0, "niraj-bhusal-visiting-card-upright"], [cardTall, 3, "niraj-bhusal-visiting-card-upright-print-3mm-bleed"]]) {
+  for (const [fn, bleed, name] of [[card, 0, "niraj-bhusal-visiting-card"], [card, 3, "niraj-bhusal-visiting-card-print-3mm-bleed"]]) {
     await load(fn(bleed));
     await page.pdf({ path: path.join(OUT, "print/" + name + ".pdf"), preferCSSPageSize: true, printBackground: true });
   }
   const cp = await browser.newPage({ viewport: { width: 1063, height: 1100 }, deviceScaleFactor: 1 });
-  for (const [fn, name] of [[card, "niraj-bhusal-visiting-card"], [cardTall, "niraj-bhusal-visiting-card-upright"]]) {
+  for (const [fn, name] of [[card, "niraj-bhusal-visiting-card"]]) {
     const f = path.join(TMP, name + ".html");
     fs.writeFileSync(f, "<!doctype html><meta charset=utf-8><style>html{zoom:3.125}</style>" + fn(0)); // 90 mm -> 1063 px
     await cp.goto("file://" + f); await cp.evaluate(() => document.fonts.ready);
