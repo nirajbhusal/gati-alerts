@@ -1851,3 +1851,12 @@ a.wxsrc{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 
 .rainday i{position:absolute;top:-14%;width:1px;height:16px;background:linear-gradient(to bottom, transparent, rgba(70,110,150,.35));animation:raindrop 1.05s linear infinite}
 @keyframes raindrop{to{transform:translateY(120vh)}}
 @media (prefers-reduced-motion: reduce){.rainday{display:none}}
+
+/* ===== Home language row ===== */
+.hlang{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:10px 0 2px;min-height:40px}
+.hlang-l{font-size:1rem;margin-right:2px}
+.hlang button{min-height:40px;padding:6px 11px;font:inherit;font-size:var(--fs-5);font-weight:600;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);cursor:pointer}
+.hlang button[aria-pressed=true]{border-color:var(--crimson);box-shadow:inset 0 0 0 1px var(--crimson);background:var(--surface2)}
+.hlang button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+/* ===== Paper theme: crimson-tinted paper. Cards stay near white so alert text and severity colours keep their contrast. ===== */
+html[data-theme=paper]{--snow:#F9E8E5;--surface:#FFF8F6;--surface2:#F4DFDB;--line:#EBD3CE;--ink:#2A1E1E;--slate:#6B5553}
