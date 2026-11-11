@@ -1964,3 +1964,9 @@ abbr.srcl{text-decoration:none;font-weight:700;cursor:help;border-bottom:1px dot
 .tdrow .td24c{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-top:4px;color:var(--slate);font-size:var(--fs-5)}
 .tdrow.tdwarn{border-left:4px solid #F28C1E;padding-left:10px}
 .tdflag{color:#B45309}
+
+/* ===== "Next 3 hours" model row on the Today card: visibly an estimate, never styled like an alert ===== */
+.tdrow.td-nowc{border-top-style:dashed}
+.tdrow.td-nowc .tdk{font-style:italic}
+.tdrow.tdmodel-hi{border-left:4px dashed #8F9BB3;padding-left:10px}
+.tdmodelnote{font-weight:600}
