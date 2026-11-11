@@ -61,8 +61,9 @@
     const lv = LV[sev], tl = left(a), nd = a.districts.length;
     return `<div class="fbg"></div>
       <div class="fmain">
-        <div class="fhero">${art(a)}<div class="ftags">${G.sevChip(sev)}${status(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div></div>
+        <div class="fhero">${art(a)}<div class="ftags">${G.sevChip(sev)}${status(a)}${G.roadOngoingChip(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div></div>
         <h2>${esc(i.headline)}</h2>
+        ${G.roadOngoingLine(a)}
         <div class="fviz"><div class="fmini" data-k="${k}">${mini(a)}</div>
           <div class="finfo">
             <div class="fi"><div class="fmeter" aria-label="${esc(T(G.SEV[sev][0], G.SEV[sev][1]))}">${[1, 2, 3, 4, 5].map((n) => `<i${n <= lv ? ' class="on"' : ""}></i>`).join("")}</div><span>${T("गम्भीरता", "Severity")}</span></div>
@@ -147,8 +148,9 @@
   const dayLab = (k) => { const d = new Date(k + "T12:00:00Z"); if (G.lang === "ne") return `${WN[d.getUTCDay()]}, ${MN[d.getUTCMonth()]} ${G.num(String(d.getUTCDate()))}, ${G.num(String(d.getUTCFullYear()))}`;
     return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); };
   function row(a, k) { const i = a.info[G.lang] || a.info.ne, sev = G.SEV[a.severity] ? a.severity : "Unknown";
-    return `<li class="frow${isActive(a) ? "" : " old"}" style="--sc:${G.SEVCOLOR[sev]}"><div class="ftags">${G.sevChip(sev)}${status(a)}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div>
+    return `<li class="frow${isActive(a) ? "" : " old"}" style="--sc:${G.SEVCOLOR[sev]}"><div class="ftags">${G.sevChip(sev)}${status(a)}${G.roadOngoingChip(a)}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div>
       <a class="frh" href="${esc(url(a))}">${esc(i.headline)}</a>
+      ${G.roadOngoingLine(a)}
       <p class="meta">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(agency(i))} ↗</a> ${G.trustChip(a.trust)}</p>
       <p class="frb"><button type="button" class="fopt" data-act="share" data-k="${k}">${T("सेयर", "Share")}</button> <button type="button" class="fopt" data-act="follow" data-k="${k}">${T("जिल्ला पछ्याउनुहोस्", "Follow district")}</button> <button type="button" class="fopt" data-act="details" data-k="${k}">${T("विवरण", "Details")}</button></p></li>`; }
   function drawList() {
@@ -187,6 +189,7 @@
   dpDraw(); G.onLang(dpDraw);
   G.json("data/alerts.json").then((d) => {
     by = Object.fromEntries(d.alerts.map((a) => [a.identifier, a]));
+    G.alertById = by;
     const cut = Date.now() - 30 * 864e5;
     const act = d.alerts.filter(isActive).sort((x, y) => SR[x.severity] - SR[y.severity] || (y.sent > x.sent ? 1 : -1));
     const old = d.alerts.filter((a) => !isActive(a) && Date.parse(a.sent) >= cut).sort((x, y) => (y.sent > x.sent ? 1 : -1));

@@ -172,6 +172,7 @@
   /* CLS: on Home and Alerts with no cached Breaking bar, keep the page invisible (space kept) until the bar is known, at most 1.5 s */
   if (["home", "alerts"].includes(document.body.dataset.page || "") && brk.hidden && !brk.innerHTML) { document.body.classList.add("brkwait"); setTimeout(() => document.body.classList.remove("brkwait"), 1500); }
   G.breaking = () => G.json("data/alerts.json").then((d) => { const now = Date.now(), SV = ["Moderate", "Severe", "Extreme"];
+    G.alertById = Object.fromEntries(d.alerts.map((a) => [a.identifier, a]));
     return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity))
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
   const dismissed = () => { try { return JSON.parse(sessionStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
@@ -184,8 +185,37 @@
   G.staleChip = (iso, h = 24) => { if (!G.isStale(iso, h)) return ""; const d = new Date(Date.parse(iso) + 345 * 6e4), MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"], MN = ["जनवरी","फेब्रुअरी","मार्च","अप्रिल","मे","जुन","जुलाई","अगस्ट","सेप्टेम्बर","अक्टोबर","नोभेम्बर","डिसेम्बर"];
     return `<span class="stalechip">पुरानो · Stale since ${G.lang === "ne" ? MN[d.getUTCMonth()] + " " + G.num(String(d.getUTCDate())) : d.getUTCDate() + " " + MO[d.getUTCMonth()]}</span>`; };
   G.affChip = (codes) => { const c = (codes || []).filter(Boolean); return `<a class="afx" href="${ROOT}affected/${c.length ? "#d=" + encodeURIComponent(c[0]) + (c.length > 1 ? "&ds=" + encodeURIComponent(c.join(",")) : "") : ""}"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>${G.lang === "ne" ? "के म प्रभावित छु?" : "Am I affected?"}</a>`; };
+  /* A road closure that is a CAP Update, still in force, whose chain started more than 3 days ago. */
+  G.roadOngoing = (a) => {
+    const en = a && a.info && a.info.en;
+    if (!a || a.hazard !== "road" || a.msgType !== "Update" || !en || en.responseType !== "Avoid" || !a.chain || a.chain.length < 2 || !window.BS) return null;
+    const times = a.chain.map((c) => Date.parse(c.sent)).filter((n) => !isNaN(n));
+    const first = G.alertById && G.alertById[a.chain[0].id];
+    const onset = first && first.info && first.info.en && Date.parse(first.info.en.onset || first.info.en.effective || "");
+    if (!isNaN(onset)) times.push(onset);
+    if (!times.length || Date.now() - Math.min.apply(null, times) <= 3 * 864e5) return null;
+    const npt = (ms) => { const t = new Date(ms + 345 * 60000); return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate(), h: t.getUTCHours(), mi: t.getUTCMinutes() }; };
+    const key = (p) => p.y + "-" + p.m + "-" + p.d;
+    const s = npt(Math.min.apply(null, times)), u = npt(Date.parse(a.sent)), today = npt(Date.now()), yday = npt(Date.now() - 864e5);
+    const bs = BS.toBS(s.y, s.m, s.d); if (!bs) return null;
+    const h12 = u.h % 12 || 12, mi = String(u.mi).padStart(2, "0");
+    const part = u.h < 4 || u.h >= 20 ? "राति" : u.h < 12 ? "बिहान" : u.h < 17 ? "दिउँसो" : "साँझ";
+    const neClock = part + " " + G.num(String(h12)) + ":" + G.num(mi);
+    const enClock = h12 + ":" + mi + " " + (u.h < 12 ? "AM" : "PM");
+    let whenNe, whenEn;
+    if (key(u) === key(today)) { whenNe = "आज"; whenEn = "today"; }
+    else if (key(u) === key(yday)) { whenNe = "हिजो"; whenEn = "yesterday"; }
+    else { const b = BS.toBS(u.y, u.m, u.d); whenNe = b ? BS.MN[b.m - 1] + " " + G.num(String(b.d)) : ""; whenEn = b ? "on " + BS.ME[b.m - 1] + " " + b.d : ""; }
+    const who = G.agencyOf(a);
+    return {
+      ne: BS.MN[bs.m - 1] + " " + G.num(String(bs.d)) + " देखि बन्द · " + whenNe + " " + neClock + " मा " + who + "द्वारा पुष्टि",
+      en: "Closed since " + BS.ME[bs.m - 1] + " " + bs.d + " · reconfirmed by " + who + " " + enClock + (whenEn ? " " + whenEn : "")
+    };
+  };
+  G.roadOngoingChip = (a) => (G.roadOngoing(a) ? `<span class="tag ong">${G.lang === "ne" ? "चलिरहेको" : "Ongoing"}</span>` : "");
+  G.roadOngoingLine = (a) => { const o = G.roadOngoing(a); return o ? `<p class="ongline">${G.esc(G.lang === "ne" ? o.ne : o.en)}</p>` : ""; };
   const brkItem = (a, x) => { const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity];
-    return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a><span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${G.affChip(a.districts)}${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
+    return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}${G.roadOngoingChip(a)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a>${G.roadOngoingLine(a)}<span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${G.affChip(a.districts)}${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
   /* Breaking bar only on Home and Alerts; dismissal lasts for this browser session, per alert identifier */
   const BRK_PAGES = ["home", "alerts"];
   const drawBreaking = () => !BRK_PAGES.includes(PAGE) ? Promise.resolve(brk.hidden = true) : G.breaking().then((L) => {
