@@ -1,0 +1,35 @@
+{
+ "_note": "Regional interface languages layered over Nepali. status: draft (shown as beta), reviewed (checked by a native speaker), wanted (translators needed, not shown in the picker).",
+ "languages": [
+  {
+   "code": "mai",
+   "name": "मैथिली",
+   "nameEn": "Maithili",
+   "status": "draft"
+  },
+  {
+   "code": "bho",
+   "name": "भोजपुरी",
+   "nameEn": "Bhojpuri",
+   "status": "draft"
+  },
+  {
+   "code": "the",
+   "name": "थारू",
+   "nameEn": "Tharu",
+   "status": "wanted"
+  },
+  {
+   "code": "new",
+   "name": "नेपाल भाषा",
+   "nameEn": "Nepal Bhasa (Newar)",
+   "status": "wanted"
+  },
+  {
+   "code": "taj",
+   "name": "तामाङ",
+   "nameEn": "Tamang",
+   "status": "wanted"
+  }
+ ]
+}

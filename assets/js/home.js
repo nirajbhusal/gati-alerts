@@ -80,11 +80,11 @@
         ${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag live">${T("चालु", "Active")}</span>`}
         ${G.roadOngoingChip(a)}
         <span class="tag">${G.esc(i.event)}</span></div>
-      <h4>${G.esc(i.headline)}</h4>
+      <h4>${G.esc(G.headline(a, i))}</h4>
       ${G.roadOngoingLine(a)}
       <p class="aarea">📍 ${G.esc(areas)}</p>
       <p class="atime">🕒 ${T("स्रोतको समय", "Source time")}: <strong>${G.npt(i.params["gati:sourceTime"] || a.sent)}</strong></p>
-      <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.esc((i.senderName || "").split(" — ")[0])}</span></div>
+      <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.srcLabel(a, i)} · ${T("गति मार्फत", "relayed by Gati")}</span></div>
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
       ${i.instruction && !a.expired ? `<div class="instr"><strong>${T("के गर्ने", "What to do")}:</strong> ${G.esc(i.instruction)}</div>` : ""}
       ${a.hazard !== "earthquake" && !a.expired ? `<p class="afxrow">${G.affChip(a.districts)}</p>` : ""}
@@ -95,7 +95,7 @@
         ${a.expired && i.instruction ? `<p><strong>${T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>
         <p class="meta">CAP: urgency ${en.urgency} · severity ${en.severity} · certainty ${en.certainty} · sender <code>${G.esc(a.sender)}</code><br>
-        <a href="${RT}cap/${G.esc(a.identifier)}.xml">CAP 1.2 XML</a> · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("डेटा स्रोत", "Data provenance")}</a></p>
+        <a href="${RT}cap/${G.esc(a.identifier)}.xml">CAP 1.2 XML</a>${i.params["gati:bulletinFile"] ? ` · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("डेटा स्रोत", "Data provenance")}</a>` : ""}</p>
       </details></article>`;
   }
 
@@ -240,7 +240,7 @@
       <line x1="0" x2="${W}" y1="${wy}" y2="${wy}" stroke="#F28C1E" stroke-dasharray="3 3" stroke-width="1"/><polyline points="${xy}" fill="none" stroke="#0F7C86" stroke-width="2"/></svg>`;
   }
   function gaugesCard() {
-    $("gauges").innerHTML = `${G.staleChip(gauges.as_of + "T12:00:00+05:45") ? `<p class="gstale">${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>` : ""}<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? (DS[g.district] || DN[g.district])?.ne : (DS[g.district] || DN[g.district])?.en)}</span></p>${gaugeBar(g)}${spark(g)}</li>`).join("")}</ul>
+    $("gauges").innerHTML = `${G.staleChip(gauges.as_of + "T12:00:00" + G.tzIso) ? `<p class="gstale">${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00" + G.tzIso)}</p>` : ""}<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? (DS[g.district] || DN[g.district])?.ne : (DS[g.district] || DN[g.district])?.en)}</span></p>${gaugeBar(g)}${spark(g)}</li>`).join("")}</ul>
       <p class="meta">${T("बार = अहिलेको सतह; सुन्तला रेखा = चेतावनी तह; रातो रेखा = खतरा तह।", "Bar = current level; orange line = warning level; red line = danger level.")} ${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">${G.esc(T(gauges.source_ne, gauges.source_en))}</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))}</p>`;
   }
   function glance() {
@@ -298,7 +298,7 @@
     $("cAgency").innerHTML = bars(Object.entries(ac).sort((a, b) => b[1] - a[1]).map(([g, n]) => ({ label: G.esc(g), n, c: "var(--navy)" }))) +
       `<p class="meta">${T("हरेक निकायले जारी गरेका, गतिले राखेका सूचनाको सङ्ख्या। निकायका अङ्क आपसमा जोडिँदैनन्।", "Items Gati carries from each agency, counted separately. Agency figures are not added together.")}</p>`;
     // timeline: one column per day, stacked by severity
-    const day = (iso) => new Date(new Date(iso).getTime() + 345 * 60000).toISOString().slice(0, 10);
+    const day = (iso) => new Date(new Date(iso).getTime() + G.tzMs).toISOString().slice(0, 10);
     const days = [...new Set(A.map((a) => day(a.sent)))].sort();
     const first = new Date(days[0]), last = new Date(Math.max(new Date(day(new Date().toISOString())), new Date(days.at(-1))));
     const all = []; for (let d = new Date(first); d <= last; d.setUTCDate(d.getUTCDate() + 1)) all.push(d.toISOString().slice(0, 10));
@@ -331,7 +331,7 @@
     const el = $("cReports"); if (!el) return;
     if (!rcache) {
       try {
-        const q = (l) => G.gh(`https://api.github.com/search/issues?per_page=1&q=${encodeURIComponent(`repo:nirajbhusal/gati-alerts is:issue label:${l}`)}`).then((j) => j.total_count);
+        const q = (l) => G.gh(`https://api.github.com/search/issues?per_page=1&q=${encodeURIComponent(`repo:${G.country.repository} is:issue label:${l}`)}`).then((j) => j.total_count);
         const [v, p, r] = await Promise.all([q("verified"), q("reported -label:verified -label:retracted"), q("retracted")]);
         rcache = { Verified: v, Reported: p, Retracted: r };
       } catch (e) { rcache = "fail"; }
@@ -342,7 +342,7 @@
   }
 
   function updates() {
-    $("updates").innerHTML = upd.updates.map((u) => `<li><time datetime="${u.date}">${G.npt(u.date + "T12:00:00+05:45").split(" · ")[0]}</time><p>${G.esc(ne() ? u.ne : u.en)}</p></li>`).join("");
+    $("updates").innerHTML = upd.updates.map((u) => `<li><time datetime="${u.date}">${G.npt(u.date + "T12:00:00" + G.tzIso).split(" · ")[0]}</time><p>${G.esc(ne() ? u.ne : u.en)}</p></li>`).join("");
   }
 
   function render() {
@@ -407,7 +407,7 @@
   function thisWeek() {
     const box = $("week"); if (!box) return;
     const act = data.alerts.filter((a) => !a.expired && !a.supersededBy && a.msgType !== "Cancel");
-    const t = new Date(now + 345 * 60000), day0 = Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate());
+    const t = new Date(now + G.tzMs), day0 = Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate());
     const iso = (ms) => new Date(ms).toISOString().slice(0, 10), end = iso(day0 + 6 * 864e5), start = iso(day0);
     const ev = (cal.entries || []).filter((e) => e.date_ad >= start && e.date_ad <= end).sort((a, b) => a.date_ad.localeCompare(b.date_ad));
     const dlabel = (d) => { const [y, m, dd] = d.split("-").map(Number); const wd = new Date(Date.UTC(y, m - 1, dd)).getUTCDay();
@@ -433,7 +433,7 @@
     const box = $("rivhi"); if (box === NIL) return;
     const gs = [...gauges.gauges].sort((a, b) => gaugePct(b) - gaugePct(a)).slice(0, 3);
     box.innerHTML = `<ul class="hilist">${gs.map((g) => `<li><span class="hin">${G.esc(T(g.ne, g.en))}</span> <span class="hiv" style="color:${GSC[gaugeState(g)]}">${G.num(g.level.toFixed(1))} ${T("मि.", "m")} · ${T(...GSW[gaugeState(g)])}</span></li>`).join("")}</ul>
-      <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">DHM</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))} ${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>`;
+      <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">DHM</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))} ${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00" + G.tzIso)}</p>`;
   }
   function roadHi() {
     const box = $("roadhi"); if (box === NIL) return;
@@ -489,7 +489,7 @@
     const H = (h && h.sources) || {};
     const draw = () => {
       const T = (ne, en) => (G.lang === "ne" ? ne : en), R = document.body.dataset.root || "";
-      const prods = [[T("नदी", "Rivers"), "DHM", RV && RV.as_of && RV.as_of + (RV.as_of.length === 10 ? "T12:00:00+05:45" : ""), "rivers/"],
+      const prods = [[T("नदी", "Rivers"), "DHM", RV && RV.as_of && RV.as_of + (RV.as_of.length === 10 ? "T12:00:00" + G.tzIso : ""), "rivers/"],
         [T("सडक", "Roads"), T("नेपाल प्रहरी", "Nepal Police"), RD && RD.as_of, "roads/"],
         [T("मौसम", "Weather"), "DHM", WX && WX.bulletin5 && WX.bulletin5.issued, "weather/"]].filter((p) => p[2] && G.isStale(p[2]));
       const down = [...new Set(S.filter((s) => G.srcStatus(s, H[s.id]) === "down").map(short))];

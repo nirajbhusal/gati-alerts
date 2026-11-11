@@ -2,11 +2,11 @@
 (function () {
   const box = document.getElementById("tkcheck"), G = window.Gati; if (!box || !G) return;
   const R = G.root, T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, N = (s) => G.num(String(s));
-  const J = (p) => fetch(R + p).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const J = (p) => G.rawJson(p).catch(() => null)   /* shared loader: one download per file per page */;
   const tm = (iso) => (iso ? `<time datetime="${E(iso)}">${G.npt(iso)}</time>` : "");
   const LV = { low: ["Minor", "न्युन जोखिम", "Low risk"], moderate: ["Moderate", "मध्यम जोखिम", "Moderate risk"], high: ["Severe", "उच्च जोखिम", "High risk"] };
   const KIND = { hospital: ["अस्पताल/स्वास्थ्य केन्द्र", "Hospital or clinic"], health_post: ["स्वास्थ्य चौकी", "Health post"], helipad: ["हेलिप्याड", "Helipad"], police: ["प्रहरी", "Police"] };
-  const today = new Date(Date.now() + 345 * 60000).toISOString().slice(0, 10);
+  const today = new Date(Date.now() + G.tzMs).toISOString().slice(0, 10);
   let S = {}, P = new URLSearchParams(location.search);
   Promise.all(["data/geo/treks.geojson", "data/geo/trekinfo.json", "data/trek-meta.json", "data/alerts.json", "data/arnab-advisory.json", "data/travel-advisory.json", "data/roads.json", "data/districts.json", "data/trek-permits.json"].map(J)).then(([tk, ti, tm_, al, ar, ta, rd, ds, pm]) => {
     S = { tk, ti, pm, meta: tm_, al: al ? al.alerts : [], ar, ta, rd, ds }; if (!tk || !ti) { box.innerHTML = `<p class="meta">${T("पदमार्ग जानकारी लोड भएन।", "Could not load trek data.")}</p>`; return; }

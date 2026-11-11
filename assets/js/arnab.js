@@ -7,7 +7,7 @@
   const BAS = { narayani: ["नारायणी", "Narayani"], koshi: ["कोशी", "Koshi"], bagmati: ["बागमती", "Bagmati"], kamala: ["कमला", "Kamala"] };
   /* Bagmati and Kamala lines are schematic (not in data/geo/rivers.geojson) */
   const SCHEM = { bagmati: [[85.43, 27.77], [85.31, 27.7], [85.29, 27.64], [85.33, 27.45], [85.48, 27.13], [85.43, 26.95], [85.27, 26.77], [85.3, 26.62]], kamala: [[86.05, 27.12], [86.2, 27.0], [86.38, 26.92], [86.4, 26.75], [86.33, 26.55]] };
-  const AD = (iso) => { const d = new Date(iso + "T12:00:00+05:45"); return G.lang === "ne" ? N(d.getDate()) + " " + ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"][d.getMonth()] : d.getDate() + " " + d.toLocaleString("en", { month: "short" }); };
+  const AD = (iso) => { const d = new Date(iso + "T12:00:00" + G.tzIso); return G.lang === "ne" ? N(d.getDate()) + " " + ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"][d.getMonth()] : d.getDate() + " " + d.toLocaleString("en", { month: "short" }); };
   const b0 = [80.0, 26.3, 88.25, 30.5], W = 820, K = W / (b0[2] - b0[0]), H = Math.round((b0[3] - b0[1]) * K);
   const X = (x) => ((x - b0[0]) * K).toFixed(1), Y = (y) => ((b0[3] - y) * K).toFixed(1);
   const polys = (g) => (g.type === "Polygon" ? [g.coordinates] : g.coordinates);

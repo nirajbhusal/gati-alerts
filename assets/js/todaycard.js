@@ -8,7 +8,7 @@
   const isAct = (a) => !a.expired && !a.supersededBy && Date.parse(a.expires) > now;
   const stale = (iso, h = 24) => !iso || now - Date.parse(iso) > h * 36e5;
   const adShort = (iso) => G.npt(iso).split(",")[0];
-  let sun = null, aq = null, fc = null;
+  let sun = null, aq = null, fc = null, nowc = null;
   const N = (v) => G.num(String(v));
   const LC = (k) => `${T("पछिल्लो जाँच", "last checked")} `;
   const SV = (d) => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
@@ -23,12 +23,27 @@
   const seg = (parts, cls = "") => `<span class="tdseg ${cls}">${parts.filter((p) => p.n).map((p) => `<i style="flex:${p.n};background:${p.c}" title="${E(p.l)}: ${N(p.n)}"><b>${N(p.n)}</b></i>`).join("")}</span>`;
   const key = (parts) => `<span class="tdkey">${parts.filter((p) => p.n).map((p) => `<span><i style="background:${p.c}"></i>${E(p.l)} ${N(p.n)}</span>`).join("")}</span>`;
   function draw() {
-    const t = new Date(now + 345 * 6e4), ad = t.toISOString().slice(0, 10), bs = window.BS ? BS.toBS(t.getUTCFullYear(), t.getUTCMonth() + 1, t.getUTCDate()) : null;
+    const t = new Date(now + G.tzMs), ad = t.toISOString().slice(0, 10), bs = window.BS ? BS.toBS(t.getUTCFullYear(), t.getUTCMonth() + 1, t.getUTCDate()) : null;
     const bsTxt = bs ? (G.lang === "ne" ? `${BS.MN[bs.m - 1]} ${G.num(String(bs.d))}, ${G.num(String(bs.y))}` : `${bs.d} ${BS.ME[bs.m - 1]} ${bs.y} BS`) : "";
     const adTxt = `${T(BS.WN[t.getUTCDay()], BS.WE[t.getUTCDay()])}, ${G.npt(new Date(now).toISOString()).split(" · ")[0]}`;
     const hol = CAL ? CAL.entries.filter((e) => e.date_ad === ad) : [];
     const row = (k, href, label, body, meta, isStale) => `<a class="tdrow td-${k}${isStale ? " stale" : ""}" href="${R}${href}"><span class="tdk">${label}</span><span class="tdv">${body}</span><span class="tdm">${meta}</span></a>`;
     const rows = [];
+    /* DHM's own 24-hour forecast (official): the city line for Kathmandu and the country outlook. Thunder, lightning,
+       hail and snow words are marked so a forecast of them is not missed. This is DHM's forecast, not a Gati warning. */
+    const f24 = WX && WX.forecast24;
+    if (f24 && (f24.kathmandu || f24.country)) { const k = f24.kathmandu, c = f24.country, iss = (k || c).issued, st24 = stale(iss, 30);
+      const flag = (s) => /मेघगर्जन|चट्याङ|असिना|हिमपात|thunder|lightning|hail|snow/i.test(s || "");
+      const kd = k ? T(k.day_ne, k.day_en) : "", kn = k ? T(k.night_ne, k.night_en) : "", cd = c ? T(c.day_ne, c.day_en) : "";
+      const mark = flag(kd) || flag(kn) ? `<span class="tdflag" aria-hidden="true">⚡</span> ` : "";
+      const city = k ? `<span class="tdtxt td24"><b>${E(T(k.name_ne, k.name_en))}</b> · ${T("दिउँसो", "Day")}: ${mark}${E(kd)}${k.day_rain_pct != null ? ` (${T("वर्षा", "rain")} ${N(k.day_rain_pct)}%)` : ""} · ${T("राति", "Night")}: ${E(kn)}</span>` : "";
+      const land = cd ? `<span class="tdtxt td24c">${T("देशभर", "Country")}: ${E(cd)}</span>` : "";
+      rows.push(row("f24" + (flag(kd) || flag(kn) ? " tdwarn" : ""), "weather/", T("आजको पूर्वानुमान", "Today's forecast"), city + land,
+        `DHM · ${st24 ? LC() : ""}${G.npt(iss)} ${G.trustChip("Official")} <span class="tdsep">${T("यो DHM को पूर्वानुमान हो, चेतावनी होइन।", "This is DHM's forecast, not a warning.")}</span>`, st24)); }
+    if (nowc) { const w = WTXT(nowc.code), big = WRANK(nowc.code) >= 7;
+      rows.push(row("nowc" + (big ? " tdmodel-hi" : ""), "weather/", T("अबको ३ घण्टा", "Next 3 hours"),
+        `<span class="tdtxt"><b>${E(dn || T("काठमाडौँ", "Kathmandu"))}</b> · ${big ? '<span class="tdflag" aria-hidden="true">⚡</span> ' : ""}${T(w[0], w[1])}${nowc.prob != null ? ` · ${T("वर्षाको सम्भावना", "rain chance")} ${N(nowc.prob)}%` : ""}</span>`,
+        `Open-Meteo · ${G.npt(nowc.t)} ${G.trustChip("Model")} <span class="tdsep tdmodelnote">${T("कम्प्युटरको अनुमान हो, गलत हुन सक्छ। आधिकारिक चेतावनी होइन।", "A computer estimate that can be wrong. Not an official warning.")}</span>`)); }
     /* weather: DHM outlook, 5-day strip; temperature and rain chance from the Open-Meteo model for my district */
     const b5 = WX && WX.bulletin5;
     if (b5) { const td = b5.days.find((d) => d.ad === ad) || b5.days[0], st = stale(b5.issued, 30);
@@ -59,11 +74,11 @@
         const txt = `${T("काठमाडौं–पोखरा", "Kathmandu to Pokhara")}: <b style="color:${CC[worst]}">${T(L[worst][0], L[worst][1])}</b>${rest ? `, ${rest}` : ""}`;
         rows.push(row("rt", "route/", T("मार्ग", "Route"), `<span class="tdtxt">${txt}</span>`, `${E(T("नेपाल प्रहरी", "Nepal Police"))} · ${E(T(RD.as_of_ne, RD.as_of_en))} ${G.trustChip("Official")}${G.staleChip(RD.as_of)}`, G.isStale(RD.as_of))); } }
     /* rivers: level vs warning and danger for the stations closest to danger */
-    if (RV) { const st = stale(RV.as_of + "T23:59:00+05:45", 24), top = [...RV.gauges].sort((a, b) => b.level / b.danger - a.level / a.danger).slice(0, 3);
+    if (RV) { const st = stale(RV.as_of + "T23:59:00" + G.tzIso, 24), top = [...RV.gauges].sort((a, b) => b.level / b.danger - a.level / a.danger).slice(0, 3);
       const gauge = (g) => { const mx = g.danger * 1.15, col = g.level >= g.danger ? "#D93025" : g.level >= g.warning ? "#F28C1E" : "#2F6FED";
         return `<span class="tdgg"><span class="tdggn">${E(T(g.ne, g.en))}</span><span class="tdggb"><i style="width:${Math.min(100, g.level / mx * 100).toFixed(0)}%;background:${col}"></i><u style="left:${(g.warning / mx * 100).toFixed(0)}%" title="${T("चेतावनी", "Warning")}"></u><u class="d" style="left:${(g.danger / mx * 100).toFixed(0)}%" title="${T("खतरा", "Danger")}"></u></span><span class="tdggv">${N(g.level.toFixed(1))}/${N(g.danger.toFixed(1))} m</span></span>`; };
       rows.push(row("rv", "rivers/", T("नदी", "Rivers"), `<span class="tdggs">${top.map(gauge).join("")}</span><span class="tdkey"><span><u></u>${T("चेतावनी", "Warning")}</span><span><u class="d"></u>${T("खतरा तह", "Danger level")}</span></span>`,
-        `DHM · ${st ? LC() : ""}${E(T(RV.as_of_ne, RV.as_of_en))} ${G.trustChip("Official")}${G.staleChip(RV.as_of + "T12:00:00+05:45")}`, st || G.isStale(RV.as_of + "T12:00:00+05:45"))); }
+        `DHM · ${st ? LC() : ""}${E(T(RV.as_of_ne, RV.as_of_en))} ${G.trustChip("Official")}${G.staleChip(RV.as_of + "T12:00:00" + G.tzIso)}`, st || G.isStale(RV.as_of + "T12:00:00" + G.tzIso))); }
     /* latest quake with magnitude chip */
     const q = AL ? AL.alerts.filter((a) => a.hazard === "earthquake").sort((a, b) => b.sent.localeCompare(a.sent))[0] : null;
     if (q) { const qi = q.info[G.lang] || q.info.ne, mg = ((q.info.en.params || {})["gati:magnitude"]) || "", mv = parseFloat(mg) || 0, ar = q.areas[0] ? (q.areas[0][G.lang] || q.areas[0].en) : "";
@@ -82,14 +97,24 @@
   }
   /* my district centre for air and sun */
   const my = G.district && G.district.get(), f = DG && (DG.features.find((x) => x.id === my) || DG.features.find((x) => x.properties.en === "Kathmandu"));
+  /* WMO weather codes as used by Open-Meteo: wording, and a rank so the most significant one in the window is shown */
+  const WTXT = (c) => c >= 96 ? ["असिनासहित मेघगर्जन/चट्याङ", "Thunderstorm with hail"] : c === 95 ? ["मेघगर्जन/चट्याङ", "Thunderstorm"] : c === 65 || c === 67 || c === 82 ? ["भारी वर्षा", "Heavy rain"]
+    : c === 75 || c === 86 ? ["भारी हिमपात", "Heavy snow"] : (c >= 71 && c <= 77) || c === 85 ? ["हिमपात", "Snow"] : (c >= 61 && c <= 66) || c === 80 || c === 81 ? ["वर्षा", "Rain"]
+    : c >= 51 && c <= 57 ? ["सिमसिम पानी", "Drizzle"] : c === 45 || c === 48 ? ["हुस्सु/कुहिरो", "Fog"] : c === 3 ? ["बदली", "Cloudy"] : c === 1 || c === 2 ? ["आंशिक बादल", "Partly cloudy"] : ["सफा", "Clear"];
+  const WRANK = (c) => c >= 96 ? 9 : c === 95 ? 8 : c === 65 || c === 67 || c === 82 || c === 75 || c === 86 ? 7 : (c >= 71 && c <= 77) || c === 85 ? 6 : (c >= 61 && c <= 66) || c === 80 || c === 81 ? 5 : c >= 51 && c <= 57 ? 4 : c === 45 || c === 48 ? 3 : c === 3 ? 2 : c === 1 || c === 2 ? 1 : 0;
   let dn = f ? T(f.properties.ne, f.properties.en) : "", ll = [27.7172, 85.324];
   if (f) { let a = [180, 90, -180, -90]; (f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates).forEach((p) => p[0].forEach(([x, y]) => (a = [Math.min(a[0], x), Math.min(a[1], y), Math.max(a[2], x), Math.max(a[3], y)]))); ll = [(a[1] + a[3]) / 2, (a[0] + a[2]) / 2]; }
   draw();
   const q = `latitude=${ll[0].toFixed(3)}&longitude=${ll[1].toFixed(3)}&timezone=Asia%2FKathmandu`;
   Promise.all([fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?${q}&current=us_aqi`).then((r) => r.ok ? r.json() : null).catch(() => null),
-    fetch(`https://api.open-meteo.com/v1/forecast?${q}&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=6`).then((r) => r.ok ? r.json() : null).catch(() => null)]).then(([a, s]) => {
-    aq = { v: a && a.current ? a.current.us_aqi : null, t: a && a.current ? a.current.time + "+05:45" : "" };
+    fetch(`https://api.open-meteo.com/v1/forecast?${q}&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,precipitation_probability_max&hourly=weather_code,precipitation_probability&current=weather_code&forecast_days=6`).then((r) => r.ok ? r.json() : null).catch(() => null)]).then(([a, s]) => {
+    aq = { v: a && a.current ? a.current.us_aqi : null, t: a && a.current ? a.current.time + G.tzIso : "" };
     if (s && s.daily) { const hm = (x) => x.slice(11, 16); sun = { r: hm(s.daily.sunrise[0]), s: hm(s.daily.sunset[0]) }; fc = { time: s.daily.time, tmax: s.daily.temperature_2m_max, tmin: s.daily.temperature_2m_min, rain: s.daily.precipitation_probability_max, t: new Date().toISOString() }; }
+    /* Next 3 hours from the same model reply: the most significant weather code and the highest rain chance.
+       A computer estimate, shown on its own row with the Model label; it never enters the alerts list or the Feed. */
+    if (s && s.hourly && s.current && Array.isArray(s.hourly.time)) { let i0 = s.hourly.time.findIndex((x) => x >= s.current.time.slice(0, 13)); if (i0 < 0) i0 = 0;
+      const codes = [s.current.weather_code].concat(s.hourly.weather_code.slice(i0, i0 + 3)).filter((x) => x != null), probs = (s.hourly.precipitation_probability || []).slice(i0, i0 + 3).filter((x) => x != null);
+      if (codes.length) nowc = { code: codes.reduce((a, b) => (WRANK(b) > WRANK(a) ? b : a)), prob: probs.length ? Math.max(...probs) : null, t: new Date().toISOString() }; }
     draw(); });
   G.onLang(() => { if (f) dn = T(f.properties.ne, f.properties.en); draw(); });
 })();

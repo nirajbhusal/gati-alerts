@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 import io, segno
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://nirajbhusal.github.io/gati-alerts/"
+from country import SITE
 FONT = ROOT / "scripts/fonts"
 NPT = dt.timezone(dt.timedelta(hours=5, minutes=45))
 DEV = str.maketrans("0123456789", "०१२३४५६७८९")
@@ -373,6 +373,21 @@ def main():
     print(f"rendered {len(alerts)} permalinks and share images")
     lite(alerts, now)
     ics(now)
+    sitemap(alerts)
+
+
+def sitemap(alerts):
+    """sitemap.xml and robots.txt: every real page (not redirect stubs) and every alert permalink."""
+    skip = {"profile", "settings", "stories", "air", "offline", "embed", "alerts"}
+    pages = [""] + sorted(d.name + "/" for d in ROOT.iterdir() if d.is_dir() and d.name not in skip and not d.name.startswith(".")
+                          and (d / "index.html").exists() and 'data-page="' in (d / "index.html").read_text(encoding="utf-8")[:6000]) + ["alerts/"]
+    rows = [f"<url><loc>{SITE}{p}</loc></url>" for p in pages]
+    rows += [f"<url><loc>{SITE}alerts/{html.escape(a['identifier'])}/</loc><lastmod>{a['sent'][:10]}</lastmod></url>"
+             for a in sorted(alerts, key=lambda a: a["sent"], reverse=True)]
+    (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                                      + "\n".join(rows) + "\n</urlset>\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n", encoding="utf-8")
+    print(f"sitemap.xml {len(rows)} urls")
 
 
 if __name__ == "__main__":

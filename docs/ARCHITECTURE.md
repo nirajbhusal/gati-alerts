@@ -27,7 +27,7 @@ Gati (MVP) is a fully static site on GitHub Pages. There is no server, database 
 | Report | `report/index.html`, `assets/js/report.js` | GPS via `navigator.geolocation`, pin via Leaflet, rounded to 4 decimals. Builds `issues/new?template=report.yml&labels=…&<field-id>=…`. The form does not ask for a phone number or email, and contact never enters the URL. |
 | Reports | `reports/index.html`, `assets/js/reports.js` | Lists only `GET /repos/nirajbhusal/gati-alerts/issues?labels=verified&state=all` (minus `retracted`). Unverified reports are never listed; a search-API count of open `reported` issues is shown instead. Emails and phone numbers are scrubbed before display |
 | Feed | `scripts/build.py` | lxml XMLSchema validation, Atom 1.0 (`feed.xml`), JSON mirror |
-| CI/CD | `.github/workflows/cap.yml` | Push, pull request, manual and daily CAP validation. Read-only: it does not commit. Pages publishes the `main` branch. `ci/poll.yml` is held and is not installed. |
+| CI/CD | `.github/workflows/cap.yml` | Push, pull request, manual and daily CAP validation. Read-only: it does not commit. Pages publishes the `main` branch. The poller and the broadcaster are described under Pollers. |
 
 ## Data model (JSON mirror)
 
@@ -38,11 +38,11 @@ instruction, web, params, areas[{desc, polygons[[[lat,lon]…]], circles[], geoc
 ## Why no backend
 
 Static hosting has no place to keep secrets. GitHub issue forms are free, moderated, auditable and need no new
-accounts for the project. See README "Future backend option" for the planned replacement.
+accounts for the project. The optional Worker in `worker/` adds reporting without a GitHub account; see README "Sending without a GitHub account".
 
 ## Privacy
 
-No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet are self-hosted. Third-party requests: OSM tiles on the Report page map only (disclosed) and the GitHub API (report counts on the home page; verified reports on the Reports page).
+No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet are self-hosted. Third-party requests (OSM tiles, the GitHub API, Open-Meteo, and the optional Ask Gati Worker) are listed in full in [PRIVACY.md](../PRIVACY.md).
 
 ## Source registry and health
 
@@ -52,7 +52,8 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 
 ## Pollers (GitHub Actions)
 
-- `ci/poll.yml` is held and is not installed. It would run `scripts/poll.py` at :05 and :35 UTC and commit when a source changed. Leave it uninstalled until that is wanted.
+- `.github/workflows/poll.yml` runs `scripts/poll.py` every 2 hours. It never commits to `main`: changes collect on the `bot/poll` branch and one rolling pull request stays open for a person to review and merge. It needs the repository setting that lets Actions create pull requests.
+- `.github/workflows/broadcast.yml` runs `scripts/broadcast.py` when `data/alerts.json` changes on `main` and twice an hour. It sends nothing until channel secrets exist, and records what was sent on the `bot/broadcast-state` branch. See [BROADCAST.md](BROADCAST.md).
 - `.github/workflows/cap.yml` validates CAP files on push, pull request, manual run, and daily. It has `contents: read` and does not commit.
 - `.github/workflows/dhm-watch.yml` runs every 2 hours UTC and on manual dispatch. It only reads DHM page ids and compares them with `data/weather.json`. A newer id is written to the job summary and the job fails. It has `contents: read` and does not commit.
 - `data/raw` is an archive: never delete (see data/raw/README.md).
@@ -80,7 +81,7 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 ## New hazards (item 11)
 
 - `data/hazards.json` lists hazard values. New: `earthquake`, `air-quality`, `epidemic`.
-- `scripts/ingest_quakes.py`: NSC event table (ML >= 4.0) and the USGS FDSN API (M4.5+, Nepal bbox 26.3..30.5 N, 80.0..88.3 E, last 90 days) become CAP files. Existing files are never overwritten. NSC and USGS figures are never merged. `ci/poll.yml` runs it once enabled.
+- `scripts/ingest_quakes.py`: NSC event table (ML >= 4.0) and the USGS FDSN API (M4.5+, Nepal bbox 26.3..30.5 N, 80.0..88.3 E, last 90 days) become CAP files. Existing files are never overwritten. NSC and USGS figures are never merged. `.github/workflows/poll.yml` runs it once enabled.
 - Air quality (DoE) and epidemics (EDCD) have source entries and hazard values only; no item is published until a linkable official item can be fetched.
 
 ## Dashboard (item 12)

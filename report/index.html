@@ -27,7 +27,7 @@
   <p class="lead"><span class="ne-only">हजुरले देख्नुभएको बाढी, पहिरो, बाटो बन्द वा अरू खतराबारे हामीलाई खबर गर्नुहोस्। यो सरकारी उद्धारको माग होइन।</span>
   <span class="en-only">Tell us about a flood, landslide, blocked road or other hazard you have seen. This is not an official rescue request.</span></p>
   <div class="note" role="note"><strong><span class="ne-only">ज्यान जोखिममा छ? अहिल्यै फोन गर्नुहोस्:</span><span class="en-only">Life in danger? Call now:</span></strong>
-    <div class="helplines" style="margin-top:8px"><a href="tel:100">100</a><a href="tel:101">101</a><a href="tel:102">102</a><a href="tel:1234">1234</a></div></div>
+    <div class="helplines" data-helplines="short" style="margin-top:8px"><a href="tel:100">100</a><a href="tel:101">101</a><a href="tel:102">102</a><a href="tel:1234">1234</a></div></div>
 
   <h2><span class="ne-only">यो कसरी काम गर्छ</span><span class="en-only">How it works</span></h2>
   <ol>
@@ -62,7 +62,7 @@
       <textarea id="desc" rows="5" required maxlength="2000"></textarea></label>
 
     <label><span class="ne-only">तस्विर (चाहे मात्र)</span><span class="en-only">Photo (optional)</span>
-      <span class="h"><span class="ne-only">तस्विर यहाँबाट जाँदैन। GitHub पेज खुलेपछि त्यही तस्विर विवरण लेख्ने ठाउँमा तानेर राख्नुहोस्। तस्विर सबैले देख्छन् — मान्छेको अनुहार, घर नम्बर वा पीडितको तस्विर नराख्नुहोस्।</span>
+      <span class="h" id="photohint"><span class="ne-only">तस्विर यहाँबाट जाँदैन। GitHub पेज खुलेपछि त्यही तस्विर विवरण लेख्ने ठाउँमा तानेर राख्नुहोस्। तस्विर सबैले देख्छन् — मान्छेको अनुहार, घर नम्बर वा पीडितको तस्विर नराख्नुहोस्।</span>
       <span class="en-only">Photos are not uploaded from here. When the GitHub page opens, drag the same photo into the description box. Photos are public: avoid faces, house numbers and images of victims.</span></span>
       <input type="file" id="photo" accept="image/*"></label>
     <img id="preview" alt="" style="max-width:100%;max-height:220px;border-radius:10px;display:none;margin:-6px 0 14px">

@@ -60,6 +60,7 @@ export function userMessage(items, q, nowIso) {
 
 const DEV = "०१२३४५६७८९";
 export const neDigits = (t) => String(t).replace(/[0-9]/g, (d) => DEV[d]);
+/** @type {[RegExp, string][]} */
 const BADCLAIM = [[/गतिले\s*(यो|यस|यी|सो)?\s*(कुरा)?\s*(पुष्टि|प्रमाणित|जाँच)\s*गरेको\s*(छ|हो|छैन)?/g, "स्रोतले जनाएको"], [/(?:has been |is )?(?:confirmed|verified) by Gati/gi, "per the source"], [/Gati (?:has )?(?:confirmed|verified)/gi, "the source says"], [/not confirmed by Gati/gi, "not officially confirmed"], [/गतिले पुष्टि नगरेको/g, "आधिकारिक पुष्टि नभएको"]];
 export function clean(t, ne) {
   let x = String(t || "").replace(/^.*?(?:\.\.\.|…)\s*(?:no|wait|sorry|actually)[.,!]\s*/i, "").replace(/\s*\[(?:[ARVFTPC]\d+(?:\s*,\s*)?)+\]/g, "").replace(/\s*\u2014\s*/g, ", ").replace(/तपाईं|तपाईँ|तपाई/g, "हजुर");

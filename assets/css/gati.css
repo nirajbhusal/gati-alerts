@@ -748,37 +748,37 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 .htag{display:none;margin:18px 0 0;font-size:var(--fs-5);color:var(--slate)}.htag+.hdate{margin-top:2px}
 @media(max-width:720px){.htag{display:block}}
 /* Home dashboard slider */
-.dslider{margin:28px 0}.dshead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.dshead h2{margin:0;font-size:var(--fs-3);font-weight:600}
-.dsnav{display:none;gap:8px}@media(min-width:721px){.dsnav{display:flex}}
-.dsnav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:var(--fs-2);line-height:1;cursor:pointer}.dsnav button:disabled{opacity:.35;cursor:default}
-.dstrack{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px;outline:0;overscroll-behavior-x:contain}.dstrack::-webkit-scrollbar{display:none}
-.dstrack:focus-visible{outline:2px solid #0B1424;outline-offset:2px;border-radius:20px}
-.dslide{flex:0 0 100%;scroll-snap-align:start;background:var(--surface2);border-radius:20px;padding:20px;display:flex;flex-direction:column;min-height:300px;box-sizing:border-box}
-@media(min-width:900px){.dslide{flex-basis:calc(50% - 8px)}}
-.dslide h3{margin:0 0 14px;font-size:var(--fs-4);font-weight:600;color:var(--ink)}.dsbody{flex:1}
-.dsfoot{margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}.dsfoot .meta{margin:0 0 8px;font-size:var(--fs-6)}
-.dsfr{display:flex;justify-content:space-between;align-items:center;gap:8px}.dsmore{font-weight:600;font-size:var(--fs-5);text-decoration:none}
-.dsdots{display:flex;justify-content:center;gap:8px;margin-top:14px}.dsdots button{width:8px;height:8px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
-.dsdots button[aria-selected=true]{background:var(--ink);width:22px;border-radius:4px}
-.dsgrid2{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:480px){.dsgrid2{grid-template-columns:1.1fr 1fr;align-items:center}}
-.dsmap{width:100%;height:auto;display:block}
-.dsrow{display:grid;grid-template-columns:7.5em 1fr 2em;gap:8px;align-items:center;margin:0 0 8px;font-size:var(--fs-5)}.dsrow b{text-align:right}
-.dslab{color:var(--slate);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:var(--fs-5)}
-.dsbar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line);gap:1px}.dsbar i{display:block}
-.dsnote{font-size:var(--fs-6)!important;margin:8px 0}
-.dsleg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:var(--fs-6);color:var(--slate);margin-top:6px}.dsleg span{display:inline-flex;align-items:center;gap:5px}.dsleg i{display:inline-block;width:10px;height:10px;border-radius:3px}
-.dswx{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.dswx li{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:var(--fs-6);text-align:center;color:var(--slate)}.dswx li b{color:var(--ink);font-size:var(--fs-5);font-weight:600}
-.dswx li i{display:block;width:100%;height:10px;border-radius:5px;background:#3cb043}.dswx li.lv-yellow i{background:#F5D90A}.dswx li.lv-orange i{background:#f7941d}.dswx li.lv-red i{background:#e2231a}
-.dssum{margin:14px 0 0;font-size:var(--fs-5);line-height:1.5}
-.dsroads,.dsriv{list-style:none;margin:0;padding:0;display:grid;gap:7px;max-height:220px;overflow:auto}
-.dsroads li{display:flex;justify-content:space-between;gap:10px;align-items:center}.dsst{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-6);color:var(--ink)}.dsst i{width:28px;height:8px;border-radius:4px;background:var(--c)}
-.dsriv li{display:grid;grid-template-columns:8.5em 1fr 3.4em;gap:8px;align-items:center;font-size:var(--fs-5)}.dsriv b{text-align:right;font-weight:600}
-.dsrb{position:relative;height:10px;border-radius:5px;background:var(--line)}.dsrb .lvl{position:absolute;left:0;top:0;bottom:0;border-radius:5px}
-.mk{position:absolute;top:-3px;bottom:-3px;width:2px}.mk.w{background:#F28C1E}.mk.d{background:#D93025}.dsleg .mk{position:static;display:inline-block;width:3px;height:12px;border-radius:1px}
-.dsbig{margin:0;font-size:var(--fs-1);font-weight:700;line-height:1.1}
-.dsaq{display:flex;gap:16px;align-items:center}.dsgauge{width:150px;flex:none;color:var(--ink)}
-.dsna{color:var(--ink);margin:20px 0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mk{position:absolute;top:-3px;bottom:-3px;width:2px}.mk.w{background:#F28C1E}.mk.d{background:#D93025}
+
+
+
 /* Text size control */
 .tsize{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .tsize button{font:inherit;font-size:var(--fs-5);font-weight:600;min-width:38px;min-height:36px;padding:0 8px;border:0;background:none;color:var(--ink);cursor:pointer}
@@ -859,14 +859,14 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .hleft{min-width:0}.hright{display:grid;gap:16px;position:sticky;top:84px}
 .hright .hcard{background:var(--surface2)!important;border-radius:20px;padding:18px}.hright .hcard h2{font-size:var(--fs-4);font-weight:600;margin:0}
 .hdist{margin:0 0 4px}.hdist .mydist{margin:0}
-.hslider .dslider{margin:20px 0 36px}.hslider .dslide{flex-basis:100%}
+
 .halerts .sechead h2{font-size:var(--fs-3);font-weight:600}
 .hfeatures{margin:48px 0 24px;padding-top:32px;border-top:1px solid var(--line)}
 .homev3 > .hfeatures{margin:4px 0 12px;padding-top:0;border-top:0}
 .hleft>.hfeatures{margin:8px 0 32px;padding-top:24px}
 .homev3 .hero{display:none}
 @media(max-width:960px){.hcols{display:flex;flex-direction:column;gap:0}.hleft,.hright{display:contents}
-  .hdist{order:1}.hslider{order:2}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
+  .hdist{order:1}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
 .hcols>*,.hleft>*,.hslider,.halerts,.hdist{min-width:0;max-width:100%}@media(max-width:960px){.hslider,.halerts,.hdist{width:100%}}
 /* Am I affected */
 .afchip{display:inline-flex;align-items:center;gap:8px;margin:8px 0 0;font-size:var(--fs-5);font-weight:600;color:var(--ink)!important;text-decoration:none;padding:6px 14px;border-radius:999px;background:var(--surface2)}
@@ -935,6 +935,8 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .shb svg{width:44px;height:44px;padding:10px;border-radius:50%;background:var(--surface2);box-sizing:border-box}.shb:hover svg{background:var(--line)}
 .srlock .shs{z-index:2200}
 .rasuwalink a{display:inline-block;font-weight:600;padding:10px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none}
+.aboutreach{font-size:var(--r-body)}
+.aboutreach a{display:inline-flex;align-items:center;min-height:44px}
 
 /* Today card v2 */
 .tdrow{grid-template-columns:7em minmax(0,1fr);padding:12px 0}
@@ -1012,7 +1014,7 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 :where(a[href],button,summary,[role=button],select,input[type=checkbox],input[type=radio]){position:relative}
 :where(a[href],button,summary,[role=button]):not(.nohit)::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
 :where(select,input:not([type=checkbox]):not([type=radio]):not([type=hidden])){min-height:44px}
-.dsdots button,.dsdot{min-width:12px}
+
 /* 5. Text floor: body text 13 px, nothing under 12 px */
 body{font-size:var(--fs-5)}
 .brktag,.tddn,.tdtr b,.tdtr span,.tdrp,.tdm,.tdsep,.tdseg b,.tdkey,.tdkey span,.tdggv,.tdold,.tdmag small,.tdm .trust,.trust,.tabbar span,.tabbar a,.mxn,.mxhint,.mxsrc,.meta,.atime,small,.bar .brand .tagline,.stbtn,.strail button,.strail a,.stmeta span{font-size:var(--fs-6)!important}
@@ -1129,15 +1131,15 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
   .rv-now *{animation:none!important}
 }
 /* Fix sweep 2: slider dots get their own 44px hit area so a tap never lands on the neighbouring dot */
-.dsdots{gap:0;margin-top:4px}
-.dsdots button,.dsdots button[aria-selected=true]{position:relative;width:44px;height:44px;min-width:44px;background:none;border-radius:0}
-.dsdots button::after{content:none!important}
-.dsdots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:var(--line)}
-.dsdots button[aria-selected=true]::before{width:22px;border-radius:4px;background:var(--ink)}
-.dsdots button:focus-visible{outline:2px solid var(--focus,#2F6FED);outline-offset:-6px;border-radius:12px}
+
+
+
+
+
+
 /* Fix sweep 6: reserve the space Home's late-filled blocks take, so the page does not jump while they load */
-.home #mydist:empty{min-height:147px}.home #today:empty{min-height:1450px}.home #afslider:empty{min-height:80px}.home #dslider:empty{min-height:590px}.home #services:empty{min-height:425px}
-@media(min-width:721px){.home #mydist:empty{min-height:78px}.home #today:empty{min-height:1060px}.home #afslider:empty{min-height:46px}.home #dslider:empty{min-height:488px}.home #services:empty{min-height:258px}}
+.home #mydist:empty{min-height:147px}.home #today:empty{min-height:1450px}.home #afslider:empty{min-height:80px}.home #services:empty{min-height:425px}
+@media(min-width:721px){.home #mydist:empty{min-height:78px}.home #today:empty{min-height:1060px}.home #afslider:empty{min-height:46px}.home #services:empty{min-height:258px}}
 /* Fix sweep 7: main fills the screen, so the footer starts below the fold and is not shoved down as data arrives */
 body:not(.storypage) > main#main{min-height:100vh;min-height:100dvh}
 .dash #sumcard:empty{min-height:132px}
@@ -1275,7 +1277,7 @@ body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;heig
 @media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:100px}}
 .gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}
 /* static #gdash placeholders: reserve the dashboard height before dash.js runs */
-body[data-page=home] #gdash{min-height:993px}@media(min-width:760px){body[data-page=home] #gdash{min-height:688px}}
+body[data-page=home] #gdash{min-height:470px}@media(min-width:760px){body[data-page=home] #gdash{min-height:300px}}
 body[data-page=alerts] #gdash{min-height:715px}@media(min-width:760px){body[data-page=alerts] #gdash{min-height:384px}}
 body[data-page=earthquakes] #gdash{min-height:498px}@media(min-width:760px){body[data-page=earthquakes] #gdash{min-height:302px}}
 body[data-page=roads] #gdash{min-height:265px}@media(min-width:760px){body[data-page=roads] #gdash{min-height:175px}}
@@ -1846,8 +1848,170 @@ a.wxsrc{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 
 .wxflag svg{flex:none}
 .wxmore{margin:4px 0 8px}
 .wxmore summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-size:var(--r-label);font-weight:600}
-/* Decorative rain for one Nepal date. TODO: delete .rainday after 11 Nov 2026. */
-.rainday{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none}
-.rainday i{position:absolute;top:-14%;width:1px;height:16px;background:linear-gradient(to bottom, transparent, rgba(70,110,150,.35));animation:raindrop 1.05s linear infinite}
-@keyframes raindrop{to{transform:translateY(120vh)}}
-@media (prefers-reduced-motion: reduce){.rainday{display:none}}
+/* ===== Home language row ===== */
+.hlang{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:10px 0 2px;min-height:40px}
+.hlang-l{font-size:1rem;margin-right:2px}
+.hlang button{min-height:40px;padding:6px 11px;font:inherit;font-size:var(--fs-5);font-weight:600;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);cursor:pointer}
+.hlang button[aria-pressed=true]{border-color:var(--crimson);box-shadow:inset 0 0 0 1px var(--crimson);background:var(--surface2)}
+.hlang button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+/* ===== Paper theme: paper with a very light crimson warmth. Cards stay near white so alert text and severity colours keep their contrast. ===== */
+html[data-theme=paper]{--snow:#FCF6F4;--surface:#FFFCFB;--surface2:#F8EFEC;--line:#EFE4E0;--ink:#2A2321;--slate:#6B5E5B}
+
+/* ===== Sibling strip: pages of one area link to each other like tabs ===== */
+.sibs{display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;margin:10px 0 4px;padding:2px 0 6px;-webkit-overflow-scrolling:touch}
+.sibs::-webkit-scrollbar{display:none}
+.sibs-t{flex:none;font-size:var(--fs-6);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-right:4px}
+.sibs a{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-size:var(--fs-5);font-weight:600;text-decoration:none;white-space:nowrap}
+.sibs a[aria-current=page]{border-color:var(--crimson);box-shadow:inset 0 0 0 1px var(--crimson);background:var(--surface2)}
+.sibs a:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+@media print{.sibs{display:none}}
+
+/* ===== Long lists: first items, then a "Show all" button (see the pager in common.js) ===== */
+.pgcut.pg5>:nth-child(n+6),.pgcut.pg8>:nth-child(n+9),.pgcut.pg10>:nth-child(n+11),.pgcut.pg12>:nth-child(n+13),.pgcut.pg20>:nth-child(n+21),.pgcut.pg25>:nth-child(n+26){display:none}
+.pgmore{display:block;margin:12px auto 20px}
+.pgmore[hidden]{display:none}
+@media print{.pgcut>*{display:revert!important}.pgmore{display:none}}
+
+/* ===== Home: one summary instead of three, fewer repeats, latest alerts cut to three =====
+   Kept: features, district map, "Today" card, three latest alerts, watchlist, "Before you travel", 7-day chart.
+   Hidden here because the same facts are in the "Today" card, the footer or one tap away:
+   the "Today at a glance" tiles and the lines under them, the "At a glance" slider, the second
+   "Am I affected?" card, the highway table (it is the Roads page) and the emergency numbers block. */
+.homev3>.hdist{display:none!important}
+.homev3 #active>article:nth-of-type(n+4){display:none}
+.homev3{display:flex;flex-direction:column}
+.homev3>*{order:3}
+.homev3>#home-lang{order:0}.homev3>#services{order:1}.homev3>.hhead,.homev3>#hmap{order:2}
+.homev3>#hinfo{order:5}.homev3>#gdash{order:6}.homev3>.sdgstrip{order:8}.homev3>.pgshare{order:9}
+
+/* ===== Small fixes from the layout review ===== */
+/* Rivers page: the compact chart repeated the gauge cards below it */
+body[data-page=rivers] #gdash{display:none}
+/* Day and agency labels were cut off with an ellipsis */
+.gd5 b{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}
+/* Touch: plain text links get a taller hit area without moving the layout */
+@media (pointer:coarse){main p a:not([class]),main li a:not([class]),main td a:not([class]){padding-block:7px}}
+/* Strip and notification list links read as buttons and headlines, not as underlined body links */
+main#main .sibs a{color:var(--ink)!important;text-decoration:none!important}
+main#main .ntlist li a,main#main .ntlist li a *{text-decoration:none!important}
+main#main .ntlist li a{color:var(--ink)!important}
+main#main .ntlist li a:hover b,main#main .ntlist li a:focus-visible b{text-decoration:underline!important}
+
+/* ===== Feed: one alert reads on one screen =====
+   Headline is capped so the "what to do" line stays in view; the full headline is in Details. */
+.fcard .fmain h2{font-size:clamp(1.3rem,5.6vw,1.75rem)!important;line-height:1.28;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.fcard .fend h2{display:block;-webkit-line-clamp:unset;overflow:visible}
+.fcard .fmain .fins{margin:.5em 0 .7em;padding:10px 12px;border-radius:12px;font-size:var(--fs-4);line-height:1.45}
+.fhero{position:relative}
+.fpos{position:absolute;right:0;top:0;font-size:var(--fs-6);font-weight:700;color:var(--slate);background:var(--surface2);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.fhero .ftags{padding-right:64px}
+.fcard .fend .fdisc{color:var(--ink)!important;font-weight:600}
+.fcard .fend .btn{margin-top:4px}
+/* Top bar: district, filter and list. Home is already in the bottom bar. */
+.storypage #stdash{display:none}
+
+/* ===== Quick actions: the floating button fans out into Ask, Report, Call for help, Am I affected? ===== */
+.aqdial{position:fixed;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:calc(100vw - 16px)}
+.aqdial[hidden]{display:none}
+.aqdi{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:8px 16px 8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)!important;font:inherit;font-size:var(--fs-4);font-weight:600;text-decoration:none!important;cursor:pointer;box-shadow:0 6px 18px rgba(14,42,71,.22);white-space:nowrap;animation:aqdin .16s ease both}
+.aqdi svg{flex:none;color:var(--crimson)}
+.aqdi.call b{font-variant-numeric:tabular-nums}
+.aqdi.back{min-height:40px;font-size:var(--fs-5);font-weight:500;box-shadow:none;background:var(--surface2)}
+.aqdi:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.aqdn{margin:0;padding:4px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line);font-size:var(--fs-6);color:var(--slate)}
+.aqfab.on{background:var(--ink)!important;color:var(--surface)!important}
+html[data-theme=dark] .aqdi{box-shadow:0 6px 18px rgba(0,0,0,.55)}
+@keyframes aqdin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.aqdi{animation:none}}
+@media print{.aqdial{display:none}}
+
+/* ===== Feed lanes: Official and Community are separate streams ===== */
+.flane{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);overflow:hidden;margin-right:auto;pointer-events:auto}
+.flane button{min-height:44px;padding:4px 11px;border:0;background:transparent;color:var(--slate);font:inherit;font-size:var(--fs-5);font-weight:600;cursor:pointer;white-space:nowrap}
+.flane button[aria-pressed=true]{background:var(--ink);color:var(--surface)}
+.flane button[data-lane=community][aria-pressed=true]{background:#0F7C86;color:#fff}
+.flane button:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.storypage .ftop{justify-content:space-between}
+/* Official-only controls are hidden in the community lane */
+.lane-comm #fdist,.lane-comm #ffilt,.lane-comm #fview,.lane-comm #fchips{display:none!important}
+/* Keep the top bar on one line on a phone: the district pill shows its pin and a short name */
+@media (max-width:480px){.storypage .ftop .dpick b{display:inline-block;max-width:58px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}.storypage .ftop .ftr .stbtn,.storypage .ftop .ftr .dpick{padding:4px 8px}}
+/* Community cards: their own colour and a fixed band on every card */
+.cband{margin:0 0 10px;padding:8px 12px;border-radius:10px;background:#0F7C86;color:#fff;font-size:var(--fs-5);font-weight:700;text-align:center}
+.fcard.comm .fmain h2{-webkit-line-clamp:3}
+.fcard.comm .cwhere{margin:.2em 0;font-weight:600}
+.fcard.comm .cdesc{margin:.5em 0;font-size:var(--fs-4);line-height:1.5;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden}
+.fcard.comm .cnote{margin:.6em 0 0;padding:8px 10px;border-left:3px solid #0F7C86;background:var(--surface2);border-radius:0 8px 8px 0;font-size:var(--fs-5);color:var(--slate)}
+.fcard.comm .rail a{color:var(--ink)!important;text-decoration:none}
+.storypage .ftop .flane button{background:transparent!important;color:var(--slate)!important;border:0!important}
+.storypage .ftop .flane button[aria-pressed=true]{background:var(--ink)!important;color:var(--surface)!important}
+.storypage .ftop .flane button[data-lane=community][aria-pressed=true]{background:#0F7C86!important;color:#fff!important}
+.fcard.comm .rail a{text-decoration:none!important}
+.storypage .ftop .flane{flex:none}
+.storypage .ftop .ftr{min-width:0;flex-shrink:1}
+/* On a phone the district pill is the pin alone; its name is in the button's label for screen readers */
+@media (max-width:480px){.storypage .ftop .dpick b{display:none!important}.storypage .ftop .flane button{padding:4px 9px}}
+
+/* ===== Short source label and DHM 24-hour forecast row ===== */
+abbr.srcl{text-decoration:none;font-weight:700;cursor:help;border-bottom:1px dotted var(--slate)}
+.tdrow .td24{display:block}
+.tdrow .td24c{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-top:4px;color:var(--slate);font-size:var(--fs-5)}
+.tdrow.tdwarn{border-left:4px solid #F28C1E;padding-left:10px}
+.tdflag{color:#B45309}
+
+/* ===== "Next 3 hours" model row on the Today card: visibly an estimate, never styled like an alert ===== */
+.tdrow.td-nowc{border-top-style:dashed}
+.tdrow.td-nowc .tdk{font-style:italic}
+.tdrow.tdmodel-hi{border-left:4px dashed #8F9BB3;padding-left:10px}
+.tdmodelnote{font-weight:600}
+
+/* ===== Patro on a phone: today first, a two-row toolbar, the month, then upcoming holidays and season notes ===== */
+.pics{margin:10px 0 0}
+@media (max-width:959px){
+  .patro .playout{display:flex;flex-direction:column;gap:0}
+  .patro .pside,.patro .pmain{display:contents}
+  .patro .pside>.ptoday{order:1}.patro .pside>.ptev{order:2}.patro .pside>.ptclock{order:3;margin-bottom:6px}
+  .patro .pmain>.ptools{order:4}.patro .pmain>#pgrid{order:5}
+  .patro .pside>h3{order:6;margin-top:18px}.patro .pside>.pup{order:7}.patro .pside>.meta{order:8}
+  .patro #pgrid{display:flex;flex-direction:column}.patro #pgrid>.pseasons{order:2;margin:14px 0 0}
+  /* toolbar: ‹ month › on one line; Today, calendar type and view on the next; the .ics link moves under the legend */
+  .patro .ptools{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0}
+  .patro .ptools h2{order:0;flex:1 1 0;min-width:0;width:auto;margin:0;text-align:center;font-size:var(--fs-3);line-height:1.2}
+  .patro .ptools #pprev{order:-1}.patro .ptools #pnext{order:1}
+  .patro .ptools #ptoday{order:2}.patro .ptools #pcal{order:3;margin-left:auto}.patro .ptools #pview{order:4}
+  .patro .ptools::after{content:"";order:1;flex-basis:100%;height:0}
+  .patro .ptools a[href$=".ics"]{display:none}
+  .patro .ptools .sbtn,.patro .ptools .seg button{min-height:40px;padding:6px 10px}
+}
+@media (min-width:960px){.pics{display:none}}
+/* Saturdays and public holidays in red, as on a printed patro; today clearly ringed */
+.patro .pmonth .pwh.hol{color:#C81E1E!important}
+.patro .pmonth .pday.hol:not(.today) .pbig{color:#C81E1E!important}
+html[data-theme=dark] .patro .pmonth .pwh.hol,html[data-theme=dark] .patro .pmonth .pday.hol:not(.today) .pbig{color:#FF8A80!important}
+.patro .pmonth .pday.today{box-shadow:inset 0 0 0 2px var(--crimson)!important}
+.patro #plegend{font-size:var(--fs-6);line-height:1.7;margin-top:12px}
+
+/* Dark theme: status colours set inline for light backgrounds need lighter equivalents */
+html[data-theme=dark] .rl-s[style*="1d4ed8"]{color:#93B4FF!important}
+html[data-theme=dark] .rl-s[style*="b45309"]{color:#FDBA74!important}
+html[data-theme=dark] .rl-s[style*="b91c1c"]{color:#FCA5A5!important}
+/* Brand kit logo captions sit on fixed light or dark tiles, so their colour must not follow the theme */
+.bkcap{font-size:var(--fs-5);margin-top:6px}
+html[data-theme] main#main figure .bkcap-l,html[data-theme] main#main figure .bkcap-l span{color:#4A5A6A!important}
+html[data-theme] main#main figure .bkcap-d,html[data-theme] main#main figure .bkcap-d span{color:#CFE3F1!important}
+
+/* Floating button steps aside while the page is scrolled down (phones) */
+@media (max-width:720px){.aqfab{transition:transform .22s ease,opacity .22s ease}.aqfab.away{transform:translateY(160%);opacity:0;pointer-events:none}}
+@media (prefers-reduced-motion:reduce){.aqfab{transition:none}}
+/* About: the brand kit is reference material, folded until asked for */
+.bkfold{border:1px solid var(--line);border-radius:14px;padding:4px 14px;background:var(--surface)}
+.bkfold>summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.bkfold[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+
+/* brand kit downloads */
+.bkdl{display:flex;flex-wrap:wrap;gap:10px}
+.bkdl .btn,.bkdl .btn small{text-decoration:none}
+.bkdl .btn small{font-weight:400;opacity:.8;margin-left:4px}
+.bkfiles{margin:8px 0 14px}
+.bkfiles>summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.bkfiles a{white-space:nowrap}

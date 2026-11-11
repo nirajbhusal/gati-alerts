@@ -29,7 +29,7 @@
     const q = (box.querySelector("#svq") || {}).value || "";
     const L = S.filter((s) => !q || (s[1] + s[2] + s[5]).toLowerCase().includes(q.toLowerCase()));
     const shown = q || all ? L : L.slice(0, 8);
-    const now = new Date(Date.now() + 345 * 60000), h = now.getUTCHours(), t = window.BS ? BS.todayNP() : null, b = t ? BS.toBS(t.y, t.m, t.d) : null;
+    const now = new Date(Date.now() + G.tzMs), h = now.getUTCHours(), t = window.BS ? BS.todayNP() : null, b = t ? BS.toBS(t.y, t.m, t.d) : null;
     // greeting removed in minimal design
     const _g = h < 12 ? T("शुभ प्रभात, हजुर", "Good morning") : h < 17 ? T("नमस्ते, हजुर", "Good afternoon") : T("शुभ सन्ध्या, हजुर", "Good evening");
     const bsTxt = b ? (G.lang === "ne" ? `${BS.MN[b.m - 1]} ${G.num(String(b.d))}, ${G.num(String(b.y))}` : `${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";

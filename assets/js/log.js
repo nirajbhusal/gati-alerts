@@ -2,7 +2,7 @@
    with sent time, agency, what it replaces, original notice, CAP file, SHA-256 of the CAP file and its GitHub history. */
 (async function () {
   const G = window.Gati, T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, R = G.root;
-  const REPO = "https://github.com/nirajbhusal/gati-alerts/commits/main/";
+  const REPO = "https://github.com/" + window.Gati.country.repository + "/commits/main/";
   const MT = { Alert: ["मूल सूचना", "Alert"], Update: ["अद्यावधिक", "Update"], Cancel: ["रद्द", "Cancel"] };
   const AL = await G.json("data/alerts.json"); let only = "all";
   const rows = [...AL.alerts].sort((a, b) => b.sent.localeCompare(a.sent));

@@ -19,13 +19,13 @@
   }
   function alerts() {
     const box = $("me-alerts");
-    box.innerHTML = `<p>${T("सूचनाको सूची र सबै सूचना सेटिङ अब एउटै ठाउँमा छन्।", "The notification list and all notification settings are now in one place.")}</p>
-      <p><a class="btn" href="${R}notifications/">🔔 ${T("सूचना र नोटिफिकेसन खोल्नुहोस्", "Open Alerts & notifications")}</a></p>`;
+    box.innerHTML = `<div class="merow2"><span class="melab">🔔 ${T("सूचनाको सूची र सेटिङ", "Alert list and settings")}</span><b class="meval"></b><a href="${R}notifications/">${T("खोल्नुहोस्", "Open")}</a></div>
+      <p class="meta">${T("कुन जिल्ला, कस्तो खतरा र कति गम्भीर सूचना चाहिन्छ, त्यहीँ छान्नुहोस्। माथिको 'मेरो जिल्ला' त्यहाँ पनि लागू हुन्छ।", "Choose districts, hazard types and severity there. 'My district' above applies there too.")}</p>`;
     return Promise.resolve();
   }
   function display() {
     const box = $("me-display");
-    box.innerHTML = `<h3>${T("भाषा", "Language")}</h3>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang, T("भाषा", "Language"))}
+    box.innerHTML = `<h3>${T("भाषा", "Language")}</h3>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang, T("भाषा", "Language"))}<div id="me-locale"></div>
       <h3>${T("रूप", "Theme")}</h3>${seg("theme", G.THEMES.map(([k, ne, en]) => [k, T(ne, en)]), G.themePref, T("रूप", "Theme"))}
       <h3>${T("आकाशको झल्को", "Sky look")}</h3>${seg("sky", [["on", T("खुला", "On")], ["off", T("बन्द", "Off")]], G.skyOn && !G.skyOn() ? "off" : "on", T("आकाशको झल्को", "Sky look"))}<p class="meta">${T("हेडर र मौसम कार्डमा समय र DHM मौसमअनुसार हल्का रङ। गम्भीर सूचना हुँदा आफैँ बन्द हुन्छ।", "A light tint in the header and weather card by time of day and DHM weather. Turns off by itself during a severe alert.")}</p>
       <h3>${T("अङ्क", "Numerals")}</h3><p class="meta">${T("अङ्क भाषासँगै बदलिन्छन्: नेपालीमा ०१२३, अङ्ग्रेजीमा 0123।", "Numerals follow the language: ०१२३ in Nepali, 0123 in English.")}</p>

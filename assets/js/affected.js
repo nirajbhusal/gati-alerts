@@ -23,14 +23,14 @@
   const HZS = { flood: ["flood"], landslide: ["landslide"], weather: ["flood", "landslide"], earthquake: ["earthquake"], glof: ["glof"], lightning: ["lightning"], cold: ["coldwave"], fire: ["fire"] };
   /* ---- input ---- */
   const inp = document.getElementById("afinput");
-  let curTab = "d";
+  let curTab = "d", tab = () => {};   /* set in buildInput(); render() below also switches tabs */
   function buildInput() {
   inp.innerHTML = `${G.affect.radiusUI(G.affect.getR())}<div class="aftabs" role="tablist">${[["d", "जिल्ला", "District"], ["loc", "मेरो स्थान", "Locate me"], ["r", "मार्ग", "Route"]].map(([k, ne, en], i) => `<button type="button" role="tab" data-t="${k}" aria-selected="${i === 0}">${T(ne, en)}</button>`).join("")}</div>
     <div class="afpane" data-p="d"><select id="afd" aria-label="${T("जिल्ला", "District")}"><option value="">${T("जिल्ला छान्नुहोस्", "Choose a district")}</option>${DG ? DG.features.slice().sort((a, b) => T(a.properties.ne, a.properties.en).localeCompare(T(b.properties.ne, b.properties.en))).map((f) => `<option value="${f.id}">${E(T(f.properties.ne, f.properties.en))}</option>`).join("") : ""}</select></div>
     <div class="afpane" data-p="loc" hidden><button type="button" class="afbtn" id="afloc">⌖ ${T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location")}</button><p class="meta">${T("स्थान यही उपकरणमा मात्र प्रयोग हुन्छ; कतै पठाइँदैन।", "Your location is used only on this device; nothing is sent.")}</p></div>
     <div class="afpane" data-p="r" hidden><select id="afr" aria-label="${T("मार्ग", "Route")}"><option value="">${T("मार्ग छान्नुहोस्", "Choose a route")}</option>${RD ? RD.routes.map((r) => `<option value="${r.id}">${E(T(r.name_ne, r.name_en))}</option>`).join("") : ""}</select></div>`;
   G.affect.bindRadius(inp, () => { const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
-  const tab = (k) => { curTab = k; inp.querySelectorAll("[data-t]").forEach((b) => b.setAttribute("aria-selected", b.dataset.t === k)); inp.querySelectorAll(".afpane").forEach((p) => (p.hidden = p.dataset.p !== k)); };
+  tab = (k) => { curTab = k; inp.querySelectorAll("[data-t]").forEach((b) => b.setAttribute("aria-selected", b.dataset.t === k)); inp.querySelectorAll(".afpane").forEach((p) => (p.hidden = p.dataset.p !== k)); };
   inp.querySelectorAll("[data-t]").forEach((b) => (b.onclick = () => tab(b.dataset.t)));
   inp.querySelector("#afd").onchange = (e) => e.target.value && go({ d: e.target.value });
   inp.querySelector("#afr").onchange = (e) => e.target.value && go({ r: e.target.value });
@@ -60,7 +60,7 @@
     /* weather */
     const b5 = WX && WX.bulletin5, prov = [...new Set(codes.map((c) => c.slice(0, 4)))];
     const wxBody = b5 ? `<ol class="afwx">${b5.days.map((d) => { const hit = d.level !== "green" && (!d.provinces || d.provinces.some((p) => prov.includes(p))); const lvl = hit ? d.level : "green";
-      return `<li class="lv-${lvl}"><i></i><b>${E(G.lang === "ne" ? d.bs : new Date(d.ad + "T12:00:00+05:45").toLocaleDateString("en-GB", { day: "numeric", month: "short" }))}</b><span>${T(lvl === "green" ? "हरियो" : lvl === "yellow" ? "पहेँलो" : lvl === "orange" ? "सुन्तले" : lvl === "red" ? "रातो" : lvl, lvl === "green" ? "Green" : lvl[0].toUpperCase() + lvl.slice(1))}</span></li>`; }).join("")}</ol>${v.wx.length ? `<p>${E(T(v.wx[0].ne, v.wx[0].en))}</p>` : `<p>${T("यो क्षेत्रका लागि ५ दिनमा DHM चेतावनी छैन।", "No DHM warning for this area in the 5 days.")}</p>`}` : `<p>${T("DHM बुलेटिन अहिले उपलब्ध छैन।", "DHM bulletin not available right now.")}</p>`;
+      return `<li class="lv-${lvl}"><i></i><b>${E(G.lang === "ne" ? d.bs : new Date(d.ad + "T12:00:00" + G.tzIso).toLocaleDateString("en-GB", { day: "numeric", month: "short" }))}</b><span>${T(lvl === "green" ? "हरियो" : lvl === "yellow" ? "पहेँलो" : lvl === "orange" ? "सुन्तले" : lvl === "red" ? "रातो" : lvl, lvl === "green" ? "Green" : lvl[0].toUpperCase() + lvl.slice(1))}</span></li>`; }).join("")}</ol>${v.wx.length ? `<p>${E(T(v.wx[0].ne, v.wx[0].en))}</p>` : `<p>${T("यो क्षेत्रका लागि ५ दिनमा DHM चेतावनी छैन।", "No DHM warning for this area in the 5 days.")}</p>`}` : `<p>${T("DHM बुलेटिन अहिले उपलब्ध छैन।", "DHM bulletin not available right now.")}</p>`;
     /* rivers near */
     const cs = codes.map((c) => distF[c] && centre(distF[c].geometry)).filter(Boolean);
     const gs = RV ? RV.gauges.map((g) => ({ g, km: Math.min(...cs.map((c) => hav(c[0], c[1], g.ll[0], g.ll[1]))) })).filter((x) => x.km <= 60 || codes.includes((DL || []).find((d) => d.id === x.g.district)?.code)).sort((a, b) => a.km - b.km) : [];
@@ -115,7 +115,7 @@
       const el = document.getElementById("afair"); if (!el) return; const x = a && a.current && a.current.us_aqi; if (x == null) { el.innerHTML = `<p>${T("अहिले उपलब्ध छैन", "Not available right now")}</p>`; return; }
       const B = [[50, "#00a651", "राम्रो", "Good"], [100, "#d4b000", "मध्यम", "Moderate"], [150, "#f7941d", "संवेदनशीललाई हानिकारक", "Unhealthy for sensitive groups"], [200, "#e2231a", "हानिकारक", "Unhealthy"], [999, "#8f3f97", "धेरै हानिकारक", "Very unhealthy"]].find((b) => x <= b[0]);
       el.innerHTML = `<p><span class="afst" style="--c:${B[1]}"><i></i>US AQI ${G.num(String(Math.round(x)))} · ${T(B[2], B[3])}</span> <span class="meta">${T("मोडेल अनुमान", "Model estimate")}</span></p>`;
-      const t = document.getElementById("afairt"); if (t) t.textContent = G.npt(a.current.time + "+05:45"); }).catch(() => { const el = document.getElementById("afair"); if (el) el.innerHTML = `<p>${T("अहिले उपलब्ध छैन", "Not available right now")}</p>`; });
+      const t = document.getElementById("afairt"); if (t) t.textContent = G.npt(a.current.time + G.tzIso); }).catch(() => { const el = document.getElementById("afair"); if (el) el.innerHTML = `<p>${T("अहिले उपलब्ध छैन", "Not available right now")}</p>`; });
   }
   function miniMap(codes, v, gs, qs, rts) {
     if (!DG || !codes.length) return "";
@@ -136,5 +136,7 @@
   const h = new URLSearchParams(location.hash.slice(1)); const my = G.district && G.district.get();
   if (h.get("r")) render({ r: h.get("r") }); else if (h.get("d")) render({ d: h.get("d"), u: h.get("u") || "" }); else if (my) go({ d: my });
   addEventListener("gati:radius", () => { buildInput(); render(Object.fromEntries(new URLSearchParams(location.hash.slice(1)))); });
+  /* Back, forward, or a link to another district or route on this same page */
+  addEventListener("hashchange", () => { const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); if (q.d || q.r) render(q); });
   G.onLang(() => { buildInput(); const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
 })();

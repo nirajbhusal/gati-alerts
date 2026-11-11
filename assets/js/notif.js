@@ -15,7 +15,7 @@
   const dn = (c) => { const d = DL.find((x) => x.code === c) || {}; return L(d.ne || c, d.en || c); };
   const item = (a, unread) => { const i = a.info[G.lang] || a.info.ne;
     return `<li class="${unread ? "ntnew" : ""}"><a href="${R}alerts/${E(a.identifier)}/" data-id="${E(a.identifier)}">${unread ? `<span class="ntdot" aria-label="${L("नपढिएको", "Unread")}"></span>` : ""}<span class="ntrow">${G.sevChip(a.severity)} <b>${E(i.headline)}</b></span>`
-      + `<span class="meta">${a.districts.length ? E(a.districts.map(dn).join(", ")) : L("देशभर", "Nationwide")} · ${L("स्रोत", "Source")}: ${E((i.senderName || "").split(" · ")[0])} · ${L("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || a.sent)}</span></a></li>`; };
+      + `<span class="meta">${a.districts.length ? E(a.districts.map(dn).join(", ")) : L("देशभर", "Nationwide")} · ${L("स्रोत", "Source")}: ${E(G.agencyOf(a))} · ${L("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || a.sent)}</span></a></li>`; };
 
   async function list() { const box = $("nt-list"), ib = await G.inbox();
     let al = []; try { al = (await G.json("data/alerts.json")).alerts || []; } catch (e) {}
@@ -46,7 +46,7 @@
       ${perm !== "unsupported" ? `<label class="ftog"><input type="checkbox" id="ntsnd"${p.snd ? " checked" : ""}> ${L("आवाज", "Sound")}</label>${canVib ? ` <label class="ftog"><input type="checkbox" id="ntvib"${p.vib ? " checked" : ""}> ${L("कम्पन", "Vibration")}</label>` : ""}` : ""}
       <p class="meta" id="ntmsg" role="status"></p></section>
     <section class="ntc"><h3>${L("जिल्ला", "Districts")}</h3>
-      ${my ? `<p class="meta">${L("मेरो जिल्ला", "My district")}: <b>${E(dn(my))}</b> · <a href="${R}me/#place">${L("बदल्नुहोस्", "Change")}</a></p>` : ""}
+      ${my ? `<p class="meta">${L("मेरो जिल्ला", "My district")}: <b>${E(dn(my))}</b> · <a href="${R}me/#place">${L("बदल्नुहोस्", "Change")}</a></p>` : (G.district && G.district.open ? `<p><button type="button" class="btn" id="ntmy">📍 ${L("मेरो जिल्ला छान्नुहोस्", "Choose my district")}</button></p><p class="meta">${L("एउटै जिल्ला गृहपृष्ठ, 'के म प्रभावित छु?' र यहाँ प्रयोग हुन्छ। तल थप जिल्ला पनि राख्न सकिन्छ।", "One district is used on Home, in 'Am I affected?' and here. You can add more districts below.")}</p>` : "")}
       <div class="fopts">${D.map((c) => `<button type="button" class="fopt" aria-pressed="true" data-rm="${E(c)}" aria-label="${E(dn(c))}: ${L("हटाउनुहोस्", "remove")}">${E(dn(c))} ✕</button>`).join("")}</div>
       <p class="ntq"><label class="sr-only" for="ntadd">${L("जिल्ला थप्नुहोस्", "Add a district")}</label><select id="ntadd"><option value="">${L("जिल्ला थप्नुहोस्", "Add a district")}</option>${DL.filter((d) => !D.includes(d.code) && d.code !== my).map((d) => `<option value="${E(d.code)}">${E(L(d.ne, d.en))}</option>`).join("")}</select></p>
       <label class="ftog"><input type="checkbox" id="ntnat"${p.nation ? " checked" : ""}> ${L("देशभरका सूचना पनि", "Also nationwide alerts")}</label></section>
@@ -55,9 +55,11 @@
     <section class="ntc"><h3>${L("शान्त समय (नेपाली समय)", "Quiet hours (NPT)")}</h3><p class="ntq"><input type="time" id="ntqf" value="${E(p.qf)}" aria-label="${L("देखि", "From")}"> ${L("देखि", "to")} <input type="time" id="ntqt" value="${E(p.qt)}" aria-label="${L("सम्म", "Until")}"> ${L("सम्म", "")}</p>
       <p class="meta">${L("शान्त समयमा ब्राउजर सूचना देखाइँदैन; सूची भने यहीँ रहन्छ।", "During quiet hours no browser notification is shown; the list here still updates.")}</p></section>
     ${on ? `<section class="ntc"><h3>${L("पृष्ठभूमि पुस (परीक्षणमा)", "Background push (in testing)")}</h3><button type="button" class="btn ntbtn" id="ntgo">${L("सदस्यता लिनुहोस्", "Subscribe")}</button></section>` : ""}
+    ${G.country.channels && G.country.channels.telegram ? `<section class="ntc"><h3>${L("टेलिग्राममा सूचना पाउनुहोस्", "Get alerts on Telegram")}</h3><p><a class="btn" href="${E(G.country.channels.telegram)}" rel="noopener">${L("टेलिग्राम च्यानल खोल्नुहोस्", "Open the Telegram channel")}</a></p><p class="meta">${L("नयाँ आधिकारिक सूचना आएपछि च्यानलमा आफैँ पोस्ट हुन्छ, गति बन्द हुँदा पनि। च्यानल पछ्याउँदा टेलिग्रामलाई थाहा हुन्छ; गतिले पछ्याउनेको विवरण पाउँदैन।", "Each new official alert is posted to the channel automatically, even when Gati is closed. Telegram knows you follow the channel; Gati receives no details about followers.")}</p></section>` : ""}
     <p class="meta">${L("सूचना पाउने अर्को तरिका", "Another way to get alerts")}: <a href="${R}atom.xml">CAP Atom feed</a> · <a href="${R}feed.xml">RSS</a></p>`;
     const all = () => Promise.all([list(), settings()]);
     const upd = (f) => { const q = G.notifPrefs(); f(q); G.saveNotifPrefs(q); all(); }, msg = (t) => { const m = $("ntmsg"); if (m) m.textContent = t; };
+    if ($("ntmy")) $("ntmy").onclick = () => G.district.open(() => all());
     box.querySelectorAll("[data-hz]").forEach((b) => (b.onclick = () => upd((q) => { const k = b.dataset.hz; q.hz = q.hz.includes(k) ? q.hz.filter((x) => x !== k) : q.hz.concat(k); })));
     box.querySelectorAll("[data-min]").forEach((b) => (b.onclick = () => upd((q) => (q.min = b.dataset.min))));
     box.querySelectorAll("[data-rm]").forEach((b) => (b.onclick = () => { const x = getW(); x.d = (x.d || []).filter((c) => c !== b.dataset.rm); setW(x); all(); }));
