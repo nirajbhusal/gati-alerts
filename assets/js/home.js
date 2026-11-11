@@ -441,12 +441,26 @@
       <ul class="hilist">${rs.map((r) => `<li><span class="hin">${G.esc(ne() ? r.name_ne : r.name_en)}</span> <span class="hiv" style="color:${RC[r.status]}">${G.esc(rw(r.status))}</span></li>`).join("")}</ul>
       <p class="meta">${G.esc(ne() ? roads.as_of_ne : roads.as_of_en)}</p>`;
   }
+  let wxDoc = null, wxAsked = false;
+  function forecastHome(f) {
+    if (!f || !f.country || !f.kathmandu) return "";
+    const c = f.country, k = f.kathmandu;
+    const blob = [c.day_ne, c.day_en, c.night_ne, c.night_en, k.day_ne, k.day_en, k.night_ne, k.night_en].join("\n");
+    return `<p class="hisum"><span class="ne-only">DHM पूर्वानुमान, चेतावनी होइन</span><span class="en-only">DHM forecast, not a warning</span></p>
+      <p class="hin">${G.esc(T(k.name_ne, k.name_en))}: ${G.esc(T(k.day_ne, k.day_en))}</p>
+      ${G.stormFlag(blob)}
+      <p class="meta"><a class="wxsrc" href="${G.esc(k.url)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a> · ${T("जारी", "Issued")} ${G.npt(c.issued)}</p>`;
+  }
   function wxHome() {
     const box = $("wxhome"); if (box === NIL) return;
-    const w = allAlerts.filter((a) => a.hazard === "weather").sort((a, b) => b.sent.localeCompare(a.sent))[0];
-    if (!w) { box.innerHTML = `<p class="meta">${T("उपलब्ध छैन", "Not available")}</p>`; return; }
-    const i = w.info[G.lang], live = Date.parse(w.expires) > now;
-    box.innerHTML = `<p class="hisum">${G.esc(i.headline)}</p><div class="atrust">${G.trustChip(w.trust)}${live ? "" : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}<span class="meta">${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || w.sent)} · <a href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a></span></div>`;
+    const paint = () => {
+      const w = allAlerts.filter((a) => a.hazard === "weather").sort((a, b) => b.sent.localeCompare(a.sent))[0];
+      const extra = forecastHome(wxDoc && wxDoc.forecast24);
+      const head = w ? (() => { const i = w.info[G.lang], live = Date.parse(w.expires) > now; return `<p class="hisum">${G.esc(i.headline)}</p><div class="atrust">${G.trustChip(w.trust)}${live ? "" : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}<span class="meta">${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || w.sent)} · <a class="wxsrc" href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a></span></div>`; })() : "";
+      box.innerHTML = head + extra || `<p class="meta">${T("उपलब्ध छैन", "Not available")}</p>`;
+    };
+    paint();
+    if (!wxAsked) { wxAsked = true; G.json("data/weather.json").then((w) => { wxDoc = w || {}; paint(); }).catch(() => { wxDoc = {}; paint(); }); }
   }
   /* Full archive on /alerts/: the static list is Nepali; re-render it in the chosen language */
   function archive() { const ul = document.querySelector("ul.archive"); if (!ul || !data) return;

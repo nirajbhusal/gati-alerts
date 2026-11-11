@@ -1834,3 +1834,10 @@ header.top .bar .hr .bellbtn .bdot.bnum{top:2px;right:2px}header.top .bar .menub
 @media(max-width:600px){.hgsteps{grid-template-columns:minmax(0,1fr)}.hgsteps a{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:10px;padding:10px 12px}.hgsteps a small{flex-basis:100%;padding-left:40px;margin-top:-6px}}
 .hinfo .hgsteps a,.hinfo .hgsteps a *,.hinfo a.hgt,.hinfo a.hgt *,.hinfo .hgcall a,.hinfo .hgcall a *{text-decoration:none!important;color:var(--ink)!important}.hinfo .hgsteps a svg,.hinfo .hgt .hgi{color:var(--teal,#0F6F78)!important}.hinfo .hgsteps small,.hinfo .hgt .meta,.hinfo .hgkey,.hinfo .hgbig small{color:var(--slate)!important}
 .gdgrid.gd-home>:last-child{grid-column:1/-1}
+/* DHM 24 h forecast: same type sizes as the home Roads card. A forecast is not a warning. */
+.wxcast h2{font-size:var(--r-title);font-weight:600;margin:0 0 8px}
+.wxcast .hisum{margin:10px 0 4px}
+.wxcast .hin{margin:0 0 8px}
+a.wxsrc{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 0}
+.wxflag{display:flex;align-items:center;gap:8px;min-height:44px;margin:4px 0;font-size:var(--r-label);font-weight:600}
+.wxflag svg{flex:none}

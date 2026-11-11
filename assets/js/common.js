@@ -344,6 +344,17 @@
               Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"] };
   G.sevChip = (s) => { const v = G.SEV[s] || G.SEV.Unknown; return `<span class="sev sev-${G.SEV[s] ? s : "Unknown"}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>`; };
   G.trustChip = (t) => { const v = G.TRUST[t]; return v ? `<span class="trust t-${t}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>` : ""; };
+  /* Routine forecast highlight only. A match is not a warning and never becomes a CAP alert. */
+  G.stormFlag = (text) => {
+    const s = String(text || "");
+    const hail = /असिना|\bhail\b/i.test(s), thunder = /मेघगर्जन|चट्याङ|चट्याङ्ग|thunder|lightning/i.test(s);
+    if (!hail && !thunder) return "";
+    const ne = G.lang === "ne";
+    const label = hail && thunder ? (ne ? "मेघगर्जन, चट्याङ वा असिना उल्लेख छ" : "Mentions thunderstorm, lightning or hail")
+      : hail ? (ne ? "असिना उल्लेख छ" : "Mentions hail") : (ne ? "मेघगर्जन वा चट्याङ उल्लेख छ" : "Mentions thunderstorm or lightning");
+    const svg = `<svg class="wxbolt" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.2 2.2 5 13.2h6.2L9.6 21.8 19.2 9.6h-6.4L13.2 2.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
+    return `<p class="wxflag">${svg}<span>${label}. ${ne ? "यो चेतावनी होइन।" : "This is not a warning."}</span></p>`;
+  };
   /* Shared verdict scale for Ask Gati answers and Route check: alert (blocked or warning) / caution / clear (open) / info / no_info */
   G.VERDICT = { alert: ["Severe", "सतर्क: अवरोध वा चेतावनी", "Alert: blocked or warning", '<path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h0"/>'], caution: ["Moderate", "सावधानी", "Caution", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.5h0"/>'], clear: ["Clear", "खुला वा सामान्य", "Open or normal", '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.5 2.8 2.8L16 10"/>'], info: ["Info", "जानकारी", "Information", '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h0"/>'], no_info: ["Unknown", "आधिकारिक जानकारी छैन", "No official information", '<circle cx="12" cy="12" r="8.5"/><path d="M9.8 9.5a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4v.5M12 16.8h0"/>'] };
   G.verdictColor = (k) => (k === "Clear" ? "#2E8B57" : k === "Info" ? "#2F6FED" : G.SEVCOLOR[k]);
