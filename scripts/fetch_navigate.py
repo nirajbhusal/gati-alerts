@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""DoR NAVIGATE road closures -> data/navigate.json (run daily by ci/cap.yml; safe to run any time).
+"""DoR NAVIGATE road closures -> data/navigate.json (run by hand; safe to run any time).
 
 GET https://navigate.dor.gov.np/api/Map_data_api/getRoadClosureMapData (timeout, one retry).
 - Raw response saved to data/raw/navigate-YYYY-MM-DD.json (NPT date). Health in data/source-health.json

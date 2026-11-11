@@ -748,37 +748,37 @@ body.storypage,.storypage main,.storypage{background:var(--snow)!important}
 .htag{display:none;margin:18px 0 0;font-size:var(--fs-5);color:var(--slate)}.htag+.hdate{margin-top:2px}
 @media(max-width:720px){.htag{display:block}}
 /* Home dashboard slider */
-.dslider{margin:28px 0}.dshead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.dshead h2{margin:0;font-size:var(--fs-3);font-weight:600}
-.dsnav{display:none;gap:8px}@media(min-width:721px){.dsnav{display:flex}}
-.dsnav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:var(--fs-2);line-height:1;cursor:pointer}.dsnav button:disabled{opacity:.35;cursor:default}
-.dstrack{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px;outline:0;overscroll-behavior-x:contain}.dstrack::-webkit-scrollbar{display:none}
-.dstrack:focus-visible{outline:2px solid #0B1424;outline-offset:2px;border-radius:20px}
-.dslide{flex:0 0 100%;scroll-snap-align:start;background:var(--surface2);border-radius:20px;padding:20px;display:flex;flex-direction:column;min-height:300px;box-sizing:border-box}
-@media(min-width:900px){.dslide{flex-basis:calc(50% - 8px)}}
-.dslide h3{margin:0 0 14px;font-size:var(--fs-4);font-weight:600;color:var(--ink)}.dsbody{flex:1}
-.dsfoot{margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}.dsfoot .meta{margin:0 0 8px;font-size:var(--fs-6)}
-.dsfr{display:flex;justify-content:space-between;align-items:center;gap:8px}.dsmore{font-weight:600;font-size:var(--fs-5);text-decoration:none}
-.dsdots{display:flex;justify-content:center;gap:8px;margin-top:14px}.dsdots button{width:8px;height:8px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
-.dsdots button[aria-selected=true]{background:var(--ink);width:22px;border-radius:4px}
-.dsgrid2{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:480px){.dsgrid2{grid-template-columns:1.1fr 1fr;align-items:center}}
-.dsmap{width:100%;height:auto;display:block}
-.dsrow{display:grid;grid-template-columns:7.5em 1fr 2em;gap:8px;align-items:center;margin:0 0 8px;font-size:var(--fs-5)}.dsrow b{text-align:right}
-.dslab{color:var(--slate);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:var(--fs-5)}
-.dsbar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line);gap:1px}.dsbar i{display:block}
-.dsnote{font-size:var(--fs-6)!important;margin:8px 0}
-.dsleg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:var(--fs-6);color:var(--slate);margin-top:6px}.dsleg span{display:inline-flex;align-items:center;gap:5px}.dsleg i{display:inline-block;width:10px;height:10px;border-radius:3px}
-.dswx{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.dswx li{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:var(--fs-6);text-align:center;color:var(--slate)}.dswx li b{color:var(--ink);font-size:var(--fs-5);font-weight:600}
-.dswx li i{display:block;width:100%;height:10px;border-radius:5px;background:#3cb043}.dswx li.lv-yellow i{background:#F5D90A}.dswx li.lv-orange i{background:#f7941d}.dswx li.lv-red i{background:#e2231a}
-.dssum{margin:14px 0 0;font-size:var(--fs-5);line-height:1.5}
-.dsroads,.dsriv{list-style:none;margin:0;padding:0;display:grid;gap:7px;max-height:220px;overflow:auto}
-.dsroads li{display:flex;justify-content:space-between;gap:10px;align-items:center}.dsst{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-6);color:var(--ink)}.dsst i{width:28px;height:8px;border-radius:4px;background:var(--c)}
-.dsriv li{display:grid;grid-template-columns:8.5em 1fr 3.4em;gap:8px;align-items:center;font-size:var(--fs-5)}.dsriv b{text-align:right;font-weight:600}
-.dsrb{position:relative;height:10px;border-radius:5px;background:var(--line)}.dsrb .lvl{position:absolute;left:0;top:0;bottom:0;border-radius:5px}
-.mk{position:absolute;top:-3px;bottom:-3px;width:2px}.mk.w{background:#F28C1E}.mk.d{background:#D93025}.dsleg .mk{position:static;display:inline-block;width:3px;height:12px;border-radius:1px}
-.dsbig{margin:0;font-size:var(--fs-1);font-weight:700;line-height:1.1}
-.dsaq{display:flex;gap:16px;align-items:center}.dsgauge{width:150px;flex:none;color:var(--ink)}
-.dsna{color:var(--ink);margin:20px 0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mk{position:absolute;top:-3px;bottom:-3px;width:2px}.mk.w{background:#F28C1E}.mk.d{background:#D93025}
+
+
+
 /* Text size control */
 .tsize{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .tsize button{font:inherit;font-size:var(--fs-5);font-weight:600;min-width:38px;min-height:36px;padding:0 8px;border:0;background:none;color:var(--ink);cursor:pointer}
@@ -859,14 +859,14 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .hleft{min-width:0}.hright{display:grid;gap:16px;position:sticky;top:84px}
 .hright .hcard{background:var(--surface2)!important;border-radius:20px;padding:18px}.hright .hcard h2{font-size:var(--fs-4);font-weight:600;margin:0}
 .hdist{margin:0 0 4px}.hdist .mydist{margin:0}
-.hslider .dslider{margin:20px 0 36px}.hslider .dslide{flex-basis:100%}
+
 .halerts .sechead h2{font-size:var(--fs-3);font-weight:600}
 .hfeatures{margin:48px 0 24px;padding-top:32px;border-top:1px solid var(--line)}
 .homev3 > .hfeatures{margin:4px 0 12px;padding-top:0;border-top:0}
 .hleft>.hfeatures{margin:8px 0 32px;padding-top:24px}
 .homev3 .hero{display:none}
 @media(max-width:960px){.hcols{display:flex;flex-direction:column;gap:0}.hleft,.hright{display:contents}
-  .hdist{order:1}.hslider{order:2}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
+  .hdist{order:1}.halerts{order:3}.hright>.hcard{order:4}.hright>.hcard:not(#watch){display:none}}
 .hcols>*,.hleft>*,.hslider,.halerts,.hdist{min-width:0;max-width:100%}@media(max-width:960px){.hslider,.halerts,.hdist{width:100%}}
 /* Am I affected */
 .afchip{display:inline-flex;align-items:center;gap:8px;margin:8px 0 0;font-size:var(--fs-5);font-weight:600;color:var(--ink)!important;text-decoration:none;padding:6px 14px;border-radius:999px;background:var(--surface2)}
@@ -1012,7 +1012,7 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 :where(a[href],button,summary,[role=button],select,input[type=checkbox],input[type=radio]){position:relative}
 :where(a[href],button,summary,[role=button]):not(.nohit)::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
 :where(select,input:not([type=checkbox]):not([type=radio]):not([type=hidden])){min-height:44px}
-.dsdots button,.dsdot{min-width:12px}
+
 /* 5. Text floor: body text 13 px, nothing under 12 px */
 body{font-size:var(--fs-5)}
 .brktag,.tddn,.tdtr b,.tdtr span,.tdrp,.tdm,.tdsep,.tdseg b,.tdkey,.tdkey span,.tdggv,.tdold,.tdmag small,.tdm .trust,.trust,.tabbar span,.tabbar a,.mxn,.mxhint,.mxsrc,.meta,.atime,small,.bar .brand .tagline,.stbtn,.strail button,.strail a,.stmeta span{font-size:var(--fs-6)!important}
@@ -1129,15 +1129,15 @@ main li a.offcall,main li a.offcall *{color:var(--ink)!important;text-decoration
   .rv-now *{animation:none!important}
 }
 /* Fix sweep 2: slider dots get their own 44px hit area so a tap never lands on the neighbouring dot */
-.dsdots{gap:0;margin-top:4px}
-.dsdots button,.dsdots button[aria-selected=true]{position:relative;width:44px;height:44px;min-width:44px;background:none;border-radius:0}
-.dsdots button::after{content:none!important}
-.dsdots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:var(--line)}
-.dsdots button[aria-selected=true]::before{width:22px;border-radius:4px;background:var(--ink)}
-.dsdots button:focus-visible{outline:2px solid var(--focus,#2F6FED);outline-offset:-6px;border-radius:12px}
+
+
+
+
+
+
 /* Fix sweep 6: reserve the space Home's late-filled blocks take, so the page does not jump while they load */
-.home #mydist:empty{min-height:147px}.home #today:empty{min-height:1450px}.home #afslider:empty{min-height:80px}.home #dslider:empty{min-height:590px}.home #services:empty{min-height:425px}
-@media(min-width:721px){.home #mydist:empty{min-height:78px}.home #today:empty{min-height:1060px}.home #afslider:empty{min-height:46px}.home #dslider:empty{min-height:488px}.home #services:empty{min-height:258px}}
+.home #mydist:empty{min-height:147px}.home #today:empty{min-height:1450px}.home #afslider:empty{min-height:80px}.home #services:empty{min-height:425px}
+@media(min-width:721px){.home #mydist:empty{min-height:78px}.home #today:empty{min-height:1060px}.home #afslider:empty{min-height:46px}.home #services:empty{min-height:258px}}
 /* Fix sweep 7: main fills the screen, so the footer starts below the fold and is not shoved down as data arrives */
 body:not(.storypage) > main#main{min-height:100vh;min-height:100dvh}
 .dash #sumcard:empty{min-height:132px}
@@ -1275,7 +1275,7 @@ body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;heig
 @media(max-width:400px){body[data-page]:not(.storypage):not(.ghdr)::before{height:100px}}
 .gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}
 /* static #gdash placeholders: reserve the dashboard height before dash.js runs */
-body[data-page=home] #gdash{min-height:993px}@media(min-width:760px){body[data-page=home] #gdash{min-height:688px}}
+body[data-page=home] #gdash{min-height:470px}@media(min-width:760px){body[data-page=home] #gdash{min-height:300px}}
 body[data-page=alerts] #gdash{min-height:715px}@media(min-width:760px){body[data-page=alerts] #gdash{min-height:384px}}
 body[data-page=earthquakes] #gdash{min-height:498px}@media(min-width:760px){body[data-page=earthquakes] #gdash{min-height:302px}}
 body[data-page=roads] #gdash{min-height:265px}@media(min-width:760px){body[data-page=roads] #gdash{min-height:175px}}
@@ -1846,12 +1846,6 @@ a.wxsrc{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 
 .wxflag svg{flex:none}
 .wxmore{margin:4px 0 8px}
 .wxmore summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-size:var(--r-label);font-weight:600}
-/* Decorative rain for one Nepal date. TODO: delete .rainday after 11 Nov 2026. */
-.rainday{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none}
-.rainday i{position:absolute;top:-14%;width:1px;height:16px;background:linear-gradient(to bottom, transparent, rgba(70,110,150,.35));animation:raindrop 1.05s linear infinite}
-@keyframes raindrop{to{transform:translateY(120vh)}}
-@media (prefers-reduced-motion: reduce){.rainday{display:none}}
-
 /* ===== Home language row ===== */
 .hlang{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:10px 0 2px;min-height:40px}
 .hlang-l{font-size:1rem;margin-right:2px}
@@ -1881,7 +1875,7 @@ html[data-theme=paper]{--snow:#FCF6F4;--surface:#FFFCFB;--surface2:#F8EFEC;--lin
    Hidden here because the same facts are in the "Today" card, the footer or one tap away:
    the "Today at a glance" tiles and the lines under them, the "At a glance" slider, the second
    "Am I affected?" card, the highway table (it is the Roads page) and the emergency numbers block. */
-.homev3 #hinfo .hia,.homev3 #hinfo .hir,.homev3 #hinfo .hiqk,.homev3 #hinfo .hie,.homev3 #dslider,.homev3>.hdist,.homev3 #gdash .gdroads{display:none!important}
+.homev3>.hdist{display:none!important}
 .homev3 #active>article:nth-of-type(n+4){display:none}
 .homev3{display:flex;flex-direction:column}
 .homev3>*{order:3}
@@ -1895,8 +1889,6 @@ body[data-page=rivers] #gdash{display:none}
 .gd5 b{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}
 /* Touch: plain text links get a taller hit area without moving the layout */
 @media (pointer:coarse){main p a:not([class]),main li a:not([class]),main td a:not([class]){padding-block:7px}}
-/* Home: the summary block reserved room for the highway table that is no longer shown here */
-body[data-page=home] .homev3 #gdash{min-height:470px!important}@media(min-width:760px){body[data-page=home] .homev3 #gdash{min-height:300px!important}}
 /* Strip and notification list links read as buttons and headlines, not as underlined body links */
 main#main .sibs a{color:var(--ink)!important;text-decoration:none!important}
 main#main .ntlist li a,main#main .ntlist li a *{text-decoration:none!important}
