@@ -206,10 +206,11 @@
     if (key(u) === key(today)) { whenNe = "आज"; whenEn = "today"; }
     else if (key(u) === key(yday)) { whenNe = "हिजो"; whenEn = "yesterday"; }
     else { const b = BS.toBS(u.y, u.m, u.d); whenNe = b ? BS.MN[b.m - 1] + " " + G.num(String(b.d)) : ""; whenEn = b ? "on " + BS.ME[b.m - 1] + " " + b.d : ""; }
-    const who = G.agencyOf(a);
+    const whoNe = a.sender === "nepalpolice.gov.np" ? "प्रहरी" : G.agencyOf(a);
+    const whoEn = a.sender === "nepalpolice.gov.np" ? "Police" : G.agencyOf(a);
     return {
-      ne: BS.MN[bs.m - 1] + " " + G.num(String(bs.d)) + " देखि बन्द · " + whenNe + " " + neClock + " मा " + who + "द्वारा पुष्टि",
-      en: "Closed since " + BS.ME[bs.m - 1] + " " + bs.d + " · reconfirmed by " + who + " " + enClock + (whenEn ? " " + whenEn : "")
+      ne: BS.MN[bs.m - 1] + " " + G.num(String(bs.d)) + " देखि " + whoNe + " सूचनामा · " + whenNe + " " + neClock + " मा पुष्टि",
+      en: "On " + whoEn + " notices since " + BS.ME[bs.m - 1] + " " + bs.d + " · reconfirmed " + enClock + (whenEn ? " " + whenEn : "")
     };
   };
   G.roadOngoingChip = (a) => (G.roadOngoing(a) ? `<span class="tag ong">${G.lang === "ne" ? "चलिरहेको" : "Ongoing"}</span>` : "");
