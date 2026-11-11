@@ -19,6 +19,21 @@
         "Only short words such as menus and buttons change; the rest stays in Nepali. The wording of official notices is never changed. Translations are still being checked; please report mistakes.")}</p>`;
     box.querySelector("#locsel").onchange = (e) => { try { e.target.value ? localStorage.setItem(KEY, e.target.value) : localStorage.removeItem(KEY); } catch (x) {} location.reload(); };
   };
+  /* ---- language row on the home page: Nepali, English, and the regional languages ---- */
+  G.localeBar = (box) => {
+    if (!box) return;
+    const cur = G.lang === "en" ? "en" : (code || "ne");
+    const opts = [["ne", "नेपाली", ""], ["en", "English", ""], ...langs.map((l) => [l.code, l.name, l.status === "draft" ? " β" : ""])];
+    box.innerHTML = `<span class="hlang-l" aria-hidden="true">🌐</span>` + opts.map(([c, n, tag]) => `<button type="button" data-l="${c}" aria-pressed="${c === cur}"${tag ? ` title="${T("परीक्षण: अनुवाद जाँच हुँदै छ", "Beta: translation still being checked")}"` : ""}>${G.esc(n)}${tag}</button>`).join("");
+    box.querySelectorAll("button").forEach((b) => (b.onclick = () => { const c = b.dataset.l;
+      if (c === "en") return G.setLang("en");                                     /* a saved regional choice is kept for next time */
+      const want = c === "ne" ? "" : c;
+      try { want ? localStorage.setItem(KEY, want) : localStorage.removeItem(KEY); } catch (x) {}
+      if (want === code) return G.setLang("ne");
+      try { localStorage.setItem("gati-lang", "ne"); } catch (x) {} location.reload(); }));
+  };
+  const bar = () => G.localeBar(document.getElementById("home-lang"));
+  bar(); G.onLang && G.onLang(() => setTimeout(bar, 0));
   const mount = () => G.localePicker(document.getElementById("me-locale"));
   mount(); G.onLang && G.onLang(() => setTimeout(mount, 0));
   if (document.body.dataset.page === "me") new MutationObserver(() => { const b = document.getElementById("me-locale"); if (b && !b.firstChild) mount(); }).observe(document.body, { childList: true, subtree: true });
@@ -31,7 +46,7 @@
   const SKIP = { SCRIPT: 1, STYLE: 1, TEXTAREA: 1, INPUT: 1, SELECT: 1, CODE: 1, PRE: 1 };
   const orig = new WeakMap();
   const swap = (n) => {
-    const p = n.parentElement; if (!p || SKIP[p.tagName] || p.closest("#me-locale,[data-official],.en-only")) return;
+    const p = n.parentElement; if (!p || SKIP[p.tagName] || p.closest("#me-locale,#home-lang,[data-official],.en-only")) return;
     const raw = orig.has(n) ? orig.get(n) : n.nodeValue, k = raw.trim(); if (!k) return;
     const want = G.lang === "ne" && dict[k] ? raw.replace(k, dict[k]) : raw;
     if (n.nodeValue !== want) { if (!orig.has(n)) orig.set(n, raw); n.nodeValue = want; }
