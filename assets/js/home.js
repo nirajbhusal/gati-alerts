@@ -446,8 +446,11 @@
     if (!f || !f.country || !f.kathmandu) return "";
     const c = f.country, k = f.kathmandu;
     const blob = [c.day_ne, c.day_en, c.night_ne, c.night_en, k.day_ne, k.day_en, k.night_ne, k.night_en].join("\n");
+    const deg = (a, b) => (a == null || b == null) ? "" : ` ${G.num(a)}-${G.num(b)}°C`;
+    const rain = k.day_rain_pct == null ? "" : ` · ${T("वर्षाको सम्भावना", "Rain chance")} ${G.num(k.day_rain_pct)}%`;
     return `<p class="hisum"><span class="ne-only">DHM पूर्वानुमान, चेतावनी होइन</span><span class="en-only">DHM forecast, not a warning</span></p>
-      <p class="hin">${G.esc(T(k.name_ne, k.name_en))}: ${G.esc(T(k.day_ne, k.day_en))}</p>
+      <p class="hin">${G.esc(T(k.name_ne, k.name_en))}: ${G.esc(T(k.day_ne, k.day_en))}${deg(k.day_from_c, k.day_to_c)}${rain}</p>
+      <p class="hin">${T("आज राति", "Tonight")}: ${G.esc(T(k.night_ne, k.night_en))}${deg(k.night_from_c, k.night_to_c)}</p>
       ${G.stormFlag(blob)}
       <p class="meta"><a class="wxsrc" href="${G.esc(k.url)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a> · ${T("जारी", "Issued")} ${G.npt(c.issued)}</p>`;
   }

@@ -18,16 +18,20 @@
         const c = f24.country, k = f24.kathmandu;
         const deg = (a, b) => (a == null || b == null) ? "" : ` ${G.num(a)}-${G.num(b)}°C`;
         const rain = k.day_rain_pct == null ? "" : ` · ${T("वर्षाको सम्भावना", "Rain chance")} ${G.num(k.day_rain_pct)}%`;
-        const blob = [c.analysis_ne, c.analysis_en, c.day_ne, c.day_en, c.night_ne, c.night_en, k.day_ne, k.day_en, k.night_ne, k.night_en].join("\n");
+        const blob = [c.day_ne, c.day_en, c.night_ne, c.night_en, k.day_ne, k.day_en, k.night_ne, k.night_en].join("\n");
         cast.innerHTML = `<h2><span class="ne-only">DHM पूर्वानुमान, चेतावनी होइन</span><span class="en-only">DHM forecast, not a warning</span></h2>
-          <p class="hisum">${T("देशको २४ घण्टा", "Country, 24 hours")}</p>
-          <p class="hin"><b>${T("आज दिउँसो", "This afternoon")}. </b>${esc(T(c.day_ne, c.day_en))}</p>
-          <p class="hin"><b>${T("आज राति", "Tonight")}. </b>${esc(T(c.night_ne, c.night_en))}</p>
           <p class="hisum">${esc(T(k.name_ne, k.name_en))}</p>
           <p class="hin"><b>${T("आज दिउँसो", "This afternoon")}. </b>${esc(T(k.day_ne, k.day_en))}${deg(k.day_from_c, k.day_to_c)}${rain}</p>
           <p class="hin"><b>${T("आज राति", "Tonight")}. </b>${esc(T(k.night_ne, k.night_en))}${deg(k.night_from_c, k.night_to_c)}</p>
           ${G.stormFlag(blob)}
-          <p class="meta"><a class="wxsrc" href="${esc(c.url)}" target="_blank" rel="noopener">${T("देशको पूर्वानुमान", "Country forecast")} ↗</a><a class="wxsrc" href="${esc(k.url)}" target="_blank" rel="noopener">${T("सहरको पूर्वानुमान", "City forecast")} ↗</a></p>
+          <details class="wxmore">
+            <summary><span class="ne-only">थप हेर्नुहोस्</span><span class="en-only">See more</span></summary>
+            <p class="hisum">${T("देशको २४ घण्टा", "Country, 24 hours")}</p>
+            <p class="hin"><b>${T("आज दिउँसो", "This afternoon")}. </b>${esc(T(c.day_ne, c.day_en))}</p>
+            <p class="hin"><b>${T("आज राति", "Tonight")}. </b>${esc(T(c.night_ne, c.night_en))}</p>
+            <p class="meta"><a class="wxsrc" href="${esc(c.url)}" target="_blank" rel="noopener">${T("देशको पूर्वानुमान", "Country forecast")} ↗</a></p>
+          </details>
+          <p class="meta"><a class="wxsrc" href="${esc(k.url)}" target="_blank" rel="noopener">${T("सहरको पूर्वानुमान", "City forecast")} ↗</a></p>
           <p class="meta">${T("जारी", "Issued")} ${G.npt(c.issued)}. ${T("यो नियमित पूर्वानुमान हो। यसबाट चेतावनी बनाइँदैन।", "This is a routine forecast. It is not turned into a warning.")}</p>`;
       }
     }
