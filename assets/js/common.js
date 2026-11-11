@@ -152,7 +152,7 @@
     </div></div>`;
   document.body.append(drawer);
   /* Strip of sibling links at the top of a page, so pages in one area work like tabs of one section. */
-  (() => { const ar = areaOf(PAGE), main = document.getElementById("main"); if (!ar || !main || ar[3].length < 2 || PAGE === "map") return;
+  (() => { const ar = areaOf(PAGE), main = document.getElementById("main"); if (!ar || !main || ar[3].length < 2 || PAGE === "map" || PAGE === "stories") return;   /* the map and the full-screen Feed keep their own top bar */
     const nav = document.createElement("nav"); nav.className = "sibs"; nav.setAttribute("aria-label", ar[1] + " / " + ar[2]);
     nav.innerHTML = `<span class="sibs-t">${b(ar[1], ar[2])}</span>` + ar[3].map(([id, href, ne, en]) => `<a href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${b(ne, en)}</a>`).join("");
     main.prepend(nav); const cur = nav.querySelector("[aria-current]"); if (cur && cur.offsetLeft + cur.offsetWidth > nav.clientWidth) nav.scrollLeft = cur.offsetLeft - 60; })();
