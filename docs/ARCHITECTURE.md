@@ -54,6 +54,7 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 
 - `ci/poll.yml` is held and is not installed. It would run `scripts/poll.py` at :05 and :35 UTC and commit when a source changed. Leave it uninstalled until that is wanted.
 - `.github/workflows/cap.yml` validates CAP files on push, pull request, manual run, and daily. It has `contents: read` and does not commit.
+- `.github/workflows/dhm-watch.yml` runs every 2 hours UTC and on manual dispatch. It only reads DHM page ids and compares them with `data/weather.json`. A newer id is written to the job summary and the job fails. It has `contents: read` and does not commit.
 - `data/raw` is an archive: never delete (see data/raw/README.md).
 
 ## Data split (item 3)

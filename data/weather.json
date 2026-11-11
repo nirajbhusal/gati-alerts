@@ -103,5 +103,12 @@
    "night_to_c": 11,
    "day_rain_pct": 20
   }
+ },
+ "dhm_ids": {
+  "recent": "12419",
+  "special": "12405",
+  "warning": "12419",
+  "nowcast": "11690",
+  "country_forecast": "1469"
  }
 }
