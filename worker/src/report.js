@@ -9,7 +9,7 @@ export const MAX_PHOTO_BYTES = 600 * 1024;
 const MIN_FILL_MS = 4000;
 
 const DEV = "०१२३४५६७८९";
-const ascii = (s) => String(s).replace(/[०-९]/g, (d) => DEV.indexOf(d));
+const ascii = (s) => String(s).replace(/[०-९]/g, (d) => String(DEV.indexOf(d)));
 
 /* Remove contact details and anything that could notify or mislead on GitHub. */
 export function scrub(s) {

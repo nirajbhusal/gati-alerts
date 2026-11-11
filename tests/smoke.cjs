@@ -31,7 +31,8 @@ function pages() {
   const stop = () => { try { server.kill(); } catch (e) {} };
   process.on("exit", stop);
   await new Promise((r) => setTimeout(r, 1200));
-  const browser = await chromium.launch();
+  /* SMOKE_CHROMIUM=/path/to/chromium uses a browser that is already installed instead of Playwright's download */
+  const browser = await chromium.launch(process.env.SMOKE_CHROMIUM ? { executablePath: process.env.SMOKE_CHROMIUM } : {});
   const list = pages(), problems = [];
   for (const lang of ["ne", "en"]) {
     const ctx = await browser.newContext({ serviceWorkers: "block", viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });

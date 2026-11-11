@@ -23,14 +23,14 @@
   const HZS = { flood: ["flood"], landslide: ["landslide"], weather: ["flood", "landslide"], earthquake: ["earthquake"], glof: ["glof"], lightning: ["lightning"], cold: ["coldwave"], fire: ["fire"] };
   /* ---- input ---- */
   const inp = document.getElementById("afinput");
-  let curTab = "d";
+  let curTab = "d", tab = () => {};   /* set in buildInput(); render() below also switches tabs */
   function buildInput() {
   inp.innerHTML = `${G.affect.radiusUI(G.affect.getR())}<div class="aftabs" role="tablist">${[["d", "जिल्ला", "District"], ["loc", "मेरो स्थान", "Locate me"], ["r", "मार्ग", "Route"]].map(([k, ne, en], i) => `<button type="button" role="tab" data-t="${k}" aria-selected="${i === 0}">${T(ne, en)}</button>`).join("")}</div>
     <div class="afpane" data-p="d"><select id="afd" aria-label="${T("जिल्ला", "District")}"><option value="">${T("जिल्ला छान्नुहोस्", "Choose a district")}</option>${DG ? DG.features.slice().sort((a, b) => T(a.properties.ne, a.properties.en).localeCompare(T(b.properties.ne, b.properties.en))).map((f) => `<option value="${f.id}">${E(T(f.properties.ne, f.properties.en))}</option>`).join("") : ""}</select></div>
     <div class="afpane" data-p="loc" hidden><button type="button" class="afbtn" id="afloc">⌖ ${T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location")}</button><p class="meta">${T("स्थान यही उपकरणमा मात्र प्रयोग हुन्छ; कतै पठाइँदैन।", "Your location is used only on this device; nothing is sent.")}</p></div>
     <div class="afpane" data-p="r" hidden><select id="afr" aria-label="${T("मार्ग", "Route")}"><option value="">${T("मार्ग छान्नुहोस्", "Choose a route")}</option>${RD ? RD.routes.map((r) => `<option value="${r.id}">${E(T(r.name_ne, r.name_en))}</option>`).join("") : ""}</select></div>`;
   G.affect.bindRadius(inp, () => { const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); render(q); });
-  const tab = (k) => { curTab = k; inp.querySelectorAll("[data-t]").forEach((b) => b.setAttribute("aria-selected", b.dataset.t === k)); inp.querySelectorAll(".afpane").forEach((p) => (p.hidden = p.dataset.p !== k)); };
+  tab = (k) => { curTab = k; inp.querySelectorAll("[data-t]").forEach((b) => b.setAttribute("aria-selected", b.dataset.t === k)); inp.querySelectorAll(".afpane").forEach((p) => (p.hidden = p.dataset.p !== k)); };
   inp.querySelectorAll("[data-t]").forEach((b) => (b.onclick = () => tab(b.dataset.t)));
   inp.querySelector("#afd").onchange = (e) => e.target.value && go({ d: e.target.value });
   inp.querySelector("#afr").onchange = (e) => e.target.value && go({ r: e.target.value });

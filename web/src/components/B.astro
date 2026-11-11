@@ -1,0 +1,5 @@
+---
+/* One piece of text in both languages. The site's stylesheet shows the span that matches the chosen language. */
+const { ne, en } = Astro.props;
+---
+<span class="ne-only" set:html={ne} /><span class="en-only" set:html={en} />

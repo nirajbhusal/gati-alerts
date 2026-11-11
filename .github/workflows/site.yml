@@ -43,17 +43,25 @@ jobs:
         run: |
           python -m unittest discover scripts/tests
           cd worker && npm test
-      - name: Install the test browser
+      - name: Install development tools
         run: |
-          cd tests && npm install --no-save --no-audit --no-fund playwright
-          npx playwright install --with-deps chromium
+          (cd tests && npm ci --no-audit --no-fund)
+          (cd web && npm ci --no-audit --no-fund)
+      - name: Lint the site scripts for real mistakes (undefined names, duplicate keys, unreachable code)
+        run: cd tests && npm run lint
+      - name: Type-check the Worker
+        run: cd tests && npm run types
+      - name: Pages built from templates match the repository
+        run: cd web && npm run check
+      - name: Install the test browser
+        run: cd tests && npx playwright install --with-deps chromium
       - name: Every page loads in Nepali and English without a script error
         run: node tests/smoke.cjs
       - name: Assemble the site
         if: github.event_name != 'pull_request' && vars.PAGES_VIA_ACTIONS == 'true'
         run: |
           mkdir _site
-          rsync -a --exclude .git --exclude .github --exclude _site --exclude node_modules --exclude __pycache__ --exclude tests ./ _site/
+          rsync -a --exclude .git --exclude .github --exclude _site --exclude node_modules --exclude __pycache__ --exclude tests --exclude web ./ _site/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request' && vars.PAGES_VIA_ACTIONS == 'true'

@@ -18,7 +18,7 @@ let dataCache = { t: 0, D: null };
 async function loadData(env, fetcher = fetch) {
   if (dataCache.D && Date.now() - dataCache.t < 120000) return dataCache.D;
   const out = {};
-  await Promise.all(FILES.map(async (f) => { try { const r = await fetcher(env.DATA_BASE + f, { cf: { cacheTtl: 60 } }); if (r.ok) out[f] = await r.json(); } catch (e) {} }));
+  await Promise.all(FILES.map(async (f) => { try { const r = await fetcher(env.DATA_BASE + f, /** @type {any} */ ({ cf: { cacheTtl: 60 } })); if (r.ok) out[f] = await r.json(); } catch (e) {} }));
   dataCache = { t: Date.now(), D: out };
   return out;
 }

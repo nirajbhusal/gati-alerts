@@ -1,0 +1,16 @@
+{
+  "name": "gati-tests",
+  "private": true,
+  "description": "Development-only tools for Gati: browser smoke test, lint and type checks. Nothing here is shipped to the site.",
+  "scripts": {
+    "smoke": "node smoke.cjs",
+    "lint": "cd .. && tests/node_modules/.bin/eslint --config tests/eslint.config.mjs assets/js sw.js worker/src",
+    "types": "tsc -p ../worker/jsconfig.json"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "playwright": "^1.48.0",
+    "typescript": "^5.6.0"
+  }
+}
