@@ -46,7 +46,7 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 
 ## Source registry and health
 
-- `data/sources.json`: one entry per upstream source (`id, agency{ne,en}, url, feedType, pollMinutes, hazards[], trustDefault, contact, status`). Planned sources have `status: "planned"` and `url: null`.
+- `data/sources.json`: one entry per upstream source (`id, agency{ne,en}, url, feedType, pollMinutes, hazards[], trustDefault, contact, status`). Planned sources have `status: "planned"` and `url: null`. Listed sources have `status: "listed"`: they are supplementary references, not polled and not ingested. `trustDefault` may be `Model` for model data, which is not an official warning. DHM remains Nepal's only official weather warning voice.
 - `data/source-health.json`: `lastSuccess`, `lastChecked` and `lastResult` per source, updated by `python3 scripts/check_sources.py`. That script fetches each URL once; a timeout is recorded, never fatal.
 - Status shown on `/sources/` and on the dashboard flag: planned; down (no success yet); stale (last success older than 3x pollMinutes, or the latest check failed); ok.
 

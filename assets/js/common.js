@@ -341,7 +341,8 @@
   G.roadLegend = (counts) => `<p class="rdleg">${["open", "oneway", "blocked", "none"].map((k) => `<span><i class="rdsw rd-${k}"></i>${G.lang === "ne" ? G.ROADST[k][0] : G.ROADST[k][1]}${counts ? ` <b>${G.num(String(counts[k] || 0))}</b>` : ""}</span>`).join("")}</p>`;
   G.SEVCOLOR = { Extreme: "#8E1B14", Severe: "#D93025", Moderate: "#F28C1E", Minor: "#F2C94C", Unknown: "#8F9BB3" };
   G.TRUST = { Official: ["आधिकारिक", "Official", "🛡"], Verified: ["प्रमाणित", "Verified", "✓"], Reported: ["रिपोर्ट गरिएको", "Reported", "❝"],
-              Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"] };
+              Unverified: ["पुष्टि नभएको", "Unverified", "◌"], Corrected: ["सच्याइएको", "Corrected", "✎"], Retracted: ["फिर्ता लिइएको", "Retracted", "✕"],
+              Model: ["मोडेल", "Model", "🧮"] };
   G.sevChip = (s) => { const v = G.SEV[s] || G.SEV.Unknown; return `<span class="sev sev-${G.SEV[s] ? s : "Unknown"}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>`; };
   G.trustChip = (t) => { const v = G.TRUST[t]; return v ? `<span class="trust t-${t}"><span aria-hidden="true">${v[2]}</span>${G.lang === "ne" ? v[0] : v[1]}</span>` : ""; };
   /* Routine forecast highlight only. A match is not a warning and never becomes a CAP alert. */
@@ -361,6 +362,7 @@
   G.verdictBadge = (k) => { const v = G.VERDICT[k] || G.VERDICT.no_info; return `<span class="vbadge v-${G.VERDICT[k] ? k : "no_info"}" style="--sc:${G.verdictColor(v[0])}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${v[3]}</svg>${G.lang === "ne" ? v[1] : v[2]}</span>`; };
   /* Source health: planned | ok | stale | down. Stale = last success older than 3x pollMinutes. */
   G.srcStatus = (src, h) => {
+    if (src.status === "listed") return "listed";
     if (src.status === "planned" || !src.url) return "planned";
     h = h || {};
     if (!h.lastSuccess) return "down";

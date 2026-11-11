@@ -204,7 +204,7 @@ table{border-collapse:collapse;width:100%;font-size:var(--fs-4)}td,th{border-bot
 .srct td{overflow-wrap:anywhere;word-break:normal}.srct td:first-child{width:42%}
 .sst{display:inline-block;padding:.1rem .5rem;border-radius:999px;font-size:var(--fs-5);font-weight:600;white-space:nowrap}
 .sst-ok{background:#E3F4EC;color:#0B6B3A}.sst-stale{background:#FFF4E5;color:#7A3E00}
-.sst-down{background:#FDE8E8;color:#9B1C1C}.sst-planned{background:#EEF1F5;color:#4A5568}
+.sst-down{background:#FDE8E8;color:#9B1C1C}.sst-planned,.sst-listed{background:#EEF1F5;color:#4A5568}
 @media (max-width:560px){.srct thead{display:none}.srct,.srct tbody,.srct tr,.srct td{display:block;width:100%}
 .srct tr{border-bottom:1px solid #E3E8EE;padding:.4rem 0}.srct td{border:0;padding:.15rem 0}}
 .vchain{font-size:var(--fs-5);margin:.5rem 0;padding:.45rem .6rem;border-left:3px solid #6b3fa0;background:#F6F2FB;border-radius:6px;line-height:1.6}
