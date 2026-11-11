@@ -547,3 +547,26 @@
   G.skyOn = () => { try { return localStorage.getItem("gati-sky") !== "off"; } catch (e) { return true; } };
   G.setSky = (on) => { try { if (on) localStorage.removeItem("gati-sky"); else localStorage.setItem("gati-sky", "off"); } catch (e) {} if (G.sky) G.sky.apply(); };
   const s = document.createElement("script"); s.src = G.root + "assets/js/sky.js"; s.defer = true; document.body.appendChild(s); })();
+
+/* Decorative rain for one Nepal day. TODO: delete this block after 11 Nov 2026.
+   RAIN_NPT is the only date. Asia/Kathmandu is UTC+5:45, so it stops at 00:00 NPT on 12 Nov. */
+(function () {
+  const RAIN_NPT = "2026-11-11";
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const npt = new Date(Date.now() + 345 * 60000);
+  const p = (n) => String(n).padStart(2, "0");
+  if (npt.getUTCFullYear() + "-" + p(npt.getUTCMonth() + 1) + "-" + p(npt.getUTCDate()) !== RAIN_NPT) return;
+  const layer = document.createElement("div");
+  layer.className = "rainday";
+  layer.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 26; i++) {
+    const drop = document.createElement("i");
+    drop.style.left = (i * 3.7 + (i % 5) * 1.3) + "%";
+    drop.style.animationDuration = (0.75 + (i % 7) * 0.08) + "s";
+    drop.style.animationDelay = (-(i % 9) * 0.13) + "s";
+    layer.appendChild(drop);
+  }
+  document.body.prepend(layer);
+  const left = ((23 - npt.getUTCHours()) * 3600 + (59 - npt.getUTCMinutes()) * 60 + (60 - npt.getUTCSeconds())) * 1000;
+  setTimeout(() => layer.remove(), Math.max(1000, left));
+})();

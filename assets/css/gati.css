@@ -1843,3 +1843,8 @@ a.wxsrc{display:inline-flex;align-items:center;min-height:44px;padding:0 10px 0 
 .wxflag svg{flex:none}
 .wxmore{margin:4px 0 8px}
 .wxmore summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-size:var(--r-label);font-weight:600}
+/* Decorative rain for one Nepal date. TODO: delete .rainday after 11 Nov 2026. */
+.rainday{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.rainday i{position:absolute;top:-14%;width:1px;height:16px;background:linear-gradient(to bottom, transparent, rgba(70,110,150,.35));animation:raindrop 1.05s linear infinite}
+@keyframes raindrop{to{transform:translateY(120vh)}}
+@media (prefers-reduced-motion: reduce){.rainday{display:none}}
