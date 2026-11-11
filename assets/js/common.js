@@ -274,6 +274,8 @@
   nav.addEventListener("click", (e) => { const a = e.target.closest("a[href]"); if (a && a.hash && a.pathname === location.pathname) closeNav(false); });
   header.querySelector("#langbtn").onclick = () => G.setLang(G.lang === "ne" ? "en" : "ne");
   G.setLang = (l) => { G.lang = l; localStorage.setItem("gati-lang", l); document.documentElement.lang = l; G.listeners.forEach((f) => f(l)); };
+  /* Regional interface language (Maithili, Bhojpuri, ...): loaded only when chosen, or on the settings page to offer it. */
+  try { if (localStorage.getItem("gati-locale") || PAGE === "me") addEventListener("DOMContentLoaded", () => { const s = document.createElement("script"); s.src = ROOT + "assets/js/locale.js"; document.body.appendChild(s); }); } catch (e) {}
   const save = (k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {} };
   G.toggleNum = () => {}; /* retired: numerals follow the language */
   G.setNum = () => {}; /* retired */

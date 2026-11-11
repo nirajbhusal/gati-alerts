@@ -1,0 +1,1 @@
+{"worker": "", "turnstileSiteKey": "", "note": "Set worker to the deployed Worker URL ending in /report (for example https://gati-ask.<account>.workers.dev/report) to let people send reports without a GitHub account. Empty means the form only offers the GitHub route. turnstileSiteKey is optional and only used if the Worker has TURNSTILE_SECRET set."}

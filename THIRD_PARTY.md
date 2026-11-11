@@ -23,6 +23,8 @@ The items below belong to others and keep their own terms.
 | USGS Earthquake Hazards Program | Supplementary earthquake data | US public domain |
 | GitHub | Hosting, citizen reports as issues | GitHub Terms of Service |
 | Cloudflare Workers and the Anthropic API | Optional "Ask Gati" question box (`worker/`) | The providers' terms. See the note below. |
+| Cloudflare Workers | Optional report intake without an account (`worker/`) | Cloudflare's terms |
+| Telegram, Viber, WhatsApp (Meta), an SMS gateway | Optional alert broadcast (`scripts/broadcast.py`) | Each provider's terms |
 
 ## Optional proprietary component
 

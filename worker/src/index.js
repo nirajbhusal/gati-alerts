@@ -1,5 +1,7 @@
-/* Ask Gati Worker: POST /ask {q} -> {answer, citations[]}. Key comes from the ANTHROPIC_API_KEY secret only. */
+/* Gati Worker. POST /ask {q} -> {answer, citations[]} (key: ANTHROPIC_API_KEY secret).
+   POST /report -> anonymous citizen report as a GitHub issue (key: GITHUB_TOKEN secret). See src/report.js. */
 import { TOOL, FILES, corsHeaders, validQuestion, buildItems, SYSTEM, userMessage, parseModel, isNepali } from "./lib.js";
+import { handleReport, handlePhoto } from "./report.js";
 
 const json = (o, status, h) => new Response(JSON.stringify(o), { status, headers: { "Content-Type": "application/json; charset=utf-8", ...(h || {}) } });
 const day = () => new Date(Date.now() + 345 * 60000).toISOString().slice(0, 10);
@@ -25,6 +27,9 @@ export async function handle(req, env, fetcher = fetch) {
   const origin = req.headers.get("Origin") || "", cors = corsHeaders(origin, env.ALLOWED_ORIGINS || "");
   const url = new URL(req.url);
   if (req.method === "OPTIONS") return cors ? new Response(null, { status: 204, headers: cors }) : new Response(null, { status: 403 });
+  const pm = /^\/report\/photo\/(\d{1,9})$/.exec(url.pathname);
+  if (pm && req.method === "GET") return handlePhoto(req, env, pm[1]);
+  if (url.pathname === "/report" && req.method === "POST") return cors ? handleReport(req, env, cors, bump, fetcher) : json({ error: "origin_not_allowed" }, 403);
   if (url.pathname !== "/ask" || req.method !== "POST") return json({ error: "not_found" }, 404, cors || {});
   if (!cors) return json({ error: "origin_not_allowed" }, 403);
   let body; try { body = await req.json(); } catch (e) { return json({ error: "bad_json" }, 400, cors); }

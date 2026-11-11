@@ -25,7 +25,7 @@
   }
   function display() {
     const box = $("me-display");
-    box.innerHTML = `<h3>${T("भाषा", "Language")}</h3>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang, T("भाषा", "Language"))}
+    box.innerHTML = `<h3>${T("भाषा", "Language")}</h3>${seg("lang", [["ne", "नेपाली"], ["en", "English"]], G.lang, T("भाषा", "Language"))}<div id="me-locale"></div>
       <h3>${T("रूप", "Theme")}</h3>${seg("theme", G.THEMES.map(([k, ne, en]) => [k, T(ne, en)]), G.themePref, T("रूप", "Theme"))}
       <h3>${T("आकाशको झल्को", "Sky look")}</h3>${seg("sky", [["on", T("खुला", "On")], ["off", T("बन्द", "Off")]], G.skyOn && !G.skyOn() ? "off" : "on", T("आकाशको झल्को", "Sky look"))}<p class="meta">${T("हेडर र मौसम कार्डमा समय र DHM मौसमअनुसार हल्का रङ। गम्भीर सूचना हुँदा आफैँ बन्द हुन्छ।", "A light tint in the header and weather card by time of day and DHM weather. Turns off by itself during a severe alert.")}</p>
       <h3>${T("अङ्क", "Numerals")}</h3><p class="meta">${T("अङ्क भाषासँगै बदलिन्छन्: नेपालीमा ०१२३, अङ्ग्रेजीमा 0123।", "Numerals follow the language: ०१२३ in Nepali, 0123 in English.")}</p>

@@ -25,7 +25,18 @@
   readHash();
   /* ---- map ---- */
   const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: [[25.5, 79], [31.2, 89]] }).fitBounds([[26.3, 80.0], [30.48, 88.2]]);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+  /* Offline base map: when background tiles cannot load, draw the district outlines Gati already keeps offline,
+     so alerts, rivers and roads still sit on a readable map. Tiles seen before come back from the service worker cache. */
+  let offBase = null, tileErr = 0, offNote = null;
+  const offlineBase = () => { if (offBase || !DIST) return;
+    map.createPane("offbase").style.zIndex = 150;   /* under the tile pane (200), so real tiles cover it when they load */
+    offBase = L.geoJSON(DIST, { pane: "offbase", interactive: false, style: { color: "#8a94a3", weight: 0.8, fillColor: "#e8ecf1", fillOpacity: 1 } }).addTo(map);
+    offNote = L.control({ position: "bottomleft" }); offNote.onAdd = () => { const d = L.DomUtil.create("div", "leaflet-control-attribution"); d.setAttribute("role", "status");
+      d.textContent = T("अफलाइन नक्सा: जिल्ला सिमाना मात्र", "Offline map: district outlines only"); return d; }; offNote.addTo(map); };
+  tiles.on("tileerror", () => { if (++tileErr >= 3 || !navigator.onLine) offlineBase(); });
+  tiles.on("tileload", () => { tileErr = 0; });
+  if (!navigator.onLine) offlineBase();
   L.control.scale({ imperial: false }).addTo(map);
   const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
   if (PROV) L.geoJSON(PROV, { style: { color: "#5f6670", weight: 1, opacity: 0.6, fill: false, dashArray: "4 4" }, interactive: false }).addTo(LG.prov);

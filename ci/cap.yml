@@ -1,5 +1,5 @@
 # Same workflow as .github/workflows/cap.yml. Validation only: no commit and no deploy.
-# ci/poll.yml stays in this folder and is not installed.
+# The poller now lives at .github/workflows/poll.yml and proposes changes as a pull request.
 name: Validate CAP
 on:
   push:

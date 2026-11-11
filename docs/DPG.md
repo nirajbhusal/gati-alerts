@@ -31,19 +31,14 @@ It is a self-assessment prepared for a registry application; it is not a certifi
 
 ## Known gaps
 
-- Reporting needs a GitHub account, which excludes many people. An anonymous intake is planned
-  (README, "Future backend option").
-- Agencies, districts, languages and helplines for Nepal are spread through the data files rather than held in
-  one country configuration, so a fork for another country needs manual changes.
+- Reporting without a GitHub account is built (`worker/`) but only works once the Worker is deployed and configured.
+- `data/country.json` now holds the country facts, but most pages still hard-code them, so a fork for another
+  country needs manual changes. See [FORKING.md](FORKING.md).
 - The policy files are in English only; a Nepali privacy page on the site is still to be written.
+- Maithili and Bhojpuri interface words are drafts awaiting native review; Tharu, Nepal Bhasa and Tamang need
+  translators. See [LANGUAGES.md](LANGUAGES.md).
 - "Gati" is a working name pending a trademark check.
 
 ## Adapting Gati for another country
 
-1. Fork the repository and choose your own name and logo.
-2. Replace `data/sources.json` with your mandated alerting agencies.
-3. Replace the district boundaries and codes in `data/districts.geojson` and `data/districts.json`.
-4. Translate the page text; every string has a first-language and an English version.
-5. Replace the emergency numbers and contacts.
-6. Publish your own privacy policy and legal position.
-7. Keep the core rule: relay official sources with source and time; never originate warnings.
+See [FORKING.md](FORKING.md) for the full list of what to change and where.
