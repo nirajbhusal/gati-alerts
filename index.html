@@ -1,9 +1,9 @@
 <!doctype html><html lang="ne"><head>
 <meta charset="utf-8"><script>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="en"?"en":"ne"}catch(e){document.documentElement.lang="ne"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
 <script>/* The home page is the default view on every device; the Feed is one tap away and is never opened automatically. Old ?home=1, ?view=dashboard and index.html links still work and are cleaned from the address bar. */
-(function(){try{var q=new URLSearchParams(location.search),v=localStorage.getItem("gati-view"),cl=false,p=location.pathname;
-if(q.has("home")){sessionStorage.setItem("gati-home","1");q.delete("home");cl=true;}
-if(q.get("view")==="dashboard"){localStorage.setItem("gati-view","dashboard");q.delete("view");cl=true;}
+(function(){try{var q=new URLSearchParams(location.search),cl=false,p=location.pathname;
+if(q.has("home")){q.delete("home");cl=true;}
+if(q.get("view")==="dashboard"){q.delete("view");cl=true;}
 if(/\/index\.html$/.test(p)){p=p.replace(/index\.html$/,"");cl=true;}
 if(cl){var s=q.toString();history.replaceState(null,"",p+(s?"?"+s:"")+location.hash);}
 }catch(e){}})();</script>
@@ -67,5 +67,5 @@ document.body.appendChild(d);setTimeout(function(){d.remove()},1100);})();</scri
 </main>
 <script src="assets/js/bs.js"></script><script src="assets/js/common.js"></script><script src="assets/js/dash.js"></script>
 <script src="./assets/vendor/leaflet/leaflet.js"></script>
-<script src="assets/js/district.js"></script><script src="assets/js/nearby.js"></script><script src="assets/js/home.js"></script><script src="assets/js/homemap.js"></script><script src="assets/js/homeinfo.js"></script><script src="assets/js/dashslider.js"></script><script src="assets/js/affectcore.js"></script><script src="assets/js/todaycard.js"></script><script src="assets/js/watch.js"></script><script src="assets/js/services.js"></script>
+<script src="assets/js/district.js"></script><script src="assets/js/nearby.js"></script><script src="assets/js/home.js"></script><script src="assets/js/homemap.js"></script><script src="assets/js/homeinfo.js"></script><script src="assets/js/affectcore.js"></script><script src="assets/js/todaycard.js"></script><script src="assets/js/watch.js"></script><script src="assets/js/services.js"></script>
 </body></html>

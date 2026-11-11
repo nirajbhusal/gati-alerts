@@ -6,7 +6,7 @@
   const G = (window.Gati = { root: ROOT, lang: saved === "en" ? "en" : "ne", /* Nepali is the default for a first visit; a saved gati-lang wins */ listeners: [] });
   document.documentElement.lang = G.lang;
   /* country:begin (written by scripts/country.py from data/country.json; edit that file, not this block) */
-  G.country = {"code":"NP","name":{"ne":"नेपाल","en":"Nepal"},"project":{"name":{"ne":"गति","en":"Gati"},"identifierPrefix":"np.gati"},"site":"https://nirajbhusal.github.io/gati-alerts/","repository":"nirajbhusal/gati-alerts","languages":{"primary":"ne","secondary":"en","regional":["mai","bho","new","the","taj"]},"timezone":{"name":"Asia/Kathmandu","offsetMinutes":345,"label":"NPT"},"map":{"bounds":[[26.3,80.0],[30.48,88.2]],"maxBounds":[[25.5,79],[31.2,89]],"center":[28.2,84.1],"zoom":6},"adminLevels":{"district":{"geocode":"NP-DISTRICT","file":"data/districts.json","geometry":"data/districts.geojson"}},"helplines":[{"number":"100","ne":"प्रहरी","en":"Police"},{"number":"101","ne":"दमकल","en":"Fire"},{"number":"102","ne":"एम्बुलेन्स","en":"Ambulance"},{"number":"1234","ne":"विपद्","en":"Disaster"}],"law":{"ne":"विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४","en":"Disaster Risk Reduction and Management Act 2074 (2017)"},"sources":"data/sources.json"};
+  G.country = {"code":"NP","name":{"ne":"नेपाल","en":"Nepal"},"project":{"name":{"ne":"गति","en":"Gati"},"identifierPrefix":"np.gati"},"site":"https://nirajbhusal.github.io/gati-alerts/","repository":"nirajbhusal/gati-alerts","languages":{"primary":"ne","secondary":"en","regional":["mai","bho","new","the","taj"]},"timezone":{"name":"Asia/Kathmandu","offsetMinutes":345,"label":"NPT"},"map":{"bounds":[[26.3,80.0],[30.48,88.2]],"maxBounds":[[25.5,79],[31.2,89]],"center":[28.2,84.1],"zoom":6},"adminLevels":{"district":{"geocode":"NP-DISTRICT","file":"data/districts.json","geometry":"data/districts.geojson"}},"helplines":[{"number":"100","ne":"प्रहरी","en":"Police"},{"number":"101","ne":"दमकल","en":"Fire"},{"number":"102","ne":"एम्बुलेन्स","en":"Ambulance"},{"number":"1234","ne":"विपद्","en":"Disaster"}],"law":{"ne":"विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४","en":"Disaster Risk Reduction and Management Act 2074 (2017)"},"channels":{"telegram":"https://t.me/gatialerts"},"sources":"data/sources.json"};
   /* country:end */
   /* Derived from the country facts: time zone offset, and the helpline links used in the footer and on pages. */
   G.tzMs = G.country.timezone.offsetMinutes * 60000;
@@ -187,6 +187,7 @@
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
       · <a href="${ROOT}report/">${b("रिपोर्ट गर्नुहोस्", "Report")}</a> · <a href="${ROOT}reports/">${b("नागरिक रिपोर्ट", "Reports")}</a>
       · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">Lite</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
+      ${G.country.channels && G.country.channels.telegram ? `· <a href="${G.country.channels.telegram}" rel="noopener">Telegram</a>` : ""}
       · <a href="${ROOT}atom.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
@@ -197,10 +198,8 @@
   document.body.prepend(header); document.body.classList.add("ghdr");
   /* Date block: below the pinned bar, scrolls away with the page so it never covers content */
   if (document.body.dataset.page !== "embed") { const gd = document.createElement("div"); gd.className = "gdatebar"; gd.innerHTML = `<p class="gdate" id="gdate" aria-live="off"><span class="gbs">&nbsp;</span><span class="gsub">&nbsp;</span></p>`; header.after(gd); }
-  /* Home taps: remember for this session so the phone Feed redirect is skipped, without ?home=1 in the address bar */
-  document.addEventListener("click", (e) => { const a = e.target.closest && e.target.closest("a[href]"); if (!a) return; try { const hp = new URL(ROOT || "./", location.href).pathname; if (a.pathname === hp || a.pathname === hp + "index.html") sessionStorage.setItem("gati-home", "1"); } catch (x) {} }, true);
   /* Clean address bar: drop a trailing index.html and leftover ?home or empty query */
-  try { const u = new URL(location.href); let ch = false; if (/\/index\.html$/.test(u.pathname)) { u.pathname = u.pathname.replace(/index\.html$/, ""); ch = true; } if (u.searchParams.has("home")) { sessionStorage.setItem("gati-home", "1"); u.searchParams.delete("home"); ch = true; } if (location.href.endsWith("?") || (u.search === "" && location.search !== "")) ch = true; if (ch) history.replaceState(history.state, "", u.pathname + u.search + u.hash); } catch (x) {}
+  try { const u = new URL(location.href); let ch = false; if (/\/index\.html$/.test(u.pathname)) { u.pathname = u.pathname.replace(/index\.html$/, ""); ch = true; } if (u.searchParams.has("home")) { u.searchParams.delete("home"); ch = true; } if (location.href.endsWith("?") || (u.search === "" && location.search !== "")) ch = true; if (ch) history.replaceState(history.state, "", u.pathname + u.search + u.hash); } catch (x) {}
   /* Breaking: official, active, issued in the last 24h, severity Moderate or higher. Dismissible per alert. */
   const brk = document.createElement("div"); brk.className = "breaking"; brk.hidden = true; (document.querySelector(".gdatebar") || header).after(brk);
   /* Fix sweep: paint the last Breaking bar from this browser's cache straight away, so content below does not jump when the fresh one arrives */
@@ -340,7 +339,7 @@
   G.notifPrefs = () => { let p = {}; try { p = JSON.parse(localStorage.getItem(NP) || "{}"); } catch (e) {} return { hz: p.hz || [], min: p.min || "Unknown", qf: p.qf || "", qt: p.qt || "", local: !!p.local, nation: p.nation !== false, snd: p.snd !== false, vib: p.vib !== false }; };
   const savePrefs = (p) => { try { localStorage.setItem(NP, JSON.stringify(p)); } catch (e) {} };
   const followed = () => { let w = {}; try { w = JSON.parse(localStorage.getItem("gati-watch") || "{}"); } catch (e) {} const d = (w.d || []).slice(), m = G.district && G.district.get && G.district.get(); if (m && !d.includes(m)) d.unshift(m); return d; };
-  const nptMin = () => { const d = new Date(Date.now() + 345 * 6e4); return d.getUTCHours() * 60 + d.getUTCMinutes(); };
+  const nptMin = () => { const d = new Date(Date.now() + G.tzMs); return d.getUTCHours() * 60 + d.getUTCMinutes(); };
   const hm = (s) => { const m = /^(\d\d):(\d\d)$/.exec(s || ""); return m ? +m[1] * 60 + +m[2] : -1; };
   G.inQuiet = (p) => { const f = hm(p.qf), t = hm(p.qt), n = nptMin(); if (f < 0 || t < 0 || f === t) return false; return f < t ? n >= f && n < t : n >= f || n < t; };
   G.inbox = async () => { const p = G.notifPrefs(), D = followed(); let al = [];

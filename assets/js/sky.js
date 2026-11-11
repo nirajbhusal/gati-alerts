@@ -4,7 +4,7 @@
 (function () {
   const G = window.Gati; if (!G || G.sky) return;
   const Q = new URLSearchParams(location.search), H = document.documentElement;
-  const nptHour = () => { const t = new Date(Date.now() + 345 * 6e4); return t.getUTCHours() + t.getUTCMinutes() / 60; };
+  const nptHour = () => { const t = new Date(Date.now() + G.tzMs); return t.getUTCHours() + t.getUTCMinutes() / 60; };
   const phaseOf = (h) => (h >= 5 && h < 7 ? "dawn" : h >= 7 && h < 17 ? "day" : h >= 17 && h < 19 ? "dusk" : "night");
   const PH = ["dawn", "day", "dusk", "night"];
   const S = { phase: "day", wx: "clear", on: true };
@@ -22,7 +22,7 @@
   /* Caption on the weather card: mood, source and time, e.g. "आकाशको झल्को: बदली · DHM, बिहान ८:००". Gati relays DHM, it issues nothing. */
   const T = (ne, en) => (G.lang === "ne" ? ne : en);
   const WXL = { clear: ["सफा", "clear"], cloudy: ["बदली", "cloudy"], rain: ["वर्षा", "rain"], fog: ["हुस्सु, कुहिरो", "mist or fog"] };
-  function hm(iso) { const t = new Date(Date.parse(iso) + 345 * 6e4), h = t.getUTCHours(), m = String(t.getUTCMinutes()).padStart(2, "0"), h12 = h % 12 || 12;
+  function hm(iso) { const t = new Date(Date.parse(iso) + G.tzMs), h = t.getUTCHours(), m = String(t.getUTCMinutes()).padStart(2, "0"), h12 = h % 12 || 12;
     return G.lang === "ne" ? `${h < 4 ? "राति" : h < 12 ? "बिहान" : h < 17 ? "दिउँसो" : h < 20 ? "साँझ" : "राति"} ${G.num(h12 + ":" + m)}` : `${h12}:${m} ${h < 12 ? "AM" : "PM"}`; }
   function caption(el) {
     let c = el.querySelector(":scope > .skycap");
@@ -52,7 +52,7 @@
   const PROV = { koshi: /koshi/, madhesh: /madhesh/, bagmati: /bagmati/, gandaki: /gandaki/, lumbini: /lumbini/, karnali: /karnali/, sudurpaschim: /sudurpa(s|sh)c?him|far.?west/ };
   function moodOf(WX, D, h) {
     const b5 = WX && WX.bulletin5; if (!b5 || !b5.days || !b5.days.length) return null;
-    const ad = new Date(Date.now() + 345 * 6e4).toISOString().slice(0, 10), day = b5.days.find((d) => d.ad === ad);
+    const ad = new Date(Date.now() + G.tzMs).toISOString().slice(0, 10), day = b5.days.find((d) => d.ad === ad);
     if (!day) return null;
     const name = D.en.toLowerCase(), terai = TERAI.includes(D.id), valley = VALLEY.includes(D.id), morn = h < 11 || h >= 19;
     const rank = { clear: 0, cloudy: 1, fog: 2, rain: 3 }; let best = "clear", src = { t: b5.issued, k: "bulletin" };
@@ -91,7 +91,7 @@
     const al = (DATA.AL && DATA.AL.alerts) || [];
     const hit = al.some((a) => (a.severity === "Severe" || a.severity === "Extreme") && !a.expired && !a.supersededBy && Date.parse(a.expires) > now
       && (!code || !(a.districts && a.districts.length) || a.districts.includes(code)));
-    const b5 = DATA.WX && DATA.WX.bulletin5, ad = new Date(now + 345 * 6e4).toISOString().slice(0, 10);
+    const b5 = DATA.WX && DATA.WX.bulletin5, ad = new Date(now + G.tzMs).toISOString().slice(0, 10);
     const d = b5 && b5.days && b5.days.find((x) => x.ad === ad);
     return hit || !!(d && d.level === "red");
   }

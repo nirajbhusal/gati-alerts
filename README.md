@@ -58,7 +58,7 @@ python -m http.server 8000        # open http://localhost:8000/
 3. To correct or retract, publish a **new** message with `msgType` `Update` or `Cancel` and `<references>`; never edit history silently. See [docs/CAP.md](docs/CAP.md).
 4. Open a PR. CI fails if the file is not valid CAP 1.2 or breaks the Gati profile.
 
-## Citizen reports (no backend)
+## Citizen reports
 
 GitHub Pages is static, so reports use a sanctioned, free route that needs no new accounts or secrets on our side:
 the `/report/` page builds a **prefilled GitHub issue-form URL** (`issues/new?template=report.yml&…`). The reporter

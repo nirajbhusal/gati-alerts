@@ -5,8 +5,6 @@
   const G = window.Gati, b = G.b, esc = G.esc, R = G.root, SITE = G.country.site;
   const feed = document.getElementById("feed"), sheet = document.getElementById("sheet"), sb = document.getElementById("sheetbody");
   const dash = document.getElementById("stdash");
-  try { localStorage.setItem("gati-view", "stories"); } catch (e) {}
-  dash.onclick = () => { try { localStorage.setItem("gati-view", "dashboard"); } catch (e) {} };
   const T = (ne, en) => (G.lang === "ne" ? ne : en);
   const SR = { Extreme: 0, Severe: 1, Moderate: 2, Minor: 3, Unknown: 4 };
   const MT = { Alert: ["मूल सूचना", "Original"], Update: ["अद्यावधिक", "Update"], Cancel: ["रद्द", "Cancel"] };
@@ -148,7 +146,7 @@
   const VK = "gati-feed-view", vb = document.getElementById("fview");
   let compact = (() => { try { return localStorage.getItem(VK) === "list"; } catch (e) { return false; } })();
   vb.onclick = () => { compact = !compact; try { localStorage.setItem(VK, compact ? "list" : ""); } catch (e) {} draw(); };
-  const dayKey = (t) => new Date(Date.parse(t) + 345 * 6e4).toISOString().slice(0, 10);
+  const dayKey = (t) => new Date(Date.parse(t) + G.tzMs).toISOString().slice(0, 10);
   const MN = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"], WN = ["आइत", "सोम", "मङ्गल", "बुध", "बिहि", "शुक्र", "शनि"];
   const dayLab = (k) => { const d = new Date(k + "T12:00:00Z"); if (G.lang === "ne") return `${WN[d.getUTCDay()]}, ${MN[d.getUTCMonth()]} ${G.num(String(d.getUTCDate()))}, ${G.num(String(d.getUTCFullYear()))}`;
     return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); };
