@@ -56,9 +56,9 @@
     let info = null; try { info = await G.json("data/offline/basemap.json"); } catch (e) {}
     if (!info || !info.bytes) return;
     const mb = G.num(String(Math.round(info.bytes / 1e6)));
-    const ctl = L.control({ position: "topleft" });
+    const ctl = L.control({ position: "topright" });
     ctl.onAdd = () => { const d = L.DomUtil.create("div", "leaflet-bar"), b = L.DomUtil.create("button", "", d); b.type = "button"; b.id = "offmapbtn";
-      b.style.cssText = "background:var(--card,#fff);color:inherit;border:0;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer;border-radius:4px;max-width:210px;text-align:left";
+      d.className = "mxoffc"; b.className = "mxoffb";
       L.DomEvent.disableClickPropagation(d);
       const paint = async (busy) => { const has = await offmapSaved();
         b.textContent = busy || (has ? "✓ " + T("अफलाइन नक्सा सुरक्षित छ · हटाउनुहोस्", "Offline map saved · remove") : "⬇ " + T(`अफलाइन नक्सा राख्नुहोस् (${mb} MB)`, `Save offline map (${mb} MB)`));
@@ -148,7 +148,7 @@
     if (on("hos")) hos.forEach((p) => L.circleMarker([p[0], p[1]], { radius: 3.5, color: "#fff", weight: 1, fillColor: "#5f6670", fillOpacity: 1 }).bindTooltip(E(p[2] || T("अस्पताल", "Hospital"))).addTo(LG.hos));
     if (on("heli")) heli.forEach((p) => L.marker([p[0], p[1]], { icon: L.divIcon({ className: "mxheli", html: "H", iconSize: [16, 16] }) }).bindTooltip(E(p[2] || "Helipad")).addTo(LG.heli));
     /* labels */
-    if (on("lab")) { if (PROV) PROV.features.forEach((f) => L.marker(f.properties.label, { icon: L.divIcon({ className: "mxlab prov", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab));
+    if (on("lab")) { if (PROV) PROV.features.forEach((f) => L.marker(f.properties.label, { icon: L.divIcon({ className: "mxlab prov", html: E(T(f.properties.ne, f.properties.en).replace(/ (Province|प्रदेश)$/, "")), iconSize: null }), interactive: false }).addTo(LG.lab));
       if (DIST && map.getZoom() >= 8) DIST.features.forEach((f) => { const c = L.geoJSON(f).getBounds().getCenter(); L.marker(c, { icon: L.divIcon({ className: "mxlab", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab); }); }
     /* focus outline */
     if (focusF) L.geoJSON(focusF, { style: { color: "#0B1424", weight: 2.5, fill: false }, interactive: false }).addTo(LG.focus);

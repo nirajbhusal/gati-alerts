@@ -77,9 +77,20 @@
     const note = `<p class="meta hmnote">${T("हरेक जिल्लाको रङ: त्यस जिल्लालाई नाम लिएर जारी सक्रिय आधिकारिक सूचनामध्ये सबैभन्दा गम्भीर। देशव्यापी सूचना तल छुट्टै। जिल्लामा थिच्नुहोस्।", "Each district shows the most severe active official alert that names it. Nationwide notices are listed separately below. Tap a district.")}${day ? " " + E(T("कात्तिक " + N(S.ar.days.find((x) => x.ad === day).bs), "Kartik " + S.ar.days.find((x) => x.ad === day).bs + " (" + Number(day.slice(8)) + " Oct)")) : ""}</p>`;
     const none = !any && !nat.length && !icA ? `<p class="hmnone"><svg class="hmnoi" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>${cat === "all" ? T("सक्रिय आधिकारिक सूचना छैन", "No active alerts") : T("यो प्रकारको सक्रिय आधिकारिक सूचना छैन", "No active official alerts in this category")}</p>` : "";
     if (none && !cxtxt) { box.innerHTML = `${head}${none}${slider}`; bind(); return; }
-    box.innerHTML = `${head}${none}${slider}<div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg">${dist}${ic.join("")}</svg></div>${leg}${cxtxt}${note}
+    /* beside the map: what is active right now, and the districts named, most severe first */
+    const cnt = {}; L.forEach((x) => x.ds.forEach((c) => (cnt[c] = (cnt[c] || 0) + 1)));
+    const named = Object.keys(top).sort((a, b) => (RK[top[b]] || 0) - (RK[top[a]] || 0) || cnt[b] - cnt[a]);
+    const fname = (c) => { const f = S.dg.features.find((x) => x.properties.code === c); return f ? T(f.properties.ne, f.properties.en) : c; };
+    const nRoad = ic.slice(0, icA).filter((x) => x.includes("hmr")).length;
+    const stat = (n, ne, en, k) => `<div class="hmst${n ? " " + k : ""}"><b>${N(n)}</b><span>${T(ne, en)}</span></div>`;
+    const stats = `<div class="hmstats">${stat(named.length, "सूचना भएका जिल्ला", "Districts with alerts", "a")}${cat === "all" || cat === "road" ? stat(nRoad, "सडक अवरुद्ध", "Roads blocked", "r") : ""}${cat === "all" || cat === "flood" ? stat(hot.length, "नदी चेतावनी तहमा", "Rivers at warning", "v") : ""}${stat(nat.length, "देशव्यापी सूचना", "Nationwide notices", "n")}</div>`;
+    const dlist = named.length ? `<ul class="hmdl">${named.slice(0, 8).map((c) => `<li><button type="button" data-c="${c}"${sel === c ? ' aria-pressed="true"' : ""}><i class="s-${top[c]}"></i><span>${E(fname(c))}</span><em>${E(T(G.SEV[top[c]][0], G.SEV[top[c]][1]))}${cnt[c] > 1 ? " · " + N(cnt[c]) : ""}</em></button></li>`).join("")}</ul>${named.length > 8 ? `<p class="meta">${T("र अरू " + N(named.length - 8) + " जिल्ला। नक्सामा हेर्नुहोस्।", "and " + (named.length - 8) + " more districts. See the map.")}</p>` : ""}` : `<p class="hmcalm">${T("कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन।", "No district is named in an active official alert.")}</p>`;
+    /* names on the map for the districts with alerts (largest screens only, set in CSS) */
+    const lab = named.slice(0, 10).map((c) => S.cen[c] ? `<text class="hmlab" x="${X(S.cen[c][0])}" y="${(+Y(S.cen[c][1]) - 13).toFixed(1)}">${E(fname(c))}</text>` : "").join("");
+    box.innerHTML = `${head}${none}${slider}<div class="hmgrid"><div class="hmmain"><div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
+      <aside class="hmside" aria-label="${E(T("अहिलेको सारांश", "Right now"))}"><h3>${T("अहिले", "Right now")}</h3>${stats}<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}<div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div></aside></div>${cxtxt}${note}
       ${nat.length ? `<details class="hmnat"${cat === "weather" ? " open" : ""}><summary>${T("देशव्यापी आधिकारिक सूचना", "Nationwide official notices")}: ${[...new Set(nat.map((x) => x.ag))].map((a) => `${E(a)} ${N(nat.filter((x) => x.ag === a).length)}`).join(" · ")}</summary>${list(nat)}</details>` : ""}
-      <div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div>`;
+`;
     bind();
   }
   function list(xs) { return `<ul class="hml">${xs.sort((a, b) => (RK[b.sev] || 0) - (RK[a.sev] || 0)).map((x) => `<li>${G.sevChip(x.sev)} ${G.trustChip("Official")} ${x.href ? `<a href="${x.href}">${E(x.head)}</a>` : E(x.head)}<br><span class="meta">${T("स्रोत", "Source")}: <a href="${E(x.web)}" target="_blank" rel="noopener">${E(x.ag)}</a> · ${G.npt(x.sent)}</span></li>`).join("")}</ul>`; }
@@ -95,6 +106,7 @@
     box.querySelectorAll(".hmcats button").forEach((b) => (b.onclick = () => { cat = b.dataset.k; draw(); }));
     box.querySelectorAll(".hmday button").forEach((b) => (b.onclick = () => { day = b.dataset.d; draw(); }));
     const pick = (c) => { sel = sel === c ? null : c; draw(); const sh = box.querySelector("#hmsheet"); if (sel && sh && sh.getBoundingClientRect().top > innerHeight - 80) sh.scrollIntoView({ behavior: "smooth", block: "nearest" }); };
+    box.querySelectorAll(".hmdl button").forEach((b) => (b.onclick = () => pick(b.dataset.c)));
     box.querySelectorAll(".hmd").forEach((p) => { p.onclick = () => pick(p.dataset.c); p.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(p.dataset.c); } }; });
     const x = box.querySelector(".hmx"); if (x) x.onclick = () => { sel = null; draw(); };
   }
