@@ -210,7 +210,13 @@
   if (["home", "alerts"].includes(document.body.dataset.page || "") && brk.hidden && !brk.innerHTML) { document.body.classList.add("brkwait"); setTimeout(() => document.body.classList.remove("brkwait"), 1500); }
   G.breaking = () => G.json("data/alerts.json").then((d) => { const now = Date.now(), SV = ["Moderate", "Severe", "Extreme"];
     G.alertById = Object.fromEntries(d.alerts.map((a) => [a.identifier, a]));
-    return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity))
+    /* "Breaking" means new, not re-sent. An event counts from its FIRST message, so a closure that an agency
+       reconfirms every morning does not return to the top each day. An update breaks again only when it raises
+       the severity above everything sent before it for that event. */
+    const RK = ["Unknown", "Minor", "Moderate", "Severe", "Extreme"];
+    const began = (a) => { const c = a.chain && a.chain[0] && Date.parse(a.chain[0].sent); return c && !isNaN(c) ? Math.min(c, Date.parse(a.sent)) : Date.parse(a.sent); };
+    const raised = (a) => { const prev = (a.chain || []).filter((c) => c.id !== a.identifier).map((c) => G.alertById[c.id]).filter(Boolean); return prev.length > 0 && prev.every((p) => RK.indexOf(p.severity) < RK.indexOf(a.severity)); };
+    return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity) && (now - began(a) < 864e5 || raised(a)))
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
   const dismissed = () => { try { return JSON.parse(sessionStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
   /* 'Am I affected?' chip: links to /affected/ prefilled with the alert's district(s) */
@@ -257,9 +263,11 @@
   /* Breaking bar only on Home and Alerts; dismissal lasts for this browser session, per alert identifier */
   const BRK_PAGES = ["home", "alerts"];
   const drawBreaking = () => !BRK_PAGES.includes(PAGE) ? Promise.resolve(brk.hidden = true) : G.breaking().then((L) => {
-    const dis = dismissed(), show = L.filter((a) => !dis.includes(a.identifier));
+    /* Closing the banner hides that event, including later updates to it, for the rest of the visit */
+    const rootOf = (a) => (a.chain && a.chain[0] && a.chain[0].id) || a.identifier;
+    const dis = dismissed(), show = L.filter((a) => !dis.includes(a.identifier) && !dis.includes(rootOf(a)));
     brk.hidden = !show.length; brk.innerHTML = show.length ? `<ul class="wrap" aria-label="${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking alerts"}">${show.map((a) => brkItem(a, true)).join("")}</ul>` : "";
-    brk.querySelectorAll(".brkx").forEach((x) => (x.onclick = () => { try { sessionStorage.setItem("gati-brk-dismissed", JSON.stringify([...dismissed(), x.dataset.id].slice(-100))); } catch (e) {} drawBreaking(); }));
+    brk.querySelectorAll(".brkx").forEach((x) => (x.onclick = () => { try { const hit = L.find((a) => a.identifier === x.dataset.id); sessionStorage.setItem("gati-brk-dismissed", JSON.stringify([...dismissed(), x.dataset.id, hit ? rootOf(hit) : x.dataset.id].slice(-100))); } catch (e) {} drawBreaking(); }));
     const list = document.getElementById("breakinglist"); if (list) list.innerHTML = `<h2>${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</h2>` + (L.length ? `<ul class="brklist">${L.map((a) => brkItem(a, false)).join("")}</ul>` : `<p class="meta">${G.lang === "ne" ? "पछिल्लो २४ घण्टामा मध्यम वा सोभन्दा माथिको चालु आधिकारिक चेतावनी छैन।" : "No active official alert of Moderate or higher severity issued in the last 24 hours."}</p>`);
     try { const bl = document.getElementById("breakinglist"); localStorage.setItem(BRK_KEY, JSON.stringify({ t: Date.now(), l: G.lang, h: brk.innerHTML, lh: bl ? bl.innerHTML : "" })); } catch (e) {}
   }).catch(() => { brk.hidden = true; }).then(() => document.body.classList.remove("brkwait"));
