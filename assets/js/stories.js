@@ -65,7 +65,7 @@
     return `<div class="fbg"></div>
       <div class="fmain">
         <div class="fhero">${art(a)}<div class="ftags">${G.sevChip(sev)}${status(a)}${G.roadOngoingChip(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div><span class="fpos" aria-label="${act ? T("चालु सूचनामध्ये", "Among active alerts") : T("पुरानो सूचना", "Past alert")}">${act ? `${G.num(String(k + 1))} / ${G.num(String(nAct()))}` : T("पुरानो", "Past")}</span></div>
-        <h2 title="${esc(i.headline)}">${esc(i.headline)}</h2>
+        <h2 title="${esc(i.headline)}">${esc(G.headline(a, i))}</h2>
         ${G.roadOngoingLine(a)}
         ${i.instruction ? `<p class="fins"><strong>${act ? T("के गर्ने", "What to do") : T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${esc(i.instruction)}</p>` : ""}
         <div class="fviz"><div class="fmini" data-k="${k}">${mini(a)}</div>
@@ -76,7 +76,7 @@
           </div></div>
       </div>
       <div class="flow" style="--sc:${G.SEVCOLOR[sev]}">
-        <p class="fsrcline">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(agency(i))} ↗</a> ${G.trustChip(a.trust)}</p>
+        <p class="fsrcline">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))} ↗</a> ${G.trustChip(a.trust)}</p>
         <details class="fsrc"><summary>${T("स्रोत विवरण", "Source")}</summary>
           ${areas ? `<p>📍 ${esc(areas)}</p>` : ""}${a.state ? `<p>${G.trustChip(a.state)}</p>` : ""}
           <p>${T("स्रोतको समय", "Source time")}: ${G.npt(srcTime(a, i))} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
@@ -154,9 +154,9 @@
     return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); };
   function row(a, k) { const i = a.info[G.lang] || a.info.ne, sev = G.SEV[a.severity] ? a.severity : "Unknown";
     return `<li class="frow${isActive(a) ? "" : " old"}" style="--sc:${G.SEVCOLOR[sev]}"><div class="ftags">${G.sevChip(sev)}${status(a)}${G.roadOngoingChip(a)}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div>
-      <a class="frh" href="${esc(url(a))}">${esc(i.headline)}</a>
+      <a class="frh" href="${esc(url(a))}">${esc(G.headline(a, i))}</a>
       ${G.roadOngoingLine(a)}
-      <p class="meta">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(agency(i))} ↗</a> ${G.trustChip(a.trust)}</p>
+      <p class="meta">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))} ↗</a> ${G.trustChip(a.trust)}</p>
       <p class="frb"><button type="button" class="fopt" data-act="share" data-k="${k}">${T("सेयर", "Share")}</button> <button type="button" class="fopt" data-act="follow" data-k="${k}">${T("जिल्ला पछ्याउनुहोस्", "Follow district")}</button> <button type="button" class="fopt" data-act="details" data-k="${k}">${T("विवरण", "Details")}</button></p></li>`; }
   function drawList() {
     feed.classList.add("flist"); let html = "", cur = "", sect = "";

@@ -29,6 +29,17 @@
     const hol = CAL ? CAL.entries.filter((e) => e.date_ad === ad) : [];
     const row = (k, href, label, body, meta, isStale) => `<a class="tdrow td-${k}${isStale ? " stale" : ""}" href="${R}${href}"><span class="tdk">${label}</span><span class="tdv">${body}</span><span class="tdm">${meta}</span></a>`;
     const rows = [];
+    /* DHM's own 24-hour forecast (official): the city line for Kathmandu and the country outlook. Thunder, lightning,
+       hail and snow words are marked so a forecast of them is not missed. This is DHM's forecast, not a Gati warning. */
+    const f24 = WX && WX.forecast24;
+    if (f24 && (f24.kathmandu || f24.country)) { const k = f24.kathmandu, c = f24.country, iss = (k || c).issued, st24 = stale(iss, 30);
+      const flag = (s) => /मेघगर्जन|चट्याङ|असिना|हिमपात|thunder|lightning|hail|snow/i.test(s || "");
+      const kd = k ? T(k.day_ne, k.day_en) : "", kn = k ? T(k.night_ne, k.night_en) : "", cd = c ? T(c.day_ne, c.day_en) : "";
+      const mark = flag(kd) || flag(kn) ? `<span class="tdflag" aria-hidden="true">⚡</span> ` : "";
+      const city = k ? `<span class="tdtxt td24"><b>${E(T(k.name_ne, k.name_en))}</b> · ${T("दिउँसो", "Day")}: ${mark}${E(kd)}${k.day_rain_pct != null ? ` (${T("वर्षा", "rain")} ${N(k.day_rain_pct)}%)` : ""} · ${T("राति", "Night")}: ${E(kn)}</span>` : "";
+      const land = cd ? `<span class="tdtxt td24c">${T("देशभर", "Country")}: ${E(cd)}</span>` : "";
+      rows.push(row("f24" + (flag(kd) || flag(kn) ? " tdwarn" : ""), "weather/", T("आजको पूर्वानुमान", "Today's forecast"), city + land,
+        `DHM · ${st24 ? LC() : ""}${G.npt(iss)} ${G.trustChip("Official")} <span class="tdsep">${T("यो DHM को पूर्वानुमान हो, चेतावनी होइन।", "This is DHM's forecast, not a warning.")}</span>`, st24)); }
     /* weather: DHM outlook, 5-day strip; temperature and rain chance from the Open-Meteo model for my district */
     const b5 = WX && WX.bulletin5;
     if (b5) { const td = b5.days.find((d) => d.ad === ad) || b5.days[0], st = stale(b5.issued, 30);
