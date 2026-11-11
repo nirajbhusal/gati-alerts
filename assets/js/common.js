@@ -6,7 +6,7 @@
   const G = (window.Gati = { root: ROOT, lang: saved === "en" ? "en" : "ne", /* Nepali is the default for a first visit; a saved gati-lang wins */ listeners: [] });
   document.documentElement.lang = G.lang;
   /* country:begin (written by scripts/country.py from data/country.json; edit that file, not this block) */
-  G.country = {"code":"NP","name":{"ne":"नेपाल","en":"Nepal"},"project":{"name":{"ne":"गति","en":"Gati"},"identifierPrefix":"np.gati"},"site":"https://nirajbhusal.github.io/gati-alerts/","repository":"nirajbhusal/gati-alerts","languages":{"primary":"ne","secondary":"en","regional":["mai","bho","new","the","taj"]},"timezone":{"name":"Asia/Kathmandu","offsetMinutes":345,"label":"NPT"},"map":{"bounds":[[26.3,80.0],[30.48,88.2]],"maxBounds":[[25.5,79],[31.2,89]],"center":[28.2,84.1],"zoom":6},"adminLevels":{"district":{"geocode":"NP-DISTRICT","file":"data/districts.json","geometry":"data/districts.geojson"}},"helplines":[{"number":"100","ne":"प्रहरी","en":"Police"},{"number":"101","ne":"दमकल","en":"Fire"},{"number":"102","ne":"एम्बुलेन्स","en":"Ambulance"},{"number":"1234","ne":"विपद्","en":"Disaster"}],"law":{"ne":"विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४","en":"Disaster Risk Reduction and Management Act 2074 (2017)"},"sources":"data/sources.json"};
+  G.country = {"code":"NP","name":{"ne":"नेपाल","en":"Nepal"},"project":{"name":{"ne":"गति","en":"Gati"},"identifierPrefix":"np.gati"},"site":"https://nirajbhusal.github.io/gati-alerts/","repository":"nirajbhusal/gati-alerts","languages":{"primary":"ne","secondary":"en","regional":["mai","bho","new","the","taj"]},"timezone":{"name":"Asia/Kathmandu","offsetMinutes":345,"label":"NPT"},"map":{"bounds":[[26.3,80.0],[30.48,88.2]],"maxBounds":[[25.5,79],[31.2,89]],"center":[28.2,84.1],"zoom":6},"adminLevels":{"district":{"geocode":"NP-DISTRICT","file":"data/districts.json","geometry":"data/districts.geojson"}},"helplines":[{"number":"100","ne":"प्रहरी","en":"Police"},{"number":"101","ne":"दमकल","en":"Fire"},{"number":"102","ne":"एम्बुलेन्स","en":"Ambulance"},{"number":"1234","ne":"विपद्","en":"Disaster"}],"law":{"ne":"विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४","en":"Disaster Risk Reduction and Management Act 2074 (2017)"},"channels":{"telegram":"https://t.me/gatialerts"},"sources":"data/sources.json"};
   /* country:end */
   /* Derived from the country facts: time zone offset, and the helpline links used in the footer and on pages. */
   G.tzMs = G.country.timezone.offsetMinutes * 60000;
@@ -187,6 +187,7 @@
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
       · <a href="${ROOT}report/">${b("रिपोर्ट गर्नुहोस्", "Report")}</a> · <a href="${ROOT}reports/">${b("नागरिक रिपोर्ट", "Reports")}</a>
       · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">Lite</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
+      ${G.country.channels && G.country.channels.telegram ? `· <a href="${G.country.channels.telegram}" rel="noopener">Telegram</a>` : ""}
       · <a href="${ROOT}atom.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
