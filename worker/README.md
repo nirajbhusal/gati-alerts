@@ -17,7 +17,7 @@ The Worker fetches Gati's live JSON, gives Claude a numbered list of official it
 Or copy worker/deploy-ask-worker.yml.example to .github/workflows/deploy-ask-worker.yml (needs a push with workflow scope) and run the manual Action "Deploy Ask Gati Worker" with repo secrets CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, ANTHROPIC_API_KEY (steps 2 and 5 still needed once).
 
 ## Settings (wrangler.toml [vars])
-MODEL (default claude-haiku-4-5), MAX_TOKENS, ALLOWED_ORIGINS, MAX_QUESTION_CHARS, PER_IP_PER_MIN, PER_IP_PER_DAY, DAILY_CAP.
+MODEL (default claude-haiku-5-5), MAX_TOKENS, ALLOWED_ORIGINS, MAX_QUESTION_CHARS, PER_IP_PER_MIN, PER_IP_PER_DAY, DAILY_CAP.
 
 ## Report intake (send without a GitHub account)
 

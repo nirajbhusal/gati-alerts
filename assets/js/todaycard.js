@@ -23,7 +23,7 @@
   const seg = (parts, cls = "") => `<span class="tdseg ${cls}">${parts.filter((p) => p.n).map((p) => `<i style="flex:${p.n};background:${p.c}" title="${E(p.l)}: ${N(p.n)}"><b>${N(p.n)}</b></i>`).join("")}</span>`;
   const key = (parts) => `<span class="tdkey">${parts.filter((p) => p.n).map((p) => `<span><i style="background:${p.c}"></i>${E(p.l)} ${N(p.n)}</span>`).join("")}</span>`;
   function draw() {
-    const t = new Date(now + 345 * 6e4), ad = t.toISOString().slice(0, 10), bs = window.BS ? BS.toBS(t.getUTCFullYear(), t.getUTCMonth() + 1, t.getUTCDate()) : null;
+    const t = new Date(now + G.tzMs), ad = t.toISOString().slice(0, 10), bs = window.BS ? BS.toBS(t.getUTCFullYear(), t.getUTCMonth() + 1, t.getUTCDate()) : null;
     const bsTxt = bs ? (G.lang === "ne" ? `${BS.MN[bs.m - 1]} ${G.num(String(bs.d))}, ${G.num(String(bs.y))}` : `${bs.d} ${BS.ME[bs.m - 1]} ${bs.y} BS`) : "";
     const adTxt = `${T(BS.WN[t.getUTCDay()], BS.WE[t.getUTCDay()])}, ${G.npt(new Date(now).toISOString()).split(" · ")[0]}`;
     const hol = CAL ? CAL.entries.filter((e) => e.date_ad === ad) : [];

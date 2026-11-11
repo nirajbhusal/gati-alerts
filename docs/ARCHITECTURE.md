@@ -38,7 +38,7 @@ instruction, web, params, areas[{desc, polygons[[[lat,lon]…]], circles[], geoc
 ## Why no backend
 
 Static hosting has no place to keep secrets. GitHub issue forms are free, moderated, auditable and need no new
-accounts for the project. See README "Future backend option" for the planned replacement.
+accounts for the project. The optional Worker in `worker/` adds reporting without a GitHub account; see README "Sending without a GitHub account".
 
 ## Privacy
 
