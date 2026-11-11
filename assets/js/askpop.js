@@ -242,6 +242,12 @@
     const lab = () => { btn.setAttribute("aria-label", T("छिटो कार्य: सोध्नुहोस्, खबर गर्नुहोस्, फोन", "Quick actions: ask, report, call")); if (dialOpen()) drawDial(); }; btn.innerHTML = ICON; lab(); G.onLang(lab);
     document.body.appendChild(btn); document.body.appendChild(dial); build(document.body);
     btn.onclick = () => (dialOpen() ? closeDial() : openDial());
+    /* On a phone the button sits over the content. It slides away while the page is being scrolled down and comes
+       back on scrolling up, at the top, or a moment after scrolling stops. */
+    let lastY = scrollY, idle = 0;
+    addEventListener("scroll", () => { const y = scrollY, down = y > lastY + 6, up = y < lastY - 6; if (!down && !up) return; lastY = y;
+      if (dialOpen() || !panel.hidden) return; btn.classList.toggle("away", down && y > 120);
+      clearTimeout(idle); idle = setTimeout(() => btn.classList.remove("away"), 1400); }, { passive: true });
     panel.addEventListener("keydown", (e) => {
       if (e.key === "Escape") { e.preventDefault(); close(); return; }
       if (e.key !== "Tab") return;

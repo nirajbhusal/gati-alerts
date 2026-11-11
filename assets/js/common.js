@@ -164,12 +164,12 @@
   /* Long lists show their first items with a "Show all" button. Any search or filter on the page, or a link to an
      item further down, opens the full list, so nothing can be hidden from a search. */
   (() => { const main = document.getElementById("main"); if (!main) return;
-    const RULES = [["#expired", 10], ["ol#updates", 8], ["ul.archive", 20], ["ul.hlist", 20], ["ol#log", 25]];
+    const RULES = [["#expired", 5], ["ol#updates", 8], ["ul.archive", 10], ["ul.hlist", 20], ["ol#log", 25], ["#srcHealth tbody", 12]];
     const setup = (box, n) => { if (box.dataset.pg) return; box.dataset.pg = n; box.classList.add("pgcut", "pg" + n);
       const btn = document.createElement("button"); btn.type = "button"; btn.className = "btn alt pgmore";
       const lab = () => { const extra = box.children.length - n; btn.hidden = extra <= 0 || !box.classList.contains("pgcut"); btn.innerHTML = b(`सबै देखाउनुहोस् (थप ${G.num ? G.num(String(extra)) : extra})`, `Show all (${extra} more)`); };
       const open = () => { box.classList.remove("pgcut"); btn.hidden = true; };
-      btn.onclick = open; box.after(btn); lab(); new MutationObserver(lab).observe(box, { childList: true });
+      btn.onclick = open; (box.tagName === "TBODY" ? box.closest("table") : box).after(btn); lab(); new MutationObserver(lab).observe(box, { childList: true });
       main.addEventListener("input", open); main.addEventListener("change", open);
       const jump = () => { try { const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1))); if (el && box.contains(el)) { open(); el.scrollIntoView(); } } catch (e) {} };
       addEventListener("hashchange", jump); jump(); };
