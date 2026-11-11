@@ -1,0 +1,74 @@
+# Builds the site from source and tests it in a browser on every change.
+#
+# Deploying from here is OFF until you switch it on, so merging this file changes nothing about how the site is
+# published today (GitHub Pages still serves the main branch). To publish from this workflow instead:
+#   1. Settings -> Pages -> Build and deployment -> Source: "GitHub Actions"
+#   2. Settings -> Secrets and variables -> Actions -> Variables -> new variable PAGES_VIA_ACTIONS = true
+# From then on every push to main is built, tested and deployed here, and a failed test stops the deploy.
+# See docs/BUILD.md.
+name: Build, test and deploy site
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install build tools
+        run: pip install -q lxml==5.3.0 pillow segno
+      - name: Build feeds and alert data from the CAP files
+        run: python scripts/build.py
+      - name: Render alert pages, share images, Lite page and calendar
+        run: python scripts/render.py
+      - name: Share tags on static pages
+        run: python scripts/social_meta.py
+      - name: Country facts are in sync
+        run: python scripts/country.py --check
+      - name: Unit tests
+        run: |
+          python -m unittest discover scripts/tests
+          cd worker && npm test
+      - name: Install the test browser
+        run: |
+          cd tests && npm install --no-save --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Every page loads in Nepali and English without a script error
+        run: node tests/smoke.cjs
+      - name: Assemble the site
+        if: github.event_name != 'pull_request' && vars.PAGES_VIA_ACTIONS == 'true'
+        run: |
+          mkdir _site
+          rsync -a --exclude .git --exclude .github --exclude _site --exclude node_modules --exclude __pycache__ --exclude tests ./ _site/
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && vars.PAGES_VIA_ACTIONS == 'true'
+        with:
+          path: _site
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.PAGES_VIA_ACTIONS == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -36,6 +36,7 @@ It is a parallel project to the verified [Rasuwa–Bhotekoshi bulletin](https://
 | `privacy/`, `*.ne.md` | Privacy page on the site in Nepali and English; Nepali versions of the policy files. |
 | `data/i18n/`, `assets/js/locale.js` | Regional interface languages over Nepali. See [docs/LANGUAGES.md](docs/LANGUAGES.md). |
 | `.github/ISSUE_TEMPLATE/report.yml` | Citizen report issue form |
+| `.github/workflows/site.yml`, `tests/smoke.cjs` | Builds the site from source and opens every page in a browser in both languages on each change. Can also publish the site. See [docs/BUILD.md](docs/BUILD.md). |
 | `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md), [DPG](docs/DPG.md), [BROADCAST](docs/BROADCAST.md), [FORKING](docs/FORKING.md), [LANGUAGES](docs/LANGUAGES.md) |
 
 > **CAP validation** runs from [`.github/workflows/cap.yml`](.github/workflows/cap.yml). It checks the CAP files and does not commit. Pages still publishes the `main` branch. [`poll.yml`](.github/workflows/poll.yml) proposes source changes as a pull request; a person reviews and merges. `feed.xml` and `data/alerts.json` are rebuilt locally with `scripts/build.py`.
