@@ -46,7 +46,7 @@
       ${perm !== "unsupported" ? `<label class="ftog"><input type="checkbox" id="ntsnd"${p.snd ? " checked" : ""}> ${L("आवाज", "Sound")}</label>${canVib ? ` <label class="ftog"><input type="checkbox" id="ntvib"${p.vib ? " checked" : ""}> ${L("कम्पन", "Vibration")}</label>` : ""}` : ""}
       <p class="meta" id="ntmsg" role="status"></p></section>
     <section class="ntc"><h3>${L("जिल्ला", "Districts")}</h3>
-      ${my ? `<p class="meta">${L("मेरो जिल्ला", "My district")}: <b>${E(dn(my))}</b> · <a href="${R}me/#place">${L("बदल्नुहोस्", "Change")}</a></p>` : ""}
+      ${my ? `<p class="meta">${L("मेरो जिल्ला", "My district")}: <b>${E(dn(my))}</b> · <a href="${R}me/#place">${L("बदल्नुहोस्", "Change")}</a></p>` : (G.district && G.district.open ? `<p><button type="button" class="btn" id="ntmy">📍 ${L("मेरो जिल्ला छान्नुहोस्", "Choose my district")}</button></p><p class="meta">${L("एउटै जिल्ला गृहपृष्ठ, 'के म प्रभावित छु?' र यहाँ प्रयोग हुन्छ। तल थप जिल्ला पनि राख्न सकिन्छ।", "One district is used on Home, in 'Am I affected?' and here. You can add more districts below.")}</p>` : "")}
       <div class="fopts">${D.map((c) => `<button type="button" class="fopt" aria-pressed="true" data-rm="${E(c)}" aria-label="${E(dn(c))}: ${L("हटाउनुहोस्", "remove")}">${E(dn(c))} ✕</button>`).join("")}</div>
       <p class="ntq"><label class="sr-only" for="ntadd">${L("जिल्ला थप्नुहोस्", "Add a district")}</label><select id="ntadd"><option value="">${L("जिल्ला थप्नुहोस्", "Add a district")}</option>${DL.filter((d) => !D.includes(d.code) && d.code !== my).map((d) => `<option value="${E(d.code)}">${E(L(d.ne, d.en))}</option>`).join("")}</select></p>
       <label class="ftog"><input type="checkbox" id="ntnat"${p.nation ? " checked" : ""}> ${L("देशभरका सूचना पनि", "Also nationwide alerts")}</label></section>
@@ -58,6 +58,7 @@
     <p class="meta">${L("सूचना पाउने अर्को तरिका", "Another way to get alerts")}: <a href="${R}atom.xml">CAP Atom feed</a> · <a href="${R}feed.xml">RSS</a></p>`;
     const all = () => Promise.all([list(), settings()]);
     const upd = (f) => { const q = G.notifPrefs(); f(q); G.saveNotifPrefs(q); all(); }, msg = (t) => { const m = $("ntmsg"); if (m) m.textContent = t; };
+    if ($("ntmy")) $("ntmy").onclick = () => G.district.open(() => all());
     box.querySelectorAll("[data-hz]").forEach((b) => (b.onclick = () => upd((q) => { const k = b.dataset.hz; q.hz = q.hz.includes(k) ? q.hz.filter((x) => x !== k) : q.hz.concat(k); })));
     box.querySelectorAll("[data-min]").forEach((b) => (b.onclick = () => upd((q) => (q.min = b.dataset.min))));
     box.querySelectorAll("[data-rm]").forEach((b) => (b.onclick = () => { const x = getW(); x.d = (x.d || []).filter((c) => c !== b.dataset.rm); setW(x); all(); }));

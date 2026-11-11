@@ -19,8 +19,8 @@
   }
   function alerts() {
     const box = $("me-alerts");
-    box.innerHTML = `<p>${T("सूचनाको सूची र सबै सूचना सेटिङ अब एउटै ठाउँमा छन्।", "The notification list and all notification settings are now in one place.")}</p>
-      <p><a class="btn" href="${R}notifications/">🔔 ${T("सूचना र नोटिफिकेसन खोल्नुहोस्", "Open Alerts & notifications")}</a></p>`;
+    box.innerHTML = `<div class="merow2"><span class="melab">🔔 ${T("सूचनाको सूची र सेटिङ", "Alert list and settings")}</span><b class="meval"></b><a href="${R}notifications/">${T("खोल्नुहोस्", "Open")}</a></div>
+      <p class="meta">${T("कुन जिल्ला, कस्तो खतरा र कति गम्भीर सूचना चाहिन्छ, त्यहीँ छान्नुहोस्। माथिको 'मेरो जिल्ला' त्यहाँ पनि लागू हुन्छ।", "Choose districts, hazard types and severity there. 'My district' above applies there too.")}</p>`;
     return Promise.resolve();
   }
   function display() {
