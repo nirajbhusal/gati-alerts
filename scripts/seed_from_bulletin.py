@@ -56,7 +56,7 @@ def area_xml(a, lang):
 CONTACT = {
  "DHM": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
  "NDRRMA": "NDRRMA · https://ndrrma.gov.np/",
- "NEOC": "NEOC, Ministry of Home Affairs · 1149 · neoc@moha.gov.np",
+ "NEOC": "NEOC, Ministry of Home Affairs · 1234 · neoc@moha.gov.np",
  "BIPAD": "BIPAD portal, NDRRMA · https://bipadportal.gov.np/",
  "POLICE": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
 }
