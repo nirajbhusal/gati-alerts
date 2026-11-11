@@ -95,11 +95,7 @@ const PROFILES = [["x", 400], ["linkedin", 400], ["facebook", 720], ["instagram"
 function card(bleed) {
   const W = 90 + bleed * 2, H = 54 + bleed * 2, p = 6 + bleed;
   const qr = fs.readFileSync(path.join(TMP, "..", "gati-qr.svg"), "utf8");
-  const PW = 27 + bleed; // width of the picture panel on the details side
-  const row = (k, v) => `<div style="display:flex;gap:1.6mm;align-items:baseline"><span style="width:5.6mm;font:700 4.6pt Sora;letter-spacing:.1em;color:${C.red}">${k}</span><span style="font-size:${PHONE ? 6.2 : 6.7}pt;line-height:1.25;color:${C.ink};font-weight:500">${v}</span></div>`;
-  /* the signal arcs, sent out by the QR code towards the contact details */
-  const waves = `<svg viewBox="0 0 68 120" style="height:13mm;width:7.4mm" fill="none" stroke="${C.red}" stroke-linecap="round" stroke-width="7">
-<path d="M8 44 A22 22 0 0 1 8 76"/><path d="M24 26 A46 46 0 0 1 24 94" opacity=".65"/><path d="M40 8 A70 70 0 0 1 40 112" opacity=".35"/></svg>`;
+  const row = (k, v) => `<div style="display:flex;gap:1.6mm;align-items:baseline"><span style="width:5.6mm;font:700 4.6pt Sora;letter-spacing:.1em;color:${C.slate}">${k}</span><span style="font-size:${PHONE ? 6.2 : 6.7}pt;line-height:1.25;color:${C.ink};font-weight:500">${v}</span></div>`;
   return `<style>${BASE}@page{size:${W}mm ${H}mm;margin:0}body{width:${W}mm}
 .side{width:${W}mm;height:${H}mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}</style>
 <div class="side" style="background:${C.red}">
@@ -112,27 +108,16 @@ function card(bleed) {
 <div class="ne" style="font-weight:700;font-size:6.6pt;line-height:1.3;color:#fff">सही सूचना,<br>सही समयमा ।</div>
 <div style="font-size:4.9pt;line-height:1.35;color:#C9D3DF;margin-top:.9mm">The right alert,<br>right on time.</div></div></div>
 <div class="side" style="background:#fff">
-<svg style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"><defs><pattern id="sc" width="5.2mm" height="2.6mm" patternUnits="userSpaceOnUse" viewBox="0 0 40 20">
-<g fill="none" stroke="${C.red}" stroke-width="1.5"><path d="M0 20 A20 20 0 0 1 40 20"/><path d="M7 20 A13 13 0 0 1 33 20"/><path d="M14 20 A6 6 0 0 1 26 20"/><path d="M-20 10 A20 20 0 0 1 20 10"/><path d="M-13 10 A13 13 0 0 1 13 10"/><path d="M-6 10 A6 6 0 0 1 6 10"/><path d="M20 10 A20 20 0 0 1 60 10"/><path d="M27 10 A13 13 0 0 1 53 10"/><path d="M34 10 A6 6 0 0 1 46 10"/></g></pattern></defs>
-<rect width="100%" height="100%" fill="url(#sc)" opacity=".09"/></svg>
-<div style="position:absolute;right:0;top:0;bottom:0;width:${PW}mm;background:${C.navy};overflow:hidden">
-<svg viewBox="0 0 320 600" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
-<g fill="#fff" opacity=".22">${[[38, 60], [92, 34], [150, 78], [214, 42], [276, 70], [60, 128], [250, 140], [296, 196], [26, 208], [120, 150]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.2"/>`).join("")}</g>
-<g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"><circle cx="196" cy="214" r="46" opacity=".5"/><circle cx="196" cy="214" r="82" opacity=".28"/><circle cx="196" cy="214" r="120" opacity=".14"/></g>
-<circle cx="196" cy="214" r="21" fill="${C.red}"/>
-<path d="M-10 372 L58 262 L104 318 L170 226 L236 322 L282 270 L340 352 L340 620 L-10 620Z" fill="#1B3A57"/>
-<path d="M170 226 L196 264 L180 258 L168 274 L154 256 L146 262Z M58 262 L78 286 L62 282 L50 296 L44 284Z M282 270 L300 296 L286 290 L274 300 L268 288Z" fill="#fff"/>
-<path d="M-10 420 L64 338 L128 396 L206 320 L270 388 L340 340 L340 620 L-10 620Z" fill="${C.teal}"/>
-<path d="M-10 470 L90 402 L176 452 L262 404 L340 450 L340 620 L-10 620Z" fill="${C.glacier}"/>
-<path d="M118 620 C150 560 96 520 150 470 C168 452 178 448 176 452 C150 500 196 548 176 620Z" fill="#fff" opacity=".85"/>
-</svg>
-<div style="position:absolute;left:50%;bottom:${bleed + 4.5}mm;margin-left:-7.2mm;width:14.4mm;height:14.4mm;background:#fff;border-radius:1.6mm;padding:1.2mm">${qr}</div></div>
-<div style="position:absolute;left:${p}mm;top:${p}mm;right:${PW + 4}mm;bottom:${p}mm;display:flex;flex-direction:column;justify-content:space-between">
-<div><div style="height:6mm;width:${6 * 1080 / 512}mm;margin-bottom:${PHONE ? 2.2 : 3.4}mm">${svg("gati-logo-horizontal")}</div>
-<div style="font:700 14.5pt/1 Sora;color:${C.navy};letter-spacing:-.03em;white-space:nowrap">Niraj Bhusal</div>
-<div style="display:flex;align-items:center;gap:1.6mm;margin-top:1.1mm"><span class="ne" style="font-size:7.6pt;font-weight:600;color:${C.slate};line-height:1.2">निरज भुसाल</span><span style="width:.25mm;height:2.8mm;background:${C.mist}"></span><span style="font-size:5.9pt;color:${C.ink};white-space:nowrap">Creator and maintainer, <span class="ne" style="font-weight:700">गति</span> <b>Gati</b></span></div>
-<div style="display:inline-flex;align-items:center;gap:1.2mm;margin-top:1.9mm;background:${C.navy};border-radius:9mm;padding:.85mm 2.5mm .85mm 2.1mm;font:600 5pt Sora;color:#fff;white-space:nowrap"><span style="color:${C.orange};font-size:6.3pt">★</span>Featured in GitHub Octoverse 2026</div></div>
-<div style="display:flex;flex-direction:column;gap:${PHONE ? 0.4 : 0.75}mm">${PHONE ? row("TEL", PHONE) : ""}${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("IN", "linkedin.com/in/nirajbhusal")}${row("GIT", "github.com/nirajbhusal")}</div></div></div>`;
+<div style="position:absolute;left:${p}mm;top:${p}mm;right:${p}mm;bottom:${p}mm;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;justify-content:space-between;align-items:flex-start">
+<div><div style="font:700 15pt/1 Sora;color:${C.navy};letter-spacing:-.03em;white-space:nowrap">Niraj Bhusal</div>
+<div class="ne" style="font-size:7.8pt;font-weight:600;color:${C.slate};line-height:1.2;margin-top:1.2mm">निरज भुसाल</div>
+<div style="font-size:6.1pt;color:${C.ink};margin-top:1.6mm">Creator and maintainer, <span class="ne" style="font-weight:700">गति</span> <b>Gati</b></div>
+<div style="font:600 5.1pt Sora;color:${C.slate};margin-top:1.1mm"><span style="color:${C.red}">★</span>&nbsp; Featured in GitHub Octoverse 2026</div></div>
+<div style="height:7mm;width:${7 * 1080 / 512}mm">${svg("gati-logo-horizontal")}</div></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-end">
+<div style="display:flex;flex-direction:column;gap:${PHONE ? 0.5 : 0.8}mm;border-left:.45mm solid ${C.red};padding-left:2.4mm">${PHONE ? row("TEL", PHONE) : ""}${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("IN", "linkedin.com/in/nirajbhusal")}${row("GIT", "github.com/nirajbhusal")}</div>
+<div style="width:13mm;height:13mm">${qr}</div></div></div></div>`;
 }
 
 /* ---------- brand guidelines ---------- */
