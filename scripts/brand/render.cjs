@@ -113,7 +113,7 @@ function card(bleed) {
 <div><div style="font:700 15pt/1 Sora;color:${C.navy};letter-spacing:-.03em;white-space:nowrap">Niraj Bhusal</div>
 <div class="ne" style="font-size:7.8pt;font-weight:600;color:${C.slate};line-height:1.2;margin-top:1.2mm">निरज भुसाल</div>
 <div style="font-size:6.1pt;color:${C.ink};margin-top:1.6mm">Creator and maintainer, <span class="ne" style="font-weight:700">गति</span> <b>Gati</b></div>
-<div style="font:600 5.1pt Sora;color:${C.slate};margin-top:1.1mm"><span style="color:${C.red}">★</span>&nbsp; Featured in GitHub Octoverse 2026</div></div>
+<div style="font:600 5.1pt Sora;color:${C.slate};margin-top:1.1mm"><span style="color:${C.red}">★</span>&nbsp; Top Open Source Project of the Year 2026 · GitHub Octoverse</div></div>
 <div style="height:7mm;width:${7 * 1080 / 512}mm">${svg("gati-logo-horizontal")}</div></div>
 <div style="display:flex;justify-content:space-between;align-items:flex-end">
 <div style="display:flex;flex-direction:column;gap:${PHONE ? 0.5 : 0.8}mm;border-left:.45mm solid ${C.red};padding-left:2.4mm">${PHONE ? row("TEL", PHONE) : ""}${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("IN", "linkedin.com/in/nirajbhusal")}${row("GIT", "github.com/nirajbhusal")}</div>
