@@ -26,7 +26,7 @@ It is a parallel project to the verified [Rasuwa–Bhotekoshi bulletin](https://
 | `feed.xml`, `data/alerts.json` | Generated Atom index and JSON mirror |
 | `schema/CAP-v1.2.xsd` | OASIS CAP 1.2 schema (unchanged copy) |
 | `scripts/build.py` | Validate (XSD + Gati profile) and regenerate feed/JSON |
-| `scripts/seed_from_bulletin.py`, `data/seed/` | One-off seeder used to create the first CAP files from bulletin data |
+| `scripts/seed_from_bulletin.py`, `data/seed/` | One-off seeder used to create the first CAP files from bulletin data. Old district outlines are kept in `data/archive/district-polygons.json`. |
 | `.github/workflows/cap.yml` | Daily and on-push CAP validation only. It does not commit or deploy. `ci/poll.yml` is held and is not installed. |
 | `.github/ISSUE_TEMPLATE/report.yml` | Citizen report issue form |
 | `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md) |
