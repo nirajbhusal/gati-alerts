@@ -166,7 +166,65 @@
       html += row(a, k); });
     feed.innerHTML = (html ? html + "</ul>" : "") + `<div class="fendl">${endCard(items.filter(isActive).length)}</div>`;
   }
+  /* ===== Two lanes, never mixed =====
+     Official: agency alerts from data/alerts.json (everything above).
+     Community: citizen reports a moderator has checked (GitHub issues labelled "verified"). Every community card
+     carries a fixed "not an official warning" band and its own colour, so it cannot be mistaken for an agency alert. */
+  const LK = "lane", laneBox = document.getElementById("flane"), mainEl = document.getElementById("main");
+  let lane = new URLSearchParams(location.search).get(LK) === "community" ? "community" : "official";
+  let CR = null, crFailed = false;
+  const REPO = G.country.repository;
+  const cparse = (body) => { const o = {}; (body || "").split(/^### /m).slice(1).forEach((s) => { const nl = s.indexOf("\n"), k = s.slice(0, nl).trim(); let v = s.slice(nl + 1).trim(); if (v === "_No response_") v = ""; o[k] = v.split("\n---")[0].trim(); }); return o; };
+  const cpick = (o, start) => { const k = Object.keys(o).find((x) => x.startsWith(start)); return k ? o[k] : ""; };
+  /* Defence in depth: never show contact details even if someone typed them into the public text. */
+  const cscrub = (s) => String(s || "").replace(/[\w.+-]+@[\w-]+\.[\w.]+/g, "[…]").replace(/(\+?977[-\s]?)?\b9[678]\d{8}\b/g, "[…]").replace(/\b\d[\d\s-]{8,}\d\b/g, "[…]").replace(/!\[[^\]]*\]\([^)]*\)|<img[^>]*>/g, "").replace(/https?:\/\/\S+/g, "");
+  const CBAND = () => `<p class="cband" role="note">${T("समुदायको रिपोर्ट · आधिकारिक चेतावनी होइन", "Community report · not an official warning")}</p>`;
+  function ccard(i, n, total) {
+    const o = cparse(i.body), corrected = i.labels.some((l) => l.name.toLowerCase() === "corrected");
+    const hz = cscrub(cpick(o, "जोखिम")).split(" / ")[G.lang === "ne" ? 0 : 1] || "";
+    const dist = cscrub(cpick(o, "जिल्ला")).split(" / ")[G.lang === "ne" ? 0 : 1] || cscrub(cpick(o, "जिल्ला"));
+    const where = [cpick(o, "ठाउँ"), cpick(o, "नगर"), cpick(o, "वडा") && T("वडा ", "Ward ") + cpick(o, "वडा")].filter(Boolean).map(cscrub).join(", ");
+    const head = [hz, dist].filter(Boolean).join(" · ") || cscrub(i.title.replace(/^\[Report\]\s*/, ""));
+    return `<section class="fcard comm" style="--sc:#0F7C86" aria-label="${G.num(String(n))} / ${G.num(String(total))}">
+      <div class="fmain">${CBAND()}
+        <div class="fhero"><div class="ftags">${G.trustChip(corrected ? "Corrected" : "Verified")}<span class="tag">${T("मोडेरेटरले जाँचेको", "Checked by a moderator")}</span></div><span class="fpos">${G.num(String(n))} / ${G.num(String(total))}</span></div>
+        <h2>${esc(head)}</h2>
+        ${where ? `<p class="cwhere">📍 ${esc(where)}</p>` : ""}
+        <p class="cdesc">${esc(cscrub(cpick(o, "के देख्नुभयो")).slice(0, 420))}</p>
+        <p class="meta">🕒 ${T("देखेको", "Observed")}: ${esc(cpick(o, "देखेको").replace(/[^0-9:\- NPTnpt]/g, "").slice(0, 24))} · ${T("पठाएको", "Sent")}: ${G.npt(i.created_at)}</p>
+        <p class="cnote">${T("एक नागरिकले देखेको कुरा हो। निर्णय लिनुअघि आधिकारिक सूचना हेर्नुहोस्; आपत्कालमा १०० वा १२३४ मा फोन गर्नुहोस्।", "This is what one citizen saw. Check official notices before acting; in an emergency call 100 or 1234.")}</p>
+      </div>
+      <div class="rail">
+        <button type="button" data-cact="share" data-u="${esc(i.html_url)}" data-t="${esc(head)}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button>
+        <a href="${esc(i.html_url)}" target="_blank" rel="noopener"><span aria-hidden="true">≡</span>${T("पूरा रिपोर्ट", "Full report")}</a>
+      </div></section>`;
+  }
+  const cend = (n) => `<section class="fcard comm fendc" style="--sc:#0F7C86"><div class="fmain fend">${CBAND()}
+      <h2>${crFailed ? T("समुदायका रिपोर्ट अहिले ल्याउन सकिएन", "Community reports could not be loaded right now") : n ? T("जाँचिएका रिपोर्ट सबै हेरिसक्नुभयो", "You have seen all checked reports") : T("अहिले जाँचिएको कुनै समुदाय रिपोर्ट छैन", "No checked community reports right now")}</h2>
+      <p>${T("यहाँ मोडेरेटरले जाँचेका नागरिक रिपोर्ट मात्र देखिन्छन्। जाँच नभएका रिपोर्ट देखाइँदैनन्।", "Only citizen reports a moderator has checked appear here. Unchecked reports are not shown.")}</p>
+      <p><a class="btn" href="${R}report/">${T("खतराबारे खबर गर्नुहोस्", "Report a hazard")}</a></p>
+      <p><a href="${R}reports/">${T("नागरिक रिपोर्ट पेज", "Citizen reports page")}</a> · <a href="${R}about/#trust">${T("गतिले कसरी जाँच्छ", "How Gati checks")}</a></p>
+      <p class="fdisc">${T("आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "In an emergency call 100, 101, 102 or 1234.")}</p></div></section>`;
+  function drawCommunity() {
+    feed.classList.remove("flist"); chips.hidden = true;
+    if (CR === null && !crFailed) { feed.innerHTML = `<section class="fcard comm fendc" style="--sc:#0F7C86"><div class="fmain fend">${CBAND()}<p>…</p></div></section>`;
+      G.gh(`https://api.github.com/repos/${REPO}/issues?state=all&per_page=30&labels=verified`, { headers: { Accept: "application/vnd.github+json" } })
+        .then((L) => { CR = (L || []).filter((i) => !i.pull_request && !i.labels.some((l) => l.name.toLowerCase() === "retracted")).sort((a, b) => b.created_at.localeCompare(a.created_at)); })
+        .catch(() => { crFailed = true; CR = []; }).then(() => { if (lane === "community") drawCommunity(); });
+      return; }
+    feed.innerHTML = CR.map((i, k) => ccard(i, k + 1, CR.length)).join("") + cend(CR.length); feed.scrollTop = 0;
+  }
+  function drawLane() {
+    laneBox.innerHTML = [["official", T("आधिकारिक", "Official")], ["community", T("समुदाय", "Community")]].map(([k, l]) => `<button type="button" data-lane="${k}" aria-pressed="${k === lane}">${l}</button>`).join("");
+    mainEl.classList.toggle("lane-comm", lane === "community");
+  }
+  laneBox.addEventListener("click", (e) => { const b = e.target.closest("[data-lane]"); if (!b || b.dataset.lane === lane) return; lane = b.dataset.lane;
+    try { const u = new URL(location.href); lane === "community" ? u.searchParams.set(LK, "community") : u.searchParams.delete(LK); history.replaceState(null, "", u.pathname + u.search + u.hash); } catch (x) {}
+    draw(); if (lane === "official") feed.scrollTop = 0; });
+  feed.addEventListener("click", (e) => { const s = e.target.closest("[data-cact=share]"); if (s) G.share({ url: s.dataset.u, title: s.dataset.t, text: T("समुदायको रिपोर्ट (आधिकारिक चेतावनी होइन): ", "Community report (not an official warning): ") + s.dataset.t }); });
   function draw() {
+    drawLane();
+    if (lane === "community") return drawCommunity();
     vb.textContent = compact ? T("कार्ड", "Cards") : T("सूची", "List"); vb.title = compact ? T("कार्ड दृश्य", "Card view") : T("सूची दृश्य", "List view"); vb.setAttribute("aria-pressed", compact);
     dash.textContent = T("ड्यासबोर्ड", "Dashboard");
     if (compact) return drawList();
@@ -190,7 +248,7 @@
   let lock = 0;
   feed.addEventListener("wheel", (e) => { if (compact || Math.abs(e.deltaY) < 4) return; e.preventDefault(); const n = Date.now(); if (n - lock < 600) return; lock = n; go(e.deltaY > 0 ? 1 : -1); }, { passive: false });
   const dp = document.getElementById("fdist");
-  const dpDraw = () => { const c = G.district.get(); (c ? G.district.name(c) : Promise.resolve("")).then((n) => (dp.innerHTML = `📍 <b>${n ? esc(n) : T("मेरो जिल्ला", "My district")}</b> ▾`)); };
+  const dpDraw = () => { const c = G.district.get(); (c ? G.district.name(c) : Promise.resolve("")).then((n) => { dp.innerHTML = `📍 <b>${n ? esc(n) : T("मेरो जिल्ला", "My district")}</b> ▾`; dp.setAttribute("aria-label", T("मेरो जिल्ला", "My district") + (n ? ": " + n : "")); dp.title = n || T("मेरो जिल्ला छान्नुहोस्", "Choose my district"); }); };
   dp.onclick = () => G.district.open(() => location.reload());
   dpDraw(); G.onLang(dpDraw);
   G.json("data/alerts.json").then((d) => {

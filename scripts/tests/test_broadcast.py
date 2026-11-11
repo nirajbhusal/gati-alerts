@@ -120,5 +120,25 @@ class Senders(unittest.TestCase):
         self.assertEqual(seen[-1][1]["to"], "9800000001,9800000002"); self.assertFalse(seen[-1][3])
 
 
+class TestMessage(unittest.TestCase):
+    def test_test_message_is_labelled_and_only_for_chat_channels(self):
+        seen, out = [], []
+        def post(url, data=None, headers=None, as_json=True, timeout=20):
+            seen.append((url, data)); return 200, '{"ok":true,"status":0}'
+        old = dict(os.environ); os.environ.update({"TELEGRAM_BOT_TOKEN": "T", "TELEGRAM_CHAT_ID": "@gatialerts", "VIBER_AUTH_TOKEN": "V", "VIBER_FROM": "a=="})
+        try:
+            self.assertTrue(B.send_test(["telegram", "viber", "sms", "whatsapp"], post=post, log=out.append))
+        finally:
+            os.environ.clear(); os.environ.update(old)
+        self.assertEqual(len(seen), 2)
+        self.assertEqual(seen[0][1]["chat_id"], "@gatialerts")
+        for _, d in seen:
+            self.assertIn("Test message", d["text"]); self.assertIn("not an alert", d["text"])
+        self.assertTrue(any("sms: test not sent" in x for x in out))
+
+    def test_test_does_not_need_or_touch_state(self):
+        self.assertEqual(B.main(["--test", "--channels", "telegram", "--state", "/nonexistent/x.json"]), 1)   # not configured -> 1, no crash
+
+
 if __name__ == "__main__":
     unittest.main()

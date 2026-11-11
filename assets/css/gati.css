@@ -1930,3 +1930,30 @@ html[data-theme=dark] .aqdi{box-shadow:0 6px 18px rgba(0,0,0,.55)}
 @keyframes aqdin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.aqdi{animation:none}}
 @media print{.aqdial{display:none}}
+
+/* ===== Feed lanes: Official and Community are separate streams ===== */
+.flane{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);overflow:hidden;margin-right:auto;pointer-events:auto}
+.flane button{min-height:44px;padding:4px 11px;border:0;background:transparent;color:var(--slate);font:inherit;font-size:var(--fs-5);font-weight:600;cursor:pointer;white-space:nowrap}
+.flane button[aria-pressed=true]{background:var(--ink);color:var(--surface)}
+.flane button[data-lane=community][aria-pressed=true]{background:#0F7C86;color:#fff}
+.flane button:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.storypage .ftop{justify-content:space-between}
+/* Official-only controls are hidden in the community lane */
+.lane-comm #fdist,.lane-comm #ffilt,.lane-comm #fview,.lane-comm #fchips{display:none!important}
+/* Keep the top bar on one line on a phone: the district pill shows its pin and a short name */
+@media (max-width:480px){.storypage .ftop .dpick b{display:inline-block;max-width:58px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}.storypage .ftop .ftr .stbtn,.storypage .ftop .ftr .dpick{padding:4px 8px}}
+/* Community cards: their own colour and a fixed band on every card */
+.cband{margin:0 0 10px;padding:8px 12px;border-radius:10px;background:#0F7C86;color:#fff;font-size:var(--fs-5);font-weight:700;text-align:center}
+.fcard.comm .fmain h2{-webkit-line-clamp:3}
+.fcard.comm .cwhere{margin:.2em 0;font-weight:600}
+.fcard.comm .cdesc{margin:.5em 0;font-size:var(--fs-4);line-height:1.5;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden}
+.fcard.comm .cnote{margin:.6em 0 0;padding:8px 10px;border-left:3px solid #0F7C86;background:var(--surface2);border-radius:0 8px 8px 0;font-size:var(--fs-5);color:var(--slate)}
+.fcard.comm .rail a{color:var(--ink)!important;text-decoration:none}
+.storypage .ftop .flane button{background:transparent!important;color:var(--slate)!important;border:0!important}
+.storypage .ftop .flane button[aria-pressed=true]{background:var(--ink)!important;color:var(--surface)!important}
+.storypage .ftop .flane button[data-lane=community][aria-pressed=true]{background:#0F7C86!important;color:#fff!important}
+.fcard.comm .rail a{text-decoration:none!important}
+.storypage .ftop .flane{flex:none}
+.storypage .ftop .ftr{min-width:0;flex-shrink:1}
+/* On a phone the district pill is the pin alone; its name is in the button's label for screen readers */
+@media (max-width:480px){.storypage .ftop .dpick b{display:none!important}.storypage .ftop .flane button{padding:4px 9px}}

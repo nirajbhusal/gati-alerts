@@ -65,7 +65,12 @@ python scripts/broadcast.py --dry-run                     # print what would be 
 python -m unittest discover scripts/tests                 # tests
 ```
 
-Then run the "Broadcast alerts" workflow by hand once from the Actions tab. The first run only records a baseline.
+Then, in the Actions tab, open "Broadcast alerts" and press "Run workflow":
+
+1. **Test first.** Tick the "test" box and run. It posts one message labelled "Test message" to Telegram and Viber and
+   changes nothing else. If it fails, the bot is not an administrator of the channel, or a secret is wrong.
+2. **Then a normal run** (box unticked). The first normal run only records a baseline and sends nothing. From then on
+   each new official alert is posted once.
 
 ## Where the record is kept
 

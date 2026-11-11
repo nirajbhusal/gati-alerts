@@ -16,6 +16,7 @@ Usage:
   python scripts/broadcast.py                    # send to every channel that has its secrets set
   python scripts/broadcast.py --channels telegram,viber
   python scripts/broadcast.py --count            # how many sends are due (used by the workflow)
+  python scripts/broadcast.py --test --channels telegram   # post one labelled test message; changes no state
 
 Standard library only. See docs/BROADCAST.md.
 """
@@ -145,19 +146,42 @@ def recipients(var):
     return [x.strip() for x in os.environ.get(var, "").replace("\n", ",").split(",") if x.strip()]
 
 
-def send_telegram(alert, post=http_post):
+def send_telegram(alert, post=http_post, text=None):
     token, chat = os.environ["TELEGRAM_BOT_TOKEN"], os.environ["TELEGRAM_CHAT_ID"]
     code, body = post(f"https://api.telegram.org/bot{token}/sendMessage",
-                      {"chat_id": chat, "text": format_long(alert)[:4096], "disable_web_page_preview": True})
+                      {"chat_id": chat, "text": (text or format_long(alert))[:4096], "disable_web_page_preview": True})
     return code == 200 and '"ok":true' in body.replace(" ", "")
 
 
-def send_viber(alert, post=http_post):
+def send_viber(alert, post=http_post, text=None):
     """Viber Channels Post API. VIBER_FROM is the channel super admin's user id (from get_account_info)."""
     code, body = post("https://chatapi.viber.com/pa/post",
-                      {"from": os.environ["VIBER_FROM"], "type": "text", "text": format_long(alert)[:7000]},
+                      {"from": os.environ["VIBER_FROM"], "type": "text", "text": (text or format_long(alert))[:7000]},
                       headers={"X-Viber-Auth-Token": os.environ["VIBER_AUTH_TOKEN"]})
     return code == 200 and '"status":0' in body.replace(" ", "")
+
+
+TEST_TEXT = ("🧪 परीक्षण सन्देश / Test message\n\n"
+             "यो गतिको च्यानल जडान जाँच्ने परीक्षण मात्र हो। यो कुनै सूचना वा चेतावनी होइन।\n"
+             "This only checks that Gati's channel connection works. It is not an alert or a warning.\n\n")
+
+
+def send_test(channels, post=http_post, log=print):
+    """Post one clearly labelled test message to the chat channels. WhatsApp and SMS are left out on purpose:
+    they reach people's phones, and a WhatsApp template can only carry an approved alert layout."""
+    ok_all = True
+    for ch in channels:
+        if ch not in ("telegram", "viber"):
+            log(f"{ch}: test not sent (only Telegram and Viber take test messages)")
+            continue
+        try:
+            ok = {"telegram": send_telegram, "viber": send_viber}[ch](None, post=post, text=TEST_TEXT + site_base())
+        except Exception as e:
+            ok = False
+            log(f"{ch}: error {type(e).__name__}")
+        log(f"{ch}: test {'sent' if ok else 'FAILED'}")
+        ok_all = ok_all and ok
+    return ok_all
 
 
 def send_whatsapp(alert, post=http_post):
@@ -250,10 +274,20 @@ def main(argv=None):
     ap.add_argument("--state", default=str(STATE))
     ap.add_argument("--now", default="", help="ISO time override, for testing")
     ap.add_argument("--count", action="store_true", help="print how many sends (or first-run baselines) are due, then exit")
+    ap.add_argument("--test", action="store_true", help="post one labelled test message to Telegram/Viber and exit; changes no state")
     args = ap.parse_args(argv)
     now = parse_time(args.now) if args.now else datetime.now(timezone.utc)
     if now.tzinfo is None:
         now = now.replace(tzinfo=timezone.utc)
+    if args.test:
+        want = [c for c in args.channels.split(",") if c] or ["telegram", "viber"]
+        ready = [c for c in want if c in CHANNELS and configured(c)]
+        for c in want:
+            if c not in ready:
+                print(f"{c}: not configured, skipped")
+        if not ready:
+            return 1
+        return 0 if send_test(ready) else 1
     data = load_json(args.alerts)
     if not data or "alerts" not in data:
         print("No alerts file; nothing to do.")

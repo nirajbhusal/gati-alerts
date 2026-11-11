@@ -113,6 +113,6 @@ The full brand kit, with logo downloads and usage rules, is on the [About page](
 Gati is named in the opening of GitHub's [Octoverse 2026](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/)
 report (28 October 2026). This is a mention, not an endorsement.
 
-Maintainer: Niraj Bhusal ([X](https://x.com/nirajbhusal), [LinkedIn](https://www.linkedin.com/in/niraj)). Corrections and hazard reports go through GitHub (see Citizen reports above). Emergencies: 100, 101, 102, 1234.
+Maintainer: Niraj Bhusal ([X](https://x.com/nirajbhusal), [LinkedIn](https://www.linkedin.com/in/nirajbhusal)). Corrections and hazard reports go through GitHub (see Citizen reports above). Emergencies: 100, 101, 102, 1234.
 
 Name note: the repo is `gati-alerts` because `nirajbhusal/gati` already hosts a separate project (Nepali Patro PWA).
