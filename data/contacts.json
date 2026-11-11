@@ -71,15 +71,17 @@
   },
   {
    "num": "1144",
-   "ne": "NEOC (राष्ट्रिय आपतकालीन कार्य सञ्चालन केन्द्र)",
-   "en": "NEOC (National Emergency Operation Centre)",
-   "cat": "ndrrma",
-   "agency": "NDRRMA",
-   "src": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/contact.html",
-   "srcName": "रसुवा–भोटेकोशी बाढी बुलेटिन · Rasuwa flood bulletin",
-   "source_time": "2026-10-26",
-   "source_time_ne": "कात्तिक ९, २०८३",
-   "source_time_en": "26 Oct 2026 (Kartik 9, 2083 BS)"
+   "ne": "पर्यटक प्रहरी",
+   "en": "Tourist Police",
+   "cat": "police",
+   "agency": "Nepal Police",
+   "src": "https://nepalpolice.gov.np/ne/tourist-police/",
+   "srcName": "नेपाल प्रहरी, पर्यटक प्रहरी",
+   "source_time": "2026-11-11",
+   "source_time_ne": "कात्तिक २५, २०८३",
+   "source_time_en": "11 Nov 2026 (Kartik 25, 2083 BS)",
+   "note_ne": "नेपाल प्रहरीको पर्यटक प्रहरी पृष्ठ: सहायताका लागि टोल फ्रि हटलाइन ११४४।",
+   "note_en": "Nepal Police tourist police page: toll-free hotline 1144 for assistance."
   },
   {
    "num": "1114",
