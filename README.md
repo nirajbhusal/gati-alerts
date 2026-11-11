@@ -60,8 +60,8 @@ GitHub Pages is static, so reports use a sanctioned, free route that needs no ne
 the `/report/` page builds a **prefilled GitHub issue-form URL** (`issues/new?template=report.yml&…`). The reporter
 reviews it and submits it with their own GitHub account. The issue template adds the labels `reported` and
 `citizen-report`. Moderators relabel to `verified`, `corrected`, `retracted` or `unverified` per
-[docs/VERIFICATION.md](docs/VERIFICATION.md). Contact details are **never** put into the issue; the form offers an
-optional private e-mail to the maintainer instead. Photos are attached by the reporter on the GitHub page.
+[docs/VERIFICATION.md](docs/VERIFICATION.md). The form does not ask for a phone number or email, and contact
+details are never put into the issue. Photos are attached by the reporter on the GitHub page.
 
 Labels: `official`, `verified`, `reported`, `unverified`, `corrected`, `retracted`, `citizen-report`.
 
@@ -75,7 +75,7 @@ moderator dashboard would follow. Until then, no secrets are stored in this repo
 
 ## Limits (MVP)
 
-- All seeded items are past and therefore **expired**; the site shows them as an archive.
+- Each CAP message has its own `<expires>` time. Active messages stay up until then. After that they stay in the archive and are not deleted.
 - District polygons are simplified outlines for display, not legal boundaries. Station location for Aarughat is approximate.
 - Dates are shown in Gregorian + NPT; Bikram Sambat appears where the source text gives it.
 - Reporting needs a GitHub account; the Reports page uses the unauthenticated GitHub API (60 requests/hour per IP).
@@ -85,6 +85,6 @@ moderator dashboard would follow. Until then, no secrets are stored in this repo
 Logo concept A "Ga-Signal", Himal Navy `#0E2A47`, River Teal `#0F7C86`, Glacier `#7FD1D8` (Signal Amber only in the logo arcs),
 CAP severity scale Extreme `#7A0019`, Severe `#C81E1E`, Moderate `#E8770E`, Minor `#F5C518`, Info `#2B6CB0`. Fonts: Mukta, Inter.
 
-Maintainer: Niraj Bhusal · [WhatsApp](https://wa.me/9779701010000) · neerajbhusal@gmail.com. Emergencies: 100, 101, 102, 103, 1234.
+Maintainer: Niraj Bhusal. Corrections and hazard reports go through GitHub (see Citizen reports above). Emergencies: 100, 101, 102, 103, 1234.
 
 Name note: the repo is `gati-alerts` because `nirajbhusal/gati` already hosts a separate project (Nepali Patro PWA).

@@ -66,12 +66,10 @@
     });
     const url = `${REPO}/issues/new?${q}`;
     window.open(url, "_blank", "noopener");
-    const c = $("contact").value.trim();
-    const mail = `mailto:neerajbhusal@gmail.com?subject=${encodeURIComponent("Gati report contact: " + title)}&body=${encodeURIComponent("Private contact for my Gati report (please do not publish):\n" + c + "\n\nReport title: " + title)}`;
     $("done").hidden = false;
     $("done").innerHTML = G.lang === "ne"
-      ? `<p><strong>GitHub नयाँ ट्याबमा खुल्यो।</strong> त्यहाँ विवरण एकपटक हेरेर "Create" थिच्नुहोस्। ${$("photo").files[0] ? "तस्विर विवरणको ठाउँमा तानेर राख्न नबिर्सनुहोस्।" : ""} खुलेन भने <a href="${G.esc(url)}" target="_blank" rel="noopener">यहाँ थिच्नुहोस्</a>।</p>${c ? `<p>सम्पर्क गोप्य रूपमा पठाउन: <a class="btn alt" href="${G.esc(mail)}">✉ इमेलबाट मोडेरेटरलाई मात्र</a></p>` : ""}`
-      : `<p><strong>GitHub opened in a new tab.</strong> Check the details there and press "Create". ${$("photo").files[0] ? "Remember to drag your photo into the description box." : ""} If nothing opened, <a href="${G.esc(url)}" target="_blank" rel="noopener">click here</a>.</p>${c ? `<p>To share your contact privately: <a class="btn alt" href="${G.esc(mail)}">✉ Email the moderator only</a></p>` : ""}`;
+      ? `<p><strong>GitHub नयाँ ट्याबमा खुल्यो।</strong> त्यहाँ विवरण एकपटक हेरेर "Create" थिच्नुहोस्। ${$("photo").files[0] ? "तस्विर विवरणको ठाउँमा तानेर राख्न नबिर्सनुहोस्।" : ""} खुलेन भने <a href="${G.esc(url)}" target="_blank" rel="noopener">यहाँ थिच्नुहोस्</a>।</p>`
+      : `<p><strong>GitHub opened in a new tab.</strong> Check the details there and press "Create". ${$("photo").files[0] ? "Remember to drag your photo into the description box." : ""} If nothing opened, <a href="${G.esc(url)}" target="_blank" rel="noopener">click here</a>.</p>`;
     $("done").scrollIntoView({ behavior: "smooth" });
   };
 })();

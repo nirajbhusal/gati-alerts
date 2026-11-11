@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-0855</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-10T08:55:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/</note>
+  <references>nepalpolice.gov.np,np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-09-0500,2026-11-09T05:00:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Monitor</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-10T08:55:00+05:45</effective>
+    <onset>2026-11-09T05:00:00+05:45</onset>
+    <expires>2026-11-10T23:59:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>चितवन, घोप्टे भिर: पृथ्वी लोकमार्गको अवरोध प्रहरीको सूचीमा अब छैन</headline>
+    <description>अद्यावधिक, आधिकारिक सूचनाबाट: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।२४ (कात्तिक २४) बिहान ८:५५ बजेसम्ममा चितवनको इच्छाकामना–४ घोप्टे भिर (पृथ्वी लोकमार्ग) को पूर्ण अवरोध अब सूचीकृत छैन (कात्तिक २३ बिहानको सूचनामा थियो)। प्रहरीले खुलेको भनी छुट्टै स्पष्ट घोषणा गरेको भेटिएन; यात्रा अघि स्थानीय प्रहरीसँग पुष्टि गर्नुहोस्।</description>
+    <instruction>सावधानीपूर्वक सवारी चलाउनुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-10T08:55:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>चितवन, घोप्टे भिर: पृथ्वी लोकमार्गको अवरोध प्रहरीको सूचीमा अब छैन</value></parameter>
+    <area>
+      <areaDesc>चितवन जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0335</value></geocode>
+    </area>
+    <area>
+      <areaDesc>घोप्टे भिर, इच्छाकामना–४, पृथ्वी लोकमार्ग (अनुमानित स्थान)</areaDesc>
+      <circle>27.80,84.55 5</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Monitor</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-10T08:55:00+05:45</effective>
+    <onset>2026-11-09T05:00:00+05:45</onset>
+    <expires>2026-11-10T23:59:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Chitwan, Ghopte Bhir: Prithvi Highway blockage no longer on Nepal Police's list</headline>
+    <description>Update, from the official notice: Nepal Police's 'road blockages' notice to 8:55 AM 2083-07-24 (Kartik 24 / 10 Nov) no longer lists the full blockage of the Prithvi Highway at Ghopte Bhir, Ichchhakamana-4, Chitwan (it was on the Kartik 23 morning notice). Police have not made a separate statement that it reopened; confirm with local police before travelling.</description>
+    <instruction>Drive carefully; check with local police before travelling (100).</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-10T08:55:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Chitwan, Ghopte Bhir: Prithvi Highway blockage no longer on Nepal Police's list</value></parameter>
+    <area>
+      <areaDesc>Chitwan district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0335</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Ghopte Bhir, Ichchhakamana-4, Prithvi Highway (approximate location)</areaDesc>
+      <circle>27.80,84.55 5</circle>
+    </area>
+  </info>
+</alert>
