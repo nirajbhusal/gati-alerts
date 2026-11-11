@@ -937,6 +937,7 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .rasuwalink a{display:inline-block;font-weight:600;padding:10px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none}
 .aboutreach{font-size:var(--r-body)}
 .aboutreach a{display:inline-flex;align-items:center;min-height:44px}
+.aboutreach b{color:var(--river);font-weight:700}
 
 /* Today card v2 */
 .tdrow{grid-template-columns:7em minmax(0,1fr);padding:12px 0}
