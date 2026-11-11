@@ -213,9 +213,35 @@
   function init() {
     if (FULL) { const host = document.getElementById("askfull") || document.getElementById("main"); build(host); G.onLang(render); return; }
     btn = document.createElement("button"); btn.type = "button"; btn.className = "aqfab"; btn.setAttribute("aria-haspopup", "dialog"); btn.setAttribute("aria-controls", "askpanel"); btn.setAttribute("aria-expanded", "false");
-    const lab = () => btn.setAttribute("aria-label", T("गतिलाई सोध्नुहोस्", "Ask Gati")); btn.innerHTML = ICON; lab();
-    document.body.appendChild(btn); build(document.body);
-    btn.onclick = open;
+    /* Quick actions: the floating button fans out into Ask, Report, Call for help and Am I affected?.
+       Call shows the helplines from data/country.json as one-tap dial links. Gati is not an emergency service; the
+       links dial the official numbers directly. */
+    btn.setAttribute("aria-haspopup", "menu"); btn.setAttribute("aria-controls", "aqdial");
+    const XICON = `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+    const DI = (d) => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+    const dial = document.createElement("div"); dial.className = "aqdial"; dial.id = "aqdial"; dial.setAttribute("role", "menu"); dial.hidden = true;
+    let calls = false;
+    const drawDial = () => { dial.setAttribute("aria-label", T("छिटो कार्य", "Quick actions"));
+      dial.innerHTML = calls
+        ? `<p class="aqdn">${T("आधिकारिक हेल्पलाइनमा सिधै फोन जान्छ", "Dials the official helpline directly")}</p>` + G.country.helplines.map((h) => `<a role="menuitem" class="aqdi call" href="tel:${esc(h.number)}">${DI('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>')}<span>${esc(T(h.ne, h.en))} <b>${esc(G.lang === "ne" && G.num ? G.num(h.number) : h.number)}</b></span></a>`).join("") + `<button type="button" role="menuitem" class="aqdi back" data-d="back">‹ ${T("पछाडि", "Back")}</button>`
+        : [["ask", T("गतिलाई सोध्नुहोस्", "Ask Gati"), DI('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 10.5h7M8.5 13.5h4.5"/>'), ""],
+           PAGE === "report" ? null : ["report", T("खतराबारे खबर गर्नुहोस्", "Report a hazard"), DI('<path d="M12 4 3 20h18z"/><path d="M12 10v4.5M12 17.2v.1"/>'), R + "report/"],
+           ["call", T("सहायताका लागि फोन", "Call for help"), DI('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'), ""],
+           PAGE === "affected" ? null : ["affected", T("के म प्रभावित छु?", "Am I affected?"), DI('<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'), R + "affected/"]]
+          .filter(Boolean).map(([k, l, ic, href]) => href ? `<a role="menuitem" class="aqdi" href="${href}">${ic}<span>${l}</span></a>` : `<button type="button" role="menuitem" class="aqdi" data-d="${k}">${ic}<span>${l}</span></button>`).join(""); };
+    const dialOpen = () => !dial.hidden;
+    const closeDial = (focus) => { if (!dialOpen()) return; dial.hidden = true; calls = false; btn.innerHTML = ICON; btn.setAttribute("aria-expanded", "false"); btn.classList.remove("on"); if (focus) btn.focus(); };
+    const openDial = () => { calls = false; drawDial(); const r = btn.getBoundingClientRect(); dial.style.bottom = Math.round(innerHeight - r.top + 10) + "px"; dial.style.right = Math.round(Math.max(8, innerWidth - r.right)) + "px";
+      dial.hidden = false; btn.innerHTML = XICON; btn.setAttribute("aria-expanded", "true"); btn.classList.add("on"); const f = dial.querySelector(".aqdi"); if (f) f.focus(); };
+    dial.addEventListener("click", (e) => { e.stopPropagation(); /* the menu redraws under the tap; do not let the outside-click handler see a detached target */ const d = e.target.closest("[data-d]"); if (!d) { if (e.target.closest("a")) closeDial(); return; }
+      if (d.dataset.d === "ask") { closeDial(); open(); } else if (d.dataset.d === "call") { calls = true; drawDial(); dial.querySelector(".aqdi").focus(); } else if (d.dataset.d === "back") { calls = false; drawDial(); dial.querySelector(".aqdi").focus(); } });
+    dial.addEventListener("keydown", (e) => { const it = [...dial.querySelectorAll(".aqdi")], n = it.indexOf(document.activeElement);
+      if (e.key === "Escape") { e.preventDefault(); closeDial(true); } else if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); it[(n + (e.key === "ArrowDown" ? 1 : it.length - 1)) % it.length].focus(); } });
+    document.addEventListener("click", (e) => { if (dialOpen() && !dial.contains(e.target) && !btn.contains(e.target)) closeDial(); });
+    addEventListener("pagehide", () => closeDial());
+    const lab = () => { btn.setAttribute("aria-label", T("छिटो कार्य: सोध्नुहोस्, खबर गर्नुहोस्, फोन", "Quick actions: ask, report, call")); if (dialOpen()) drawDial(); }; btn.innerHTML = ICON; lab(); G.onLang(lab);
+    document.body.appendChild(btn); document.body.appendChild(dial); build(document.body);
+    btn.onclick = () => (dialOpen() ? closeDial() : openDial());
     panel.addEventListener("keydown", (e) => {
       if (e.key === "Escape") { e.preventDefault(); close(); return; }
       if (e.key !== "Tab") return;

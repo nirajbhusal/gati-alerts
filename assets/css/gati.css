@@ -1915,3 +1915,18 @@ main#main .ntlist li a:hover b,main#main .ntlist li a:focus-visible b{text-decor
 .fcard .fend .btn{margin-top:4px}
 /* Top bar: district, filter and list. Home is already in the bottom bar. */
 .storypage #stdash{display:none}
+
+/* ===== Quick actions: the floating button fans out into Ask, Report, Call for help, Am I affected? ===== */
+.aqdial{position:fixed;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:calc(100vw - 16px)}
+.aqdial[hidden]{display:none}
+.aqdi{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:8px 16px 8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)!important;font:inherit;font-size:var(--fs-4);font-weight:600;text-decoration:none!important;cursor:pointer;box-shadow:0 6px 18px rgba(14,42,71,.22);white-space:nowrap;animation:aqdin .16s ease both}
+.aqdi svg{flex:none;color:var(--crimson)}
+.aqdi.call b{font-variant-numeric:tabular-nums}
+.aqdi.back{min-height:40px;font-size:var(--fs-5);font-weight:500;box-shadow:none;background:var(--surface2)}
+.aqdi:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.aqdn{margin:0;padding:4px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line);font-size:var(--fs-6);color:var(--slate)}
+.aqfab.on{background:var(--ink)!important;color:var(--surface)!important}
+html[data-theme=dark] .aqdi{box-shadow:0 6px 18px rgba(0,0,0,.55)}
+@keyframes aqdin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.aqdi{animation:none}}
+@media print{.aqdial{display:none}}
