@@ -11,6 +11,8 @@ The items below belong to others and keep their own terms.
 | protomaps-leaflet 5.1.0 | `assets/vendor/protomaps-leaflet/` | BSD 3-Clause (licence file included) |
 | Offline street map | `data/offline/basemap.pmtiles` | Map data © OpenStreetMap contributors, ODbL; tiles built by Protomaps. Cut by `scripts/make_offline_map.py`. |
 | Mukta typeface | `assets/fonts/` | SIL Open Font License 1.1 |
+| Sora typeface (visiting card only) | `scripts/fonts/` | SIL Open Font License 1.1 |
+| X, LinkedIn and GitHub marks (visiting card only) | `scripts/brand/render.cjs`, from Simple Icons | CC0 1.0; the marks remain trademarks of their owners |
 | Inter typeface | `assets/fonts/` | SIL Open Font License 1.1 |
 | CAP 1.2 schema | `schema/CAP-v1.2.xsd` | OASIS open standard, unchanged copy, copyright OASIS Open |
 | SDG icons | `assets/sdg/` | United Nations. Used for information only; use does not imply UN endorsement. They are not covered by Gati's licences. |
