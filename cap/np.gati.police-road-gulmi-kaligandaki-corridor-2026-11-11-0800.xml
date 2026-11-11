@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800</identifier>
+  <sender>nepalpolice.gov.np</sender>
+  <sent>2026-11-11T09:30:00+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Nepal Police Headquarters</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/</note>
+  <references>nepalpolice.gov.np,np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-10-0855,2026-11-10T08:55:00+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Transport</category>
+    <event>सडक अवस्था</event>
+    <responseType>Monitor</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-11T08:00:00+05:45</effective>
+    <onset>2026-11-08T22:15:00+05:45</onset>
+    <expires>2026-11-11T23:59:00+05:45</expires>
+    <senderName>नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित</senderName>
+    <headline>गुल्मी, राक्से: कालीगण्डकी करिडोर सडक खण्डको अवरोध प्रहरीको सूचीमा अब छैन</headline>
+    <description>अद्यावधिक, आधिकारिक सूचनाबाट: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।२५ (कात्तिक २५) बिहान ८:०० बजेसम्ममा गुल्मीको कालीगण्डकी गाउँपालिका–२ राक्से (कालीगण्डकी करिडोर) को पूर्ण अवरोध अब सूचीकृत छैन (कात्तिक २४ को सूचनामा थियो)। प्रहरीले खुलेको भनी छुट्टै स्पष्ट घोषणा गरेको भेटिएन; सडक विभाग NAVIGATE मा अझै बन्द देखिन्छ (अनुमानित खुल्ने समय कात्तिक २४ दिउँसो १२ बजे नाघिसकेको, नयाँ अद्यावधिक छैन)। यात्रा अघि स्थानीय प्रहरीसँग पुष्टि गर्नुहोस्।</description>
+    <instruction>सावधानीपूर्वक सवारी चलाउनुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-11T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>गुल्मी, राक्से: कालीगण्डकी करिडोर सडक खण्डको अवरोध प्रहरीको सूचीमा अब छैन</value></parameter>
+    <area>
+      <areaDesc>गुल्मी जिल्ला</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0551</value></geocode>
+    </area>
+    <area>
+      <areaDesc>राक्से, कालीगण्डकी–२, कालीगण्डकी करिडोर (अनुमानित स्थान)</areaDesc>
+      <circle>27.99,83.57 5</circle>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Transport</category>
+    <event>Road status</event>
+    <responseType>Monitor</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-11T08:00:00+05:45</effective>
+    <onset>2026-11-08T22:15:00+05:45</onset>
+    <expires>2026-11-11T23:59:00+05:45</expires>
+    <senderName>Nepal Police Headquarters · relayed by Gati</senderName>
+    <headline>Gulmi, Rakse: Kaligandaki Corridor road blockage no longer on Nepal Police's list</headline>
+    <description>Update, from the official notice: Nepal Police's 'road blockages' notice to 8:00 AM 2083-07-25 (Kartik 25 / 11 Nov) no longer lists the full blockage of the Kaligandaki Corridor road at Rakse, Kaligandaki Rural Municipality-2, Gulmi (it was on the Kartik 24 notice). Police have not made a separate statement that it reopened; DoR NAVIGATE (NH48, Rakse section) still shows it closed, but its estimated reopening (noon, Kartik 24) has passed with no newer update. Confirm with local police before travelling.</description>
+    <instruction>Drive with caution; check with local police before travelling (100).</instruction>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
+    <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-11T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Gulmi, Rakse: Kaligandaki Corridor blockage no longer on Nepal Police's list</value></parameter>
+    <area>
+      <areaDesc>Gulmi district</areaDesc>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0551</value></geocode>
+    </area>
+    <area>
+      <areaDesc>Rakse, Kaligandaki-2, Kaligandaki Corridor (approximate location)</areaDesc>
+      <circle>27.99,83.57 5</circle>
+    </area>
+  </info>
+</alert>

@@ -3,12 +3,38 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-11-10T08:28:38+00:00</updated>
+  <updated>2026-11-11T03:35:53+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800</id>
+    <title>Gulmi, Rakse: Kaligandaki Corridor road blockage no longer on Nepal Police's list</title>
+    <updated>2026-11-11T09:30:00+05:45</updated>
+    <published>2026-11-11T09:30:00+05:45</published>
+    <summary>[Official] Unknown · Nepal Police Headquarters · relayed by Gati · expires 2026-11-11T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-11-11-0800</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-11-11T08:00:00+05:45</updated>
+    <published>2026-11-11T08:00:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-12T08:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-11-11-0800.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-11-11-0800/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-reopened</id>
     <title>Chitwan, Ghopte Bhir: Malekhu–Mugling section of the Prithvi Highway reopened in both directions</title>

@@ -85,9 +85,9 @@
    "status": "planned"
   },
   "dor-navigate": {
-   "lastSuccess": "2026-11-10T03:24:29+00:00",
-   "lastChecked": "2026-11-10T03:24:29+00:00",
-   "lastResult": "HTTP 200",
+   "lastSuccess": "2026-11-11T09:19:19+05:45",
+   "lastChecked": "2026-11-11T09:19:19+05:45",
+   "lastResult": "ok",
    "status": "ok"
   }
  },
