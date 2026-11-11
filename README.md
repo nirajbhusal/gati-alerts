@@ -29,7 +29,7 @@ It is a parallel project to the verified [Rasuwa–Bhotekoshi bulletin](https://
 | `scripts/seed_from_bulletin.py`, `data/seed/` | One-off seeder used to create the first CAP files from bulletin data. Old district outlines are kept in `data/archive/district-polygons.json`. |
 | `.github/workflows/cap.yml` | Daily and on-push CAP validation only. It does not commit or deploy. `ci/poll.yml` is held and is not installed. |
 | `.github/ISSUE_TEMPLATE/report.yml` | Citizen report issue form |
-| `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md) |
+| `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md), [DPG](docs/DPG.md) |
 
 > **CAP validation** runs from [`.github/workflows/cap.yml`](.github/workflows/cap.yml). It checks the CAP files and does not commit. Pages still publishes the `main` branch. [`ci/poll.yml`](ci/poll.yml) is held and is not installed. `feed.xml` and `data/alerts.json` are rebuilt locally with `scripts/build.py`.
 
@@ -77,6 +77,17 @@ moderator dashboard would follow. Until then, no secrets are stored in this repo
 - Dates are shown in Gregorian + NPT; Bikram Sambat appears where the source text gives it.
 - Numerals follow the language: Devanagari when the page is in Nepali, Western digits when it is in English. There is no separate numeral control.
 - Reporting needs a GitHub account; the Reports page uses the unauthenticated GitHub API (60 requests/hour per IP).
+
+## Licence and reuse
+
+Gati is open so that others can check it, improve it and adapt it for their own community.
+
+- **Code:** [MIT](LICENSE).
+- **Gati's own text, documentation and data:** [CC BY 4.0](LICENSE-CONTENT.md).
+- **Relayed official notices** remain the issuing agencies' own; third-party material is listed in [THIRD_PARTY.md](THIRD_PARTY.md).
+
+See also [CONTRIBUTING](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md), [Security](SECURITY.md),
+[Privacy](PRIVACY.md), and how Gati maps to the Digital Public Goods Standard in [docs/DPG.md](docs/DPG.md).
 
 ## Brand
 

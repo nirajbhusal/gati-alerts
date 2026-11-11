@@ -42,7 +42,7 @@ accounts for the project. See README "Future backend option" for the planned rep
 
 ## Privacy
 
-No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet are self-hosted. Third-party requests: OSM tiles on the Report page map only (disclosed) and the GitHub API (report counts on the home page; verified reports on the Reports page).
+No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet are self-hosted. Third-party requests (OSM tiles, the GitHub API, Open-Meteo, and the optional Ask Gati Worker) are listed in full in [PRIVACY.md](../PRIVACY.md).
 
 ## Source registry and health
 
