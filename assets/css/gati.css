@@ -935,6 +935,8 @@ header.top .tsize button{background:transparent!important;border-color:var(--lin
 .shb svg{width:44px;height:44px;padding:10px;border-radius:50%;background:var(--surface2);box-sizing:border-box}.shb:hover svg{background:var(--line)}
 .srlock .shs{z-index:2200}
 .rasuwalink a{display:inline-block;font-weight:600;padding:10px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none}
+.aboutreach{font-size:var(--r-body)}
+.aboutreach a{display:inline-flex;align-items:center;min-height:44px}
 
 /* Today card v2 */
 .tdrow{grid-template-columns:7em minmax(0,1fr);padding:12px 0}
