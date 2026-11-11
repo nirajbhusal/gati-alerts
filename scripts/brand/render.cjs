@@ -269,6 +269,19 @@ table{border-collapse:collapse;width:100%;font-size:9pt}td,th{text-align:left;pa
     const h = Math.round(big * vb[2] / vb[1]);
     await png("logos/png/" + name, `<style>${BASE}body{width:${big}px;height:${h}px}</style>${svg(name)}`, big, h, true);
   }
+  /* the site header logo: the still part and each signal arc as its own layer, so the arcs can pulse */
+  const HB = path.join(ROOT, "assets/img/brand");
+  for (const [src, out] of [["gati-logo-horizontal", "logo-h"], ["gati-logo-horizontal-white", "logo-h-white"]]) {
+    const full = svg(src), arcs = full.match(/<path d="M[^"]+" fill="none"[^>]*\/>/g);
+    const open = full.match(/^<svg[^>]*>/)[0];
+    const layers = { "": full, "-base": arcs.reduce((t, x) => t.replace(x, ""), full) };
+    arcs.forEach((x, i) => { layers["-arc" + (i + 1)] = open + x + "</svg>"; });
+    for (const [suffix, body] of Object.entries(layers)) {
+      await page.setViewportSize({ width: 702, height: 320 });
+      await load(`<style>${BASE}body{width:702px;height:320px}svg{height:320px;width:675px}</style>${body}`);
+      await page.screenshot({ path: path.join(HB, out + suffix + ".png"), omitBackground: true, clip: { x: 0, y: 0, width: 702, height: 320 } });
+    }
+  }
   /* app and web icons */
   for (const s of [180, 192, 512, 1024]) await png(`icons/app-icon-${s}`, plain("gati-mark", s), s, s, true);
   await png("icons/app-icon-maskable-512", profile(512, C.red), 512, 512);
