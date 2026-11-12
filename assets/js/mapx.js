@@ -77,7 +77,17 @@
     ctl.addTo(map);
   })();
   L.control.scale({ imperial: false }).addTo(map);
-  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
+  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "sat", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
+  /* Satellite rain: NASA GPM IMERG half-hourly estimate, served as open map tiles by NASA GIBS (no key).
+     About 10 km grid and several hours behind real time. Context only, never a warning. Own pane so the grey basemap filter does not touch it. */
+  map.createPane("sat").style.zIndex = 250; map.getPane("sat").style.pointerEvents = "none";
+  const SATB = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best", SATL = "IMERG_Precipitation_Rate_30min", SATSTEP = 18e5;
+  let satLatest = null, satT = null, satLoading = false, satFail = false;
+  const satIso = (ms) => new Date(ms).toISOString().slice(0, 19) + "Z";
+  function loadSat() { if (satLoading) return; satLoading = true; const d = (o) => new Date(Date.now() + o * 864e5).toISOString().slice(0, 10);
+    fetch(`${SATB}/1.0.0/${SATL}/default/GoogleMapsCompatible_Level6/all/${d(-2)}--${d(1)}.xml`).then((r) => (r.ok ? r.text() : Promise.reject())).then((x) => {
+      const ends = [...x.matchAll(/\/(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ)\/PT30M/g)].map((m) => Date.parse(m[1])).filter(Boolean);
+      if (!ends.length) throw 0; satLatest = satT = Math.max(...ends); satLoading = false; draw(); }).catch(() => { satFail = true; satLoading = false; legend(); }); }
   if (PROV) L.geoJSON(PROV, { style: { color: "#5f6670", weight: 1, opacity: 0.6, fill: false, dashArray: "4 4" }, interactive: false }).addTo(LG.prov);
   const distF = DIST ? Object.fromEntries(DIST.features.map((f) => [f.id, f])) : {};
   const distName = (id) => { const f = distF[id]; return f ? T(f.properties.ne, f.properties.en) : id; };
@@ -145,6 +155,7 @@
     const inB = (p) => { if (!S.d && !S.pr) return true; return focusB ? focusB.contains([p[0], p[1]]) : true; };
     const hos = HL ? HL.hospitals.filter(inB) : [], heli = AV ? AV.helipads.filter(inB) : [];
     counts.hos = HL ? hos.length : null; counts.heli = AV ? heli.length : null;
+    if (on("sat")) { if (!satLatest) { if (!satFail) loadSat(); } else L.tileLayer(`${SATB}/${SATL}/default/${satIso(satT)}/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png`, { pane: "sat", maxNativeZoom: 6, opacity: 0.72, attribution: "NASA GPM IMERG (GIBS)" }).addTo(LG.sat); }
     if (on("hos")) hos.forEach((p) => L.circleMarker([p[0], p[1]], { radius: 3.5, color: "#fff", weight: 1, fillColor: "#5f6670", fillOpacity: 1 }).bindTooltip(E(p[2] || T("अस्पताल", "Hospital"))).addTo(LG.hos));
     if (on("heli")) heli.forEach((p) => L.marker([p[0], p[1]], { icon: L.divIcon({ className: "mxheli", html: "H", iconSize: [16, 16] }) }).bindTooltip(E(p[2] || "Helipad")).addTo(LG.heli));
     /* labels */
@@ -165,7 +176,7 @@
     P.querySelector(".mxbody").innerHTML = `
       <fieldset><legend>${T("तहहरू", "Layers")}</legend><div class="mxchips">
         ${chip("L", "alerts", T("सूचना", "Alerts"))}${chip("L", "wx", T("मौसम चेतावनी (DHM)", "Weather warnings (DHM)"), counts.wx)}${chip("L", "rv", T("नदी मापन केन्द्र", "River gauges"), counts.rv)}
-        ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}
+        ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}${chip("L", "sat", T("भू-उपग्रह वर्षा", "Satellite rain"))}
         ${chip("L", "hos", T("अस्पताल", "Hospitals"), counts.hos)}${chip("L", "heli", T("हेलिप्याड", "Helipads"), counts.heli)}
         <button type="button" class="mxchip" disabled title="${T("खुला स्थानको डेटा उपलब्ध छैन", "Open-space data not available")}">${T("खुला स्थान", "Open spaces")} <span class="mxn">${T("उपलब्ध छैन", "n/a")}</span></button>
         ${chip("L", "lab", T("नाम", "Labels"))}</div>
@@ -200,8 +211,11 @@
     if (on("hos")) rows.push(`<div><span>${sw("#5f6670", "dot")}${T("अस्पताल (OSM)", "Hospital (OSM)")} <span class="mxn">${G.num(String(counts.hos || 0))}</span></span></div>`);
     if (on("heli")) rows.push(`<div><span><i class="mxheli s">H</i>${T("हेलिप्याड (OSM)", "Helipad (OSM)")} <span class="mxn">${G.num(String(counts.heli || 0))}</span></span></div>`);
     const sl = (u, t) => (u ? `<a href="${E(u)}" target="_blank" rel="noopener">${t} ↗</a>` : t);
-    const src = [on("alerts") || on("eq") ? T("सूचना: आधिकारिक निकाय, गतिमार्फत", "Alerts: official agencies via Gati") + (AL && AL.generated ? ` (${T("अद्यावधिक", "updated")} ${G.npt(AL.generated)})` : "") : "", on("wx") && WX && WX.bulletin5 ? `${sl(WX.bulletin5.url, `DHM ${T("५ दिने बुलेटिन", "5-day bulletin")}`)}, ${G.npt(WX.bulletin5.issued)}${WX.checked ? ` (${T("जाँचेको", "checked")} ${G.npt(WX.checked)})` : ""}` : "", on("rv") && RV ? `${E(T(RV.source_ne, RV.source_en))}, ${E(T(RV.as_of_ne, RV.as_of_en))}` : "", on("rd") && RD ? `${sl(RD.sources.pol.u, E(T(RD.sources.pol.ne, RD.sources.pol.en)))} (${E(T(RD.as_of_ne, RD.as_of_en))})` : "", on("aq") ? "Open-Meteo (CAMS) " + T("मोडेल", "model") : "", on("hos") || on("heli") ? "OpenStreetMap / HOT (HDX)" : ""].filter(Boolean);
+    if (on("sat")) rows.push(`<div class="mxsat"><b>${T("भू-उपग्रह वर्षा", "Satellite rain")}</b>${satLatest ? `<button type="button" class="mxsatb" data-s="-1" aria-label="${T("३० मिनेट अघि", "30 minutes earlier")}"${satT <= satLatest - 864e5 ? " disabled" : ""}>‹</button><span class="mxsatt">${G.npt(satIso(satT))}</span><button type="button" class="mxsatb" data-s="1" aria-label="${T("३० मिनेट पछि", "30 minutes later")}"${satT >= satLatest ? " disabled" : ""}>›</button><span>${sw("#9ad9f5")}${T("हल्का", "Light")}</span><span>${sw("#1f9d2f")}</span><span>${sw("#f2e205")}</span><span>${sw("#f28c1e")}</span><span>${sw("#e2231a")}${T("भारी", "Heavy")}</span>` : `<span>${satFail ? T("NASA सँग जोडिन सकिएन", "Could not reach NASA") : T("लोड हुँदै…", "Loading…")}</span>`}</div>
+      <p class="mxhint">${T("अनुमान, मापन होइन: करिब १० कि.मि. ग्रिड, वास्तविक समयभन्दा केही घण्टा पछाडि" + (satLatest ? " (पछिल्लो तस्विर करिब " + G.num(String(Math.round((Date.now() - satLatest) / 36e5))) + " घण्टा पुरानो)" : "") + "। चेतावनी होइन; आधिकारिक चेतावनी DHM ले मात्र दिन्छ।", "An estimate, not a measurement: about 10 km grid and several hours behind real time" + (satLatest ? " (latest image is about " + Math.round((Date.now() - satLatest) / 36e5) + " h old)" : "") + ". Not a warning; only DHM issues official warnings.")}</p>`);
+    const src = [on("alerts") || on("eq") ? T("सूचना: आधिकारिक निकाय, गतिमार्फत", "Alerts: official agencies via Gati") + (AL && AL.generated ? ` (${T("अद्यावधिक", "updated")} ${G.npt(AL.generated)})` : "") : "", on("wx") && WX && WX.bulletin5 ? `${sl(WX.bulletin5.url, `DHM ${T("५ दिने बुलेटिन", "5-day bulletin")}`)}, ${G.npt(WX.bulletin5.issued)}${WX.checked ? ` (${T("जाँचेको", "checked")} ${G.npt(WX.checked)})` : ""}` : "", on("rv") && RV ? `${E(T(RV.source_ne, RV.source_en))}, ${E(T(RV.as_of_ne, RV.as_of_en))}` : "", on("rd") && RD ? `${sl(RD.sources.pol.u, E(T(RD.sources.pol.ne, RD.sources.pol.en)))} (${E(T(RD.as_of_ne, RD.as_of_en))})` : "", on("aq") ? "Open-Meteo (CAMS) " + T("मोडेल", "model") : "", on("sat") ? sl("https://gpm.nasa.gov/data/imerg", "NASA GPM IMERG") + " " + T("भू-उपग्रह अनुमान", "satellite estimate") : "", on("hos") || on("heli") ? "OpenStreetMap / HOT (HDX)" : ""].filter(Boolean);
     document.getElementById("mxlegend").innerHTML = (rows.join("") || `<p class="meta">${T("कुनै तह छानिएको छैन", "No layer selected")}</p>`) + `<p class="mxsrc">${T("स्रोत", "Sources")}: ${src.join(" · ")}</p>`;
+    document.querySelectorAll("#mxlegend .mxsatb").forEach((b) => (b.onclick = () => { satT = Math.min(satLatest, Math.max(satLatest - 864e5, satT + Number(b.dataset.s) * SATSTEP)); draw(); }));
   }
   /* ---- details panel: visible items with agency, trust, source link and source time ---- */
   const DP = document.getElementById("mxdet");
