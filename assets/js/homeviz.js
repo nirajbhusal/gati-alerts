@@ -36,7 +36,7 @@
       if (rows.length) cards.push(V.card({ cls: "vzwide", title: T("पछिल्ला ७ दिन, निकायअनुसार", "The last 7 days, by agency"), href: R + "alerts/", more: T("सबै सूचना", "All alerts"), body: V.heat(rows, cols),
         say: T("हरेक खानामा त्यस दिन त्यो निकायले जारी गरेका आधिकारिक सूचनाको सङ्ख्या; रङले सबैभन्दा गम्भीर तह देखाउँछ। निकायहरू जोडिएका छैनन्।", "Each box is the number of official notices that agency issued that day; the colour is the most severe one. Agencies are not added together."),
         source: T("आधिकारिक निकाय, गतिमार्फत", "Official agencies, relayed by Gati"), url: R + "api/", time: al.generated ? T("अद्यावधिक", "updated") + " " + G.npt(al.generated) : "" })); }
-    box.innerHTML = cards.length ? `<h2 class="vzt">${T("नेपाल एक नजरमा", "Nepal at a glance")}</h2><div class="vzgrid">${cards.join("")}</div>` : "";
+    box.innerHTML = cards.length ? `<h2 class="vzt">${T("नेपाल एक नजरमा", "Nepal at a glance")}</h2><div class="vzgrid">${cards.join("")}</div><p class="vzshare"><a class="hmchip" href="${R}share/today.png" download="gati-nepal-today.png">${T("आजको कार्ड (तस्विर) डाउनलोड", "Download today's card (image)")} ↓</a> <a class="hmchip" href="${R}share/today-square.png" download="gati-nepal-today-square.png">${T("वर्गाकार", "Square")} ↓</a></p>` : "";
   }
   const go = () => Promise.all(["data/alerts.json", "data/weather.json", "data/rivers.json", "data/roads.json"].map(J)).then((d) => { D = d; draw(); G.onLang(draw); });
   if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: "400px" }); io.observe(box); } else go();

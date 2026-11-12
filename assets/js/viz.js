@@ -42,5 +42,13 @@
     const pts = v.map((x, k) => `${((k / (v.length - 1)) * (w - 4) + 2).toFixed(1)},${(h - 3 - ((x - lo) / sp) * (h - 6)).toFixed(1)}`);
     return `<svg class="vzsp" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true"><polyline points="${pts.join(" ")}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${pts[pts.length - 1].split(",")[0]}" cy="${pts[pts.length - 1].split(",")[1]}" r="2.6" fill="${color}"/></svg>`; };
 
+  /* the answer strip that opens a page: a status word, one sentence, then source and time */
+  V.answer = ({ tone = "calm", word, say, sub, source, url, time }) => `<div class="vza vza-${tone}"><span class="vzaw">${word}</span><div class="vzab"><p class="vzas">${say}</p>${sub ? `<p class="vzau">${sub}</p>` : ""}
+    <p class="vzf">${T("स्रोत", "Source")}: ${url ? `<a href="${E(url)}" target="_blank" rel="noopener">${source}</a>` : source}${time ? ` · ${time}` : ""}</p></div></div>`;
+
+  /* horizontal bars: rows = [{ name, v }], all on one scale, value written at the end of each bar */
+  V.bars = (rows, { unit = "", color = "#2F6FED", max } = {}) => { const mx = max || Math.max(...rows.map((r) => r.v), 1);
+    return `<div class="vzbars">${rows.map((r) => `<div class="vzbr"><b>${E(r.name)}</b><div class="vzbt"><i style="width:${Math.max(1.5, (r.v / mx) * 100).toFixed(1)}%;background:${r.color || color}"></i></div><span>${N(r.v)}${unit}</span></div>`).join("")}</div>`; };
+
   G.viz = V;
 })();

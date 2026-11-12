@@ -16,6 +16,8 @@ COUNTRY = "https://dhm.gov.np/mfd/api/country-forecast"
 CITY = "https://dhm.gov.np/mfd/api/weather"
 COUNTRY_PAGE = "https://dhm.gov.np/mfd/#/weather/country"
 CITY_PAGE = "https://dhm.gov.np/mfd/#/weather/city"
+OBS = "https://dhm.gov.np/mfd/api/manual-observation"
+OBS_PAGE = "https://dhm.gov.np/mfd/#/weather/observation"
 NPT = datetime.timezone(datetime.timedelta(hours=5, minutes=45))
 UA = {"User-Agent": "Mozilla/5.0 (compatible; Gati relay; +https://nirajbhusal.github.io/gati-alerts/)", "Accept": "application/json"}
 
@@ -89,6 +91,19 @@ def main():
         if "forecast24" not in doc:
             raise SystemExit(1)
         return
+    # station readings as DHM publishes them (rain, minimum and maximum temperature); observed, not forecast
+    try:
+        obs = get(OBS)
+        ne = {st.get("id"): st.get("nepali_name") for st in stations}
+        doc["station_obs"] = {
+            "issued": npt(obs["issue_date"]),
+            "url": OBS_PAGE,
+            "api": OBS,
+            "stations": [{"en": tidy(st.get("name")), "ne": tidy(ne.get(st.get("id")) or st.get("name")), "ll": [st.get("latitude"), st.get("longitude")],
+                          "rain_mm": st.get("rainfall"), "tmin_c": st.get("min_temperature"), "tmax_c": st.get("max_temperature")} for st in obs.get("stations") or []],
+        }
+    except Exception as e:
+        print("station observations: not updated:", str(e)[:160])
     cid = doc["forecast24"]["country"].get("id")
     if cid:
         doc.setdefault("dhm_ids", {})["country_forecast"] = cid

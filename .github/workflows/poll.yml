@@ -54,7 +54,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add data/raw data/source-health.json data/alerts data/alerts.json atom.xml feed.xml cap alerts stories lite
+          git add data/raw data/source-health.json data/alerts data/alerts.json atom.xml feed.xml cap alerts stories lite share
           if git diff --cached --quiet; then echo "No change, nothing to propose."; exit 0; fi
           git commit -q -m "Poll sources: $(date -u +%Y-%m-%dT%H:%MZ)"
           git push -q -f origin bot/poll
