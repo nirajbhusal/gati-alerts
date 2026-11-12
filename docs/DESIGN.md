@@ -58,6 +58,29 @@ Every new rule must read correctly in all three; body text needs 4.5:1 contrast.
 - **Long lists:** fold after a sensible number with a "show more" button (see the pager in `assets/js/common.js`).
 - **Bilingual text:** `<span class="ne-only">…</span><span class="en-only">…</span>` in HTML, `T(ne, en)` in scripts.
 
+## Charts and infographics
+
+Data graphics come from one shared kit, `assets/js/viz.js` (`Gati.viz`), so every page reads as one system. Use the
+kit; do not draw a one-off chart on a page.
+
+| Piece | Use it for |
+|---|---|
+| `card` | The frame around every graphic: title, a one-line reading of the chart, the chart, then source and time |
+| `daystrip` | A run of days with a warning level each (DHM's five-day warning) |
+| `gauge` | One reading against its warning and danger marks (river levels) |
+| `segbar` | Parts of a whole, with the numbers in a key (roads by status) |
+| `heat` | Days across, one row per agency (notices over the last week) |
+| `spark` | A small trend line where history exists |
+
+Rules:
+
+1. **One answer first.** Each graphic answers one question, and says the answer in a plain sentence above the chart.
+2. **Source and time under every chart.** The card will not render without them.
+3. **Never colour alone.** Every mark carries a word or a number; every chart has a text label for screen readers.
+4. **Agencies stay separate.** One row per agency; never add notices or figures across agencies.
+5. **Official and estimated data look different.** Model and satellite graphics carry the dashed "Estimate" tag.
+6. **Light.** Plain HTML and CSS or small inline SVG. No chart library.
+
 ## Motion
 
 Short and functional (150 to 250 ms). Respect `prefers-reduced-motion`. No decorative animation on alert content.

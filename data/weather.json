@@ -105,5 +105,243 @@
   "warning": "12421",
   "nowcast": "11690",
   "country_forecast": "1471"
+ },
+ "station_obs": {
+  "issued": "2026-11-11T17:45:00+05:45",
+  "url": "https://dhm.gov.np/mfd/#/weather/observation",
+  "api": "https://dhm.gov.np/mfd/api/manual-observation",
+  "stations": [
+   {
+    "en": "Dadeldhura",
+    "ne": "डडेलधुरा",
+    "ll": [
+     29.3,
+     80.5833
+    ],
+    "rain_mm": 0,
+    "tmin_c": 9,
+    "tmax_c": 20.7
+   },
+   {
+    "en": "Dipayal",
+    "ne": "दिपायल",
+    "ll": [
+     29.2667,
+     80.9333
+    ],
+    "rain_mm": 0,
+    "tmin_c": 12.6,
+    "tmax_c": 27.5
+   },
+   {
+    "en": "Dhangadi",
+    "ne": "धनगढी",
+    "ll": [
+     28.6833,
+     80.6
+    ],
+    "rain_mm": 0,
+    "tmin_c": 15.6,
+    "tmax_c": 30.6
+   },
+   {
+    "en": "Birendranagar",
+    "ne": "वीरेन्द्रनगर",
+    "ll": [
+     28.6,
+     81.6333
+    ],
+    "rain_mm": 0,
+    "tmin_c": 12.3,
+    "tmax_c": 27
+   },
+   {
+    "en": "Nepalgunj",
+    "ne": "नेपालगञ्ज",
+    "ll": [
+     28.05,
+     81.6167
+    ],
+    "rain_mm": 0,
+    "tmin_c": 17.4,
+    "tmax_c": 30
+   },
+   {
+    "en": "Jumla",
+    "ne": "जुम्ला",
+    "ll": [
+     29.2753,
+     82.1833
+    ],
+    "rain_mm": 0,
+    "tmin_c": -1,
+    "tmax_c": 18
+   },
+   {
+    "en": "Ghorahi",
+    "ne": "घोराही",
+    "ll": [
+     28,
+     82.2667
+    ],
+    "rain_mm": 0,
+    "tmin_c": 13.5,
+    "tmax_c": 27.2
+   },
+   {
+    "en": "Pokhara",
+    "ne": "पोखरा",
+    "ll": [
+     28.188621,
+     84.0169252
+    ],
+    "rain_mm": 0,
+    "tmin_c": 12.5,
+    "tmax_c": 24.4
+   },
+   {
+    "en": "Bhairahawa",
+    "ne": "भैरहवा",
+    "ll": [
+     27.5,
+     83.45
+    ],
+    "rain_mm": 0,
+    "tmin_c": 18.2,
+    "tmax_c": 30.9
+   },
+   {
+    "en": "Simara",
+    "ne": "सिमरा",
+    "ll": [
+     27.1594,
+     84.98
+    ],
+    "rain_mm": 0,
+    "tmin_c": 17.8,
+    "tmax_c": 30.8
+   },
+   {
+    "en": "Kathmandu",
+    "ne": "काठमाडौँ",
+    "ll": [
+     27.7,
+     85.37
+    ],
+    "rain_mm": 33.5,
+    "tmin_c": 10.2,
+    "tmax_c": 23.3
+   },
+   {
+    "en": "Okhaldhunga",
+    "ne": "ओखलढुङ्गा",
+    "ll": [
+     27.3167,
+     86.5
+    ],
+    "rain_mm": 0.1,
+    "tmin_c": 11.3,
+    "tmax_c": 21
+   },
+   {
+    "en": "Dhankuta",
+    "ne": "धनकुटा",
+    "ll": [
+     26.9833,
+     87.3333
+    ],
+    "rain_mm": 0,
+    "tmin_c": 13,
+    "tmax_c": 26.7
+   },
+   {
+    "en": "Biratnagar",
+    "ne": "विराटनगर",
+    "ll": [
+     26.4542,
+     87.2797
+    ],
+    "rain_mm": 0,
+    "tmin_c": 17.4,
+    "tmax_c": 32.2
+   },
+   {
+    "en": "Jomsom",
+    "ne": "जोमसोम",
+    "ll": [
+     28.7678,
+     83.7477
+    ],
+    "rain_mm": 0,
+    "tmin_c": 1.5,
+    "tmax_c": 13.7
+   },
+   {
+    "en": "Dharan",
+    "ne": "धरान",
+    "ll": [
+     26.8167,
+     87.2667
+    ],
+    "rain_mm": 0,
+    "tmin_c": 19.4,
+    "tmax_c": 29.6
+   },
+   {
+    "en": "Janakpur",
+    "ne": "जनकपुर",
+    "ll": [
+     26.7,
+     85.9
+    ],
+    "rain_mm": 0,
+    "tmin_c": 18.2,
+    "tmax_c": 31.2
+   },
+   {
+    "en": "Jiri",
+    "ne": "जिरी",
+    "ll": [
+     27.63,
+     86.23
+    ],
+    "rain_mm": 0,
+    "tmin_c": 9.4,
+    "tmax_c": 19.4
+   },
+   {
+    "en": "Taplejung",
+    "ne": "ताप्लेजुङ",
+    "ll": [
+     27.35,
+     87.67
+    ],
+    "rain_mm": 0.01,
+    "tmin_c": 10.2,
+    "tmax_c": 12.1
+   },
+   {
+    "en": "Chandragadi Airport",
+    "ne": "Chandragadi Airport",
+    "ll": [
+     26.570391,
+     88.075144
+    ],
+    "rain_mm": 0,
+    "tmin_c": 17.6,
+    "tmax_c": 31.6
+   },
+   {
+    "en": "Lumle",
+    "ne": "Lumle",
+    "ll": [
+     28.2965,
+     83.81791
+    ],
+    "rain_mm": 0,
+    "tmin_c": 10,
+    "tmax_c": 21.1
+   }
+  ]
  }
 }

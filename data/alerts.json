@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T03:29:32+00:00",
+ "generated": "2026-11-12T04:46:11+00:00",
  "count": 96,
  "alerts": [
   {
@@ -949,7 +949,7 @@
    "status": "Actual",
    "msgType": "Update",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Chitwan District Police Office, via The Kathmandu Post. Source: https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu ; Nepal Police Headquarters notice: https://www.nepalpolice.gov.np/notices/1141/",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Chitwan District Police Office. Source: https://www.nepalpolice.gov.np/notices/1141/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": "nepalpolice.gov.np,np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-0855,2026-11-10T08:55:00+05:45",
    "file": "data/alerts/police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-reopened.xml",
    "info": {
@@ -966,12 +966,12 @@
      "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
      "senderName": "चितवन जिल्ला प्रहरी कार्यालय · गति मार्फत प्रसारित",
      "headline": "चितवन, घोप्टे भिर: मलेखु–मुग्लिन खण्ड (पृथ्वी लोकमार्ग) दुवै दिशामा सुचारु",
-     "description": "अद्यावधिक, आधिकारिक: चितवन जिल्ला प्रहरी कार्यालय (द काठमाडौँ पोस्ट मार्फत): कात्तिक २४ (१० नोभेम्बर) बिहान ७:४५ बजे पृथ्वी लोकमार्गको मलेखु–मुग्लिन खण्ड, इच्छाकामना–४ घोप्टे भिर, दुवै दिशामा सुचारु। कात्तिक २३ राति करिब ११:१५ बजेको पहिरो हटाएपछि बाटो खोलिएको। उही भीर कात्तिक २३ मा दुई पटक खसेकाले यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्। नेपाल प्रहरी प्रधान कार्यालयको कात्तिक २४ बिहान ८:५५ बजेसम्मको सडक अवरोध सूचनामा पनि यो अवरोध सूचीकृत छैन।",
+     "description": "अद्यावधिक, आधिकारिक: चितवन जिल्ला प्रहरी कार्यालय: कात्तिक २४ (१० नोभेम्बर) बिहान ७:४५ बजे पृथ्वी लोकमार्गको मलेखु–मुग्लिन खण्ड, इच्छाकामना–४ घोप्टे भिर, दुवै दिशामा सुचारु। कात्तिक २३ राति करिब ११:१५ बजेको पहिरो हटाएपछि बाटो खोलिएको। उही भीर कात्तिक २३ मा दुई पटक खसेकाले यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्। नेपाल प्रहरी प्रधान कार्यालयको कात्तिक २४ बिहान ८:५५ बजेसम्मको सडक अवरोध सूचनामा पनि यो अवरोध सूचीकृत छैन।",
      "instruction": "सावधानीपूर्वक सवारी चलाउनुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
-     "web": "https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
      "params": {
       "gati:trustLevel": "Official",
-      "gati:sourceUrl": "https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
       "gati:sourceTime": "2026-11-10T07:45:00+05:45",
       "gati:hazard": "road",
       "gati:sourceUrl2": "https://www.nepalpolice.gov.np/notices/1141/",
@@ -1007,12 +1007,12 @@
      "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
      "senderName": "Chitwan District Police Office · relayed by Gati",
      "headline": "Chitwan, Ghopte Bhir: Malekhu–Mugling section of the Prithvi Highway reopened in both directions",
-     "description": "Update, official: Chitwan District Police Office (via The Kathmandu Post): the Malekhu–Mugling section of the Prithvi Highway at Ghopte Bhir, Ichchhakamana-4, Chitwan, reopened in both directions at 7:45 AM Kartik 24 (10 Nov), after the landslide of about 11:15 PM Kartik 23 (9 Nov) was cleared. The same slope came down twice on 9 Nov, so check with local police before travelling. The blockage is also no longer on Nepal Police Headquarters' road-blockage notice to 8:55 AM Kartik 24.",
+     "description": "Update, official: Chitwan District Police Office: the Malekhu–Mugling section of the Prithvi Highway at Ghopte Bhir, Ichchhakamana-4, Chitwan, reopened in both directions at 7:45 AM Kartik 24 (10 Nov), after the landslide of about 11:15 PM Kartik 23 (9 Nov) was cleared. The same slope came down twice on 9 Nov, so check with local police before travelling. The blockage is also no longer on Nepal Police Headquarters' road-blockage notice to 8:55 AM Kartik 24.",
      "instruction": "Drive carefully; check with local police before travelling (100).",
-     "web": "https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
      "params": {
       "gati:trustLevel": "Official",
-      "gati:sourceUrl": "https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
       "gati:sourceTime": "2026-11-10T07:45:00+05:45",
       "gati:hazard": "road",
       "gati:sourceUrl2": "https://www.nepalpolice.gov.np/notices/1141/",
@@ -7862,7 +7862,7 @@
    "status": "Actual",
    "msgType": "Alert",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.thahakhabar.com/detail/310967",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/mfd/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": null,
    "file": "data/alerts/reported-dhm-24h-forecast-2026-10-28.xml",
    "info": {
@@ -7879,16 +7879,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
      "headline": "कात्तिक ११ (आज र आज राति): कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीमा साधारणतया बदली; राति हिमालमा मध्यम वर्षा/हिमपात र केही पहाड-तराईमा मध्यम वर्षा",
-     "description": "रिपोर्ट गरिएको (थाहाखबर र खबर निरन्तर, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ११ बिहानको पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव छ र बिहीबारदेखि 'अर्नब' चक्रवातको प्रभाव पर्ने। आज दिउँसो कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीमा साधारणतया बदली, कर्णाली र सुदूरपश्चिममा आंशिक बदली; हिमाली भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात। आज राति देशभर साधारणतया बदली; कोशी, कर्णाली र सुदूरपश्चिमका हिमाली भूभागका केही/थोरै स्थान र बागमती, गण्डकीका हिमाली भूभागका एक-दुई स्थानमा मध्यम वर्षा/हिमपात; कोशी र बागमतीका पहाड, मधेश र कोशीको तराईका एक-दुई स्थानमा मध्यम वर्षा। कात्तिक १२ देखि १४ को चेतावनीबारे DHM को आधिकारिक ५ दिने बुलेटिन र NDRRMA को उच्च सतर्कता सूचना हेर्नुहोस्।",
+     "description": "रिपोर्ट गरिएको (त्यस बेलाका समाचारले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ११ बिहानको पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव छ र बिहीबारदेखि 'अर्नब' चक्रवातको प्रभाव पर्ने। आज दिउँसो कोशी, मधेश, बागमती, गण्डकी र लुम्बिनीमा साधारणतया बदली, कर्णाली र सुदूरपश्चिममा आंशिक बदली; हिमाली भूभागका एक-दुई स्थानमा हल्का वर्षा/हिमपात। आज राति देशभर साधारणतया बदली; कोशी, कर्णाली र सुदूरपश्चिमका हिमाली भूभागका केही/थोरै स्थान र बागमती, गण्डकीका हिमाली भूभागका एक-दुई स्थानमा मध्यम वर्षा/हिमपात; कोशी र बागमतीका पहाड, मधेश र कोशीको तराईका एक-दुई स्थानमा मध्यम वर्षा। कात्तिक १२ देखि १४ को चेतावनीबारे DHM को आधिकारिक ५ दिने बुलेटिन र NDRRMA को उच्च सतर्कता सूचना हेर्नुहोस्।",
      "instruction": "पाकेको धान बिहीबार (कात्तिक १२) अगावै भित्र्याउनुहोस्; उच्च पहाडी र हिमाली यात्रा स्थगित गर्नुहोस्; DHM को पछिल्लो पूर्वानुमान हेर्नुहोस् (फोन ११५५)।",
-     "web": "https://www.thahakhabar.com/detail/310967",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310967",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-28T06:40:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310967",
-      "gati:sourceUrl2": "https://khabarnirantar.com/59636/",
       "gati:summary160": "कात्तिक ११: पाँच प्रदेशमा साधारणतया बदली; आज राति हिमालमा मध्यम वर्षा/हिमपात, केही पहाड-तराईमा मध्यम वर्षा"
      },
      "areas": [
@@ -7914,16 +7912,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
      "headline": "28 Oct (today and tonight): generally cloudy in Koshi, Madhesh, Bagmati, Gandaki and Lumbini; tonight moderate rain or snow in the mountains and moderate rain at a few hill and Terai places",
-     "description": "Reported (Thaha Khabar and Khabar Nirantar, both citing the DHM Meteorological Forecasting Division's forecast of the morning of Kartik 11): westerly winds have a partial influence, and Cyclone 'Arnab' is expected to affect Nepal from Thursday. This afternoon generally cloudy in Koshi, Madhesh, Bagmati, Gandaki and Lumbini, partly cloudy in Karnali and Sudurpaschim; light rain or snow at one or two places in the mountains. Tonight generally cloudy across the country; moderate rain or snow at a few places in the Koshi, Karnali and Sudurpaschim mountains and at one or two places in the Bagmati and Gandaki mountains; moderate rain at one or two places in the Koshi and Bagmati hills, Madhesh and the Koshi Terai. For the Kartik 12 to 14 warnings, see DHM's official 5-day bulletin and NDRRMA's high-alert notice.",
+     "description": "Reported (from news reports at the time, citing the DHM Meteorological Forecasting Division's forecast of the morning of Kartik 11): westerly winds have a partial influence, and Cyclone 'Arnab' is expected to affect Nepal from Thursday. This afternoon generally cloudy in Koshi, Madhesh, Bagmati, Gandaki and Lumbini, partly cloudy in Karnali and Sudurpaschim; light rain or snow at one or two places in the mountains. Tonight generally cloudy across the country; moderate rain or snow at a few places in the Koshi, Karnali and Sudurpaschim mountains and at one or two places in the Bagmati and Gandaki mountains; moderate rain at one or two places in the Koshi and Bagmati hills, Madhesh and the Koshi Terai. For the Kartik 12 to 14 warnings, see DHM's official 5-day bulletin and NDRRMA's high-alert notice.",
      "instruction": "Bring in ripe paddy before Thursday, Kartik 12 (29 Oct); put off high-hill and mountain travel; check DHM's latest forecast (phone 1155).",
-     "web": "https://www.thahakhabar.com/detail/310967",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310967",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-28T06:40:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310967",
-      "gati:sourceUrl2": "https://khabarnirantar.com/59636/",
       "gati:summary160": "28 Oct: generally cloudy in five provinces; tonight moderate rain or snow in the mountains, moderate rain at a few hill and Terai places"
      },
      "areas": [
@@ -10202,7 +10198,7 @@
    "status": "Actual",
    "msgType": "Alert",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://nepallive.com/story/352290",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/mfd/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": null,
    "file": "data/alerts/reported-dhm-24h-forecast-2026-10-26.xml",
    "info": {
@@ -10219,16 +10215,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
      "headline": "कात्तिक ९ (आज र आज राति): हिमाली भूभागमा आंशिक बदली, पहाड र तराईमा मुख्यतया सफा; बिहान तराई र खोँचमा हुस्सु/कुहिरो",
-     "description": "रिपोर्ट गरिएको (नेपाल लाइभ र ओएस नेपाल, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ९ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली भूभागमा आंशिक बदली, पहाडी र तराई भूभागमा मुख्यतया सफा। आज राति कोशी प्रदेश तथा बागमती, गण्डकी र कर्णालीका हिमाली भूभागमा आंशिक बदली, बाँकी भागमा मुख्यतया सफा। बिहानीपख तराई, उपत्यका र खोँचमा केही स्थानमा हुस्सु/कुहिरो। यो दैनिक पूर्वानुमानमा आजका लागि कुनै चेतावनी छैन। कात्तिक १२ र १३ को सुन्तले सङ्केतबारे DHM को कात्तिक ९ को आधिकारिक ५ दिने बुलेटिन हेर्नुहोस्।",
+     "description": "रिपोर्ट गरिएको (त्यस बेलाका समाचारले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ९ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली भूभागमा आंशिक बदली, पहाडी र तराई भूभागमा मुख्यतया सफा। आज राति कोशी प्रदेश तथा बागमती, गण्डकी र कर्णालीका हिमाली भूभागमा आंशिक बदली, बाँकी भागमा मुख्यतया सफा। बिहानीपख तराई, उपत्यका र खोँचमा केही स्थानमा हुस्सु/कुहिरो। यो दैनिक पूर्वानुमानमा आजका लागि कुनै चेतावनी छैन। कात्तिक १२ र १३ को सुन्तले सङ्केतबारे DHM को कात्तिक ९ को आधिकारिक ५ दिने बुलेटिन हेर्नुहोस्।",
      "instruction": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्; कात्तिक १२ देखि १४ सम्मको यात्रा र बाली भित्र्याउने योजना अहिल्यै मिलाउनुहोस्।",
-     "web": "https://nepallive.com/story/352290",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://nepallive.com/story/352290",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-26T07:07:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://nepallive.com/story/352290",
-      "gati:sourceUrl2": "https://www.osnepal.com/detail/592853",
       "gati:summary160": "कात्तिक ९ (आज र आज राति): हिमाली भूभागमा आंशिक बदली, पहाड र तराईमा मुख्यतया सफा; बिहान तराई र खोँचमा हुस्सु/कुहिरो"
      },
      "areas": [
@@ -10254,16 +10248,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
      "headline": "26 Oct (today and tonight): partly cloudy in the mountains, mainly fair in the hills and Terai; morning mist or fog in the Terai and valleys",
-     "description": "Reported (Nepal Live and OS Nepal, both citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 9): westerly winds have a partial influence. Partly cloudy in the mountains this afternoon, mainly fair in the hills and Terai. Tonight partly cloudy in the Koshi, Bagmati, Gandaki and Karnali mountains, mostly fair elsewhere. Morning mist or fog at some places in the Terai, valleys and river basins. No warning for today in this daily forecast. For the orange (be prepared) days of Kartik 12 and 13, see DHM's official 5-day bulletin of Kartik 9.",
+     "description": "Reported (from news reports at the time, citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 9): westerly winds have a partial influence. Partly cloudy in the mountains this afternoon, mainly fair in the hills and Terai. Tonight partly cloudy in the Koshi, Bagmati, Gandaki and Karnali mountains, mostly fair elsewhere. Morning mist or fog at some places in the Terai, valleys and river basins. No warning for today in this daily forecast. For the orange (be prepared) days of Kartik 12 and 13, see DHM's official 5-day bulletin of Kartik 9.",
      "instruction": "If travelling in the mountains, check DHM's latest forecast; plan travel and harvesting now for Kartik 12 to 14 (29 to 31 Oct).",
-     "web": "https://nepallive.com/story/352290",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://nepallive.com/story/352290",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-26T07:07:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://nepallive.com/story/352290",
-      "gati:sourceUrl2": "https://www.osnepal.com/detail/592853",
       "gati:summary160": "26 Oct (today and tonight): partly cloudy in the mountains, mainly fair in the hills and Terai; morning mist or fog in the Terai and valleys"
      },
      "areas": [
@@ -11056,7 +11048,7 @@
    "status": "Actual",
    "msgType": "Alert",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/mfd/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": null,
    "file": "data/alerts/reported-dhm-24h-forecast-2026-10-25.xml",
    "info": {
@@ -11073,16 +11065,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
      "headline": "कात्तिक ८ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात",
-     "description": "रिपोर्ट गरिएको (रिपब्लिका र ओएस नेपाल, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ८ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली र पहाडी भूभागमा आंशिक बदली, तराईमा मुख्यतया सफा। कोशी र गण्डकी प्रदेशका हिमाली भूभागका एक–दुई स्थानमा हल्का वर्षा र हिमपातको सम्भावना। आज राति कोशी, बागमती, गण्डकी र कर्णालीका हिमाली भूभागमा आंशिक बदली, बाँकी भागमा मुख्यतया सफा। बिहानीपख तराई, उपत्यका र खोँचमा केही स्थानमा हुस्सु/कुहिरो। यो दैनिक पूर्वानुमानमा कुनै चेतावनी उल्लेख छैन। बंगालको खाडीको मौसम प्रणालीबारे DHM को छुट्टै विशेष बुलेटिन (कात्तिक ११ देखि १५) पनि हेर्नुहोस्।",
+     "description": "रिपोर्ट गरिएको (त्यस बेलाका समाचारले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ८ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली र पहाडी भूभागमा आंशिक बदली, तराईमा मुख्यतया सफा। कोशी र गण्डकी प्रदेशका हिमाली भूभागका एक–दुई स्थानमा हल्का वर्षा र हिमपातको सम्भावना। आज राति कोशी, बागमती, गण्डकी र कर्णालीका हिमाली भूभागमा आंशिक बदली, बाँकी भागमा मुख्यतया सफा। बिहानीपख तराई, उपत्यका र खोँचमा केही स्थानमा हुस्सु/कुहिरो। यो दैनिक पूर्वानुमानमा कुनै चेतावनी उल्लेख छैन। बंगालको खाडीको मौसम प्रणालीबारे DHM को छुट्टै विशेष बुलेटिन (कात्तिक ११ देखि १५) पनि हेर्नुहोस्।",
      "instruction": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।",
-     "web": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-25T08:05:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
-      "gati:sourceUrl2": "https://www.osnepal.com/detail/592819",
       "gati:summary160": "कात्तिक ८ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात"
      },
      "areas": [
@@ -11108,16 +11098,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
      "headline": "25 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains",
-     "description": "Reported (Republica and OS Nepal, both citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 8): westerly winds have a partial influence. Partly cloudy in the hills and mountains this afternoon, mainly fair in the Terai. Light rain or snow is possible at one or two places in the Koshi and Gandaki mountains. Tonight partly cloudy in the Koshi, Bagmati, Gandaki and Karnali mountains, mostly fair elsewhere. Morning mist or fog in parts of the Terai, valleys and river basins. No warning is mentioned in this daily forecast. See also DHM's separate special bulletin on the Bay of Bengal weather system (28 Oct to 1 Nov).",
+     "description": "Reported (from news reports at the time, citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 8): westerly winds have a partial influence. Partly cloudy in the hills and mountains this afternoon, mainly fair in the Terai. Light rain or snow is possible at one or two places in the Koshi and Gandaki mountains. Tonight partly cloudy in the Koshi, Bagmati, Gandaki and Karnali mountains, mostly fair elsewhere. Morning mist or fog in parts of the Terai, valleys and river basins. No warning is mentioned in this daily forecast. See also DHM's separate special bulletin on the Bay of Bengal weather system (28 Oct to 1 Nov).",
      "instruction": "If travelling in the mountains, check DHM's latest forecast.",
-     "web": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-25T08:05:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html",
-      "gati:sourceUrl2": "https://www.osnepal.com/detail/592819",
       "gati:summary160": "25 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains"
      },
      "areas": [
@@ -11157,7 +11145,7 @@
    "status": "Actual",
    "msgType": "Alert",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://shilapatra.com/detail/197394",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/mfd/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": null,
    "file": "data/alerts/reported-dhm-special-bulletin-bay-of-bengal-2026-10-23.xml",
    "info": {
@@ -11174,16 +11162,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
      "headline": "बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह",
-     "description": "रिपोर्ट गरिएको (शिलापत्र र द काठमाडौं पोस्ट, दुवैले DHM मौसम पूर्वानुमान महाशाखाले कात्तिक ६ (शुक्रबार) साँझ जारी गरेको पोस्ट मनसुन विशेष मौसम बुलेटिन उद्धृत गरेका; बुलेटिनको ठ्याक्कै जारी समय स्रोतमा छैन, यहाँ पहिलो समाचारको समय राखिएको): शुक्रबार बिहान ५:४५ बजे पूर्वमध्य तथा आसपासको दक्षिणपूर्वी बंगालको खाडीमा न्यून चापीय क्षेत्र बनेको छ। यो क्रमशः बलियो हुँदै कात्तिक ९ (सोमबार) सम्म चक्रवातमा परिणत भई भारतको उत्तर आन्ध्र प्रदेश र दक्षिण ओडिशा तटतर्फ जान सक्छ। यसका कारण कात्तिक ११ (बुधबार) देखि १५ (आइतबार) सम्म नेपालको मौसम प्रभावित हुन सक्छ। नेपालमा कति वर्षा हुने र जोखिमको स्तर कस्तो हुने भन्ने अहिले यकिन गर्न नसकिने महाशाखाले जनाएको छ। कृषि र पर्यटन क्षेत्रमा असर पर्न सक्ने भएकाले सबैलाई सतर्क रहन आग्रह गरिएको छ। यो रङ्ग सङ्केत भएको चेतावनी होइन; DHM ले थप सूचना जारी गर्नेछ।",
+     "description": "रिपोर्ट गरिएको (त्यस बेलाका समाचारले DHM मौसम पूर्वानुमान महाशाखाले कात्तिक ६ (शुक्रबार) साँझ जारी गरेको पोस्ट मनसुन विशेष मौसम बुलेटिन उद्धृत गरेका; बुलेटिनको ठ्याक्कै जारी समय स्रोतमा छैन, यहाँ पहिलो समाचारको समय राखिएको): शुक्रबार बिहान ५:४५ बजे पूर्वमध्य तथा आसपासको दक्षिणपूर्वी बंगालको खाडीमा न्यून चापीय क्षेत्र बनेको छ। यो क्रमशः बलियो हुँदै कात्तिक ९ (सोमबार) सम्म चक्रवातमा परिणत भई भारतको उत्तर आन्ध्र प्रदेश र दक्षिण ओडिशा तटतर्फ जान सक्छ। यसका कारण कात्तिक ११ (बुधबार) देखि १५ (आइतबार) सम्म नेपालको मौसम प्रभावित हुन सक्छ। नेपालमा कति वर्षा हुने र जोखिमको स्तर कस्तो हुने भन्ने अहिले यकिन गर्न नसकिने महाशाखाले जनाएको छ। कृषि र पर्यटन क्षेत्रमा असर पर्न सक्ने भएकाले सबैलाई सतर्क रहन आग्रह गरिएको छ। यो रङ्ग सङ्केत भएको चेतावनी होइन; DHM ले थप सूचना जारी गर्नेछ।",
      "instruction": "पाकेको धान र सुकाउन राखेको बाली जोगाउने तयारी गर्नुहोस्; कात्तिक ११ देखि १५ सम्म उच्च हिमाली पदयात्रा वा लामो पहाडी यात्राअघि DHM को पछिल्लो सूचना हेर्नुहोस्।",
-     "web": "https://shilapatra.com/detail/197394",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://shilapatra.com/detail/197394",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-23T20:40:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://shilapatra.com/detail/197394",
-      "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
       "gati:newerReference": "https://x.com/NMD_Weather/status/2114665927468081411",
       "gati:newerReferenceId": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
       "gati:summary160": "बंगालको खाडीको चक्रवातले कात्तिक ११ देखि १५ (२८ अक्टोबर देखि १ नोभेम्बर) सम्म नेपालको मौसम प्रभावित हुन सक्ने; सतर्क रहन DHM को आग्रह"
@@ -11211,16 +11197,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
      "headline": "Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert",
-     "description": "Reported (Shilapatra and The Kathmandu Post, both citing the post-monsoon special weather bulletin issued by the DHM Meteorological Forecasting Division on the evening of Kartik 6 (Friday, 23 Oct); the exact issue time is not given, so the time of the first news report is used): a low-pressure area formed over the east-central and adjoining southeastern Bay of Bengal at 5:45 AM on Friday. It may strengthen into a cyclonic storm by Kartik 9 (Monday, 26 Oct) and move towards the coast of northern Andhra Pradesh and southern Odisha in India. Because of it, Nepal's weather may be affected from Kartik 11 (Wednesday, 28 Oct) to Kartik 15 (Sunday, 1 Nov). DHM says it is too early to say how much rain Nepal will get or how high the risk will be. It asks everyone to stay alert, as agriculture and tourism could be affected. This is not a colour-coded warning; DHM will issue further updates.",
+     "description": "Reported (from news reports at the time, citing the post-monsoon special weather bulletin issued by the DHM Meteorological Forecasting Division on the evening of Kartik 6 (Friday, 23 Oct); the exact issue time is not given, so the time of the first news report is used): a low-pressure area formed over the east-central and adjoining southeastern Bay of Bengal at 5:45 AM on Friday. It may strengthen into a cyclonic storm by Kartik 9 (Monday, 26 Oct) and move towards the coast of northern Andhra Pradesh and southern Odisha in India. Because of it, Nepal's weather may be affected from Kartik 11 (Wednesday, 28 Oct) to Kartik 15 (Sunday, 1 Nov). DHM says it is too early to say how much rain Nepal will get or how high the risk will be. It asks everyone to stay alert, as agriculture and tourism could be affected. This is not a colour-coded warning; DHM will issue further updates.",
      "instruction": "Prepare to protect ripe paddy and crops laid out to dry; before high-mountain treks or long hill journeys from 28 Oct to 1 Nov, check DHM's latest notice.",
-     "web": "https://shilapatra.com/detail/197394",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://shilapatra.com/detail/197394",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-23T20:40:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://shilapatra.com/detail/197394",
-      "gati:sourceUrl2": "https://kathmandupost.com/climate-environment/2026/10/24/bay-of-bengal-cyclone-could-bring-rain-snow-to-nepal-next-week",
       "gati:newerReference": "https://x.com/NMD_Weather/status/2114665927468081411",
       "gati:newerReferenceId": "np.gati.dhm-special-bulletin-2-cyclone-arnab-2026-10-26",
       "gati:summary160": "Bay of Bengal cyclone may affect Nepal's weather from Kartik 11 to 15 (28 Oct to 1 Nov); DHM asks everyone to stay alert"
@@ -11509,7 +11493,7 @@
    "status": "Actual",
    "msgType": "Alert",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.thahakhabar.com/detail/310737",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/mfd/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": null,
    "file": "data/alerts/reported-dhm-24h-forecast-2026-10-23.xml",
    "info": {
@@ -11526,16 +11510,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) · गति मार्फत प्रसारित",
      "headline": "कात्तिक ६ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कर्णालीका हिमाली र कोशी, बागमती, गण्डकीका पहाडी भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात",
-     "description": "रिपोर्ट गरिएको (थाहा खबर र रातोपाटी, दुवैले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ६ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली र पहाडी भूभागमा आंशिक बदली, तराईमा मुख्यतया सफा। कर्णाली प्रदेशका हिमाली भूभाग तथा कोशी, बागमती र गण्डकी प्रदेशका पहाडी भूभागका एक–दुई स्थानमा हल्का वर्षा र हिमपातको सम्भावना। आज राति कोशी, गण्डकी र कर्णालीका हिमाली र पहाडी भूभागमा आंशिक बदली। बिहानीपख तराईमा केही स्थानमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।",
+     "description": "रिपोर्ट गरिएको (त्यस बेलाका समाचारले DHM मौसम पूर्वानुमान महाशाखाको कात्तिक ६ बिहानको २४ घण्टे पूर्वानुमान उद्धृत गरेका): देशमा पश्चिमी वायुको आंशिक प्रभाव। आज दिउँसो हिमाली र पहाडी भूभागमा आंशिक बदली, तराईमा मुख्यतया सफा। कर्णाली प्रदेशका हिमाली भूभाग तथा कोशी, बागमती र गण्डकी प्रदेशका पहाडी भूभागका एक–दुई स्थानमा हल्का वर्षा र हिमपातको सम्भावना। आज राति कोशी, गण्डकी र कर्णालीका हिमाली र पहाडी भूभागमा आंशिक बदली। बिहानीपख तराईमा केही स्थानमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।",
      "instruction": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।",
-     "web": "https://www.thahakhabar.com/detail/310737",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310737",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-23T06:28:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310737",
-      "gati:sourceUrl2": "https://english.ratopati.com/story/84304/partial-influence-of-westerly-winds-persists-light-rain-likely-in-these-four-provinces-today",
       "gati:summary160": "कात्तिक ६ (आज र आज राति): अधिकांश ठाउँमा मौसम सफा; कर्णालीका हिमाली र कोशी, बागमती, गण्डकीका पहाडी भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात"
      },
      "areas": [
@@ -11561,16 +11543,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "Department of Hydrology and Meteorology (DHM) · relayed by Gati",
      "headline": "23 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills",
-     "description": "Reported (Thaha Khabar and Ratopati, both citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 6): westerly winds have a partial influence. Partly cloudy in the hills and mountains this afternoon, mainly fair in the Terai. Light rain or snow is possible at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills. Tonight partly cloudy in the Koshi, Gandaki and Karnali hills and mountains. Morning mist or fog in parts of the Terai. No warning is mentioned.",
+     "description": "Reported (from news reports at the time, citing the DHM Meteorological Forecasting Division's 24-hour forecast of the morning of Kartik 6): westerly winds have a partial influence. Partly cloudy in the hills and mountains this afternoon, mainly fair in the Terai. Light rain or snow is possible at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills. Tonight partly cloudy in the Koshi, Gandaki and Karnali hills and mountains. Morning mist or fog in parts of the Terai. No warning is mentioned.",
      "instruction": "If travelling in the mountains, check DHM's latest forecast.",
-     "web": "https://www.thahakhabar.com/detail/310737",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://www.thahakhabar.com/detail/310737",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-23T06:28:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://www.thahakhabar.com/detail/310737",
-      "gati:sourceUrl2": "https://english.ratopati.com/story/84304/partial-influence-of-westerly-winds-persists-light-rain-likely-in-these-four-provinces-today",
       "gati:summary160": "23 Oct (today and tonight): mostly fair; light rain or snow at one or two places in the Karnali mountains and the Koshi, Bagmati and Gandaki hills"
      },
      "areas": [
@@ -11711,7 +11691,7 @@
    "status": "Actual",
    "msgType": "Alert",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://ukeraa.com/news/detail/181196/",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Department of Hydrology and Meteorology (DHM). Source: https://www.dhm.gov.np/mfd/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": null,
    "file": "data/alerts/reported-dhm-3day-forecast-2026-10-22.xml",
    "info": {
@@ -11728,16 +11708,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "जल तथा मौसम विज्ञान विभाग (DHM) — गति मार्फत प्रसारित",
      "headline": "कात्तिक ५–७: अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात",
-     "description": "रिपोर्ट गरिएको (उकेरा र खबर सेन्टर, दुवैले DHM मौसम पूर्वानुमान महाशाखाको तीन दिने पूर्वानुमान उद्धृत गरेका): हिमाली र पहाडी भेगमा आंशिक बदली, तराईमा मुख्यतया सफा। बिहीबार र शनिबार कोशी र गण्डकीका हिमाली (शनिबार पहाडी पनि) भागमा, शुक्रबार कोशी, गण्डकी र कर्णालीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात। बिहानीपख तराईमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।",
+     "description": "रिपोर्ट गरिएको (त्यस बेलाका समाचारले DHM मौसम पूर्वानुमान महाशाखाको तीन दिने पूर्वानुमान उद्धृत गरेका): हिमाली र पहाडी भेगमा आंशिक बदली, तराईमा मुख्यतया सफा। बिहीबार र शनिबार कोशी र गण्डकीका हिमाली (शनिबार पहाडी पनि) भागमा, शुक्रबार कोशी, गण्डकी र कर्णालीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात। बिहानीपख तराईमा हुस्सु/कुहिरो। कुनै चेतावनी उल्लेख छैन।",
      "instruction": "हिमाली भेगमा यात्रा गर्दै हुनुहुन्छ भने DHM को पछिल्लो पूर्वानुमान हेर्नुहोस्।",
-     "web": "https://ukeraa.com/news/detail/181196/",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://ukeraa.com/news/detail/181196/",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-22T09:20:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://ukeraa.com/news/detail/181196/",
-      "gati:sourceUrl2": "https://hmteiadmin.khabarcenter.com/content/87031",
       "gati:summary160": "कात्तिक ५–७: अधिकांश ठाउँमा मौसम सफा; कोशी र गण्डकीका हिमाली भागमा एक–दुई ठाउँमा हल्का वर्षा/हिमपात"
      },
      "areas": [
@@ -11763,16 +11741,14 @@
      "contact": "DHM, Babarmahal, Kathmandu · https://www.dhm.gov.np/",
      "senderName": "Department of Hydrology and Meteorology (DHM) — relayed by Gati",
      "headline": "22–24 Oct: mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains",
-     "description": "Reported (Ukeraa and Khabar Center, both citing the DHM Meteorological Forecasting Division's three-day forecast): partly cloudy in the hills and mountains, mainly fair in the Terai. Light rain or snow at one or two places in the Koshi and Gandaki mountains on Thursday and Saturday (hills too on Saturday), and in the Koshi, Gandaki and Karnali mountains on Friday. Morning mist or fog in parts of the Terai. No warning is mentioned.",
+     "description": "Reported (from news reports at the time, citing the DHM Meteorological Forecasting Division's three-day forecast): partly cloudy in the hills and mountains, mainly fair in the Terai. Light rain or snow at one or two places in the Koshi and Gandaki mountains on Thursday and Saturday (hills too on Saturday), and in the Koshi, Gandaki and Karnali mountains on Friday. Morning mist or fog in parts of the Terai. No warning is mentioned.",
      "instruction": "If travelling in the mountains, check DHM's latest forecast.",
-     "web": "https://ukeraa.com/news/detail/181196/",
+     "web": "https://www.dhm.gov.np/mfd/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://ukeraa.com/news/detail/181196/",
+      "gati:sourceUrl": "https://www.dhm.gov.np/mfd/",
       "gati:sourceTime": "2026-10-22T09:20:00+05:45",
       "gati:hazard": "weather",
-      "gati:bulletinFile": "https://ukeraa.com/news/detail/181196/",
-      "gati:sourceUrl2": "https://hmteiadmin.khabarcenter.com/content/87031",
       "gati:summary160": "22–24 Oct: mostly fair; light rain or snow at one or two places in the Koshi and Gandaki mountains"
      },
      "areas": [
@@ -12233,7 +12209,7 @@
    "status": "Actual",
    "msgType": "Alert",
    "scope": "Public",
-   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.",
    "references": null,
    "file": "data/alerts/reported-road-rajpath-khatripauwa-2026-10-13.xml",
    "info": {
@@ -12250,16 +12226,15 @@
      "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
      "senderName": "नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित",
      "headline": "त्रिभुवन राजपथ (काठमाडौँ–हेटौँडा): खत्रीपौवामा पहिरो, एकतर्फी",
-     "description": "रिपोर्ट गरिएको: धुनिबेँसी–९ खत्रीपौवाको पहिरोका कारण राजपथ एकतर्फी। अनलाइनखबर र अनलाइनपाना दुवैले नेपाल प्रहरीको असोज २७ बिहान ६ बजेको विवरण उद्धृत गरेका। कान्ति लोकपथ दुवैतर्फी चलिरहेको (रातोपाटी, संघीय सडक कार्यालय)।",
+     "description": "रिपोर्ट गरिएको: धुनिबेँसी–९ खत्रीपौवाको पहिरोका कारण राजपथ एकतर्फी। त्यस बेलाका समाचारले नेपाल प्रहरीको असोज २७ बिहान ६ बजेको विवरण उद्धृत गरेका। कान्ति लोकपथ दुवैतर्फी चलिरहेको (संघीय सडक कार्यालय)।",
      "instruction": "यात्रा अघि प्रहरीसँग सडकको अवस्था बुझ्नुहोस्।",
-     "web": "https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html",
+     "web": "https://www.nepalpolice.gov.np/notices/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/",
       "gati:sourceTime": "2026-10-13T06:00:00+05:45",
       "gati:hazard": "road",
       "gati:bulletinFile": "https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js",
-      "gati:sourceUrl2": "https://www.onlinepana.com/content/417910/",
       "gati:summary160": "त्रिभुवन राजपथ (काठमाडौँ–हेटौँडा): खत्रीपौवामा पहिरो, एकतर्फी"
      },
      "areas": [
@@ -12285,16 +12260,15 @@
      "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
      "senderName": "Nepal Police Headquarters — relayed by Gati",
      "headline": "Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa",
-     "description": "Reported: the Rajpath is one-way after a landslide at Khatripauwa, Dhunibesi-9. Onlinekhabar and Onlinepana both cite Nepal Police's 6 AM notice of Asoj 27 (13 Oct 2026). Kanti Lokpath is running two-way (Ratopati, federal road office).",
+     "description": "Reported: the Rajpath is one-way after a landslide at Khatripauwa, Dhunibesi-9. News reports at the time cited Nepal Police's 6 AM notice of Asoj 27 (13 Oct 2026). Kanti Lokpath is running two-way (federal road office).",
      "instruction": "Check road status with the police before travelling.",
-     "web": "https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html",
+     "web": "https://www.nepalpolice.gov.np/notices/",
      "params": {
       "gati:trustLevel": "Reported",
-      "gati:sourceUrl": "https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/",
       "gati:sourceTime": "2026-10-13T06:00:00+05:45",
       "gati:hazard": "road",
       "gati:bulletinFile": "https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js",
-      "gati:sourceUrl2": "https://www.onlinepana.com/content/417910/",
       "gati:summary160": "Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa"
      },
      "areas": [
