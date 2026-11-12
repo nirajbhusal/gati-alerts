@@ -29,7 +29,7 @@
       if (o && o.stations && o.stations.length) { const wet = o.stations.filter((s) => s.rain_mm > 0).sort((a, b) => b.rain_mm - a.rain_mm), dry = o.stations.length - wet.length, top = wet[0];
         out.push(V.card({ title: T("DHM केन्द्रमा नापिएको वर्षा", "Rain measured at DHM stations"),
           say: top ? T(top.ne + " मा " + N(top.rain_mm) + " मि.मि.; " + N(dry) + " केन्द्रमा वर्षा भएन।", top.en + " recorded " + top.rain_mm + " mm; " + dry + " of " + o.stations.length + " stations recorded no rain.") : T("सबै " + N(o.stations.length) + " केन्द्रमा वर्षा भएन।", "None of the " + o.stations.length + " stations recorded rain."),
-          body: wet.length ? V.bars(wet.slice(0, 8).map((s) => ({ name: T(s.ne, s.en), v: s.rain_mm })), { unit: " mm" }) : "",
+          body: wet.length ? V.bars(wet.slice(0, 8).map((s) => ({ name: T(s.ne, s.en), v: s.rain_mm })), { unit: T(" मि.मि.", " mm") }) : "",
           source: T("जल तथा मौसम विज्ञान विभाग, केन्द्रको अवलोकन", "DHM station observations"), url: o.url, time: T("अवलोकन", "observation of") + " " + G.npt(o.issued) + " · " + T("नापिएको, पूर्वानुमान होइन", "measured, not a forecast") })); }
       return out.join(""); },
     roads([rd]) { if (!rd || !rd.routes) return ""; const c = (s) => rd.routes.filter((r) => r.status === s), bl = c("blocked"), ow = c("oneway"), nm = (r) => E(T(r.name_ne, r.name_en));

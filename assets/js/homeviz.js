@@ -29,7 +29,7 @@
           say: mine.length ? T("यो जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना: ", "Active official notices naming this district: ") + Object.entries(by).map(([k, v]) => E(k) + " " + N(v)).join(" · ") : T("यो जिल्लालाई नाम लिएर कुनै सक्रिय आधिकारिक सूचना छैन।", "No active official notice names this district."),
           body: `<div class="vzmini">${tile(T("सबैभन्दा गम्भीर सूचना", "Most severe notice"), top ? T(G.SEV[top][0], G.SEV[top][1]) : T("छैन", "None"), RK[top] >= 3 ? "bad" : RK[top] === 2 ? "warn" : "")}
             ${tile(T("DHM मौसम चेतावनी, आज", "DHM weather warning, today"), T(L[1], L[2]), lvl === "red" ? "bad" : lvl !== "green" ? "warn" : "")}
-            ${st ? tile(T("नापिएको वर्षा", "Measured rain") + " · " + E(T(st[1].ne, st[1].en)) + " (" + N(Math.round(st[0])) + " km)", N(st[1].rain_mm) + " mm") : ""}</div>
+            ${st ? tile(T("नापिएको वर्षा", "Measured rain") + " · " + E(T(st[1].ne, st[1].en)) + " (" + N(Math.round(st[0])) + " km)", N(st[1].rain_mm) + T(" मि.मि.", " mm")) : ""}</div>
             ${gg ? `<div class="vzmg"><p class="vzf" style="padding:0">${T("सबैभन्दा नजिकको नदी केन्द्र", "Nearest river gauge")} (${N(Math.round(gg[0]))} km)</p>${V.gauge({ name: T(gg[1].ne, gg[1].en), level: gg[1].level, warning: gg[1].warning, danger: gg[1].danger })}</div>` : ""}
             <p><button type="button" class="hmchip vzpick">${T("जिल्ला फेर्नुहोस्", "Change district")}</button></p>`,
           source: T("DHM र सम्बन्धित निकाय, गतिमार्फत", "DHM and the agencies named, relayed by Gati"), time: (wx && wx.station_obs ? T("वर्षा अवलोकन", "rain observation") + " " + G.npt(wx.station_obs.issued) : "") })); } }
@@ -50,7 +50,7 @@
     if (ob && ob.stations && ob.stations.length) { const wet = ob.stations.filter((x) => x.rain_mm > 0).sort((a, b) => b.rain_mm - a.rain_mm), dry = ob.stations.length - wet.length;
       cards.push(V.card({ title: T("नापिएको वर्षा", "Measured rain"), href: R + "weather/", more: T("मौसम", "Weather"),
         say: wet.length ? T(wet[0].ne + " मा " + N(wet[0].rain_mm) + " मि.मि.; " + N(dry) + " केन्द्रमा वर्षा भएन।", wet[0].en + " recorded " + wet[0].rain_mm + " mm; " + dry + " of " + ob.stations.length + " stations had no rain.") : T("सबै " + N(ob.stations.length) + " केन्द्रमा वर्षा भएन।", "None of the " + ob.stations.length + " stations recorded rain."),
-        body: wet.length ? V.bars(wet.slice(0, 5).map((x) => ({ name: T(x.ne, x.en), v: x.rain_mm })), { unit: " mm" }) : "",
+        body: wet.length ? V.bars(wet.slice(0, 5).map((x) => ({ name: T(x.ne, x.en), v: x.rain_mm })), { unit: T(" मि.मि.", " mm") }) : "",
         source: T("DHM केन्द्रको अवलोकन", "DHM station observations"), url: ob.url, time: G.npt(ob.issued) + " · " + T("नापिएको, पूर्वानुमान होइन", "measured, not a forecast") })); }
     /* 2. rivers against their warning and danger levels */
     if (rv && rv.gauges && rv.gauges.length) { const hot = rv.gauges.filter((g) => g.level >= g.warning).length;
