@@ -47,6 +47,10 @@ def main():
     posted = npt(page.get("create_at") or page["issue_date"])
     checked = datetime.datetime.now(NPT).isoformat(timespec="seconds")
     b["mfd_id"] = str(latest)
+    # keep the ids the DHM watch compares against in step, so it stops flagging a page already read
+    ids = doc.setdefault("dhm_ids", {})
+    ids["warning"] = str(latest)
+    ids["recent"] = str(max(int(ids.get("recent") or 0), latest))
     b["url"] = f"https://dhm.gov.np/mfd/#/weather/pages/weather-warning/{latest}"
     b["issued"] = issued
     b["posted"] = posted
