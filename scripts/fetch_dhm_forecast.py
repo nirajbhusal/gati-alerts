@@ -89,6 +89,9 @@ def main():
         if "forecast24" not in doc:
             raise SystemExit(1)
         return
+    cid = doc["forecast24"]["country"].get("id")
+    if cid:
+        doc.setdefault("dhm_ids", {})["country_forecast"] = cid
     OUT.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     f = doc["forecast24"]
     print("forecast: country", f["country"]["id"], f["country"]["issued"], "kathmandu", f["kathmandu"]["id"])
