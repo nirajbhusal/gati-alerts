@@ -186,9 +186,9 @@
              "Gati is an independent citizen project, not an official system of any government agency. Maintainer: Niraj Bhusal.")}
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
       · <a href="${ROOT}report/">${b("रिपोर्ट गर्नुहोस्", "Report")}</a> · <a href="${ROOT}reports/">${b("नागरिक रिपोर्ट", "Reports")}</a>
-      · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">Lite</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
+      · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">${b("हल्का संस्करण", "Lite")}</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
       ${G.country.channels && G.country.channels.telegram ? `· <a href="${G.country.channels.telegram}" rel="noopener">Telegram</a>` : ""}
-      · <a href="${ROOT}atom.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
+      · <a href="${ROOT}atom.xml">${b("CAP Atom फिड", "CAP Atom feed")}</a> · <a href="${ROOT}data/alerts.json">JSON</a>
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
   tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
