@@ -2162,3 +2162,6 @@ html[data-theme=dark] .vzdn>div{background:#2A2413}html[data-theme=dark] .vzdn>d
 .vzdn span{font-size:var(--fs-6);color:var(--slate);font-weight:600}.vzdn b{font-size:1.7rem;line-height:1.1;font-variant-numeric:tabular-nums}
 .vzdn em{font-style:normal;font-weight:600;font-size:.9rem}.vzdn i{font-style:normal;font-size:var(--fs-6);color:var(--slate)}
 @media(min-width:900px){.vzwide2{grid-column:span 2}}
+/* home has its own language row (Nepali, English and the regional languages), so the header switch is not repeated there */
+body[data-page=home] .langbtn{display:none}
+@media(max-width:600px){.hlang{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.hlang::-webkit-scrollbar{display:none}.hlang button{flex:none}}
