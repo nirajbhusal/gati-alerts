@@ -2082,3 +2082,49 @@ html[lang=ne] .mxlab.prov{letter-spacing:0;font-size:12px}
 .wxct .wxrg td{border-bottom:0;font-weight:700}
 .tblwrap{overflow-x:auto}
 @media(max-width:520px){.wxct th,.wxct td{padding:8px 4px}.wxct td:first-child .meta{display:none}.wxct{font-size:.88rem}.wxct thead th{font-size:.72rem}}
+
+/* chart kit (assets/js/viz.js): shared graphics. Source and time under every chart; a word or number in every mark. */
+.hviz{margin:6px 0 16px;min-height:120px}
+.vzt{font-size:var(--r-title,1.15rem);margin:0 0 10px}
+.vzgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.vz{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.vzwide{grid-column:1/-1}
+.vzh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.vzh h3{margin:0;font-size:1rem}
+.vzh a{font-size:var(--fs-6);font-weight:600;white-space:nowrap;text-decoration:none;color:var(--ink)}
+.vzsay{margin:0;font-weight:600;font-size:var(--r-meta,.95rem);line-height:1.4}
+.vzf{margin:auto 0 0;padding-top:6px;font-size:var(--fs-6);color:var(--slate);line-height:1.45}
+.vzest{border:1px dashed var(--slate);border-radius:999px;padding:0 7px;font-weight:600}
+.vzseg{display:flex;height:30px;border-radius:8px;overflow:hidden;gap:2px}
+.vzseg i{display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;font-size:.82rem;min-width:6px}
+.vzkey{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:var(--fs-6);color:var(--slate)}
+.vzkey li{display:inline-flex;align-items:center;gap:5px}.vzkey i{width:11px;height:11px;border-radius:3px;display:inline-block}.vzkey b{color:var(--ink);font-variant-numeric:tabular-nums}
+.vzdays{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.vzdays li{border:1px solid var(--line);border-top:6px solid var(--c);border-radius:10px;padding:8px 4px;text-align:center;display:flex;flex-direction:column;gap:1px;min-width:0}
+.vzdays li.on{border-color:var(--ink);border-top-color:var(--c);box-shadow:inset 0 0 0 1px var(--ink)}
+.vzdays b{font-size:.95rem}.vzdays span{font-size:var(--fs-6);color:var(--slate)}
+.vzdays em{font-style:normal;font-size:.72rem;font-weight:600;line-height:1.2;margin-top:3px;overflow-wrap:anywhere}
+.vzg{display:flex;flex-direction:column;gap:3px}
+.vzgh{display:flex;justify-content:space-between;gap:8px;font-size:var(--fs-6);align-items:baseline}
+.vzgh b{font-size:.9rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.vzgh span{white-space:nowrap;color:var(--slate);font-variant-numeric:tabular-nums}.vzgh em{font-style:normal;font-weight:700}
+.vzgt{position:relative;height:10px;border-radius:999px;background:var(--surface2)}
+.vzgt i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;min-width:6px}
+.vzgt u,.vzgk u{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed #B4560A}
+.vzgt u.d,.vzgk u.d{border-left:2px solid #B3261E}
+.vzgk{margin:2px 0 0;display:flex;gap:14px;font-size:var(--fs-6);color:var(--slate)}
+.vzgk span{position:relative;padding-left:10px}.vzgk u{left:0;top:2px;bottom:2px}
+.vzheatw{overflow-x:auto}
+.vzheat{border-collapse:separate;border-spacing:4px;width:100%;table-layout:fixed}
+.vzheat thead th{font-weight:400;text-align:center;padding:0}
+.vzheat thead th b{display:block;font-size:.8rem}.vzheat thead th span{font-size:var(--fs-6);color:var(--slate)}
+.vzheat thead th.on b{text-decoration:underline;text-underline-offset:3px}
+.vzheat th[scope=row]{text-align:left;font-size:.85rem;font-weight:600;width:34%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:4px}
+.vzheat thead th:first-child{width:34%}
+.vzheat td{padding:0}
+.vzheat td i{display:flex;align-items:center;justify-content:center;height:30px;border-radius:7px;font-style:normal;font-weight:700;font-size:.85rem}
+.vzheat td i.z{background:var(--surface2)}
+html[data-theme=dark] .vzseg i[style*="C9D3DF"]{background:#33415A!important;color:#fff!important}
+@media(min-width:900px){.vzgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.vzkey li{font-size:var(--fs-6)!important}
+.vzheat th,.vzheat td{border:0!important;background:none!important}
+@media(min-width:700px){.vzheat th[scope=row],.vzheat thead th:first-child{width:170px}}
