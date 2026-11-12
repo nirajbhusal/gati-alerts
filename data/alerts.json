@@ -1,7 +1,387 @@
 {
- "generated": "2026-11-12T03:16:04+00:00",
- "count": 94,
+ "generated": "2026-11-12T04:46:11+00:00",
+ "count": 96,
  "alerts": [
+  {
+   "identifier": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-12T09:30:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": "nepalpolice.gov.np,np.gati.police-road-aarughat-soti-2026-11-11-0800,2026-11-11T09:30:00+05:45",
+   "file": "data/alerts/police-road-aarughat-soti-2026-11-12-0900.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-12T09:00:00+05:45",
+     "onset": "2026-11-12T09:00:00+05:45",
+     "expires": "2026-11-13T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द",
+     "description": "अद्यावधिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।२६ (कात्तिक २६) बिहान ९:०० बजेसम्म: आरुघाट गाउँपालिका–२ र ३ जोड्ने सोतीको फलामे मोटरेबल पक्की पुल असोज २५ को बुढीगण्डकी बाढीले बगाएकाले बाटो अझै पूर्ण रूपमा अवरुद्ध। सूचनामा यसका साथै गुल्मी (कालीगण्डकी करिडोर, राक्से) को पूर्ण अवरोध पनि सूचीकृत।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-12T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:summary160": "गोरखा, आरुघाट: सोतीको फलामे पुल बगेकाले सडक पूर्ण रूपमा बन्द"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "सोती, आरुघाट-२/३ (अनुमानित स्थान)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-12T09:00:00+05:45",
+     "onset": "2026-11-12T09:00:00+05:45",
+     "expires": "2026-11-13T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away",
+     "description": "Update: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-26 (Kartik 26 / 12 Nov): the iron motorable bridge at Soti linking Aarughat-2 and 3, swept away by the Budhi Gandaki flood of Asoj 25, still leaves the road fully blocked. The same notice also lists a full blockage in Gulmi (Kaligandaki corridor, Rakse).",
+     "instruction": "Do not use this road; check with local police before travelling (100).",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-12T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:summary160": "Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      },
+      {
+       "desc": "Soti, Aarughat-2/3 (approximate location)",
+       "circles": [
+        "28.05,84.81 3"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-11-13T09:00:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला",
+     "en": "Gorkha district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "28.05,84.81 3"
+     ],
+     "ne": "सोती, आरुघाट-२/३ (अनुमानित स्थान)",
+     "en": "Soti, Aarughat-2/3 (approximate location)"
+    }
+   ],
+   "refIds": [
+    "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-21",
+     "msgType": "Alert",
+     "sent": "2026-10-21T18:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-23",
+     "msgType": "Update",
+     "sent": "2026-10-23T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25",
+     "msgType": "Update",
+     "sent": "2026-10-25T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-25-1900",
+     "msgType": "Update",
+     "sent": "2026-10-25T19:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
+     "msgType": "Update",
+     "sent": "2026-10-26T20:08:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-10-28-0800",
+     "msgType": "Update",
+     "sent": "2026-10-28T08:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-01-0900",
+     "msgType": "Update",
+     "sent": "2026-11-01T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-02-0900",
+     "msgType": "Update",
+     "sent": "2026-11-02T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-02-1520",
+     "msgType": "Update",
+     "sent": "2026-11-02T15:20:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-03-0900",
+     "msgType": "Update",
+     "sent": "2026-11-03T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-04-0540",
+     "msgType": "Update",
+     "sent": "2026-11-04T05:40:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-05-0900",
+     "msgType": "Update",
+     "sent": "2026-11-05T09:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-06-0720",
+     "msgType": "Update",
+     "sent": "2026-11-06T07:20:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-07-2049",
+     "msgType": "Update",
+     "sent": "2026-11-07T20:49:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-09-0840",
+     "msgType": "Update",
+     "sent": "2026-11-09T08:40:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-10-0855",
+     "msgType": "Update",
+     "sent": "2026-11-10T08:55:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-11-0800",
+     "msgType": "Update",
+     "sent": "2026-11-11T08:00:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900",
+   "sender": "nepalpolice.gov.np",
+   "sent": "2026-11-12T09:30:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/1141/",
+   "references": "nepalpolice.gov.np,np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800,2026-11-11T09:30:00+05:45",
+   "file": "data/alerts/police-road-gulmi-kaligandaki-corridor-2026-11-12-0900.xml",
+   "info": {
+    "ne": {
+     "category": "Transport",
+     "event": "सडक अवस्था",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-12T09:00:00+05:45",
+     "onset": "2026-11-08T22:15:00+05:45",
+     "expires": "2026-11-13T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "नेपाल प्रहरी प्रधान कार्यालय · गति मार्फत प्रसारित",
+     "headline": "गुल्मी, राक्से: कालीगण्डकी करिडोर सडक खण्ड सुख्खा पहिरोले पूर्ण रूपमा बन्द",
+     "description": "अद्यावधिक, आधिकारिक: नेपाल प्रहरीको 'बाटो अवरुद्ध भएको सम्बन्धी' सूचना, २०८३।०७।२६ (कात्तिक २६) बिहान ९:०० बजेसम्म: गुल्मी, कालीगण्डकी गाउँपालिका–२ राक्से स्थित कालीगण्डकी करिडोर सडक खण्डमा कात्तिक २५ मा (सूचनामा ०७:४० बजे) माथिबाट सुख्खा पहिरो आई बाटो पूर्ण रूपमा अवरुद्ध भएको फेरि सूचीकृत (कात्तिक २५ बिहान ८ बजेको सूचनामा थिएन)। सडक विभाग NAVIGATE मा अझै बन्द देखिन्छ (अनुमानित खुल्ने समय कात्तिक २४ दिउँसो १२ बजे नाघिसकेको)।",
+     "instruction": "यो बाटो प्रयोग नगर्नुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-12T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:summary160": "गुल्मी, राक्से: कालीगण्डकी करिडोर सडक खण्ड सुख्खा पहिरोले पूर्ण रूपमा बन्द"
+     },
+     "areas": [
+      {
+       "desc": "गुल्मी जिल्ला",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0551"
+       }
+      },
+      {
+       "desc": "राक्से, कालीगण्डकी–२, कालीगण्डकी करिडोर (अनुमानित स्थान)",
+       "circles": [
+        "27.99,83.57 5"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Transport",
+     "event": "Road status",
+     "responseType": "Avoid",
+     "urgency": "Immediate",
+     "severity": "Moderate",
+     "certainty": "Observed",
+     "effective": "2026-11-12T09:00:00+05:45",
+     "onset": "2026-11-08T22:15:00+05:45",
+     "expires": "2026-11-13T09:00:00+05:45",
+     "contact": "Nepal Police · 100 · https://www.nepalpolice.gov.np/",
+     "senderName": "Nepal Police Headquarters · relayed by Gati",
+     "headline": "Gulmi, Rakse: Kaligandaki Corridor road fully blocked by a dry landslide",
+     "description": "Update, official: Nepal Police notice 'road blockages', to 9:00 AM 2083-07-26 (Kartik 26 / 12 Nov) lists a full blockage of the Kaligandaki Corridor road section at Rakse, Kaligandaki Rural Municipality-2, Gulmi, by a dry landslide from above on Kartik 25 (time given as 07:40 in the notice). It was not on the 8:00 AM Kartik 25 notice, so it is listed again. DoR NAVIGATE (NH48, Rakse section) still shows it closed, with its estimated reopening (noon, Kartik 24) long past.",
+     "instruction": "Do not use this road; check with local police before travelling (100).",
+     "web": "https://www.nepalpolice.gov.np/notices/1141/",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://www.nepalpolice.gov.np/notices/1141/",
+      "gati:sourceTime": "2026-11-12T09:00:00+05:45",
+      "gati:hazard": "road",
+      "gati:summary160": "Gulmi, Rakse: Kaligandaki Corridor road fully blocked by a dry landslide"
+     },
+     "areas": [
+      {
+       "desc": "Gulmi district",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0551"
+       }
+      },
+      {
+       "desc": "Rakse, Kaligandaki-2, Kaligandaki Corridor (approximate location)",
+       "circles": [
+        "27.99,83.57 5"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "road",
+   "severity": "Moderate",
+   "expires": "2026-11-13T09:00:00+05:45",
+   "districts": [
+    "NP0551"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0551",
+     "circles": [],
+     "ne": "गुल्मी जिल्ला",
+     "en": "Gulmi district"
+    },
+    {
+     "code": null,
+     "circles": [
+      "27.99,83.57 5"
+     ],
+     "ne": "राक्से, कालीगण्डकी–२, कालीगण्डकी करिडोर (अनुमानित स्थान)",
+     "en": "Rakse, Kaligandaki-2, Kaligandaki Corridor (approximate location)"
+    }
+   ],
+   "refIds": [
+    "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-08-2215",
+     "msgType": "Alert",
+     "sent": "2026-11-08T22:15:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-10-0855",
+     "msgType": "Update",
+     "sent": "2026-11-10T08:55:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800",
+     "msgType": "Update",
+     "sent": "2026-11-11T09:30:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-12",
    "sender": "hydrology.gov.np",
@@ -320,9 +700,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T09:30:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-11-0800",
@@ -546,9 +932,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-reopened",
@@ -916,9 +1308,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-0855",
@@ -1200,9 +1598,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T09:30:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-10",
@@ -1606,9 +2010,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-09",
@@ -2066,9 +2476,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T09:30:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-08",
@@ -2472,9 +2888,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-06",
@@ -2878,9 +3300,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.nsc-quake-1383-2026-11-06",
@@ -3211,9 +3639,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-05",
@@ -3896,9 +4330,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.police-road-dhading-prithvi-majhimtar-2026-11-03-reopened",
@@ -4260,9 +4700,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.police-road-dhading-prithvi-majhimtar-2026-11-03",
@@ -4802,9 +5248,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-02-0900",
@@ -5028,9 +5480,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-02",
@@ -5541,9 +5999,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.police-road-kavre-bp-roshi-2026-11-01",
@@ -7381,9 +7845,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-28",
@@ -9297,9 +9767,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.ndrrma-high-alert-cyclone-arnab-2026-10-26",
@@ -10036,9 +10512,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.nsc-quake-1382-2026-10-25",
@@ -10371,9 +10853,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-10-25",
@@ -10988,9 +11476,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-23",
@@ -11509,9 +12003,15 @@
      "msgType": "Update",
      "sent": "2026-11-11T08:00:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
+     "msgType": "Update",
+     "sent": "2026-11-12T09:30:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-11-0800"
+   "supersededBy": "np.gati.police-road-aarughat-soti-2026-11-12-0900"
   },
   {
    "identifier": "np.gati.dhm-river-levels-2026-10-21",
