@@ -2165,3 +2165,5 @@ html[data-theme=dark] .vzdn>div{background:#2A2413}html[data-theme=dark] .vzdn>d
 /* home has its own language row (Nepali, English and the regional languages), so the header switch is not repeated there */
 body[data-page=home] .langbtn{display:none}
 @media(max-width:600px){.hlang{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.hlang::-webkit-scrollbar{display:none}.hlang button{flex:none}}
+/* phones: search lives in the floating button's menu, so the header icon is not repeated; desktop keeps it */
+@media(max-width:720px){header.top .bar .hr .srchbtn,header.top .bar .hl .srchbtn{display:none!important}}
