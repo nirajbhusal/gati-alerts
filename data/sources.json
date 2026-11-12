@@ -358,7 +358,7 @@
   "status": "listed",
   "ingest": null,
   "role": "supplementary",
-  "note": "Model data, not an official warning. The weather view already shows an Open-Meteo model, labelled Model, separate from DHM."
+  "note": "In use: model weather and air quality on the Weather, Home and Map pages, and since 12 Nov 2026 a side-by-side rain comparison of six global models (ECMWF, GFS, ICON, UKMO, Météo-France, JMA). Fetched in the reader's browser, always labelled Model, separate from DHM, never a warning."
  },
  {
   "id": "ecmwf",
@@ -375,7 +375,7 @@
   "status": "listed",
   "ingest": null,
   "role": "supplementary",
-  "note": "Model data, not an official warning. Not ingested as a warning."
+  "note": "Model data, not an official warning. Shown since 12 Nov 2026 as one row of the model comparison on the Weather page, read through Open-Meteo. Not ingested as a warning."
  },
  {
   "id": "imd-rsmc",
@@ -431,7 +431,7 @@
   "status": "listed",
   "ingest": null,
   "role": "supplementary",
-  "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
+  "note": "In use since 12 Nov 2026: the Map page has an optional Satellite rain layer drawn in the reader's browser from NASA's open GIBS map service (gibs.earthdata.nasa.gov). An estimate, about 10 km grid and several hours behind real time, labelled as such. Never shown as a Gati alert and never summed with DHM or any Nepal agency."
  },
  {
   "id": "emsc",
