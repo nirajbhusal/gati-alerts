@@ -2065,3 +2065,20 @@ html[lang=ne] .mxlab.prov{letter-spacing:0;font-size:12px}
 .mxsum[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
 .mxsum .gdash{min-height:0!important;margin:0}
 .mxsum .gdash>.card,.mxsum .gdash .gcard{border:0;box-shadow:none;padding-left:0;padding-right:0;background:none}
+
+/* satellite rain layer controls and the model comparison table */
+.mxsat{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.mxsatb{min-width:36px;min-height:36px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:1.1rem;line-height:1;cursor:pointer}
+.mxsatb[disabled]{opacity:.35;cursor:default}
+.mxsatt{font-weight:600;font-variant-numeric:tabular-nums}
+.wxcmp{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.wxcmp h3{margin:0;font-size:var(--r-title,1.05rem)}
+.wxsay{font-weight:600;margin:6px 0 8px}
+.wxct{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.wxct th,.wxct td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.wxct th:first-child,.wxct td:first-child{text-align:left}
+.wxct thead th{font-size:var(--fs-6);color:var(--slate);font-weight:600}
+.wxct .wxcnow{background:var(--surface2);font-weight:700}
+.wxct .wxrg td{border-bottom:0;font-weight:700}
+.tblwrap{overflow-x:auto}
+@media(max-width:520px){.wxct th,.wxct td{padding:8px 4px}.wxct td:first-child .meta{display:none}.wxct{font-size:.88rem}.wxct thead th{font-size:.72rem}}
