@@ -289,7 +289,8 @@
    "title_en": "Monsoon (approximate)",
    "colour": "#2F6FED",
    "source": "DHM: normal monsoon onset 13 June, normal withdrawal 2 October",
-   "sourceUrl": "https://www.dhm.gov.np/"
+   "sourceUrl": "https://www.dhm.gov.np/",
+   "source_ne": "DHM: मनसुन सामान्यतया जुन १३ मा भित्रिन्छ र अक्टोबर २ मा बाहिरिन्छ"
   },
   {
    "id": "fog",
@@ -300,7 +301,8 @@
    "title_en": "Winter fog, Terai (approximate)",
    "colour": "#6B7A90",
    "source": "DHM seasonal climate summaries (winter fog and cold wave in the Terai)",
-   "sourceUrl": "https://www.dhm.gov.np/"
+   "sourceUrl": "https://www.dhm.gov.np/",
+   "source_ne": "DHM का मौसमी जलवायु सारांश (तराईमा हिउँदे कुहिरो र शीतलहर)"
   },
   {
    "id": "avalanche",
@@ -311,7 +313,8 @@
    "title_en": "Avalanche, high mountains (approximate)",
    "colour": "#7FD1D8",
    "source": "BIPAD Portal hazard records (avalanche events cluster in winter and spring)",
-   "sourceUrl": "https://bipadportal.gov.np/"
+   "sourceUrl": "https://bipadportal.gov.np/",
+   "source_ne": "BIPAD पोर्टलका प्रकोप अभिलेख (हिमपहिरोका घटना हिउँद र वसन्तमा बढी)"
   },
   {
    "id": "fire",
@@ -322,7 +325,8 @@
    "title_en": "Forest fire (approximate)",
    "colour": "#A0522D",
    "source": "ICIMOD Regional Forest Fire Monitoring (Nepal fire season, peak March to May)",
-   "sourceUrl": "https://www.icimod.org/"
+   "sourceUrl": "https://www.icimod.org/",
+   "source_ne": "ICIMOD क्षेत्रीय वन डढेलो अनुगमन (नेपालमा डढेलोको मौसम, मार्चदेखि मेसम्म उच्च)"
   },
   {
    "id": "dashain-travel",
@@ -334,7 +338,8 @@
    "source": "Derived by Gati: 3 days before to 1 day after the Dashain holidays listed above (not an official notice)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
    "from_ad": "2026-10-08",
-   "to_ad": "2026-10-24"
+   "to_ad": "2026-10-24",
+   "source_ne": "गतिले निकालेको: माथि दिइएका दसैँ बिदाको ३ दिन अघिदेखि १ दिन पछिसम्म (आधिकारिक सूचना होइन)"
   },
   {
    "id": "tihar-travel",
@@ -346,7 +351,8 @@
    "source": "Derived by Gati: 3 days before to 1 day after the Tihar and Chhath holidays listed above (not an official notice)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
    "from_ad": "2026-11-05",
-   "to_ad": "2026-11-16"
+   "to_ad": "2026-11-16",
+   "source_ne": "गतिले निकालेको: माथि दिइएका तिहार र छठ बिदाको ३ दिन अघिदेखि १ दिन पछिसम्म (आधिकारिक सूचना होइन)"
   }
  ]
 }
