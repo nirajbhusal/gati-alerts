@@ -1,6 +1,6 @@
 {
- "note_ne": "सार्वजनिक बिदा गृह मन्त्रालयको २०८३ सालको बिदा सूचनाबाट हुन्, जुन स्वचालित सर्भरबाट खोल्न सकिएन। त्यसैले मिति दुई छुट्टाछुट्टै स्रोतमा मिलेका बिदा मात्र राखिएका छन् र \"रिपोर्ट गरिएको\" भनी चिनाइएको छ। नाम गृह मन्त्रालयको PDF सँग अझै भिडाउन बाँकी छ।",
- "note_en": "Public holidays are from the MoHA notice for BS 2083, which could not be opened from automated servers. Only holidays whose dates agree in two independent outlets are listed, labelled Reported. Names still need checking against the MoHA PDF.",
+ "note_ne": "सार्वजनिक बिदा गृह मन्त्रालयको २०८३ सालको बिदा सूचनाबाट हुन्, जुन स्वचालित सर्भरबाट खोल्न सकिएन। मिति मन्त्रालयकै सूचनासँग अझै भिडाइएको छैन, त्यसैले \"रिपोर्ट गरिएको\" भनी चिनाइएको छ। मितिमा भर पर्नुअघि मन्त्रालयबाट पुष्टि गर्नुहोस्।",
+ "note_en": "Public holidays are from the Ministry of Home Affairs notice for BS 2083, which could not be opened from automated servers. The dates have not yet been checked against the ministry's own notice, so they are labelled Reported. Confirm with the ministry before relying on a date.",
  "types": {
   "holiday": "Public holiday (MoHA)",
   "closure": "Planned closure (official notice)",
@@ -17,12 +17,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-01-18",
@@ -33,12 +28,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-05-12",
@@ -49,12 +39,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-05-19",
@@ -65,12 +50,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-05-23",
@@ -81,12 +61,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-06-25",
@@ -97,12 +72,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-06-31",
@@ -113,12 +83,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-01",
@@ -129,12 +94,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-02",
@@ -145,12 +105,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-03",
@@ -161,12 +116,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-04",
@@ -177,12 +127,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-05",
@@ -193,12 +138,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-06",
@@ -209,12 +149,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-22",
@@ -225,12 +160,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-23",
@@ -241,12 +171,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-24",
@@ -257,12 +182,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-25",
@@ -273,12 +193,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-26",
@@ -289,12 +204,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-07-29",
@@ -305,12 +215,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-09-09",
@@ -321,12 +226,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-09-10",
@@ -337,12 +237,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-09-15",
@@ -353,12 +248,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-10-01",
@@ -369,12 +259,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   },
   {
    "date_bs": "2083-10-24",
@@ -385,12 +270,7 @@
    "source": "गृह मन्त्रालय, २०८३ सालको सरकारी तथा सार्वजनिक बिदा (नेपाल राजपत्र)",
    "source_en": "Ministry of Home Affairs, government and public holidays 2083 (Nepal Gazette)",
    "sourceUrl": "https://www.moha.gov.np/page/government-and-public-holidays-in-2083",
-   "trust": "Reported",
-   "reportedBy": [
-    "https://newsofnepal.com/2026/03/04/756913/",
-    "https://khatain.com/calendar/2083",
-    "https://katigate.com/festivals"
-   ]
+   "trust": "Reported"
   }
  ],
  "tithi_note_ne": "तिथि नेपाल पञ्चाङ्ग निर्णायक विकास समितिको उद्धृत गर्न मिल्ने स्रोतबाट लिन सकिएन, त्यसैले राखिएको छैन।",

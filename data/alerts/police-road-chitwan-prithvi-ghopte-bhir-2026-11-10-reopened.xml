@@ -5,9 +5,9 @@
   <sent>2026-11-10T14:20:00+05:45</sent>
   <status>Actual</status>
   <msgType>Update</msgType>
-  <source>Chitwan District Police Office, via The Kathmandu Post</source>
+  <source>Chitwan District Police Office</source>
   <scope>Public</scope>
-  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Chitwan District Police Office, via The Kathmandu Post. Source: https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu ; Nepal Police Headquarters notice: https://www.nepalpolice.gov.np/notices/1141/</note>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Chitwan District Police Office. Source: https://www.nepalpolice.gov.np/notices/1141/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.</note>
   <references>nepalpolice.gov.np,np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-0855,2026-11-10T08:55:00+05:45</references>
   <info>
     <language>ne-NP</language>
@@ -22,12 +22,12 @@
     <expires>2026-11-10T23:59:00+05:45</expires>
     <senderName>चितवन जिल्ला प्रहरी कार्यालय · गति मार्फत प्रसारित</senderName>
     <headline>चितवन, घोप्टे भिर: मलेखु–मुग्लिन खण्ड (पृथ्वी लोकमार्ग) दुवै दिशामा सुचारु</headline>
-    <description>अद्यावधिक, आधिकारिक: चितवन जिल्ला प्रहरी कार्यालय (द काठमाडौँ पोस्ट मार्फत): कात्तिक २४ (१० नोभेम्बर) बिहान ७:४५ बजे पृथ्वी लोकमार्गको मलेखु–मुग्लिन खण्ड, इच्छाकामना–४ घोप्टे भिर, दुवै दिशामा सुचारु। कात्तिक २३ राति करिब ११:१५ बजेको पहिरो हटाएपछि बाटो खोलिएको। उही भीर कात्तिक २३ मा दुई पटक खसेकाले यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्। नेपाल प्रहरी प्रधान कार्यालयको कात्तिक २४ बिहान ८:५५ बजेसम्मको सडक अवरोध सूचनामा पनि यो अवरोध सूचीकृत छैन।</description>
+    <description>अद्यावधिक, आधिकारिक: चितवन जिल्ला प्रहरी कार्यालय: कात्तिक २४ (१० नोभेम्बर) बिहान ७:४५ बजे पृथ्वी लोकमार्गको मलेखु–मुग्लिन खण्ड, इच्छाकामना–४ घोप्टे भिर, दुवै दिशामा सुचारु। कात्तिक २३ राति करिब ११:१५ बजेको पहिरो हटाएपछि बाटो खोलिएको। उही भीर कात्तिक २३ मा दुई पटक खसेकाले यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस्। नेपाल प्रहरी प्रधान कार्यालयको कात्तिक २४ बिहान ८:५५ बजेसम्मको सडक अवरोध सूचनामा पनि यो अवरोध सूचीकृत छैन।</description>
     <instruction>सावधानीपूर्वक सवारी चलाउनुहोस्; यात्रा अघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।</instruction>
-    <web>https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu</web>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
     <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
-    <parameter><valueName>gati:sourceUrl</valueName><value>https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-11-10T07:45:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
@@ -54,12 +54,12 @@
     <expires>2026-11-10T23:59:00+05:45</expires>
     <senderName>Chitwan District Police Office · relayed by Gati</senderName>
     <headline>Chitwan, Ghopte Bhir: Malekhu–Mugling section of the Prithvi Highway reopened in both directions</headline>
-    <description>Update, official: Chitwan District Police Office (via The Kathmandu Post): the Malekhu–Mugling section of the Prithvi Highway at Ghopte Bhir, Ichchhakamana-4, Chitwan, reopened in both directions at 7:45 AM Kartik 24 (10 Nov), after the landslide of about 11:15 PM Kartik 23 (9 Nov) was cleared. The same slope came down twice on 9 Nov, so check with local police before travelling. The blockage is also no longer on Nepal Police Headquarters' road-blockage notice to 8:55 AM Kartik 24.</description>
+    <description>Update, official: Chitwan District Police Office: the Malekhu–Mugling section of the Prithvi Highway at Ghopte Bhir, Ichchhakamana-4, Chitwan, reopened in both directions at 7:45 AM Kartik 24 (10 Nov), after the landslide of about 11:15 PM Kartik 23 (9 Nov) was cleared. The same slope came down twice on 9 Nov, so check with local police before travelling. The blockage is also no longer on Nepal Police Headquarters' road-blockage notice to 8:55 AM Kartik 24.</description>
     <instruction>Drive carefully; check with local police before travelling (100).</instruction>
-    <web>https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu</web>
+    <web>https://www.nepalpolice.gov.np/notices/1141/</web>
     <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
-    <parameter><valueName>gati:sourceUrl</valueName><value>https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-11-10T07:45:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.nepalpolice.gov.np/notices/1141/</value></parameter>

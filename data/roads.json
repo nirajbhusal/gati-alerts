@@ -19,9 +19,9 @@
    "u": "https://navigate.dor.gov.np/dashboard"
   },
   "chitwan-dpo": {
-   "ne": "चितवन जिल्ला प्रहरी कार्यालय, द काठमाडौँ पोस्ट मार्फत: मलेखु–मुग्लिन खण्ड कात्तिक २४ बिहान ७:४५ बजे दुवै दिशामा सुचारु",
-   "en": "Chitwan District Police Office, via The Kathmandu Post: Malekhu–Mugling section reopened in both directions at 7:45 AM Kartik 24 (10 Nov)",
-   "u": "https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu"
+   "ne": "चितवन जिल्ला प्रहरी कार्यालय: मलेखु–मुग्लिन खण्ड कात्तिक २४ बिहान ७:४५ बजे दुवै दिशामा सुचारु",
+   "en": "Chitwan District Police Office: Malekhu–Mugling section reopened in both directions at 7:45 AM Kartik 24 (10 Nov)",
+   "u": "https://www.nepalpolice.gov.np/notices/1141/"
   }
  },
  "nodes": {
@@ -889,8 +889,8 @@
    ],
    "name_ne": "काठमाडौँ–गजुरी–मुग्लिङ (पृथ्वी)",
    "name_en": "Kathmandu–Gajuri–Mugling (Prithvi)",
-   "note_ne": "खुला: पृथ्वी लोकमार्गको मलेखु–मुग्लिन खण्ड (चितवन, इच्छाकामना–४ घोप्टे भिर) कात्तिक २४ बिहान ७:४५ बजे दुवै दिशामा सुचारु। स्रोत: चितवन जिल्ला प्रहरी कार्यालय, द काठमाडौँ पोस्ट मार्फत; कात्तिक २३ राति करिब ११:१५ बजेको पहिरो हटाएपछि बाटो खोलिएको। उही भीर कात्तिक २३ मा दुई पटक खसेकाले यात्रा अघि स्थानीय प्रहरीसँग (१००) बुझ्नुहोस्। नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २५ बिहान ८:०० बजेसम्म) मा पनि यो अवरोध छैन। सूचनामा जारी पूर्ण अवरोध एउटा: आरुघाट (सोती पुल, गोरखा); गुल्मी (राक्से) अब सूचीमा छैन। धादिङको बेनीघाट रोराङ–९ मझिमटारमा कात्तिक १७ बिहान ९ देखि ११ बजेसम्म आकाशे पुल निर्माणका लागि तोकिएको बन्द सकियो: नेपाल प्रहरीले कात्तिक १७ दिउँसो १२:३८ मा पृथ्वी राजमार्ग त्यहाँ पूर्ण रूपमा सुचारु भएको जनाएको। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
-   "note_en": "Open: the Malekhu–Mugling section of the Prithvi Highway (Ghopte Bhir, Ichchhakamana-4, Chitwan) reopened in both directions at 7:45 AM Kartik 24 (10 Nov). Source: Chitwan District Police Office, via The Kathmandu Post, after the landslide of about 11:15 PM Kartik 23 (9 Nov) was cleared. The same slope came down twice on 9 Nov, so check with local police (100) before travelling. The blockage is also no longer on Nepal Police's nationwide road-blockage notice (to 8:00 AM Kartik 25 / 11 Nov). The notice now lists one full blockage: Aarughat (Soti bridge, Gorkha); the Gulmi (Kaligandaki corridor, Rakse) blockage listed on 10 Nov is no longer listed (DoR NAVIGATE still shows it closed past its estimated end). The planned closure at Majhimtar, Benighat Rorang-9, Dhading (9 to 11 AM Kartik 17, footbridge construction) has ended: Nepal Police said at 12:38 PM Kartik 17 (3 Nov) that the highway there has fully reopened. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
+   "note_ne": "खुला: पृथ्वी लोकमार्गको मलेखु–मुग्लिन खण्ड (चितवन, इच्छाकामना–४ घोप्टे भिर) कात्तिक २४ बिहान ७:४५ बजे दुवै दिशामा सुचारु। स्रोत: चितवन जिल्ला प्रहरी कार्यालय; कात्तिक २३ राति करिब ११:१५ बजेको पहिरो हटाएपछि बाटो खोलिएको। उही भीर कात्तिक २३ मा दुई पटक खसेकाले यात्रा अघि स्थानीय प्रहरीसँग (१००) बुझ्नुहोस्। नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २५ बिहान ८:०० बजेसम्म) मा पनि यो अवरोध छैन। सूचनामा जारी पूर्ण अवरोध एउटा: आरुघाट (सोती पुल, गोरखा); गुल्मी (राक्से) अब सूचीमा छैन। धादिङको बेनीघाट रोराङ–९ मझिमटारमा कात्तिक १७ बिहान ९ देखि ११ बजेसम्म आकाशे पुल निर्माणका लागि तोकिएको बन्द सकियो: नेपाल प्रहरीले कात्तिक १७ दिउँसो १२:३८ मा पृथ्वी राजमार्ग त्यहाँ पूर्ण रूपमा सुचारु भएको जनाएको। कात्तिक १५ बिहान ७ बजेको सूचीमा एकतर्फी: जोमसोम–कोरला (मुस्ताङ), कालीगण्डकी करिडोर रामपुर (पाल्पा), कर्णाली राजमार्ग औलिसे (सुर्खेत)। सडक विभाग NAVIGATE ले NH17 को खण्ड खुलेको देखाएको थियो (२२ अक्टोबरको जाँच)।",
+   "note_en": "Open: the Malekhu–Mugling section of the Prithvi Highway (Ghopte Bhir, Ichchhakamana-4, Chitwan) reopened in both directions at 7:45 AM Kartik 24 (10 Nov). Source: Chitwan District Police Office, after the landslide of about 11:15 PM Kartik 23 (9 Nov) was cleared. The same slope came down twice on 9 Nov, so check with local police (100) before travelling. The blockage is also no longer on Nepal Police's nationwide road-blockage notice (to 8:00 AM Kartik 25 / 11 Nov). The notice now lists one full blockage: Aarughat (Soti bridge, Gorkha); the Gulmi (Kaligandaki corridor, Rakse) blockage listed on 10 Nov is no longer listed (DoR NAVIGATE still shows it closed past its estimated end). The planned closure at Majhimtar, Benighat Rorang-9, Dhading (9 to 11 AM Kartik 17, footbridge construction) has ended: Nepal Police said at 12:38 PM Kartik 17 (3 Nov) that the highway there has fully reopened. The 7 AM Kartik 15 list showed one way at Jomsom–Korala (Mustang), Kaligandaki corridor at Rampur (Palpa) and Karnali Highway at Aulise (Surkhet). DoR NAVIGATE also showed a section of NH17 as opened (checked 22 Oct).",
    "sources": [
     "chitwan-dpo",
     "pol",
@@ -1033,8 +1033,8 @@
    ],
    "name_ne": "काठमाडौँ–सिन्धुली–बर्दिबास (बीपी)",
    "name_en": "Kathmandu–Sindhuli–Bardibas (BP)",
-   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २५ बिहान ८:०० बजेसम्म) मा अब यो मार्ग छैन। कात्तिक १४ मा रोशी-९ पिन्थली र रोशी-८ गिम्दीबेँसीमा आएको लेदो र पहिरो हटाएपछि कात्तिक १५ बेलुकादेखि यातायात सञ्चालन भएको जिल्ला प्रहरी कार्यालय काभ्रेले जनाएको (शिलापत्र र गोठालो खबरले रिपोर्ट गरेको)। रोशी खोला किनारमा अस्थायी डाइभर्सनबाट सडक चल्ने भएकाले वर्षा हुँदा फेरि अवरुद्ध हुन सक्छ।",
-   "note_en": "Open: no longer on Nepal Police's nationwide road-blockage notice (to 8:00 AM Kartik 25 / 11 Nov). The debris and landslide at Roshi-9 Pinthali and Roshi-8 Gimdibesi that blocked the road on Kartik 14 were cleared and traffic resumed on the evening of Kartik 15 (1 Nov), District Police Office Kavre said (reported by Shilapatra and Gothalo Khabar). The road runs on temporary diversions along the Roshi Khola, so rain can block it again.",
+   "note_ne": "खुला: नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २५ बिहान ८:०० बजेसम्म) मा अब यो मार्ग छैन। कात्तिक १४ मा रोशी-९ पिन्थली र रोशी-८ गिम्दीबेँसीमा आएको लेदो र पहिरो हटाएपछि कात्तिक १५ बेलुकादेखि यातायात सञ्चालन भएको जिल्ला प्रहरी कार्यालय काभ्रेले जनाएको। रोशी खोला किनारमा अस्थायी डाइभर्सनबाट सडक चल्ने भएकाले वर्षा हुँदा फेरि अवरुद्ध हुन सक्छ।",
+   "note_en": "Open: no longer on Nepal Police's nationwide road-blockage notice (to 8:00 AM Kartik 25 / 11 Nov). The debris and landslide at Roshi-9 Pinthali and Roshi-8 Gimdibesi that blocked the road on Kartik 14 were cleared and traffic resumed on the evening of Kartik 15 (1 Nov), District Police Office Kavre said. The road runs on temporary diversions along the Roshi Khola, so rain can block it again.",
    "sources": [
     "pol",
     "dor"

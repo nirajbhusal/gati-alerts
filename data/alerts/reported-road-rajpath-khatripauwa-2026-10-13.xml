@@ -7,7 +7,7 @@
   <msgType>Alert</msgType>
   <source>Nepal Police Headquarters</source>
   <scope>Public</scope>
-  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</note>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: Nepal Police Headquarters. Source: https://www.nepalpolice.gov.np/notices/ Corrected 12 Nov 2026: this item was first published from news reports quoting the agency. Gati no longer treats news articles as sources, so the news links were removed; the link now points to the agency. The item was not checked against the agency's own notice at the time.</note>
   <info>
     <language>ne-NP</language>
     <category>Transport</category>
@@ -21,16 +21,15 @@
     <expires>2026-10-14T06:00:00+05:45</expires>
     <senderName>नेपाल प्रहरी प्रधान कार्यालय — गति मार्फत प्रसारित</senderName>
     <headline>त्रिभुवन राजपथ (काठमाडौँ–हेटौँडा): खत्रीपौवामा पहिरो, एकतर्फी</headline>
-    <description>रिपोर्ट गरिएको: धुनिबेँसी–९ खत्रीपौवाको पहिरोका कारण राजपथ एकतर्फी। अनलाइनखबर र अनलाइनपाना दुवैले नेपाल प्रहरीको असोज २७ बिहान ६ बजेको विवरण उद्धृत गरेका। कान्ति लोकपथ दुवैतर्फी चलिरहेको (रातोपाटी, संघीय सडक कार्यालय)।</description>
+    <description>रिपोर्ट गरिएको: धुनिबेँसी–९ खत्रीपौवाको पहिरोका कारण राजपथ एकतर्फी। त्यस बेलाका समाचारले नेपाल प्रहरीको असोज २७ बिहान ६ बजेको विवरण उद्धृत गरेका। कान्ति लोकपथ दुवैतर्फी चलिरहेको (संघीय सडक कार्यालय)।</description>
     <instruction>यात्रा अघि प्रहरीसँग सडकको अवस्था बुझ्नुहोस्।</instruction>
-    <web>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</web>
+    <web>https://www.nepalpolice.gov.np/notices/</web>
     <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
-    <parameter><valueName>gati:sourceUrl</valueName><value>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-13T06:00:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js</value></parameter>
-    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.onlinepana.com/content/417910/</value></parameter>
     <parameter><valueName>gati:summary160</valueName><value>त्रिभुवन राजपथ (काठमाडौँ–हेटौँडा): खत्रीपौवामा पहिरो, एकतर्फी</value></parameter>
     <area>
       <areaDesc>धादिङ जिल्ला</areaDesc>
@@ -51,16 +50,15 @@
     <expires>2026-10-14T06:00:00+05:45</expires>
     <senderName>Nepal Police Headquarters — relayed by Gati</senderName>
     <headline>Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa</headline>
-    <description>Reported: the Rajpath is one-way after a landslide at Khatripauwa, Dhunibesi-9. Onlinekhabar and Onlinepana both cite Nepal Police's 6 AM notice of Asoj 27 (13 Oct 2026). Kanti Lokpath is running two-way (Ratopati, federal road office).</description>
+    <description>Reported: the Rajpath is one-way after a landslide at Khatripauwa, Dhunibesi-9. News reports at the time cited Nepal Police's 6 AM notice of Asoj 27 (13 Oct 2026). Kanti Lokpath is running two-way (federal road office).</description>
     <instruction>Check road status with the police before travelling.</instruction>
-    <web>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</web>
+    <web>https://www.nepalpolice.gov.np/notices/</web>
     <contact>Nepal Police · 100 · https://www.nepalpolice.gov.np/</contact>
     <parameter><valueName>gati:trustLevel</valueName><value>Reported</value></parameter>
-    <parameter><valueName>gati:sourceUrl</valueName><value>https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://www.nepalpolice.gov.np/notices/</value></parameter>
     <parameter><valueName>gati:sourceTime</valueName><value>2026-10-13T06:00:00+05:45</value></parameter>
     <parameter><valueName>gati:hazard</valueName><value>road</value></parameter>
     <parameter><valueName>gati:bulletinFile</valueName><value>https://github.com/nirajbhusal/rasuwa-flood-bulletin/blob/main/road-visual.js</value></parameter>
-    <parameter><valueName>gati:sourceUrl2</valueName><value>https://www.onlinepana.com/content/417910/</value></parameter>
     <parameter><valueName>gati:summary160</valueName><value>Tribhuvan Rajpath (Kathmandu–Hetauda): one-way after landslide at Khatripauwa</value></parameter>
     <area>
       <areaDesc>Dhading district</areaDesc>
