@@ -68,7 +68,9 @@
       document.getElementById("wxmapnote").innerHTML = yd.length ? `${esc(G.bsDay(wd))}: ${esc(T(b5.map_note_ne, b5.map_note_en))}${wd.level === "yellow" ? " " + T("बाँकी हरियो (चेतावनी छैन)।", "Rest green (no warning).") : ""} <a href="${esc(b5.url)}" target="_blank" rel="noopener">DHM ↗</a>` : w ? (live ? T("DHM को चेतावनी नक्सा अनुसार रङ।", "Coloured from DHM's warning map.") : T(`DHM को पछिल्लो चेतावनी नक्सा (${G.npt(w.info.ne.params["gati:sourceTime"] || w.sent)}) को म्याद सकिएको छ; त्यसपछिको नक्सा जाँच्न सकिएन, त्यसैले जिल्लामा रङ छैन।`, `DHM's latest warning map in Gati (${G.npt(w.info.en.params["gati:sourceTime"] || w.sent)}) has expired; a newer one could not be checked, so no district is coloured.`))
         + ` <a href="${esc(wx.official.warningUrl)}" target="_blank" rel="noopener">${T("DHM चेतावनी नक्सा", "DHM warning map")} ↗</a> · <a href="${R}alerts/${esc(w.identifier)}/">${esc(w.info[G.lang].headline)}</a>` : T("चेतावनी नक्सा उपलब्ध छैन।", "Warning map not available.");
     }
-    document.getElementById("wxrain").innerHTML = `<h2 style="margin-top:0">${T("२४ घण्टाको वर्षा", "24 h rainfall")}</h2>` + (wx && wx.rainfall ? "" :
+    /* measured station rain is drawn at the top of the page; do not repeat it here as "not available" */
+    if (wx && wx.station_obs && !wx.rainfall) document.getElementById("wxrain").remove();
+    else document.getElementById("wxrain").innerHTML = `<h2 style="margin-top:0">${T("२४ घण्टाको वर्षा", "24 h rainfall")}</h2>` + (wx && wx.rainfall ? "" :
       `<div class="na"><strong>${T("उपलब्ध छैन", "Not available")}</strong>. ${esc(T(wx.rainfall_note_ne, wx.rainfall_note_en))} ${T("अन्तिम जाँच", "Last checked")}: ${G.npt(wx.checked)} · <a href="${esc(wx.rainfallUrl)}" target="_blank" rel="noopener">DHM ↗</a></div>`);
     document.getElementById("wxnote").innerHTML = wx ? `${esc(T(wx.note_ne, wx.note_en))} <a href="${esc(wx.official.url)}" target="_blank" rel="noopener">mfd.gov.np ↗</a>` : "";
     const box = document.getElementById("mydist");
