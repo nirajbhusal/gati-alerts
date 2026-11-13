@@ -435,7 +435,7 @@
   G.verdictBadge = (k) => { const v = G.VERDICT[k] || G.VERDICT.no_info; return `<span class="vbadge v-${G.VERDICT[k] ? k : "no_info"}" style="--sc:${G.verdictColor(v[0])}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${v[3]}</svg>${G.lang === "ne" ? v[1] : v[2]}</span>`; };
   /* Source health: planned | ok | stale | down. Stale = last success older than 3x pollMinutes. */
   G.srcStatus = (src, h) => {
-    if (src.status === "listed") return "listed";
+    if (src.status === "live" || src.status === "link" || src.status === "nofeed" || src.status === "listed") return src.status;
     if (src.status === "planned" || !src.url) return "planned";
     h = h || {};
     if (!h.lastSuccess) return "down";

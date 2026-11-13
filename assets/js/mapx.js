@@ -77,11 +77,12 @@
     ctl.addTo(map);
   })();
   L.control.scale({ imperial: false }).addTo(map);
-  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "sat", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
+  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "sat", "fire", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
   /* Satellite rain: NASA GPM IMERG half-hourly estimate, served as open map tiles by NASA GIBS (no key).
      About 10 km grid and several hours behind real time. Context only, never a warning. Own pane so the grey basemap filter does not touch it. */
-  map.createPane("sat").style.zIndex = 250; map.getPane("sat").style.pointerEvents = "none";
+  map.createPane("fire").style.zIndex = 450; map.getPane("fire").style.pointerEvents = "none"; map.createPane("sat").style.zIndex = 250; map.getPane("sat").style.pointerEvents = "none";
   const SATB = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best", SATL = "IMERG_Precipitation_Rate_30min", SATSTEP = 18e5;
+  const FIRED = new Date(Date.now() - 864e5).toISOString().slice(0, 10); /* yesterday (UTC): the last complete day of detections */
   let satLatest = null, satT = null, satLoading = false, satFail = false;
   const satIso = (ms) => new Date(ms).toISOString().slice(0, 19) + "Z";
   function loadSat() { if (satLoading) return; satLoading = true; const d = (o) => new Date(Date.now() + o * 864e5).toISOString().slice(0, 10);
@@ -155,6 +156,7 @@
     const inB = (p) => { if (!S.d && !S.pr) return true; return focusB ? focusB.contains([p[0], p[1]]) : true; };
     const hos = HL ? HL.hospitals.filter(inB) : [], heli = AV ? AV.helipads.filter(inB) : [];
     counts.hos = HL ? hos.length : null; counts.heli = AV ? heli.length : null;
+    if (on("fire")) L.tileLayer.wms("https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi", { layers: "VIIRS_NOAA20_Thermal_Anomalies_375m_All", format: "image/png", transparent: true, version: "1.1.1", time: FIRED, pane: "fire", opacity: 0.95, attribution: "NASA FIRMS / GIBS (VIIRS)" }).addTo(LG.fire);
     if (on("sat")) { if (!satLatest) { if (!satFail) loadSat(); } else L.tileLayer(`${SATB}/${SATL}/default/${satIso(satT)}/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png`, { pane: "sat", maxNativeZoom: 6, opacity: 0.72, attribution: "NASA GPM IMERG (GIBS)" }).addTo(LG.sat); }
     if (on("hos")) hos.forEach((p) => L.circleMarker([p[0], p[1]], { radius: 3.5, color: "#fff", weight: 1, fillColor: "#5f6670", fillOpacity: 1 }).bindTooltip(E(p[2] || T("अस्पताल", "Hospital"))).addTo(LG.hos));
     if (on("heli")) heli.forEach((p) => L.marker([p[0], p[1]], { icon: L.divIcon({ className: "mxheli", html: "H", iconSize: [16, 16] }) }).bindTooltip(E(p[2] || "Helipad")).addTo(LG.heli));
@@ -176,7 +178,7 @@
     P.querySelector(".mxbody").innerHTML = `
       <fieldset><legend>${T("तहहरू", "Layers")}</legend><div class="mxchips">
         ${chip("L", "alerts", T("सूचना", "Alerts"))}${chip("L", "wx", T("मौसम चेतावनी (DHM)", "Weather warnings (DHM)"), counts.wx)}${chip("L", "rv", T("नदी मापन केन्द्र", "River gauges"), counts.rv)}
-        ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}${chip("L", "sat", T("भू-उपग्रह वर्षा", "Satellite rain"))}
+        ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}${chip("L", "sat", T("भू-उपग्रह वर्षा", "Satellite rain"))}${chip("L", "fire", T("भू-उपग्रह आगो", "Satellite fires"))}
         ${chip("L", "hos", T("अस्पताल", "Hospitals"), counts.hos)}${chip("L", "heli", T("हेलिप्याड", "Helipads"), counts.heli)}
         <button type="button" class="mxchip" disabled title="${T("खुला स्थानको डेटा उपलब्ध छैन", "Open-space data not available")}">${T("खुला स्थान", "Open spaces")} <span class="mxn">${T("उपलब्ध छैन", "n/a")}</span></button>
         ${chip("L", "lab", T("नाम", "Labels"))}</div>
@@ -211,6 +213,8 @@
     if (on("hos")) rows.push(`<div><span>${sw("#5f6670", "dot")}${T("अस्पताल (OSM)", "Hospital (OSM)")} <span class="mxn">${G.num(String(counts.hos || 0))}</span></span></div>`);
     if (on("heli")) rows.push(`<div><span><i class="mxheli s">H</i>${T("हेलिप्याड (OSM)", "Helipad (OSM)")} <span class="mxn">${G.num(String(counts.heli || 0))}</span></span></div>`);
     const sl = (u, t) => (u ? `<a href="${E(u)}" target="_blank" rel="noopener">${t} ↗</a>` : t);
+    if (on("fire")) rows.push(`<div class="mxsat"><b>${T("भू-उपग्रह आगो", "Satellite fires")}</b><span>${sw("#ed2626")}${T("आगो वा ताप देखिएको ठाउँ", "Fire or heat detected")}</span><span class="mxsatt">${FIRED}</span></div>
+      <p class="mxhint">${T("भू-उपग्रह (VIIRS, ३७५ मि.) ले हिजो देखेको ताप: डढेलो, खेतको आगो वा उद्योग पनि हुन सक्छ; बादलमुनि देखिँदैन। चेतावनी होइन।", "Heat seen by satellite (VIIRS, 375 m) yesterday: may be forest fire, farm burning or industry, and is hidden under cloud. Not a warning.")} <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" rel="noopener">NASA FIRMS ↗</a></p>`);
     if (on("sat")) rows.push(`<div class="mxsat"><b>${T("भू-उपग्रह वर्षा", "Satellite rain")}</b>${satLatest ? `<button type="button" class="mxsatb" data-s="-1" aria-label="${T("३० मिनेट अघि", "30 minutes earlier")}"${satT <= satLatest - 864e5 ? " disabled" : ""}>‹</button><span class="mxsatt">${G.npt(satIso(satT))}</span><button type="button" class="mxsatb" data-s="1" aria-label="${T("३० मिनेट पछि", "30 minutes later")}"${satT >= satLatest ? " disabled" : ""}>›</button><span>${sw("#9ad9f5")}${T("हल्का", "Light")}</span><span>${sw("#1f9d2f")}</span><span>${sw("#f2e205")}</span><span>${sw("#f28c1e")}</span><span>${sw("#e2231a")}${T("भारी", "Heavy")}</span>` : `<span>${satFail ? T("NASA सँग जोडिन सकिएन", "Could not reach NASA") : T("लोड हुँदै…", "Loading…")}</span>`}</div>
       <p class="mxhint">${T("अनुमान, मापन होइन: करिब १० कि.मि. ग्रिड, वास्तविक समयभन्दा केही घण्टा पछाडि" + (satLatest ? " (पछिल्लो तस्विर करिब " + G.num(String(Math.round((Date.now() - satLatest) / 36e5))) + " घण्टा पुरानो)" : "") + "। चेतावनी होइन; आधिकारिक चेतावनी DHM ले मात्र दिन्छ।", "An estimate, not a measurement: about 10 km grid and several hours behind real time" + (satLatest ? " (latest image is about " + Math.round((Date.now() - satLatest) / 36e5) + " h old)" : "") + ". Not a warning; only DHM issues official warnings.")}</p>`);
     const src = [on("alerts") || on("eq") ? T("सूचना: आधिकारिक निकाय, गतिमार्फत", "Alerts: official agencies via Gati") + (AL && AL.generated ? ` (${T("अद्यावधिक", "updated")} ${G.npt(AL.generated)})` : "") : "", on("wx") && WX && WX.bulletin5 ? `${sl(WX.bulletin5.url, `DHM ${T("५ दिने बुलेटिन", "5-day bulletin")}`)}, ${G.npt(WX.bulletin5.issued)}${WX.checked ? ` (${T("जाँचेको", "checked")} ${G.npt(WX.checked)})` : ""}` : "", on("rv") && RV ? `${E(T(RV.source_ne, RV.source_en))}, ${E(T(RV.as_of_ne, RV.as_of_en))}` : "", on("rd") && RD ? `${sl(RD.sources.pol.u, E(T(RD.sources.pol.ne, RD.sources.pol.en)))} (${E(T(RD.as_of_ne, RD.as_of_en))})` : "", on("aq") ? "Open-Meteo (CAMS) " + T("मोडेल", "model") : "", on("sat") ? sl("https://gpm.nasa.gov/data/imerg", "NASA GPM IMERG") + " " + T("भू-उपग्रह अनुमान", "satellite estimate") : "", on("hos") || on("heli") ? "OpenStreetMap / HOT (HDX)" : ""].filter(Boolean);
