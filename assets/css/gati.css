@@ -2173,3 +2173,22 @@ html:not([data-theme=dark]) .roadlist .rl-s[style*="86D8A0"]{color:#27774F!impor
 html:not([data-theme=dark]) .gdt>b[style*="8F9BB3"]{color:var(--slate)}
 html[data-theme=dark] .tkcard .more{color:#8DB1F7}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ===== Weather page: data side by side, no reserved blank space ===== */
+.dash #wxfc,.dash #wxmine,.dash #wx5,.dash #wxrain{min-height:0}
+.wxpair{margin-top:var(--s4);align-items:stretch}
+.wxpair>.card{margin-top:0}
+#wxfc{margin-top:var(--s4)}
+.wxfold{margin-top:var(--s4)}
+.wxfold summary{cursor:pointer;list-style:none;display:block}
+.wxfold summary::-webkit-details-marker{display:none}
+.wxfold summary h2{display:inline;font-size:var(--fs-3)}
+.wxfold summary h2::after{content:" ▾";color:var(--slate)}
+.wxfold[open] summary h2::after{content:" ▴"}
+.wxfold>#wx5{border:0;box-shadow:none;padding:12px 0 0;margin:0;background:none}
+.wxfold>#wx5 .sechead h2{display:none}
+@media(min-width:900px){
+  body[data-page=weather] .pviz{grid-template-columns:1fr 1fr;align-items:stretch}
+  body[data-page=weather] .pviz>.vza{grid-column:1/-1}
+  body[data-page=weather] .pviz>.vz:only-of-type,body[data-page=weather] .pviz>.vz:last-child:nth-child(even){grid-column:auto}
+}
