@@ -61,6 +61,10 @@ TOKEN = re.compile(r"[.#](-?[A-Za-z_][A-Za-z0-9_-]*)")
 def selector_alive(sel):
     s = re.sub(r"\[[^\]]*\]", "", sel)          # attribute selectors can hold dots and hashes
     s = re.sub(r"\"[^\"]*\"|'[^']*'", "", s)
+    # ":not(.x)" matches when x is absent, and ":is(.x,.y)" needs only one of them: names inside these never condemn a rule
+    prev = None
+    while prev != s:
+        prev = s; s = re.sub(r":(?:not|is|where|has)\([^()]*\)", "", s)
     return all(alive(t) for t in TOKEN.findall(s))
 
 
