@@ -35,15 +35,15 @@ document.body.appendChild(d);setTimeout(function(){d.remove()},1100);})();</scri
 <main id="main" class="wrap dash home homev3">
   <div id="home-lang" class="hlang" role="group" aria-label="भाषा · Language"></div>
   <div id="services" class="hfeatures"></div>
-  <div class="hhead"><h1 class="hh1"><span class="ne-only">नेपाल अहिले</span><span class="en-only">Nepal Now</span></h1><p class="hsub">सही सूचना, सही समयमा । The right alert, right on time.</p></div><section class="card hmap" id="hmap" aria-label="जिल्लाअनुसार आधिकारिक सूचना · Official alerts by district"><div class="hmw"></div></section><section class="hinfo" id="hinfo" aria-label="नेपाल अहिलेको जानकारी · Nepal Now info"><div class="hib hiq" data-b="quick"></div><p class="hib hif meta" data-b="fresh"></p><!--HI--></section><section class="gdash" id="gdash" aria-label="सारांश · Summary"></section>
+  <div class="hhead"><h1 class="hh1"><span class="ne-only">नेपाल अहिले</span><span class="en-only">Nepal Now</span></h1><p class="hsub">सही सूचना, सही समयमा । The right alert, right on time.</p></div><section class="card hmap" id="hmap" aria-label="जिल्लाअनुसार आधिकारिक सूचना · Official alerts by district"><div class="hmw"></div></section><div id="srcflag" class="srcflag" role="status" hidden></div><section class="hviz" id="hviz" aria-label="नेपाल एक नजरमा · Nepal at a glance"></section><section class="hinfo" id="hinfo" aria-label="नेपाल अहिलेको जानकारी · Nepal Now info"><div class="hib hiq" data-b="quick"></div><p class="hib hif meta" data-b="fresh"></p><!--HI--></section>
   <div id="htop"></div>
   <div class="hdist"><div class="mydist" id="mydist"></div></div>
   <div class="hcols">
     <div class="hleft">
-      <div id="today" class="htoday"></div>
+      <details class="tdfold"><summary><span class="ne-only">आजको अवस्था शब्दमा, सुन्न मिल्ने</span><span class="en-only">Today in words, with Listen</span></summary><div id="today" class="htoday"></div></details>
       <div class="hdist hdsl" id="afslider"></div>
-      <div class="halerts"><div id="fresh" class="fresh" role="status"></div><div id="srcflag" class="srcflag" role="status" hidden></div>
-      <section aria-labelledby="hlist"><div class="sechead"><h2 id="hlist"><span class="ne-only">पछिल्लो ७ दिनका सूचना</span><span class="en-only">Latest alerts, 7 days</span> <span id="nActive" class="count"></span></h2><a class="more" href="alerts/"><span class="ne-only">सबै सूचना →</span><span class="en-only">All alerts →</span></a></div>
+      <div class="halerts"><div id="fresh" class="fresh" role="status"></div>
+      <section aria-labelledby="hlist"><div class="sechead"><h2 id="hlist"><span class="ne-only">सक्रिय आधिकारिक सूचना</span><span class="en-only">Active official alerts</span> <span id="nActive" class="count"></span></h2><a class="more" href="alerts/"><span class="ne-only">सबै सूचना →</span><span class="en-only">All alerts →</span></a></div>
     <div id="active"></div></section></div>
     </div>
     <aside class="hright" aria-label="Summary / सारांश">
@@ -66,5 +66,5 @@ document.body.appendChild(d);setTimeout(function(){d.remove()},1100);})();</scri
 </main>
 <script src="assets/js/bs.js"></script><script src="assets/js/common.js"></script><script src="assets/js/dash.js"></script>
 <script src="./assets/vendor/leaflet/leaflet.js"></script>
-<script src="assets/js/district.js"></script><script src="assets/js/nearby.js"></script><script src="assets/js/home.js"></script><script src="assets/js/homemap.js"></script><script src="assets/js/homeinfo.js"></script><script src="assets/js/affectcore.js"></script><script src="assets/js/todaycard.js"></script><script src="assets/js/watch.js"></script><script src="assets/js/services.js"></script>
+<script src="assets/js/district.js"></script><script src="assets/js/nearby.js"></script><script src="assets/js/home.js"></script><script src="assets/js/homemap.js"></script><script src="assets/js/viz.js"></script><script src="assets/js/homeviz.js"></script><script src="assets/js/homeinfo.js"></script><script src="assets/js/affectcore.js"></script><script src="assets/js/todaycard.js"></script><script src="assets/js/watch.js"></script><script src="assets/js/services.js"></script>
 </body></html>

@@ -23,10 +23,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Continue the open proposal if there is one, otherwise start from main
@@ -54,7 +54,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add data/raw data/source-health.json data/alerts data/alerts.json atom.xml feed.xml cap alerts stories lite
+          git add data/raw data/source-health.json data/alerts data/alerts.json atom.xml feed.xml cap alerts stories lite share
           if git diff --cached --quiet; then echo "No change, nothing to propose."; exit 0; fi
           git commit -q -m "Poll sources: $(date -u +%Y-%m-%dT%H:%MZ)"
           git push -q -f origin bot/poll

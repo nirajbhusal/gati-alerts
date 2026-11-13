@@ -47,3 +47,11 @@ Everything here uses the Python standard library unless a row says otherwise. Ru
 ## Tests
 
 `python -m unittest discover scripts/tests` covers `broadcast.py`. The Worker has its own tests in `worker/`.
+
+## Brand kit
+
+`make_brand_kit.py` builds everything in `assets/brand/` (vector and PNG logos, icons, social media images, the brand guidelines PDF, the maintainer's visiting card and the two zip files), refreshes the site's own icons and rewrites the file list on the About page. It needs `pip install fonttools uharfbuzz segno`, Node and Playwright (`cd tests && npm ci`). The drawing is in `brand/make_svg.py`, the layouts in `brand/render.cjs`. Run it only when the brand changes.
+
+## Daily card
+
+`render.py` also writes `share/today.png` (1200×630) and `share/today-square.png` (1080×1080): the "Nepal today" infographic with the district map, DHM's five-day warning, rivers, roads and measured rain. It is redrawn on every build, so it is as fresh as the data files.

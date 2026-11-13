@@ -12,13 +12,10 @@
   const SEVS = G.SEVORDER, sevL = (s) => L(G.SEV[s][0], G.SEV[s][1]);
   /* reserved heights (px) per page at 390 / wide; content is laid out to fit inside */
   const CFG = {
-    home: { at: ".hhead", h: [470, 300], b: ["agency"] },
-    alerts: { h: [715, 384], b: ["agency", "trust"] },
+    alerts: { h: [330, 200], b: ["trust"] } /* the 7-day agency grid above replaces the agency bars */,
     earthquakes: { h: [498, 302], b: ["quakes"] },
     roads: { h: null, b: ["roadmap", "roads"] } /* reserved in gati.css per width and language */,
     route: { h: [555, 360], b: ["roads"] },
-    rivers: { h: [250, 230], b: ["rivers"] },
-    weather: { h: [328, 155], b: ["wx5", "air"] },
     sources: { h: [285, 206], b: ["health"] },
     contacts: { h: [169, 155], b: ["contacts"] },
     map: { h: [467, 313], b: ["agency"] },
@@ -102,7 +99,7 @@
       [[b.url, L("जल तथा मौसम विज्ञान विभाग (DHM)", "DHM")]], L("जारी", "Issued") + " " + G.npt(b.issued)); };
   B.air = (D) => { const h = ((D.health || {}).sources || {})["doe-air"]; if (!h) return "";
     return card(L("हावाको गुणस्तर", "Air quality"), `<div class="gdtiles"><div class="gdt gdt-wide"><b style="--c:var(--slate)">${L("छैन", "n/a")}</b><span>${L("AQI अंक अहिले उपलब्ध छैन (स्रोत नखुलेको)", "No AQI reading right now (source unreachable)")}</span></div></div>`, [["https://pollution.gov.np/portal/", L("वातावरण विभाग", "Department of Environment")]], h.lastChecked ? L("जाँचिएको", "Checked") + " " + G.npt(h.lastChecked) : ""); };
-  B.health = (D) => { const S = D.sources || [], H = (D.health || {}).sources || {}, K = [["ok", "चालु", "Working", "var(--gdok)"], ["stale", "पुरानो", "Stale", "#F28C1E"], ["down", "नखुलेको", "Unreachable", "#D93025"], ["planned", "योजनामा", "Planned", "#8F9BB3"], ["listed", "सूची", "Listed", "#8F9BB3"]];
+  B.health = (D) => { const S = D.sources || [], H = (D.health || {}).sources || {}, K = [["ok", "चालु", "Working", "var(--gdok)"], ["stale", "पुरानो", "Stale", "#F28C1E"], ["down", "नखुलेको", "Unreachable", "#D93025"], ["live", "प्रत्यक्ष", "Live", "#1a73e8"], ["link", "लिङ्क मात्र", "Link only", "#8F9BB3"], ["nofeed", "फिड छैन", "No feed", "#B0B8C8"], ["planned", "योजनामा", "Planned", "#8F9BB3"], ["listed", "सूची", "Listed", "#8F9BB3"]];
     const st = S.map((s) => [s, G.srcStatus(s, H[s.id])]);
     return card(L("स्रोतको अवस्था", "Source health"), `<div class="gdtiles">${K.map(([k, ne, en, c]) => tile(st.filter((x) => x[1] === k).length, L(ne, en), c)).join("")}</div><ul class="gddots">${st.map(([s, k]) => `<li title="${E(L(s.agency.ne, s.agency.en))}" style="--c:${K.find((x) => x[0] === k)[3]}"><i></i>${E(s.id)}</li>`).join("")}</ul>`,
       [[R + "data/source-health.json", "source-health.json"]], D.health && D.health.checkedAt ? L("जाँचिएको", "Checked") + " " + G.npt(D.health.checkedAt) : ""); };

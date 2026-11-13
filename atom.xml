@@ -3,12 +3,90 @@
   <id>https://nirajbhusal.github.io/gati-alerts/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-11-11T03:35:53+00:00</updated>
+  <updated>2026-11-13T07:13:03+00:00</updated>
   <link href="https://nirajbhusal.github.io/gati-alerts/atom.xml" rel="self"/>
   <link href="https://nirajbhusal.github.io/gati-alerts/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-11-13-0900</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-11-13T09:30:00+05:45</updated>
+    <published>2026-11-13T09:30:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-14T09:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-11-13-0900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-11-13-0900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-13-0900</id>
+    <title>Gulmi, Rakse: Kaligandaki Corridor blockage no longer on Nepal Police's list</title>
+    <updated>2026-11-13T09:30:00+05:45</updated>
+    <published>2026-11-13T09:30:00+05:45</published>
+    <summary>[Official] Minor · Nepal Police Headquarters · relayed by Gati · expires 2026-11-13T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-13-0900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-13-0900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-11-13</id>
+    <title>DHM: parts of the northern mountain districts of Karnali and Sudurpashchim yellow (be updated) on Kartik 29 (15 Nov); no warning elsewhere or on other days</title>
+    <updated>2026-11-13T09:20:00+05:45</updated>
+    <published>2026-11-13T09:20:00+05:45</published>
+    <summary>[Official] Minor · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-11-17T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-5day-bulletin-2026-11-13.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-5day-bulletin-2026-11-13/" rel="related" type="text/html"/>
+    <link href="https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12424" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-11-12-0900</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-11-12T09:30:00+05:45</updated>
+    <published>2026-11-12T09:30:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-13T09:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-aarughat-soti-2026-11-12-0900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-aarughat-soti-2026-11-12-0900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900</id>
+    <title>Gulmi, Rakse: Kaligandaki Corridor road fully blocked by a dry landslide</title>
+    <updated>2026-11-12T09:30:00+05:45</updated>
+    <published>2026-11-12T09:30:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-13T09:00:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-12-0900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-11-12</id>
+    <title>DHM: no weather warning anywhere in Nepal for all five days, Kartik 26 to 30 (12 to 16 Nov)</title>
+    <updated>2026-11-12T08:22:04+05:45</updated>
+    <published>2026-11-12T08:22:04+05:45</published>
+    <summary>[Official] Minor · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-11-16T23:59:00+05:45</summary>
+    <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.dhm-5day-bulletin-2026-11-12.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.dhm-5day-bulletin-2026-11-12/" rel="related" type="text/html"/>
+    <link href="https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12421" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800</id>
     <title>Gulmi, Rakse: Kaligandaki Corridor road blockage no longer on Nepal Police's list</title>
@@ -43,7 +121,7 @@
     <summary>[Official] Unknown · Chitwan District Police Office · relayed by Gati · expires 2026-11-10T23:59:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-reopened.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-10-reopened/" rel="related" type="text/html"/>
-    <link href="https://kathmandupost.com/national/2026/11/10/fresh-landslide-blocks-prithvi-highway-again-disrupting-traffic-to-and-from-kathmandu" rel="via"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
     <author>
       <name>nepalpolice.gov.np</name>
     </author>
@@ -576,7 +654,7 @@
     <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) · relayed by Gati · expires 2026-10-29T06:00:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-24h-forecast-2026-10-28.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-24h-forecast-2026-10-28/" rel="related" type="text/html"/>
-    <link href="https://www.thahakhabar.com/detail/310967" rel="via"/>
+    <link href="https://www.dhm.gov.np/mfd/" rel="via"/>
     <author>
       <name>hydrology.gov.np</name>
     </author>
@@ -680,7 +758,7 @@
     <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) · relayed by Gati · expires 2026-10-27T06:00:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-24h-forecast-2026-10-26.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-24h-forecast-2026-10-26/" rel="related" type="text/html"/>
-    <link href="https://nepallive.com/story/352290" rel="via"/>
+    <link href="https://www.dhm.gov.np/mfd/" rel="via"/>
     <author>
       <name>hydrology.gov.np</name>
     </author>
@@ -745,7 +823,7 @@
     <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) · relayed by Gati · expires 2026-10-26T06:00:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-24h-forecast-2026-10-25.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-24h-forecast-2026-10-25/" rel="related" type="text/html"/>
-    <link href="https://myrepublica.nagariknetwork.com/news/partial-cloud-cover-light-rain-snow-likely-in-some-areas-until-wednesday-41-83.html" rel="via"/>
+    <link href="https://www.dhm.gov.np/mfd/" rel="via"/>
     <author>
       <name>hydrology.gov.np</name>
     </author>
@@ -758,7 +836,7 @@
     <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) · relayed by Gati · expires 2026-11-01T23:59:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-special-bulletin-bay-of-bengal-2026-10-23/" rel="related" type="text/html"/>
-    <link href="https://shilapatra.com/detail/197394" rel="via"/>
+    <link href="https://www.dhm.gov.np/mfd/" rel="via"/>
     <author>
       <name>hydrology.gov.np</name>
     </author>
@@ -784,7 +862,7 @@
     <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) · relayed by Gati · expires 2026-10-24T06:00:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-24h-forecast-2026-10-23.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-24h-forecast-2026-10-23/" rel="related" type="text/html"/>
-    <link href="https://www.thahakhabar.com/detail/310737" rel="via"/>
+    <link href="https://www.dhm.gov.np/mfd/" rel="via"/>
     <author>
       <name>hydrology.gov.np</name>
     </author>
@@ -810,7 +888,7 @@
     <summary>[Reported] Unknown · Department of Hydrology and Meteorology (DHM) — relayed by Gati · expires 2026-10-25T00:00:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-dhm-3day-forecast-2026-10-22.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-dhm-3day-forecast-2026-10-22/" rel="related" type="text/html"/>
-    <link href="https://ukeraa.com/news/detail/181196/" rel="via"/>
+    <link href="https://www.dhm.gov.np/mfd/" rel="via"/>
     <author>
       <name>hydrology.gov.np</name>
     </author>
@@ -849,7 +927,7 @@
     <summary>[Reported] Minor · Nepal Police Headquarters — relayed by Gati · expires 2026-10-14T06:00:00+05:45</summary>
     <link href="https://nirajbhusal.github.io/gati-alerts/cap/np.gati.reported-road-rajpath-khatripauwa-2026-10-13.xml" rel="alternate" type="application/cap+xml"/>
     <link href="https://nirajbhusal.github.io/gati-alerts/alerts/np.gati.reported-road-rajpath-khatripauwa-2026-10-13/" rel="related" type="text/html"/>
-    <link href="https://english.onlinekhabar.com/flood-disrupts-highways-five-districts.html" rel="via"/>
+    <link href="https://www.nepalpolice.gov.np/notices/" rel="via"/>
     <author>
       <name>nepalpolice.gov.np</name>
     </author>
