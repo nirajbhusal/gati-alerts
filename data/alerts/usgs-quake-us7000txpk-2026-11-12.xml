@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.usgs-quake-us7000txpk-2026-11-12</identifier>
+  <sender>earthquake.usgs.gov</sender>
+  <sent>2026-11-12T04:45:22+05:45</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>U.S. Geological Survey (USGS)</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: U.S. Geological Survey (USGS). Source: https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk</note>
+  <info>
+    <language>ne-NP</language>
+    <category>Geo</category>
+    <event>भूकम्प</event>
+    <responseType>None</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-12T04:45:22+05:45</effective>
+    <onset>2026-11-12T04:45:22+05:45</onset>
+    <expires>2026-11-13T04:45:22+05:45</expires>
+    <senderName>अमेरिकी भूगर्भ सर्वेक्षण (USGS) · गति मार्फत प्रसारित</senderName>
+    <headline>भूकम्प: M४.६ (mb), ताप्लेजुङ जिल्ला, 73 km NNW of Gyalshing, India (USGS)</headline>
+    <description>अमेरिकी भूगर्भ सर्वेक्षण (USGS) अनुसार २०२६-११-१२ ०४:४५ NPT मा ताप्लेजुङ जिल्ला, ७३ km NNW of Gyalshing, India क्षेत्रमा M४.६ (mb) को भूकम्प गयो। केन्द्रबिन्दु: २७.८७°N, ८७.८९°E।</description>
+    <instruction>धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।</instruction>
+    <web>https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk</web>
+    <contact>USGS National Earthquake Information Center · https://earthquake.usgs.gov/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-12T04:45:22+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>earthquake</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>भूकम्प: M४.६ (mb), ताप्लेजुङ जिल्ला, 73 km NNW of Gyalshing, India (USGS)</value></parameter>
+    <parameter><valueName>gati:magnitude</valueName><value>M4.6 (mb)</value></parameter>
+    <area>
+      <areaDesc>ताप्लेजुङ जिल्ला</areaDesc>
+      <circle>27.8692,87.8857 0</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0101</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Geo</category>
+    <event>Earthquake</event>
+    <responseType>None</responseType>
+    <urgency>Past</urgency>
+    <severity>Unknown</severity>
+    <certainty>Observed</certainty>
+    <effective>2026-11-12T04:45:22+05:45</effective>
+    <onset>2026-11-12T04:45:22+05:45</onset>
+    <expires>2026-11-13T04:45:22+05:45</expires>
+    <senderName>U.S. Geological Survey (USGS) · relayed by Gati</senderName>
+    <headline>Earthquake: M4.6 (mb), 73 km NNW of Gyalshing, India (USGS)</headline>
+    <description>According to U.S. Geological Survey (USGS), an earthquake of M4.6 (mb) occurred at 2026-11-12 04:45 NPT, 73 km NNW of Gyalshing, India. Epicentre: 27.87°N, 87.89°E.</description>
+    <instruction>If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.</instruction>
+    <web>https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk</web>
+    <contact>USGS National Earthquake Information Center · https://earthquake.usgs.gov/</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-12T04:45:22+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>earthquake</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>Earthquake: M4.6 (mb), 73 km NNW of Gyalshing, India (USGS)</value></parameter>
+    <parameter><valueName>gati:magnitude</valueName><value>M4.6 (mb)</value></parameter>
+    <area>
+      <areaDesc>Taplejung district</areaDesc>
+      <circle>27.8692,87.8857 0</circle>
+      <geocode><valueName>NP-DISTRICT</valueName><value>NP0101</value></geocode>
+    </area>
+  </info>
+</alert>
