@@ -7,7 +7,7 @@
   const RK = { Extreme: 4, Severe: 3, Moderate: 2, Minor: 1 };
   const day = (ms) => new Date(ms + G.tzMs).toISOString().slice(0, 10);
   const wd = (iso) => { const d = new Date(iso + "T00:00:00Z").getUTCDay(); return window.BS ? T(BS.WN[d].replace("बार", ""), BS.WE[d].slice(0, 3)) : ""; };
-  let D = null, AQ = null;
+  let D = null, AQ = null, all = false;
   const CITIES = [["काठमाडौँ", "Kathmandu", 27.7172, 85.324], ["पोखरा", "Pokhara", 28.2096, 83.9856], ["विराटनगर", "Biratnagar", 26.4525, 87.2718], ["भरतपुर", "Bharatpur", 27.6766, 84.4303], ["नेपालगन्ज", "Nepalgunj", 28.05, 81.6167], ["धनगढी", "Dhangadhi", 28.6833, 80.6], ["जनकपुर", "Janakpur", 26.7288, 85.9263]];
   const AQB = [[50, "#00a651", "राम्रो", "Good"], [100, "#d4b000", "मध्यम", "Moderate"], [150, "#f7941d", "संवेदनशीललाई अस्वस्थ", "Unhealthy for sensitive groups"], [200, "#e2231a", "अस्वस्थ", "Unhealthy"], [300, "#8f3f97", "धेरै अस्वस्थ", "Very unhealthy"], [1e9, "#7e0023", "खतरनाक", "Hazardous"]];
   const km = (a, b) => { const r = Math.PI / 180, x = (b[1] - a[1]) * r * Math.cos(((a[0] + b[0]) / 2) * r), y = (b[0] - a[0]) * r; return Math.sqrt(x * x + y * y) * 6371; };
@@ -42,7 +42,7 @@
         source: T("जल तथा मौसम विज्ञान विभाग", "DHM"), url: b5.url, time: T("जारी", "issued") + " " + G.npt(b5.issued) })); }
     /* 1b. DHM's forecast for the next 24 hours, as two tiles */
     const k24 = wx && wx.forecast24 && wx.forecast24.kathmandu;
-    if (k24) cards.push(V.card({ title: T("DHM पूर्वानुमान, २४ घण्टा: ", "DHM forecast, 24 hours: ") + E(T(k24.name_ne, k24.name_en)), href: R + "weather/", more: T("मौसम", "Weather"),
+    if (k24) cards.push(V.card({ cls: "vzx", title: T("DHM पूर्वानुमान, २४ घण्टा: ", "DHM forecast, 24 hours: ") + E(T(k24.name_ne, k24.name_en)), href: R + "weather/", more: T("मौसम", "Weather"),
       body: `<div class="vzdn"><div>${V.icon("sun")}<span>${T("दिन", "Day")}</span><b>${k24.day_from_c != null ? N(k24.day_from_c) + "°" : "–"}</b><em>${E(T(k24.day_ne, k24.day_en))}</em>${k24.day_rain_pct != null ? `<i>${T("वर्षाको सम्भावना", "Rain chance")} ${N(k24.day_rain_pct)}%</i>` : ""}</div><div class="n">${V.icon("moon")}<span>${T("रात", "Night")}</span><b>${k24.night_from_c != null ? N(k24.night_from_c) + "°" : "–"}</b><em>${E(T(k24.night_ne, k24.night_en))}</em></div></div>`,
       source: T("जल तथा मौसम विज्ञान विभाग", "DHM"), url: k24.url, time: T("जारी", "issued") + " " + G.npt(k24.issued) }));
     /* 1c. rain measured at DHM stations */
@@ -54,7 +54,7 @@
         source: T("DHM केन्द्रको अवलोकन", "DHM station observations"), url: ob.url, time: G.npt(ob.issued) + " · " + T("नापिएको, पूर्वानुमान होइन", "measured, not a forecast") })); }
     /* 2. rivers against their warning and danger levels */
     if (rv && rv.gauges && rv.gauges.length) { const hot = rv.gauges.filter((g) => g.level >= g.warning).length;
-      cards.push(V.card({ title: T("नदीको तह", "River levels"), href: R + "rivers/", more: T("नदी", "Rivers"), body: V.tanks(rv.gauges.map((g) => ({ name: T(g.ne, g.en).split(/ at | · /)[0], level: g.level, warning: g.warning, danger: g.danger }))),
+      cards.push(V.card({ cls: "vzx", title: T("नदीको तह", "River levels"), href: R + "rivers/", more: T("नदी", "Rivers"), body: V.tanks(rv.gauges.map((g) => ({ name: T(g.ne, g.en).split(/ at | · /)[0], level: g.level, warning: g.warning, danger: g.danger }))),
         say: hot ? T(N(hot) + " केन्द्र चेतावनी तहमाथि छन्।", hot + (hot === 1 ? " station is" : " stations are") + " above warning level.") : T("देखाइएका सबै केन्द्र चेतावनी तहभन्दा तल छन्।", "Every station shown is below its warning level."),
         source: T("DHM नदी निगरानी", "DHM river watch"), url: rv.url, time: E(T(rv.as_of_ne, rv.as_of_en)) })); }
     /* 3. roads Gati follows, by status */
@@ -66,14 +66,14 @@
     /* 3b. earthquakes in the last 30 days, each agency named on its own bar */
     if (al && al.alerts) { const q = al.alerts.filter((a) => a.hazard === "earthquake" && Date.parse(a.sent) >= Date.now() - 30 * 864e5 && mag(a)).sort((a, b) => Date.parse(b.sent) - Date.parse(a.sent));
       if (q.length) { const dm = (a) => { const d = new Date(Date.parse(a.sent) + G.tzMs); return N(d.getUTCDate()) + "/" + N(d.getUTCMonth() + 1); };
-        cards.push(V.card({ title: T("भूकम्प, ३० दिन", "Earthquakes, 30 days"), href: R + "earthquakes/", more: T("भूकम्प", "Earthquakes"),
+        cards.push(V.card({ cls: "vzx", title: T("भूकम्प, ३० दिन", "Earthquakes, 30 days"), href: R + "earthquakes/", more: T("भूकम्प", "Earthquakes"),
           say: T("पछिल्लो: ", "Latest: ") + E((q[0].info[G.lang === "ne" ? "ne" : "en"] || q[0].info.en).headline),
           body: V.quakes(q.slice(0, 8).map((a) => ({ m: mag(a), t: Date.parse(a.sent), agency: G.agencyOf(a), title: G.agencyOf(a) + " · " + dm(a) + " · M" + mag(a) }))) + `<p class="vzf" style="padding:0">${T("गोलोको आकार: म्याग्निच्युड। ", "Circle size is magnitude. ")}${q.slice(0, 4).map((a) => E(G.agencyOf(a)) + " " + dm(a) + ": M" + N(mag(a))).join(" · ")}. ${T("NSC र USGS का मापन फरक हुन्छन् र जोडिएका छैनन्।", "NSC and USGS use different scales and are not merged.")}</p>`,
           source: "NSC, USGS", url: R + "earthquakes/", time: T("पछिल्लो", "latest") + " " + G.npt(q[0].sent) })); } }
     /* 3c. air quality in the main cities: a model, tagged as an estimate */
     if (AQ && AQ.length) { const rows = AQ.map((d, k) => [d && d.current && d.current.us_aqi, CITIES[k]]).filter((x) => x[0] != null).sort((a, b) => b[0] - a[0]);
       if (rows.length) { const band = (v) => AQB.find((b) => v <= b[0]), w = band(rows[0][0]);
-        cards.push(V.card({ est: true, title: T("हावाको गुणस्तर (US AQI)", "Air quality (US AQI)"), href: R + "weather/#air", more: T("हावा", "Air"),
+        cards.push(V.card({ cls: "vzx", est: true, title: T("हावाको गुणस्तर (US AQI)", "Air quality (US AQI)"), href: R + "weather/#air", more: T("हावा", "Air"),
           say: T(rows[0][1][0] + " मा सबैभन्दा बढी: " + w[2] + "।", "Highest in " + rows[0][1][1] + ": " + w[3] + "."),
           body: V.dial(rows[0][0], AQB, { label: T(rows[0][1][0], rows[0][1][1]) }) + `<ul class="vzaq">${rows.slice(1).map(([v, c]) => `<li><i style="background:${band(v)[1]}"></i>${E(T(c[0], c[1]))} <b>${N(Math.round(v))}</b></li>`).join("")}</ul>`,
           source: "Open-Meteo (Copernicus CAMS)", url: "https://open-meteo.com/en/docs/air-quality-api", time: T("मोडेल, मापन केन्द्रको पढाइ होइन", "model, not a station reading") })); } }
@@ -83,12 +83,12 @@
         row[i].n++; if ((RK[a.severity] || 0) > (RK[row[i].sev] || 0) || !row[i].sev) row[i].sev = RK[a.severity] ? a.severity : row[i].sev || "Unknown"; });
       const rows = Object.entries(by).map(([name, cells]) => ({ name, cells })).sort((a, b) => b.cells.reduce((s, c) => s + c.n, 0) - a.cells.reduce((s, c) => s + c.n, 0));
       const loose = cards.filter((x) => !x.includes("vzwide")).length % 3;
-      if (rows.length) cards.push(V.card({ cls: loose === 1 ? "vzwide2" : loose === 2 ? "" : "vzwide", title: T("पछिल्ला ७ दिन, निकायअनुसार", "The last 7 days, by agency"), href: R + "alerts/", more: T("सबै सूचना", "All alerts"), body: V.heat(rows, cols),
+      if (rows.length) cards.push(V.card({ cls: "vzx " + (loose === 1 ? "vzwide2" : loose === 2 ? "" : "vzwide"), title: T("पछिल्ला ७ दिन, निकायअनुसार", "The last 7 days, by agency"), href: R + "alerts/", more: T("सबै सूचना", "All alerts"), body: V.heat(rows, cols),
         say: T("हरेक खानामा त्यस दिन त्यो निकायले जारी गरेका आधिकारिक सूचनाको सङ्ख्या; रङले सबैभन्दा गम्भीर तह देखाउँछ। निकायहरू जोडिएका छैनन्।", "Each box is the number of official notices that agency issued that day; the colour is the most severe one. Agencies are not added together."),
         source: T("आधिकारिक निकाय, गतिमार्फत", "Official agencies, relayed by Gati"), url: R + "api/", time: al.generated ? T("अद्यावधिक", "updated") + " " + G.npt(al.generated) : "" })); }
     const pick = () => box.querySelectorAll(".vzpick").forEach((b) => (b.onclick = () => G.district && G.district.open && G.district.open(draw)));
-    setTimeout(pick, 0);
-    box.innerHTML = cards.length ? `<h2 class="vzt">${T("नेपाल एक नजरमा", "Nepal at a glance")}</h2><div class="vzgrid">${cards.join("")}</div><p class="vzshare"><a class="hmchip" href="${R}share/today.png" download="gati-nepal-today.png">${T("आजको कार्ड (तस्विर) डाउनलोड", "Download today's card (image)")} ↓</a> <a class="hmchip" href="${R}share/today-square.png" download="gati-nepal-today-square.png">${T("वर्गाकार", "Square")} ↓</a></p>` : "";
+    setTimeout(pick, 0); setTimeout(() => { const m = box.querySelector(".vzmore"); if (m) m.onclick = () => { all = !all; draw(); }; }, 0);
+    box.innerHTML = cards.length ? `<h2 class="vzt">${T("नेपाल एक नजरमा", "Nepal at a glance")}</h2><div class="vzgrid${all ? " vzall" : ""}">${cards.join("")}</div><button type="button" class="vzmore" aria-expanded="${all}">${all ? T("कम देखाउनुहोस्", "Show fewer") : T("सबै " + N(cards.length) + " कार्ड देखाउनुहोस्", "Show all " + cards.length + " cards")} ${all ? "▴" : "▾"}</button><figure class="vztoday"><a href="${R}share/today.png" target="_blank" rel="noopener"><img src="${R}share/today.png" alt="${T("आजको नेपाल कार्ड: नक्सा, DHM चेतावनी, नदी, सडक र नापिएको वर्षा", "Today's Nepal card: map, DHM warning, rivers, roads and measured rain")}" width="1200" height="630" loading="lazy"></a><figcaption><b>${T("आजको कार्ड", "Today's card")}</b><span>${T("साथीभाइलाई पठाउन मिल्ने एउटै तस्विर।", "One image you can send to family and friends.")}</span><span class="vzshare"><a class="hmchip" href="${R}share/today.png" download="gati-nepal-today.png">${T("डाउनलोड", "Download")} ↓</a> <a class="hmchip" href="${R}share/today-square.png" download="gati-nepal-today-square.png">${T("वर्गाकार", "Square")} ↓</a></span></figcaption></figure>` : "";
   }
   const go = () => Promise.all(["data/alerts.json", "data/weather.json", "data/rivers.json", "data/roads.json", "data/districts.geojson"].map(J)).then((d) => { D = d; draw(); G.onLang(draw); addEventListener("gati:district", draw);
     fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${CITIES.map((c) => c[2]).join(",")}&longitude=${CITIES.map((c) => c[3]).join(",")}&current=us_aqi&timezone=Asia%2FKathmandu`).then((r) => (r.ok ? r.json() : null)).then((x) => { AQ = x ? (Array.isArray(x) ? x : [x]) : null; if (AQ) draw(); }).catch(() => {}); });

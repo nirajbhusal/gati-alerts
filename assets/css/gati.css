@@ -1278,12 +1278,12 @@ body[data-page]:not(.storypage):not(.ghdr)::before{content:"";display:block;heig
 .gd-log .gdnote{word-break:break-word;overflow-wrap:anywhere;white-space:normal}
 /* static #gdash placeholders: reserve the dashboard height before dash.js runs */
 
-body[data-page=alerts] #gdash{min-height:715px}@media(min-width:760px){body[data-page=alerts] #gdash{min-height:384px}}
+
 body[data-page=earthquakes] #gdash{min-height:498px}@media(min-width:760px){body[data-page=earthquakes] #gdash{min-height:302px}}
 body[data-page=roads] #gdash{min-height:265px}@media(min-width:760px){body[data-page=roads] #gdash{min-height:175px}}
 body[data-page=route] #gdash{min-height:265px}@media(min-width:760px){body[data-page=route] #gdash{min-height:175px}}
-body[data-page=rivers] #gdash{min-height:250px}@media(min-width:760px){body[data-page=rivers] #gdash{min-height:230px}}
-body[data-page=weather] #gdash{min-height:328px}@media(min-width:760px){body[data-page=weather] #gdash{min-height:155px}}
+
+
 body[data-page=sources] #gdash{min-height:285px}@media(min-width:760px){body[data-page=sources] #gdash{min-height:206px}}
 body[data-page=contacts] #gdash{min-height:169px}@media(min-width:760px){body[data-page=contacts] #gdash{min-height:155px}}
 body[data-page=map] #gdash{min-height:467px}@media(min-width:760px){body[data-page=map] #gdash{min-height:313px}}
@@ -2228,3 +2228,33 @@ html[data-theme=dark] .vzdn .vzic{color:#F2C94C}html[data-theme=dark] .vzdn .n .
 /* the line under the old Today card repeated, and could contradict, the map's Right now panel */
 .homev3 #fresh{display:none}
 @media(min-width:900px){.hmap{min-height:calc(min(100vw - 60px, 1040px) * 0.36 + 185px)}}
+
+/* ===== home tidy-up and one card style across pages ===== */
+.vzmore{display:none}
+@media(max-width:700px){
+  .vzgrid:not(.vzall) .vzx{display:none}
+  .vzmore{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:48px;margin-top:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+}
+.homev3>#srcflag{order:1;margin:0 0 12px}
+.homev3 #afslider{display:none}
+/* older dashboard cards take the chart kit's frame */
+.gdc{border-radius:14px;padding:14px 16px}
+.gdh{font-size:1rem;margin:0 0 8px}
+.gdsrc{padding-top:6px;line-height:1.45}
+.pviz .vztanks{max-width:560px}
+.pviz .vzdays{max-width:560px}
+
+/* home: the tagline is already in the header */
+.homev3 .hhead .hsub{display:none}
+/* today's card, shown as a preview */
+.vztoday{margin:14px 0 0;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:14px;align-items:center;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:12px}
+.vztoday img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
+.vztoday figcaption{display:flex;flex-direction:column;gap:6px;min-width:0}
+.vztoday figcaption b{font-size:1rem}.vztoday figcaption>span{color:var(--slate);font-size:var(--r-meta,.95rem)}
+.vztoday .vzshare{margin:4px 0 0}
+@media(max-width:560px){.vztoday{grid-template-columns:1fr}}
+/* loading placeholders: a card-shaped shimmer where a graphic is about to appear, and nothing left blank */
+@keyframes vzsk{0%{background-position:100% 0}100%{background-position:-100% 0}}
+#hviz:empty,#pviz:empty,.hmw:empty{border-radius:14px;min-height:140px;background:linear-gradient(90deg,var(--surface2) 25%,var(--surface) 50%,var(--surface2) 75%);background-size:200% 100%;animation:vzsk 1.4s linear infinite}
+#pviz:empty{min-height:84px}
+@media(prefers-reduced-motion:reduce){#hviz:empty,#pviz:empty,.hmw:empty{animation:none}}

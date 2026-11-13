@@ -15,8 +15,15 @@
     <li><a href="${R}affected/"><span class="hgn">${N(1)}</span>${sic("pin")}<b>${T("मेरो जिल्ला जाँच्नुहोस्", "Check my district")}</b><small>${T("चालु आधिकारिक सूचना", "Active official alerts")}</small></a></li>
     <li><a href="${R}route/"><span class="hgn">${N(2)}</span>${sic("route")}<b>${T("सडक मार्ग जाँच्नुहोस्", "Check a road route")}</b><small>${T("प्रहरीको सडक अवस्था", "Police road status")}</small></a></li>
     <li><a href="${R}trek/"><span class="hgn">${N(3)}</span>${sic("trek")}<b>${T("पदमार्ग जाँच्नुहोस्", "Check a trek")}</b><small>${T("मौसम, अनुमति, सम्पर्क", "Weather, permits, contacts")}</small></a></li></ol></section>`;
-  B.fresh = (D) => { if (!D.sh) return ""; const S = D.sh.sources, L = [["dhm-hydrology", "DHM"], ["ndrrma", "NDRRMA"], ["nepal-police", T("नेपाल प्रहरी", "Nepal Police")], ["nsc", "NSC"], ["dor-navigate", "DoR NAVIGATE"]];
-    return `<b>${T("स्रोतबाट पछिल्लो अद्यावधिक", "Last updated by source")}:</b> ` + L.filter(([k]) => S[k]).map(([k, n]) => { const s = S[k]; return `<span class="hifs">${n}: ${s.lastSuccess ? tm(s.lastSuccess) : `${T("पछिल्लो जाँचमा पुग्न सकिएन", "not reachable at last check")} (${tm(s.lastChecked)})`}</span>`; }).join(" · ") + ` · <a href="${R}sources/">${T("स्रोत स्थिति", "Source health")}</a>`; };
+  /* what Gati holds from each agency and how old it is, read from the data files themselves */
+  B.fresh = (D) => { const out = [], last = (f) => D.al.filter(f).reduce((m, a) => (a.sent > m ? a.sent : m), "");
+    if (D.wx && D.wx.bulletin5) out.push(`DHM ${T("मौसम", "weather")}: ${tm(D.wx.bulletin5.issued)}`);
+    if (D.rv) out.push(`DHM ${T("नदी", "rivers")}: ${E(T(D.rv.as_of_ne, D.rv.as_of_en))}`);
+    if (D.rd) out.push(`${T("सडक (प्रहरी, सडक विभाग)", "Roads (Police, DoR)")}: ${E(T(D.rd.as_of_ne, D.rd.as_of_en))}`);
+    const pol = last((a) => a.sender === "nepalpolice.gov.np"), nsc = last((a) => a.sender === "seismonepal.gov.np");
+    if (pol) out.push(`${T("नेपाल प्रहरी सूचना", "Nepal Police notice")}: ${tm(pol)}`);
+    if (nsc) out.push(`NSC: ${tm(nsc)}`);
+    return out.length ? `<b>${T("गतिसँग भएको पछिल्लो जानकारी", "Latest Gati holds from each source")}:</b> ` + out.map((x) => `<span class="hifs">${x}</span>`).join(" · ") + ` · <a href="${R}sources/">${T("स्रोत स्थिति", "Source health")}</a>` : ""; };
   /* Today at a glance: one tile per source, each with its own small graphic, source and time. Counts stay per agency, never added. */
   const IC = { river: '<path d="M3 8c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/><path d="M3 13c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/><path d="M3 18c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/>',
     road: '<path d="M8 3 5 21M16 3l3 18"/><path d="M12 4v3M12 10.5v3M12 17v3"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>',

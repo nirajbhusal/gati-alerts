@@ -12,12 +12,11 @@
   const SEVS = G.SEVORDER, sevL = (s) => L(G.SEV[s][0], G.SEV[s][1]);
   /* reserved heights (px) per page at 390 / wide; content is laid out to fit inside */
   const CFG = {
-    alerts: { h: [715, 384], b: ["agency", "trust"] },
+    alerts: { h: [330, 200], b: ["trust"] } /* the 7-day agency grid above replaces the agency bars */,
     earthquakes: { h: [498, 302], b: ["quakes"] },
     roads: { h: null, b: ["roadmap", "roads"] } /* reserved in gati.css per width and language */,
     route: { h: [555, 360], b: ["roads"] },
-    rivers: { h: [250, 230], b: ["rivers"] },
-    weather: { h: [328, 155], b: ["wx5", "air"] },
+    weather: { h: [170, 155], b: ["air"] } /* the 5-day strip is drawn by pageviz.js */,
     sources: { h: [285, 206], b: ["health"] },
     contacts: { h: [169, 155], b: ["contacts"] },
     map: { h: [467, 313], b: ["agency"] },
