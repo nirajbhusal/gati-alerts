@@ -2167,3 +2167,14 @@ body[data-page=home] .langbtn{display:none}
 @media(max-width:600px){.hlang{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.hlang::-webkit-scrollbar{display:none}.hlang button{flex:none}}
 /* phones: search lives in the floating button's menu, so the header icon is not repeated; desktop keeps it */
 @media(max-width:720px){header.top .bar .hr .srchbtn,header.top .bar .hl .srchbtn{display:none!important}}
+
+/* community pages: links out, clearly not sources */
+.cmbox h2{margin-top:0}
+.cmwarn{border:1px dashed var(--slate);border-radius:12px;padding:10px 12px;margin:0 0 12px}
+.cmlist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cmlist li{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.cmlist a{text-decoration:none;color:var(--ink);min-height:32px;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cmlist a b{font-size:1.05rem;text-decoration:underline;text-underline-offset:3px}
+.cmtag{font-size:var(--fs-6);color:var(--slate);font-weight:600}
+.cmabout{font-size:var(--r-meta,.95rem)}
+.cmbadge{border:1px dashed var(--slate);border-radius:999px;padding:0 8px;font-weight:600;white-space:nowrap}
