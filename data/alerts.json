@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-13T07:13:03+00:00",
- "count": 99,
+ "generated": "2026-11-13T15:51:51+00:00",
+ "count": 100,
  "alerts": [
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-13-0900",
@@ -1157,6 +1157,113 @@
     }
    ],
    "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+  },
+  {
+   "identifier": "np.gati.usgs-quake-us7000txpk-2026-11-12",
+   "sender": "earthquake.usgs.gov",
+   "sent": "2026-11-12T04:45:22+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: U.S. Geological Survey (USGS). Source: https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk",
+   "references": null,
+   "file": "data/alerts/usgs-quake-us7000txpk-2026-11-12.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-12T04:45:22+05:45",
+     "onset": "2026-11-12T04:45:22+05:45",
+     "expires": "2026-11-13T04:45:22+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: M४.६ (mb), ताप्लेजुङ जिल्ला, 73 km NNW of Gyalshing, India (USGS)",
+     "description": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) अनुसार २०२६-११-१२ ०४:४५ NPT मा ताप्लेजुङ जिल्ला, ७३ km NNW of Gyalshing, India क्षेत्रमा M४.६ (mb) को भूकम्प गयो। केन्द्रबिन्दु: २७.८७°N, ८७.८९°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk",
+      "gati:sourceTime": "2026-11-12T04:45:22+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: M४.६ (mb), ताप्लेजुङ जिल्ला, 73 km NNW of Gyalshing, India (USGS)",
+      "gati:magnitude": "M4.6 (mb)"
+     },
+     "areas": [
+      {
+       "desc": "ताप्लेजुङ जिल्ला",
+       "circles": [
+        "27.8692,87.8857 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0101"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-12T04:45:22+05:45",
+     "onset": "2026-11-12T04:45:22+05:45",
+     "expires": "2026-11-13T04:45:22+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "U.S. Geological Survey (USGS) · relayed by Gati",
+     "headline": "Earthquake: M4.6 (mb), 73 km NNW of Gyalshing, India (USGS)",
+     "description": "According to U.S. Geological Survey (USGS), an earthquake of M4.6 (mb) occurred at 2026-11-12 04:45 NPT, 73 km NNW of Gyalshing, India. Epicentre: 27.87°N, 87.89°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk",
+      "gati:sourceTime": "2026-11-12T04:45:22+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: M4.6 (mb), 73 km NNW of Gyalshing, India (USGS)",
+      "gati:magnitude": "M4.6 (mb)"
+     },
+     "areas": [
+      {
+       "desc": "Taplejung district",
+       "circles": [
+        "27.8692,87.8857 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0101"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-11-13T04:45:22+05:45",
+   "districts": [
+    "NP0101"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0101",
+     "circles": [
+      "27.8692,87.8857 0"
+     ],
+     "ne": "ताप्लेजुङ जिल्ला",
+     "en": "Taplejung district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
   },
   {
    "identifier": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-11-0800",
