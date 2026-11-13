@@ -10,6 +10,31 @@
   const src = (a) => { const i = a.info[G.lang]; return `<p class="meta">${T("स्रोत", "Source")}: <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(i.senderName.split(" — ")[0])}</a>${i.params["gati:sourceUrl2"] ? ` · <a href="${esc(i.params["gati:sourceUrl2"])}" target="_blank" rel="noopener">${T("दोस्रो स्रोत", "Second source")}</a>` : ""} · ${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || a.sent)} · ${G.trustChip(a.trust)}</p>`; };
   let map, layer;
   function draw() {
+    const cast = document.getElementById("wxcast");
+    const f24 = wx && wx.forecast24;
+    if (cast) {
+      if (!f24) cast.innerHTML = "";
+      else {
+        const c = f24.country, k = f24.kathmandu;
+        const deg = (a, b) => (a == null || b == null) ? "" : ` ${G.num(a)}-${G.num(b)}°C`;
+        const rain = k.day_rain_pct == null ? "" : ` · ${T("वर्षाको सम्भावना", "Rain chance")} ${G.num(k.day_rain_pct)}%`;
+        const blob = [c.day_ne, c.day_en, c.night_ne, c.night_en, k.day_ne, k.day_en, k.night_ne, k.night_en].join("\n");
+        cast.innerHTML = `<h2><span class="ne-only">DHM पूर्वानुमान, चेतावनी होइन</span><span class="en-only">DHM forecast, not a warning</span></h2>
+          <p class="hisum">${esc(T(k.name_ne, k.name_en))}</p>
+          <p class="hin"><b>${T("आज दिउँसो", "This afternoon")}. </b>${esc(T(k.day_ne, k.day_en))}${deg(k.day_from_c, k.day_to_c)}${rain}</p>
+          <p class="hin"><b>${T("आज राति", "Tonight")}. </b>${esc(T(k.night_ne, k.night_en))}${deg(k.night_from_c, k.night_to_c)}</p>
+          ${G.stormFlag(blob)}
+          <details class="wxmore">
+            <summary><span class="ne-only">थप हेर्नुहोस्</span><span class="en-only">See more</span></summary>
+            <p class="hisum">${T("देशको २४ घण्टा", "Country, 24 hours")}</p>
+            <p class="hin"><b>${T("आज दिउँसो", "This afternoon")}. </b>${esc(T(c.day_ne, c.day_en))}</p>
+            <p class="hin"><b>${T("आज राति", "Tonight")}. </b>${esc(T(c.night_ne, c.night_en))}</p>
+            <p class="meta"><a class="wxsrc" href="${esc(c.url)}" target="_blank" rel="noopener">${T("देशको पूर्वानुमान", "Country forecast")} ↗</a></p>
+          </details>
+          <p class="meta"><a class="wxsrc" href="${esc(k.url)}" target="_blank" rel="noopener">${T("सहरको पूर्वानुमान", "City forecast")} ↗</a></p>
+          <p class="meta">${T("जारी", "Issued")} ${G.npt(c.issued)}. ${T("यो नियमित पूर्वानुमान हो। यसबाट चेतावनी बनाइँदैन।", "This is a routine forecast. It is not turned into a warning.")}</p>`;
+      }
+    }
     const fc = act[0] || items[0];
     document.getElementById("wxfc").innerHTML = `<h2 style="margin-top:0">${T("पूर्वानुमान", "Forecast")}</h2>` + (fc ? `
       <div class="ahead">${G.sevChip(fc.severity)}${Date.parse(fc.expires) > now ? `<span class="tag live">${T("चालु", "Active")}</span>` : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}</div>
@@ -43,7 +68,9 @@
       document.getElementById("wxmapnote").innerHTML = yd.length ? `${esc(G.bsDay(wd))}: ${esc(T(b5.map_note_ne, b5.map_note_en))}${wd.level === "yellow" ? " " + T("बाँकी हरियो (चेतावनी छैन)।", "Rest green (no warning).") : ""} <a href="${esc(b5.url)}" target="_blank" rel="noopener">DHM ↗</a>` : w ? (live ? T("DHM को चेतावनी नक्सा अनुसार रङ।", "Coloured from DHM's warning map.") : T(`DHM को पछिल्लो चेतावनी नक्सा (${G.npt(w.info.ne.params["gati:sourceTime"] || w.sent)}) को म्याद सकिएको छ; त्यसपछिको नक्सा जाँच्न सकिएन, त्यसैले जिल्लामा रङ छैन।`, `DHM's latest warning map in Gati (${G.npt(w.info.en.params["gati:sourceTime"] || w.sent)}) has expired; a newer one could not be checked, so no district is coloured.`))
         + ` <a href="${esc(wx.official.warningUrl)}" target="_blank" rel="noopener">${T("DHM चेतावनी नक्सा", "DHM warning map")} ↗</a> · <a href="${R}alerts/${esc(w.identifier)}/">${esc(w.info[G.lang].headline)}</a>` : T("चेतावनी नक्सा उपलब्ध छैन।", "Warning map not available.");
     }
-    document.getElementById("wxrain").innerHTML = `<h2 style="margin-top:0">${T("२४ घण्टाको वर्षा", "24 h rainfall")}</h2>` + (wx && wx.rainfall ? "" :
+    /* measured station rain is drawn at the top of the page; do not repeat it here as "not available" */
+    if (wx && wx.station_obs && !wx.rainfall) document.getElementById("wxrain").remove();
+    else document.getElementById("wxrain").innerHTML = `<h2 style="margin-top:0">${T("२४ घण्टाको वर्षा", "24 h rainfall")}</h2>` + (wx && wx.rainfall ? "" :
       `<div class="na"><strong>${T("उपलब्ध छैन", "Not available")}</strong>. ${esc(T(wx.rainfall_note_ne, wx.rainfall_note_en))} ${T("अन्तिम जाँच", "Last checked")}: ${G.npt(wx.checked)} · <a href="${esc(wx.rainfallUrl)}" target="_blank" rel="noopener">DHM ↗</a></div>`);
     document.getElementById("wxnote").innerHTML = wx ? `${esc(T(wx.note_ne, wx.note_en))} <a href="${esc(wx.official.url)}" target="_blank" rel="noopener">mfd.gov.np ↗</a>` : "";
     const box = document.getElementById("mydist");

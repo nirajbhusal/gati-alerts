@@ -1,0 +1,20 @@
+# Read-only DHM page check. Does not commit, push, or call a write API.
+# A newer DHM id is written to the job summary and the job fails, so GitHub's
+# failed-workflow email can reach the owner.
+name: DHM watch
+on:
+  schedule:
+    - cron: "0 */2 * * *"   # every 2 hours, UTC
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Compare DHM page ids with the repo
+        run: python scripts/dhm_watch.py

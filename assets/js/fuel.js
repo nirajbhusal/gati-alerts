@@ -18,7 +18,7 @@
     if (!F) return `<p class="meta">${T("इन्धन मूल्य लोड भएन।", "Fuel prices could not load.")}</p>`;
     const eff = F.effective, src = `<a href="${E(F.url)}" target="_blank" rel="noopener">${E(T(F.source_ne, F.source_en))}</a>`;
     return `<h2>${T("पेट्रोल र डिजेल मूल्य", "Petrol and diesel prices")}</h2>
-      <p>${G.trustChip("Official")} <span class="meta">${T("स्रोत", "Source")}: ${src} · ${T("लागू मिति", "Effective")} ${G.npt(eff + "T00:00:00+05:45").split(" · ")[0]} · ${T("गतिले लिएको", "fetched")} ${G.npt(F.fetched)}</span></p>
+      <p>${G.trustChip("Official")} <span class="meta">${T("स्रोत", "Source")}: ${src} · ${T("लागू मिति", "Effective")} ${G.npt(eff + "T00:00:00" + G.tzIso).split(" · ")[0]} · ${T("गतिले लिएको", "fetched")} ${G.npt(F.fetched)}</span></p>
       ${F.reachable ? "" : `<p class="hmnone">${T(`NOC को साइट ${G.npt(F.checked)} मा खुलेन। माथि पछिल्लो आधिकारिक मूल्य देखाइएको छ।`, `NOC's site could not be reached at ${G.npt(F.checked)}. The last official prices are shown.`)}</p>`}
       <div class="ftbl" role="table"><div class="ftr fth" role="row"><span role="columnheader">${T("डिपो", "Depot")}</span><span role="columnheader">${T("पेट्रोल", "Petrol")}</span><span role="columnheader">${T("डिजेल", "Diesel")}</span></div>
       ${F.groups.map((g) => `<div class="ftr" role="row"><span role="cell"><b>${E(T(g.name_ne, g.name_en))}</b><br><span class="meta">${g.depots.map((d) => E(T(d.ne, d.en))).join(", ")}</span></span><span role="cell">${T("रु.", "Rs")} ${dec(g.price.petrol, 2)}</span><span role="cell">${T("रु.", "Rs")} ${dec(g.price.diesel, 2)}</span></div>`).join("")}</div>

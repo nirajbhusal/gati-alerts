@@ -1,62 +1,62 @@
 {
  "sources": {
   "dhm-hydrology": {
-   "lastSuccess": null,
-   "lastChecked": "2026-11-06T03:27:58Z",
-   "lastResult": "HTTPError: Not Found",
+   "lastSuccess": "2026-11-13T03:27:15+00:00",
+   "lastChecked": "2026-11-13T03:27:15+00:00",
+   "lastResult": "HTTP 200",
    "status": "down"
   },
   "dhm-mfd": {
-   "lastSuccess": "2026-11-06T03:27:59Z",
-   "lastChecked": "2026-11-06T03:27:59Z",
+   "lastSuccess": "2026-11-13T03:27:19+00:00",
+   "lastChecked": "2026-11-13T03:27:19+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "neoc": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-06T03:28:01Z",
+   "lastChecked": "2026-11-13T03:27:21+00:00",
    "lastResult": "HTTPError: Internal Server Error",
    "status": "down"
   },
   "ndrrma": {
-   "lastSuccess": "2026-11-06T03:28:01Z",
-   "lastChecked": "2026-11-06T03:28:01Z",
+   "lastSuccess": "2026-11-13T03:27:21+00:00",
+   "lastChecked": "2026-11-13T03:27:21+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "nepal-police": {
-   "lastSuccess": "2026-11-06T03:28:02Z",
-   "lastChecked": "2026-11-06T03:28:02Z",
+   "lastSuccess": "2026-11-13T03:27:22+00:00",
+   "lastChecked": "2026-11-13T03:27:22+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "bipad": {
-   "lastSuccess": "2026-11-06T03:28:09Z",
-   "lastChecked": "2026-11-06T03:28:09Z",
+   "lastSuccess": "2026-11-13T03:27:27+00:00",
+   "lastChecked": "2026-11-13T03:27:27+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "nsc": {
-   "lastSuccess": "2026-11-06T03:28:10Z",
-   "lastChecked": "2026-11-06T03:28:10Z",
+   "lastSuccess": "2026-11-13T03:27:28+00:00",
+   "lastChecked": "2026-11-13T03:27:28+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "usgs": {
-   "lastSuccess": "2026-11-06T03:28:13Z",
-   "lastChecked": "2026-11-06T03:28:13Z",
+   "lastSuccess": "2026-11-13T03:27:30+00:00",
+   "lastChecked": "2026-11-13T03:27:30+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "doe-air": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-06T03:28:13Z",
+   "lastChecked": "2026-11-13T03:27:31+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
    "status": "down"
   },
   "edcd": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-06T03:28:21Z",
+   "lastChecked": "2026-11-13T03:27:39+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
    "status": "down"
   },
@@ -85,13 +85,83 @@
    "status": "planned"
   },
   "dor-navigate": {
-   "lastSuccess": "2026-11-06T03:28:29Z",
-   "lastChecked": "2026-11-06T03:28:29Z",
+   "lastSuccess": "2026-11-13T03:27:47+00:00",
+   "lastChecked": "2026-11-13T03:27:47+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
+  },
+  "wmo-alert-hub": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "rimes": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "icimod": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "gdacs": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "nasa-firms": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "open-meteo": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "ecmwf": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "imd-rsmc": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "glofas": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "google-flood-hub": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "nasa-gpm": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "emsc": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "reliefweb": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
+  },
+  "ifrc-go": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "listed"
   }
  },
- "checkedAt": "2026-11-06T03:28:31Z",
- "note": "Checked by GitHub Actions runners (outside Nepal). Some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
- "writtenAt": "2026-11-06T03:28:31Z"
+ "checkedAt": "2026-11-13T03:27:48+00:00",
+ "note": "Checked from an automated server outside Nepal; some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
+ "writtenAt": "2026-11-10T03:25:38Z"
 }

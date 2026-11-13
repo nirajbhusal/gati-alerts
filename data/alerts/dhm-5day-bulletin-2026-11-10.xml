@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>np.gati.dhm-5day-bulletin-2026-11-10</identifier>
+  <sender>hydrology.gov.np</sender>
+  <sent>2026-11-10T07:54:35+05:45</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <source>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division</source>
+  <scope>Public</scope>
+  <note>Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division (dhm.gov.np/mfd). Source: https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12417</note>
+  <references>hydrology.gov.np,np.gati.dhm-5day-bulletin-2026-11-09,2026-11-09T07:45:28+05:45</references>
+  <info>
+    <language>ne-NP</language>
+    <category>Met</category>
+    <event>मौसम पूर्वानुमान बुलेटिन (५ दिने)</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-10T08:00:00+05:45</effective>
+    <onset>2026-11-10T08:00:00+05:45</onset>
+    <expires>2026-11-14T23:59:00+05:45</expires>
+    <senderName>जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित</senderName>
+    <headline>DHM: कात्तिक २५ (नोभेम्बर ११) मा हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्), बाँकी दिन देशभर चेतावनी छैन</headline>
+    <description>अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको 'आगामी पाँच दिनका लागि मौसम चेतावनी', जारी २०८३ कार्तिक २४ बिहान ८:०० बजे, dhm.gov.np/mfd मा; कात्तिक २३ बिहानको बुलेटिनको ठाउँमा): कात्तिक २४ (मंगलबार, १० नोभेम्बर) देखि कात्तिक २८ (शनिबार, १४ नोभेम्बर) सम्म चेतावनी नक्सामा देशभर हरियो (चेतावनी छैन) छ, केवल कात्तिक २५ (बुधबार, ११ नोभेम्बर) को नक्सामा गण्डकी, बागमती र कोशीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्; सतर्क वा प्रतिकार्य तह होइन), हिमपातको चिह्नसहित। रातो/सुन्तला चेतावनी छैन।</description>
+    <instruction>हिमाली क्षेत्रमा यात्रा गर्नुअघि पछिल्लो पूर्वानुमान हेर्नुहोस् र हिमपातको तयारी राख्नुहोस् (फोन ११५५)।</instruction>
+    <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12417</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12417</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-10T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://dhm.gov.np/mfd/api/image/weather-map/2026/11/10/warning-map-day-1-1794278643172.png</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: कात्तिक २५ मा उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (हिमपात); अन्य दिन देशभर चेतावनी छैन</value></parameter>
+    <area>
+      <areaDesc>नेपाल; कात्तिक २५ मा गण्डकी, बागमती र कोशीका उत्तरी हिमाली भाग पहेँलो, अन्य दिन सबै हरियो</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+  <info>
+    <language>en</language>
+    <category>Met</category>
+    <event>Weather forecast bulletin (5 days)</event>
+    <responseType>Monitor</responseType>
+    <urgency>Future</urgency>
+    <severity>Minor</severity>
+    <certainty>Likely</certainty>
+    <effective>2026-11-10T08:00:00+05:45</effective>
+    <onset>2026-11-10T08:00:00+05:45</onset>
+    <expires>2026-11-14T23:59:00+05:45</expires>
+    <senderName>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati</senderName>
+    <headline>DHM: Kartik 25 (11 Nov): yellow (be updated) in parts of the northern mountain districts; no warning anywhere on the other four days, Kartik 24 to 28</headline>
+    <description>Update, official (DHM Meteorological Forecasting Division 'weather warning for the next five days', issued 2083 Kartik 24 at 8:00 AM on dhm.gov.np/mfd; replaces the Kartik 23 morning bulletin): the warning maps are green (no warning) across the country from Kartik 24 (Tue 10 Nov) to Kartik 28 (Sat 14 Nov), except the Kartik 25 (Wed 11 Nov) map, where parts of the northern mountain districts of Gandaki, Bagmati and Koshi are yellow (be updated; not the be-prepared or take-action levels), with snow symbols. No orange or red warning.</description>
+    <instruction>Check the latest forecast and be ready for snow before travelling in the high mountains (phone 1155).</instruction>
+    <web>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12417</web>
+    <contact>Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155</contact>
+    <parameter><valueName>gati:trustLevel</valueName><value>Official</value></parameter>
+    <parameter><valueName>gati:sourceUrl</valueName><value>https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12417</value></parameter>
+    <parameter><valueName>gati:sourceTime</valueName><value>2026-11-10T08:00:00+05:45</value></parameter>
+    <parameter><valueName>gati:hazard</valueName><value>weather</value></parameter>
+    <parameter><valueName>gati:bulletinFile</valueName><value>https://dhm.gov.np/mfd/api/image/weather-map/2026/11/10/warning-map-day-1-1794278643172.png</value></parameter>
+    <parameter><valueName>gati:summary160</valueName><value>DHM: yellow (be updated) in parts of northern mountains on Kartik 25 (snow); no warning on other days</value></parameter>
+    <area>
+      <areaDesc>Nepal; northern mountains of Gandaki, Bagmati and Koshi yellow on Kartik 25, all green on other days</areaDesc>
+      <geocode><valueName>ISO3166-1</valueName><value>NP</value></geocode>
+    </area>
+  </info>
+</alert>

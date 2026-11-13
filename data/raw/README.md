@@ -1,6 +1,6 @@
 # data/raw: source snapshots (archive)
 
-Written by `scripts/poll.py` via `.github/workflows/poll.yml` (staged at `ci/poll.yml`). One folder per source id from
+Written by `scripts/poll.py` via `.github/workflows/poll.yml`. One folder per source id from
 `data/sources.json`; one file per *changed* fetch, named by UTC ISO time
 (`2026-10-22T14-00-05Z.json`, colons replaced by hyphens for portability).
 

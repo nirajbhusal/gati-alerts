@@ -24,10 +24,71 @@
   const writeHash = () => { const q = new URLSearchParams(); Object.keys(S).forEach((k) => { const a = LISTS.includes(k) ? S[k].join(",") : S[k], b = LISTS.includes(k) ? DEF[k].join(",") : DEF[k]; if (a !== b) q.set(k, a); }); history.replaceState(null, "", "#" + q.toString()); };
   readHash();
   /* ---- map ---- */
-  const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: [[25.5, 79], [31.2, 89]] }).fitBounds([[26.3, 80.0], [30.48, 88.2]]);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+  const map = L.map("mxmap", { zoomSnap: 0.25, minZoom: 6, maxBounds: G.country.map.maxBounds }).fitBounds(G.country.map.bounds);
+  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 16, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+  /* Offline base map. When background tiles cannot load:
+     1. if the person has saved the offline street map (data/offline/basemap.pmtiles, kept by the service worker), draw it;
+     2. otherwise draw the district outlines Gati already keeps offline.
+     Tiles seen before also come back from the service worker cache. Country borders are not drawn from the street
+     data; Gati's own district outlines are used instead. */
+  const OFFMAP = "gati-offmap", PMURL = new URL(R + "data/offline/basemap.pmtiles", location.href).href;
+  const offmapSaved = async () => { try { return !!(await (await caches.open(OFFMAP)).match(PMURL)); } catch (e) { return false; } };
+  const loadScript = (src) => new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  let offBase = null, tileErr = 0, offNote = null;
+  const offlineBase = async () => { if (offBase || !DIST) return; offBase = true;
+    map.createPane("offbase").style.zIndex = 150;   /* under the tile pane (200), so real tiles cover it when they load */
+    let street = false;
+    if (await offmapSaved()) { try {
+      if (!window.protomapsL) await loadScript(R + "assets/vendor/protomaps-leaflet/protomaps-leaflet.js");
+      const pl = window.protomapsL.leafletLayer({ url: PMURL, flavor: G.theme === "dark" ? "dark" : "light", lang: G.lang, maxDataZoom: 11, pane: "offbase", attribution: "© OpenStreetMap, Protomaps" });
+      pl.paintRules = (pl.paintRules || []).filter((r) => r.dataLayer !== "boundaries");
+      pl.addTo(map); street = true;
+      L.geoJSON(DIST, { pane: "offbase", interactive: false, style: { color: "#8a94a3", weight: 0.8, fill: false } }).addTo(map);
+    } catch (e) { street = false; } }
+    if (!street) offBase = L.geoJSON(DIST, { pane: "offbase", interactive: false, style: { color: "#8a94a3", weight: 0.8, fillColor: "#e8ecf1", fillOpacity: 1 } }).addTo(map);
+    offNote = L.control({ position: "bottomleft" }); offNote.onAdd = () => { const d = L.DomUtil.create("div", "leaflet-control-attribution"); d.setAttribute("role", "status");
+      d.textContent = street ? T("अफलाइन नक्सा (सडक र बस्ती)", "Offline map (roads and towns)") : T("अफलाइन नक्सा: जिल्ला सिमाना मात्र", "Offline map: district outlines only"); return d; }; offNote.addTo(map); };
+  tiles.on("tileerror", () => { if (++tileErr >= 3 || !navigator.onLine) offlineBase(); });
+  tiles.on("tileload", () => { tileErr = 0; });
+  if (!navigator.onLine) offlineBase();
+  /* Save / remove the offline street map. One file, fetched only when the person asks for it. */
+  if ("caches" in window) (async () => {
+    let info = null; try { info = await G.json("data/offline/basemap.json"); } catch (e) {}
+    if (!info || !info.bytes) return;
+    const mb = G.num(String(Math.round(info.bytes / 1e6)));
+    const ctl = L.control({ position: "topright" });
+    ctl.onAdd = () => { const d = L.DomUtil.create("div", "leaflet-bar"), b = L.DomUtil.create("button", "", d); b.type = "button"; b.id = "offmapbtn";
+      d.className = "mxoffc"; b.className = "mxoffb";
+      L.DomEvent.disableClickPropagation(d);
+      const paint = async (busy) => { const has = await offmapSaved();
+        b.textContent = busy || (has ? "✓ " + T("अफलाइन नक्सा सुरक्षित छ · हटाउनुहोस्", "Offline map saved · remove") : "⬇ " + T(`अफलाइन नक्सा राख्नुहोस् (${mb} MB)`, `Save offline map (${mb} MB)`));
+        b.title = T("सडक र बस्तीसहितको नेपालको नक्सा यही फोनमा राख्छ, इन्टरनेट नहुँदा काम लाग्छ।", "Keeps a map of Nepal with roads and towns on this device, for when there is no internet."); };
+      b.onclick = async () => { const c = await caches.open(OFFMAP);
+        if (await offmapSaved()) { await c.delete(PMURL); return paint(); }
+        if (!confirm(T(`करिब ${mb} MB डाउनलोड हुन्छ। मोबाइल डाटा खर्च हुन सक्छ। जारी राख्ने?`, `This downloads about ${mb} MB and may use mobile data. Continue?`))) return;
+        b.disabled = true;
+        try { const res = await fetch(PMURL, { cache: "no-store" }); if (!res.ok || !res.body) throw 0;
+          const rd = res.body.getReader(), parts = []; let got = 0;
+          for (;;) { const { done, value } = await rd.read(); if (done) break; parts.push(value); got += value.length; paint(T("डाउनलोड हुँदै", "Downloading") + " " + G.num(String(Math.round(got / info.bytes * 100))) + "%"); }
+          await c.put(PMURL, new Response(new Blob(parts, { type: "application/octet-stream" }), { headers: { "Content-Type": "application/octet-stream", "Content-Length": String(got) } }));
+        } catch (e) { alert(T("डाउनलोड हुन सकेन। फेरि प्रयास गर्नुहोस्।", "The download failed. Please try again.")); }
+        b.disabled = false; paint(); };
+      paint(); G.onLang(() => paint()); return d; };
+    ctl.addTo(map);
+  })();
   L.control.scale({ imperial: false }).addTo(map);
-  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
+  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "sat", "fire", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
+  /* Satellite rain: NASA GPM IMERG half-hourly estimate, served as open map tiles by NASA GIBS (no key).
+     About 10 km grid and several hours behind real time. Context only, never a warning. Own pane so the grey basemap filter does not touch it. */
+  map.createPane("fire").style.zIndex = 450; map.getPane("fire").style.pointerEvents = "none"; map.createPane("sat").style.zIndex = 250; map.getPane("sat").style.pointerEvents = "none";
+  const SATB = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best", SATL = "IMERG_Precipitation_Rate_30min", SATSTEP = 18e5;
+  const FIRED = new Date(Date.now() - 864e5).toISOString().slice(0, 10); /* yesterday (UTC): the last complete day of detections */
+  let satLatest = null, satT = null, satLoading = false, satFail = false;
+  const satIso = (ms) => new Date(ms).toISOString().slice(0, 19) + "Z";
+  function loadSat() { if (satLoading) return; satLoading = true; const d = (o) => new Date(Date.now() + o * 864e5).toISOString().slice(0, 10);
+    fetch(`${SATB}/1.0.0/${SATL}/default/GoogleMapsCompatible_Level6/all/${d(-2)}--${d(1)}.xml`).then((r) => (r.ok ? r.text() : Promise.reject())).then((x) => {
+      const ends = [...x.matchAll(/\/(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ)\/PT30M/g)].map((m) => Date.parse(m[1])).filter(Boolean);
+      if (!ends.length) throw 0; satLatest = satT = Math.max(...ends); satLoading = false; draw(); }).catch(() => { satFail = true; satLoading = false; legend(); }); }
   if (PROV) L.geoJSON(PROV, { style: { color: "#5f6670", weight: 1, opacity: 0.6, fill: false, dashArray: "4 4" }, interactive: false }).addTo(LG.prov);
   const distF = DIST ? Object.fromEntries(DIST.features.map((f) => [f.id, f])) : {};
   const distName = (id) => { const f = distF[id]; return f ? T(f.properties.ne, f.properties.en) : id; };
@@ -43,7 +104,7 @@
       .then((d) => { aqData = d ? (Array.isArray(d) ? d : [d]) : []; draw(); }).catch(() => { aqData = []; draw(); }); }
   const counts = {};
   let ITEMS = [], selId = null;
-  const RV_STALE = RV && RV.as_of ? (now - Date.parse(RV.as_of + "T23:59:00+05:45")) > 1728e5 : false;
+  const RV_STALE = RV && RV.as_of ? (now - Date.parse(RV.as_of + "T23:59:00" + G.tzIso)) > 1728e5 : false;
   const llOf = (a) => { for (const ar of a.areas) for (const c of ar.circles) { const [la, lo] = c.split(" ")[0].split(",").map(Number); if (!isNaN(la)) return [la, lo]; } return null; };
   const bOf = (a) => { const ll = llOf(a); if (ll) return L.latLngBounds([ll, ll]); const fs = a.districts.map((d) => distF[d]).filter(Boolean); return fs.length ? L.geoJSON({ type: "FeatureCollection", features: fs }).getBounds() : null; };
   const reg = (it) => { it.id = it.k + ":" + ITEMS.length; ITEMS.push(it); };
@@ -87,18 +148,20 @@
       L.circleMarker([la, lo], { radius: Math.min(18, 4 + Math.max(0, m - 3) * 4), color: "#7c3aed", weight: 1.5, fillColor: "#7c3aed", fillOpacity: 0.3 }).bindPopup(pop(a)).addTo(LG.eq); })));
     /* air */
     if (on("aq")) { if (!aqData) loadAQ(); else aqData.forEach((d, k) => { const v = d && d.current && d.current.us_aqi; if (v == null) return; const c = CITIES[k];
-      reg({ k: "aq", col: aqCol(v), title: T(c[0], c[1]), sub: "US AQI " + G.num(String(Math.round(v))), agency: "Open-Meteo (CAMS)", trust: "Model", url: "https://open-meteo.com/en/docs/air-quality-api", time: d.current.time + "+05:45", act: true, b: L.latLngBounds([[c[2], c[3]], [c[2], c[3]]]), html: `<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}` });
+      reg({ k: "aq", col: aqCol(v), title: T(c[0], c[1]), sub: "US AQI " + G.num(String(Math.round(v))), agency: "Open-Meteo (CAMS)", trust: "Model", url: "https://open-meteo.com/en/docs/air-quality-api", time: d.current.time + G.tzIso, act: true, b: L.latLngBounds([[c[2], c[3]], [c[2], c[3]]]), html: `<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}` });
       L.marker([c[2], c[3]], { icon: L.divIcon({ className: "mxaq", html: `<span style="background:${aqCol(v)}">${G.num(String(Math.round(v)))}</span>`, iconSize: [34, 22] }) })
-        .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + "+05:45")}</span><br><a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.aq); }); }
+        .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + G.tzIso)}</span><br><a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.aq); }); }
     counts.aq = aqData ? aqData.filter((d) => d && d.current && d.current.us_aqi != null).length : null;
     /* facilities */
     const inB = (p) => { if (!S.d && !S.pr) return true; return focusB ? focusB.contains([p[0], p[1]]) : true; };
     const hos = HL ? HL.hospitals.filter(inB) : [], heli = AV ? AV.helipads.filter(inB) : [];
     counts.hos = HL ? hos.length : null; counts.heli = AV ? heli.length : null;
+    if (on("fire")) L.tileLayer.wms("https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi", { layers: "VIIRS_NOAA20_Thermal_Anomalies_375m_All", format: "image/png", transparent: true, version: "1.1.1", time: FIRED, pane: "fire", opacity: 0.95, attribution: "NASA FIRMS / GIBS (VIIRS)" }).addTo(LG.fire);
+    if (on("sat")) { if (!satLatest) { if (!satFail) loadSat(); } else L.tileLayer(`${SATB}/${SATL}/default/${satIso(satT)}/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png`, { pane: "sat", maxNativeZoom: 6, opacity: 0.72, attribution: "NASA GPM IMERG (GIBS)" }).addTo(LG.sat); }
     if (on("hos")) hos.forEach((p) => L.circleMarker([p[0], p[1]], { radius: 3.5, color: "#fff", weight: 1, fillColor: "#5f6670", fillOpacity: 1 }).bindTooltip(E(p[2] || T("अस्पताल", "Hospital"))).addTo(LG.hos));
     if (on("heli")) heli.forEach((p) => L.marker([p[0], p[1]], { icon: L.divIcon({ className: "mxheli", html: "H", iconSize: [16, 16] }) }).bindTooltip(E(p[2] || "Helipad")).addTo(LG.heli));
     /* labels */
-    if (on("lab")) { if (PROV) PROV.features.forEach((f) => L.marker(f.properties.label, { icon: L.divIcon({ className: "mxlab prov", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab));
+    if (on("lab")) { if (PROV) PROV.features.forEach((f) => L.marker(f.properties.label, { icon: L.divIcon({ className: "mxlab prov", html: E(T(f.properties.ne, f.properties.en).replace(/ (Province|प्रदेश)$/, "")), iconSize: null }), interactive: false }).addTo(LG.lab));
       if (DIST && map.getZoom() >= 8) DIST.features.forEach((f) => { const c = L.geoJSON(f).getBounds().getCenter(); L.marker(c, { icon: L.divIcon({ className: "mxlab", html: E(T(f.properties.ne, f.properties.en)), iconSize: null }), interactive: false }).addTo(LG.lab); }); }
     /* focus outline */
     if (focusF) L.geoJSON(focusF, { style: { color: "#0B1424", weight: 2.5, fill: false }, interactive: false }).addTo(LG.focus);
@@ -115,7 +178,7 @@
     P.querySelector(".mxbody").innerHTML = `
       <fieldset><legend>${T("तहहरू", "Layers")}</legend><div class="mxchips">
         ${chip("L", "alerts", T("सूचना", "Alerts"))}${chip("L", "wx", T("मौसम चेतावनी (DHM)", "Weather warnings (DHM)"), counts.wx)}${chip("L", "rv", T("नदी मापन केन्द्र", "River gauges"), counts.rv)}
-        ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}
+        ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}${chip("L", "sat", T("भू-उपग्रह वर्षा", "Satellite rain"))}${chip("L", "fire", T("भू-उपग्रह आगो", "Satellite fires"))}
         ${chip("L", "hos", T("अस्पताल", "Hospitals"), counts.hos)}${chip("L", "heli", T("हेलिप्याड", "Helipads"), counts.heli)}
         <button type="button" class="mxchip" disabled title="${T("खुला स्थानको डेटा उपलब्ध छैन", "Open-space data not available")}">${T("खुला स्थान", "Open spaces")} <span class="mxn">${T("उपलब्ध छैन", "n/a")}</span></button>
         ${chip("L", "lab", T("नाम", "Labels"))}</div>
@@ -150,8 +213,13 @@
     if (on("hos")) rows.push(`<div><span>${sw("#5f6670", "dot")}${T("अस्पताल (OSM)", "Hospital (OSM)")} <span class="mxn">${G.num(String(counts.hos || 0))}</span></span></div>`);
     if (on("heli")) rows.push(`<div><span><i class="mxheli s">H</i>${T("हेलिप्याड (OSM)", "Helipad (OSM)")} <span class="mxn">${G.num(String(counts.heli || 0))}</span></span></div>`);
     const sl = (u, t) => (u ? `<a href="${E(u)}" target="_blank" rel="noopener">${t} ↗</a>` : t);
-    const src = [on("alerts") || on("eq") ? T("सूचना: आधिकारिक निकाय, गतिमार्फत", "Alerts: official agencies via Gati") + (AL && AL.generated ? ` (${T("अद्यावधिक", "updated")} ${G.npt(AL.generated)})` : "") : "", on("wx") && WX && WX.bulletin5 ? `${sl(WX.bulletin5.url, `DHM ${T("५ दिने बुलेटिन", "5-day bulletin")}`)}, ${G.npt(WX.bulletin5.issued)}${WX.checked ? ` (${T("जाँचेको", "checked")} ${G.npt(WX.checked)})` : ""}` : "", on("rv") && RV ? `${E(T(RV.source_ne, RV.source_en))}, ${E(T(RV.as_of_ne, RV.as_of_en))}` : "", on("rd") && RD ? `${sl(RD.sources.pol.u, E(T(RD.sources.pol.ne, RD.sources.pol.en)))} (${E(T(RD.as_of_ne, RD.as_of_en))})` : "", on("aq") ? "Open-Meteo (CAMS) " + T("मोडेल", "model") : "", on("hos") || on("heli") ? "OpenStreetMap / HOT (HDX)" : ""].filter(Boolean);
+    if (on("fire")) rows.push(`<div class="mxsat"><b>${T("भू-उपग्रह आगो", "Satellite fires")}</b><span>${sw("#ed2626")}${T("आगो वा ताप देखिएको ठाउँ", "Fire or heat detected")}</span><span class="mxsatt">${FIRED}</span></div>
+      <p class="mxhint">${T("भू-उपग्रह (VIIRS, ३७५ मि.) ले हिजो देखेको ताप: डढेलो, खेतको आगो वा उद्योग पनि हुन सक्छ; बादलमुनि देखिँदैन। चेतावनी होइन।", "Heat seen by satellite (VIIRS, 375 m) yesterday: may be forest fire, farm burning or industry, and is hidden under cloud. Not a warning.")} <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" rel="noopener">NASA FIRMS ↗</a></p>`);
+    if (on("sat")) rows.push(`<div class="mxsat"><b>${T("भू-उपग्रह वर्षा", "Satellite rain")}</b>${satLatest ? `<button type="button" class="mxsatb" data-s="-1" aria-label="${T("३० मिनेट अघि", "30 minutes earlier")}"${satT <= satLatest - 864e5 ? " disabled" : ""}>‹</button><span class="mxsatt">${G.npt(satIso(satT))}</span><button type="button" class="mxsatb" data-s="1" aria-label="${T("३० मिनेट पछि", "30 minutes later")}"${satT >= satLatest ? " disabled" : ""}>›</button><span>${sw("#9ad9f5")}${T("हल्का", "Light")}</span><span>${sw("#1f9d2f")}</span><span>${sw("#f2e205")}</span><span>${sw("#f28c1e")}</span><span>${sw("#e2231a")}${T("भारी", "Heavy")}</span>` : `<span>${satFail ? T("NASA सँग जोडिन सकिएन", "Could not reach NASA") : T("लोड हुँदै…", "Loading…")}</span>`}</div>
+      <p class="mxhint">${T("अनुमान, मापन होइन: करिब १० कि.मि. ग्रिड, वास्तविक समयभन्दा केही घण्टा पछाडि" + (satLatest ? " (पछिल्लो तस्विर करिब " + G.num(String(Math.round((Date.now() - satLatest) / 36e5))) + " घण्टा पुरानो)" : "") + "। चेतावनी होइन; आधिकारिक चेतावनी DHM ले मात्र दिन्छ।", "An estimate, not a measurement: about 10 km grid and several hours behind real time" + (satLatest ? " (latest image is about " + Math.round((Date.now() - satLatest) / 36e5) + " h old)" : "") + ". Not a warning; only DHM issues official warnings.")}</p>`);
+    const src = [on("alerts") || on("eq") ? T("सूचना: आधिकारिक निकाय, गतिमार्फत", "Alerts: official agencies via Gati") + (AL && AL.generated ? ` (${T("अद्यावधिक", "updated")} ${G.npt(AL.generated)})` : "") : "", on("wx") && WX && WX.bulletin5 ? `${sl(WX.bulletin5.url, `DHM ${T("५ दिने बुलेटिन", "5-day bulletin")}`)}, ${G.npt(WX.bulletin5.issued)}${WX.checked ? ` (${T("जाँचेको", "checked")} ${G.npt(WX.checked)})` : ""}` : "", on("rv") && RV ? `${E(T(RV.source_ne, RV.source_en))}, ${E(T(RV.as_of_ne, RV.as_of_en))}` : "", on("rd") && RD ? `${sl(RD.sources.pol.u, E(T(RD.sources.pol.ne, RD.sources.pol.en)))} (${E(T(RD.as_of_ne, RD.as_of_en))})` : "", on("aq") ? "Open-Meteo (CAMS) " + T("मोडेल", "model") : "", on("sat") ? sl("https://gpm.nasa.gov/data/imerg", "NASA GPM IMERG") + " " + T("भू-उपग्रह अनुमान", "satellite estimate") : "", on("hos") || on("heli") ? "OpenStreetMap / HOT (HDX)" : ""].filter(Boolean);
     document.getElementById("mxlegend").innerHTML = (rows.join("") || `<p class="meta">${T("कुनै तह छानिएको छैन", "No layer selected")}</p>`) + `<p class="mxsrc">${T("स्रोत", "Sources")}: ${src.join(" · ")}</p>`;
+    document.querySelectorAll("#mxlegend .mxsatb").forEach((b) => (b.onclick = () => { satT = Math.min(satLatest, Math.max(satLatest - 864e5, satT + Number(b.dataset.s) * SATSTEP)); draw(); }));
   }
   /* ---- details panel: visible items with agency, trust, source link and source time ---- */
   const DP = document.getElementById("mxdet");

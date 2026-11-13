@@ -30,7 +30,7 @@
     const dec = Math.asin(Math.sin(lam * rad) * Math.sin(23.44 * rad));
     const cw = (Math.sin(-0.833 * rad) - Math.sin(LAT * rad) * Math.sin(dec)) / (Math.cos(LAT * rad) * Math.cos(dec));
     const w = Math.acos(cw) / rad;
-    const toNPT = (j) => { const d = new Date((j - 2440587.5) * DAY + 345 * 60000); return `${d.getUTCHours()}:${String(d.getUTCMinutes()).padStart(2, "0")}`; };
+    const toNPT = (j) => { const d = new Date((j - 2440587.5) * DAY + G.tzMs); return `${d.getUTCHours()}:${String(d.getUTCMinutes()).padStart(2, "0")}`; };
     return [toNPT(Jtr - w / 360), toNPT(Jtr + w / 360)];
   }
   const ms = (s) => Date.parse(s + "T00:00:00Z");
@@ -41,7 +41,7 @@
       : s.from_md <= s.to_md ? md >= s.from_md && md <= s.to_md : md >= s.from_md || md <= s.to_md);
   }
   function alertsOn(adIso) {
-    const a0 = ms(adIso) - 345 * 60000, a1 = a0 + DAY;
+    const a0 = ms(adIso) - G.tzMs, a1 = a0 + DAY;
     return alerts.filter((a) => {
       const i = a.info.en, s = Date.parse(i.onset || i.effective || a.sent), e = Date.parse(a.expires);
       return s < a1 && e > a0 && a.msgType !== "Cancel";
@@ -111,7 +111,7 @@
   }
   function side() {
     const el = document.getElementById("pside"); if (!el) return;
-    const td = day(Date.UTC(t.y, t.m - 1, t.d)), nowt = new Date(Date.now() + 345 * 60000);
+    const td = day(Date.UTC(t.y, t.m - 1, t.d)), nowt = new Date(Date.now() + G.tzMs);
     const up = (cal.entries || []).filter((e) => e.type === "holiday" && e.date_ad > td.ad).sort((a, b) => a.date_ad.localeCompare(b.date_ad)).slice(0, 5);
     const hh = String(nowt.getUTCHours()).padStart(2, "0"), mm = String(nowt.getUTCMinutes()).padStart(2, "0");
     el.innerHTML = `<div class="ptoday"><div class="ptile"><b>${G.num(td.bs.d)}</b><span>${T(BS.WN[td.wd], BS.WE[td.wd])}</span></div>
@@ -132,7 +132,7 @@
     const md = (x) => { const [m, d] = x.split("-").slice(-2).map(Number); return T(`${MN[m - 1]} ${G.num(String(d))}`, `${d} ${MO[m - 1]}`); };
     const inView = (cal.seasons || []).filter((s) => days.some((x) => x.se.includes(s)));
     const showS = inView.length ? inView : (cal.seasons || []).filter((s) => !s.from_ad).map((s) => { const y = new Date(days[days.length - 1].ms).getUTCFullYear(); let st = `${y}-${s.from_md}`; if (st <= days[days.length - 1].ad) st = `${y + 1}-${s.from_md}`; return [st, s]; }).sort((a, b) => a[0].localeCompare(b[0])).slice(0, 1).map((x) => x[1]);
-    const seasonHTML = showS.length ? `<div class="pseasons"><h3>${inView.length ? T("मौसमी तयारी", "Seasonal readiness") : T("अर्को मौसमी जोखिम", "Next seasonal risk")}</h3><ul>${showS.map((s) => `<li><i class="sband" style="background:${s.colour}"></i><span><b>${esc(T(s.title_ne, s.title_en))}</b> · ${s.from_ad ? md(s.from_ad) : md(s.from_md)} ${T("देखि", "to")} ${s.to_ad ? md(s.to_ad) : md(s.to_md)}${T(" सम्म", "")} <span class="meta">${T("स्रोत", "Source")}: ${s.sourceUrl ? `<a href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">${esc(s.source)}</a>` : esc(s.source)}</span></span></li>`).join("")}</ul><p class="meta"><a href="${G.root}safety/">${T("तयारी कसरी गर्ने", "How to prepare")} →</a></p></div>` : "";
+    const seasonHTML = showS.length ? `<div class="pseasons"><h3>${inView.length ? T("मौसमी तयारी", "Seasonal readiness") : T("अर्को मौसमी जोखिम", "Next seasonal risk")}</h3><ul>${showS.map((s) => `<li><i class="sband" style="background:${s.colour}"></i><span><b>${esc(T(s.title_ne, s.title_en))}</b> · ${s.from_ad ? md(s.from_ad) : md(s.from_md)} ${T("देखि", "to")} ${s.to_ad ? md(s.to_ad) : md(s.to_md)}${T(" सम्म", "")} <span class="meta">${T("स्रोत", "Source")}: ${s.sourceUrl ? `<a href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">${esc(T(s.source_ne || s.source, s.source))}</a>` : esc(T(s.source_ne || s.source, s.source))}</span></span></li>`).join("")}</ul><p class="meta"><a href="${G.root}safety/">${T("तयारी कसरी गर्ने", "How to prepare")} →</a></p></div>` : "";
     const g = document.getElementById("pgrid");
     if (view === "week") g.innerHTML = seasonHTML + `<div class="pweek">${days.map(weekRow).join("")}</div>`;
     else g.innerHTML = seasonHTML + `<div class="pmonth">${(G.lang === "ne" ? WS_NE : WS_EN).map((w, k) => `<div class="pwh${k === 6 ? " hol" : ""}">${w}</div>`).join("")}

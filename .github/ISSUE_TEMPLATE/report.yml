@@ -1,12 +1,12 @@
 name: "नागरिक रिपोर्ट / Citizen hazard report"
-description: "बाढी, पहिरो, बाटो बन्द जस्ता खतरा देख्नुभयो? Report a hazard you saw. Public; not an emergency line (call 100/101/102/1149)."
+description: "बाढी, पहिरो, बाटो बन्द जस्ता खतरा देख्नुभयो? Report a hazard you saw. Public; not an emergency line (call 100/101/102/1234)."
 title: "[Report] "
 labels: ["reported", "citizen-report"]
 body:
   - type: markdown
     attributes:
       value: |
-        **ज्यान जोखिममा छ भने अहिल्यै १००, १०१, १०२ वा ११४९ मा फोन गर्नुहोस्।** If life is at risk, call 100, 101, 102 or 1149 now.
+        **ज्यान जोखिममा छ भने अहिल्यै १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।** If life is at risk, call 100, 101, 102 or 1234 now.
 
         यो रिपोर्ट **सार्वजनिक** हुन्छ र मोडेरेटरले नजाँचेसम्म *रिपोर्ट गरिएको — पुष्टि भएको छैन* भनी देखिन्छ। This report is **public** and is shown as *Reported — not confirmed* until a moderator checks it.
         **फोन नम्बर, इमेल वा अरूको नाम यहाँ नलेख्नुहोस्।** Do not put phone numbers, emails or other people's names here.

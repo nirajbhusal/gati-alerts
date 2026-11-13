@@ -1,0 +1,18 @@
+{
+ "_note": "Community pages people follow. These are NOT sources. Gati does not verify what they post, never relays it, and nothing from them enters alerts, the map, counts or the daily card. A post there may prompt a moderator to check with the agency. Add a page only when the maintainer knows who runs it. show: which Gati pages list it (roads, sources).",
+ "pages": [
+  {
+   "id": "mugling-bazar",
+   "name_ne": "मुग्लिङ बजार",
+   "name_en": "Mugling Bazar",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/share/1Es47BUyC2/",
+   "about_ne": "मुग्लिङ वरपरको राजमार्गको अवस्थाबारे स्थानीय पृष्ठ (पृथ्वी राजमार्ग, मुग्लिङ–नारायणगढ)।",
+   "about_en": "Local page posting on highway conditions around Mugling (Prithvi Highway, Mugling–Narayanghat).",
+   "area_ne": "चितवन, धादिङ, तनहुँ",
+   "area_en": "Chitwan, Dhading, Tanahun",
+   "added": "2026-11-13",
+   "show": ["roads", "sources"]
+  }
+ ]
+}

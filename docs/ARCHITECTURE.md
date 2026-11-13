@@ -9,11 +9,11 @@ Gati (MVP) is a fully static site on GitHub Pages. There is no server, database 
  data/alerts/*.xml  (CAP 1.2, one file/message)     prefilled GitHub issue form URL
           │  git push / PR                                  │  reporter submits with own account
           ▼                                                 ▼
- GitHub Action  ci/cap.yml (→ .github/workflows/cap.yml)           Issue + labels reported, citizen-report
+ .github/workflows/cap.yml validates, no commit     Issue + labels reported, citizen-report
    1. XSD validation (schema/CAP-v1.2.xsd)                  │  moderator relabels (docs/VERIFICATION.md)
    2. Gati profile checks                                   ▼
    3. scripts/build.py → feed.xml + data/alerts.json  /reports/ reads GitHub REST API in the browser
-   4. commit feed, deploy Pages artifact
+   4. commit feed; GitHub Pages publishes the main branch (no Pages artifact)
           ▼
  index.html  (assets/js/home.js: list, filters, Leaflet map)
 ```
@@ -22,12 +22,12 @@ Gati (MVP) is a fully static site on GitHub Pages. There is no server, database 
 
 | Part | Files | Notes |
 |---|---|---|
-| Shell | `assets/js/common.js`, `assets/css/gati.css` | Header, nav, disclaimer, footer, language toggle (Nepali default, saved in `localStorage`), NPT time formatting, severity/trust chips |
-| Home | `index.html`, `assets/js/home.js` | Visual dashboard: map, KPI strip, on-page charts (HTML/SVG, no images), feed list and updates. Reads `data/alerts.json`, `data/districts.json`, `data/seed/district-polygons.json`, `data/roads.json` (main-road status copied from the Rasuwa bulletin) and `data/updates.json`. Expiry is recomputed in the browser, so an alert flips to "Expired" even between builds. Map is self-hosted Leaflet 1.9.4 (`assets/vendor/leaflet`) with no tile server: muted district polygons, `data/geo/roads.geojson` (real road paths routed on OpenStreetMap data via OSRM, simplified), `data/geo/rivers.geojson` (Natural Earth, clipped), `data/rivers.json` gauges; list works without the map |
-| Report | `report/index.html`, `assets/js/report.js` | GPS via `navigator.geolocation`, pin via Leaflet, rounded to 4 decimals. Builds `issues/new?template=report.yml&labels=…&<field-id>=…`. Contact never enters the URL; optional `mailto:` to the maintainer |
+| Shell | `assets/js/common.js`, `assets/css/gati.css` | Header, nav, disclaimer, footer, language toggle (Nepali on a first visit; a saved `gati-lang` wins), NPT time formatting, severity/trust chips |
+| Home | `index.html`, `assets/js/home.js` | Visual dashboard: map, KPI strip, on-page charts (HTML/SVG, no images), feed list and updates. Reads `data/alerts.json`, `data/districts.json`, `data/districts.geojson`, `data/roads.json` (main-road status copied from the Rasuwa bulletin) and `data/updates.json`. Expiry is recomputed in the browser, so an alert flips to "Expired" even between builds. Map is self-hosted Leaflet 1.9.4 (`assets/vendor/leaflet`) with no tile server: muted district polygons, `data/geo/roads.geojson` (real road paths routed on OpenStreetMap data via OSRM, simplified), `data/geo/rivers.geojson` (Natural Earth, clipped), `data/rivers.json` gauges; list works without the map |
+| Report | `report/index.html`, `assets/js/report.js` | GPS via `navigator.geolocation`, pin via Leaflet, rounded to 4 decimals. Builds `issues/new?template=report.yml&labels=…&<field-id>=…`. The form does not ask for a phone number or email, and contact never enters the URL. |
 | Reports | `reports/index.html`, `assets/js/reports.js` | Lists only `GET /repos/nirajbhusal/gati-alerts/issues?labels=verified&state=all` (minus `retracted`). Unverified reports are never listed; a search-API count of open `reported` issues is shown instead. Emails and phone numbers are scrubbed before display |
 | Feed | `scripts/build.py` | lxml XMLSchema validation, Atom 1.0 (`feed.xml`), JSON mirror |
-| CI/CD | `ci/cap.yml (→ .github/workflows/cap.yml)` | On push, PR (validate only), manual and daily. Pages `build_type` = workflow |
+| CI/CD | `.github/workflows/cap.yml` | Push, pull request, manual and daily CAP validation. Read-only: it does not commit. Pages publishes the `main` branch. The poller and the broadcaster are described under Pollers. |
 
 ## Data model (JSON mirror)
 
@@ -38,24 +38,25 @@ instruction, web, params, areas[{desc, polygons[[[lat,lon]…]], circles[], geoc
 ## Why no backend
 
 Static hosting has no place to keep secrets. GitHub issue forms are free, moderated, auditable and need no new
-accounts for the project. See README "Future backend option" for the planned replacement.
+accounts for the project. The optional Worker in `worker/` adds reporting without a GitHub account; see README "Sending without a GitHub account".
 
 ## Privacy
 
-No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet are self-hosted. Third-party requests: OSM tiles on the Report page map only (disclosed) and the GitHub API (report counts on the home page; verified reports on the Reports page).
+No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet are self-hosted. Third-party requests (OSM tiles, the GitHub API, Open-Meteo, and the optional Ask Gati Worker) are listed in full in [PRIVACY.md](../PRIVACY.md).
 
 ## Source registry and health
 
-- `data/sources.json`: one entry per upstream source (`id, agency{ne,en}, url, feedType, pollMinutes, hazards[], trustDefault, contact, status`). Planned sources have `status: "planned"` and `url: null`.
+- `data/sources.json`: one entry per upstream source (`id, agency{ne,en}, url, feedType, pollMinutes, hazards[], trustDefault, contact, status`). Planned sources have `status: "planned"` and `url: null`. Listed sources have `status: "listed"`: they are supplementary references, not polled and not ingested. `trustDefault` may be `Model` for model data, which is not an official warning. DHM remains Nepal's only official weather warning voice.
 - `data/source-health.json`: `lastSuccess`, `lastChecked` and `lastResult` per source, updated by `python3 scripts/check_sources.py`. That script fetches each URL once; a timeout is recorded, never fatal.
 - Status shown on `/sources/` and on the dashboard flag: planned; down (no success yet); stale (last success older than 3x pollMinutes, or the latest check failed); ok.
 
 ## Pollers (GitHub Actions)
 
-- `.github/workflows/poll.yml` (staged at `ci/poll.yml` until moved; the box token lacks the `workflow` scope) runs `scripts/poll.py` at :05 and :35 UTC. DHM sources (pollMinutes 30) are polled every run; others (120) on the first run of each even UTC hour. `workflow_dispatch` polls all.
-- A changed normalised content hash writes `data/raw/<id>/<UTC ISO>.json`. Health is written only on a status change, a new snapshot, or every 6 h. The workflow commits only when files changed.
-- Fetch errors are recorded in health, never fatal. `concurrency: poll-sources` prevents overlap. `data/raw` is an archive: never delete (see data/raw/README.md).
-- `ci/cap.yml` (to be moved to `.github/workflows/cap.yml`) now omits the Pages artifact deploy, since Pages builds from the main branch.
+- `.github/workflows/poll.yml` runs `scripts/poll.py` every 2 hours. It never commits to `main`: changes collect on the `bot/poll` branch and one rolling pull request stays open for a person to review and merge. It needs the repository setting that lets Actions create pull requests.
+- `.github/workflows/broadcast.yml` runs `scripts/broadcast.py` when `data/alerts.json` changes on `main` and twice an hour. It sends nothing until channel secrets exist, and records what was sent on the `bot/broadcast-state` branch. See [BROADCAST.md](BROADCAST.md).
+- `.github/workflows/cap.yml` validates CAP files on push, pull request, manual run, and daily. It has `contents: read` and does not commit.
+- `.github/workflows/dhm-watch.yml` runs every 2 hours UTC and on manual dispatch. It only reads DHM page ids and compares them with `data/weather.json`. A newer id is written to the job summary and the job fails. It has `contents: read` and does not commit.
+- `data/raw` is an archive: never delete (see data/raw/README.md).
 
 ## Data split (item 3)
 
@@ -84,12 +85,12 @@ The Android package in `android/` is a Trusted Web Activity (`android-browser-he
 ## New hazards (item 11)
 
 - `data/hazards.json` lists hazard values. New: `earthquake`, `air-quality`, `epidemic`.
-- `scripts/ingest_quakes.py`: NSC event table (ML >= 4.0) and the USGS FDSN API (M4.5+, Nepal bbox 26.3..30.5 N, 80.0..88.3 E, last 90 days) become CAP files. Existing files are never overwritten. NSC and USGS figures are never merged. `ci/poll.yml` runs it once enabled.
+- `scripts/ingest_quakes.py`: NSC event table (ML >= 4.0) and the USGS FDSN API (M4.5+, Nepal bbox 26.3..30.5 N, 80.0..88.3 E, last 90 days) become CAP files. Existing files are never overwritten. NSC and USGS figures are never merged. `.github/workflows/poll.yml` runs it once enabled.
 - Air quality (DoE) and epidemics (EDCD) have source entries and hazard values only; no item is published until a linkable official item can be fetched.
 
 ## Dashboard (item 12)
 
-- Header buttons: numerals (१२३/123, overrides the language default), dates (BS/AD), dark mode. Stored in localStorage (`gati-num`, `gati-cal`, `gati-theme`).
+- Header controls: dates (BS/AD) and theme. Numerals follow the language, Devanagari in Nepali and Western digits in English, with no separate numeral toggle. Stored in localStorage (`gati-cal`, `gati-theme`).
 - `assets/js/bs.js`: BS/AD conversion. Month lengths for BS 2000 to 2090 come from nepali-date-converter 3.4.0 (MIT), which matches bikram-sambat 1.8.1 (Apache-2.0) for 2000 to 2083. Years after 2083 are marked provisional. Checked against NSC's dual dates (2083-06-21 = 2026-10-07), DHM (Asoj 25 = 11 Oct 2026) and the 2083 MoHA holiday notice as reported (Poush 10 = 25 Dec 2026).
 - Gauge sparklines read `data/river-history.json`. It is empty until DHM snapshots can be parsed, so each gauge shows "no history yet".
 - The severity chart leaves out Unknown (Info). District search accepts Nepali or English names.

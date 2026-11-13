@@ -2,11 +2,9 @@
    Active alerts first, then alerts sent in the last 30 days marked expired/superseded, then an "all caught up" card.
    Everything comes from data/alerts.json (the CAP messages). Nothing is invented. */
 (function () {
-  const G = window.Gati, b = G.b, esc = G.esc, R = G.root, SITE = "https://nirajbhusal.github.io/gati-alerts/";
+  const G = window.Gati, b = G.b, esc = G.esc, R = G.root, SITE = G.country.site;
   const feed = document.getElementById("feed"), sheet = document.getElementById("sheet"), sb = document.getElementById("sheetbody");
   const dash = document.getElementById("stdash");
-  try { localStorage.setItem("gati-view", "stories"); } catch (e) {}
-  dash.onclick = () => { try { localStorage.setItem("gati-view", "dashboard"); } catch (e) {} };
   const T = (ne, en) => (G.lang === "ne" ? ne : en);
   const SR = { Extreme: 0, Severe: 1, Moderate: 2, Minor: 3, Unknown: 4 };
   const MT = { Alert: ["मूल सूचना", "Original"], Update: ["अद्यावधिक", "Update"], Cancel: ["रद्द", "Cancel"] };
@@ -14,6 +12,9 @@
   const agency = (i) => (i.senderName || "").split(" — ")[0].split(" · ")[0];
   const srcTime = (a, i) => i.params["gati:sourceTime"] || a.sent;
   let items = [], by = {};
+  /* Cards view shows active alerts, then the "all seen" card; past alerts follow only when asked for. */
+  let showOld = false;
+  const nAct = () => items.filter(isActive).length;
   const url = (a) => (a.demo ? "?demo=0" : `${SITE}alerts/${a.identifier}/`);
 
   function status(a) {
@@ -61,18 +62,19 @@
     const lv = LV[sev], tl = left(a), nd = a.districts.length;
     return `<div class="fbg"></div>
       <div class="fmain">
-        <div class="fhero">${art(a)}<div class="ftags">${G.sevChip(sev)}${status(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div></div>
-        <h2>${esc(i.headline)}</h2>
+        <div class="fhero">${art(a)}<div class="ftags">${G.sevChip(sev)}${status(a)}${G.roadOngoingChip(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div><span class="fpos" aria-label="${act ? T("चालु सूचनामध्ये", "Among active alerts") : T("पुरानो सूचना", "Past alert")}">${act ? `${G.num(String(k + 1))} / ${G.num(String(nAct()))}` : T("पुरानो", "Past")}</span></div>
+        <h2 title="${esc(i.headline)}">${esc(G.headline(a, i))}</h2>
+        ${G.roadOngoingLine(a)}
+        ${i.instruction ? `<p class="fins"><strong>${act ? T("के गर्ने", "What to do") : T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${esc(i.instruction)}</p>` : ""}
         <div class="fviz"><div class="fmini" data-k="${k}">${mini(a)}</div>
           <div class="finfo">
             <div class="fi"><div class="fmeter" aria-label="${esc(T(G.SEV[sev][0], G.SEV[sev][1]))}">${[1, 2, 3, 4, 5].map((n) => `<i${n <= lv ? ' class="on"' : ""}></i>`).join("")}</div><span>${T("गम्भीरता", "Severity")}</span></div>
             <div class="fi"><b>${nd ? G.num(String(nd)) : T("देशभर", "All")}</b><span>${nd ? T("जिल्ला", "districts") : T("नेपाल", "Nepal")}</span></div>
             <div class="fi"><b>${tl[0]}</b><span>${tl[1]}</span></div>
           </div></div>
-        ${i.instruction ? `<p class="fins"><strong>${act ? T("के गर्ने", "What to do") : T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${esc(i.instruction)}</p>` : ""}
       </div>
       <div class="flow" style="--sc:${G.SEVCOLOR[sev]}">
-        <p class="fsrcline">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(agency(i))} ↗</a> ${G.trustChip(a.trust)}</p>
+        <p class="fsrcline">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))} ↗</a> ${G.trustChip(a.trust)}</p>
         <details class="fsrc"><summary>${T("स्रोत विवरण", "Source")}</summary>
           ${areas ? `<p>📍 ${esc(areas)}</p>` : ""}${a.state ? `<p>${G.trustChip(a.state)}</p>` : ""}
           <p>${T("स्रोतको समय", "Source time")}: ${G.npt(srcTime(a, i))} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
@@ -80,15 +82,14 @@
       </div>
       <div class="rail">
         <button type="button" data-act="share" data-k="${k}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button>
-        <button type="button" data-act="qr" data-k="${k}"><span aria-hidden="true">▦</span>QR</button>
-        <button type="button" data-act="follow" data-k="${k}"><span aria-hidden="true">＋</span>${T("पछ्याउनुहोस्", "Follow")}</button>
         <button type="button" data-act="details" data-k="${k}"><span aria-hidden="true">≡</span>${T("विवरण", "Details")}</button>
       </div>`;
   }
-  function endCard(nAct) {
-    return `<div class="fmain fend"><h2>${nAct ? T("सबै हेरिसक्नुभयो", "You're all caught up") : T("अहिले गतिमा कुनै चालु सूचना छैन", "No active alert in Gati right now")}</h2>
+  function endCard(nAct) { const nOld = items.length - nAct;
+    return `<div class="fmain fend"><h2>${nAct ? T("चालु सूचना सबै हेरिसक्नुभयो", "You have seen all active alerts") : T("अहिले गतिमा कुनै चालु सूचना छैन", "No active alert in Gati right now")}</h2>
       <p>${T("यसको अर्थ खतरा छैन भन्ने होइन। आफ्नो क्षेत्रको आधिकारिक सूचना र मौसम हेरिरहनुहोस्।", "This is not an all clear and implies no absence of risk. Keep checking official notices and the weather for your area.")}</p>
-      <p><a href="${R}alerts/">${T("सबै सूचनाको अभिलेख", "Archive of all alerts")}</a> · <a href="${R}?view=dashboard">${T("ड्यासबोर्ड", "Dashboard")}</a> · <a href="${R}patro/">${T("पात्रो", "Patro")}</a></p>
+      <p><a href="${R}alerts/">${T("सबै सूचनाको अभिलेख", "Archive of all alerts")}</a> · <a href="${R}">${T("गृहपृष्ठ", "Home")}</a> · <a href="${R}patro/">${T("पात्रो", "Patro")}</a></p>
+      ${nOld && !showOld ? `<p><button type="button" class="btn alt" data-act="older">${T(`पछिल्ला ३० दिनका पुराना सूचना हेर्नुहोस् (${G.num(String(nOld))})`, `See past alerts from the last 30 days (${nOld})`)}</button></p>` : ""}
       <p class="fdisc">${T("आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "In an emergency call 100, 101, 102 or 1234.")}</p></div>`;
   }
   function openSheet(html, label) { sb.innerHTML = html; sheet.hidden = false; sheet.setAttribute("aria-label", label); document.getElementById("sheetx").focus(); }
@@ -126,10 +127,13 @@
       ${i.instruction ? `<div class="instr"><strong>${T("निर्देशन", "Instruction")}:</strong> ${esc(i.instruction)}</div>` : ""}
       ${chain ? `<h4>🔗 ${T("संस्करण", "Versions")}</h4><ol class="plist">${chain}</ol>` : ""}
       <p class="meta src">${T("स्रोत", "Source")}: <strong>${esc(agency(i))}</strong> · <a href="${esc(i.web)}" target="_blank" rel="noopener">${T("मूल सूचना", "Original notice")} ↗</a>
-      ${a.demo ? "" : ` · <a href="${R}alerts/${esc(a.identifier)}/">${T("पूरा पृष्ठ", "Full page")}</a> · <a href="${R}cap/${esc(a.identifier)}.xml">CAP</a>`}</p>`, T("विवरण", "Details"));
+      ${a.demo ? "" : ` · <a href="${R}alerts/${esc(a.identifier)}/">${T("पूरा पृष्ठ", "Full page")}</a> · <a href="${R}cap/${esc(a.identifier)}.xml">CAP</a>`}</p>
+      <p class="frb"><button type="button" class="fopt" id="dsfollow">＋ ${T("जिल्ला पछ्याउनुहोस्", "Follow district")}</button> <button type="button" class="fopt" id="dsqr">▦ ${T("QR र तस्बिर", "QR and image")}</button></p>`, T("विवरण", "Details"));
+    sb.querySelector("#dsfollow").onclick = () => followSheet(a); sb.querySelector("#dsqr").onclick = () => qrSheet(a);
   }
   feed.addEventListener("click", (e) => {
     const t = e.target.closest("[data-act]"); if (!t) return;
+    if (t.dataset.act === "older") { showOld = true; draw(); const first = feed.querySelector(".fcard.old"); if (first) first.scrollIntoView({ behavior: "smooth" }); return; }
     const a = items[+t.dataset.k]; ({ share: shareSheet, qr: qrSheet, details: detailSheet, follow: followSheet })[t.dataset.act](a);
   });
   /* Lazy-load: each screen is an empty shell until it nears the viewport. */
@@ -142,14 +146,15 @@
   const VK = "gati-feed-view", vb = document.getElementById("fview");
   let compact = (() => { try { return localStorage.getItem(VK) === "list"; } catch (e) { return false; } })();
   vb.onclick = () => { compact = !compact; try { localStorage.setItem(VK, compact ? "list" : ""); } catch (e) {} draw(); };
-  const dayKey = (t) => new Date(Date.parse(t) + 345 * 6e4).toISOString().slice(0, 10);
+  const dayKey = (t) => new Date(Date.parse(t) + G.tzMs).toISOString().slice(0, 10);
   const MN = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"], WN = ["आइत", "सोम", "मङ्गल", "बुध", "बिहि", "शुक्र", "शनि"];
   const dayLab = (k) => { const d = new Date(k + "T12:00:00Z"); if (G.lang === "ne") return `${WN[d.getUTCDay()]}, ${MN[d.getUTCMonth()]} ${G.num(String(d.getUTCDate()))}, ${G.num(String(d.getUTCFullYear()))}`;
     return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); };
   function row(a, k) { const i = a.info[G.lang] || a.info.ne, sev = G.SEV[a.severity] ? a.severity : "Unknown";
-    return `<li class="frow${isActive(a) ? "" : " old"}" style="--sc:${G.SEVCOLOR[sev]}"><div class="ftags">${G.sevChip(sev)}${status(a)}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div>
-      <a class="frh" href="${esc(url(a))}">${esc(i.headline)}</a>
-      <p class="meta">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener">${esc(agency(i))} ↗</a> ${G.trustChip(a.trust)}</p>
+    return `<li class="frow${isActive(a) ? "" : " old"}" style="--sc:${G.SEVCOLOR[sev]}"><div class="ftags">${G.sevChip(sev)}${status(a)}${G.roadOngoingChip(a)}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div>
+      <a class="frh" href="${esc(url(a))}">${esc(G.headline(a, i))}</a>
+      ${G.roadOngoingLine(a)}
+      <p class="meta">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))} ↗</a> ${G.trustChip(a.trust)}</p>
       <p class="frb"><button type="button" class="fopt" data-act="share" data-k="${k}">${T("सेयर", "Share")}</button> <button type="button" class="fopt" data-act="follow" data-k="${k}">${T("जिल्ला पछ्याउनुहोस्", "Follow district")}</button> <button type="button" class="fopt" data-act="details" data-k="${k}">${T("विवरण", "Details")}</button></p></li>`; }
   function drawList() {
     feed.classList.add("flist"); let html = "", cur = "", sect = "";
@@ -159,14 +164,73 @@
       html += row(a, k); });
     feed.innerHTML = (html ? html + "</ul>" : "") + `<div class="fendl">${endCard(items.filter(isActive).length)}</div>`;
   }
+  /* ===== Two lanes, never mixed =====
+     Official: agency alerts from data/alerts.json (everything above).
+     Community: citizen reports a moderator has checked (GitHub issues labelled "verified"). Every community card
+     carries a fixed "not an official warning" band and its own colour, so it cannot be mistaken for an agency alert. */
+  const LK = "lane", laneBox = document.getElementById("flane"), mainEl = document.getElementById("main");
+  let lane = new URLSearchParams(location.search).get(LK) === "community" ? "community" : "official";
+  let CR = null, crFailed = false;
+  const REPO = G.country.repository;
+  const cparse = (body) => { const o = {}; (body || "").split(/^### /m).slice(1).forEach((s) => { const nl = s.indexOf("\n"), k = s.slice(0, nl).trim(); let v = s.slice(nl + 1).trim(); if (v === "_No response_") v = ""; o[k] = v.split("\n---")[0].trim(); }); return o; };
+  const cpick = (o, start) => { const k = Object.keys(o).find((x) => x.startsWith(start)); return k ? o[k] : ""; };
+  /* Defence in depth: never show contact details even if someone typed them into the public text. */
+  const cscrub = (s) => String(s || "").replace(/[\w.+-]+@[\w-]+\.[\w.]+/g, "[…]").replace(/(\+?977[-\s]?)?\b9[678]\d{8}\b/g, "[…]").replace(/\b\d[\d\s-]{8,}\d\b/g, "[…]").replace(/!\[[^\]]*\]\([^)]*\)|<img[^>]*>/g, "").replace(/https?:\/\/\S+/g, "");
+  const CBAND = () => `<p class="cband" role="note">${T("समुदायको रिपोर्ट · आधिकारिक चेतावनी होइन", "Community report · not an official warning")}</p>`;
+  function ccard(i, n, total) {
+    const o = cparse(i.body), corrected = i.labels.some((l) => l.name.toLowerCase() === "corrected");
+    const hz = cscrub(cpick(o, "जोखिम")).split(" / ")[G.lang === "ne" ? 0 : 1] || "";
+    const dist = cscrub(cpick(o, "जिल्ला")).split(" / ")[G.lang === "ne" ? 0 : 1] || cscrub(cpick(o, "जिल्ला"));
+    const where = [cpick(o, "ठाउँ"), cpick(o, "नगर"), cpick(o, "वडा") && T("वडा ", "Ward ") + cpick(o, "वडा")].filter(Boolean).map(cscrub).join(", ");
+    const head = [hz, dist].filter(Boolean).join(" · ") || cscrub(i.title.replace(/^\[Report\]\s*/, ""));
+    return `<section class="fcard comm" style="--sc:#0F7C86" aria-label="${G.num(String(n))} / ${G.num(String(total))}">
+      <div class="fmain">${CBAND()}
+        <div class="fhero"><div class="ftags">${G.trustChip(corrected ? "Corrected" : "Verified")}<span class="tag">${T("मोडेरेटरले जाँचेको", "Checked by a moderator")}</span></div><span class="fpos">${G.num(String(n))} / ${G.num(String(total))}</span></div>
+        <h2>${esc(head)}</h2>
+        ${where ? `<p class="cwhere">📍 ${esc(where)}</p>` : ""}
+        <p class="cdesc">${esc(cscrub(cpick(o, "के देख्नुभयो")).slice(0, 420))}</p>
+        <p class="meta">🕒 ${T("देखेको", "Observed")}: ${esc(cpick(o, "देखेको").replace(/[^0-9:\- NPTnpt]/g, "").slice(0, 24))} · ${T("पठाएको", "Sent")}: ${G.npt(i.created_at)}</p>
+        <p class="cnote">${T("एक नागरिकले देखेको कुरा हो। निर्णय लिनुअघि आधिकारिक सूचना हेर्नुहोस्; आपत्कालमा १०० वा १२३४ मा फोन गर्नुहोस्।", "This is what one citizen saw. Check official notices before acting; in an emergency call 100 or 1234.")}</p>
+      </div>
+      <div class="rail">
+        <button type="button" data-cact="share" data-u="${esc(i.html_url)}" data-t="${esc(head)}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button>
+        <a href="${esc(i.html_url)}" target="_blank" rel="noopener"><span aria-hidden="true">≡</span>${T("पूरा रिपोर्ट", "Full report")}</a>
+      </div></section>`;
+  }
+  const cend = (n) => `<section class="fcard comm fendc" style="--sc:#0F7C86"><div class="fmain fend">${CBAND()}
+      <h2>${crFailed ? T("समुदायका रिपोर्ट अहिले ल्याउन सकिएन", "Community reports could not be loaded right now") : n ? T("जाँचिएका रिपोर्ट सबै हेरिसक्नुभयो", "You have seen all checked reports") : T("अहिले जाँचिएको कुनै समुदाय रिपोर्ट छैन", "No checked community reports right now")}</h2>
+      <p>${T("यहाँ मोडेरेटरले जाँचेका नागरिक रिपोर्ट मात्र देखिन्छन्। जाँच नभएका रिपोर्ट देखाइँदैनन्।", "Only citizen reports a moderator has checked appear here. Unchecked reports are not shown.")}</p>
+      <p><a class="btn" href="${R}report/">${T("खतराबारे खबर गर्नुहोस्", "Report a hazard")}</a></p>
+      <p><a href="${R}reports/">${T("नागरिक रिपोर्ट पेज", "Citizen reports page")}</a> · <a href="${R}about/#trust">${T("गतिले कसरी जाँच्छ", "How Gati checks")}</a></p>
+      <p class="fdisc">${T("आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "In an emergency call 100, 101, 102 or 1234.")}</p></div></section>`;
+  function drawCommunity() {
+    feed.classList.remove("flist"); chips.hidden = true;
+    if (CR === null && !crFailed) { feed.innerHTML = `<section class="fcard comm fendc" style="--sc:#0F7C86"><div class="fmain fend">${CBAND()}<p>…</p></div></section>`;
+      G.gh(`https://api.github.com/repos/${REPO}/issues?state=all&per_page=30&labels=verified`, { headers: { Accept: "application/vnd.github+json" } })
+        .then((L) => { CR = (L || []).filter((i) => !i.pull_request && !i.labels.some((l) => l.name.toLowerCase() === "retracted")).sort((a, b) => b.created_at.localeCompare(a.created_at)); })
+        .catch(() => { crFailed = true; CR = []; }).then(() => { if (lane === "community") drawCommunity(); });
+      return; }
+    feed.innerHTML = CR.map((i, k) => ccard(i, k + 1, CR.length)).join("") + cend(CR.length); feed.scrollTop = 0;
+  }
+  function drawLane() {
+    laneBox.innerHTML = [["official", T("आधिकारिक", "Official")], ["community", T("समुदाय", "Community")]].map(([k, l]) => `<button type="button" data-lane="${k}" aria-pressed="${k === lane}">${l}</button>`).join("");
+    mainEl.classList.toggle("lane-comm", lane === "community");
+  }
+  laneBox.addEventListener("click", (e) => { const b = e.target.closest("[data-lane]"); if (!b || b.dataset.lane === lane) return; lane = b.dataset.lane;
+    try { const u = new URL(location.href); lane === "community" ? u.searchParams.set(LK, "community") : u.searchParams.delete(LK); history.replaceState(null, "", u.pathname + u.search + u.hash); } catch (x) {}
+    draw(); if (lane === "official") feed.scrollTop = 0; });
+  feed.addEventListener("click", (e) => { const s = e.target.closest("[data-cact=share]"); if (s) G.share({ url: s.dataset.u, title: s.dataset.t, text: T("समुदायको रिपोर्ट (आधिकारिक चेतावनी होइन): ", "Community report (not an official warning): ") + s.dataset.t }); });
   function draw() {
+    drawLane();
+    if (lane === "community") return drawCommunity();
     vb.textContent = compact ? T("कार्ड", "Cards") : T("सूची", "List"); vb.title = compact ? T("कार्ड दृश्य", "Card view") : T("सूची दृश्य", "List view"); vb.setAttribute("aria-pressed", compact);
     dash.textContent = T("ड्यासबोर्ड", "Dashboard");
     if (compact) return drawList();
     feed.classList.remove("flist");
     const pos = feed.scrollTop;
-    feed.innerHTML = [...items, null].map((a, k) => `<section class="fcard${a && !isActive(a) ? " old" : ""}${a ? "" : " fendc"}" data-k="${k}" style="--sc:${a ? G.SEVCOLOR[a.severity] || G.SEVCOLOR.Unknown : "#0F7C86"}"
-      aria-label="${G.num(k + 1)} / ${G.num(items.length + 1)}"></section>`).join("");
+    const na = nAct(), order = items.map((a, k) => k).filter((k) => k < na).concat([items.length], showOld ? items.map((a, k) => k).filter((k) => k >= na) : []);
+    feed.innerHTML = order.map((k, n) => { const a = items[k]; return `<section class="fcard${a && !isActive(a) ? " old" : ""}${a ? "" : " fendc"}" data-k="${k}" style="--sc:${a ? G.SEVCOLOR[a.severity] || G.SEVCOLOR.Unknown : "#0F7C86"}"
+      aria-label="${G.num(n + 1)} / ${G.num(order.length)}"></section>`; }).join("");
     feed.querySelectorAll(".fcard").forEach((s) => io.observe(s));
     feed.scrollTop = pos;
     dash.textContent = T("ड्यासबोर्ड", "Dashboard");
@@ -182,11 +246,12 @@
   let lock = 0;
   feed.addEventListener("wheel", (e) => { if (compact || Math.abs(e.deltaY) < 4) return; e.preventDefault(); const n = Date.now(); if (n - lock < 600) return; lock = n; go(e.deltaY > 0 ? 1 : -1); }, { passive: false });
   const dp = document.getElementById("fdist");
-  const dpDraw = () => { const c = G.district.get(); (c ? G.district.name(c) : Promise.resolve("")).then((n) => (dp.innerHTML = `📍 <b>${n ? esc(n) : T("मेरो जिल्ला", "My district")}</b> ▾`)); };
+  const dpDraw = () => { const c = G.district.get(); (c ? G.district.name(c) : Promise.resolve("")).then((n) => { dp.innerHTML = `📍 <b>${n ? esc(n) : T("मेरो जिल्ला", "My district")}</b> ▾`; dp.setAttribute("aria-label", T("मेरो जिल्ला", "My district") + (n ? ": " + n : "")); dp.title = n || T("मेरो जिल्ला छान्नुहोस्", "Choose my district"); }); };
   dp.onclick = () => G.district.open(() => location.reload());
   dpDraw(); G.onLang(dpDraw);
   G.json("data/alerts.json").then((d) => {
     by = Object.fromEntries(d.alerts.map((a) => [a.identifier, a]));
+    G.alertById = by;
     const cut = Date.now() - 30 * 864e5;
     const act = d.alerts.filter(isActive).sort((x, y) => SR[x.severity] - SR[y.severity] || (y.sent > x.sent ? 1 : -1));
     const old = d.alerts.filter((a) => !isActive(a) && Date.parse(a.sent) >= cut).sort((x, y) => (y.sent > x.sent ? 1 : -1));
@@ -207,7 +272,7 @@
   const fb = document.getElementById("ffilt"), chips = document.getElementById("fchips");
   function apply() { items = ALL.filter(pass); draw(); fdraw(); }
   function fdraw() { const n = nF();
-    fb.innerHTML = `<span aria-hidden="true">⚲</span> ${T("छान्नुहोस्", "Filter")}${n ? ` <b class="fcount">${G.num(String(n))}</b>` : ""}`;
+    fb.innerHTML = `${T("फिल्टर", "Filter")}${n ? ` <b class="fcount">${G.num(String(n))}</b>` : ""}`;
     fb.setAttribute("aria-label", T("फिड छान्नुहोस्", "Filter the feed") + (n ? ` (${n})` : ""));
     chips.innerHTML = n ? `<span>${G.num(String(items.length))} / ${G.num(String(ALL.length))} ${T("सूचना", "alerts")}</span> <button type="button" class="fclr" id="fclr">${T("सबै देखाउनुहोस्", "Show all")} ✕</button>` : "";
     chips.hidden = !n; const c = document.getElementById("fclr"); if (c) c.onclick = () => { F = {}; fsave(); apply(); }; }

@@ -1,0 +1,13 @@
+{
+  "name": "gati-web",
+  "private": true,
+  "type": "module",
+  "description": "Astro source for Gati pages that have been moved to templates. Output is plain static HTML; nothing from Astro runs in the browser.",
+  "scripts": {
+    "build": "astro build && node sync.mjs",
+    "check": "astro build && node sync.mjs --check"
+  },
+  "devDependencies": {
+    "astro": "^7.4.10"
+  }
+}

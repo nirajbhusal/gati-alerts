@@ -26,15 +26,20 @@ It is a parallel project to the verified [Rasuwa–Bhotekoshi bulletin](https://
 | `feed.xml`, `data/alerts.json` | Generated Atom index and JSON mirror |
 | `schema/CAP-v1.2.xsd` | OASIS CAP 1.2 schema (unchanged copy) |
 | `scripts/build.py` | Validate (XSD + Gati profile) and regenerate feed/JSON |
-| `scripts/seed_from_bulletin.py`, `data/seed/` | One-off seeder used to create the first CAP files from bulletin data |
-| `ci/cap.yml (→ .github/workflows/cap.yml)` | CI: validate → build → commit feed → deploy GitHub Pages (also daily) |
+| `scripts/seed_from_bulletin.py`, `data/seed/` | One-off seeder used to create the first CAP files from bulletin data. Old district outlines are kept in `data/archive/district-polygons.json`. |
+| `.github/workflows/cap.yml` | Daily and on-push CAP validation only. It does not commit or deploy. |
+| `.github/workflows/poll.yml` | Polls official sources every 2 hours and opens a pull request for review. Never commits to `main`. |
+| `.github/workflows/broadcast.yml`, `scripts/broadcast.py` | Sends new official alerts to Telegram, Viber, WhatsApp and SMS once secrets are set. See [docs/BROADCAST.md](docs/BROADCAST.md). |
+| `worker/` | Optional Cloudflare Worker: Ask Gati and the no-account report intake. See [worker/README.md](worker/README.md). |
+| `data/country.json`, `scripts/country.py` | Country facts for this deployment, shared by scripts and pages. See [docs/FORKING.md](docs/FORKING.md). |
+| `data/offline/`, `scripts/make_offline_map.py` | Offline street map of Nepal (about 36 MB) that people can save from the map page. |
+| `privacy/`, `*.ne.md` | Privacy page on the site in Nepali and English; Nepali versions of the policy files. |
+| `data/i18n/`, `assets/js/locale.js` | Regional interface languages over Nepali. See [docs/LANGUAGES.md](docs/LANGUAGES.md). |
 | `.github/ISSUE_TEMPLATE/report.yml` | Citizen report issue form |
-| `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md) |
+| `.github/workflows/site.yml`, `tests/smoke.cjs` | Builds the site from source and opens every page in a browser in both languages on each change. Can also publish the site. See [docs/BUILD.md](docs/BUILD.md). |
+| `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md), [CAP](docs/CAP.md), [VERIFICATION](docs/VERIFICATION.md), [DPG](docs/DPG.md), [BROADCAST](docs/BROADCAST.md), [FORKING](docs/FORKING.md), [LANGUAGES](docs/LANGUAGES.md) |
 
-> **Install the CI workflow:** the account token used to create this repo lacks GitHub's `workflow` scope, so the
-> Action is shipped as [`ci/cap.yml`](ci/cap.yml). To enable it, move it to `.github/workflows/cap.yml` (GitHub web UI,
-> or `gh auth refresh -s workflow` then push), and switch *Settings → Pages → Source* to **GitHub Actions**. Until then
-> Pages deploys from the `main` branch and `feed.xml`/`data/alerts.json` are rebuilt locally with `scripts/build.py`.
+> **CAP validation** runs from [`.github/workflows/cap.yml`](.github/workflows/cap.yml). It checks the CAP files and does not commit. Pages still publishes the `main` branch. [`poll.yml`](.github/workflows/poll.yml) proposes source changes as a pull request; a person reviews and merges. `feed.xml` and `data/alerts.json` are rebuilt locally with `scripts/build.py`.
 
 ## Run locally
 
@@ -54,38 +59,62 @@ python -m http.server 8000        # open http://localhost:8000/
 3. To correct or retract, publish a **new** message with `msgType` `Update` or `Cancel` and `<references>`; never edit history silently. See [docs/CAP.md](docs/CAP.md).
 4. Open a PR. CI fails if the file is not valid CAP 1.2 or breaks the Gati profile.
 
-## Citizen reports (no backend)
+## Citizen reports
 
 GitHub Pages is static, so reports use a sanctioned, free route that needs no new accounts or secrets on our side:
 the `/report/` page builds a **prefilled GitHub issue-form URL** (`issues/new?template=report.yml&…`). The reporter
 reviews it and submits it with their own GitHub account. The issue template adds the labels `reported` and
 `citizen-report`. Moderators relabel to `verified`, `corrected`, `retracted` or `unverified` per
-[docs/VERIFICATION.md](docs/VERIFICATION.md). Contact details are **never** put into the issue; the form offers an
-optional private e-mail to the maintainer instead. Photos are attached by the reporter on the GitHub page.
+[docs/VERIFICATION.md](docs/VERIFICATION.md). The form does not ask for a phone number or email, and contact
+details are never put into the issue. Photos are attached by the reporter on the GitHub page.
 
 Labels: `official`, `verified`, `reported`, `unverified`, `corrected`, `retracted`, `citizen-report`.
 
-### Future backend option
+### Sending without a GitHub account
 
-Requiring a GitHub account excludes many people. A later version should add a small backend, for example a
-serverless function (Cloudflare Workers / Netlify Functions / a government-hosted API) that accepts anonymous
-reports with rate limiting and CAPTCHA, stores contact details encrypted and separately from the public record,
-strips photo EXIF, and creates the public issue/record through a bot token. SMS/IVR intake (short code) and a
-moderator dashboard would follow. Until then, no secrets are stored in this repo.
+The Worker in `worker/` adds a `POST /report` route. When it is deployed and its URL is set in
+`data/report-config.json`, the report page shows a "Send without an account" button next to the GitHub one. The Worker
+rate-limits by IP, removes phone numbers, emails and links, rounds GPS, creates the public issue with a bot token, and
+holds any photo privately for moderators after stripping its metadata. Until the URL is set, nothing changes on the
+site. See [worker/README.md](worker/README.md).
+
+### Still to come
+
+SMS and voice-call (IVR) intake through a short code, and a moderator dashboard. Both need a telecom partner.
+No secrets are stored in this repo; they live in GitHub Actions secrets and Worker secrets.
 
 ## Limits (MVP)
 
-- All seeded items are past and therefore **expired**; the site shows them as an archive.
+- Each CAP message has its own `<expires>` time. Active messages stay up until then. After that they stay in the archive and are not deleted.
 - District polygons are simplified outlines for display, not legal boundaries. Station location for Aarughat is approximate.
 - Dates are shown in Gregorian + NPT; Bikram Sambat appears where the source text gives it.
-- Reporting needs a GitHub account; the Reports page uses the unauthenticated GitHub API (60 requests/hour per IP).
+- Numerals follow the language: Devanagari when the page is in Nepali, Western digits when it is in English. There is no separate numeral control.
+- Reporting needs a GitHub account until the report Worker is deployed; the Reports page uses the unauthenticated GitHub API (60 requests/hour per IP).
+
+## Licence and reuse
+
+Gati is open so that others can check it, improve it and adapt it for their own community.
+
+- **Code:** [MIT](LICENSE).
+- **Gati's own text, documentation and data:** [CC BY 4.0](LICENSE-CONTENT.md).
+- **Relayed official notices** remain the issuing agencies' own; third-party material is listed in [THIRD_PARTY.md](THIRD_PARTY.md).
+
+See also [CONTRIBUTING](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md), [Security](SECURITY.md),
+[Privacy](PRIVACY.md), and how Gati maps to the Digital Public Goods Standard in [docs/DPG.md](docs/DPG.md).
 
 ## Brand
 
-Logo concept A "Ga-Signal", Himal Navy `#0E2A47`, River Teal `#0F7C86`, Glacier `#7FD1D8` (Signal Amber only in the logo arcs),
-CAP severity scale Extreme `#7A0019`, Severe `#C81E1E`, Moderate `#E8770E`, Minor `#F5C518`, Info `#2B6CB0`. Fonts: Mukta, Inter.
+Mark: a white "ग" with three signal arcs on Gati Red `#E2362B`; wordmark in Navy `#0B1424`. Interface colours: Crimson
+`#DC143C`, River Teal `#0F7C86`, Glacier `#7FD1D8`, Snow `#F7F9FB`, Ink `#14202B`. CAP severity scale (reserved for
+severity only): Extreme `#8E1B14`, Severe `#D93025`, Moderate `#F28C1E`, Minor `#F2C94C`, Info `#8F9BB3`. Fonts: Mukta, Inter.
+The full brand kit, with logo downloads and usage rules, is on the [About page](https://nirajbhusal.github.io/gati-alerts/about/#brand).
 
-Maintainer: Niraj Bhusal · [WhatsApp](https://wa.me/9779701010000) · neerajbhusal@gmail.com. Emergencies: 100, 101, 102, 103, 1234.
+## Recognition
+
+Gati is named in the opening of GitHub's [Octoverse 2026](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/)
+report (28 October 2026). This is a mention, not an endorsement.
+
+Maintainer: Niraj Bhusal ([X](https://x.com/nirajbhusal), [LinkedIn](https://www.linkedin.com/in/nirajbhusal)). Corrections and hazard reports go through GitHub (see Citizen reports above). Emergencies: 100, 101, 102, 1234.
 
 Name note: the repo is `gati-alerts` because `nirajbhusal/gati` already hosts a separate project (Nepali Patro PWA).
 

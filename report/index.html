@@ -1,6 +1,6 @@
-<!doctype html><html lang="en"><head>
+<!doctype html><html lang="ne"><head>
 <title>रिपोर्ट गर्नुहोस् · Report — गति Gati</title>
-<meta charset="utf-8"><script>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="ne"?"ne":"en"}catch(e){document.documentElement.lang="en"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><script>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="en"?"en":"ne"}catch(e){document.documentElement.lang="ne"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="preload" href="../assets/fonts/mukta-latin-bef5c820.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/inter-latin-f11d729b.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-5591b6d0.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-7cefa967.woff2" as="font" type="font/woff2" crossorigin>
@@ -27,7 +27,7 @@
   <p class="lead"><span class="ne-only">हजुरले देख्नुभएको बाढी, पहिरो, बाटो बन्द वा अरू खतराबारे हामीलाई खबर गर्नुहोस्। यो सरकारी उद्धारको माग होइन।</span>
   <span class="en-only">Tell us about a flood, landslide, blocked road or other hazard you have seen. This is not an official rescue request.</span></p>
   <div class="note" role="note"><strong><span class="ne-only">ज्यान जोखिममा छ? अहिल्यै फोन गर्नुहोस्:</span><span class="en-only">Life in danger? Call now:</span></strong>
-    <div class="helplines" style="margin-top:8px"><a href="tel:100">100</a><a href="tel:101">101</a><a href="tel:102">102</a><a href="tel:1234">1234</a></div></div>
+    <div class="helplines" data-helplines="short" style="margin-top:8px"><a href="tel:100">100</a><a href="tel:101">101</a><a href="tel:102">102</a><a href="tel:1234">1234</a></div></div>
 
   <h2><span class="ne-only">यो कसरी काम गर्छ</span><span class="en-only">How it works</span></h2>
   <ol>
@@ -62,17 +62,13 @@
       <textarea id="desc" rows="5" required maxlength="2000"></textarea></label>
 
     <label><span class="ne-only">तस्विर (चाहे मात्र)</span><span class="en-only">Photo (optional)</span>
-      <span class="h"><span class="ne-only">तस्विर यहाँबाट जाँदैन। GitHub पेज खुलेपछि त्यही तस्विर विवरण लेख्ने ठाउँमा तानेर राख्नुहोस्। तस्विर सबैले देख्छन् — मान्छेको अनुहार, घर नम्बर वा पीडितको तस्विर नराख्नुहोस्।</span>
+      <span class="h" id="photohint"><span class="ne-only">तस्विर यहाँबाट जाँदैन। GitHub पेज खुलेपछि त्यही तस्विर विवरण लेख्ने ठाउँमा तानेर राख्नुहोस्। तस्विर सबैले देख्छन् — मान्छेको अनुहार, घर नम्बर वा पीडितको तस्विर नराख्नुहोस्।</span>
       <span class="en-only">Photos are not uploaded from here. When the GitHub page opens, drag the same photo into the description box. Photos are public: avoid faces, house numbers and images of victims.</span></span>
       <input type="file" id="photo" accept="image/*"></label>
     <img id="preview" alt="" style="max-width:100%;max-height:220px;border-radius:10px;display:none;margin:-6px 0 14px">
 
-    <label><span class="ne-only">हजुरको सम्पर्क (चाहे मात्र, गोप्य रहन्छ)</span><span class="en-only">Your contact (optional, private)</span>
-      <span class="h"><span class="ne-only">यो GitHub मा जाँदैन, कसैले देख्दैन। चाहनुभयो भने रिपोर्ट पठाएपछि इमेलबाट मोडेरेटरलाई मात्र पठाउन सक्नुहुन्छ।</span><span class="en-only">This is never put on GitHub or shown publicly. If you wish, you can send it only to the moderator by email after submitting.</span></span>
-      <input id="contact" autocomplete="tel" placeholder="98XXXXXXXX / email"></label>
-
     <label class="check" style="font-weight:400"><input type="checkbox" id="consent" required>
-      <span><span class="ne-only">मेरो रिपोर्ट (सम्पर्कबाहेक) सबैले देख्छन् भन्ने मलाई थाहा छ, र मैले आफैँ देखेको साँचो कुरा लेखेको छु।</span><span class="en-only">I understand my report (except contact) will be public, and that this is a true account of what I saw.</span></span></label>
+      <span><span class="ne-only">मेरो रिपोर्ट सबैले देख्छन् भन्ने मलाई थाहा छ, र मैले आफैँ देखेको साँचो कुरा लेखेको छु।</span><span class="en-only">I understand my report will be public, and that this is a true account of what I saw.</span></span></label>
     <p id="err" class="note" role="alert" hidden></p>
     <button class="btn" type="submit">↗ <span class="ne-only">GitHub मा पठाउनुहोस्</span><span class="en-only">Send via GitHub</span></button>
   </form>
@@ -81,11 +77,11 @@
   <h2 id="privacy"><span class="ne-only">गोपनीयता</span><span class="en-only">Privacy</span></h2>
   <ul class="ne-only"><li>GPS हजुरको फोनमै पढिन्छ; हामी कुनै सर्भरमा पठाउँदैनौँ। रिपोर्टमा ठाउँ करिब ११ मिटरसम्म (४ दशमलव) मात्र राखिन्छ।</li>
     <li>रिपोर्ट GitHub Issue बनेर सबैले देख्ने गरी राखिन्छ, र हजुरको GitHub नाम पनि देखिन्छ।</li>
-    <li>हजुरको सम्पर्क कहिल्यै सार्वजनिक गरिँदैन; यो पेजले त्यो कतै पठाउँदैन।</li>
+    <li>यो फारमले फोन नम्बर वा इमेल सोध्दैन। विवरणमा फोन नम्बर, इमेल वा अरूको नाम नलेख्नुहोस्।</li>
     <li>यो साइटमा कुकी, विज्ञापन वा हजुरलाई पछ्याउने कुनै कुरा छैन। फन्ट र नक्साको कोड यही साइटबाट आउँछ। नक्साको पृष्ठभूमि (टाइल) भने OpenStreetMap बाट आउँछ, त्यसैले नक्सा खोल्दा हजुरको ब्राउजर OSM सर्भरसँग जोडिन्छ।</li></ul>
   <ul class="en-only"><li>GPS is read on your phone only; we do not send it to any server. Reports keep 4 decimals (about 11 m).</li>
     <li>The report becomes a public GitHub Issue and shows your GitHub username.</li>
-    <li>Contact details are never published; this page does not send them anywhere.</li>
+    <li>This form does not ask for a phone number or email. Do not put phone numbers, emails, or other people's names in the description.</li>
     <li>No cookies, ads or tracking on this site. Fonts and map code are served from this site. Map background tiles come from OpenStreetMap, so opening a map makes your browser contact OSM's servers.</li></ul>
 </main>
 <script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/dash.js"></script>

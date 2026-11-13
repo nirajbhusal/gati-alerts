@@ -1,0 +1,41 @@
+# Read-only CAP validation. Does not commit, push, or deploy.
+# Pages still publishes the main branch. Source polling lives in poll.yml and proposes changes as a pull request.
+name: Validate CAP
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 0 * * *"   # daily 06:00 NPT
+permissions:
+  contents: read
+concurrency:
+  group: cap-validate
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install lxml==5.3.0
+      - name: Validate every CAP file against the OASIS CAP 1.2 XSD + Gati profile
+        run: python scripts/build.py --check
+      - name: Every alert has its page, share image, story image and QR (run scripts/render.py if this fails)
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          ids = [a["identifier"] for a in json.load(open("data/alerts.json", encoding="utf-8"))["alerts"]]
+          need = lambda i: [f"alerts/{i}/index.html", f"alerts/{i}/share.png", f"stories/img/{i}.png", f"stories/qr/{i}.svg", f"cap/{i}.xml"]
+          missing = [p for i in ids for p in need(i) if not os.path.exists(p)]
+          print(f"{len(ids)} alerts checked, {len(missing)} files missing")
+          for p in missing[:20]: print("  missing:", p)
+          sys.exit(1 if missing else 0)
+          PY
+      - name: Country facts in common.js match data/country.json
+        run: python scripts/country.py --check
+      - name: Broadcast script tests
+        run: python -m unittest discover scripts/tests

@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><script>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="ne"?"ne":"en"}catch(e){document.documentElement.lang="en"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ne"><head><meta charset="utf-8"><script>/* first paint: theme before CSS applies */try{var t=localStorage.getItem("gati-theme-pref")||localStorage.getItem("gati-theme")||"paper";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(["paper","light","dark"].indexOf(t)<0)t="light";document.documentElement.dataset.theme=t}catch(e){}try{document.documentElement.lang=localStorage.getItem("gati-lang")==="en"?"en":"ne"}catch(e){document.documentElement.lang="ne"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>नक्सा · Map · गति Gati</title><meta name="description" content="Gati map: filter alerts, DHM weather warnings, rivers, roads, earthquakes, air quality, hospitals and helipads in Nepal, with sources.">
 <meta property="og:title" content="नक्सा · Map · गति Gati"><meta property="og:description" content="Gati map: filter alerts, DHM weather warnings, rivers, roads, earthquakes, air quality, hospitals and helipads in Nepal, with sources."><meta property="og:type" content="website">
 <meta property="og:url" content="https://nirajbhusal.github.io/gati-alerts/map/"><meta name="theme-color" content="#0B1424">
@@ -16,7 +16,6 @@
 </head><body data-page="map" data-root="../"><main id="main" class="wrap dash mxpage">
 <div class="mxtop"><h1><span class="ne-only">नक्सा</span><span class="en-only">Map</span></h1>
   <button type="button" class="mxsheetbtn" id="mxsheetbtn" aria-controls="mxpanel" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span class="ne-only">फिल्टर</span><span class="en-only">Filters</span></button></div>
-<section class="gdash" id="gdash" aria-label="सारांश · Summary"></section>
 <div class="mxwrap">
   <aside class="mxpanel" id="mxpanel" aria-label="Map filters / नक्सा फिल्टर">
     <div class="mxph"><h2><span class="ne-only">फिल्टर</span><span class="en-only">Filters</span></h2><button type="button" class="mxclose" aria-label="Close / बन्द">×</button></div>
@@ -27,5 +26,8 @@
     <div class="mxlegend" id="mxlegend" aria-live="polite"></div></div>
   <aside class="mxdet" id="mxdet" aria-label="Map details / नक्सा विवरण"><div class="mxdin"></div></aside>
 </div>
+<details class="mxsum" id="mxsum"><summary><span class="ne-only">निकायअनुसार सूचनाको सारांश</span><span class="en-only">Summary of alerts by agency</span></summary>
+<section class="gdash" id="gdash" aria-label="सारांश · Summary"></section>
+</details>
 </main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/dash.js"></script><script src="../assets/vendor/leaflet/leaflet.js"></script>
 <script src="../assets/js/district.js"></script><script src="../assets/js/routeeng.js"></script><script src="../assets/js/mapx.js"></script></body></html>

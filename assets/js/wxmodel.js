@@ -13,16 +13,19 @@
   const WMO = (c) => c === 0 ? ["☀️", "सफा", "Clear"] : c <= 2 ? ["🌤️", "आंशिक बदली", "Partly cloudy"] : c === 3 ? ["☁️", "बदली", "Overcast"] : c <= 48 ? ["🌫️", "कुहिरो", "Fog"] : c <= 57 ? ["🌦️", "सिमसिम पानी", "Drizzle"] : c <= 67 ? ["🌧️", "वर्षा", "Rain"] : c <= 77 ? ["🌨️", "हिमपात", "Snow"] : c <= 82 ? ["🌧️", "झरी", "Showers"] : c <= 86 ? ["🌨️", "हिम झरी", "Snow showers"] : ["⛈️", "चट्याङसहित वर्षा", "Thunderstorm"];
   const BAND = [[50, "#00a651", "राम्रो", "Good"], [100, "#f3d000", "मध्यम", "Moderate"], [150, "#f7941d", "संवेदनशीलका लागि अस्वस्थ", "Unhealthy for sensitive groups"], [200, "#e2231a", "अस्वस्थ", "Unhealthy"], [300, "#8f3f97", "धेरै अस्वस्थ", "Very unhealthy"], [1e9, "#7e0023", "खतरनाक", "Hazardous"]];
   const modelChip = () => `<span class="trust t-Model">🧮 ${T("मोडेल", "Model")}</span>`;
-  let fc = null, aq = null, at = null;
+  /* the same day from several global models side by side: shows where they agree, and how far off they can be */
+  const MODELS = [["ecmwf_ifs025", "ECMWF", "युरोप", "Europe"], ["gfs_seamless", "GFS", "अमेरिका", "USA"], ["icon_seamless", "ICON", "जर्मनी", "Germany"], ["ukmo_seamless", "UKMO", "बेलायत", "UK"], ["meteofrance_seamless", "Météo-France", "फ्रान्स", "France"], ["jma_seamless", "JMA", "जापान", "Japan"]];
+  let fc = null, aq = null, at = null, mm = null;
   async function load() {
     const p = place(); at = p;
     const q = `latitude=${p.lat}&longitude=${p.lon}&timezone=Asia%2FKathmandu`;
-    [fc, aq] = await Promise.all([
+    [mm, fc, aq] = await Promise.all([
+      fetch(`https://api.open-meteo.com/v1/forecast?${q}&daily=precipitation_sum&models=${MODELS.map((x) => x[0]).join(",")}&past_days=1&forecast_days=2`).then((r) => r.ok ? r.json() : null).catch(() => null),
       fetch(`https://api.open-meteo.com/v1/forecast?${q}&current=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max&forecast_days=3`).then((r) => r.ok ? r.json() : null).catch(() => null),
       fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?${q}&current=us_aqi,pm2_5,pm10&hourly=us_aqi&forecast_days=2`).then((r) => r.ok ? r.json() : null).catch(() => null)]);
     draw();
   }
-  const tstr = (s) => G.npt(s + ":00+05:45");
+  const tstr = (s) => G.npt(s + ":00" + G.tzIso);
   function draw() {
     const p = at, nm = esc(T(p.ne, p.en)) + (p.fallback ? ` <span class="meta">(${T("जिल्ला छानिएको छैन", "no district chosen")})</span>` : "");
     const m = document.getElementById("wxmodel");
@@ -38,6 +41,16 @@
           <span class="wxrain">☔ ${G.num(String(d.precipitation_sum[k]))} mm${d.precipitation_probability_max ? ` · ${G.num(String(d.precipitation_probability_max[k]))}%` : ""}</span></div>`; }).join("")}</div>
         <p class="meta">${T("स्रोत", "Source")}: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> (ECMWF IFS, NOAA GFS ${T("आदि मोडेलको उत्कृष्ट मिश्रण", "and other models, best match")}) · ${T("मोडेल समय", "Model time")}: ${tstr(c.time)} · ${T("यो आधिकारिक पूर्वानुमान होइन; DHM को पूर्वानुमान माथि छ।", "Not an official forecast; DHM's is above.")} · CC BY 4.0</p>`;
     }
+    if (fc && mm && mm.daily) { const D = mm.daily, rows = MODELS.map((x) => [x, D["precipitation_sum_" + x[0]]]).filter((r) => r[1] && r[1].some((v) => v != null));
+      if (rows.length > 1) { const f = (v) => (v == null ? "–" : G.num(v.toFixed(1))), col = (k) => rows.map((r) => r[1][k]).filter((v) => v != null), rng = (k) => { const c = col(k); return c.length ? (Math.min(...c) === Math.max(...c) ? f(c[0]) : f(Math.min(...c)) + "–" + f(Math.max(...c))) : "–"; };
+        const hi = Math.max(...col(1), 0), lo2 = Math.min(...col(1), 0);
+        const say = hi < 0.5 ? T("सबै मोडेल सहमत: आज वर्षा लगभग छैन।", "The models agree: almost no rain today.") : lo2 >= 1 ? T("सबै मोडेलले आज वर्षा देखाउँछन्।", "All models show rain today.") : T("मोडेलबीच मतभेद छ: कसैले वर्षा देखाउँछ, कसैले देखाउँदैन।", "The models disagree: some show rain today, some do not.");
+        m.insertAdjacentHTML("beforeend", `<div class="wxcmp"><div class="wxmh"><h3>${T("विश्वका मोडेलको तुलना: वर्षा (मि.मि.)", "Global models compared: rain (mm)")}</h3>${modelChip()}</div>
+          <p class="wxsay">${say}</p>
+          <div class="tblwrap" tabindex="0" role="region" aria-label="${T("मोडेलको तुलना", "Model comparison")}"><table class="wxct"><thead><tr><th>${T("मोडेल", "Model")}</th><th>${T("हिजो", "Yesterday")}</th><th>${T("आज", "Today")}</th><th>${T("भोलि", "Tomorrow")}</th></tr></thead><tbody>
+          ${rows.map(([x, v]) => `<tr><td><b>${x[1]}</b> <span class="meta">${T(x[2], x[3])}</span></td>${[0, 1, 2].map((k) => `<td${k === 1 ? ' class="wxcnow"' : ""}>${f(v[k])}</td>`).join("")}</tr>`).join("")}
+          <tr class="wxrg"><td>${T("दायरा", "Range")}</td><td>${rng(0)}</td><td class="wxcnow">${rng(1)}</td><td>${rng(2)}</td></tr></tbody></table></div>
+          <p class="meta">${T("स्रोत", "Source")}: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener">Open-Meteo</a> (ECMWF, NOAA, DWD, UK Met Office, Météo-France, JMA) · ${T("यी विश्वव्यापी मोडेलले छोटो समयको स्थानीय मेघगर्जन, असिना र भारी झरी प्रायः देखाउँदैनन्। हिजोको स्तम्भले मोडेलले के भनेका थिए भन्ने देखाउँछ, वास्तवमा कति पर्‍यो भन्ने होइन। यो चेतावनी होइन।", "Global models often miss short local thunderstorms, hail and cloudbursts. The Yesterday column is what the models said, not what actually fell. This is not a warning.")}</p></div>`); } }
     const A = document.getElementById("air");
     const extra = `<ul class="aqsrc"><li><b>${T("वातावरण विभाग (pollution.gov.np)", "Department of Environment (pollution.gov.np)")}</b>: ${T("आधिकारिक, तर गतिको सर्भरबाट खुलेन", "official, but unreachable from Gati's server")}</li>
       <li><b>${T("अमेरिकी दूतावास काठमाडौँ मनिटर (OpenAQ)", "US Embassy Kathmandu monitor (via OpenAQ)")}</b>: ${T("OpenAQ v3 लाई API कुञ्जी चाहिन्छ; अहिले जोडिएको छैन", "OpenAQ v3 needs an API key; not connected yet")}</li></ul>`;

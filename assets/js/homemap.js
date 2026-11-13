@@ -10,7 +10,7 @@
   const polys = (g) => (g.type === "Polygon" ? [g.coordinates] : g.coordinates);
   const pth = (g) => polys(g).map((p) => p.map((r) => "M" + r.map(([x, y]) => X(x) + " " + Y(y)).join("L") + "Z").join("")).join("");
   const ctr = (g) => { let sx = 0, sy = 0, n = 0; polys(g).forEach((p) => p[0].forEach(([x, y]) => { sx += x; sy += y; n++; })); return [sx / n, sy / n]; };
-  const npt = (ms) => new Date(ms + 345 * 60000).toISOString().slice(0, 10);
+  const npt = (ms) => new Date(ms + G.tzMs).toISOString().slice(0, 10);
   const today = npt(Date.now());
   box.style.setProperty("--hmar", `${W} / ${H}`);
   let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false;
@@ -24,7 +24,7 @@
     fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${CITIES.map((c) => c[2]).join(",")}&longitude=${CITIES.map((c) => c[3]).join(",")}&current=us_aqi&timezone=Asia%2FKathmandu`).then((r) => (r.ok ? r.json() : null))
       .then((d) => { AQ = d ? (Array.isArray(d) ? d : [d]) : []; if (cat === "weather") draw(); }).catch(() => { AQ = []; if (cat === "weather") draw(); }); }
   const QMS = 30 * 864e5, qmag = (a) => parseFloat((a.info.en.params || {})["gati:magnitude"] || "") || null;
-  const go = () => Promise.all(["data/districts.geojson", "data/alerts.json", "data/arnab-advisory.json", "data/roads.json", "data/rivers.json"].map((p) => fetch(R + p).then((r) => (r.ok ? r.json() : null)).catch(() => null))).then(([dg, al, ar, rd, rv]) => {
+  const go = () => Promise.all(["data/districts.geojson", "data/alerts.json", "data/arnab-advisory.json", "data/roads.json", "data/rivers.json"].map((p) => G.rawJson(p).catch(() => null))).then(([dg, al, ar, rd, rv]) => {
     if (!dg || !al) { box.querySelector(".hmw").innerHTML = `<p class="meta">${T("नक्सा लोड भएन।", "Map could not load.")}</p>`; return; }
     S = { dg, al: al.alerts, ar, rd, rv, paths: {}, cen: {} }; dg.features.forEach((f) => { S.paths[f.properties.code] = pth(f.geometry); S.cen[f.properties.code] = ctr(f.geometry); });
     if (ar && today <= ar.days[ar.days.length - 1].ad) { const i = ar.days.findIndex((d) => d.ad >= today); day = ar.days[Math.max(0, i)].ad; }
@@ -66,7 +66,7 @@
       const pts = (AQ || []).map((d, k) => [d && d.current && d.current.us_aqi, CITIES[k], d && d.current && d.current.time]).filter((x) => x[0] != null);
       pts.forEach(([v, c]) => { const b = aqBand(v); cx.push(`<g class="hmi hmaq" transform="translate(${X(c[3])},${Y(c[2])})"><title>${E(T(c[0], c[1]))}: US AQI ${E(N(Math.round(v)))}</title><rect x="-13" y="-8" width="26" height="16" rx="8" style="fill:${b[1]}"/><text y="4" text-anchor="middle">${E(N(Math.round(v)))}</text></g>`); });
       const aqleg = `<div class="hmleg hmaqleg"><b>${T("हावा (US AQI)", "Air (US AQI)")}</b>${AQBANDS.map((b, k) => `<span><i style="background:${b[1]}"></i>${E(N(k ? AQBANDS[k - 1][0] + 1 : 0))}${k < 5 ? "–" + E(N(b[0])) : "+"} ${E(T(b[2], b[3]))}</span>`).join("")}</div>`;
-      cxtxt = aqleg + `<p class="meta hmcx">${pts.length ? `${T("हावाको गुणस्तर", "Air quality")}: ${pts.map(([v, c]) => `${E(T(c[0], c[1]))} ${E(N(Math.round(v)))}`).join(" · ")}<br>${G.trustChip("Model")} ${T("स्रोत", "Source")}: <a href="${AQURL}" target="_blank" rel="noopener">Open-Meteo (CAMS)</a> · ${G.npt(pts[0][2] + "+05:45")}. ` : AQ ? T("हावाको तथ्याङ्क अहिले उपलब्ध छैन। ", "Air quality data is not available right now. ") : T("हावाको तथ्याङ्क लोड हुँदैछ… ", "Loading air quality… ")}${T("यो मोडेल अनुमान हो, आधिकारिक मापन होइन। आधिकारिक स्टेसन मापन", "This is a model estimate, not an official measurement. Official station readings")}: <a href="https://pollution.gov.np/portal/" target="_blank" rel="noopener">${T("वातावरण विभाग", "Department of Environment")} (pollution.gov.np)</a></p>`; }
+      cxtxt = aqleg + `<p class="meta hmcx">${pts.length ? `${T("हावाको गुणस्तर", "Air quality")}: ${pts.map(([v, c]) => `${E(T(c[0], c[1]))} ${E(N(Math.round(v)))}`).join(" · ")}<br>${G.trustChip("Model")} ${T("स्रोत", "Source")}: <a href="${AQURL}" target="_blank" rel="noopener">Open-Meteo (CAMS)</a> · ${G.npt(pts[0][2] + G.tzIso)}. ` : AQ ? T("हावाको तथ्याङ्क अहिले उपलब्ध छैन। ", "Air quality data is not available right now. ") : T("हावाको तथ्याङ्क लोड हुँदैछ… ", "Loading air quality… ")}${T("यो मोडेल अनुमान हो, आधिकारिक मापन होइन। आधिकारिक स्टेसन मापन", "This is a model estimate, not an official measurement. Official station readings")}: <a href="https://pollution.gov.np/portal/" target="_blank" rel="noopener">${T("वातावरण विभाग", "Department of Environment")} (pollution.gov.np)</a></p>`; }
     ic.push(...cx);
     const any = Object.keys(top).length > 0;
     const slider = day && S.ar ? `<div class="hmday" role="group" aria-label="${E(T("दिन", "Day"))}">${S.ar.days.map((d) => `<button type="button" data-d="${d.ad}"${d.ad === day ? ' aria-pressed="true"' : ' aria-pressed="false"'}>${T(d.wd_ne.slice(0, 3) + " " + N(d.bs), d.wd_en.slice(0, 3) + " " + d.bs)}</button>`).join("")}</div>` : "";
@@ -76,10 +76,21 @@
     const head = chips + `<div class="hmhead"><h2>${T("जिल्लाअनुसार आधिकारिक सूचना", "Official alerts by district")}</h2><span class="hmlinks"><a class="hmchip" href="${R}route/">${T("रुट जाँच", "Route check")} →</a><a class="hmchip hmfull" href="${R}map/${FULL[cat] || ""}">${T("पूरा नक्सा", "Full map")} →</a></span></div>`;
     const note = `<p class="meta hmnote">${T("हरेक जिल्लाको रङ: त्यस जिल्लालाई नाम लिएर जारी सक्रिय आधिकारिक सूचनामध्ये सबैभन्दा गम्भीर। देशव्यापी सूचना तल छुट्टै। जिल्लामा थिच्नुहोस्।", "Each district shows the most severe active official alert that names it. Nationwide notices are listed separately below. Tap a district.")}${day ? " " + E(T("कात्तिक " + N(S.ar.days.find((x) => x.ad === day).bs), "Kartik " + S.ar.days.find((x) => x.ad === day).bs + " (" + Number(day.slice(8)) + " Oct)")) : ""}</p>`;
     const none = !any && !nat.length && !icA ? `<p class="hmnone"><svg class="hmnoi" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>${cat === "all" ? T("सक्रिय आधिकारिक सूचना छैन", "No active alerts") : T("यो प्रकारको सक्रिय आधिकारिक सूचना छैन", "No active official alerts in this category")}</p>` : "";
-    if (none && !cxtxt) { box.innerHTML = `${head}${none}${slider}`; bind(); return; }
-    box.innerHTML = `${head}${none}${slider}<div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg">${dist}${ic.join("")}</svg></div>${leg}${cxtxt}${note}
+    /* the map is always drawn, even when a category has nothing active, so the card never collapses to a single line */
+    /* beside the map: what is active right now, and the districts named, most severe first */
+    const cnt = {}; L.forEach((x) => x.ds.forEach((c) => (cnt[c] = (cnt[c] || 0) + 1)));
+    const named = Object.keys(top).sort((a, b) => (RK[top[b]] || 0) - (RK[top[a]] || 0) || cnt[b] - cnt[a]);
+    const fname = (c) => { const f = S.dg.features.find((x) => x.properties.code === c); return f ? T(f.properties.ne, f.properties.en) : c; };
+    const nRoad = ic.slice(0, icA).filter((x) => x.includes("hmr")).length;
+    const stat = (n, ne, en, k) => `<div class="hmst${n ? " " + k : ""}"><b>${N(n)}</b><span>${T(ne, en)}</span></div>`;
+    const stats = `<div class="hmstats">${stat(named.length, "सूचना भएका जिल्ला", "Districts with alerts", "a")}${cat === "all" || cat === "road" ? stat(nRoad, "सडक अवरुद्ध", "Roads blocked", "r") : ""}${cat === "all" || cat === "flood" ? stat(hot.length, "नदी चेतावनी तहमा", "Rivers at warning", "v") : ""}${stat(nat.length, "देशव्यापी सूचना", "Nationwide notices", "n")}</div>`;
+    const dlist = named.length ? `<ul class="hmdl">${named.slice(0, 8).map((c) => `<li><button type="button" data-c="${c}"${sel === c ? ' aria-pressed="true"' : ""}><i class="s-${top[c]}"></i><span>${E(fname(c))}</span><em>${E(T(G.SEV[top[c]][0], G.SEV[top[c]][1]))}${cnt[c] > 1 ? " · " + N(cnt[c]) : ""}</em></button></li>`).join("")}</ul>${named.length > 8 ? `<p class="meta">${T("र अरू " + N(named.length - 8) + " जिल्ला। नक्सामा हेर्नुहोस्।", "and " + (named.length - 8) + " more districts. See the map.")}</p>` : ""}` : `<p class="hmcalm">${T("कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन।", "No district is named in an active official alert.")}</p>`;
+    /* names on the map for the districts with alerts (largest screens only, set in CSS) */
+    const lab = named.slice(0, 10).map((c) => S.cen[c] ? `<text class="hmlab" x="${X(S.cen[c][0])}" y="${(+Y(S.cen[c][1]) - 13).toFixed(1)}">${E(fname(c))}</text>` : "").join("");
+    box.innerHTML = `${head}${none}${slider}<div class="hmgrid"><div class="hmmain"><div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
+      <aside class="hmside" aria-label="${E(T("अहिलेको सारांश", "Right now"))}"><h3>${T("अहिले", "Right now")}</h3>${stats}<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}<div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div></aside></div>${cxtxt}${note}
       ${nat.length ? `<details class="hmnat"${cat === "weather" ? " open" : ""}><summary>${T("देशव्यापी आधिकारिक सूचना", "Nationwide official notices")}: ${[...new Set(nat.map((x) => x.ag))].map((a) => `${E(a)} ${N(nat.filter((x) => x.ag === a).length)}`).join(" · ")}</summary>${list(nat)}</details>` : ""}
-      <div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div>`;
+`;
     bind();
   }
   function list(xs) { return `<ul class="hml">${xs.sort((a, b) => (RK[b.sev] || 0) - (RK[a.sev] || 0)).map((x) => `<li>${G.sevChip(x.sev)} ${G.trustChip("Official")} ${x.href ? `<a href="${x.href}">${E(x.head)}</a>` : E(x.head)}<br><span class="meta">${T("स्रोत", "Source")}: <a href="${E(x.web)}" target="_blank" rel="noopener">${E(x.ag)}</a> · ${G.npt(x.sent)}</span></li>`).join("")}</ul>`; }
@@ -95,6 +106,7 @@
     box.querySelectorAll(".hmcats button").forEach((b) => (b.onclick = () => { cat = b.dataset.k; draw(); }));
     box.querySelectorAll(".hmday button").forEach((b) => (b.onclick = () => { day = b.dataset.d; draw(); }));
     const pick = (c) => { sel = sel === c ? null : c; draw(); const sh = box.querySelector("#hmsheet"); if (sel && sh && sh.getBoundingClientRect().top > innerHeight - 80) sh.scrollIntoView({ behavior: "smooth", block: "nearest" }); };
+    box.querySelectorAll(".hmdl button").forEach((b) => (b.onclick = () => pick(b.dataset.c)));
     box.querySelectorAll(".hmd").forEach((p) => { p.onclick = () => pick(p.dataset.c); p.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(p.dataset.c); } }; });
     const x = box.querySelector(".hmx"); if (x) x.onclick = () => { sel = null; draw(); };
   }

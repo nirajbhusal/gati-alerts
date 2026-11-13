@@ -1,0 +1,65 @@
+# Polls the official sources and proposes what changed as a pull request for a person to review.
+# It never commits to main. New snapshots and any new earthquake alerts collect on the bot/poll branch;
+# one rolling pull request stays open until a maintainer merges it. See docs/ARCHITECTURE.md.
+# One-time setting: Settings -> Actions -> General -> "Allow GitHub Actions to create and approve pull requests".
+name: Poll sources
+on:
+  schedule:
+    - cron: "5 */2 * * *"   # every 2 hours, UTC
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Poll every source now, ignoring the schedule"
+        type: boolean
+        default: true
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: poll-sources
+  cancel-in-progress: false
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Continue the open proposal if there is one, otherwise start from main
+        run: |
+          git config user.name "gati-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin bot/poll >/dev/null 2>&1; then
+            git checkout -q -B bot/poll origin/bot/poll
+            git merge -q --no-edit origin/main || { git merge --abort; git checkout -q -B bot/poll origin/main; }
+          else
+            git checkout -q -B bot/poll origin/main
+          fi
+      - name: Poll due sources (failures are recorded, never fatal)
+        continue-on-error: true
+        run: python scripts/poll.py ${{ (github.event_name == 'workflow_dispatch' && inputs.all) && '--all' || '' }}
+      - name: Ingest real earthquake events (NSC table, USGS M4.5+ Nepal bbox), rebuild and render
+        continue-on-error: true
+        run: |
+          pip install -q lxml==5.3.0 shapely pillow segno
+          python scripts/ingest_quakes.py
+          python scripts/build.py && python scripts/render.py
+      - name: Validate before proposing
+        run: python scripts/build.py --check
+      - name: Propose the change for review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add data/raw data/source-health.json data/alerts data/alerts.json atom.xml feed.xml cap alerts stories lite share
+          if git diff --cached --quiet; then echo "No change, nothing to propose."; exit 0; fi
+          git commit -q -m "Poll sources: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q -f origin bot/poll
+          if [ -z "$(gh pr list --head bot/poll --state open --json number -q '.[0].number')" ]; then
+            gh pr create --base main --head bot/poll --title "Source updates for review" \
+              --body "Opened by the poller. It holds new source snapshots and any new earthquake alerts found since the last merge. Please check each new alert against its official source before merging. Nothing here is live until merged." \
+              || echo "::warning::Could not open a pull request. Allow Actions to create pull requests in Settings -> Actions -> General. The changes are on the bot/poll branch."
+          fi

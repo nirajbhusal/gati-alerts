@@ -19,6 +19,7 @@
   const now = Date.now();
   const PAGE = document.body.dataset.page, RT = G.root;
   const allAlerts = data.alerts;
+  G.alertById = Object.fromEntries(allAlerts.map((a) => [a.identifier, a]));
   if (PAGE === "home") data.alerts = data.alerts.filter((a) => now - Date.parse(a.sent) <= 7 * 864e5);
   data.alerts.forEach((a) => (a.expired = new Date(a.expires).getTime() < now));
   const NIL = document.createElement("div");
@@ -77,11 +78,13 @@
     return `<article class="card alert s-${a.severity}${a.expired ? " expired" : ""}${!a.expired && now - Date.parse(a.sent) < 864e5 ? " fresh" : ""}" id="${G.esc(a.identifier)}">
       <div class="ahead">${G.sevChip(a.severity)}
         ${a.expired ? `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>` : `<span class="tag live">${T("चालु", "Active")}</span>`}
+        ${G.roadOngoingChip(a)}
         <span class="tag">${G.esc(i.event)}</span></div>
-      <h4>${G.esc(i.headline)}</h4>
+      <h4>${G.esc(G.headline(a, i))}</h4>
+      ${G.roadOngoingLine(a)}
       <p class="aarea">📍 ${G.esc(areas)}</p>
       <p class="atime">🕒 ${T("स्रोतको समय", "Source time")}: <strong>${G.npt(i.params["gati:sourceTime"] || a.sent)}</strong></p>
-      <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.esc((i.senderName || "").split(" — ")[0])}</span></div>
+      <div class="atrust">${G.trustChip(a.trust)}${a.state ? G.trustChip(a.state) : ""}<span class="meta">${G.srcLabel(a, i)} · ${T("गति मार्फत", "relayed by Gati")}</span></div>
       ${corr ? `<div class="correction">✎ ${G.esc(corr)}</div>` : ""}
       ${i.instruction && !a.expired ? `<div class="instr"><strong>${T("के गर्ने", "What to do")}:</strong> ${G.esc(i.instruction)}</div>` : ""}
       ${a.hazard !== "earthquake" && !a.expired ? `<p class="afxrow">${G.affChip(a.districts)}</p>` : ""}
@@ -92,7 +95,7 @@
         ${a.expired && i.instruction ? `<p><strong>${T("त्यति बेलाको निर्देशन", "Instruction at the time")}:</strong> ${G.esc(i.instruction)}</p>` : ""}
         <p>${G.esc(i.description)}</p>
         <p class="meta">CAP: urgency ${en.urgency} · severity ${en.severity} · certainty ${en.certainty} · sender <code>${G.esc(a.sender)}</code><br>
-        <a href="${RT}cap/${G.esc(a.identifier)}.xml">CAP 1.2 XML</a> · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("डेटा स्रोत", "Data provenance")}</a></p>
+        <a href="${RT}cap/${G.esc(a.identifier)}.xml">CAP 1.2 XML</a>${i.params["gati:bulletinFile"] ? ` · <a href="${G.esc(i.params["gati:bulletinFile"])}" rel="noopener">${T("डेटा स्रोत", "Data provenance")}</a>` : ""}</p>
       </details></article>`;
   }
 
@@ -237,7 +240,7 @@
       <line x1="0" x2="${W}" y1="${wy}" y2="${wy}" stroke="#F28C1E" stroke-dasharray="3 3" stroke-width="1"/><polyline points="${xy}" fill="none" stroke="#0F7C86" stroke-width="2"/></svg>`;
   }
   function gaugesCard() {
-    $("gauges").innerHTML = `${G.staleChip(gauges.as_of + "T12:00:00+05:45") ? `<p class="gstale">${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>` : ""}<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? (DS[g.district] || DN[g.district])?.ne : (DS[g.district] || DN[g.district])?.en)}</span></p>${gaugeBar(g)}${spark(g)}</li>`).join("")}</ul>
+    $("gauges").innerHTML = `${G.staleChip(gauges.as_of + "T12:00:00" + G.tzIso) ? `<p class="gstale">${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00" + G.tzIso)}</p>` : ""}<ul class="gauges">${gauges.gauges.map((g) => `<li><p class="gname">${G.esc(T(g.ne, g.en))} <span class="meta">· ${G.esc(ne() ? (DS[g.district] || DN[g.district])?.ne : (DS[g.district] || DN[g.district])?.en)}</span></p>${gaugeBar(g)}${spark(g)}</li>`).join("")}</ul>
       <p class="meta">${T("बार = अहिलेको सतह; सुन्तला रेखा = चेतावनी तह; रातो रेखा = खतरा तह।", "Bar = current level; orange line = warning level; red line = danger level.")} ${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">${G.esc(T(gauges.source_ne, gauges.source_en))}</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))}</p>`;
   }
   function glance() {
@@ -295,7 +298,7 @@
     $("cAgency").innerHTML = bars(Object.entries(ac).sort((a, b) => b[1] - a[1]).map(([g, n]) => ({ label: G.esc(g), n, c: "var(--navy)" }))) +
       `<p class="meta">${T("हरेक निकायले जारी गरेका, गतिले राखेका सूचनाको सङ्ख्या। निकायका अङ्क आपसमा जोडिँदैनन्।", "Items Gati carries from each agency, counted separately. Agency figures are not added together.")}</p>`;
     // timeline: one column per day, stacked by severity
-    const day = (iso) => new Date(new Date(iso).getTime() + 345 * 60000).toISOString().slice(0, 10);
+    const day = (iso) => new Date(new Date(iso).getTime() + G.tzMs).toISOString().slice(0, 10);
     const days = [...new Set(A.map((a) => day(a.sent)))].sort();
     const first = new Date(days[0]), last = new Date(Math.max(new Date(day(new Date().toISOString())), new Date(days.at(-1))));
     const all = []; for (let d = new Date(first); d <= last; d.setUTCDate(d.getUTCDate() + 1)) all.push(d.toISOString().slice(0, 10));
@@ -310,7 +313,7 @@
       if (lab) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 22}" text-anchor="middle" class="ax">${G.num(dd)}</text>`;
       if (dd === 1 || i === 0) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 42}" text-anchor="middle" class="ax b">${T(["","","","","","","","","सेप्टेम्बर","अक्टोबर","नोभेम्बर",""][+d.slice(5, 7) - 1] || d.slice(5, 7), ["","","","","","","","","Sep","Oct","Nov",""][+d.slice(5, 7) - 1] || d.slice(5, 7))}</text>`;
     });
-    $("cTime").innerHTML = `<div class="tlwrap">${s}</svg></div>` + `<p class="meta">${T("हरेक खण्ड एउटा सूचना हो, रङ खतराअनुसार। दायाँ छेउ आज। फोनमा दायाँबायाँ सार्न सकिन्छ।", "Each block is one alert, coloured by severity. The right edge is today. Swipe sideways on a phone.")}</p>`;
+    $("cTime").innerHTML = `<div class="tlwrap" tabindex="0" role="region" aria-label="${T("सूचनाको समयरेखा", "Alert timeline")}">${s}</svg></div>` + `<p class="meta">${T("हरेक खण्ड एउटा सूचना हो, रङ खतराअनुसार। दायाँ छेउ आज। फोनमा दायाँबायाँ सार्न सकिन्छ।", "Each block is one alert, coloured by severity. The right edge is today. Swipe sideways on a phone.")}</p>`;
     // road status: 100% stacked bar
     const rc = roads.routes.reduce((m, r) => ((m[r.status] = (m[r.status] || 0) + 1), m), {}), tot = roads.routes.length;
     { const ord = { open: 0, oneway: 1, blocked: 2, none: 3 }, segs = [...roads.routes].sort((a, b) => (ord[a.status] ?? 3) - (ord[b.status] ?? 3)).map((r) => ({ st: r.status in ord ? r.status : "none", t: (ne() ? r.name_ne : r.name_en) + ": " + T(...(G.ROADST[r.status] || G.ROADST.none)) }));
@@ -328,7 +331,7 @@
     const el = $("cReports"); if (!el) return;
     if (!rcache) {
       try {
-        const q = (l) => G.gh(`https://api.github.com/search/issues?per_page=1&q=${encodeURIComponent(`repo:nirajbhusal/gati-alerts is:issue label:${l}`)}`).then((j) => j.total_count);
+        const q = (l) => G.gh(`https://api.github.com/search/issues?per_page=1&q=${encodeURIComponent(`repo:${G.country.repository} is:issue label:${l}`)}`).then((j) => j.total_count);
         const [v, p, r] = await Promise.all([q("verified"), q("reported -label:verified -label:retracted"), q("retracted")]);
         rcache = { Verified: v, Reported: p, Retracted: r };
       } catch (e) { rcache = "fail"; }
@@ -339,7 +342,7 @@
   }
 
   function updates() {
-    $("updates").innerHTML = upd.updates.map((u) => `<li><time datetime="${u.date}">${G.npt(u.date + "T12:00:00+05:45").split(" · ")[0]}</time><p>${G.esc(ne() ? u.ne : u.en)}</p></li>`).join("");
+    $("updates").innerHTML = upd.updates.map((u) => `<li><time datetime="${u.date}">${G.npt(u.date + "T12:00:00" + G.tzIso).split(" · ")[0]}</time><p>${G.esc(ne() ? u.ne : u.en)}</p></li>`).join("");
   }
 
   function render() {
@@ -356,7 +359,7 @@
     $("nActive").textContent = `(${G.num(act.length)})`;
     $("nExpired").textContent = `(${G.num(exp.length)})`;
     $("active").innerHTML = act.length ? act.map(card).join("") : PAGE === "home" ? `<div class="empty">${T(
-      "पछिल्लो ७ दिनमा गतिमा कुनै नयाँ आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", "No new official alerts in Gati in the last 7 days. That does not mean there is no risk.")}
+      d ? "छानिएको जिल्लालाई नाम लिएर गतिमा अहिले कुनै सक्रिय आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।" : "गतिमा अहिले कुनै सक्रिय आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", d ? "No active official alert in Gati names the chosen district right now. That does not mean there is no risk." : "Gati has no active official alert right now. That does not mean there is no risk.")}
       <br><span class="meta">${T("अन्तिम जाँच", "Last checked")}: ${G.npt(data.generated)} · <a href="${RT}sources/">${T("स्रोतको अवस्था", "Source health")}</a> · <a href="${RT}alerts/">${T("सबै सूचना", "All alerts")}</a></span></div>` : `<div class="empty">${T(
       "अहिले यो ठाउँका लागि गतिमा कुनै चालु सूचना छैन। तर यसको अर्थ खतरा छैन भन्ने होइन — DHM, NDRRMA र स्थानीय प्रशासनका सूचना पनि हेर्नुहोस्।",
       "Gati is not relaying any active notice for this area right now. That does not mean there is no risk; also check DHM, NDRRMA and your local administration.")}</div>`;
@@ -404,7 +407,7 @@
   function thisWeek() {
     const box = $("week"); if (!box) return;
     const act = data.alerts.filter((a) => !a.expired && !a.supersededBy && a.msgType !== "Cancel");
-    const t = new Date(now + 345 * 60000), day0 = Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate());
+    const t = new Date(now + G.tzMs), day0 = Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate());
     const iso = (ms) => new Date(ms).toISOString().slice(0, 10), end = iso(day0 + 6 * 864e5), start = iso(day0);
     const ev = (cal.entries || []).filter((e) => e.date_ad >= start && e.date_ad <= end).sort((a, b) => a.date_ad.localeCompare(b.date_ad));
     const dlabel = (d) => { const [y, m, dd] = d.split("-").map(Number); const wd = new Date(Date.UTC(y, m - 1, dd)).getUTCDay();
@@ -430,7 +433,7 @@
     const box = $("rivhi"); if (box === NIL) return;
     const gs = [...gauges.gauges].sort((a, b) => gaugePct(b) - gaugePct(a)).slice(0, 3);
     box.innerHTML = `<ul class="hilist">${gs.map((g) => `<li><span class="hin">${G.esc(T(g.ne, g.en))}</span> <span class="hiv" style="color:${GSC[gaugeState(g)]}">${G.num(g.level.toFixed(1))} ${T("मि.", "m")} · ${T(...GSW[gaugeState(g)])}</span></li>`).join("")}</ul>
-      <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">DHM</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))} ${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00+05:45")}</p>`;
+      <p class="meta">${T("स्रोत", "Source")}: <a href="${G.esc(gauges.url)}" target="_blank" rel="noopener">DHM</a> · ${G.esc(T(gauges.as_of_ne, gauges.as_of_en))} ${G.trustChip("Official")}${G.staleChip(gauges.as_of + "T12:00:00" + G.tzIso)}</p>`;
   }
   function roadHi() {
     const box = $("roadhi"); if (box === NIL) return;
@@ -441,12 +444,29 @@
       <ul class="hilist">${rs.map((r) => `<li><span class="hin">${G.esc(ne() ? r.name_ne : r.name_en)}</span> <span class="hiv" style="color:${RC[r.status]}">${G.esc(rw(r.status))}</span></li>`).join("")}</ul>
       <p class="meta">${G.esc(ne() ? roads.as_of_ne : roads.as_of_en)}</p>`;
   }
+  let wxDoc = null, wxAsked = false;
+  function forecastHome(f) {
+    if (!f || !f.country || !f.kathmandu) return "";
+    const c = f.country, k = f.kathmandu;
+    const blob = [c.day_ne, c.day_en, c.night_ne, c.night_en, k.day_ne, k.day_en, k.night_ne, k.night_en].join("\n");
+    const deg = (a, b) => (a == null || b == null) ? "" : ` ${G.num(a)}-${G.num(b)}°C`;
+    const rain = k.day_rain_pct == null ? "" : ` · ${T("वर्षाको सम्भावना", "Rain chance")} ${G.num(k.day_rain_pct)}%`;
+    return `<p class="hisum"><span class="ne-only">DHM पूर्वानुमान, चेतावनी होइन</span><span class="en-only">DHM forecast, not a warning</span></p>
+      <p class="hin">${G.esc(T(k.name_ne, k.name_en))}: ${G.esc(T(k.day_ne, k.day_en))}${deg(k.day_from_c, k.day_to_c)}${rain}</p>
+      <p class="hin">${T("आज राति", "Tonight")}: ${G.esc(T(k.night_ne, k.night_en))}${deg(k.night_from_c, k.night_to_c)}</p>
+      ${G.stormFlag(blob)}
+      <p class="meta"><a class="wxsrc" href="${G.esc(k.url)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a> · ${T("जारी", "Issued")} ${G.npt(c.issued)}</p>`;
+  }
   function wxHome() {
     const box = $("wxhome"); if (box === NIL) return;
-    const w = allAlerts.filter((a) => a.hazard === "weather").sort((a, b) => b.sent.localeCompare(a.sent))[0];
-    if (!w) { box.innerHTML = `<p class="meta">${T("उपलब्ध छैन", "Not available")}</p>`; return; }
-    const i = w.info[G.lang], live = Date.parse(w.expires) > now;
-    box.innerHTML = `<p class="hisum">${G.esc(i.headline)}</p><div class="atrust">${G.trustChip(w.trust)}${live ? "" : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}<span class="meta">${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || w.sent)} · <a href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a></span></div>`;
+    const paint = () => {
+      const w = allAlerts.filter((a) => a.hazard === "weather").sort((a, b) => b.sent.localeCompare(a.sent))[0];
+      const extra = forecastHome(wxDoc && wxDoc.forecast24);
+      const head = w ? (() => { const i = w.info[G.lang], live = Date.parse(w.expires) > now; return `<p class="hisum">${G.esc(i.headline)}</p><div class="atrust">${G.trustChip(w.trust)}${live ? "" : `<span class="tag exp">${T("म्याद सकियो", "Expired")}</span>`}<span class="meta">${T("स्रोतको समय", "Source time")}: ${G.npt(i.params["gati:sourceTime"] || w.sent)} · <a class="wxsrc" href="${G.esc(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a></span></div>`; })() : "";
+      box.innerHTML = head + extra || `<p class="meta">${T("उपलब्ध छैन", "Not available")}</p>`;
+    };
+    paint();
+    if (!wxAsked) { wxAsked = true; G.json("data/weather.json").then((w) => { wxDoc = w || {}; paint(); }).catch(() => { wxDoc = {}; paint(); }); }
   }
   /* Full archive on /alerts/: the static list is Nepali; re-render it in the chosen language */
   function archive() { const ul = document.querySelector("ul.archive"); if (!ul || !data) return;
@@ -469,7 +489,7 @@
     const H = (h && h.sources) || {};
     const draw = () => {
       const T = (ne, en) => (G.lang === "ne" ? ne : en), R = document.body.dataset.root || "";
-      const prods = [[T("नदी", "Rivers"), "DHM", RV && RV.as_of && RV.as_of + (RV.as_of.length === 10 ? "T12:00:00+05:45" : ""), "rivers/"],
+      const prods = [[T("नदी", "Rivers"), "DHM", RV && RV.as_of && RV.as_of + (RV.as_of.length === 10 ? "T12:00:00" + G.tzIso : ""), "rivers/"],
         [T("सडक", "Roads"), T("नेपाल प्रहरी", "Nepal Police"), RD && RD.as_of, "roads/"],
         [T("मौसम", "Weather"), "DHM", WX && WX.bulletin5 && WX.bulletin5.issued, "weather/"]].filter((p) => p[2] && G.isStale(p[2]));
       const down = [...new Set(S.filter((s) => G.srcStatus(s, H[s.id]) === "down").map(short))];
