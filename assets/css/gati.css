@@ -2202,3 +2202,6 @@ html[data-theme=dark] .tkcard .more{color:#8DB1F7}
 .recogl{font-size:1.02rem;padding:10px 22px 10px 16px}.recogl img{height:24px}
 .recogm{font-weight:600}
 @media(max-width:380px){.recog{font-size:.82rem;gap:7px;padding:8px 13px 8px 11px}.recog img{height:17px}}
+.recog{white-space:normal;flex-wrap:wrap;row-gap:4px;border-radius:22px}
+.recogd{width:1px;height:18px;background:rgba(255,255,255,.35);flex:none}
+@media(max-width:560px){.recogd{display:none}.recog{padding:10px 16px}}
