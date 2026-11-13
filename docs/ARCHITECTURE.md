@@ -78,6 +78,10 @@ No cookies, analytics or ads. Fonts (Mukta, Inter; `assets/fonts`) and Leaflet a
 - "My district" (`localStorage['gati-district']`, an NP-DISTRICT code) preselects the feed filter. It stays in the browser.
 - Web Push is not included (needs a server/Cloudflare Worker).
 
+## Android
+
+The Android package in `android/` is a Trusted Web Activity (`android-browser-helper` 2.7.4), not a bundled copy of the site and not a WebView shell. Chrome loads `https://nirajbhusal.github.io/gati-alerts/`, so the service worker, offline cache, language, numerals, and theme stay the website's. Full screen needs Digital Asset Links at `https://nirajbhusal.github.io/.well-known/assetlinks.json`, which this project site cannot serve. Until then the address bar stays. Closed-app push is not implemented. Package id `io.github.nirajbhusal.gati.alerts`, versionCode 1, versionName 1.0.0, minSdk 24, targetSdk 36. Details: `android/README.md`.
+
 ## New hazards (item 11)
 
 - `data/hazards.json` lists hazard values. New: `earthquake`, `air-quality`, `epidemic`.

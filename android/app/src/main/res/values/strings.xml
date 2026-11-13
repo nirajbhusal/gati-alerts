@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">गति Gati</string>
+    <string name="launch_url">https://nirajbhusal.github.io/gati-alerts/?source=android</string>
+    <string name="logo_desc">गति Gati</string>
+    <string name="tagline_ne">सही सूचना, सही समयमा ।</string>
+    <string name="tagline_en">The right alert, right on time.</string>
+    <string name="notice_ne">गतिले आधिकारिक सूचना रिले गर्छ। गति आफैँ चेतावनी जारी गर्दैन। यो नेपाल सरकारको आधिकारिक एप होइन। यो निरज भुसालको स्वतन्त्र परियोजना हो।\n\nहरेक सूचनामा स्रोत र स्रोतको समय हुन्छ। इन्टरनेट नभएको बेला अन्तिम बचत देखिन सक्छ। त्यो अहिलेको नहुन सक्छ।\n\nस्थान हजुरले थिचेपछि मात्र सोधिन्छ, र यो यन्त्रमै रहन्छ। सूचना एप खुला हुँदा मात्र देखिन्छ। एप बन्द हुँदा आउने पुस अझै छैन।</string>
+    <string name="notice_en">Gati relays official notices. Gati does not issue warnings. This is not an official app of the Government of Nepal. It is an independent project by Niraj Bhusal.\n\nEvery item shows its source and its source time. Without internet you may see the last saved copy. That copy may be out of date.\n\nLocation is asked only after you tap, and it stays on this device. Notifications show only while the app is open. Push while the app is closed is not available.</string>
+    <string name="origin_note">nirajbhusal.github.io/gati-alerts</string>
+    <string name="continue_label">अगाडि बढ्नुहोस्\nContinue</string>
+    <!-- App-to-site statement only. Chrome still requires assetlinks.json on the origin. This does not verify the app. -->
+    <string name="asset_statements">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://nirajbhusal.github.io\"\n  }\n}]</string>
+</resources>

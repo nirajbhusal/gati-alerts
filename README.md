@@ -117,3 +117,7 @@ report (28 October 2026). This is a mention, not an endorsement.
 Maintainer: Niraj Bhusal ([X](https://x.com/nirajbhusal), [LinkedIn](https://www.linkedin.com/in/nirajbhusal)). Corrections and hazard reports go through GitHub (see Citizen reports above). Emergencies: 100, 101, 102, 1234.
 
 Name note: the repo is `gati-alerts` because `nirajbhusal/gati` already hosts a separate project (Nepali Patro PWA).
+
+## Android
+
+A provisional Trusted Web Activity lives in [`android/`](android/README.md). It opens the live site in Chrome. Package id `io.github.nirajbhusal.gati.alerts` is not confirmed, and there is no production signing key. The debug APK is a PREVIEW build. See `android/play/` before any Play submission. Digital Asset Links are not published at the GitHub Pages origin, so Chrome keeps the address bar until that file exists on the user site.
