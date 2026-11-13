@@ -38,7 +38,7 @@ const THEMES = {
 
 /* one banner. layout "center" stacks logo and tagline; "wide" puts them side by side.
    safe = [w, h] keeps everything inside a centred box (YouTube, Facebook crops). */
-function banner({ w, h, theme = "navy", layout = "center", safe, url = true, head }) {
+function banner({ w, h, theme = "navy", layout = "center", safe, url = true, head, recog }) {
   const t = THEMES[theme], sw = safe ? safe[0] : w, sh = safe ? safe[1] : h;
   const u = Math.min(sh / (layout === "wide" ? 3.4 : head ? 7.4 : 6.2), sw / (layout === "wide" ? 15 : head ? 13 : 9.5));
   const red = theme === "red";
@@ -49,11 +49,14 @@ function banner({ w, h, theme = "navy", layout = "center", safe, url = true, hea
   const tag = `<div class="ne" style="font-weight:700;font-size:${u * 0.52}px;line-height:1.25;color:${t.fg}">सही सूचना, सही समयमा ।</div>
 <div style="font-size:${u * 0.3}px;color:${t.sub};margin-top:${u * 0.12}px">The right alert, right on time.</div>`;
   const web = url ? `<div style="font-size:${u * 0.22}px;letter-spacing:.04em;color:${t.sub};opacity:.85;margin-top:${u * 0.45}px">${SITE}</div>` : "";
+  /* link previews carry the Octoverse mention in place of the address, which every platform prints under the image anyway */
+  const B64 = (f) => "data:image/png;base64," + fs.readFileSync(path.join(__dirname, f)).toString("base64");
+  const rec = recog ? `<div style="display:inline-flex;align-items:center;gap:${u * 0.13}px;margin-top:${u * 0.3}px;padding:${u * 0.11}px ${u * 0.34}px ${u * 0.13}px ${u * 0.26}px;border-radius:99px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.22);font:700 ${u * 0.215}px Sora;color:#fff;white-space:nowrap"><span style="color:${C.orange};font-size:${u * 0.28}px;line-height:1">★</span>Top Open Source Project of the Year 2026<span style="width:2px;height:${u * 0.3}px;background:rgba(255,255,255,.35);margin:0 ${u * 0.05}px"></span><img alt="" src="${B64("github-logo-white.png")}" style="height:${u * 0.34}px;display:block"><img alt="" src="${B64("octoverse-2026-text-white.png")}" style="height:${u * 0.24}px;display:block"></div>` : "";
   const hd = head ? `<div class="ne" style="font-weight:700;font-size:${u * 0.95}px;line-height:1.15;color:${t.fg};margin-top:${u * 0.55}px;white-space:nowrap">${head[0]}</div>
 <div style="font-weight:600;font-size:${u * 0.36}px;line-height:1.3;color:${t.sub};margin-top:${u * 0.2}px;max-width:${sw * 0.84}px">${head[1]}</div>` : "";
   const inner = layout === "wide"
     ? `<div style="display:flex;align-items:center;gap:${u * 0.9}px">${logo}<div style="width:2px;align-self:stretch;background:${t.sub};opacity:.3"></div><div>${tag}${web}</div></div>`
-    : head ? `${logo}${hd}${web}` : `${logo}${rule}${tag}${web}`;
+    : head ? `${logo}${hd}${web}` : `${logo}${rule}${tag}${recog ? rec : web}`;
   return `<style>${BASE}body{width:${w}px;height:${h}px;background:${t.bg};overflow:hidden;position:relative}</style>
 ${motif(t.arc[0], t.arc[1])}
 <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">${inner}</div>`;
@@ -64,7 +67,8 @@ const profile = (s, bg) => `<style>${BASE}body{width:${s}px;height:${s}px;backgr
 <div style="width:${s * 0.7}px;height:${s * 0.7}px;margin-left:${s * 0.035}px">${svg("gati-glyph-white")}</div>`;
 const plain = (name, s, pad = 0, bg = "transparent") => `<style>${BASE}body{width:${s}px;height:${s}px;background:${bg};padding:${pad}px}</style>${svg(name)}`;
 
-const HEAD = ["आधिकारिक विपद् सूचना,<br>स्रोत र समयसहित", "Nepal's official disaster alerts, with source and time"];
+/* the large line on thumbnails and posts is the tagline */
+const HEAD = ["सही सूचना, सही समयमा ।", "The right alert, right on time."];
 const SOCIAL = [
   /* covers and headers */
   ["social/covers/x-header-1500x500", { w: 1500, h: 500, layout: "wide" }],
@@ -74,7 +78,7 @@ const SOCIAL = [
   ["social/covers/youtube-banner-2560x1440", { w: 2560, h: 1440, safe: [1235, 338] , layout: "wide"}],
   ["social/covers/github-social-preview-1280x640", { w: 1280, h: 640 }],
   ["social/covers/telegram-viber-cover-1280x720", { w: 1280, h: 720 }],
-  ["social/covers/share-cover-1200x630", { w: 1200, h: 630 }],
+  ["social/covers/share-cover-1200x630", { w: 1200, h: 630, recog: true }],
   ["social/covers/share-cover-light-1200x630", { w: 1200, h: 630, theme: "light" }],
   ["social/covers/presentation-title-1920x1080", { w: 1920, h: 1080 }],
   /* thumbnails */
@@ -123,7 +127,7 @@ function card(bleed) {
 <div><div style="font:700 15pt/1 Sora;color:${C.navy};letter-spacing:-.03em;white-space:nowrap">Niraj Bhusal</div>
 <div class="ne" style="font-size:7.8pt;font-weight:600;color:${C.slate};line-height:1.2;margin-top:1.2mm">निरज भुसाल</div>
 <div style="font-size:6.1pt;color:${C.ink};margin-top:1.6mm">Creator and maintainer, <span class="ne" style="font-weight:700">गति</span> <b>Gati</b></div>
-<div style="display:inline-flex;align-items:center;gap:1.3mm;margin-top:1.9mm;background:${C.navy};border-radius:9mm;padding:1mm 2.8mm 1mm 2.2mm;font:600 5.2pt Sora;color:#fff;white-space:nowrap"><span style="color:${C.orange};font-size:6.4pt;line-height:1">★</span><span><b style="font-weight:700">Top Open Source Project of the Year 2026</b> <span style="color:#C9D3DF">· GitHub Octoverse</span></span></div></div>
+<div style="display:inline-flex;align-items:center;gap:1.3mm;margin-top:1.9mm;background:${C.navy};border-radius:9mm;padding:1.1mm 2.6mm 1.1mm 2mm;font:600 4.9pt Sora;color:#fff;white-space:nowrap"><span style="color:${C.orange};font-size:6.4pt;line-height:1">★</span><span><b style="font-weight:700">Top Open Source Project of the Year 2026</b></span><span style="width:.25mm;height:2.6mm;background:rgba(255,255,255,.35);flex:none"></span><img alt="GitHub" src="data:image/png;base64,${require("fs").readFileSync(require("path").join(__dirname, "github-logo-white.png")).toString("base64")}" style="height:2.2mm;width:auto;display:block;flex:none"><img alt="Octoverse 2026" src="data:image/png;base64,${require("fs").readFileSync(require("path").join(__dirname, "octoverse-2026-text-white.png")).toString("base64")}" style="height:1.55mm;width:auto;display:block;flex:none;margin-left:-.2mm"></div></div>
 <div style="height:7mm;width:${7 * 1080 / 512}mm;flex:none;position:absolute;right:0;top:0">${svg("gati-logo-horizontal")}</div></div>
 <div style="display:flex;justify-content:space-between;align-items:flex-end">
 <div style="display:flex;flex-direction:column;gap:${PHONE ? 0.5 : 0.8}mm;border-left:.45mm solid ${C.red};padding-left:2.4mm">${PHONE ? row("TEL", PHONE) : ""}${row("WEB", SITE)}${row("X", "x.com/nirajbhusal")}${row("IN", "linkedin.com/in/nirajbhusal")}${row("GIT", "github.com/nirajbhusal")}</div>
@@ -176,7 +180,7 @@ table{border-collapse:collapse;width:100%;font-size:9pt}td,th{text-align:left;pa
 <h3>How to credit an alert</h3>
 <p>Never write “Gati warned”. Write “DHM's warning, relayed by Gati”.</p>
 <h3>Recognition</h3>
-<p>Gati was featured in GitHub's Octoverse 2026 report (28 October 2026). Say “Featured in GitHub Octoverse 2026”. It is a mention, not an award or an endorsement, and Gati is not affiliated with GitHub.</p>`),
+<p>GitHub's Octoverse 2026 named Gati “a top open source project on GitHub in 2026”. Say “Top Open Source Project of the Year 2026, GitHub Octoverse”. It recognises the project, not any alert, and Gati is not affiliated with GitHub.</p>`),
     page(3, "Logo", "लोगो", `
 <p>The mark is a white “<span class="ne">ग</span>”, the first letter of <span class="ne">गति</span>, on a red rounded square, with three signal arcs spreading to the right. The arcs stand for a message being relayed, and fade as they travel.</p>
 <div class="grid g2" style="margin-top:5mm">${fig("gati-logo-horizontal", C.snow, "Horizontal logo. First choice on light backgrounds.")}${fig("gati-logo-horizontal-white", C.navy, "Horizontal logo, white. For dark backgrounds.")}</div>
@@ -214,7 +218,7 @@ table{border-collapse:collapse;width:100%;font-size:9pt}td,th{text-align:left;pa
 <tr><td><span class="ne">स्रोत: जल तथा मौसम विज्ञान विभाग, बिहान ६:३०</span></td><td><span class="ne">ताजा खबर!</span></td></tr>
 <tr><td>Summary, not word for word</td><td>(an unlabelled rewrite)</td></tr>
 <tr><td>Model, not a warning</td><td>Rain alert for the next 3 hours</td></tr>
-<tr><td>Featured in GitHub Octoverse 2026</td><td>Award-winning, GitHub-backed</td></tr></table>
+<tr><td>Top Open Source Project of the Year 2026, GitHub Octoverse</td><td>GitHub-backed, endorsed by GitHub</td></tr></table>
 <h3>Design language in brief</h3>
 <ul><li><b>Quiet until it matters.</b> Neutral pages, so that a severity colour is always noticed.</li><li><b>Source and time on everything.</b> No alert, number or map layer appears without them.</li><li><b>Works on a weak phone and a weak signal.</b> Plain pages, small files, usable offline.</li><li><b>Never by colour alone.</b> Severity is a word, an icon and a colour together.</li><li><b>Rounded, not playful.</b> Corner radius 10 to 14 px on cards, full pills for labels, no drop shadows on the logo.</li></ul>`),
     page(7, "Icons and social media", "आइकन र सामाजिक सञ्जाल", `
@@ -267,6 +271,19 @@ table{border-collapse:collapse;width:100%;font-size:9pt}td,th{text-align:left;pa
     const big = /logo-horizontal/.test(name) ? 2400 : /wordmark/.test(name) ? 1600 : 1024;
     const h = Math.round(big * vb[2] / vb[1]);
     await png("logos/png/" + name, `<style>${BASE}body{width:${big}px;height:${h}px}</style>${svg(name)}`, big, h, true);
+  }
+  /* the site header logo: the still part and each signal arc as its own layer, so the arcs can pulse */
+  const HB = path.join(ROOT, "assets/img/brand");
+  for (const [src, out] of [["gati-logo-horizontal", "logo-h"], ["gati-logo-horizontal-white", "logo-h-white"]]) {
+    const full = svg(src), arcs = full.match(/<path d="M[^"]+" fill="none"[^>]*\/>/g);
+    const open = full.match(/^<svg[^>]*>/)[0];
+    const layers = { "": full, "-base": arcs.reduce((t, x) => t.replace(x, ""), full) };
+    arcs.forEach((x, i) => { layers["-arc" + (i + 1)] = open + x + "</svg>"; });
+    for (const [suffix, body] of Object.entries(layers)) {
+      await page.setViewportSize({ width: 702, height: 320 });
+      await load(`<style>${BASE}body{width:702px;height:320px}svg{height:320px;width:675px}</style>${body}`);
+      await page.screenshot({ path: path.join(HB, out + suffix + ".png"), omitBackground: true, clip: { x: 0, y: 0, width: 702, height: 320 } });
+    }
   }
   /* app and web icons */
   for (const s of [180, 192, 512, 1024]) await png(`icons/app-icon-${s}`, plain("gati-mark", s), s, s, true);

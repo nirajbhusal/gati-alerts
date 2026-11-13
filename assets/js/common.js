@@ -179,16 +179,16 @@
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
     <p class="fdisclaimer">${b("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</p>
-    ${PAGE === "home" ? `<p class="frecog" style="margin:0 0 12px;font-weight:600">★ ${b('<a href="'+OCTOVERSE+'" rel="noopener">GitHub Octoverse २०२६</a> मा उल्लेखित', 'Featured in <a href="'+OCTOVERSE+'" rel="noopener">GitHub Octoverse 2026</a>')} · <a href="${ROOT}about/#recognition">${b("थप", "More")}</a></p>` : ""}
+    ${PAGE === "home" ? `<p class="frecog"><a class="recog" href="${OCTOVERSE}" rel="noopener"><span class="recogs" aria-hidden="true">★</span><span class="en-only">Top Open Source Project of the Year 2026</span><span class="ne-only">२०२६ को शीर्ष ओपन सोर्स परियोजना</span><span class="recogd" aria-hidden="true"></span><img src="${ROOT}assets/img/brand/github-octoverse-2026-white.png" width="1087" height="96" alt="GitHub Octoverse 2026" loading="lazy"></a> <a class="recogm" href="${ROOT}about/#recognition">${b("यसबारे थप", "About this")}</a></p>` : ""}
     <div class="helplines" aria-label="Emergency helplines">
       ${G.helplinesHtml()}</div>
     <div>${b("गति एउटा स्वतन्त्र नागरिक परियोजना हो, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",
              "Gati is an independent citizen project, not an official system of any government agency. Maintainer: Niraj Bhusal.")}
       · <a href="https://nirajbhusal.github.io/rasuwa-flood-bulletin/">${b("रसुवा–भोटेकोशी बुलेटिन", "Rasuwa–Bhotekoshi bulletin")}</a>
       · <a href="${ROOT}report/">${b("रिपोर्ट गर्नुहोस्", "Report")}</a> · <a href="${ROOT}reports/">${b("नागरिक रिपोर्ट", "Reports")}</a>
-      · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">Lite</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
+      · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">${b("हल्का संस्करण", "Lite")}</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
       ${G.country.channels && G.country.channels.telegram ? `· <a href="${G.country.channels.telegram}" rel="noopener">Telegram</a>` : ""}
-      · <a href="${ROOT}atom.xml">CAP Atom feed</a> · <a href="${ROOT}data/alerts.json">JSON</a>
+      · <a href="${ROOT}atom.xml">${b("CAP Atom फिड", "CAP Atom feed")}</a> · <a href="${ROOT}data/alerts.json">JSON</a>
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
   tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
@@ -281,12 +281,8 @@
   const nxs = [...nav.querySelectorAll("a.nx")], mis = [...moremenu.querySelectorAll("a[data-id]")], moreW = morebtn.closest(".more");
   const fitNav = () => {
     if (innerWidth <= 720) { nxs.forEach((a) => (a.hidden = false)); mis.forEach((a) => (a.hidden = false)); moreW.hidden = false; return; }
-    nxs.forEach((a) => (a.hidden = false)); moreW.hidden = true;
-    const one = () => { const v = [...nav.children].filter((e) => !e.hidden && e.offsetParent && !e.classList.contains("navtop")); return v.every((e) => e.offsetTop === v[0].offsetTop); };
-    let k = nxs.length;
-    if (!one()) { moreW.hidden = false; while (k > 0 && !one()) nxs[--k].hidden = true; }
-    const out = new Set(nxs.slice(k).map((a) => a.dataset.id));
-    mis.forEach((a) => (a.hidden = !out.has(a.dataset.id)));
+    /* desktop: six main items and More. Everything else is in More and in the strip of related pages under the header. */
+    nxs.forEach((a) => (a.hidden = true)); moreW.hidden = false; mis.forEach((a) => (a.hidden = false)); const k = 0;
     morebtn.toggleAttribute("aria-current", nxs.slice(k).some((a) => a.hasAttribute("aria-current")));
     if (morebtn.hasAttribute("aria-current")) morebtn.setAttribute("aria-current", "page");
   };
@@ -439,7 +435,7 @@
   G.verdictBadge = (k) => { const v = G.VERDICT[k] || G.VERDICT.no_info; return `<span class="vbadge v-${G.VERDICT[k] ? k : "no_info"}" style="--sc:${G.verdictColor(v[0])}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${v[3]}</svg>${G.lang === "ne" ? v[1] : v[2]}</span>`; };
   /* Source health: planned | ok | stale | down. Stale = last success older than 3x pollMinutes. */
   G.srcStatus = (src, h) => {
-    if (src.status === "listed") return "listed";
+    if (src.status === "live" || src.status === "link" || src.status === "nofeed" || src.status === "listed") return src.status;
     if (src.status === "planned" || !src.url) return "planned";
     h = h || {};
     if (!h.lastSuccess) return "down";

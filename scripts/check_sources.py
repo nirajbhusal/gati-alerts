@@ -12,8 +12,8 @@ health = json.loads(hp.read_text(encoding="utf-8")) if hp.exists() else {}
 H = health.setdefault("sources", {})
 for s in src:
     h = H.setdefault(s["id"], {"lastSuccess": None, "lastChecked": None, "lastResult": None})
-    if s.get("status") in ("planned", "listed") or not s.get("url"):
-        h["lastResult"] = s.get("status") if s.get("status") in ("planned", "listed") else "planned"; continue
+    if s.get("status") in ("planned", "listed", "live", "link", "nofeed") or not s.get("url"):
+        h["lastResult"] = s.get("status") if s.get("status") in ("planned", "listed", "live", "link", "nofeed") else "planned"; continue
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     try:
         req = urllib.request.Request(s["url"], headers={"User-Agent": "Mozilla/5.0 (Gati source health check; +https://nirajbhusal.github.io/gati-alerts/sources/)"})

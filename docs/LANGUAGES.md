@@ -18,7 +18,7 @@ Gati can show short interface words in a regional language on top of Nepali.
 |---|---|---|
 | Maithili | `mai` | Draft, shown as beta. Not yet checked by a native speaker. |
 | Bhojpuri | `bho` | Draft, shown as beta. Not yet checked by a native speaker. |
-| Tharu | `the` | Translators wanted. |
+| Tharu | `the` | Draft, shown as beta. Leans on Dangaura Tharu; about half the words are filled, the rest stay in Nepali until a native speaker supplies them. Not yet checked by a native speaker. |
 | Nepal Bhasa (Newar) | `new` | Translators wanted. |
 | Tamang | `taj` | Translators wanted. |
 

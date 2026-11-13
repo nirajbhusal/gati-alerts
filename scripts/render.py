@@ -6,6 +6,7 @@
   stories/img/<identifier>.png     1080x1920 story card with QR to the permalink
   stories/qr/<identifier>.svg      QR code to the permalink, used by /stories/
   patro/gati.ics                   iCalendar of the cited holidays in data/calendar.json
+  share/today.png, today-square.png  the daily "Nepal today" infographic card
 Everything shown comes from the CAP message: headline, agency, source link, source time.
 Nothing is invented. Usage: python scripts/render.py
 """
@@ -181,6 +182,106 @@ def story_png(a, out, now):
 
 
 # ---------- permalink pages ----------
+def today_card(alerts, now):
+    """The daily "Nepal today" infographic: district map, DHM warning strip, rivers, roads and measured rain.
+    Written to share/today.png (1200x630) and share/today-square.png (1080x1080). Every figure names its agency;
+    agencies are never added together. Skipped quietly if a data file is missing."""
+    def load(name):
+        try:
+            return json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
+        except Exception:
+            return None
+    geo, wx, rv, rd = load("districts.geojson"), load("weather.json"), load("rivers.json"), load("roads.json")
+    if not geo:
+        return
+    rank = {"Extreme": 4, "Severe": 3, "Moderate": 2, "Minor": 1}
+    top = {}
+    for a in alerts:
+        if a["trust"] == "Official" and is_active(a, now):
+            for c in a.get("districts") or []:
+                if rank.get(a["severity"], 0) > rank.get(top.get(c), 0):
+                    top[c] = a["severity"]
+    LV = {"green": ("#2E8B57", "चेतावनी छैन", "No warning"), "yellow": ("#F5D90A", "अद्यावधिक रहनुहोस्", "Be updated"),
+          "orange": ("#F28C1E", "सतर्क रहनुहोस्", "Be prepared"), "red": ("#D93025", "कारबाही गर्नुहोस्", "Take action")}
+    local = now.astimezone(NPT)
+    stamp = f"{local.day} {MON_EN[local.month - 1]} {local.year}, {local.strftime('%I:%M %p').lstrip('0')} NPT"
+
+    def draw_card(W, H, out):
+        im = Image.new("RGB", (W, H), "#0B1424"); d = ImageDraw.Draw(im)
+        sq = H > 800
+        pad = 56
+        logo(im, (pad, 44), 76)
+        d.text((pad + 190, 44), "नेपाल आज", font=font("Bold", 46), fill="#FFFFFF")
+        d.text((pad + 190, 100), "Nepal today · " + stamp, font=font("Regular", 24), fill="#C9D3DF")
+        # map
+        mw = 640 if sq else 470
+        x0, y0, x1, y1 = 80.0, 26.3, 88.25, 30.48
+        k = mw / (x1 - x0); mh = (y1 - y0) * k * 1.12
+        mx, my = ((W - mw) // 2 if sq else pad), 160
+        for f in geo["features"]:
+            g = f["geometry"]; polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+            col = SEV[top[f["properties"]["code"]]][3] if f["properties"]["code"] in top else "#2B3A57"
+            for poly in polys:
+                pts = [(mx + (x - x0) * k, my + (y1 - y) * k * 1.12) for x, y in poly[0]]
+                if len(pts) > 2:
+                    d.polygon(pts, fill=col, outline="#0B1424")
+        named = len(top)
+        cap = (f"{named} जिल्लामा सक्रिय आधिकारिक सूचना".translate(DEV) if named else "कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन") + " · " + (f"{named} district{'s' if named != 1 else ''} named in an active official alert" if named else "No district is named in an active official alert")
+        for n, ln in enumerate(wrap(d, cap, font("Regular", 18), W - 2 * pad if sq else mw, 3)):
+            d.text((pad if sq else mx, my + mh + 8 + n * 24), ln, font=font("Regular", 18), fill="#9AA6BE")
+        # facts
+        fx = pad if sq else mx + mw + 44
+        fy = my + mh + 70 if sq else 160
+        fw = (W // 2 - pad - 12) if sq else W - fx - pad
+        def fact(y, head, line_ne, line_en, src):
+            d.text((fx, y), head, font=font("SemiBold", 19), fill="#7FD1D8")
+            d.text((fx, y + 24), line_ne, font=font("Bold", 28), fill="#FFFFFF")
+            lines = wrap(d, line_en, font("Regular", 19), fw, 2 if sq else 1)
+            for n, ln in enumerate(lines):
+                d.text((fx, y + 62 + n * 25), ln, font=font("Regular", 19), fill="#C9D3DF")
+            return y + 100 + 25 * (len(lines) - 1)
+        y = fy
+        b5 = (wx or {}).get("bulletin5")
+        if b5 and b5.get("days"):
+            d.text((fx, y), "DHM · मौसम चेतावनी, ५ दिन · 5-day weather warning", font=font("SemiBold", 19), fill="#7FD1D8")
+            cw = min(92, (fw - 4 * 8) // 5)
+            for n, dayx in enumerate(b5["days"][:5]):
+                c = LV.get(dayx["level"], LV["green"])
+                bx = fx + n * (cw + 8)
+                d.rounded_rectangle([bx, y + 34, bx + cw, y + 34 + 56], radius=10, fill="#121C30", outline="#24314A")
+                d.rounded_rectangle([bx, y + 34, bx + cw, y + 34 + 12], radius=6, fill=c[0])
+                lab = str(int(dayx["ad"][8:])) + " " + MON_EN[int(dayx["ad"][5:7]) - 1]
+                d.text((bx + cw / 2, y + 34 + 35), lab, font=font("SemiBold", 20), fill="#FFFFFF", anchor="mm")
+            worst = next((l for l in ("red", "orange", "yellow") if any(x["level"] == l for x in b5["days"])), "green")
+            d.text((fx, y + 96), LV[worst][1] + " · " + (LV[worst][2] if worst != "green" else "No warning on all five days"), font=font("Bold", 22), fill="#FFFFFF")
+            y += 142
+        if rv and rv.get("gauges"):
+            hot = sum(1 for g in rv["gauges"] if g["level"] >= g["warning"]); n = len(rv["gauges"])
+            y = fact(y, "DHM · नदी · Rivers", f"{n - hot}/{n} केन्द्र चेतावनी तहभन्दा तल".translate(DEV),
+                     (f"{hot} of {n} stations above warning level" if hot else f"All {n} stations shown are below warning level") + " · " + rv.get("as_of_en", ""), "")
+        if sq:
+            fx, y = W // 2 + 12, fy   # second column
+        if rd and rd.get("routes"):
+            c = lambda st: sum(1 for r in rd["routes"] if r["status"] == st)
+            y = fact(y, "नेपाल प्रहरी, सडक विभाग · सडक · Roads", f"{c('blocked')} अवरुद्ध · {c('oneway')} एकतर्फी".translate(DEV),
+                     f"{c('blocked')} blocked, {c('oneway')} one-way, {c('none')} with no report · " + rd.get("as_of_en", ""), "")
+        o = (wx or {}).get("station_obs")
+        if o and o.get("stations") and y + 92 < H - 84:
+            wet = sorted([s for s in o["stations"] if (s.get("rain_mm") or 0) > 0], key=lambda s: -s["rain_mm"])
+            when = dt.datetime.fromisoformat(o["issued"]); wtxt = f"{when.day} {MON_EN[when.month - 1]}, {when.strftime('%I:%M %p').lstrip('0')}"
+            y = fact(y, "DHM · नापिएको वर्षा · Measured rain", (f"{wet[0]['ne']} {wet[0]['rain_mm']} मि.मि.".translate(DEV) if wet else "कुनै केन्द्रमा वर्षा भएन"),
+                     (f"{wet[0]['en']} {wet[0]['rain_mm']} mm; {len(o['stations']) - len(wet)} of {len(o['stations'])} stations dry" if wet else f"None of {len(o['stations'])} stations recorded rain") + f" · observation of {wtxt}", "")
+        d.line([pad, H - 78, W - pad, H - 78], fill="#24314A", width=2)
+        d.text((pad, H - 64), "गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ; यो चेतावनी होइन। · Gati relays official sources; this is not a warning.", font=font("Regular", 18 if not sq else 17), fill="#C9D3DF")
+        d.text((pad, H - 36), SITE.replace("https://", "").rstrip("/"), font=font("SemiBold", 19), fill="#7FD1D8")
+        out.parent.mkdir(parents=True, exist_ok=True)
+        im.save(out, optimize=True)
+
+    draw_card(1200, 630, ROOT / "share/today.png")
+    draw_card(1080, 1080, ROOT / "share/today-square.png")
+    print("today card written")
+
+
 def share_buttons(url, text):
     u, tx = urllib.parse.quote(url, safe=""), urllib.parse.quote(text, safe="")
     links = [("Viber", f"viber://forward?text={tx}%20{u}"), ("Facebook", f"https://www.facebook.com/sharer/sharer.php?u={u}"),
@@ -365,14 +466,15 @@ def main():
 <meta property="og:title" content="सबै सूचना · All alerts · गति Gati"> <meta property="og:image" content="{SITE}assets/img/brand/og-cover.png"><meta property="og:url" content="{SITE}alerts/"><meta name="theme-color" content="#0B1424">
 <link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../assets/img/brand/favicon-64.png" sizes="64x64" type="image/png"><link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css"><link rel="preload" href="../assets/fonts/mukta-latin-bef5c820.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/inter-latin-f11d729b.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-5591b6d0.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/mukta-devanagari-7cefa967.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../assets/css/gati.css"></head>
-<body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1><section class="gdash" id="gdash" aria-label="सारांश · Summary"></section><section id="breakinglist" class="brksec" aria-live="polite"></section>
-<p class="lead">{b("चालु र पुराना सबै सूचना, फिल्टरसहित। म्याद सकिएका सूचना पनि मेटिँदैनन्।", "Every active and past alert, with filters. Expired notices are never deleted.")}</p>
+<body data-page="alerts" data-root="../"><main id="main" class="wrap dash"><h1>{b("सबै सूचना", "All alerts")}</h1><p class="lead">{b("चालु र पुराना सबै सूचना, फिल्टरसहित। म्याद सकिएका सूचना पनि मेटिँदैनन्।", "Every active and past alert, with filters. Expired notices are never deleted.")}</p>
+<section id="breakinglist" class="brksec" aria-live="polite"></section><section class="gdash" id="gdash" aria-label="सारांश · Summary"></section>
 {body}
 <section aria-labelledby="harch"><h2 id="harch">{b("पूरा अभिलेख", "Full archive")}</h2><div class="card"><ul class="archive">{idx}</ul></div></section>
-</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/dash.js"></script><script src="../assets/js/home.js"></script></body></html>''', encoding="utf-8")
+</main><script src="../assets/js/bs.js"></script><script src="../assets/js/common.js"></script><script src="../assets/js/dash.js"></script><script src="../assets/js/viz.js"></script><script src="../assets/js/pageviz.js"></script><script src="../assets/js/home.js"></script></body></html>''', encoding="utf-8")
     print(f"rendered {len(alerts)} permalinks and share images")
     lite(alerts, now)
     ics(now)
+    today_card(alerts, now)
     sitemap(alerts)
 
 
