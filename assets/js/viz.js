@@ -27,14 +27,14 @@
   /* level gauge: where a reading sits against its warning and danger marks */
   V.gauge = ({ name, level, warning, danger, unit = "m" }) => { const max = danger * 1.15, pc = (v) => Math.max(0, Math.min(100, (v / max) * 100)).toFixed(1);
     const st = level >= danger ? ["#D93025", T("खतरा तहमाथि", "Above danger")] : level >= warning ? ["#F28C1E", T("चेतावनी तहमाथि", "Above warning")] : ["#2F6FED", T("सामान्य", "Normal")];
-    return `<div class="vzg"><div class="vzgh"><b>${E(name)}</b><span>${N(level.toFixed(2))} ${unit} · <em style="color:${st[0]}">${st[1]}</em></span></div>
+    return `<div class="vzg"><div class="vzgh"><b>${E(name)}</b><span>${N(level.toFixed(2))} ${unit} · <em class="vzs-${level >= danger ? "d" : level >= warning ? "w" : "n"}">${st[1]}</em></span></div>
       <div class="vzgt" role="img" aria-label="${E(name)}: ${level} ${unit}, ${T("चेतावनी", "warning")} ${warning}, ${T("खतरा", "danger")} ${danger}"><i style="width:${pc(level)}%;background:${st[0]}"></i><u style="left:${pc(warning)}%" title="${T("चेतावनी", "Warning")} ${warning}"></u><u class="d" style="left:${pc(danger)}%" title="${T("खतरा", "Danger")} ${danger}"></u></div></div>`; };
   V.gaugeKey = () => `<p class="vzgk"><span><u></u>${T("चेतावनी तह", "Warning level")}</span><span><u class="d"></u>${T("खतरा तह", "Danger level")}</span></p>`;
 
   /* heat grid: rows = [{ name, cells: [{ n, sev }] }], cols = [{ top, sub, today }]. One row per agency; rows are never added together. */
   V.heat = (rows, cols) => `<div class="vzheatw"><table class="vzheat"><thead><tr><th></th>${cols.map((c) => `<th${c.today ? ' class="on"' : ""}><b>${E(c.top)}</b><span>${E(c.sub)}</span></th>`).join("")}</tr></thead><tbody>
     ${rows.map((r) => `<tr><th scope="row">${E(r.name)}</th>${r.cells.map((c) => { const col = c.n ? G.SEVCOLOR[c.sev] || G.SEVCOLOR.Unknown : null, s = c.n && G.SEV[c.sev];
-      return `<td>${c.n ? `<i style="background:${col};color:${darkText(col) ? "#14202B" : "#fff"}" title="${E((s ? T(s[0], s[1]) : T("सूचना", "Info")) + ": " + c.n)}">${N(c.n)}</i>` : `<i class="z" aria-label="0"></i>`}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
+      return `<td>${c.n ? `<i style="background:${col};color:${darkText(col) ? "#14202B" : "#fff"}" title="${E((s ? T(s[0], s[1]) : T("सूचना", "Info")) + ": " + c.n)}">${N(c.n)}</i>` : `<i class="z"><span class="sr-only">0</span></i>`}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
     <ul class="vzkey">${["Extreme", "Severe", "Moderate", "Minor"].map((k) => `<li><i style="background:${G.SEVCOLOR[k]}"></i>${T(G.SEV[k][0], G.SEV[k][1])}</li>`).join("")}<li><i style="background:${G.SEVCOLOR.Unknown}"></i>${T("सूचना", "Info")}</li></ul>`;
 
   /* small trend line from a list of numbers */
@@ -61,7 +61,7 @@
       <g clip-path="url(#${id})"><path d="M14 ${ly} q4.500 -3.500 9 0 t9 0 t9 0 t9 0 V96 H14Z" fill="${col}"/><path d="M14 ${ly + 5} q4.500 -3 9 0 t9 0 t9 0 t9 0" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/></g>
       <path d="M8 ${y(g.warning)} H56" class="vzwl"/><path d="M8 ${y(g.danger)} H56" class="vzdl"/>
       <rect x="14" y="8" width="36" height="88" rx="9" fill="none" class="vztko"/></svg>
-      <figcaption><b>${E(g.name)}</b><span>${N(g.level.toFixed(2))} m</span><em style="color:${col}">${word}</em></figcaption></figure>`; }).join("")}</div>
+      <figcaption><b>${E(g.name)}</b><span>${N(g.level.toFixed(2))} m</span><em class="vzs-${g.level >= g.danger ? "d" : g.level >= g.warning ? "w" : "n"}">${word}</em></figcaption></figure>`; }).join("")}</div>
     <p class="vzgk"><span><u></u>${T("चेतावनी तह", "Warning level")}</span><span><u class="d"></u>${T("खतरा तह", "Danger level")}</span></p>`;
 
   /* rain gauges: a tube per station, filled to the amount that fell */

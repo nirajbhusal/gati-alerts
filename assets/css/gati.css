@@ -2258,3 +2258,12 @@ html[data-theme=dark] .vzdn .vzic{color:#F2C94C}html[data-theme=dark] .vzdn .n .
 #hviz:empty,#pviz:empty,.hmw:empty{border-radius:14px;min-height:140px;background:linear-gradient(90deg,var(--surface2) 25%,var(--surface) 50%,var(--surface2) 75%);background-size:200% 100%;animation:vzsk 1.4s linear infinite}
 #pviz:empty{min-height:84px}
 @media(prefers-reduced-motion:reduce){#hviz:empty,#pviz:empty,.hmw:empty{animation:none}}
+
+/* accessibility pass: status words and small links at 4.5:1 in every theme */
+.vzs-n{color:#1565A8}.vzs-w{color:#9A4700}.vzs-d{color:#B3261E}
+html[data-theme=dark] .vzs-n{color:#8CC8F5}html[data-theme=dark] .vzs-w{color:#FFC27A}html[data-theme=dark] .vzs-d{color:#FF9A91}
+html:not([data-theme=dark]) .rmgo{color:#1D5FD6}
+html:not([data-theme=dark]) .roadlist .rl-s[style*="86D8A0"]{color:#27774F!important}
+html:not([data-theme=dark]) .gdt>b[style*="8F9BB3"]{color:var(--slate)}
+html[data-theme=dark] .tkcard .more{color:#8DB1F7}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
