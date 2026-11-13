@@ -14,6 +14,9 @@ else starts as **Reported** and must earn **Verified**.
 - A news report may prompt a moderator to go and check the agency. It does not count as corroboration in the steps
   below.
 - Weather models (Open-Meteo, ECMWF and similar) are context, always labelled "Model", never a warning.
+- **Community pages** (local Facebook pages and the like) are not sources either. A short list in
+  `data/community.json` is shown on the Roads and Sources pages as links people can follow, labelled "Community page,
+  not verified". Gati never relays their posts. Add a page only when the maintainer knows who runs it.
 
 ## Labels (GitHub issue labels = trust states)
 
