@@ -181,8 +181,8 @@
  {
   "id": "lightning",
   "agency": {
-   "ne": "चट्याङ (स्रोत तय हुन बाँकी)",
-   "en": "Lightning (source to be decided)"
+   "ne": "चट्याङ (नेपालमा खुला फिड छैन)",
+   "en": "Lightning (no open feed in Nepal)"
   },
   "url": null,
   "feedType": null,
@@ -192,13 +192,13 @@
   ],
   "trustDefault": "Official",
   "contact": null,
-  "status": "planned"
+  "status": "nofeed"
  },
  {
   "id": "forest-fire",
   "agency": {
-   "ne": "वन डढेलो (स्रोत तय हुन बाँकी)",
-   "en": "Forest fire (source to be decided)"
+   "ne": "वन डढेलो (आधिकारिक फिड छैन; भू-उपग्रह आगो NASA FIRMS बाट)",
+   "en": "Forest fire (no official feed; satellite fires come from NASA FIRMS)"
   },
   "url": null,
   "feedType": null,
@@ -208,13 +208,13 @@
   ],
   "trustDefault": "Official",
   "contact": null,
-  "status": "planned"
+  "status": "nofeed"
  },
  {
   "id": "avalanche",
   "agency": {
-   "ne": "हिमपहिरो (स्रोत तय हुन बाँकी)",
-   "en": "Avalanche (source to be decided)"
+   "ne": "हिमपहिरो (नेपालमा खुला फिड छैन)",
+   "en": "Avalanche (no open feed in Nepal)"
   },
   "url": null,
   "feedType": null,
@@ -224,13 +224,13 @@
   ],
   "trustDefault": "Official",
   "contact": null,
-  "status": "planned"
+  "status": "nofeed"
  },
  {
   "id": "glof",
   "agency": {
-   "ne": "हिमताल विस्फोट बाढी, GLOF (स्रोत तय हुन बाँकी)",
-   "en": "Glacial lake outburst flood, GLOF (source to be decided)"
+   "ne": "हिमताल विस्फोट बाढी, GLOF (नेपालमा खुला फिड छैन)",
+   "en": "Glacial lake outburst flood, GLOF (no open feed in Nepal)"
   },
   "url": null,
   "feedType": null,
@@ -240,7 +240,7 @@
   ],
   "trustDefault": "Official",
   "contact": null,
-  "status": "planned"
+  "status": "nofeed"
  },
  {
   "id": "dor-navigate",
@@ -267,10 +267,13 @@
   "url": "https://www.alert-hub.org/alert-hubs",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["weather", "multi-hazard"],
+  "hazards": [
+   "weather",
+   "multi-hazard"
+  ],
   "trustDefault": "Official",
   "contact": "https://alertingauthority.wmo.int/authorities.php?recId=109",
-  "status": "listed",
+  "status": "link",
   "ingest": null,
   "role": "supplementary",
   "note": "Checked 11 Nov 2026. https://alerthub.wmo.int/ did not resolve. Alert-Hub.Org says it operates the WMO Alert Hub. The WMO Register of Alerting Authorities lists DHM Nepal with CAP Feed URL blank, so no DHM Nepal CAP feed was found on the hub. Not ingested. Not summed with DHM."
@@ -284,10 +287,12 @@
   "url": "https://www.rimes.int/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["weather"],
+  "hazards": [
+   "weather"
+  ],
   "trustDefault": "Official",
   "contact": "https://www.rimes.int/",
-  "status": "listed",
+  "status": "link",
   "ingest": null,
   "role": "supplementary",
   "note": "Regional context only. Not a Nepal weather warning. Not ingested."
@@ -301,10 +306,14 @@
   "url": "https://www.icimod.org/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["flood", "glof", "air-quality"],
+  "hazards": [
+   "flood",
+   "glof",
+   "air-quality"
+  ],
   "trustDefault": "Official",
   "contact": "https://www.icimod.org/",
-  "status": "listed",
+  "status": "link",
   "ingest": null,
   "role": "supplementary",
   "note": "HKH floods, GLOF and air. Not Nepal's flood warning, which stays with DHM hydrology. Not ingested. Not summed with DHM."
@@ -318,13 +327,15 @@
   "url": "https://www.gdacs.org/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["multi-hazard"],
+  "hazards": [
+   "multi-hazard"
+  ],
   "trustDefault": "Official",
   "contact": "https://www.gdacs.org/",
-  "status": "listed",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
-  "note": "Global disaster alerts. Not ingested. Never summed with Nepali agency counts."
+  "note": "Live since 13 Nov 2026: the latest Nepal items are read in the reader's browser on the Sources page. Supplementary; never a Gati alert and never summed with Nepali agency counts."
  },
  {
   "id": "nasa-firms",
@@ -335,13 +346,15 @@
   "url": "https://firms.modaps.eosdis.nasa.gov/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["forest-fire"],
+  "hazards": [
+   "forest-fire"
+  ],
   "trustDefault": "Official",
   "contact": "https://firms.modaps.eosdis.nasa.gov/",
-  "status": "listed",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
-  "note": "Satellite fire detections. Not a Nepal forest-fire warning. Not ingested."
+  "note": "Live since 13 Nov 2026: the Map page has an optional Satellite fires layer (VIIRS, NASA GIBS) drawn in the reader's browser. Detections, not a Nepal forest-fire warning."
  },
  {
   "id": "open-meteo",
@@ -352,10 +365,12 @@
   "url": "https://open-meteo.com/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["weather"],
+  "hazards": [
+   "weather"
+  ],
   "trustDefault": "Model",
   "contact": "https://open-meteo.com/",
-  "status": "listed",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
   "note": "In use: model weather and air quality on the Weather, Home and Map pages, and since 12 Nov 2026 a side-by-side rain comparison of six global models (ECMWF, GFS, ICON, UKMO, Météo-France, JMA). Fetched in the reader's browser, always labelled Model, separate from DHM, never a warning."
@@ -369,110 +384,148 @@
   "url": "https://www.ecmwf.int/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["weather"],
+  "hazards": [
+   "weather"
+  ],
   "trustDefault": "Model",
   "contact": "https://www.ecmwf.int/",
-  "status": "listed",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
   "note": "Model data, not an official warning. Shown since 12 Nov 2026 as one row of the model comparison on the Weather page, read through Open-Meteo. Not ingested as a warning."
  },
  {
   "id": "imd-rsmc",
-  "agency": {"ne": "भारत मौसम विज्ञान विभाग, RSMC नयाँ दिल्ली (चक्रवात, पूरक)", "en": "India Meteorological Department, RSMC New Delhi (cyclones, supplementary)"},
+  "agency": {
+   "ne": "भारत मौसम विज्ञान विभाग, RSMC नयाँ दिल्ली (चक्रवात, पूरक)",
+   "en": "India Meteorological Department, RSMC New Delhi (cyclones, supplementary)"
+  },
   "url": "https://rsmcnewdelhi.imd.gov.in/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["weather"],
+  "hazards": [
+   "weather"
+  ],
   "trustDefault": "Official",
   "contact": "https://rsmcnewdelhi.imd.gov.in/",
-  "status": "listed",
+  "status": "link",
   "ingest": null,
   "role": "supplementary",
   "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
  },
  {
   "id": "glofas",
-  "agency": {"ne": "Copernicus GloFAS (विश्वव्यापी बाढी पूर्वानुमान मोडेल, पूरक)", "en": "Copernicus GloFAS (global flood forecast model, supplementary)"},
+  "agency": {
+   "ne": "Copernicus GloFAS (विश्वव्यापी बाढी पूर्वानुमान मोडेल, पूरक)",
+   "en": "Copernicus GloFAS (global flood forecast model, supplementary)"
+  },
   "url": "https://global-flood.emergency.copernicus.eu/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["flood"],
+  "hazards": [
+   "flood"
+  ],
   "trustDefault": "Model",
   "contact": "https://global-flood.emergency.copernicus.eu/",
-  "status": "listed",
+  "status": "link",
   "ingest": null,
   "role": "supplementary",
   "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
  },
  {
   "id": "google-flood-hub",
-  "agency": {"ne": "Google Flood Hub (बाढी मोडेल, पूरक)", "en": "Google Flood Hub (flood model, supplementary)"},
+  "agency": {
+   "ne": "Google Flood Hub (बाढी मोडेल, पूरक)",
+   "en": "Google Flood Hub (flood model, supplementary)"
+  },
   "url": "https://sites.research.google/floods/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["flood"],
+  "hazards": [
+   "flood"
+  ],
   "trustDefault": "Model",
   "contact": "https://sites.research.google/floods/",
-  "status": "listed",
+  "status": "link",
   "ingest": null,
   "role": "supplementary",
   "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
  },
  {
   "id": "nasa-gpm",
-  "agency": {"ne": "NASA GPM IMERG (भू-उपग्रहबाट वर्षाको अनुमान, पूरक)", "en": "NASA GPM IMERG (satellite rainfall estimate, supplementary)"},
+  "agency": {
+   "ne": "NASA GPM IMERG (भू-उपग्रहबाट वर्षाको अनुमान, पूरक)",
+   "en": "NASA GPM IMERG (satellite rainfall estimate, supplementary)"
+  },
   "url": "https://gpm.nasa.gov/data/imerg",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["weather", "flood"],
+  "hazards": [
+   "weather",
+   "flood"
+  ],
   "trustDefault": "Model",
   "contact": "https://gpm.nasa.gov/data/imerg",
-  "status": "listed",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
   "note": "In use since 12 Nov 2026: the Map page has an optional Satellite rain layer drawn in the reader's browser from NASA's open GIBS map service (gibs.earthdata.nasa.gov). An estimate, about 10 km grid and several hours behind real time, labelled as such. Never shown as a Gati alert and never summed with DHM or any Nepal agency."
  },
  {
   "id": "emsc",
-  "agency": {"ne": "EMSC (भूकम्प, पूरक)", "en": "EMSC, European-Mediterranean Seismological Centre (earthquakes, supplementary)"},
+  "agency": {
+   "ne": "EMSC (भूकम्प, पूरक)",
+   "en": "EMSC, European-Mediterranean Seismological Centre (earthquakes, supplementary)"
+  },
   "url": "https://www.emsc-csem.org/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["earthquake"],
+  "hazards": [
+   "earthquake"
+  ],
   "trustDefault": "Official",
   "contact": "https://www.emsc-csem.org/",
-  "status": "listed",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
-  "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
+  "note": "Live since 13 Nov 2026: the latest M4+ earthquakes around Nepal are read in the reader's browser on the Sources page. Supplementary; not merged with NSC or USGS."
  },
  {
   "id": "reliefweb",
-  "agency": {"ne": "ReliefWeb, UN OCHA (मानवीय प्रतिवेदन, पूरक)", "en": "ReliefWeb, UN OCHA (humanitarian reports, supplementary)"},
+  "agency": {
+   "ne": "ReliefWeb, UN OCHA (मानवीय प्रतिवेदन, पूरक)",
+   "en": "ReliefWeb, UN OCHA (humanitarian reports, supplementary)"
+  },
   "url": "https://reliefweb.int/country/npl",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["multi-hazard"],
+  "hazards": [
+   "multi-hazard"
+  ],
   "trustDefault": "Official",
   "contact": "https://reliefweb.int/country/npl",
-  "status": "listed",
+  "status": "link",
   "ingest": null,
   "role": "supplementary",
   "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
  },
  {
   "id": "ifrc-go",
-  "agency": {"ne": "IFRC GO (रेडक्रस आपत्कालीन कार्य, पूरक)", "en": "IFRC GO (Red Cross emergency operations, supplementary)"},
+  "agency": {
+   "ne": "IFRC GO (रेडक्रस आपत्कालीन कार्य, पूरक)",
+   "en": "IFRC GO (Red Cross emergency operations, supplementary)"
+  },
   "url": "https://go.ifrc.org/",
   "feedType": "reference",
   "pollMinutes": null,
-  "hazards": ["multi-hazard"],
+  "hazards": [
+   "multi-hazard"
+  ],
   "trustDefault": "Official",
   "contact": "https://go.ifrc.org/",
-  "status": "listed",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
-  "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
+  "note": "Live since 13 Nov 2026: the latest Nepal emergency operations are read in the reader's browser on the Sources page. Supplementary; never a Gati alert."
  }
 ]

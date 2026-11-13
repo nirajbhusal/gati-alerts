@@ -179,7 +179,7 @@
   const footer = document.createElement("footer");
   footer.innerHTML = `<div class="wrap">
     <p class="fdisclaimer">${b("<strong>गति आफैँ कुनै आधिकारिक चेतावनी जारी गर्दैन।</strong> यसले जिम्मेवार सरकारी निकायकै सूचना, स्रोतसहित, फैलाउने र जाँच्ने काम मात्र गर्छ (विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन ऐन, २०७४)। आपत्कालमा १००, १०१, १०२ वा १२३४ मा फोन गर्नुहोस्।", "<strong>Gati does not issue official warnings.</strong> It only relays and verifies notices from the mandated government agencies, always with the source (Disaster Risk Reduction and Management Act 2074). In an emergency call 100, 101, 102 or 1234.")}</p>
-    ${PAGE === "home" ? `<p class="frecog" style="margin:0 0 12px;font-weight:600">★ ${b('<a href="'+OCTOVERSE+'" rel="noopener">GitHub Octoverse २०२६</a> मा उल्लेखित', 'Featured in <a href="'+OCTOVERSE+'" rel="noopener">GitHub Octoverse 2026</a>')} · <a href="${ROOT}about/#recognition">${b("थप", "More")}</a></p>` : ""}
+    ${PAGE === "home" ? `<p class="frecog"><a class="recog" href="${OCTOVERSE}" rel="noopener"><span class="recogs" aria-hidden="true">★</span><span class="en-only">Top Open Source Project of the Year 2026</span><span class="ne-only">२०२६ को शीर्ष ओपन सोर्स परियोजना</span><span class="recogd" aria-hidden="true"></span><img src="${ROOT}assets/img/brand/github-octoverse-2026-white.png" width="1087" height="96" alt="GitHub Octoverse 2026" loading="lazy"></a> <a class="recogm" href="${ROOT}about/#recognition">${b("यसबारे थप", "About this")}</a></p>` : ""}
     <div class="helplines" aria-label="Emergency helplines">
       ${G.helplinesHtml()}</div>
     <div>${b("गति एउटा स्वतन्त्र नागरिक परियोजना हो, कुनै सरकारी निकायको आधिकारिक प्रणाली होइन। सम्पादक: नीरज भुसाल।",
@@ -435,7 +435,7 @@
   G.verdictBadge = (k) => { const v = G.VERDICT[k] || G.VERDICT.no_info; return `<span class="vbadge v-${G.VERDICT[k] ? k : "no_info"}" style="--sc:${G.verdictColor(v[0])}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${v[3]}</svg>${G.lang === "ne" ? v[1] : v[2]}</span>`; };
   /* Source health: planned | ok | stale | down. Stale = last success older than 3x pollMinutes. */
   G.srcStatus = (src, h) => {
-    if (src.status === "listed") return "listed";
+    if (src.status === "live" || src.status === "link" || src.status === "nofeed" || src.status === "listed") return src.status;
     if (src.status === "planned" || !src.url) return "planned";
     h = h || {};
     if (!h.lastSuccess) return "down";
