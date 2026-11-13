@@ -16,7 +16,6 @@
     earthquakes: { h: [498, 302], b: ["quakes"] },
     roads: { h: null, b: ["roadmap", "roads"] } /* reserved in gati.css per width and language */,
     route: { h: [555, 360], b: ["roads"] },
-    weather: { h: [170, 155], b: ["air"] } /* the 5-day strip is drawn by pageviz.js */,
     sources: { h: [285, 206], b: ["health"] },
     contacts: { h: [169, 155], b: ["contacts"] },
     map: { h: [467, 313], b: ["agency"] },
