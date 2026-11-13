@@ -38,7 +38,7 @@ const THEMES = {
 
 /* one banner. layout "center" stacks logo and tagline; "wide" puts them side by side.
    safe = [w, h] keeps everything inside a centred box (YouTube, Facebook crops). */
-function banner({ w, h, theme = "navy", layout = "center", safe, url = true, head }) {
+function banner({ w, h, theme = "navy", layout = "center", safe, url = true, head, recog }) {
   const t = THEMES[theme], sw = safe ? safe[0] : w, sh = safe ? safe[1] : h;
   const u = Math.min(sh / (layout === "wide" ? 3.4 : head ? 7.4 : 6.2), sw / (layout === "wide" ? 15 : head ? 13 : 9.5));
   const red = theme === "red";
@@ -49,11 +49,14 @@ function banner({ w, h, theme = "navy", layout = "center", safe, url = true, hea
   const tag = `<div class="ne" style="font-weight:700;font-size:${u * 0.52}px;line-height:1.25;color:${t.fg}">सही सूचना, सही समयमा ।</div>
 <div style="font-size:${u * 0.3}px;color:${t.sub};margin-top:${u * 0.12}px">The right alert, right on time.</div>`;
   const web = url ? `<div style="font-size:${u * 0.22}px;letter-spacing:.04em;color:${t.sub};opacity:.85;margin-top:${u * 0.45}px">${SITE}</div>` : "";
+  /* link previews carry the Octoverse mention in place of the address, which every platform prints under the image anyway */
+  const B64 = (f) => "data:image/png;base64," + fs.readFileSync(path.join(__dirname, f)).toString("base64");
+  const rec = recog ? `<div style="display:inline-flex;align-items:center;gap:${u * 0.14}px;margin-top:${u * 0.42}px;padding:${u * 0.13}px ${u * 0.34}px ${u * 0.13}px ${u * 0.26}px;border-radius:99px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.22);font:700 ${u * 0.24}px Sora;color:#fff;white-space:nowrap"><span style="color:${C.orange};font-size:${u * 0.28}px;line-height:1">★</span>Featured in<img alt="" src="${B64("github-logo-white.png")}" style="height:${u * 0.34}px;display:block;margin-left:${u * 0.04}px"><img alt="" src="${B64("octoverse-2026-text-white.png")}" style="height:${u * 0.24}px;display:block"></div>` : "";
   const hd = head ? `<div class="ne" style="font-weight:700;font-size:${u * 0.95}px;line-height:1.15;color:${t.fg};margin-top:${u * 0.55}px;white-space:nowrap">${head[0]}</div>
 <div style="font-weight:600;font-size:${u * 0.36}px;line-height:1.3;color:${t.sub};margin-top:${u * 0.2}px;max-width:${sw * 0.84}px">${head[1]}</div>` : "";
   const inner = layout === "wide"
     ? `<div style="display:flex;align-items:center;gap:${u * 0.9}px">${logo}<div style="width:2px;align-self:stretch;background:${t.sub};opacity:.3"></div><div>${tag}${web}</div></div>`
-    : head ? `${logo}${hd}${web}` : `${logo}${rule}${tag}${web}`;
+    : head ? `${logo}${hd}${web}` : `${logo}${rule}${tag}${recog ? rec : web}`;
   return `<style>${BASE}body{width:${w}px;height:${h}px;background:${t.bg};overflow:hidden;position:relative}</style>
 ${motif(t.arc[0], t.arc[1])}
 <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">${inner}</div>`;
@@ -75,7 +78,7 @@ const SOCIAL = [
   ["social/covers/youtube-banner-2560x1440", { w: 2560, h: 1440, safe: [1235, 338] , layout: "wide"}],
   ["social/covers/github-social-preview-1280x640", { w: 1280, h: 640 }],
   ["social/covers/telegram-viber-cover-1280x720", { w: 1280, h: 720 }],
-  ["social/covers/share-cover-1200x630", { w: 1200, h: 630 }],
+  ["social/covers/share-cover-1200x630", { w: 1200, h: 630, recog: true }],
   ["social/covers/share-cover-light-1200x630", { w: 1200, h: 630, theme: "light" }],
   ["social/covers/presentation-title-1920x1080", { w: 1920, h: 1080 }],
   /* thumbnails */
