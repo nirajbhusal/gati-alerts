@@ -281,12 +281,8 @@
   const nxs = [...nav.querySelectorAll("a.nx")], mis = [...moremenu.querySelectorAll("a[data-id]")], moreW = morebtn.closest(".more");
   const fitNav = () => {
     if (innerWidth <= 720) { nxs.forEach((a) => (a.hidden = false)); mis.forEach((a) => (a.hidden = false)); moreW.hidden = false; return; }
-    nxs.forEach((a) => (a.hidden = false)); moreW.hidden = true;
-    const one = () => { const v = [...nav.children].filter((e) => !e.hidden && e.offsetParent && !e.classList.contains("navtop")); return v.every((e) => e.offsetTop === v[0].offsetTop); };
-    let k = nxs.length;
-    if (!one()) { moreW.hidden = false; while (k > 0 && !one()) nxs[--k].hidden = true; }
-    const out = new Set(nxs.slice(k).map((a) => a.dataset.id));
-    mis.forEach((a) => (a.hidden = !out.has(a.dataset.id)));
+    /* desktop: six main items and More. Everything else is in More and in the strip of related pages under the header. */
+    nxs.forEach((a) => (a.hidden = true)); moreW.hidden = false; mis.forEach((a) => (a.hidden = false)); const k = 0;
     morebtn.toggleAttribute("aria-current", nxs.slice(k).some((a) => a.hasAttribute("aria-current")));
     if (morebtn.hasAttribute("aria-current")) morebtn.setAttribute("aria-current", "page");
   };

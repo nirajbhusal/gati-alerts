@@ -313,7 +313,7 @@
       if (lab) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 22}" text-anchor="middle" class="ax">${G.num(dd)}</text>`;
       if (dd === 1 || i === 0) s += `<text x="${pad + i * bw + bw / 2}" y="${H + 42}" text-anchor="middle" class="ax b">${T(["","","","","","","","","सेप्टेम्बर","अक्टोबर","नोभेम्बर",""][+d.slice(5, 7) - 1] || d.slice(5, 7), ["","","","","","","","","Sep","Oct","Nov",""][+d.slice(5, 7) - 1] || d.slice(5, 7))}</text>`;
     });
-    $("cTime").innerHTML = `<div class="tlwrap">${s}</svg></div>` + `<p class="meta">${T("हरेक खण्ड एउटा सूचना हो, रङ खतराअनुसार। दायाँ छेउ आज। फोनमा दायाँबायाँ सार्न सकिन्छ।", "Each block is one alert, coloured by severity. The right edge is today. Swipe sideways on a phone.")}</p>`;
+    $("cTime").innerHTML = `<div class="tlwrap" tabindex="0" role="region" aria-label="${T("सूचनाको समयरेखा", "Alert timeline")}">${s}</svg></div>` + `<p class="meta">${T("हरेक खण्ड एउटा सूचना हो, रङ खतराअनुसार। दायाँ छेउ आज। फोनमा दायाँबायाँ सार्न सकिन्छ।", "Each block is one alert, coloured by severity. The right edge is today. Swipe sideways on a phone.")}</p>`;
     // road status: 100% stacked bar
     const rc = roads.routes.reduce((m, r) => ((m[r.status] = (m[r.status] || 0) + 1), m), {}), tot = roads.routes.length;
     { const ord = { open: 0, oneway: 1, blocked: 2, none: 3 }, segs = [...roads.routes].sort((a, b) => (ord[a.status] ?? 3) - (ord[b.status] ?? 3)).map((r) => ({ st: r.status in ord ? r.status : "none", t: (ne() ? r.name_ne : r.name_en) + ": " + T(...(G.ROADST[r.status] || G.ROADST.none)) }));
