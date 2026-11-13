@@ -40,7 +40,7 @@ jobs:
       - name: SDK packages
         run: |
           set -euo pipefail
-          yes | sdkmanager --licenses >/dev/null
+          yes | sdkmanager --licenses >/dev/null || true   # "yes" ends with a broken pipe once sdkmanager exits; pipefail would fail the step
           sdkmanager --install "platforms;android-36" "build-tools;36.0.0"
 
       - name: Decode release keystore when a secret is configured
