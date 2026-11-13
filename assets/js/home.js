@@ -359,7 +359,7 @@
     $("nActive").textContent = `(${G.num(act.length)})`;
     $("nExpired").textContent = `(${G.num(exp.length)})`;
     $("active").innerHTML = act.length ? act.map(card).join("") : PAGE === "home" ? `<div class="empty">${T(
-      "पछिल्लो ७ दिनमा गतिमा कुनै नयाँ आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", "No new official alerts in Gati in the last 7 days. That does not mean there is no risk.")}
+      d ? "छानिएको जिल्लालाई नाम लिएर गतिमा अहिले कुनै सक्रिय आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।" : "गतिमा अहिले कुनै सक्रिय आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", d ? "No active official alert in Gati names the chosen district right now. That does not mean there is no risk." : "Gati has no active official alert right now. That does not mean there is no risk.")}
       <br><span class="meta">${T("अन्तिम जाँच", "Last checked")}: ${G.npt(data.generated)} · <a href="${RT}sources/">${T("स्रोतको अवस्था", "Source health")}</a> · <a href="${RT}alerts/">${T("सबै सूचना", "All alerts")}</a></span></div>` : `<div class="empty">${T(
       "अहिले यो ठाउँका लागि गतिमा कुनै चालु सूचना छैन। तर यसको अर्थ खतरा छैन भन्ने होइन — DHM, NDRRMA र स्थानीय प्रशासनका सूचना पनि हेर्नुहोस्।",
       "Gati is not relaying any active notice for this area right now. That does not mean there is no risk; also check DHM, NDRRMA and your local administration.")}</div>`;

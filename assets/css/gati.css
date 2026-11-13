@@ -2178,3 +2178,53 @@ body[data-page=home] .langbtn{display:none}
 .cmtag{font-size:var(--fs-6);color:var(--slate);font-weight:600}
 .cmabout{font-size:var(--r-meta,.95rem)}
 .cmbadge{border:1px dashed var(--slate);border-radius:999px;padding:0 8px;font-weight:600;white-space:nowrap}
+
+/* ===== home, reordered: the map answers first, then what to do, then the detail =====
+   order: language, Nepal Now map, Before you travel, Features, At a glance, alerts and the rest */
+.homev3>.hhead,.homev3>#hmap{order:1}
+.homev3>#hinfo{order:2}
+.homev3>#services{order:3}
+.homev3>#hviz{order:4}
+.homev3>.hcols{order:5}
+/* the Weather and Roads summary cards repeated the At a glance band */
+.homev3 .hright>.hcard:not(#watch){display:none}
+.tdfold{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:4px 14px;margin:0 0 14px}
+.tdfold>summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.tdfold[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+.tdfold .tdcard{background:none;padding:6px 0 0;margin:0}
+/* picture-like graphics */
+.vzic{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vzmt{flex-direction:row!important;align-items:center;gap:10px!important}
+.vzmt>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.vzmt .vzic{color:var(--slate)}.vzmt.warn .vzic{color:#B4560A}.vzmt.bad .vzic{color:#B3261E}
+.vzdn .vzic{width:26px;height:26px;color:#B4560A}.vzdn .n .vzic{color:#3F51B5}
+html[data-theme=dark] .vzdn .vzic{color:#F2C94C}html[data-theme=dark] .vzdn .n .vzic{color:#9FA8DA}
+.vztanks{display:flex;gap:4px;justify-content:space-between}
+.vztank{margin:0;flex:1 1 0;min-width:0;text-align:center}
+.vztank svg{width:100%;max-width:74px;height:auto;display:block;margin:0 auto}
+.vztk{fill:var(--surface2)}.vztko{stroke:var(--slate);stroke-opacity:.45;stroke-width:1.5}
+.vzwl{stroke:#B4560A;stroke-width:1.8;stroke-dasharray:4 3}.vzdl{stroke:#B3261E;stroke-width:1.8}
+.vztank figcaption{display:flex;flex-direction:column;gap:1px;font-size:.74rem;line-height:1.25;margin-top:2px}
+.vztank figcaption b{font-weight:600;overflow-wrap:anywhere}.vztank figcaption span{font-variant-numeric:tabular-nums;color:var(--slate)}.vztank figcaption em{font-style:normal;font-weight:700}
+.vzgk{position:relative}
+.vztubes{display:flex;gap:10px;align-items:flex-end;justify-content:flex-start;min-height:128px}
+.vztube{margin:0;flex:0 1 96px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.vztv{font-weight:700;font-size:.8rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vztb{width:30px;height:84px;border:2px solid var(--slate);border-top:0;border-radius:0 0 12px 12px;display:flex;align-items:flex-end;overflow:hidden;background:repeating-linear-gradient(to top,transparent 0 13px,rgba(120,130,140,.28) 13px 14px)}
+.vztb i{display:block;width:100%;background:#2F8FD8;border-radius:0 0 9px 9px}
+.vztube figcaption{font-size:.74rem;line-height:1.2;overflow-wrap:break-word;hyphens:auto}
+.vzroad{position:relative;height:34px;background:#3A4350;padding:4px 0;border-radius:6px;gap:3px}
+.vzroad::after{content:"";position:absolute;left:6px;right:6px;top:50%;border-top:2px dashed rgba(255,255,255,.75);transform:translateY(-1px);pointer-events:none}
+.vzroad i{border-radius:3px;font-size:.8rem;text-shadow:0 0 3px rgba(0,0,0,.35);position:relative;z-index:1}
+.vzq{width:100%;height:auto;display:block}
+.vzax{stroke:var(--slate);stroke-opacity:.5;stroke-width:1.2;fill:none}
+.vzqt{font:500 9px Inter,Mukta,sans-serif;fill:var(--slate)}
+.vzqm{font:700 9.5px Inter,Mukta,sans-serif;fill:#fff;text-anchor:middle;paint-order:stroke;stroke:rgba(0,0,0,.25);stroke-width:1.5px}
+.vzdial{width:100%;max-width:230px;height:auto;display:block;margin:0 auto}
+.vzda{fill:none;stroke-width:15}.vzdn2{stroke:var(--ink);stroke-width:3.2;stroke-linecap:round}.vzdh{fill:var(--ink)}
+.vzdv{font:800 26px Inter,Mukta,sans-serif;text-anchor:middle}.vzdl2{font:600 11px Inter,Mukta,sans-serif;fill:var(--slate);text-anchor:middle}
+.vzaq{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;font-size:.82rem}
+.vzaq li{display:flex;align-items:center;gap:6px;font-size:.82rem!important}.vzaq i{width:10px;height:10px;border-radius:50%;flex:none}.vzaq b{margin-left:auto;font-variant-numeric:tabular-nums}
+/* the line under the old Today card repeated, and could contradict, the map's Right now panel */
+.homev3 #fresh{display:none}
+@media(min-width:900px){.hmap{min-height:calc(min(100vw - 60px, 1040px) * 0.36 + 185px)}}
