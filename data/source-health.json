@@ -1,14 +1,14 @@
 {
  "sources": {
   "dhm-hydrology": {
-   "lastSuccess": "2026-11-13T09:26:52Z",
-   "lastChecked": "2026-11-13T09:26:52Z",
+   "lastSuccess": "2026-11-14T14:58:59Z",
+   "lastChecked": "2026-11-14T14:58:59Z",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "dhm-mfd": {
-   "lastSuccess": "2026-11-13T09:27:18Z",
-   "lastChecked": "2026-11-13T09:27:18Z",
+   "lastSuccess": "2026-11-14T14:59:05Z",
+   "lastChecked": "2026-11-14T14:59:05Z",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
@@ -22,31 +22,31 @@
    "lastSuccess": "2026-11-13T03:27:21+00:00",
    "lastChecked": "2026-11-13T03:27:21+00:00",
    "lastResult": "HTTP 200",
-   "status": "ok"
+   "status": "stale"
   },
   "nepal-police": {
    "lastSuccess": "2026-11-13T03:27:22+00:00",
    "lastChecked": "2026-11-13T03:27:22+00:00",
    "lastResult": "HTTP 200",
-   "status": "ok"
+   "status": "stale"
   },
   "bipad": {
    "lastSuccess": "2026-11-13T03:27:27+00:00",
    "lastChecked": "2026-11-13T03:27:27+00:00",
    "lastResult": "HTTP 200",
-   "status": "ok"
+   "status": "stale"
   },
   "nsc": {
    "lastSuccess": "2026-11-13T03:27:28+00:00",
    "lastChecked": "2026-11-13T03:27:28+00:00",
    "lastResult": "HTTP 200",
-   "status": "ok"
+   "status": "stale"
   },
   "usgs": {
    "lastSuccess": "2026-11-13T03:27:30+00:00",
    "lastChecked": "2026-11-13T03:27:30+00:00",
    "lastResult": "HTTP 200",
-   "status": "ok"
+   "status": "stale"
   },
   "doe-air": {
    "lastSuccess": null,
@@ -64,25 +64,25 @@
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "planned",
-   "status": "planned"
+   "status": "nofeed"
   },
   "forest-fire": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "planned",
-   "status": "planned"
+   "status": "nofeed"
   },
   "avalanche": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "planned",
-   "status": "planned"
+   "status": "nofeed"
   },
   "glof": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "planned",
-   "status": "planned"
+   "status": "nofeed"
   },
   "dor-navigate": {
    "lastSuccess": "2026-11-13T03:27:47+00:00",
@@ -94,88 +94,88 @@
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "link"
   },
   "rimes": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "link"
   },
   "icimod": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "link"
   },
   "gdacs": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "live"
   },
   "nasa-firms": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "live"
   },
   "open-meteo": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "live"
   },
   "ecmwf": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "live"
   },
   "imd-rsmc": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "link"
   },
   "glofas": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "link"
   },
   "google-flood-hub": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "link"
   },
   "nasa-gpm": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "live"
   },
   "emsc": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "live"
   },
   "reliefweb": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "link"
   },
   "ifrc-go": {
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "listed",
-   "status": "listed"
+   "status": "live"
   }
  },
- "checkedAt": "2026-11-13T09:27:19Z",
+ "checkedAt": "2026-11-14T14:59:06Z",
  "note": "Checked by GitHub Actions runners (outside Nepal). Some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
- "writtenAt": "2026-11-13T09:27:19Z"
+ "writtenAt": "2026-11-14T14:59:06Z"
 }
