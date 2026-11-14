@@ -10,7 +10,7 @@
 Everything shown comes from the CAP message: headline, agency, source link, source time.
 Nothing is invented. Usage: python scripts/render.py
 """
-import json, pathlib, datetime as dt, html, urllib.parse, textwrap
+import json, pathlib, datetime as dt, html, urllib.parse, textwrap, re
 from PIL import Image, ImageDraw, ImageFont
 import io, segno
 
@@ -206,6 +206,9 @@ def today_card(alerts, now):
     local = now.astimezone(NPT)
     stamp = f"{local.day} {MON_EN[local.month - 1]} {local.year}, {local.strftime('%I:%M %p').lstrip('0')} NPT"
 
+    short = lambda t: re.split(r"\s*\(|,", t)[0].strip()   # "10 Nov (Kartik 24), readings 8:40…" -> "10 Nov": the long form was cut off with "…"
+    today = local.strftime("%Y-%m-%d")
+
     def draw_card(W, H, out):
         im = Image.new("RGB", (W, H), "#0B1424"); d = ImageDraw.Draw(im)
         sq = H > 800
@@ -226,7 +229,11 @@ def today_card(alerts, now):
                 if len(pts) > 2:
                     d.polygon(pts, fill=col, outline="#0B1424")
         named = len(top)
-        cap = (f"{named} जिल्लामा सक्रिय आधिकारिक सूचना".translate(DEV) if named else "कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन") + " · " + (f"{named} district{'s' if named != 1 else ''} named in an active official alert" if named else "No district is named in an active official alert")
+        nm = {f["properties"]["code"]: f["properties"] for f in geo["features"]}
+        who = sorted(top, key=lambda c: -rank.get(top[c], 0))
+        names_ne = ": " + ", ".join(nm[c]["ne"] for c in who if c in nm) if 0 < named <= 4 else ""   # name the coloured districts; the map alone does not say which they are
+        names_en = ": " + ", ".join(nm[c]["en"] for c in who if c in nm) if 0 < named <= 4 else ""
+        cap = (f"{named} जिल्लामा सक्रिय आधिकारिक सूचना".translate(DEV) + names_ne if named else "कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन") + " · " + (f"{named} district{'s' if named != 1 else ''} named in an active official alert" + names_en if named else "No district is named in an active official alert")
         for n, ln in enumerate(wrap(d, cap, font("Regular", 18), W - 2 * pad if sq else mw, 3)):
             d.text((pad if sq else mx, my + mh + 8 + n * 24), ln, font=font("Regular", 18), fill="#9AA6BE")
         # facts
@@ -248,23 +255,24 @@ def today_card(alerts, now):
             for n, dayx in enumerate(b5["days"][:5]):
                 c = LV.get(dayx["level"], LV["green"])
                 bx = fx + n * (cw + 8)
-                d.rounded_rectangle([bx, y + 34, bx + cw, y + 34 + 56], radius=10, fill="#121C30", outline="#24314A")
+                d.rounded_rectangle([bx, y + 34, bx + cw, y + 34 + 56], radius=10, fill="#121C30", outline="#FFFFFF" if dayx["ad"] == today else "#24314A", width=2 if dayx["ad"] == today else 1)
                 d.rounded_rectangle([bx, y + 34, bx + cw, y + 34 + 12], radius=6, fill=c[0])
                 lab = str(int(dayx["ad"][8:])) + " " + MON_EN[int(dayx["ad"][5:7]) - 1]
                 d.text((bx + cw / 2, y + 34 + 35), lab, font=font("SemiBold", 20), fill="#FFFFFF", anchor="mm")
             worst = next((l for l in ("red", "orange", "yellow") if any(x["level"] == l for x in b5["days"])), "green")
-            d.text((fx, y + 96), LV[worst][1] + " · " + (LV[worst][2] if worst != "green" else "No warning on all five days"), font=font("Bold", 22), fill="#FFFFFF")
+            wd = ", ".join(str(int(x["ad"][8:])) + " " + MON_EN[int(x["ad"][5:7]) - 1] for x in b5["days"][:5] if x["level"] == worst)   # say which day carries the warning
+            d.text((fx, y + 96), (wd + ": " if worst != "green" else "") + LV[worst][1] + " · " + (LV[worst][2] if worst != "green" else "No warning on all five days"), font=font("Bold", 22), fill="#FFFFFF")
             y += 142
         if rv and rv.get("gauges"):
             hot = sum(1 for g in rv["gauges"] if g["level"] >= g["warning"]); n = len(rv["gauges"])
             y = fact(y, "DHM · नदी · Rivers", f"{n - hot}/{n} केन्द्र चेतावनी तहभन्दा तल".translate(DEV),
-                     (f"{hot} of {n} stations above warning level" if hot else f"All {n} stations shown are below warning level") + " · " + rv.get("as_of_en", ""), "")
+                     (f"{hot} of {n} stations above warning level" if hot else f"All {n} stations shown are below warning level") + " · readings of " + short(rv.get("as_of_en", "")), "")
         if sq:
             fx, y = W // 2 + 12, fy   # second column
         if rd and rd.get("routes"):
             c = lambda st: sum(1 for r in rd["routes"] if r["status"] == st)
             y = fact(y, "नेपाल प्रहरी, सडक विभाग · सडक · Roads", f"{c('blocked')} अवरुद्ध · {c('oneway')} एकतर्फी".translate(DEV),
-                     f"{c('blocked')} blocked, {c('oneway')} one-way, {c('none')} with no report · " + rd.get("as_of_en", ""), "")
+                     f"{c('blocked')} blocked, {c('oneway')} one-way, {c('none')} with no report · " + short(rd.get("as_of_en", "")), "")
         o = (wx or {}).get("station_obs")
         if o and o.get("stations") and y + 92 < H - 84:
             wet = sorted([s for s in o["stations"] if (s.get("rain_mm") or 0) > 0], key=lambda s: -s["rain_mm"])
