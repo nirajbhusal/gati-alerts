@@ -1,7 +1,106 @@
 {
- "generated": "2026-11-14T03:08:43+00:00",
- "count": 101,
+ "generated": "2026-11-14T06:29:51+00:00",
+ "count": 102,
  "alerts": [
+  {
+   "identifier": "np.gati.verified-landslide-gorkha-dharche-2026-11-14",
+   "sender": "nirajbhusal.github.io",
+   "sent": "2026-11-14T11:30:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Published by Gati (गति), an independent citizen verification project, as a Verified report: confirmed manually by the Gati maintainer on 14 Nov 2026. This is not an official warning and no written notice from a government agency had been found when it was published (Disaster Risk Reduction and Management Act 2074). It will be replaced by the agency's notice when one is issued.",
+   "references": null,
+   "file": "data/alerts/verified-landslide-gorkha-dharche-2026-11-14.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "पहिरो",
+     "responseType": "Monitor",
+     "urgency": "Past",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-14T09:00:00+05:45",
+     "onset": "2026-11-14T09:00:00+05:45",
+     "expires": "2026-11-15T12:00:00+05:45",
+     "contact": "Nepal Police · 100 · NDRRMA 1155",
+     "senderName": "गति · प्रमाणित रिपोर्ट (आधिकारिक सूचना होइन)",
+     "headline": "गोरखा, धार्चे गाउँपालिका-१ मा आज बिहान सुक्खा पहिरो खसेको छ",
+     "description": "गोरखाको धार्चे गाउँपालिका वडा नं. १ मा आज (२०८३ कात्तिक २८, शनिबार) बिहान सुक्खा पहिरो खसेको छ। यो जानकारी गतिका सञ्चालकले आफैँ बुझेर पुष्टि गरेका हुन्। सरकारी निकायको लिखित सूचना अहिलेसम्म भेटिएको छैन; क्षति, ठ्याक्कै स्थान र नदीको अवस्थाबारे आधिकारिक विवरण आएपछि यहाँ थपिनेछ।",
+     "instruction": "पहिरो गएको भिर र त्यसमुनिको नदी किनारबाट टाढा रहनुहोस्; सुक्खा पहिरो फेरि खस्न सक्छ। उत्तरी गोरखातर्फ यात्रा गर्नुअघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+     "params": {
+      "gati:trustLevel": "Verified",
+      "gati:sourceUrl": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+      "gati:sourceTime": "2026-11-14T09:00:00+05:45",
+      "gati:hazard": "landslide",
+      "gati:summary160": "गोरखा, धार्चे-१ मा आज बिहान सुक्खा पहिरो (प्रमाणित रिपोर्ट; आधिकारिक सूचना आउन बाँकी)"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला, धार्चे गाउँपालिका-१",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Landslide",
+     "responseType": "Monitor",
+     "urgency": "Past",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-14T09:00:00+05:45",
+     "onset": "2026-11-14T09:00:00+05:45",
+     "expires": "2026-11-15T12:00:00+05:45",
+     "contact": "Nepal Police · 100 · NDRRMA 1155",
+     "senderName": "Gati · verified report (not an official notice)",
+     "headline": "Gorkha, Dharche Rural Municipality-1: a dry landslide fell this morning",
+     "description": "A dry landslide fell this morning (Saturday 14 Nov 2026, Kartik 28) in ward 1 of Dharche Rural Municipality, Gorkha. This was confirmed manually by the Gati maintainer. No written notice from a government agency has been found yet; official details on damage, the exact location and the state of the river will be added here when they are issued.",
+     "instruction": "Keep away from the slope and the riverbank below it; a dry landslide can fall again. Check with local police (100) before travelling towards northern Gorkha.",
+     "web": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+     "params": {
+      "gati:trustLevel": "Verified",
+      "gati:sourceUrl": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+      "gati:sourceTime": "2026-11-14T09:00:00+05:45",
+      "gati:hazard": "landslide",
+      "gati:summary160": "Gorkha, Dharche-1: dry landslide this morning (verified report; official notice awaited)"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district, Dharche Rural Municipality-1",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Verified",
+   "state": null,
+   "hazard": "landslide",
+   "severity": "Minor",
+   "expires": "2026-11-15T12:00:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला, धार्चे गाउँपालिका-१",
+     "en": "Gorkha district, Dharche Rural Municipality-1"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-14",
    "sender": "hydrology.gov.np",
@@ -294,7 +393,7 @@
    "districts": [
     "NP0436"
    ],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": "NP0436",
