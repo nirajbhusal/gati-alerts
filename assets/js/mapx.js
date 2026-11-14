@@ -82,7 +82,7 @@
      About 10 km grid and several hours behind real time. Context only, never a warning. Own pane so the grey basemap filter does not touch it. */
   map.createPane("fire").style.zIndex = 450; map.getPane("fire").style.pointerEvents = "none"; map.createPane("sat").style.zIndex = 250; map.getPane("sat").style.pointerEvents = "none";
   const SATB = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best", SATL = "IMERG_Precipitation_Rate_30min", SATSTEP = 18e5;
-  const FIRED = new Date(Date.now() - 864e5).toISOString().slice(0, 10); /* yesterday (UTC): the last complete day of detections */
+  const FIRED = new Date(Date.now() + G.tzMs - 864e5).toISOString().slice(0, 10); /* yesterday by Nepal time: the last complete day of detections */
   let satLatest = null, satT = null, satLoading = false, satFail = false;
   const satIso = (ms) => new Date(ms).toISOString().slice(0, 19) + "Z";
   function loadSat() { if (satLoading) return; satLoading = true; const d = (o) => new Date(Date.now() + o * 864e5).toISOString().slice(0, 10);

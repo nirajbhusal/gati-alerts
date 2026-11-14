@@ -4,8 +4,11 @@
 name: DHM watch
 on:
   schedule:
-    - cron: "0 */2 * * *"   # every 2 hours, UTC
+    - cron: "0 */2 * * *"   # every 2 hours; GitHub reads cron in UTC, so runs fall at :45 past odd hours NPT (7:45, 9:45 ... 19:45), after DHM's 8 AM and 6 PM bulletins
   workflow_dispatch:
+env:
+  TZ: Asia/Kathmandu   # Gati runs on Nepal time (UTC+5:45)
+
 permissions:
   contents: read
 jobs:

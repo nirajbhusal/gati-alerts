@@ -11,6 +11,9 @@ on:
       - "android/**"
       - ".github/workflows/android.yml"
 
+env:
+  TZ: Asia/Kathmandu   # Gati runs on Nepal time (UTC+5:45)
+
 permissions:
   contents: read
 
