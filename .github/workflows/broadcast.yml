@@ -7,7 +7,7 @@ on:
     branches: [main]
     paths: ["data/alerts.json"]
   schedule:
-    - cron: "17,47 * * * *"   # safety net, in case a push run was missed
+    - cron: "17,47 * * * *"   # twice an hour (GitHub cron is UTC; :02 and :32 NPT). Safety net, in case a push run was missed
   workflow_dispatch:
     inputs:
       test:
@@ -20,6 +20,7 @@ concurrency:
   group: broadcast-alerts
   cancel-in-progress: false
 env:
+  TZ: Asia/Kathmandu   # Gati runs on Nepal time (UTC+5:45)
   STATE: state/broadcast-state.json
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -76,5 +77,5 @@ jobs:
         if: steps.plan.outputs.due != '0' && steps.plan.outputs.due != ''
         run: |
           git -C state add -A
-          git -C state diff --cached --quiet || git -C state commit -q -m "Broadcast state $(date -u +%Y-%m-%dT%H:%MZ)"
+          git -C state diff --cached --quiet || git -C state commit -q -m "Broadcast state $(date '+%Y-%m-%d %H:%M') NPT"
           git -C state push -q origin bot/broadcast-state

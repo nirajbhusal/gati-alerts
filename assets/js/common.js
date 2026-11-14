@@ -15,7 +15,7 @@
   /* Pages mark a helpline block with data-helplines ("short" = numbers only); the static links inside are the no-script fallback. */
   document.querySelectorAll("[data-helplines]").forEach((el) => { el.innerHTML = G.helplinesHtml(el.dataset.helplines === "short"); });
   /* Agency names, defined first so every page script (Today card included) can use them, even on cached loads */
-  const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS" };
+  const BAG = { "hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": ["नेपाल प्रहरी", "Nepal Police"], "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS", "nirajbhusal.github.io": ["गति (प्रमाणित)", "Gati (verified)"] };
   G.agencyOf = (a) => { const v = BAG[a.sender] || a.sender; return Array.isArray(v) ? (G.lang === "ne" ? v[0] : v[1]) : v; };
   /* Lists and cards show the short agency name once, as a label; the full name stays on the alert's own page and in
      Details. A headline that starts with that same short name ("DHM: …") drops the repeat. */

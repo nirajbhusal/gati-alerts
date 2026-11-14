@@ -1,7 +1,298 @@
 {
- "generated": "2026-11-13T15:51:51+00:00",
- "count": 100,
+ "generated": "2026-11-14T06:29:51+00:00",
+ "count": 102,
  "alerts": [
+  {
+   "identifier": "np.gati.verified-landslide-gorkha-dharche-2026-11-14",
+   "sender": "nirajbhusal.github.io",
+   "sent": "2026-11-14T11:30:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Published by Gati (गति), an independent citizen verification project, as a Verified report: confirmed manually by the Gati maintainer on 14 Nov 2026. This is not an official warning and no written notice from a government agency had been found when it was published (Disaster Risk Reduction and Management Act 2074). It will be replaced by the agency's notice when one is issued.",
+   "references": null,
+   "file": "data/alerts/verified-landslide-gorkha-dharche-2026-11-14.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "पहिरो",
+     "responseType": "Monitor",
+     "urgency": "Past",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-14T09:00:00+05:45",
+     "onset": "2026-11-14T09:00:00+05:45",
+     "expires": "2026-11-15T12:00:00+05:45",
+     "contact": "Nepal Police · 100 · NDRRMA 1155",
+     "senderName": "गति · प्रमाणित रिपोर्ट (आधिकारिक सूचना होइन)",
+     "headline": "गोरखा, धार्चे गाउँपालिका-१ मा आज बिहान सुक्खा पहिरो खसेको छ",
+     "description": "गोरखाको धार्चे गाउँपालिका वडा नं. १ मा आज (२०८३ कात्तिक २८, शनिबार) बिहान सुक्खा पहिरो खसेको छ। यो जानकारी गतिका सञ्चालकले आफैँ बुझेर पुष्टि गरेका हुन्। सरकारी निकायको लिखित सूचना अहिलेसम्म भेटिएको छैन; क्षति, ठ्याक्कै स्थान र नदीको अवस्थाबारे आधिकारिक विवरण आएपछि यहाँ थपिनेछ।",
+     "instruction": "पहिरो गएको भिर र त्यसमुनिको नदी किनारबाट टाढा रहनुहोस्; सुक्खा पहिरो फेरि खस्न सक्छ। उत्तरी गोरखातर्फ यात्रा गर्नुअघि स्थानीय प्रहरीसँग बुझ्नुहोस् (१००)।",
+     "web": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+     "params": {
+      "gati:trustLevel": "Verified",
+      "gati:sourceUrl": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+      "gati:sourceTime": "2026-11-14T09:00:00+05:45",
+      "gati:hazard": "landslide",
+      "gati:summary160": "गोरखा, धार्चे-१ मा आज बिहान सुक्खा पहिरो (प्रमाणित रिपोर्ट; आधिकारिक सूचना आउन बाँकी)"
+     },
+     "areas": [
+      {
+       "desc": "गोरखा जिल्ला, धार्चे गाउँपालिका-१",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Landslide",
+     "responseType": "Monitor",
+     "urgency": "Past",
+     "severity": "Minor",
+     "certainty": "Observed",
+     "effective": "2026-11-14T09:00:00+05:45",
+     "onset": "2026-11-14T09:00:00+05:45",
+     "expires": "2026-11-15T12:00:00+05:45",
+     "contact": "Nepal Police · 100 · NDRRMA 1155",
+     "senderName": "Gati · verified report (not an official notice)",
+     "headline": "Gorkha, Dharche Rural Municipality-1: a dry landslide fell this morning",
+     "description": "A dry landslide fell this morning (Saturday 14 Nov 2026, Kartik 28) in ward 1 of Dharche Rural Municipality, Gorkha. This was confirmed manually by the Gati maintainer. No written notice from a government agency has been found yet; official details on damage, the exact location and the state of the river will be added here when they are issued.",
+     "instruction": "Keep away from the slope and the riverbank below it; a dry landslide can fall again. Check with local police (100) before travelling towards northern Gorkha.",
+     "web": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+     "params": {
+      "gati:trustLevel": "Verified",
+      "gati:sourceUrl": "https://github.com/nirajbhusal/gati-alerts/blob/main/docs/VERIFICATION.md",
+      "gati:sourceTime": "2026-11-14T09:00:00+05:45",
+      "gati:hazard": "landslide",
+      "gati:summary160": "Gorkha, Dharche-1: dry landslide this morning (verified report; official notice awaited)"
+     },
+     "areas": [
+      {
+       "desc": "Gorkha district, Dharche Rural Municipality-1",
+       "circles": [],
+       "geocodes": {
+        "NP-DISTRICT": "NP0436"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Verified",
+   "state": null,
+   "hazard": "landslide",
+   "severity": "Minor",
+   "expires": "2026-11-15T12:00:00+05:45",
+   "districts": [
+    "NP0436"
+   ],
+   "expired": false,
+   "areas": [
+    {
+     "code": "NP0436",
+     "circles": [],
+     "ne": "गोरखा जिल्ला, धार्चे गाउँपालिका-१",
+     "en": "Gorkha district, Dharche Rural Municipality-1"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.dhm-5day-bulletin-2026-11-14",
+   "sender": "hydrology.gov.np",
+   "sent": "2026-11-14T08:55:00+05:45",
+   "status": "Actual",
+   "msgType": "Update",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: DHM Meteorological Forecasting Division (dhm.gov.np/mfd). Source: https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12426",
+   "references": "hydrology.gov.np,np.gati.dhm-5day-bulletin-2026-11-13,2026-11-13T09:20:00+05:45",
+   "file": "data/alerts/dhm-5day-bulletin-2026-11-14.xml",
+   "info": {
+    "ne": {
+     "category": "Met",
+     "event": "मौसम पूर्वानुमान बुलेटिन (५ दिने)",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Minor",
+     "certainty": "Likely",
+     "effective": "2026-11-14T08:00:00+05:45",
+     "onset": "2026-11-14T08:00:00+05:45",
+     "expires": "2026-11-18T23:59:00+05:45",
+     "contact": "Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155",
+     "senderName": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा · गति मार्फत प्रसारित",
+     "headline": "DHM: भोलि कात्तिक २९ (नोभेम्बर १५) मा सुदूरपश्चिम, कर्णाली र गण्डकीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्), बाँकी दिन देशभर चेतावनी छैन",
+     "description": "अद्यावधिक, आधिकारिक (DHM मौसम पूर्वानुमान महाशाखाको 'आगामी पाँच दिनका लागि मौसम चेतावनी', जारी २०८३ कार्तिक २८ बिहान ८:०० बजे, dhm.gov.np/mfd मा; कात्तिक २७ को बुलेटिनको ठाउँमा): कात्तिक २८ (शनिबार, १४ नोभेम्बर) देखि मंसिर २ (बुधबार, १८ नोभेम्बर) सम्म चेतावनी नक्सामा देशभर हरियो (चेतावनी छैन) छ, केवल कात्तिक २९ (आइतबार, १५ नोभेम्बर) को नक्सामा सुदूरपश्चिम, कर्णाली र गण्डकीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो (अद्यावधिक रहनुहोस्; सतर्क वा प्रतिकार्य तह होइन), हिमपातको चिह्नसहित। रातो/सुन्तला चेतावनी छैन।",
+     "instruction": "हिमाली क्षेत्रमा यात्रा गर्नुअघि पछिल्लो पूर्वानुमान हेर्नुहोस् र हिमपातको तयारी राख्नुहोस् (फोन ११५५)।",
+     "web": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12426",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12426",
+      "gati:sourceTime": "2026-11-14T08:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/14/warning-map-day-1-1794622856119.png",
+      "gati:summary160": "DHM: कात्तिक २९ मा सुदूरपश्चिम, कर्णाली र गण्डकीका उत्तरी हिमाली भाग पहेँलो (अद्यावधिक रहनुहोस्; हिमपात); बाँकी दिन चेतावनी छैन"
+     },
+     "areas": [
+      {
+       "desc": "नेपाल; कात्तिक २९ मा सुदूरपश्चिम, कर्णाली र गण्डकीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो, बाँकी हरियो",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Met",
+     "event": "Weather forecast bulletin (5 days)",
+     "responseType": "Monitor",
+     "urgency": "Future",
+     "severity": "Minor",
+     "certainty": "Likely",
+     "effective": "2026-11-14T08:00:00+05:45",
+     "onset": "2026-11-14T08:00:00+05:45",
+     "expires": "2026-11-18T23:59:00+05:45",
+     "contact": "Meteorological Forecasting Division, Babarmahal, Kathmandu · phone 1155",
+     "senderName": "Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati",
+     "headline": "DHM: parts of the northern mountain districts of Sudurpashchim, Karnali and Gandaki yellow (be updated) tomorrow, Kartik 29 (15 Nov); no warning elsewhere or on other days",
+     "description": "Update, official (DHM Meteorological Forecasting Division 'weather warning for the next five days', issued 2083 Kartik 28 at 8:00 AM on dhm.gov.np/mfd; replaces the Kartik 27 bulletin): the warning maps for Kartik 28 (Sat 14 Nov) to Mangsir 2 (Wed 18 Nov) are green (no warning) across the country, except Kartik 29 (Sun 15 Nov), when parts of the northern mountain districts of Sudurpashchim, Karnali and Gandaki are yellow (be updated; not a be-prepared or take-action level), with snow symbols. No orange or red warning.",
+     "instruction": "Check the latest forecast and prepare for snow before travelling in the high mountains (phone 1155).",
+     "web": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12426",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12426",
+      "gati:sourceTime": "2026-11-14T08:00:00+05:45",
+      "gati:hazard": "weather",
+      "gati:bulletinFile": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/14/warning-map-day-1-1794622856119.png",
+      "gati:summary160": "DHM: yellow (be updated; snow) for parts of northern Sudurpashchim, Karnali and Gandaki mountains on Kartik 29; no warning on other days"
+     },
+     "areas": [
+      {
+       "desc": "Nepal; Kartik 29 yellow for parts of northern mountain districts of Sudurpashchim, Karnali and Gandaki, green elsewhere",
+       "circles": [],
+       "geocodes": {
+        "ISO3166-1": "NP"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "weather",
+   "severity": "Minor",
+   "expires": "2026-11-18T23:59:00+05:45",
+   "districts": [],
+   "expired": false,
+   "areas": [
+    {
+     "code": null,
+     "circles": [],
+     "ne": "नेपाल; कात्तिक २९ मा सुदूरपश्चिम, कर्णाली र गण्डकीका उत्तरी हिमाली जिल्लाका केही भाग पहेँलो, बाँकी हरियो",
+     "en": "Nepal; Kartik 29 yellow for parts of northern mountain districts of Sudurpashchim, Karnali and Gandaki, green elsewhere"
+    }
+   ],
+   "refIds": [
+    "np.gati.dhm-5day-bulletin-2026-11-13"
+   ],
+   "chain": [
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-25",
+     "msgType": "Alert",
+     "sent": "2026-10-25T08:41:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-26",
+     "msgType": "Update",
+     "sent": "2026-10-26T08:22:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-27",
+     "msgType": "Update",
+     "sent": "2026-10-27T08:31:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-10-31",
+     "msgType": "Update",
+     "sent": "2026-10-31T18:52:50+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-02",
+     "msgType": "Update",
+     "sent": "2026-11-02T08:03:05+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-03",
+     "msgType": "Update",
+     "sent": "2026-11-03T08:01:58+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-04",
+     "msgType": "Update",
+     "sent": "2026-11-04T07:14:11+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-05",
+     "msgType": "Update",
+     "sent": "2026-11-05T07:31:16+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-06",
+     "msgType": "Update",
+     "sent": "2026-11-06T07:35:19+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-08",
+     "msgType": "Update",
+     "sent": "2026-11-08T07:18:34+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-09",
+     "msgType": "Update",
+     "sent": "2026-11-09T07:45:28+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-10",
+     "msgType": "Update",
+     "sent": "2026-11-10T07:54:35+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-12",
+     "msgType": "Update",
+     "sent": "2026-11-12T08:22:04+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-13",
+     "msgType": "Update",
+     "sent": "2026-11-13T09:20:00+05:45",
+     "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
+    }
+   ],
+   "supersededBy": null
+  },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-13-0900",
    "sender": "nepalpolice.gov.np",
@@ -102,7 +393,7 @@
    "districts": [
     "NP0436"
    ],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": "NP0436",
@@ -340,7 +631,7 @@
    "districts": [
     "NP0551"
    ],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": "NP0551",
@@ -576,9 +867,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": null
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-12-0900",
@@ -1154,9 +1451,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.usgs-quake-us7000txpk-2026-11-12",
@@ -2517,9 +2820,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-09-0840",
@@ -2845,7 +3154,7 @@
    "severity": "Minor",
    "expires": "2026-11-13T23:59:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
@@ -2941,9 +3250,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-chitwan-prithvi-ghopte-bhir-2026-11-09-0500",
@@ -3419,9 +3734,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-07-2049",
@@ -3843,9 +4164,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-06-0720",
@@ -4612,9 +4939,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.dhm-tihar-special-bulletin-1-2026-11-04",
@@ -4897,9 +5230,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-04-0540",
@@ -5833,9 +6172,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-11-02-1520",
@@ -6497,9 +6842,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.dhm-special-bulletin-1-cyclone-murasu-2026-11-01",
@@ -7897,9 +8248,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.dhm-rivers-warning-level-2026-10-31",
@@ -10392,9 +10749,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.police-road-aarughat-soti-2026-10-26-2008",
@@ -11052,9 +11415,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-26",
@@ -11920,9 +12289,15 @@
      "msgType": "Update",
      "sent": "2026-11-13T09:20:00+05:45",
      "state": null
+    },
+    {
+     "id": "np.gati.dhm-5day-bulletin-2026-11-14",
+     "msgType": "Update",
+     "sent": "2026-11-14T08:55:00+05:45",
+     "state": null
     }
    ],
-   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-13"
+   "supersededBy": "np.gati.dhm-5day-bulletin-2026-11-14"
   },
   {
    "identifier": "np.gati.reported-dhm-24h-forecast-2026-10-25",
