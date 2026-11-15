@@ -6,7 +6,7 @@
   const G = window.Gati; if (!G) return;
   const R = G.root, T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, N = (s) => G.num(String(s));
   const top = document.getElementById("flnow"), grid = document.getElementById("flgrid"), links = document.getElementById("fllinks");
-  if (!top || !grid) return;
+  const page = !!(top && grid), subs = [];
   const LIVE = "https://raw.githubusercontent.com/nirajbhusal/gati-alerts/bot/live/airport-weather.json";
   /* Domestic flights in Nepal are flown by sight. About 5 km of visibility is the usual working minimum; below about 1.5 km
      almost nothing moves. These bands describe the weather, not any airline's or the tower's decision. */
@@ -43,6 +43,8 @@
       : `<p class="na">${T("अहिले जानकारी ल्याउन सकिएन।", "Could not load data right now.")}</p>`}</article>`; };
 
   function draw() {
+    subs.forEach((f) => { try { f(); } catch (e) {} });
+    if (!page) return;
     const kt = AP.find((a) => a.icao === "VNKT"), o = kt && official(kt);
     if (o) { const c = catOf(o), k = CAT[c];
       top.innerHTML = G.viz.answer({ tone: c === "good" ? "calm" : c === "marg" ? "warn" : "bad", word: T(k[0], k[1]),
@@ -57,10 +59,16 @@
       <p class="meta">${T("विमानस्थल वा एयरलाइन्सले खुला फिड दिएपछि गतिले उडानको अवस्था यहीँ देखाउनेछ।", "If the airport or an airline publishes an open feed, Gati will show flight status here.")}</p>`;
   }
 
-  G.json("data/airports.json").then((d) => { AP = d.airports; draw();
-    fetch(LIVE, { cache: "no-store" }).then((r) => (r.ok ? r.json() : Promise.reject())).catch(() => G.json("data/airport-weather.json")).then((m) => { MET = m; draw(); }).catch(() => {});
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${AP.map((a) => a.ll[0]).join(",")}&longitude=${AP.map((a) => a.ll[1]).join(",")}&current=visibility,cloud_cover_low,wind_speed_10m,wind_gusts_10m,weather_code,temperature_2m&hourly=visibility,cloud_cover_low,weather_code,wind_gusts_10m&forecast_hours=4&timezone=Asia%2FKathmandu`)
-      .then((r) => (r.ok ? r.json() : Promise.reject())).then((x) => { MOD = Array.isArray(x) ? x : [x]; modAt = Date.now(); draw(); }).catch(() => { err = true; draw(); });
-  });
+  let started = false;
+  const load = () => { if (started) return; started = true;
+    G.json("data/airports.json").then((d) => { AP = d.airports; draw();
+      fetch(LIVE, { cache: "no-store" }).then((r) => (r.ok ? r.json() : Promise.reject())).catch(() => G.json("data/airport-weather.json")).then((m) => { MET = m; draw(); }).catch(() => {});
+      fetch(`https://api.open-meteo.com/v1/forecast?latitude=${AP.map((a) => a.ll[0]).join(",")}&longitude=${AP.map((a) => a.ll[1]).join(",")}&current=visibility,cloud_cover_low,wind_speed_10m,wind_gusts_10m,weather_code,temperature_2m&hourly=visibility,cloud_cover_low,weather_code,wind_gusts_10m&forecast_hours=4&timezone=Asia%2FKathmandu`)
+        .then((r) => (r.ok ? r.json() : Promise.reject())).then((x) => { MOD = Array.isArray(x) ? x : [x]; modAt = Date.now(); draw(); }).catch(() => { err = true; draw(); });
+    });
+  };
+  /* shared with the home page card and the Map's airport layer */
+  G.airwx = { CAT, km, load, on: (f) => subs.push(f), all: () => AP.map((a, i) => { const o = official(a) || model(a, i); return { a, o, cat: o ? catOf(o) : "na" }; }) };
+  if (page) load();
   if (G.onLang) G.onLang(draw);
 })();

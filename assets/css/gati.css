@@ -2237,3 +2237,5 @@ html[data-theme=dark] .sst-link,html[data-theme=dark] .sst-nofeed{background:rgb
 .flraw{margin-top:4px;font-size:var(--fs-6)}.flraw summary{cursor:pointer;color:var(--slate)}.flraw code{display:block;margin-top:4px;overflow-wrap:anywhere}
 .fll{margin:8px 0;padding-left:1.2em;line-height:1.9}
 .flgrid>.na{grid-column:1/-1}
+.vzfl{grid-template-columns:1fr}
+.mxair span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;color:#fff;font-size:13px;line-height:1;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
