@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-15T03:41:56+00:00",
+ "generated": "2026-11-15T09:14:20+00:00",
  "count": 105,
  "alerts": [
   {
@@ -690,7 +690,7 @@
    "districts": [
     "NP0436"
    ],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": "NP0436",
