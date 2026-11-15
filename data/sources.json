@@ -527,5 +527,24 @@
   "ingest": null,
   "role": "supplementary",
   "note": "Live since 13 Nov 2026: the latest Nepal emergency operations are read in the reader's browser on the Sources page. Supplementary; never a Gati alert."
+ },
+ {
+  "id": "awc-metar",
+  "agency": {
+   "ne": "विमानस्थलको मौसम प्रतिवेदन (METAR), NOAA Aviation Weather Center मार्फत",
+   "en": "Airport weather reports (METAR), via NOAA Aviation Weather Center"
+  },
+  "url": "https://aviationweather.gov/data/metar/?ids=VNKT",
+  "feedType": "reference",
+  "pollMinutes": null,
+  "hazards": [
+   "weather"
+  ],
+  "trustDefault": "Official",
+  "contact": "https://www.emsc-csem.org/",
+  "status": "live",
+  "ingest": null,
+  "role": "supplementary",
+  "note": "Live since 15 Nov 2026: Kathmandu airport's own weather report, fetched every half hour for the Flights page. Other Nepali airports do not publish to this feed; they show a labelled model estimate."
  }
 ]

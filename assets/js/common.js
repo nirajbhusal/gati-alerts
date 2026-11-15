@@ -52,6 +52,7 @@
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
     ["route", "route/", "मार्ग जाँच", "Route check"],
     ["trek", "trek/", "पदमार्ग", "Trekking"],
+    ["flights", "flights/", "उडान", "Flights"],
     ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"],
     ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"],
     ["safety", "safety/", "के गर्ने", "What to do"],
@@ -64,7 +65,7 @@
   const AREAS = [
     ["alerts", "सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["notifications", "notifications/", "मेरा लागि", "For me"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"]]],
     ["hazards", "मौसम र जोखिम", "Hazards", [["weather", "weather/", "मौसम र हावा", "Weather & air"], ["rivers", "rivers/", "नदी", "Rivers"], ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"]]],
-    ["travel", "यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["trek", "trek/", "पदमार्ग", "Trekking"], ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"]]],
+    ["travel", "यात्रा", "Travel", [["roads", "roads/", "सडक", "Roads"], ["route", "route/", "मार्ग जाँच", "Route check"], ["flights", "flights/", "उडान", "Flights"], ["trek", "trek/", "पदमार्ग", "Trekking"], ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"]]],
     ["help", "सहायता", "Help", [["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency numbers"], ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"], ["safety", "safety/", "के गर्ने", "What to do"]]],
     ["reports", "नागरिक रिपोर्ट", "Reports", [["report", "report/", "रिपोर्ट गर्नुहोस्", "Report a hazard"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"]]],
     ["about", "बारेमा र थप", "About and more", [["about", "about/", "गतिको बारेमा", "About Gati"], ["sources", "sources/", "स्रोत", "Sources"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["log", "log/", "परिवर्तन लग", "Change log"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["patro", "patro/", "पात्रो", "Patro"], ["lite", "lite/", "गति Lite", "Gati Lite"]]],

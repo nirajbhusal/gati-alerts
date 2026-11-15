@@ -77,12 +77,13 @@
     ctl.addTo(map);
   })();
   L.control.scale({ imperial: false }).addTo(map);
-  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "sat", "fire", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
+  const LG = {}; ["prov", "alerts", "wx", "rv", "rd", "eq", "aq", "sat", "fire", "air", "hos", "heli", "lab", "focus"].forEach((k) => (LG[k] = L.layerGroup().addTo(map)));
   /* Satellite rain: NASA GPM IMERG half-hourly estimate, served as open map tiles by NASA GIBS (no key).
      About 10 km grid and several hours behind real time. Context only, never a warning. Own pane so the grey basemap filter does not touch it. */
   map.createPane("fire").style.zIndex = 450; map.getPane("fire").style.pointerEvents = "none"; map.createPane("sat").style.zIndex = 250; map.getPane("sat").style.pointerEvents = "none";
   const SATB = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best", SATL = "IMERG_Precipitation_Rate_30min", SATSTEP = 18e5;
   const FIRED = new Date(Date.now() + G.tzMs - 864e5).toISOString().slice(0, 10); /* yesterday by Nepal time: the last complete day of detections */
+  let airOn = false;
   let satLatest = null, satT = null, satLoading = false, satFail = false;
   const satIso = (ms) => new Date(ms).toISOString().slice(0, 19) + "Z";
   function loadSat() { if (satLoading) return; satLoading = true; const d = (o) => new Date(Date.now() + o * 864e5).toISOString().slice(0, 10);
@@ -152,6 +153,12 @@
       L.marker([c[2], c[3]], { icon: L.divIcon({ className: "mxaq", html: `<span style="background:${aqCol(v)}">${G.num(String(Math.round(v)))}</span>`, iconSize: [34, 22] }) })
         .bindPopup(`<b>${E(T(c[0], c[1]))}</b>: US AQI ${G.num(String(v))}<br>${G.trustChip("Model")} <span class="meta">Open-Meteo (CAMS) · ${G.npt(d.current.time + G.tzIso)}</span><br><a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>`).addTo(LG.aq); }); }
     counts.aq = aqData ? aqData.filter((d) => d && d.current && d.current.us_aqi != null).length : null;
+    /* airports: weather as it bears on flying (official report for Kathmandu, a model elsewhere) */
+    if (on("air") && G.airwx) { if (!airOn) { airOn = true; G.airwx.on(draw); G.airwx.load(); }
+      G.airwx.all().forEach((x) => { if (!x.o) return; const c = G.airwx.CAT[x.cat], nm = T(x.a.ne, x.a.en), off = x.o.kind === "official";
+        L.marker(x.a.ll, { icon: L.divIcon({ className: "mxair", html: `<span style="background:${c[2]}">✈</span>`, iconSize: [24, 24] }), title: nm })
+          .bindPopup(`<b>${E(nm)}</b> (${E(x.a.iata)}): ${T(c[0], c[1])}<br>${T("दृश्यता", "Visibility")} ${G.airwx.km(x.o.vis)}${x.o.wx ? ", " + E(x.o.wx) : ""}<br>${G.trustChip(off ? "Official" : "Model")} <span class="meta">${off ? "METAR" : "Open-Meteo"} · ${G.npt(x.o.time)}</span><br><a href="${R}flights/">${T("उडान पृष्ठ", "Flights page")} →</a>`).addTo(LG.air); }); }
+    counts.air = G.airwx ? G.airwx.all().filter((x) => x.o).length || null : null;
     /* facilities */
     const inB = (p) => { if (!S.d && !S.pr) return true; return focusB ? focusB.contains([p[0], p[1]]) : true; };
     const hos = HL ? HL.hospitals.filter(inB) : [], heli = AV ? AV.helipads.filter(inB) : [];
@@ -179,7 +186,7 @@
       <fieldset><legend>${T("तहहरू", "Layers")}</legend><div class="mxchips">
         ${chip("L", "alerts", T("सूचना", "Alerts"))}${chip("L", "wx", T("मौसम चेतावनी (DHM)", "Weather warnings (DHM)"), counts.wx)}${chip("L", "rv", T("नदी मापन केन्द्र", "River gauges"), counts.rv)}
         ${chip("L", "rd", T("मुख्य सडक", "Main roads"), counts.rd)}${chip("L", "eq", T("भूकम्प", "Earthquakes"))}${chip("L", "aq", T("हावा (AQI)", "Air (AQI)"), counts.aq)}${chip("L", "sat", T("भू-उपग्रह वर्षा", "Satellite rain"))}${chip("L", "fire", T("भू-उपग्रह आगो", "Satellite fires"))}
-        ${chip("L", "hos", T("अस्पताल", "Hospitals"), counts.hos)}${chip("L", "heli", T("हेलिप्याड", "Helipads"), counts.heli)}
+        ${chip("L", "air", T("विमानस्थलको मौसम", "Airport weather"), counts.air)}${chip("L", "hos", T("अस्पताल", "Hospitals"), counts.hos)}${chip("L", "heli", T("हेलिप्याड", "Helipads"), counts.heli)}
         <button type="button" class="mxchip" disabled title="${T("खुला स्थानको डेटा उपलब्ध छैन", "Open-space data not available")}">${T("खुला स्थान", "Open spaces")} <span class="mxn">${T("उपलब्ध छैन", "n/a")}</span></button>
         ${chip("L", "lab", T("नाम", "Labels"))}</div>
         ${S.L.includes("eq") && perAg(counts.eq) ? `<p class="mxhint">${T("भूकम्प, निकायअनुसार", "Earthquakes by agency")}: ${perAg(counts.eq)}</p>` : ""}</fieldset>
@@ -210,6 +217,8 @@
     if (on("rd")) rows.push(`<div><b>${T("सडक", "Roads")}${nc("rd")}</b>${S.rds.map((k) => `<span>${sw(RCOL[k], "line")}${E(T(...RLB[k]))}</span>`).join("")}</div>`);
     if (on("eq")) rows.push(`<div><b>${T("भूकम्प", "Earthquakes")}</b>${perAg(counts.eq) ? `<span class="mxn">${perAg(counts.eq)}</span>` : ""}<span>${sw("#7c3aed", "dot")}${T("ठूलो घेरा = ठूलो म्याग्निच्युड", "Bigger circle = bigger magnitude")}</span></div>`);
     if (on("aq")) rows.push(`<div><b>AQI${counts.aq != null ? nc("aq") : ""}</b>${[[50, "0–50"], [100, "51–100"], [150, "101–150"], [200, "151–200"], [300, "201+"]].map(([v, l]) => `<span>${sw(aqCol(v))}${l}</span>`).join("")}</div>`);
+    if (on("air")) rows.push(`<div class="mxsat"><b>${T("विमानस्थलको मौसम", "Airport weather")}</b><span>${sw("#1e8e3e", "dot")}${T("उडान योग्य", "Good")}</span><span>${sw("#B26A00", "dot")}${T("सीमान्त", "Marginal")}</span><span>${sw("#C5221F", "dot")}${T("कमजोर", "Poor")}</span></div>
+      <p class="mxhint">${T("काठमाडौँ: विमानस्थलकै प्रतिवेदन। अन्य: मोडेलको अनुमान। उडानको अवस्था होइन।", "Kathmandu: the airport's own report. Others: a model estimate. Not flight status.")}</p>`);
     if (on("hos")) rows.push(`<div><span>${sw("#5f6670", "dot")}${T("अस्पताल (OSM)", "Hospital (OSM)")} <span class="mxn">${G.num(String(counts.hos || 0))}</span></span></div>`);
     if (on("heli")) rows.push(`<div><span><i class="mxheli s">H</i>${T("हेलिप्याड (OSM)", "Helipad (OSM)")} <span class="mxn">${G.num(String(counts.heli || 0))}</span></span></div>`);
     const sl = (u, t) => (u ? `<a href="${E(u)}" target="_blank" rel="noopener">${t} ↗</a>` : t);
