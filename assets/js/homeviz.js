@@ -48,7 +48,7 @@
     /* 1c. rain measured at DHM stations */
     const ob = wx && wx.station_obs;
     if (ob && ob.stations && ob.stations.length) { const wet = ob.stations.filter((x) => x.rain_mm > 0).sort((a, b) => b.rain_mm - a.rain_mm), dry = ob.stations.length - wet.length;
-      cards.push(V.card({ title: T("नापिएको वर्षा", "Measured rain"), href: R + "weather/", more: T("मौसम", "Weather"),
+      cards.push(V.card({ cls: "vzx", title: T("नापिएको वर्षा", "Measured rain"), href: R + "weather/", more: T("मौसम", "Weather"),
         say: wet.length ? T(wet[0].ne + " मा " + N(wet[0].rain_mm) + " मि.मि.; " + N(dry) + " केन्द्रमा वर्षा भएन।", wet[0].en + " recorded " + wet[0].rain_mm + " mm; " + dry + " of " + ob.stations.length + " stations had no rain.") : T("सबै " + N(ob.stations.length) + " केन्द्रमा वर्षा भएन।", "None of the " + ob.stations.length + " stations recorded rain."),
         body: wet.length ? V.raintubes(wet.slice(0, 5).map((x) => ({ name: T(x.ne, x.en), v: x.rain_mm })), T(" मि.मि.", " mm")) : "",
         source: T("DHM केन्द्रको अवलोकन", "DHM station observations"), url: ob.url, time: G.npt(ob.issued) + " · " + T("नापिएको, पूर्वानुमान होइन", "measured, not a forecast") })); }
@@ -73,7 +73,7 @@
     /* 3b2. weather at the main airports: Kathmandu's own report, a model elsewhere */
     if (G.airwx) { const MAIN = ["VNKT", "VNPR", "VNBW", "VNVT", "VNNG", "VNBP"], fl = G.airwx.all().filter((x) => x.o && MAIN.includes(x.a.icao)), C = G.airwx.CAT;
       if (fl.length) { const bad = fl.filter((x) => x.cat !== "good"), kt = fl.find((x) => x.a.icao === "VNKT");
-        cards.push(V.card({ cls: "vzx", est: !(kt && kt.o.kind === "official"), title: T("विमानस्थलको मौसम", "Airport weather"), href: R + "flights/", more: T("उडान", "Flights"),
+        cards.push(V.card({ est: !(kt && kt.o.kind === "official"), title: T("विमानस्थलको मौसम", "Airport weather"), href: R + "flights/", more: T("उडान", "Flights"),
           say: bad.length ? T(N(bad.length) + " विमानस्थलमा सीमान्त वा कमजोर दृश्यता: " + bad.map((x) => x.a.ne.split(" ")[0]).join(", ") + "।", bad.length + " airport" + (bad.length > 1 ? "s" : "") + " marginal or poor: " + bad.map((x) => x.a.en.split(" ")[0]).join(", ") + ".") : T("मुख्य विमानस्थलमा उडान योग्य मौसम।", "Good flying weather at the main airports."),
           body: `<ul class="vzaq vzfl">${fl.map((x) => `<li><i style="background:${C[x.cat][2]}"></i>${E(T(x.a.ne, x.a.en).split(" (")[0])} <b>${G.airwx.km(x.o.vis)}</b></li>`).join("")}</ul>`,
           source: T("काठमाडौँ: METAR; अन्य: Open-Meteo मोडेल", "Kathmandu: METAR; others: Open-Meteo model"), url: R + "flights/", time: T("दृश्यता; उडानको अवस्था होइन", "visibility; not flight status") })); } }
