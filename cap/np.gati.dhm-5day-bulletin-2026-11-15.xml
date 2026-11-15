@@ -2,7 +2,7 @@
 <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
   <identifier>np.gati.dhm-5day-bulletin-2026-11-15</identifier>
   <sender>hydrology.gov.np</sender>
-  <sent>2026-11-15T09:25:00+05:45</sent>
+  <sent>2026-11-15T09:20:00+05:45</sent>
   <status>Actual</status>
   <msgType>Update</msgType>
   <source>Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division</source>

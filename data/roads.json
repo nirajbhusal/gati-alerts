@@ -1,7 +1,7 @@
 {
- "as_of": "2026-11-15T09:30:00+05:45",
- "as_of_ne": "नोभेम्बर १५ (कात्तिक २९), बिहान ९:३० NPT मा जाँचेको",
- "as_of_en": "checked 15 Nov (Kartik 29), 9:30 AM NPT",
+ "as_of": "2026-11-15T09:20:00+05:45",
+ "as_of_ne": "नोभेम्बर १५ (कात्तिक २९), बिहान ९:२० NPT मा जाँचेको",
+ "as_of_en": "checked 15 Nov (Kartik 29), 9:20 AM NPT",
  "rule_en": "Open = not on Nepal Police's nationwide road-blockage notice (official, dated Kartik 28 / 14 Nov; title reads to 7:30 PM Kartik 28) or its latest highway list (to 7 AM Kartik 15; the Kartik 16 to 24 lists had not been published when checked). Where sources conflict or nothing confirms it: grey dashed = not confirmed.",
  "rule_ne": "खुला = नेपाल प्रहरीको देशभरको सडक अवरोध सूचना (कात्तिक २८ को मिति; शीर्षकमा कात्तिक २८ बेलुका ७:३० बजेसम्म, आधिकारिक) र पछिल्लो राजमार्ग सूची (कात्तिक १५ बिहान ७ बजेसम्म; जाँच गर्दा कात्तिक १६ देखि २४ सम्मको सूची आएको थिएन) मा यो मार्ग छैन। स्रोत बाझिएमा वा पुष्टि नभएमा खैरो टुटेको रेखा = स्थिति पुष्टि भएन।",
  "geometry_note_en": "Road lines follow the real roads, from OpenStreetMap road data (simplified).",
