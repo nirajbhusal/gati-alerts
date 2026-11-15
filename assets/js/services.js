@@ -12,6 +12,7 @@
     ["weather/", "मौसम र हावा", "Weather & air", "#0284c7", I('<path d="M7 18a4 4 0 1 1 .9-7.9A5.5 5.5 0 0 1 18.5 12 3 3 0 0 1 18 18z"/><path d="M8 21l1-2M12 21l1-2M16 21l1-2"/>'), "weather rain aqi air"],
     ["roads/", "सडक", "Roads", "#ea580c", I('<path d="M8 3 4 21M16 3l4 18M12 4v3M12 10.5v3M12 17v3"/>'), "road highway"],
     ["health/", "अस्पताल बेड र रक्त सञ्चार", "Hospital beds & blood", "#be123c", I('<path d="M3 12h7V5h4v7h7v4h-7v7h-4v-7H3z"/><path d="M19 17.2c0 1.6-1.3 2.8-1.3 2.8S16.4 18.8 16.4 17.2a1.3 1.3 0 0 1 2.6 0z"/>'), "hospital bed blood bank rakta aspatal health"],
+    ["flights/", "उडान र विमानस्थल", "Flights & airports", "#0369a1", I('<path d="M2.5 13.5l19-7-5 14-3.5-6z"/><path d="M13 14.5l8.5-8"/>'), "flight udan airport bimansthal plane pokhara metar visibility fog delay"],
     ["fuel/", "इन्धन मूल्य", "Fuel prices", "#c2410c", I('<path d="M6 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M6 21h10M16 8h2a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h0M9 8h3"/>'), "fuel petrol diesel indhan tel price noc"],
     ["notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications", "#0B1424", I('<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 19.5a2 2 0 0 0 4 0"/>'), "notification bell suchana alert watch"],
     ["trek/", "पदमार्ग", "Trekking", "#15803d", I('<path d="M3 19 9.5 8l4 5.5 2.2-3L21 19z"/><path d="M14 8.5 15.2 6"/>'), "trek trail padmarga hike walk route"],

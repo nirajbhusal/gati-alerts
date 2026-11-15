@@ -1,0 +1,50 @@
+# Fetch the official airport weather reports (METAR) for Nepal's airports every half hour and publish the
+# small result on the bot/live branch, which the Flights page reads. Nothing is committed to main and the
+# site is not redeployed. Failures are recorded in the file, never fatal.
+
+name: Airport weather
+
+on:
+  schedule:
+    - cron: "8,38 * * * *"   # twice an hour, a few minutes after reports are issued (GitHub cron is UTC; :23 and :53 NPT)
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Kathmandu   # Gati runs on Nepal time (UTC+5:45)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flights
+  cancel-in-progress: true
+
+jobs:
+  metar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Open the live branch (created empty the first time)
+        run: |
+          git config user.name "gati-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin bot/live >/dev/null 2>&1; then
+            git fetch -q origin bot/live:bot/live
+            git worktree add -q live bot/live
+          else
+            git worktree add -q --orphan -b bot/live live
+          fi
+      - name: Fetch the reports
+        run: python scripts/fetch_metar.py live/airport-weather.json
+      - name: Publish if anything changed
+        run: |
+          git -C live add -A
+          git -C live diff --cached --quiet && { echo "No change."; exit 0; }
+          git -C live commit -q -m "Airport weather $(date '+%Y-%m-%d %H:%M') NPT"
+          git -C live push -q origin bot/live

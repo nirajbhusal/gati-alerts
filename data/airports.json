@@ -1,0 +1,20 @@
+{
+ "note": "Airports with scheduled domestic flights. Coordinates are the airport reference point, rounded; used only to ask a weather model for conditions at the airport.",
+ "airports": [
+  {"icao": "VNKT", "iata": "KTM", "ne": "काठमाडौँ (त्रिभुवन)", "en": "Kathmandu (Tribhuvan)", "ll": [27.697, 85.359], "elev_m": 1338, "district": "NP0327"},
+  {"icao": "VNPR", "iata": "PHH", "ne": "पोखरा", "en": "Pokhara", "ll": [28.184, 84.015], "elev_m": 800, "district": "NP0440"},
+  {"icao": "VNBW", "iata": "BWA", "ne": "भैरहवा (गौतमबुद्ध)", "en": "Bhairahawa (Gautam Buddha)", "ll": [27.506, 83.416], "elev_m": 109},
+  {"icao": "VNVT", "iata": "BIR", "ne": "विराटनगर", "en": "Biratnagar", "ll": [26.481, 87.264], "elev_m": 72},
+  {"icao": "VNNG", "iata": "KEP", "ne": "नेपालगन्ज", "en": "Nepalgunj", "ll": [28.104, 81.667], "elev_m": 165},
+  {"icao": "VNBP", "iata": "BHR", "ne": "भरतपुर", "en": "Bharatpur", "ll": [27.678, 84.429], "elev_m": 183},
+  {"icao": "VNCG", "iata": "BDP", "ne": "भद्रपुर", "en": "Bhadrapur", "ll": [26.571, 88.080], "elev_m": 91},
+  {"icao": "VNJP", "iata": "JKR", "ne": "जनकपुर", "en": "Janakpur", "ll": [26.709, 85.922], "elev_m": 78},
+  {"icao": "VNSI", "iata": "SIF", "ne": "सिमरा", "en": "Simara", "ll": [27.160, 84.980], "elev_m": 137},
+  {"icao": "VNDH", "iata": "DHI", "ne": "धनगढी", "en": "Dhangadhi", "ll": [28.753, 80.582], "elev_m": 190},
+  {"icao": "VNSK", "iata": "SKH", "ne": "सुर्खेत", "en": "Surkhet", "ll": [28.586, 81.636], "elev_m": 720},
+  {"icao": "VNTR", "iata": "TMI", "ne": "तुम्लिङटार", "en": "Tumlingtar", "ll": [27.315, 87.193], "elev_m": 518},
+  {"icao": "VNLK", "iata": "LUA", "ne": "लुक्ला", "en": "Lukla", "ll": [27.687, 86.730], "elev_m": 2846, "mountain": true},
+  {"icao": "VNJS", "iata": "JMO", "ne": "जोमसोम", "en": "Jomsom", "ll": [28.780, 83.723], "elev_m": 2736, "mountain": true},
+  {"icao": "VNJL", "iata": "JUM", "ne": "जुम्ला", "en": "Jumla", "ll": [29.274, 82.193], "elev_m": 2377, "mountain": true}
+ ]
+}
