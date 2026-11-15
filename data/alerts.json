@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14T06:29:51+00:00",
+ "generated": "2026-11-15T03:37:25+00:00",
  "count": 102,
  "alerts": [
   {
@@ -2724,7 +2724,7 @@
    "severity": "Minor",
    "expires": "2026-11-14T23:59:00+05:45",
    "districts": [],
-   "expired": false,
+   "expired": true,
    "areas": [
     {
      "code": null,
