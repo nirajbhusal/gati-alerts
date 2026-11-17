@@ -3,7 +3,10 @@
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const DEV = "०१२३४५६७८९";
-  let st = await getStore(["district", "notify", "lang"]);
+  let st = await getStore(["district", "notify", "lang", "theme"]);
+  let theme = ["auto", "light", "dark"].includes(st.theme) ? st.theme : "auto";
+  const applyTheme = () => { document.documentElement.dataset.theme = theme; try { localStorage.setItem("gati-theme", theme); } catch (e) {} };
+  applyTheme();
   let lang = st.lang === "en" ? "en" : "ne", district = st.district || "", DATA = null, WX = null, err = "";
   const T = (ne, en) => (lang === "ne" ? ne : en), N = (v) => (lang === "ne" ? String(v).replace(/\d/g, (d) => DEV[d]) : String(v));
   const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], MONN = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"];
@@ -19,6 +22,8 @@
   function draw() {
     document.documentElement.lang = lang;
     $("home").href = SITE; $("lang").textContent = lang === "ne" ? "English" : "नेपाली";
+    const TH = { auto: ["◐ स्वचालित", "◐ Auto"], light: ["☀ उज्यालो", "☀ Light"], dark: ["☾ अँध्यारो", "☾ Dark"] };
+    $("theme").textContent = T(TH[theme][0], TH[theme][1]); $("theme").title = T("रङ: स्वचालित, उज्यालो वा अँध्यारो", "Colours: automatic, light or dark"); $("theme").setAttribute("aria-label", $("theme").title + ": " + T(TH[theme][0], TH[theme][1]).slice(2));
     $("dlabel").textContent = T("मेरो जिल्ला", "My district");
     $("district").innerHTML = `<option value="">${T("सबै नेपाल", "All Nepal")}</option>` + DISTRICTS.map((d) => `<option value="${d[0]}"${d[0] === district ? " selected" : ""}>${esc(lang === "ne" ? d[1] : d[2])}</option>`).join("");
     $("nlabel").textContent = T("नयाँ सूचना आउँदा जानकारी दिनुहोस्", "Notify me of new alerts"); $("notify").checked = !!st.notify;
@@ -40,6 +45,7 @@
       + (DATA && DATA.generated ? ` ${T("अद्यावधिक", "Updated")} ${npt(DATA.generated)} NPT.` : "");
   }
 
+  $("theme").onclick = async () => { theme = theme === "auto" ? "light" : theme === "light" ? "dark" : "auto"; applyTheme(); await setStore({ theme }); draw(); };
   $("lang").onclick = async () => { lang = lang === "ne" ? "en" : "ne"; await setStore({ lang }); draw(); };
   $("district").onchange = async (e) => { district = e.target.value; await setStore({ district }); draw(); chrome.runtime.sendMessage("check"); };
   $("notify").onchange = async (e) => { st.notify = e.target.checked; await setStore({ notify: st.notify }); };

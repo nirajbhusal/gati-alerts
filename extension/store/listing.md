@@ -23,6 +23,7 @@ Gati puts Nepal's official disaster and weather alerts in your browser toolbar.
 • Optional notifications for new alerts (off until you turn them on)
 • Quick links to the map, road status, airport weather and emergency numbers
 • Nepali or English, with every time shown in Nepal time
+• Light, dark or automatic colours
 
 Every item shows the agency that issued it and when. Only notices from official agencies (such as DHM, Nepal Police, NDRRMA, the National Seismological Centre and USGS), or reports Gati has verified, are shown.
 
@@ -42,6 +43,7 @@ Open source: https://github.com/nirajbhusal/gati-alerts
 • नयाँ सूचनाको नोटिफिकेसन (हजुरले खोलेपछि मात्र)
 • नक्सा, सडकको अवस्था, विमानस्थलको मौसम र आपतकालीन नम्बरका लिङ्क
 • नेपाली वा अङ्ग्रेजी; सबै समय नेपालको समयमा
+• उज्यालो, अँध्यारो वा स्वचालित रङ
 
 हरेक सूचनामा जारी गर्ने निकाय र समय देखिन्छ। आधिकारिक निकाय (जस्तै DHM, नेपाल प्रहरी, NDRRMA, राष्ट्रिय भूकम्प मापन केन्द्र र USGS) का सूचना वा गतिले प्रमाणित गरेका रिपोर्ट मात्र देखाइन्छन्।
 
@@ -51,9 +53,10 @@ Open source: https://github.com/nirajbhusal/gati-alerts
 
 **Graphics**
 - Store icon, 128×128: `../icons/icon-128.png`
-- Screenshots, 1280×800: `screenshot-1.png`, `screenshot-2.png`, `screenshot-3.png`
-- Small promo tile, 440×280: `promo-small-440x280.png`
-- Marquee promo tile, 1400×560: `promo-marquee-1400x560.png`
+- Screenshots, 1280×800 (upload in this order): `screenshot-1-light.png`, `screenshot-2-dark.png`, `screenshot-3-nepali.png`, `screenshot-4-light-and-dark.png`, `screenshot-5-dark-nepali.png`
+- Small promo tile, 440×280: `promo-small-440x280-light.png` (or the `-dark` one; the store takes one)
+- Marquee promo tile, 1400×560: `promo-marquee-1400x560-dark.png` (or the `-light` one)
+- Rebuild all images after a design change: `node scripts/extension_store_images.cjs`
 
 **Additional fields**
 - Official URL / homepage: https://nirajbhusal.github.io/gati-alerts/

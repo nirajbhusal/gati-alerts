@@ -2,7 +2,7 @@
 
 A toolbar button for [Gati](https://nirajbhusal.github.io/gati-alerts/): official disaster and weather alerts for Nepal, relayed with source and time.
 
-- **Popup:** active alerts for your district (or all Nepal), DHM's 5-day weather warning, and links to the Map, Roads, Flights and Emergency numbers. Nepali or English.
+- **Popup:** active alerts for your district (or all Nepal), DHM's 5-day weather warning, and links to the Map, Roads, Flights and Emergency numbers. Nepali or English. Colours: automatic (follows the computer), light or dark, changed with the button at the top.
 - **Badge:** the number of active alerts that name your district, coloured by the most severe one. Checked every 15 minutes.
 - **Notifications:** off by default. When turned on, a new alert is shown once. Nothing is shown for alerts that were already active when you installed it.
 
