@@ -2336,3 +2336,6 @@ html[data-theme=dark] .sst-link,html[data-theme=dark] .sst-nofeed{background:rgb
 .pfberr{margin:10px 0 0;color:#C5221F}
 main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .pfbn>*{min-width:0}.pfbn small{white-space:normal;overflow-wrap:anywhere}
+.fqmore{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.fqshare{min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:99px;background:var(--surface);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.fqshare:hover{border-color:var(--ink)}

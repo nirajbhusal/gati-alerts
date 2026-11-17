@@ -51,6 +51,40 @@
     else out.push({ href: R + "rivers/", c: GREY, k: T("नदी", "Rivers"), v: T("यो जिल्लाको DHM मापन केन्द्र गतिमा छैन", "No DHM gauge for this district in Gati"), n: T("सबै नदी हेर्नुहोस्", "see all rivers") });
     return { nm, out };
   }
+  /* One-tap share: the four lines as a picture, each with its agency and time, so the official notice travels with its source. */
+  const un = (h) => { const t = document.createElement("textarea"); t.innerHTML = h; return t.value; };
+  const img = (src) => new Promise((res) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; });
+  async function shareCard(r, btn) {
+    const W = 1080, P = 64, c = document.createElement("canvas"), x = c.getContext("2d"), FF = getComputedStyle(document.body).fontFamily || "sans-serif";
+    const font = (px, w = 400) => { x.font = `${w} ${px}px ${FF}`; };
+    const wrap = (txt, px, w, max) => { font(px, w); const out = []; let line = ""; for (const word of String(txt).split(/\s+/)) { const t = line ? line + " " + word : word; if (x.measureText(t).width > max && line) { out.push(line); line = word; } else line = t; } if (line) out.push(line); return out.slice(0, 4); };
+    try { await document.fonts.ready; } catch (e) {}
+    const inner = W - P * 2 - 76, blocks = r.out.map((o) => ({ o, v: wrap(un(o.v), 40, 700, inner), n: wrap(un(o.n), 28, 400, inner) }));
+    const H = 330 + blocks.reduce((h, b) => h + 70 + b.v.length * 52 + b.n.length * 38 + 26, 0) + 190;
+    c.width = W; c.height = H;
+    x.fillStyle = "#FFF8F4"; x.fillRect(0, 0, W, H);
+    x.fillStyle = "#0B1424"; x.fillRect(0, 0, W, 290);
+    const logo = await img(R + "assets/img/brand/logo-h-white.png"); if (logo) x.drawImage(logo, P, 44, 96 * logo.width / logo.height, 96);
+    x.fillStyle = "#fff"; x.textBaseline = "alphabetic"; font(58, 700); x.fillText("📍 " + un(r.nm), P, 216);
+    font(28); x.fillStyle = "#C9D3DF"; x.fillText(G.npt(new Date().toISOString()), P, 262);
+    let y = 330;
+    for (const b of blocks) { const h = 70 + b.v.length * 52 + b.n.length * 38;
+      x.fillStyle = "#fff"; x.strokeStyle = "#E6DAD3"; x.lineWidth = 2; x.beginPath(); x.roundRect(P, y, W - P * 2, h, 20); x.fill(); x.stroke();
+      x.fillStyle = b.o.c; x.beginPath(); x.roundRect(P + 18, y + 18, 10, h - 36, 5); x.fill();
+      let ty = y + 46; x.fillStyle = "#5B6470"; font(28); x.fillText(un(b.o.k), P + 44, ty);
+      x.fillStyle = "#14202B"; for (const l of b.v) { ty += 52; font(40, 700); x.fillText(l, P + 44, ty); }
+      x.fillStyle = "#5B6470"; for (const l of b.n) { ty += 38; font(28); x.fillText(l, P + 44, ty); }
+      y += h + 26; }
+    x.fillStyle = "#5B6470"; font(28); wrap(T("गतिले आधिकारिक निकायको सूचना मात्र फैलाउँछ; आफैँ चेतावनी जारी गर्दैन। आपतकालमा १००, १०१, १०२ वा १२३४।", "Gati relays official notices; it does not issue warnings. In an emergency call 100, 101, 102 or 1234."), 28, 400, W - P * 2).forEach((l, i) => x.fillText(l, P, y + 36 + i * 38));
+    x.fillStyle = "#E2362B"; font(40, 700); x.fillText("gatialerts.com", P, H - 48);
+    const blob = await new Promise((res) => c.toBlob(res, "image/png")); if (!blob) return;
+    const name = "gati-" + (G.district.get() || "district").toLowerCase() + ".png", file = new File([blob], name, { type: "image/png" });
+    const text = `${un(r.nm)}: ${T("अहिलेको आधिकारिक अवस्था", "official status right now")} · gatialerts.com`;
+    if (G.pulse) G.pulse.track("share");
+    try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    if (btn) { const old = btn.textContent; btn.textContent = T("तस्बिर डाउनलोड भयो", "Picture downloaded"); setTimeout(() => { btn.textContent = old; }, 2500); }
+  }
   function draw() {
     const code = G.district.get(), ok = code && D && D.find((x) => x.code === code);
     let mine;
@@ -59,7 +93,7 @@
     else { const r = rows(code);
       mine = `<p class="fqwho"><b>📍 ${r.nm}</b><button type="button" class="fqchg" id="fqpick">${T("फेर्नुहोस्", "Change")}</button></p>
         <ul class="fqrows">${r.out.map((x) => `<li><a class="fqrow fqbtn" href="${x.href}" style="--c:${x.c}"><i aria-hidden="true"></i><span class="fqk">${x.k}</span><b>${x.v}</b><small>${x.n}</small></a></li>`).join("")}</ul>
-        <p class="fqmore"><a class="fqlink" href="${R}affected/">${T("पूरा जाँच: के म प्रभावित छु?", "Full check: Am I affected?")} →</a></p>`; }
+        <p class="fqmore"><button type="button" class="fqshare" id="fqshare">${T("यो अवस्था सेयर गर्नुहोस्", "Share this status")}</button><a class="fqlink" href="${R}affected/">${T("पूरा जाँच: के म प्रभावित छु?", "Full check: Am I affected?")} →</a></p>`; }
     const NODES = RD && RD.nodes ? Object.entries(RD.nodes).map(([id, n]) => [id, T(n.ne, n.en)]).sort((a, b) => a[1].localeCompare(b[1], G.lang)) : [];
     let rf = "ktm", rt = "pokhara"; try { rf = localStorage.getItem("gati-rfrom") || rf; rt = localStorage.getItem("gati-rto") || rt; } catch (e) {}
     const opts = (sel) => NODES.map(([id, n]) => `<option value="${id}"${id === sel ? " selected" : ""}>${esc(n)}</option>`).join("");
@@ -67,6 +101,7 @@
     box.innerHTML = `<section class="card fq" aria-labelledby="fqh1"><h2 id="fqh1">${T("मेरो जिल्लामा अहिले के छ?", "What affects my district right now?")}</h2>${mine}</section>
       <section class="card fq" aria-labelledby="fqh2"><h2 id="fqh2">${T("बाटो खुला छ?", "Is the road open?")}</h2>${route}</section>`;
     const pk = document.getElementById("fqpick"); if (pk) pk.onclick = () => G.district.open(() => { if (G.pulse) G.pulse.track("district_set"); draw(); });
+    const sh = document.getElementById("fqshare"); if (sh && ok) sh.onclick = () => shareCard(rows(code), sh);
     const rf2 = document.getElementById("fqroute"); if (rf2) rf2.addEventListener("submit", () => { if (G.pulse) G.pulse.track("route_check"); });
     fold();
   }
