@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ne">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gati</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <a id="home" class="brand" target="_blank" rel="noopener"><img src="icons/icon-48.png" alt="" width="34" height="34"><span><b>गति</b><small>GATI</small></span></a>
+  <button id="lang" type="button" class="pill" aria-label="Language"></button>
+</header>
+<div class="row">
+  <label for="district" id="dlabel"></label>
+  <select id="district"></select>
+</div>
+<main id="list" aria-live="polite"></main>
+<section id="wx" hidden></section>
+<nav id="links"></nav>
+<div class="row opt">
+  <label><input type="checkbox" id="notify"> <span id="nlabel"></span></label>
+  <button id="refresh" type="button" class="pill"></button>
+</div>
+<footer id="foot"></footer>
+<script src="districts.js"></script>
+<script src="shared.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
