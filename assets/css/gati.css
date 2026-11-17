@@ -2307,3 +2307,16 @@ html[data-theme=dark] .sst-link,html[data-theme=dark] .sst-nofeed{background:rgb
 .hmore{margin:0 0 14px}
 .hmorebtn{width:100%;min-height:48px;padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;text-align:center}
 .hmorebtn:hover{border-color:var(--slate)}
+
+/* ===== Menu: five plain places, then More, then For developers ===== */
+.moremenu .mmh{display:block;margin:8px 0 2px;padding:8px 12px 2px;border-top:1px solid var(--line);font-size:var(--fs-6);font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--slate)}
+.moremenu{max-height:min(78vh,720px);overflow:auto}
+.mdfold>summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;gap:8px;margin:0;border-top:1px solid var(--line)}
+.mdfold>summary::-webkit-details-marker{display:none}
+.mdfold>summary::after{content:"▾";margin-left:auto;color:var(--slate)}
+.mdfold[open]>summary::after{content:"▴"}
+@media(max-width:720px){.moremenu .mmh{display:none}}
+.mdfold>summary::after{display:none}
+.mdfold>summary::before{content:"▾";order:2;margin-left:auto;color:var(--slate)}
+.mdfold[open]>summary::before{content:"▴"}
+.hifold>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}
