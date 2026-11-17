@@ -2239,3 +2239,12 @@ html[data-theme=dark] .sst-link,html[data-theme=dark] .sst-nofeed{background:rgb
 .flgrid>.na{grid-column:1/-1}
 .vzfl{grid-template-columns:1fr}
 .mxair span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;color:#fff;font-size:13px;line-height:1;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+
+/* ===== a chart card with a destination is clickable anywhere, not only on its small link ===== */
+.vz{position:relative}
+.vzh>a{position:static}
+.vzh>a::after{left:0;top:0;right:0;bottom:0;width:auto;height:auto;transform:none;border-radius:14px}
+.vz:has(.vzh>a):hover{border-color:var(--slate)}
+.vz:has(.vzh>a:focus-visible){outline:2px solid #F28C1E;outline-offset:2px}
+/* links, buttons and scrollers inside the card keep working on their own */
+.vz :where(a[href],button,summary,details,[tabindex]):not(.vzh>a){position:relative;z-index:1}

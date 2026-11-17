@@ -32,6 +32,7 @@ main{padding:0 12px 4px;display:grid;gap:8px}
 .days{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:5px}
 .day{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:8px;text-align:center;padding:4px 2px;font-size:11.5px;line-height:1.3}
 .day b{display:block;font-size:12.5px}
+a.days{text-decoration:none;color:var(--ink)}a.days:hover .day{border-color:var(--slate);border-top-color:var(--c)}
 .src{margin:4px 0 0;font-size:11px;color:var(--slate)}
 a{color:var(--link)}
 nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:10px 12px 2px}
