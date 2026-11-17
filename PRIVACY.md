@@ -81,6 +81,10 @@ list is kept in a private secret store and a number is removed on request.
 Browser push by district is built but not switched on. Nothing is sent to any server. If it is enabled later, this
 policy will be updated first: it would store a push subscription and a district, and nothing else.
 
+## Chrome extension
+
+The Gati Chrome extension reads only two public files from the Gati site (alerts and DHM's weather warning). The district and language you choose, and the list of alerts already shown, stay in your own browser and are not sent anywhere. There is no account, analytics, advertising or tracking, and it does not read the other websites you visit. Notifications are off until you turn them on.
+
 ## Children, sale of data, profiling
 
 Gati does not knowingly collect data from anyone, sells nothing, and does no profiling.

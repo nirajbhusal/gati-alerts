@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Gati: Nepal alerts"
+  },
+  "extShort": {
+    "message": "Gati"
+  },
+  "extDesc": {
+    "message": "Official disaster and weather alerts for Nepal, relayed with source and time. Nepali and English."
+  },
+  "actionTitle": {
+    "message": "Gati: Nepal alerts"
+  }
+}

@@ -17,7 +17,7 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
         for p in sorted(SRC.rglob("*")):
-            if p.is_file() and p.suffix in KEEP:
+            if p.is_file() and p.suffix in KEEP and "store" not in p.relative_to(SRC).parts:   # store/ holds listing text and images, not part of the package
                 info = zipfile.ZipInfo(str(p.relative_to(SRC)).replace("\\", "/"), date_time=(2026, 1, 1, 0, 0, 0))
                 info.compress_type = zipfile.ZIP_DEFLATED; info.external_attr = 0o644 << 16
                 z.writestr(info, p.read_bytes())
