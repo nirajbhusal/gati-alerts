@@ -39,37 +39,28 @@
   /* Item 18: desktop nav; Map, Rivers and Roads are sections of the dashboard. */
   const NAV = [
     ["alerts", "alerts/", "सूचना", "Alerts"],
+    ["map", "map/", "नक्सा", "Map"],
     ["weather", "weather/", "मौसम र हावा", "Weather"],
     ["roads", "roads/", "सडक", "Roads"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency"],
+    ["ask", "ask/", "सोध्नुहोस्", "Ask"],
   ];
-  /* "More": the other pages for the public. Pages in the same area also link to each other through the strip under the header (AREAS). */
+  /* "More" menu (desktop). Pages in the same area also link to each other through the strip under the header (AREAS). */
   const MORE = [
-    ["map", "map/", "नक्सा", "Map"],
-    ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"],
-    ["route", "route/", "मार्ग जाँच", "Route check"],
+    ["stories", "feed/", "फिड", "Feed"],
     ["rivers", "rivers/", "नदी", "Rivers"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
-    ["flights", "flights/", "उडान", "Flights"],
-    ["stories", "feed/", "फिड", "Feed"],
-    ["ask", "ask/", "सोध्नुहोस्", "Ask"],
+    ["route", "route/", "मार्ग जाँच", "Route check"],
     ["trek", "trek/", "पदमार्ग", "Trekking"],
+    ["flights", "flights/", "उडान", "Flights"],
     ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"],
     ["health", "health/", "अस्पताल बेड र ब्लड बैंक", "Hospital beds & blood"],
     ["safety", "safety/", "के गर्ने", "What to do"],
     ["patro", "patro/", "पात्रो", "Patro"],
-    ["about", "about/", "बारेमा", "About"],
     ["sources", "sources/", "स्रोत", "Sources"],
-  ];
-  /* For developers and organisations: kept out of the public's way, at the end of More. */
-  const DEVP = [
-    ["api", "api/", "खुला डेटा (API)", "Open data (API)"],
-    ["capfeed", "atom.xml", "CAP Atom फिड", "CAP Atom feed"],
-    ["embed", "about/#embed", "आफ्नो साइटमा राख्नुहोस्", "Embed on your site"],
-    ["extension", "about/#extension", "Chrome एक्स्टेन्सन", "Chrome extension"],
     ["log", "log/", "परिवर्तन लग", "Change log"],
+    ["about", "about/", "बारेमा", "About"],
   ];
-  const DEVH = ["विकासकर्ताका लागि", "For developers"];
   /* Areas: pages that belong together. Used for the phone menu groups, the bottom bar highlight and the strip of sibling links. */
   const AREAS = [
     ["alerts", "सूचना", "Alerts", [["alerts", "alerts/", "सबै सूचना", "All alerts"], ["stories", "feed/", "सूचना फिड", "Feed"], ["notifications", "notifications/", "मेरा लागि", "For me"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["map", "map/", "नक्सा", "Map"]]],
@@ -82,7 +73,17 @@
   const areaOf = (id) => AREAS.find((a) => a[3].some((x) => x[0] === id));
   /* shorter English labels for the desktop menu row only */
   const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trekking", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
-  G.PAGES = [...NAV, ...MORE, ...DEVP.filter((x) => x[0] === "api" || x[0] === "log"), ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]].filter((x, i, l) => l.findIndex((y) => y[0] === x[0]) === i);
+  G.PAGES = [...NAV, ...MORE, ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
+  /* Mobile bottom bar */
+  /* Mobile bottom bar: Home, Alerts, Feed, Map, Hazards. Line icons (24px, 1.8 stroke). Travel is in the menu and the home features. */
+  const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
+  const TABS = [
+    ["home", "./", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
+    ["alerts", "alerts/", ICON('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'), "सूचना", "Alerts"],
+    ["stories", "feed/", ICON('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="M8 3.5h8"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "फिड", "Feed"],
+    ["map", "map/", ICON('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "नक्सा", "Map"],
+    ["weather", "weather/", ICON('<path d="M7.5 16a4 4 0 0 1 .4-7.98A5.5 5.5 0 0 1 18.4 9.6 3.25 3.25 0 0 1 17.5 16z"/><path d="m9 18.5-.8 2M13 18.5l-.8 2M17 18.5l-.8 2"/>'), "जोखिम", "Hazards", "hazards"],
+  ];
   /* Menu line icons: one set, 24 grid, 1.8 stroke, round caps (same as the tab bar) */
   const MI = {
     notifications: '<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/><circle cx="18" cy="5.5" r="2.5"/>',
@@ -116,15 +117,6 @@
     close: '<path d="M6 6l12 12M18 6 6 18"/>',
     chev: '<path d="m9.5 6 6 6-6 6"/>',
   };
-  /* Mobile bottom bar: the same five places as the menu. Home, Alerts, Weather, Roads, Emergency numbers. */
-  const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
-  const TABS = [
-    ["home", "./", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
-    ["alerts", "alerts/", ICON('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'), "सूचना", "Alerts"],
-    ["weather", "weather/", ICON('<path d="M7.5 16a4 4 0 0 1 .4-7.98A5.5 5.5 0 0 1 18.4 9.6 3.25 3.25 0 0 1 17.5 16z"/><path d="m9 18.5-.8 2M13 18.5l-.8 2M17 18.5l-.8 2"/>'), "मौसम", "Weather", "hazards"],
-    ["roads", "roads/", ICON(MI.roads), "सडक", "Roads", "travel"],
-    ["contacts", "contacts/", ICON(MI.contacts), "आपतकालीन", "Emergency", "help"],
-  ];
   const MIC = (id, w = 20) => `<svg class="mic" viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${MI[id] || MI.about}</svg>`;
   G.MIC = MIC;
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
@@ -149,8 +141,8 @@
   </div>
   <nav class="main" id="mainnav" aria-label="Main"><div class="navtop"><a class="navtopbtn" href="${ROOT}me/"${PAGE === "me" ? ' aria-current="page"' : ""}>👤 ${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</a></div>${mgroups}<a class="navhome" href="${ROOT}" aria-label="गृहपृष्ठ / Home" title="गृहपृष्ठ / Home"${PAGE === "home" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a>${NAV.map(([id, href, ne, en]) =>
     `<a${id === "ask" ? ' class="navask"' : ""} href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, en)}</a>`).join("")+MORE.map(([id, href, ne, en]) => `<a class="nx" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, SHORT[id] || en)}</a>`).join("")}
-    <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${[...MORE, ...DEVP].some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
-      <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, en)}</a>`).join("")}<span class="mmh" role="presentation">${b(...DEVH)}</span>${DEVP.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, en)}</a>`).join("")}</div></div><a class="mebtn navme" id="mebtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</span></a></nav>`;
+    <div class="more"><button type="button" class="morebtn" aria-expanded="false" aria-haspopup="true"${MORE.some((m) => m[0] === PAGE) ? ' aria-current="page"' : ""}>${b("थप", "More")} ▾</button>
+      <div class="moremenu" role="menu" hidden>${MORE.map(([id, href, ne, en]) => `<a role="menuitem" data-id="${id}" href="${ROOT}${href}"${id === PAGE ? ' aria-current="page"' : ""}>${MIC(id, 18)}${b(ne, en)}</a>`).join("")}</div></div><a class="mebtn navme" id="mebtn" href="${ROOT}me/" aria-label="प्रोफाइल र सेटिङ / Profile & Settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>${b("प्रोफाइल र सेटिङ", "Profile & Settings")}</span></a></nav>`;
   /* Phone menu drawer: a fixed sheet over the page (no layout shift), Ask Gati card on top, grouped icon rows, Profile & Settings at the bottom */
   const cur = (id) => (id === PAGE ? ' aria-current="page"' : "");
   const mrow = ([id, href, n, e]) => `<a class="mrow" href="${ROOT}${href}"${cur(id)}><span class="mri">${MIC(id, 22)}</span><span class="mrl">${b(n, e)}</span></a>`;
@@ -161,8 +153,7 @@
     <div class="mdscroll">
       <a class="mdask" href="${ROOT}ask/"${cur("ask")}><span class="mdaski">${MIC("ask", 26)}</span><span class="mdaskt"><b>${b("गतिलाई सोध्नुहोस्", "Ask Gati")}</b><small>${b("आधिकारिक स्रोतबाट मात्र जवाफ", "Answers from official sources only")}</small></span>${MIC("chev", 18)}</a>
       <nav aria-label="पृष्ठहरू / Pages">${mrow(["home", "./", "गृहपृष्ठ", "Home"])}
-      ${NAV.map(([id, href, ne, en]) => mrow([id, href, ne, id === "contacts" ? "Emergency numbers" : id === "weather" ? "Weather & air" : en])).join("")}
-      ${[[["थप", "More"], [...MORE.filter((x) => x[0] !== "ask"), ["notifications", "notifications/", "मेरा लागि", "For me"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report a hazard"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"]]], [DEVH, DEVP]].map(([h, it]) => `<details class="mdg mdfold"${it.some((x) => x[0] === PAGE) ? " open" : ""}><summary class="mdh">${b(...h)}</summary>${it.map(mrow).join("")}</details>`).join("")}</nav>
+      ${GRP.map(([ne, en, it]) => `<section class="mdg"><h2 class="mdh">${b(ne, en)}</h2>${it.map(mrow).join("")}</section>`).join("")}</nav>
       <div class="mdfoot">${mrow(["me", "me/", "प्रोफाइल र सेटिङ", "Profile & Settings"])}</div>
     </div></div>`;
   document.body.append(drawer);
@@ -198,6 +189,7 @@
       · <a href="${ROOT}report/">${b("रिपोर्ट गर्नुहोस्", "Report")}</a> · <a href="${ROOT}reports/">${b("नागरिक रिपोर्ट", "Reports")}</a>
       · <a href="${ROOT}contact/">${b("सम्पर्क", "Contact")}</a> · <a href="${ROOT}privacy/">${b("गोपनीयता", "Privacy")}</a> · <a href="${ROOT}lite/">${b("हल्का संस्करण", "Lite")}</a> · <a href="${ROOT}alerts/">${b("अभिलेख", "Archive")}</a>
       ${G.country.channels && G.country.channels.telegram ? `· <a href="${G.country.channels.telegram}" rel="noopener">Telegram</a>` : ""}
+      · <a href="${ROOT}atom.xml">${b("CAP Atom फिड", "CAP Atom feed")}</a> · <a href="${ROOT}data/alerts.json">JSON</a>
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
   tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
