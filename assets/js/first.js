@@ -14,7 +14,7 @@
     main.classList.toggle("calm", !o);
     if (more) more.innerHTML = `<button type="button" class="hmorebtn" aria-expanded="${o}">${o ? T("कम देखाउनुहोस्", "Show less") : T("देशभरको अवस्था हेर्नुहोस्: नक्सा, सबै सूचना, मौसम", "See the whole country: map, all alerts, weather")}<span aria-hidden="true">${o ? " ▴" : " ▾"}</span></button>`;
     const b = more && more.querySelector("button");
-    if (b) b.onclick = () => { try { if (o) localStorage.removeItem(MKEY); else localStorage.setItem(MKEY, "1"); } catch (e) {} if (location.hash && location.hash !== "#first") history.replaceState(null, "", location.pathname + location.search); fold(); if (!o) dispatchEvent(new Event("resize")); };
+    if (b) b.onclick = () => { try { if (o) localStorage.removeItem(MKEY); else localStorage.setItem(MKEY, "1"); } catch (e) {} if (location.hash && location.hash !== "#first") history.replaceState(null, "", location.pathname + location.search); fold(); if (!o) { dispatchEvent(new Event("resize")); if (G.pulse) G.pulse.track("more_open"); } };
   }
   fold(); addEventListener("hashchange", fold);
 
@@ -66,7 +66,8 @@
     const route = NODES.length ? `<form class="fqroute" id="fqroute" action="${R}route/" method="get"><label><span>${T("कहाँबाट", "From")}</span><select name="from">${opts(rf)}</select></label><label><span>${T("कहाँसम्म", "To")}</span><select name="to">${opts(rt)}</select></label><button type="submit" class="fqgo">${T("बाटो जाँच्नुहोस्", "Check the road")}</button></form><p class="meta fqsrc">${T("नेपाल प्रहरी र सडक विभागको सूचनाबाट", "From Nepal Police and Department of Roads notices")} · ${esc(day(T(RD.as_of_ne, RD.as_of_en)))}</p>` : `<p><a class="fqlink" href="${R}route/">${T("बाटो जाँच्नुहोस्", "Check the road")} →</a></p>`;
     box.innerHTML = `<section class="card fq" aria-labelledby="fqh1"><h2 id="fqh1">${T("मेरो जिल्लामा अहिले के छ?", "What affects my district right now?")}</h2>${mine}</section>
       <section class="card fq" aria-labelledby="fqh2"><h2 id="fqh2">${T("बाटो खुला छ?", "Is the road open?")}</h2>${route}</section>`;
-    const pk = document.getElementById("fqpick"); if (pk) pk.onclick = () => G.district.open(draw);
+    const pk = document.getElementById("fqpick"); if (pk) pk.onclick = () => G.district.open(() => { if (G.pulse) G.pulse.track("district_set"); draw(); });
+    const rf2 = document.getElementById("fqroute"); if (rf2) rf2.addEventListener("submit", () => { if (G.pulse) G.pulse.track("route_check"); });
     fold();
   }
   draw(); G.onLang(draw); addEventListener("gati:district", draw);

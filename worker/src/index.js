@@ -1,7 +1,9 @@
 /* Gati Worker. POST /ask {q} -> {answer, citations[]} (key: ANTHROPIC_API_KEY secret).
-   POST /report -> anonymous citizen report as a GitHub issue (key: GITHUB_TOKEN secret). See src/report.js. */
+   POST /report -> anonymous citizen report as a GitHub issue (key: GITHUB_TOKEN secret). See src/report.js.
+   POST /hit, POST /fb, GET /stats -> page totals and one-tap feedback, no identifiers kept. See src/pulse.js. */
 import { TOOL, FILES, corsHeaders, validQuestion, buildItems, SYSTEM, userMessage, parseModel, isNepali } from "./lib.js";
 import { handleReport, handlePhoto } from "./report.js";
+import { handlePulse } from "./pulse.js";
 
 const json = (o, status, h) => new Response(JSON.stringify(o), { status, headers: { "Content-Type": "application/json; charset=utf-8", ...(h || {}) } });
 const day = () => new Date(Date.now() + 345 * 60000).toISOString().slice(0, 10);
@@ -23,13 +25,14 @@ async function loadData(env, fetcher = fetch) {
   return out;
 }
 
-export async function handle(req, env, fetcher = fetch) {
+export async function handle(req, env, fetcher = fetch, ctx) {
   const origin = req.headers.get("Origin") || "", cors = corsHeaders(origin, env.ALLOWED_ORIGINS || "");
   const url = new URL(req.url);
   if (req.method === "OPTIONS") return cors ? new Response(null, { status: 204, headers: cors }) : new Response(null, { status: 403 });
   const pm = /^\/report\/photo\/(\d{1,9})$/.exec(url.pathname);
   if (pm && req.method === "GET") return handlePhoto(req, env, pm[1]);
   if (url.pathname === "/report" && req.method === "POST") return cors ? handleReport(req, env, cors, bump, fetcher) : json({ error: "origin_not_allowed" }, 403);
+  if ((url.pathname === "/stats" && req.method === "GET") || ((url.pathname === "/hit" || url.pathname === "/fb") && req.method === "POST")) return handlePulse(req, env, cors, ctx);
   if (url.pathname !== "/ask" || req.method !== "POST") return json({ error: "not_found" }, 404, cors || {});
   if (!cors) return json({ error: "origin_not_allowed" }, 403);
   let body; try { body = await req.json(); } catch (e) { return json({ error: "bad_json" }, 400, cors); }
@@ -51,4 +54,4 @@ export async function handle(req, env, fetcher = fetch) {
   const out = parseModel(text, items, isNepali(body.q)); if (!out) return json({ error: "bad_model_output" }, 502, cors);
   return json({ ...out, model: m.model, usage: m.usage, data_time: nowIso }, 200, { ...cors, "Cache-Control": "no-store" });
 }
-export default { fetch: (req, env) => handle(req, env) };
+export default { fetch: (req, env, ctx) => handle(req, env, fetch, ctx) };

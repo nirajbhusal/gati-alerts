@@ -48,3 +48,16 @@ turn on Turnstile if the route is abused. Removing the URL from `data/report-con
 
 ## Test
 `cd worker && npm test` (node:test; Claude, GitHub and data fetches mocked).
+
+## Page totals and one-tap feedback
+
+`src/pulse.js` adds three routes to this Worker. They need only the `KV` binding that is already there.
+
+- `POST /hit {p, e?}`: a page view, or one of the named events (`district_set`, `route_check`, `more_open`, `share`), added to today's totals.
+- `POST /fb {p, v, note?}`: `useful`, `unclear` or `wrong` for a page, with an optional note (scrubbed of phone numbers, emails and links, 200 characters at most).
+- `GET /stats?days=14`: totals per day, public. Notes are returned only with `Authorization: Bearer <STATS_TOKEN>`; set it with `npx wrangler secret put STATS_TOKEN`.
+
+Nothing about the visitor is stored: no IP address, cookie, identifier, user agent or referrer. Alert pages are counted as `/alerts/*`.
+Hits are gathered in memory and written in batches (25 hits or two minutes) to stay inside the free KV write allowance, so totals are approximate.
+The site starts sending as soon as the deployed Worker answers `/hit` with 204; until then it sends one request per session and shows no feedback row.
+

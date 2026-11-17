@@ -637,3 +637,6 @@
   G.skyOn = () => { try { return localStorage.getItem("gati-sky") !== "off"; } catch (e) { return true; } };
   G.setSky = (on) => { try { if (on) localStorage.removeItem("gati-sky"); else localStorage.setItem("gati-sky", "off"); } catch (e) {} if (G.sky) G.sky.apply(); };
   const s = document.createElement("script"); s.src = G.root + "assets/js/sky.js"; s.defer = true; document.body.appendChild(s); })();
+
+/* Page totals and one-tap feedback (assets/js/pulse.js): no cookies, no identifiers; off when the browser asks not to be tracked. */
+(function () { const G = window.Gati; if (!G || G.pulse) return; const s = document.createElement("script"); s.src = G.root + "assets/js/pulse.js"; s.defer = true; document.body.appendChild(s); })();

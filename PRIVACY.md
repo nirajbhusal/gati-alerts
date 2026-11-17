@@ -7,9 +7,24 @@ in this repository. A fork run by someone else must publish its own policy.
 
 ## In short
 
-- No accounts, no cookies, no analytics, no advertising, no tracking.
+- No accounts, no cookies, no advertising, and nothing that follows you from page to page.
+- Gati counts page views only as totals per page per day (see "Page totals and feedback"). Nothing about you or your device is kept with them.
 - Gati has no database of its users. The site is static files.
 - Your settings stay in your own browser.
+
+## Page totals and feedback
+
+To see which pages people actually use, Gati's own Worker (on Cloudflare) counts page views. It receives only the
+page's address on Gati (for example `/weather/`; an alert page is counted as "an alert page", not which one) and,
+for three actions, the action's name: choosing a district, checking a road route, opening the full home page. It
+keeps a total per page per day. It does not keep IP addresses, cookies, identifiers, the browser's name or the page
+you came from, so the totals cannot be traced to a person. Totals are public at the Worker's `/stats` address.
+
+If your browser sends "Do Not Track" or "Global Privacy Control", Gati does not count your visits at all.
+
+At the foot of a page you can press Useful, Unclear or Wrong. That sends the page's address and your choice, and a
+short note only if you write one. Do not put a name, phone number or email in the note; anything that looks like one
+is removed before it is saved. Notes are read only by the maintainer.
 
 ## What stays on your device
 
@@ -40,6 +55,8 @@ Your browser contacts these services directly, so they see your IP address as an
 | Open-Meteo | Weather, air quality and "Am I affected" | Coordinates of a place (see Location). |
 | Ask Gati Worker (Cloudflare) | Only when you send a question in Ask Gati | Your question text and language. |
 | Report Worker (Cloudflare) | Only if you press "Send without an account" | The report you wrote, and a photo if you added one. |
+| Gati Worker, page totals (Cloudflare) | Every page, unless your browser asks not to be tracked | The page's address on Gati. No identifier. |
+| Gati Worker, feedback (Cloudflare) | Only if you press Useful, Unclear or Wrong | The page's address, your choice, and a note if you wrote one. |
 
 Fonts and the map library are served from Gati itself, not from a third party.
 
