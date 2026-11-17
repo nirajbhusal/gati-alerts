@@ -14,7 +14,7 @@ from shapely.geometry import shape, LineString, Point
 from shapely.ops import linemerge
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-UA = {"User-Agent": "gati-alerts/1.0 (+https://nirajbhusal.github.io/gati-alerts/)"}
+UA = {"User-Agent": "gati-alerts/1.0 (+https://gatialerts.com/)"}
 def get(url):
     for i in range(3):
         try:

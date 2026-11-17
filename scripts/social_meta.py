@@ -32,5 +32,5 @@ def patch(p):
     p.write_text(s, encoding="utf-8"); return bool(add)
 
 if __name__ == "__main__":
-    files = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "scripts" not in p.parts and "vendor" not in p.parts]
+    files = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "scripts" not in p.parts and "vendor" not in p.parts and "extension" not in p.parts and "node_modules" not in p.parts]   # the extension popup is not a web page
     n = sum(patch(p) for p in files); print(f"social meta: patched {n} of {len(files)} pages")

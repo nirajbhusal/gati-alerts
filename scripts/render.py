@@ -120,7 +120,7 @@ def share_png(a, out, now):
         d.text((60, y), ln, font=font("Regular", 30), fill="#D5DEE7"); y += 40
     d.line([60, H - 112, W - 60, H - 112], fill="#2C4A6B", width=2)
     d.text((60, H - 100), f"स्रोत: {agency(ne)} · {npt(src_time(a, ne), 'ne')}", font=font("SemiBold", 26), fill="#FFFFFF")
-    d.text((W - 60, H - 100), "nirajbhusal.github.io/gati-alerts", font=font("SemiBold", 24), fill="#7FD1D8", anchor="ra")
+    d.text((W - 60, H - 100), "gatialerts.com", font=font("SemiBold", 24), fill="#7FD1D8", anchor="ra")
     d.text((60, H - 60), "गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ · Gati relays official sources",
            font=font("Regular", 22), fill="#7FD1D8")
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -206,6 +206,8 @@ def today_card(alerts, now):
     local = now.astimezone(NPT)
     stamp = f"{local.day} {MON_EN[local.month - 1]} {local.year}, {local.strftime('%I:%M %p').lstrip('0')} NPT"
 
+    AGENCY_SHORT = {"hydrology.gov.np": "DHM", "dhm.gov.np": "DHM", "ndrrma.gov.np": "NDRRMA", "neoc.moha.gov.np": "NEOC", "nepalpolice.gov.np": "नेपाल प्रहरी",
+                    "bipadportal.gov.np": "BIPAD", "seismonepal.gov.np": "NSC", "earthquake.usgs.gov": "USGS", "nirajbhusal.github.io": "गति (प्रमाणित)"}
     short = lambda t: re.split(r"\s*\(|,", t)[0].strip()   # "10 Nov (Kartik 24), readings 8:40…" -> "10 Nov": the long form was cut off with "…"
     today = local.strftime("%Y-%m-%d")
 
@@ -215,7 +217,8 @@ def today_card(alerts, now):
         pad = 56
         logo(im, (pad, 44), 76)
         d.text((pad + 190, 44), "नेपाल आज", font=font("Bold", 46), fill="#FFFFFF")
-        d.text((pad + 190, 100), "Nepal today · " + stamp, font=font("Regular", 24), fill="#C9D3DF")
+        bs_today = next((dd.get("bs") for dd in ((wx or {}).get("bulletin5") or {}).get("days", []) if dd.get("ad") == today), "")
+        d.text((pad + 190, 100), ("Nepal today · " + (bs_today + " · " if bs_today else "") + stamp), font=font("Regular", 24), fill="#C9D3DF")
         # map
         mw = 640 if sq else 470
         x0, y0, x1, y1 = 80.0, 26.3, 88.25, 30.48
@@ -236,22 +239,31 @@ def today_card(alerts, now):
         cap = (f"{named} जिल्लामा सक्रिय आधिकारिक सूचना".translate(DEV) + names_ne if named else "कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन") + " · " + (f"{named} district{'s' if named != 1 else ''} named in an active official alert" + names_en if named else "No district is named in an active official alert")
         for n, ln in enumerate(wrap(d, cap, font("Regular", 18), W - 2 * pad if sq else mw, 3)):
             d.text((pad if sq else mx, my + mh + 8 + n * 24), ln, font=font("Regular", 18), fill="#9AA6BE")
+        # the alerts in force, most severe first: what the coloured districts are about
+        act = sorted([x for x in alerts if x["trust"] in ("Official", "Verified") and is_active(x, now) and (x.get("districts") or [])],
+                     key=lambda x: (-rank.get(x["severity"], 0), x["sent"]), reverse=False)
+        ay = my + mh + 8 + 24 * len(wrap(d, cap, font("Regular", 18), W - 2 * pad if sq else mw, 3)) + 8
+        aw = W - 2 * pad if sq else mw
+        for x in act[: (3 if sq else 2)]:
+            if ay + 26 > H - 84:
+                break
+            col = SEV.get(x["severity"], SEV["Minor"])[3]
+            d.ellipse([pad if sq else mx, ay + 8, (pad if sq else mx) + 11, ay + 19], fill=col)
+            ag = AGENCY_SHORT.get(x["sender"], x["sender"])
+            line = wrap(d, ag + ": " + ((x.get("info") or {}).get("ne") or {}).get("headline", ""), font("SemiBold", 18), aw - 20, 1)
+            if line:
+                d.text(((pad if sq else mx) + 20, ay), line[0], font=font("SemiBold", 18), fill="#E8EDF4")
+            ay += 27
+        map_bottom = ay
         # facts
         fx = pad if sq else mx + mw + 44
-        fy = my + mh + 70 if sq else 160
-        fw = (W // 2 - pad - 12) if sq else W - fx - pad
-        def fact(y, head, line_ne, line_en, src):
-            d.text((fx, y), head, font=font("SemiBold", 19), fill="#7FD1D8")
-            d.text((fx, y + 24), line_ne, font=font("Bold", 28), fill="#FFFFFF")
-            lines = wrap(d, line_en, font("Regular", 19), fw, 2 if sq else 1)
-            for n, ln in enumerate(lines):
-                d.text((fx, y + 62 + n * 25), ln, font=font("Regular", 19), fill="#C9D3DF")
-            return y + 100 + 25 * (len(lines) - 1)
+        fy = map_bottom + 22 if sq else 160
+        fw = (W - 2 * pad) if sq else W - fx - pad
         y = fy
         b5 = (wx or {}).get("bulletin5")
         if b5 and b5.get("days"):
             d.text((fx, y), "DHM · मौसम चेतावनी, ५ दिन · 5-day weather warning", font=font("SemiBold", 19), fill="#7FD1D8")
-            cw = min(92, (fw - 4 * 8) // 5)
+            cw = min(110 if sq else 92, (fw - 4 * 8) // 5)
             for n, dayx in enumerate(b5["days"][:5]):
                 c = LV.get(dayx["level"], LV["green"])
                 bx = fx + n * (cw + 8)
@@ -262,23 +274,53 @@ def today_card(alerts, now):
             worst = next((l for l in ("red", "orange", "yellow") if any(x["level"] == l for x in b5["days"])), "green")
             wd = ", ".join(str(int(x["ad"][8:])) + " " + MON_EN[int(x["ad"][5:7]) - 1] for x in b5["days"][:5] if x["level"] == worst)   # say which day carries the warning
             d.text((fx, y + 96), (wd + ": " if worst != "green" else "") + LV[worst][1] + " · " + (LV[worst][2] if worst != "green" else "No warning on all five days"), font=font("Bold", 22), fill="#FFFFFF")
-            y += 142
+            y += 138
+        # four compact tiles, two by two: rivers, roads, measured rain, latest earthquake
+        tiles = []
         if rv and rv.get("gauges"):
             hot = sum(1 for g in rv["gauges"] if g["level"] >= g["warning"]); n = len(rv["gauges"])
-            y = fact(y, "DHM · नदी · Rivers", f"{n - hot}/{n} केन्द्र चेतावनी तहभन्दा तल".translate(DEV),
-                     (f"{hot} of {n} stations above warning level" if hot else f"All {n} stations shown are below warning level") + " · readings of " + short(rv.get("as_of_en", "")), "")
-        if sq:
-            fx, y = W // 2 + 12, fy   # second column
+            tiles.append(("DHM · नदी · Rivers", (f"{hot}/{n} चेतावनी तहमाथि" if hot else f"{n}/{n} चेतावनी तहमुनि").translate(DEV),
+                          (f"{hot} of {n} gauges above warning" if hot else f"All {n} gauges below warning") + " · " + short(rv.get("as_of_en", "")), "#D93025" if hot else "#2E8B57"))
         if rd and rd.get("routes"):
             c = lambda st: sum(1 for r in rd["routes"] if r["status"] == st)
-            y = fact(y, "नेपाल प्रहरी, सडक विभाग · सडक · Roads", f"{c('blocked')} अवरुद्ध · {c('oneway')} एकतर्फी".translate(DEV),
-                     f"{c('blocked')} blocked, {c('oneway')} one-way, {c('none')} with no report · " + short(rd.get("as_of_en", "")), "")
+            tiles.append(("प्रहरी, सडक विभाग · Roads", f"{c('blocked')} बन्द · {c('oneway')} एकतर्फी".translate(DEV),
+                          f"{c('blocked')} blocked, {c('oneway')} one-way · " + short(rd.get("as_of_en", "")), "#D93025" if c("blocked") else "#F28C1E" if c("oneway") else "#2E8B57"))
         o = (wx or {}).get("station_obs")
-        if o and o.get("stations") and y + 92 < H - 84:
+        if o and o.get("stations"):
             wet = sorted([s for s in o["stations"] if (s.get("rain_mm") or 0) > 0], key=lambda s: -s["rain_mm"])
-            when = dt.datetime.fromisoformat(o["issued"]); wtxt = f"{when.day} {MON_EN[when.month - 1]}, {when.strftime('%I:%M %p').lstrip('0')}"
-            y = fact(y, "DHM · नापिएको वर्षा · Measured rain", (f"{wet[0]['ne']} {wet[0]['rain_mm']} मि.मि.".translate(DEV) if wet else "कुनै केन्द्रमा वर्षा भएन"),
-                     (f"{wet[0]['en']} {wet[0]['rain_mm']} mm; {len(o['stations']) - len(wet)} of {len(o['stations'])} stations dry" if wet else f"None of {len(o['stations'])} stations recorded rain") + f" · observation of {wtxt}", "")
+            when = dt.datetime.fromisoformat(o["issued"]); wtxt = f"{when.day} {MON_EN[when.month - 1]}"
+            tiles.append(("DHM · नापिएको वर्षा · Rain", (f"{wet[0]['ne']} {wet[0]['rain_mm']} मि.मि.".translate(DEV) if wet else "कुनै केन्द्रमा वर्षा छैन"),
+                          (f"Rain at {len(wet)} of {len(o['stations'])} stations" if wet else f"No rain at {len(o['stations'])} stations") + f" · {wtxt}", "#1a73e8" if wet else "#2E8B57"))
+        if o and o.get("stations"):
+            hi = max((x for x in o["stations"] if x.get("tmax_c") is not None), key=lambda x: x["tmax_c"], default=None)
+            lo = min((x for x in o["stations"] if x.get("tmin_c") is not None), key=lambda x: x["tmin_c"], default=None)
+            if hi and lo:
+                nm_s = lambda x: x["en"].replace(" Airport", "")
+                tiles.append(("DHM · तापक्रम · Temperature", f"अधिकतम {hi['tmax_c']:g}° · न्यूनतम {lo['tmin_c']:g}°".translate(DEV),
+                              f"Warmest {nm_s(hi)}, coldest {nm_s(lo)}", "#E8590C"))
+        fc = ((wx or {}).get("forecast24") or {}).get("country") or {}
+        if fc.get("analysis_ne"):
+            big = re.sub(r"\s*रहेको छ$", "", re.sub(r"^हाल\s+नेपालमा\s+", "", fc["analysis_ne"].rstrip(" ।")))   # keep the system, drop "currently over Nepal there is"
+            small = re.sub(r"^(Currently,?\s+there is|The country is currently under the|Currently,?)\s+", "", fc.get("analysis_en", "")).strip()
+            tiles.append(("DHM · मौसम प्रणाली · Weather system", big, small[:1].upper() + small[1:], "#0284C7"))
+        qk = sorted([x for x in alerts if x.get("hazard") == "earthquake" and x["trust"] == "Official"], key=lambda x: x["sent"], reverse=True)
+        if qk:
+            q = qk[0]; qi = (q.get("info") or {}); mag = ((qi.get("en") or {}).get("params") or {}).get("gati:magnitude", "")
+            qt = dt.datetime.fromisoformat(q["sent"]); ag = AGENCY_SHORT.get(q["sender"], q["sender"])
+            where_ne = ", ".join(nm[c]["ne"] for c in (q.get("districts") or [])[:1] if c in nm)
+            where_en = ", ".join(nm[c]["en"] for c in (q.get("districts") or [])[:1] if c in nm)
+            tiles.append((f"{ag} · पछिल्लो भूकम्प · Earthquake", (mag.translate(DEV) + (" · " + where_ne if where_ne else "")).strip(" ·") or "भूकम्प",
+                          f"{mag}{', ' + where_en if where_en else ''} · {qt.day} {MON_EN[qt.month - 1]}, {qt.strftime('%I:%M %p').lstrip('0')}", "#5E35B1"))
+        cols = 2; gap = 10; tw = (fw - gap * (cols - 1)) // cols; th = 74 if not sq else 84
+        for n, (head, big, small, col) in enumerate(tiles[:6]):
+            tx, ty = fx + (n % cols) * (tw + gap), y + (n // cols) * (th + 8)
+            if ty + th > H - 84:
+                break
+            d.rounded_rectangle([tx, ty, tx + tw, ty + th], radius=12, fill="#121C30", outline="#24314A")
+            d.rounded_rectangle([tx, ty, tx + 6, ty + th], radius=3, fill=col)
+            d.text((tx + 16, ty + (7 if sq else 4)), wrap(d, head, font("SemiBold", 15), tw - 26, 1)[0], font=font("SemiBold", 15), fill="#7FD1D8")
+            d.text((tx + 16, ty + (26 if sq else 21)), wrap(d, big, font("Bold", 23 if sq else 21), tw - 26, 1)[0], font=font("Bold", 23 if sq else 21), fill="#FFFFFF")
+            d.text((tx + 16, ty + (58 if sq else 50)), wrap(d, small, font("Regular", 15), tw - 26, 1)[0], font=font("Regular", 15), fill="#C9D3DF")
         d.line([pad, H - 78, W - pad, H - 78], fill="#24314A", width=2)
         d.text((pad, H - 64), "गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ; यो चेतावनी होइन। · Gati relays official sources; this is not a warning.", font=font("Regular", 18 if not sq else 17), fill="#C9D3DF")
         d.text((pad, H - 36), SITE.replace("https://", "").rstrip("/"), font=font("SemiBold", 19), fill="#7FD1D8")
@@ -503,4 +545,4 @@ def sitemap(alerts):
 if __name__ == "__main__":
     main()
     import social_meta  # og/twitter tags on every static page
-    for _p in [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "scripts" not in p.parts and "vendor" not in p.parts]: social_meta.patch(_p)
+    for _p in [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "scripts" not in p.parts and "vendor" not in p.parts and "extension" not in p.parts and "node_modules" not in p.parts]: social_meta.patch(_p)

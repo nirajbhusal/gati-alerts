@@ -1,8 +1,8 @@
 # गोपनीयता नीति
 
-[English](PRIVACY.md) · साइटमा: https://nirajbhusal.github.io/gati-alerts/privacy/
+[English](PRIVACY.md) · साइटमा: https://gatialerts.com/privacy/
 
-पछिल्लो अद्यावधिक: २०२६ नोभेम्बर ११ (२०८३ कात्तिक २५)। यो नीति https://nirajbhusal.github.io/gati-alerts/ र यस
+पछिल्लो अद्यावधिक: २०२६ नोभेम्बर ११ (२०८३ कात्तिक २५)। यो नीति https://gatialerts.com/ र यस
 भण्डारको कोडका लागि हो। अरू कसैले गतिको कोड लिएर चलाएको साइटले आफ्नै नीति राख्नुपर्छ। अङ्ग्रेजी र नेपाली पाठमा
 फरक परेमा अङ्ग्रेजी पाठलाई आधार मानिन्छ।
 
@@ -82,5 +82,5 @@
 
 ## सम्पर्क
 
-गोपनीयताबारे प्रश्न वा हटाउने अनुरोध: [सम्पर्क पेज](https://nirajbhusal.github.io/gati-alerts/contact/)मा रहेको
+गोपनीयताबारे प्रश्न वा हटाउने अनुरोध: [सम्पर्क पेज](https://gatialerts.com/contact/)मा रहेको
 व्यवस्थापकको इमेल, वा निजी कुरा होइन भने GitHub Issue।

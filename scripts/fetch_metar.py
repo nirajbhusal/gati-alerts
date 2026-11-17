@@ -57,7 +57,7 @@ def decode(raw):
 def main():
     now = datetime.datetime.now(NPT).isoformat(timespec="seconds")
     try:
-        req = urllib.request.Request(URL, headers={"User-Agent": "Gati relay (+https://nirajbhusal.github.io/gati-alerts/)", "Accept": "application/json"})
+        req = urllib.request.Request(URL, headers={"User-Agent": "Gati relay (+https://gatialerts.com/)", "Accept": "application/json"})
         with urllib.request.urlopen(req, timeout=40) as r:
             rows = json.load(r)
     except Exception as ex:

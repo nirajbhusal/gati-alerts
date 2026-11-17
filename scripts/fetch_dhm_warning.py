@@ -12,7 +12,7 @@ OUT = ROOT / "data" / "weather.json"
 TAG = "https://dhm.gov.np/mfd/api/page/tag?tag_id=8"
 PAGE = "https://dhm.gov.np/mfd/api/page/{}"
 NPT = datetime.timezone(datetime.timedelta(hours=5, minutes=45))
-UA = {"User-Agent": "Mozilla/5.0 (compatible; Gati relay; +https://nirajbhusal.github.io/gati-alerts/)", "Accept": "application/json"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; Gati relay; +https://gatialerts.com/)", "Accept": "application/json"}
 DEV = "०१२३४५६७८९"
 
 

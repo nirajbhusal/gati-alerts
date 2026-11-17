@@ -6,13 +6,13 @@ It is a self-assessment prepared for a registry application; it is not a certifi
 
 | # | Indicator | Gati | Evidence |
 |---|---|---|---|
-| 1 | Relevance to the Sustainable Development Goals | Gets official disaster warnings to more people, in Nepali first. Primary SDG 11 (target 11.5); also 13 (13.1, 13.3), 1 (1.5), 9 (9.c) and 16 (16.10). | [About page, SDG section](https://nirajbhusal.github.io/gati-alerts/about/) |
+| 1 | Relevance to the Sustainable Development Goals | Gets official disaster warnings to more people, in Nepali first. Primary SDG 11 (target 11.5); also 13 (13.1, 13.3), 1 (1.5), 9 (9.c) and 16 (16.10). | [About page, SDG section](https://gatialerts.com/about/) |
 | 2 | Open licence | Code: MIT. Content and data: CC BY 4.0. | [LICENSE](../LICENSE), [LICENSE-CONTENT.md](../LICENSE-CONTENT.md) |
 | 3 | Clear ownership | Copyright Niraj Bhusal and Gati contributors. Relayed notices remain the agencies' own. | [LICENSE](../LICENSE), [THIRD_PARTY.md](../THIRD_PARTY.md) |
 | 4 | Platform independence | Static HTML, CSS and JavaScript; Python build scripts; Leaflet and OpenStreetMap. Runs on any static web host. The one closed dependency, the AI model behind Ask Gati, is optional and replaceable. | [ARCHITECTURE.md](ARCHITECTURE.md), [THIRD_PARTY.md](../THIRD_PARTY.md) |
 | 5 | Documentation | README with local setup, architecture, CAP profile, verification process, contributing guide. | [README](../README.md), [docs/](.), [CONTRIBUTING.md](../CONTRIBUTING.md) |
-| 6 | Mechanism for extracting data | All alerts are open, non-proprietary files: CAP 1.2 XML, Atom feeds and JSON, with no login. | [API page](https://nirajbhusal.github.io/gati-alerts/api/), [`atom.xml`](../atom.xml), [`data/alerts.json`](../data/alerts.json) |
-| 7 | Privacy and applicable laws | No accounts, cookies or analytics. Published privacy policy. Operates as a relay under Nepal's Disaster Risk Reduction and Management Act 2074, never as a warning authority. | [PRIVACY.md](../PRIVACY.md), [About page, legal position](https://nirajbhusal.github.io/gati-alerts/about/) |
+| 6 | Mechanism for extracting data | All alerts are open, non-proprietary files: CAP 1.2 XML, Atom feeds and JSON, with no login. | [API page](https://gatialerts.com/api/), [`atom.xml`](../atom.xml), [`data/alerts.json`](../data/alerts.json) |
+| 7 | Privacy and applicable laws | No accounts, cookies or analytics. Published privacy policy. Operates as a relay under Nepal's Disaster Risk Reduction and Management Act 2074, never as a warning authority. | [PRIVACY.md](../PRIVACY.md), [About page, legal position](https://gatialerts.com/about/) |
 | 8 | Standards and best practices | OASIS CAP 1.2 (ITU-T X.1303) validated in CI against the official schema; Atom; GeoJSON; installable offline web app; bilingual; severity shown with word and icon, not colour alone. | [CAP.md](CAP.md), [`.github/workflows/cap.yml`](../.github/workflows/cap.yml) |
 | 9 | Do no harm by design | See below. | [VERIFICATION.md](VERIFICATION.md), [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md), [SECURITY.md](../SECURITY.md) |
 

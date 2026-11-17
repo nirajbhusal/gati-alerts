@@ -2,9 +2,9 @@
   "manifest_version": 3,
   "name": "__MSG_extName__",
   "short_name": "__MSG_extShort__",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "__MSG_extDesc__",
-  "homepage_url": "https://nirajbhusal.github.io/gati-alerts/",
+  "homepage_url": "https://gatialerts.com/",
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
@@ -28,6 +28,7 @@
     "notifications"
   ],
   "host_permissions": [
+    "https://gatialerts.com/*",
     "https://nirajbhusal.github.io/gati-alerts/*"
   ],
   "default_locale": "en"

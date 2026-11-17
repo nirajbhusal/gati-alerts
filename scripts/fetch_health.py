@@ -10,7 +10,7 @@ B = "https://freehealth.mohp.gov.np"; NPT = datetime.timezone(datetime.timedelta
 now = lambda: datetime.datetime.now(NPT).isoformat(timespec="minutes")
 GR = ["a_pos", "a_neg", "b_pos", "b_neg", "o_pos", "o_neg", "ab_pos", "ab_neg"]
 def get(p):
-    r = urllib.request.Request(B + p, headers={"User-Agent": "Gati relay (+https://nirajbhusal.github.io/gati-alerts/)", "Accept": "application/json"})
+    r = urllib.request.Request(B + p, headers={"User-Agent": "Gati relay (+https://gatialerts.com/)", "Accept": "application/json"})
     return json.load(urllib.request.urlopen(r, timeout=40))
 old = json.loads(OUT.read_text()) if OUT.exists() else {}
 out = dict(old) if old else {"source_ne": "स्वास्थ्य तथा जनसङ्ख्या मन्त्रालय, नि:शुल्क स्वास्थ्य ड्यासबोर्ड", "source_en": "Ministry of Health and Population, Free Health dashboard", "url": B + "/", "trust": "Official"}

@@ -17,7 +17,7 @@ agencies. A pull request that breaks this will not be merged. See [docs/CAP.md](
 
 | You want to | Do this |
 |---|---|
-| Report a hazard | Use the [report page](https://nirajbhusal.github.io/gati-alerts/report/). In an emergency call 100, 101, 102 or 1234. |
+| Report a hazard | Use the [report page](https://gatialerts.com/report/). In an emergency call 100, 101, 102 or 1234. |
 | Fix a wrong or outdated item | Open an issue with the link to the official source. Corrections are published as CAP `Update` or `Cancel`, never as silent edits. |
 | Suggest a new official source | Open an issue with the agency, URL and what it publishes. |
 | Improve a translation | Open a pull request. Keep Nepali first and plain. |

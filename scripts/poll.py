@@ -24,7 +24,7 @@ args = sys.argv[1:]
 ALL = "--all" in args
 GROUP = args[args.index("--group") + 1] if "--group" in args else None
 TIMEOUT = int(args[args.index("--timeout") + 1]) if "--timeout" in args else 30
-UA = "Mozilla/5.0 (compatible; GatiPoller/1.0; +https://nirajbhusal.github.io/gati-alerts/sources/)"
+UA = "Mozilla/5.0 (compatible; GatiPoller/1.0; +https://gatialerts.com/sources/)"
 
 
 def now():

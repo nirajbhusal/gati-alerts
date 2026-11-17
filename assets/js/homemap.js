@@ -24,11 +24,11 @@
     fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${CITIES.map((c) => c[2]).join(",")}&longitude=${CITIES.map((c) => c[3]).join(",")}&current=us_aqi&timezone=Asia%2FKathmandu`).then((r) => (r.ok ? r.json() : null))
       .then((d) => { AQ = d ? (Array.isArray(d) ? d : [d]) : []; if (cat === "weather") draw(); }).catch(() => { AQ = []; if (cat === "weather") draw(); }); }
   const QMS = 30 * 864e5, qmag = (a) => parseFloat((a.info.en.params || {})["gati:magnitude"] || "") || null;
-  const go = () => Promise.all(["data/districts.geojson", "data/alerts.json", "data/arnab-advisory.json", "data/roads.json", "data/rivers.json"].map((p) => G.rawJson(p).catch(() => null))).then(([dg, al, ar, rd, rv]) => {
+  const go = () => Promise.all(["data/districts.geojson", "data/alerts.json", "data/arnab-advisory.json", "data/roads.json", "data/rivers.json", "data/weather.json"].map((p) => G.rawJson(p).catch(() => null))).then(([dg, al, ar, rd, rv, wx]) => {
     if (!dg || !al) { box.querySelector(".hmw").innerHTML = `<p class="meta">${T("नक्सा लोड भएन।", "Map could not load.")}</p>`; return; }
-    S = { dg, al: al.alerts, ar, rd, rv, paths: {}, cen: {} }; dg.features.forEach((f) => { S.paths[f.properties.code] = pth(f.geometry); S.cen[f.properties.code] = ctr(f.geometry); });
+    S = { dg, al: al.alerts, gen: al.generated, ar, rd, rv, wx, paths: {}, cen: {} }; dg.features.forEach((f) => { S.paths[f.properties.code] = pth(f.geometry); S.cen[f.properties.code] = ctr(f.geometry); });
     if (ar && today <= ar.days[ar.days.length - 1].ad) { const i = ar.days.findIndex((d) => d.ad >= today); day = ar.days[Math.max(0, i)].ad; }
-    draw(); G.onLang(draw);
+    draw(); G.onLang(draw); addEventListener("gati:district", draw); if (G.airwx) { G.airwx.on(() => cat === "all" && !sel && draw()); G.airwx.load(); }
   });
   if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: "300px" }); io.observe(box); } else go();
   /* active items for the chosen day (or now): official, not expired, not superseded */
@@ -43,8 +43,9 @@
   function draw() {
     const L = items(), top = {}, nat = L.filter((x) => !x.ds.length);
     L.forEach((x) => x.ds.forEach((c) => { if ((RK[x.sev] || 0) > (RK[top[c]] || 0)) top[c] = x.sev; }));
+    const mine = (G.district && G.district.get && G.district.get()) || "";
     const dist = S.dg.features.map((f) => { const c = f.properties.code, s = top[c];
-      return `<path d="${S.paths[c]}" data-c="${c}" class="hmd${s ? " s-" + s : ""}${sel === c ? " on" : ""}" tabindex="0" role="button" aria-label="${E(T(f.properties.ne, f.properties.en))}${s ? ": " + E(T(G.SEV[s][0], G.SEV[s][1])) : ""}"/>`; }).join("");
+      return `<path d="${S.paths[c]}" data-c="${c}" class="hmd${s ? " s-" + s : ""}${sel === c ? " on" : ""}${mine === c ? " me" : ""}" tabindex="0" role="button" aria-label="${E(T(f.properties.ne, f.properties.en))}${s ? ": " + E(T(G.SEV[s][0], G.SEV[s][1])) : ""}"/>`; }).join("");
     /* small icons: blocked roads (Nepal Police road alerts by district; roads.json routes marked blocked) and DHM gauges at warning or danger */
     const ic = [];
     (cat === "all" || cat === "road") && L.filter((x) => x.road).forEach((x) => x.ds.forEach((c) => S.cen[c] && ic.push(`<g class="hmi hmr" transform="translate(${X(S.cen[c][0])},${Y(S.cen[c][1])})"><title>${E(x.head)}</title><rect x="-6" y="-6" width="12" height="12" rx="2.5"/><path class="hmbar" d="M-3.6 0H3.6"/></g>`)));
@@ -84,11 +85,38 @@
     const nRoad = ic.slice(0, icA).filter((x) => x.includes("hmr")).length;
     const stat = (n, ne, en, k) => `<div class="hmst${n ? " " + k : ""}"><b>${N(n)}</b><span>${T(ne, en)}</span></div>`;
     const stats = `<div class="hmstats">${stat(named.length, "सूचना भएका जिल्ला", "Districts with alerts", "a")}${cat === "all" || cat === "road" ? stat(nRoad, "सडक अवरुद्ध", "Roads blocked", "r") : ""}${cat === "all" || cat === "flood" ? stat(hot.length, "नदी चेतावनी तहमा", "Rivers at warning", "v") : ""}${stat(nat.length, "देशव्यापी सूचना", "Nationwide notices", "n")}</div>`;
+    /* "Right now": one line per subject, each from its own agency, each a link to its page. Never added together. */
+    const MO = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], MON = ["जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन", "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"];
+    const dm = (iso) => { const d = new Date(Date.parse(iso) + G.tzMs); return isNaN(d) ? "" : T(MON[d.getUTCMonth()] + " " + N(d.getUTCDate()), d.getUTCDate() + " " + MO[d.getUTCMonth()]); };
+    const GOOD = "#1e8e3e", WARN = "#B26A00", BAD = "#C5221F", INFO = "#5E35B1", rows = [];
+    const sevCol = { Extreme: "#8E1B14", Severe: BAD, Moderate: "#E8590C", Minor: WARN };
+    rows.push({ href: R + "alerts/", c: named.length ? sevCol[top[named[0]]] || WARN : GOOD, k: T("सूचना", "Alerts"),
+      v: named.length ? T(N(named.length) + " जिल्लामा सक्रिय", named.length + " district" + (named.length > 1 ? "s" : "") + " under alert") : T("जिल्ला तोकिएको सूचना छैन", "No district alert"),
+      n: named.length ? named.slice(0, 3).map(fname).join(", ") + (named.length > 3 ? " +" + N(named.length - 3) : "") : T("आधिकारिक निकायबाट", "from official agencies") });
+    const b5 = S.wx && S.wx.bulletin5, d0 = b5 && b5.days && (b5.days.find((x) => x.ad === today) || null);
+    if (d0) { const LVN = { green: ["चेतावनी छैन", "No warning", GOOD], yellow: ["अद्यावधिक रहनुहोस्", "Be updated", WARN], orange: ["सतर्क रहनुहोस्", "Be prepared", "#E8590C"], red: ["कारबाही गर्नुहोस्", "Take action", BAD] }[d0.level] || ["", "", GOOD];
+      const nx = b5.days.find((x) => x.ad > today && x.level !== "green");
+      rows.push({ href: R + "weather/", c: LVN[2], k: T("आजको मौसम चेतावनी", "Weather warning today"), v: T(LVN[0], LVN[1]), n: "DHM · " + (nx ? T("अर्को चेतावनी " + dm(nx.ad + "T12:00:00+05:45"), "next warning " + dm(nx.ad + "T12:00:00+05:45")) : T("५ दिनमा अरू चेतावनी छैन", "none in the 5-day outlook")) }); }
+    if (S.rd && S.rd.routes) { const c = (st) => S.rd.routes.filter((r) => r.status === st).length, bl = c("blocked"), ow = c("oneway");
+      rows.push({ href: R + "roads/", c: bl ? BAD : ow ? WARN : GOOD, k: T("मुख्य सडक", "Main roads"), v: T(N(bl) + " बन्द · " + N(ow) + " एकतर्फी", bl + " blocked · " + ow + " one-way"), n: T("प्रहरी, सडक विभाग", "Police, DoR") + " · " + E(T(S.rd.as_of_ne, S.rd.as_of_en).split(/\s*\(|,/)[0]) }); }
+    if (S.rv && S.rv.gauges && S.rv.gauges.length) { const h = S.rv.gauges.filter((g) => g.level >= g.warning).length, n = S.rv.gauges.length;
+      rows.push({ href: R + "rivers/", c: h ? BAD : GOOD, k: T("नदी", "Rivers"), v: h ? T(N(h) + "/" + N(n) + " चेतावनी तहमाथि", h + " of " + n + " above warning") : T(N(n) + "/" + N(n) + " चेतावनी तहमुनि", "All " + n + " below warning"), n: "DHM · " + E(T(S.rv.as_of_ne, S.rv.as_of_en).split(/\s*\(|,/)[0]) }); }
+    const ob = S.wx && S.wx.station_obs;
+    if (ob && ob.stations && ob.stations.length) { const wet = ob.stations.filter((x) => (x.rain_mm || 0) > 0).sort((a, b) => b.rain_mm - a.rain_mm);
+      rows.push({ href: R + "weather/", c: wet.length ? "#1a73e8" : GOOD, k: T("नापिएको वर्षा", "Measured rain"), v: wet.length ? E(T(wet[0].ne, wet[0].en)) + " " + N(wet[0].rain_mm) + T(" मि.मि.", " mm") : T("कुनै केन्द्रमा छैन", "None recorded"),
+        n: "DHM · " + T(N(wet.length) + "/" + N(ob.stations.length) + " केन्द्रमा", wet.length + " of " + ob.stations.length + " stations") + " · " + dm(ob.issued) }); }
+    const lastq = S.al.filter((a) => a.hazard === "earthquake" && a.trust === "Official").sort((a, b) => Date.parse(b.sent) - Date.parse(a.sent))[0];
+    if (lastq) { const m = ((lastq.info.en.params || {})["gati:magnitude"] || "").replace(/\s*\(.*\)/, ""), where = (lastq.districts || []).slice(0, 1).map(fname).join("");
+      rows.push({ href: R + "alerts/" + lastq.identifier + "/", c: INFO, k: T("पछिल्लो भूकम्प", "Latest earthquake"), v: E(N(m) + (where ? " · " + where : "")), n: E(AG[lastq.sender] ? T(...AG[lastq.sender]) : ({ "earthquake.usgs.gov": "USGS", "seismonepal.gov.np": "NSC" })[lastq.sender] || lastq.sender) + " · " + dm(lastq.sent) }); }
+    if (G.airwx) { const kt = G.airwx.all().find((x) => x.a.icao === "VNKT" && x.o);
+      if (kt) rows.push({ href: R + "flights/", c: G.airwx.CAT[kt.cat][2], k: T("काठमाडौँ विमानस्थल", "Kathmandu airport"), v: T("दृश्यता ", "Visibility ") + G.airwx.km(kt.o.vis), n: kt.o.kind === "official" ? "METAR · " + dm(kt.o.time) : T("मोडेलको अनुमान", "model estimate") }); }
+    const nowlist = `<ul class="hmnow">${rows.map((r) => `<li><a class="hmnbtn" href="${r.href}" style="--c:${r.c}"><i aria-hidden="true"></i><span class="hmk">${r.k}</span><b>${r.v}</b><small>${r.n}</small></a></li>`).join("")}</ul>`;
+    const calm = !named.length, status = cat !== "all" ? "" : `<p class="hmstatus${calm ? " ok" : ""}" style="--c:${calm ? GOOD : sevCol[top[named[0]]] || WARN}"><b>${calm ? T("अहिले कुनै जिल्लामा सक्रिय आधिकारिक सूचना छैन।", "No district is under an active official alert right now.") : T(N(named.length) + " जिल्लामा सक्रिय आधिकारिक सूचना: " + named.slice(0, 4).map(fname).join(", ") + (named.length > 4 ? " …" : ""), named.length + " district" + (named.length > 1 ? "s" : "") + " under an active official alert: " + named.slice(0, 4).map(fname).join(", ") + (named.length > 4 ? " …" : ""))}</b>${S.gen ? `<span>${T("अद्यावधिक", "Updated")} ${G.npt(S.gen)}</span>` : ""}</p>`;
     const dlist = named.length ? `<ul class="hmdl">${named.slice(0, 8).map((c) => `<li><button type="button" data-c="${c}"${sel === c ? ' aria-pressed="true"' : ""}><i class="s-${top[c]}"></i><span>${E(fname(c))}</span><em>${E(T(G.SEV[top[c]][0], G.SEV[top[c]][1]))}${cnt[c] > 1 ? " · " + N(cnt[c]) : ""}</em></button></li>`).join("")}</ul>${named.length > 8 ? `<p class="meta">${T("र अरू " + N(named.length - 8) + " जिल्ला। नक्सामा हेर्नुहोस्।", "and " + (named.length - 8) + " more districts. See the map.")}</p>` : ""}` : `<p class="hmcalm">${T("कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन।", "No district is named in an active official alert.")}</p>`;
     /* names on the map for the districts with alerts (largest screens only, set in CSS) */
     const lab = named.slice(0, 10).map((c) => S.cen[c] ? `<text class="hmlab" x="${X(S.cen[c][0])}" y="${(+Y(S.cen[c][1]) - 13).toFixed(1)}">${E(fname(c))}</text>` : "").join("");
-    box.innerHTML = `${head}${none}${slider}<div class="hmgrid"><div class="hmmain"><div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
-      <aside class="hmside" aria-label="${E(T("अहिलेको सारांश", "Right now"))}"><h3>${T("अहिले", "Right now")}</h3>${stats}<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}<div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div></aside></div>${cxtxt}${note}
+    box.innerHTML = `${head}${cat === "all" ? status : none}${slider}<div class="hmgrid"><div class="hmmain"><div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
+      <aside class="hmside" aria-label="${E(T("अहिलेको सारांश", "Right now"))}"><h3>${T("अहिले", "Right now")}</h3>${cat === "all" ? nowlist + (named.length ? `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}` : "") : stats + `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}`}<div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div></aside></div>${cxtxt}${note}
       ${nat.length ? `<details class="hmnat"${cat === "weather" ? " open" : ""}><summary>${T("देशव्यापी आधिकारिक सूचना", "Nationwide official notices")}: ${[...new Set(nat.map((x) => x.ag))].map((a) => `${E(a)} ${N(nat.filter((x) => x.ag === a).length)}`).join(" · ")}</summary>${list(nat)}</details>` : ""}
 `;
     bind();

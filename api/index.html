@@ -8,21 +8,21 @@
 <meta property="og:title" content="API · गति Gati">
 <meta property="og:description" content="Gati open data: Atom feed, CAP 1.2 per alert, JSON, district and local unit boundaries, embed widget.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://nirajbhusal.github.io/gati-alerts/api/">
+<meta property="og:url" content="https://gatialerts.com/api/">
 <meta property="og:site_name" content="Gati">
-<meta property="og:image" content="https://nirajbhusal.github.io/gati-alerts/assets/img/brand/og-cover.png">
+<meta property="og:image" content="https://gatialerts.com/assets/img/brand/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="गति Gati: सही सूचना, सही समयमा । The right alert, right on time.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="API · गति Gati">
 <meta name="twitter:description" content="Gati open data: Atom feed, CAP 1.2 per alert, JSON, district and local unit boundaries, embed widget.">
-<meta name="twitter:image" content="https://nirajbhusal.github.io/gati-alerts/assets/img/brand/og-cover.png">
+<meta name="twitter:image" content="https://gatialerts.com/assets/img/brand/og-cover.png">
 </head>
 <body data-page="api" data-root="../"><main id="main" class="wrap" style="max-width:860px">
 <h1><span class="ne-only">खुला डेटा र API</span><span class="en-only">Open data and API</span></h1>
 <p class="lead"><span class="ne-only">गतिका सबै सूचना खुला र स्थिर (static) फाइलमा छन्। कुनै साँचो (key) चाहिँदैन। हरेक सूचनामा मूल स्रोतको लिङ्क र समय हुन्छ। हजुरले प्रयोग गर्दा मूल स्रोत र "गति मार्फत" उल्लेख गर्नुहोस्।</span><span class="en-only">All Gati data is open, as static files. No key is needed. Every item carries its original source link and time. When you reuse it, credit the original agency and "via Gati".</span></p>
-<p class="meta"><span class="ne-only">आधार ठेगाना</span><span class="en-only">Base URL</span>: <code>https://nirajbhusal.github.io/gati-alerts/</code></p>
+<p class="meta"><span class="ne-only">आधार ठेगाना</span><span class="en-only">Base URL</span>: <code>https://gatialerts.com/</code></p>
 <h2><span class="ne-only">फाइलहरू</span><span class="en-only">Endpoints</span></h2>
 <table class="srct"><thead><tr><th><span class="ne-only">ठेगाना</span><span class="en-only">Path</span></th><th><span class="ne-only">ढाँचा</span><span class="en-only">Format</span></th><th><span class="ne-only">के छ</span><span class="en-only">Contents</span></th></tr></thead><tbody>
 <tr><td><a href="../atom.xml"><code>atom.xml</code></a></td><td>Atom 1.0</td><td><span class="ne-only">सबै CAP सन्देशको सूची, नयाँ पहिले। हरेक entry मा CAP फाइल र स्थायी पानाको लिङ्क।</span><span class="en-only">Index of every CAP message, newest first, linking each CAP file and permalink.</span></td></tr>
@@ -38,7 +38,7 @@
 <p class="meta"><span class="ne-only">सीमा: Nepal COD-AB v02 (नापी विभाग, UN RCO, OCHA HDX, CC BY-IGO), सरल बनाइएको; दार्चुलाको लिम्पियाधुरा, लिपुलेक र कालापानी क्षेत्र २०७७ को आधिकारिक नक्सा अनुसार Open Knowledge Nepal LocalBoundaries (CC BY 4.0) बाट थपिएको। फरक निकायका तथ्याङ्क कहिल्यै जोडिँदैनन्।</span><span class="en-only">Boundaries: Nepal COD-AB v02 (Survey Department, UN RCO, OCHA HDX, CC BY-IGO), simplified; Darchula's Limpiyadhura, Lipulekh and Kalapani area follows the official map of 2020, added from Open Knowledge Nepal LocalBoundaries (CC BY 4.0). Figures from different agencies are never summed.</span></p>
 <h2 id="embed"><span class="ne-only">आफ्नो साइटमा राख्नुहोस्</span><span class="en-only">Embed widget</span></h2>
 <p><span class="ne-only">यो कोड हजुरको साइटमा टाँस्नुहोस्। <code>district</code> मा जिल्लाको नाम (जस्तै <code>gorkha</code>) वा कोड (जस्तै <code>NP0436</code>), <code>size</code> मा <code>s</code>, <code>m</code> वा <code>l</code>, <code>lang</code> मा <code>ne</code> वा <code>en</code>।</span><span class="en-only">Paste this into your site. <code>district</code> takes a slug (e.g. <code>gorkha</code>) or a code (e.g. <code>NP0436</code>); <code>size</code> is <code>s</code>, <code>m</code> or <code>l</code>; <code>lang</code> is <code>ne</code> or <code>en</code>.</span></p>
-<pre class="card" style="overflow-x:auto;font-size:.85rem"><code>&lt;iframe src="https://nirajbhusal.github.io/gati-alerts/embed/?district=gorkha&amp;size=m"
+<pre class="card" style="overflow-x:auto;font-size:.85rem"><code>&lt;iframe src="https://gatialerts.com/embed/?district=gorkha&amp;size=m"
   width="360" height="420" style="border:0" loading="lazy" title="Gati alerts"&gt;&lt;/iframe&gt;</code></pre>
 <p><span class="ne-only">नमुना</span><span class="en-only">Preview</span>:</p>
 <iframe src="../embed/?size=m" width="360" height="420" style="border:0;max-width:100%" loading="lazy" title="Gati alerts"></iframe>

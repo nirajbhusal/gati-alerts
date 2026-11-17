@@ -15,7 +15,7 @@
   const SEV = { Extreme: ["अत्यन्त गम्भीर", "Extreme", "⬢", "#8E1B14"], Severe: ["गम्भीर", "Severe", "▲", "#D93025"], Moderate: ["मध्यम", "Moderate", "◆", "#F28C1E"],
     Minor: ["सामान्य", "Minor", "●", "#F2C94C"], Unknown: ["सूचना", "Info", "ℹ", "#8F9BB3"] };
   const TR = { Official: ["🛡 आधिकारिक", "🛡 Official"], Verified: ["✓ प्रमाणित", "✓ Verified"], Reported: ["❝ रिपोर्ट गरिएको", "❝ Reported"] };
-  const site = "https://nirajbhusal.github.io/gati-alerts/";
+  const site = "https://gatialerts.com/";
   document.getElementById("disc").textContent = T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources");
   Promise.all([fetch("../data/alerts.json").then((r) => r.json()), fetch("../data/districts.json").then((r) => r.json())]).then(([data, D]) => {
     const dq = q.get("district"), d = dq && D.find((x) => x.id === dq || x.code === dq);

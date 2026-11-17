@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nirajbhusal.github.io/gati-alerts/sitemap.xml
+Sitemap: https://gatialerts.com/sitemap.xml

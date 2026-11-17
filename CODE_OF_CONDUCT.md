@@ -30,7 +30,7 @@ project.
 ## Reporting
 
 Contact the maintainer privately through the email on the
-[contact page](https://nirajbhusal.github.io/gati-alerts/contact/). Reports are kept confidential. The maintainer
+[contact page](https://gatialerts.com/contact/). Reports are kept confidential. The maintainer
 may remove content, warn, or block an account, in proportion to the harm.
 
 ## Attribution
