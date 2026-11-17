@@ -291,6 +291,18 @@ def today_card(alerts, now):
             when = dt.datetime.fromisoformat(o["issued"]); wtxt = f"{when.day} {MON_EN[when.month - 1]}"
             tiles.append(("DHM · नापिएको वर्षा · Rain", (f"{wet[0]['ne']} {wet[0]['rain_mm']} मि.मि.".translate(DEV) if wet else "कुनै केन्द्रमा वर्षा छैन"),
                           (f"Rain at {len(wet)} of {len(o['stations'])} stations" if wet else f"No rain at {len(o['stations'])} stations") + f" · {wtxt}", "#1a73e8" if wet else "#2E8B57"))
+        if o and o.get("stations"):
+            hi = max((x for x in o["stations"] if x.get("tmax_c") is not None), key=lambda x: x["tmax_c"], default=None)
+            lo = min((x for x in o["stations"] if x.get("tmin_c") is not None), key=lambda x: x["tmin_c"], default=None)
+            if hi and lo:
+                nm_s = lambda x: x["en"].replace(" Airport", "")
+                tiles.append(("DHM · तापक्रम · Temperature", f"अधिकतम {hi['tmax_c']:g}° · न्यूनतम {lo['tmin_c']:g}°".translate(DEV),
+                              f"Warmest {nm_s(hi)}, coldest {nm_s(lo)}", "#E8590C"))
+        fc = ((wx or {}).get("forecast24") or {}).get("country") or {}
+        if fc.get("analysis_ne"):
+            big = re.sub(r"\s*रहेको छ$", "", re.sub(r"^हाल\s+नेपालमा\s+", "", fc["analysis_ne"].rstrip(" ।")))   # keep the system, drop "currently over Nepal there is"
+            small = re.sub(r"^(Currently,?\s+there is|The country is currently under the|Currently,?)\s+", "", fc.get("analysis_en", "")).strip()
+            tiles.append(("DHM · मौसम प्रणाली · Weather system", big, small[:1].upper() + small[1:], "#0284C7"))
         qk = sorted([x for x in alerts if x.get("hazard") == "earthquake" and x["trust"] == "Official"], key=lambda x: x["sent"], reverse=True)
         if qk:
             q = qk[0]; qi = (q.get("info") or {}); mag = ((qi.get("en") or {}).get("params") or {}).get("gati:magnitude", "")
@@ -299,16 +311,16 @@ def today_card(alerts, now):
             where_en = ", ".join(nm[c]["en"] for c in (q.get("districts") or [])[:1] if c in nm)
             tiles.append((f"{ag} · पछिल्लो भूकम्प · Earthquake", (mag.translate(DEV) + (" · " + where_ne if where_ne else "")).strip(" ·") or "भूकम्प",
                           f"{mag}{', ' + where_en if where_en else ''} · {qt.day} {MON_EN[qt.month - 1]}, {qt.strftime('%I:%M %p').lstrip('0')}", "#5E35B1"))
-        cols = 2; gap = 12; tw = (fw - gap * (cols - 1)) // cols; th = 84
-        for n, (head, big, small, col) in enumerate(tiles[:4]):
-            tx, ty = fx + (n % cols) * (tw + gap), y + (n // cols) * (th + 10)
+        cols = 2; gap = 10; tw = (fw - gap * (cols - 1)) // cols; th = 74 if not sq else 84
+        for n, (head, big, small, col) in enumerate(tiles[:6]):
+            tx, ty = fx + (n % cols) * (tw + gap), y + (n // cols) * (th + 8)
             if ty + th > H - 84:
                 break
             d.rounded_rectangle([tx, ty, tx + tw, ty + th], radius=12, fill="#121C30", outline="#24314A")
             d.rounded_rectangle([tx, ty, tx + 6, ty + th], radius=3, fill=col)
-            d.text((tx + 16, ty + 7), wrap(d, head, font("SemiBold", 15), tw - 26, 1)[0], font=font("SemiBold", 15), fill="#7FD1D8")
-            d.text((tx + 16, ty + 26), wrap(d, big, font("Bold", 23), tw - 26, 1)[0], font=font("Bold", 23), fill="#FFFFFF")
-            d.text((tx + 16, ty + 58), wrap(d, small, font("Regular", 15), tw - 26, 1)[0], font=font("Regular", 15), fill="#C9D3DF")
+            d.text((tx + 16, ty + (7 if sq else 4)), wrap(d, head, font("SemiBold", 15), tw - 26, 1)[0], font=font("SemiBold", 15), fill="#7FD1D8")
+            d.text((tx + 16, ty + (26 if sq else 21)), wrap(d, big, font("Bold", 23 if sq else 21), tw - 26, 1)[0], font=font("Bold", 23 if sq else 21), fill="#FFFFFF")
+            d.text((tx + 16, ty + (58 if sq else 50)), wrap(d, small, font("Regular", 15), tw - 26, 1)[0], font=font("Regular", 15), fill="#C9D3DF")
         d.line([pad, H - 78, W - pad, H - 78], fill="#24314A", width=2)
         d.text((pad, H - 64), "गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ; यो चेतावनी होइन। · Gati relays official sources; this is not a warning.", font=font("Regular", 18 if not sq else 17), fill="#C9D3DF")
         d.text((pad, H - 36), SITE.replace("https://", "").rstrip("/"), font=font("SemiBold", 19), fill="#7FD1D8")
