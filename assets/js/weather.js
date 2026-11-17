@@ -49,6 +49,29 @@
       : `<div class="na"><strong>${esc(T(dn.ne, dn.en))}</strong>: ${T("यो जिल्लाका लागि गतिमा चालु पूर्वानुमान छैन। खतरा छैन भन्ने होइन।", "No active forecast in Gati for this district. That does not mean there is no risk.")}</div>`);
     const b5 = wx && wx.bulletin5;
     const WXLV = { green: ["हरियो: चेतावनी छैन", "Green: no warning"], yellow: ["पहेँलो: अद्यावधिक हुनुहोस्", "Yellow: be updated"], orange: ["सुन्तले: सतर्क हुनुहोस्", "Orange: be prepared"], red: ["रातो: कदम चाल्नुहोस्", "Red: take action"] }, WXLC = { orange: "#f7941d", red: "#e2231a" };
+    /* Today, district by district: a district without a DHM warning says so, instead of showing nothing. */
+    const dbox = document.getElementById("wxdist");
+    if (dbox && D && b5) {
+      const today = new Date(now + G.tzMs).toISOString().slice(0, 10), d0 = b5.days.find((x) => x.ad === today);
+      const PV = { NP01: ["कोशी", "Koshi"], NP02: ["मधेश", "Madhesh"], NP03: ["बागमती", "Bagmati"], NP04: ["गण्डकी", "Gandaki"], NP05: ["लुम्बिनी", "Lumbini"], NP06: ["कर्णाली", "Karnali"], NP07: ["सुदूरपश्चिम", "Sudurpashchim"] };
+      const LVW = { yellow: ["अद्यावधिक रहनुहोस्", "Be updated"], orange: ["सतर्क रहनुहोस्", "Be prepared"], red: ["कारबाही गर्नुहोस्", "Take action"] };
+      const named = (c) => act.find((a) => a.districts.includes(c));
+      const lv = (d) => (d0 && d0.level !== "green" && (!d0.provinces || d0.provinces.includes(d.code.slice(0, 4))) ? d0.level : "green");
+      const st = D.map((d) => ({ d, lv: lv(d), a: named(d.code) })), hot = st.filter((x) => x.lv !== "green" || x.a), calm = st.filter((x) => x.lv === "green" && !x.a);
+      const nm = (d) => esc(T(d.ne, d.en)), by = (list) => Object.keys(PV).map((pv) => [pv, list.filter((x) => x.d.code.slice(0, 4) === pv)]).filter((g) => g[1].length);
+      const mineRow = my && st.find((x) => x.d.code === my);
+      const none = T("आज चेतावनी जारी छैन", "No warning issued today");
+      const line = (x) => (x.lv !== "green" ? T(...LVW[x.lv]) + " · " + T("DHM को आजको चेतावनीले यो प्रदेश समेट्छ", "DHM's warning today covers this province") : x.a ? esc(x.a.info[G.lang].headline) : none);
+      dbox.hidden = false;
+      dbox.innerHTML = !d0 ? `<h2 style="margin-top:0">${T("आजको चेतावनी, जिल्लाअनुसार", "Today's warning, by district")}</h2><div class="na">${T("आजको DHM बुलेटिन गतिमा छैन। DHM मा हेर्नुहोस्।", "Gati does not hold DHM's bulletin for today. Check DHM.")} <a href="${esc(b5.url)}" target="_blank" rel="noopener">DHM ↗</a></div>`
+        : `<h2 style="margin-top:0">${T("आजको चेतावनी, जिल्लाअनुसार", "Today's warning, by district")}</h2>
+        ${mineRow ? `<p class="wxdmine ${mineRow.lv !== "green" || mineRow.a ? "hot" : "ok"}"><b>📍 ${nm(mineRow.d)}:</b> ${line(mineRow)}</p>` : ""}
+        <p class="wxdsum"><b>${hot.length ? T(`${G.num(hot.length)} जिल्लामा आज चेतावनी छ; ${G.num(calm.length)} जिल्लामा छैन।`, `${hot.length} district${hot.length > 1 ? "s" : ""} under a warning today; none issued for the other ${calm.length}.`) : T("आज ७७ वटै जिल्लामा चेतावनी जारी छैन।", "No warning issued today in any of the 77 districts.")}</b></p>
+        ${hot.length ? `<ul class="wxdhot">${by(hot.filter((x) => x.lv !== "green")).map(([pv, l]) => `<li><b>${T(...PV[pv])} · ${T(...LVW[l[0].lv])}:</b> ${l.map((x) => nm(x.d)).join(", ")}</li>`).join("")}${hot.filter((x) => x.lv === "green").map((x) => `<li><b>${nm(x.d)}:</b> ${line(x)}</li>`).join("")}</ul>` : ""}
+        <details class="wxdall"><summary>${T(`चेतावनी नभएका ${G.num(calm.length)} जिल्ला हेर्नुहोस्`, `See the ${calm.length} districts with no warning`)}</summary>
+        ${by(calm).map(([pv, l]) => `<p><b>${T(...PV[pv])}:</b> ${l.map((x) => nm(x.d)).join(", ")}</p>`).join("")}</details>
+        <p class="meta">${T("स्रोत", "Source")}: <a href="${esc(b5.url)}" target="_blank" rel="noopener">DHM</a> · ${T("जारी", "issued")} ${G.npt(b5.issued)}. ${T("चेतावनी नहुनु भनेको जोखिम नै छैन भन्ने होइन।", "No warning does not mean no risk.")}</p>`;
+    }
     const box5 = document.getElementById("wx5");
     if (box5 && b5) box5.innerHTML = `<div class="sechead" style="margin-top:0"><h2>${T("५ दिने चेतावनी समयरेखा", "5-day warning timeline")}</h2>${G.trustChip(b5.trust)}</div>
       <ol class="wxtl">${b5.days.map((d) => `<li class="wxtd lv-${d.level}"${WXLC[d.level] ? ` style="border-top-color:${WXLC[d.level]}"` : ""}><span class="wxdot" aria-hidden="true"></span><b>${G.bsDay(d)}</b><span class="wxlv">${T(...(WXLV[d.level] || WXLV.green))}</span><p>${esc(T(d.ne, d.en))}</p></li>`).join("")}</ol>
