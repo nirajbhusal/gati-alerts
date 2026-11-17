@@ -13,7 +13,7 @@ const LAUNCH = process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMI
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "gati-ext-")), pops = {};
   for (const [key, theme, lang, dist] of [["light-en", "light", "en", "NP0436"], ["light-ne", "light", "ne", ""], ["dark-en", "dark", "en", "NP0436"], ["dark-ne", "dark", "ne", ""]]) {
     const ctx = await chromium.launchPersistentContext(path.join(tmp, key), { ...LAUNCH, headless: true, deviceScaleFactor: 2, args: [`--disable-extensions-except=${EXT}`, `--load-extension=${EXT}`, "--no-sandbox"] });
-    await ctx.route("https://nirajbhusal.github.io/gati-alerts/data/**", (r) => r.fulfill({ contentType: "application/json", body: fs.readFileSync(path.join(ROOT, new URL(r.request().url()).pathname.replace("/gati-alerts/", ""))) }));
+    await ctx.route("https://gatialerts.com/data/**", (r) => r.fulfill({ contentType: "application/json", body: fs.readFileSync(path.join(ROOT, new URL(r.request().url()).pathname.replace(/^\//, ""))) }));
     const sw = ctx.serviceWorkers()[0] || await ctx.waitForEvent("serviceworker"), id = sw.url().split("/")[2];
     await sw.evaluate(([l, d, t]) => new Promise((r) => chrome.storage.local.set({ lang: l, district: d, theme: t }, r)), [lang, dist, theme]);
     const p = await ctx.newPage(); await p.setViewportSize({ width: 380, height: 640 }); await p.goto(`chrome-extension://${id}/popup.html`); await p.waitForTimeout(2200);

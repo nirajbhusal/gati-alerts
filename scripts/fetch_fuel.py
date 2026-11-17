@@ -8,7 +8,7 @@ API = "https://noc.org.np/api/fuel-prices?per_page=50&page=%d"; PAGE = "https://
 NPT = datetime.timezone(datetime.timedelta(hours=5, minutes=45)); now = datetime.datetime.now(NPT).isoformat(timespec="minutes")
 KEEP = ("petrol", "diesel")
 def get(n):
-    r = urllib.request.Request(API % n, headers={"User-Agent": "Mozilla/5.0 (Gati relay; +https://nirajbhusal.github.io/gati-alerts/)", "Accept": "application/json"})
+    r = urllib.request.Request(API % n, headers={"User-Agent": "Mozilla/5.0 (Gati relay; +https://gatialerts.com/)", "Accept": "application/json"})
     return json.load(urllib.request.urlopen(r, timeout=30))
 old = json.loads(OUT.read_text()) if OUT.exists() else None
 try:

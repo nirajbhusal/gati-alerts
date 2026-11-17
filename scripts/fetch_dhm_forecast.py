@@ -19,7 +19,7 @@ CITY_PAGE = "https://dhm.gov.np/mfd/#/weather/city"
 OBS = "https://dhm.gov.np/mfd/api/manual-observation"
 OBS_PAGE = "https://dhm.gov.np/mfd/#/weather/observation"
 NPT = datetime.timezone(datetime.timedelta(hours=5, minutes=45))
-UA = {"User-Agent": "Mozilla/5.0 (compatible; Gati relay; +https://nirajbhusal.github.io/gati-alerts/)", "Accept": "application/json"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; Gati relay; +https://gatialerts.com/)", "Accept": "application/json"}
 
 
 def get(url):

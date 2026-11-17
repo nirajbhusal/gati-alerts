@@ -1,8 +1,8 @@
 # Privacy policy
 
-[नेपालीमा](PRIVACY.ne.md) · On the site: https://nirajbhusal.github.io/gati-alerts/privacy/
+[नेपालीमा](PRIVACY.ne.md) · On the site: https://gatialerts.com/privacy/
 
-Last updated: 2026-11-11. If the English and Nepali texts differ, the English text is the reference. This describes the live site at https://nirajbhusal.github.io/gati-alerts/ and the code
+Last updated: 2026-11-11. If the English and Nepali texts differ, the English text is the reference. This describes the live site at https://gatialerts.com/ and the code
 in this repository. A fork run by someone else must publish its own policy.
 
 ## In short
@@ -97,4 +97,4 @@ visitors from elsewhere, the principles of the EU GDPR: collect the minimum, say
 ## Contact
 
 Privacy questions and removal requests: the maintainer email on the
-[contact page](https://nirajbhusal.github.io/gati-alerts/contact/), or a GitHub issue if the matter is not private.
+[contact page](https://gatialerts.com/contact/), or a GitHub issue if the matter is not private.

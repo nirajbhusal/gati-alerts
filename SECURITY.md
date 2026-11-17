@@ -18,7 +18,7 @@ Please do not open a public issue for these. Use either:
 
 1. GitHub private vulnerability reporting:
    https://github.com/nirajbhusal/gati-alerts/security/advisories/new
-2. The maintainer email on the [contact page](https://nirajbhusal.github.io/gati-alerts/contact/).
+2. The maintainer email on the [contact page](https://gatialerts.com/contact/).
 
 Include what you found, how to reproduce it, and what you think the impact is. This is a volunteer project; the
 aim is to reply within 7 days and to fix confirmed problems that affect alert integrity before anything else.

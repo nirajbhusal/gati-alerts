@@ -59,7 +59,7 @@ Open source: https://github.com/nirajbhusal/gati-alerts
 - Rebuild all images after a design change: `node scripts/extension_store_images.cjs`
 
 **Additional fields**
-- Official URL / homepage: https://nirajbhusal.github.io/gati-alerts/
+- Official URL / homepage: https://gatialerts.com/
 - Support URL: https://github.com/nirajbhusal/gati-alerts/issues
 
 ## Privacy practices tab
@@ -71,7 +71,7 @@ Shows official disaster and weather alerts for Nepal, from the Gati website, in 
 - `alarms`: to check the Gati website for new alerts every 15 minutes, so the toolbar badge stays current.
 - `storage`: to remember the district and language the user chose, whether notifications are on, and which alerts have already been shown. Stored only in the browser.
 - `notifications`: to show a new alert once, only if the user has turned notifications on in the popup.
-- Host permission `https://nirajbhusal.github.io/gati-alerts/*`: to read Gati's two public data files (`data/alerts.json` and `data/weather.json`). No other site is accessed.
+- Host permissions `https://gatialerts.com/*` and `https://nirajbhusal.github.io/gati-alerts/*`: to read Gati's two public data files (`data/alerts.json` and `data/weather.json`). The second is Gati's previous address, which forwards to the first. No other site is accessed.
 
 **Remote code:** No, the extension does not use remote code. All scripts are in the package; it only fetches JSON data.
 
@@ -82,7 +82,7 @@ Shows official disaster and weather alerts for Nepal, from the Gati website, in 
 - I do not use or transfer user data for purposes that are unrelated to my item's single purpose.
 - I do not use or transfer user data to determine creditworthiness or for lending purposes.
 
-**Privacy policy URL:** https://nirajbhusal.github.io/gati-alerts/privacy/#extension
+**Privacy policy URL:** https://gatialerts.com/privacy/#extension
 
 ## Distribution tab
 - Visibility: Public

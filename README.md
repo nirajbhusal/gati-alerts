@@ -1,6 +1,6 @@
 # गति · Gati — सही सूचना, सही समयमा । / The right alert, right on time.
 
-**Live:** https://nirajbhusal.github.io/gati-alerts/ · **CAP feed:** [`atom.xml`](https://nirajbhusal.github.io/gati-alerts/atom.xml) · [API](https://nirajbhusal.github.io/gati-alerts/api/) · **JSON:** [`data/alerts.json`](https://nirajbhusal.github.io/gati-alerts/data/alerts.json)
+**Live:** https://gatialerts.com/ · **CAP feed:** [`atom.xml`](https://gatialerts.com/atom.xml) · [API](https://gatialerts.com/api/) · **JSON:** [`data/alerts.json`](https://gatialerts.com/data/alerts.json)
 
 Gati is a Nepali-first public alert **relay and verification** site. It republishes official notices from Nepal's
 mandated agencies (DHM, NDRRMA, NEOC, Nepal Police) as standard **CAP 1.2** messages with the original source,
@@ -107,7 +107,7 @@ See also [CONTRIBUTING](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md),
 Mark: a white "ग" with three signal arcs on Gati Red `#E2362B`; wordmark in Navy `#0B1424`. Interface colours: Crimson
 `#DC143C`, River Teal `#0F7C86`, Glacier `#7FD1D8`, Snow `#F7F9FB`, Ink `#14202B`. CAP severity scale (reserved for
 severity only): Extreme `#8E1B14`, Severe `#D93025`, Moderate `#F28C1E`, Minor `#F2C94C`, Info `#8F9BB3`. Fonts: Mukta, Inter.
-The full brand kit, with logo downloads and usage rules, is on the [About page](https://nirajbhusal.github.io/gati-alerts/about/#brand).
+The full brand kit, with logo downloads and usage rules, is on the [About page](https://gatialerts.com/about/#brand).
 
 ## Recognition
 

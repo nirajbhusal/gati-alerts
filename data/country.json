@@ -3,7 +3,7 @@
   "code": "NP",
   "name": { "ne": "नेपाल", "en": "Nepal" },
   "project": { "name": { "ne": "गति", "en": "Gati" }, "identifierPrefix": "np.gati" },
-  "site": "https://nirajbhusal.github.io/gati-alerts/",
+  "site": "https://gatialerts.com/",
   "repository": "nirajbhusal/gati-alerts",
   "languages": { "primary": "ne", "secondary": "en", "regional": ["mai", "bho", "new", "the", "taj"] },
   "timezone": { "name": "Asia/Kathmandu", "offsetMinutes": 345, "label": "NPT" },

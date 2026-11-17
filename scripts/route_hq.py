@@ -13,7 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 RD = json.loads((ROOT / "data/roads.json").read_text()); GJ = json.loads((ROOT / "data/geo/roads.geojson").read_text())
 DG = json.loads((ROOT / "data/districts.geojson").read_text()); DPOLY = {f["properties"]["slug"]: shape(f["geometry"]).buffer(0.01) for f in DG["features"]}
 NEPAL = unary_union(list(DPOLY.values())).buffer(0.02)
-UA = {"User-Agent": "gati-alerts/1.0 route_hq (https://nirajbhusal.github.io/gati-alerts/)"}
+UA = {"User-Agent": "gati-alerts/1.0 route_hq (https://gatialerts.com/)"}
 # district, node id, ne, en, search, anchor (built in this order)
 HQ = [
  ("panchthar", "phidim", "फिदिम (पाँचथर)", "Phidim (Panchthar)", "Phidim", "ilam"),

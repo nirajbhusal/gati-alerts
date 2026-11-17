@@ -16,7 +16,7 @@ for s in src:
         h["lastResult"] = s.get("status") if s.get("status") in ("planned", "listed", "live", "link", "nofeed") else "planned"; continue
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     try:
-        req = urllib.request.Request(s["url"], headers={"User-Agent": "Mozilla/5.0 (Gati source health check; +https://nirajbhusal.github.io/gati-alerts/sources/)"})
+        req = urllib.request.Request(s["url"], headers={"User-Agent": "Mozilla/5.0 (Gati source health check; +https://gatialerts.com/sources/)"})
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
             code = r.status; r.read(2048)
         ok = 200 <= code < 400; res = f"HTTP {code}"

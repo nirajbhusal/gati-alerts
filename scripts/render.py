@@ -120,7 +120,7 @@ def share_png(a, out, now):
         d.text((60, y), ln, font=font("Regular", 30), fill="#D5DEE7"); y += 40
     d.line([60, H - 112, W - 60, H - 112], fill="#2C4A6B", width=2)
     d.text((60, H - 100), f"स्रोत: {agency(ne)} · {npt(src_time(a, ne), 'ne')}", font=font("SemiBold", 26), fill="#FFFFFF")
-    d.text((W - 60, H - 100), "nirajbhusal.github.io/gati-alerts", font=font("SemiBold", 24), fill="#7FD1D8", anchor="ra")
+    d.text((W - 60, H - 100), "gatialerts.com", font=font("SemiBold", 24), fill="#7FD1D8", anchor="ra")
     d.text((60, H - 60), "गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ · Gati relays official sources",
            font=font("Regular", 22), fill="#7FD1D8")
     out.parent.mkdir(parents=True, exist_ok=True)

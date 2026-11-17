@@ -13,7 +13,7 @@ import segno
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets/brand"
-SITE = "https://nirajbhusal.github.io/gati-alerts/"
+SITE = "https://gatialerts.com/"
 
 README = """गति Gati brand kit
 ==================

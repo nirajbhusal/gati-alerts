@@ -10,7 +10,7 @@ const LOGOS = path.join(OUT, "logos");
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), "gati-brand-"));
 const C = { red: "#E2362B", navy: "#0B1424", crimson: "#DC143C", teal: "#0F7C86", glacier: "#7FD1D8",
   snow: "#F7F9FB", ink: "#14202B", slate: "#4A5A6A", mist: "#D5DEE7", orange: "#F28C1E" };
-const SITE = "nirajbhusal.github.io/gati-alerts";
+const SITE = "gatialerts.com";
 const PHONE = process.env.GATI_CARD_PHONE || ""; // set this when building a private copy of the visiting card with a phone number
 const svg = (n) => fs.readFileSync(path.join(LOGOS, n + ".svg"), "utf8").replace(/ width="\d+" height="\d+"/, "");
 const font = (w) => "file://" + path.join(ROOT, "scripts/fonts/Mukta-" + w + ".ttf");

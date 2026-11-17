@@ -22,7 +22,7 @@ OUT = ROOT / "data" / "navigate.json"
 HP = ROOT / "data" / "source-health.json"
 NPT = dt.timezone(dt.timedelta(hours=5, minutes=45))
 TIMEOUT, STALE_H, WINDOW_H = 30, 72, 6
-UA = "Mozilla/5.0 (compatible; GatiPoller/1.0; +https://nirajbhusal.github.io/gati-alerts/sources/)"
+UA = "Mozilla/5.0 (compatible; GatiPoller/1.0; +https://gatialerts.com/sources/)"
 
 
 def now():

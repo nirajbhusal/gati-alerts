@@ -19,7 +19,7 @@ from shapely.geometry import shape, Point
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data/alerts"
 DRY = "--dry" in sys.argv
-UA = {"User-Agent": "Mozilla/5.0 (compatible; GatiIngest/1.0; +https://nirajbhusal.github.io/gati-alerts/sources/)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; GatiIngest/1.0; +https://gatialerts.com/sources/)"}
 BBOX = dict(minlatitude=26.3, maxlatitude=30.5, minlongitude=80.0, maxlongitude=88.3)
 NPT = dt.timezone(dt.timedelta(hours=5, minutes=45))
 DEV = str.maketrans("0123456789", "०१२३४५६७८९")

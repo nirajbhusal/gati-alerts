@@ -10,7 +10,7 @@ import json, os, sys, urllib.request, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WX = ROOT / "data" / "weather.json"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; Gati DHM watch; +https://nirajbhusal.github.io/gati-alerts/)", "Accept": "application/json"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; Gati DHM watch; +https://gatialerts.com/)", "Accept": "application/json"}
 URLS = {
     "recent": "https://dhm.gov.np/mfd/api/recent-page",
     "special": "https://dhm.gov.np/mfd/api/page/tag?tag_id=5",

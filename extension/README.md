@@ -1,6 +1,6 @@
 # Gati for Chrome
 
-A toolbar button for [Gati](https://nirajbhusal.github.io/gati-alerts/): official disaster and weather alerts for Nepal, relayed with source and time.
+A toolbar button for [Gati](https://gatialerts.com/): official disaster and weather alerts for Nepal, relayed with source and time.
 
 - **Popup:** active alerts for your district (or all Nepal), DHM's 5-day weather warning, and links to the Map, Roads, Flights and Emergency numbers. Nepali or English. Colours: automatic (follows the computer), light or dark, changed with the button at the top.
 - **Badge:** the number of active alerts that name your district, coloured by the most severe one. Checked every 15 minutes.
@@ -16,7 +16,7 @@ Only alerts labelled Official or Verified are shown. Gati relays agencies' notic
 Works in Chrome, Edge, Brave and other Chromium browsers.
 
 ## Privacy
-The extension reads two public files from `nirajbhusal.github.io/gati-alerts/` (`data/alerts.json`, `data/weather.json`) and nothing else. Your district, language and the list of alerts already shown stay in the browser (`chrome.storage.local`). There is no account, no analytics and no tracking.
+The extension reads two public files from `gatialerts.com/` (`data/alerts.json`, `data/weather.json`) and nothing else. Your district, language and the list of alerts already shown stay in the browser (`chrome.storage.local`). There is no account, no analytics and no tracking.
 
 Permissions: `alarms` (the 15-minute check), `storage` (your settings), `notifications` (only used if you turn them on), and access to the Gati site to read its data.
 
