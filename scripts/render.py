@@ -545,4 +545,4 @@ def sitemap(alerts):
 if __name__ == "__main__":
     main()
     import social_meta  # og/twitter tags on every static page
-    for _p in [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "scripts" not in p.parts and "vendor" not in p.parts]: social_meta.patch(_p)
+    for _p in [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "scripts" not in p.parts and "vendor" not in p.parts and "extension" not in p.parts and "node_modules" not in p.parts]: social_meta.patch(_p)
