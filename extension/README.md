@@ -8,6 +8,9 @@ A toolbar button for [Gati](https://gatialerts.com/): official disaster and weat
 
 Only alerts labelled Official or Verified are shown. Gati relays agencies' notices; it does not issue warnings.
 
+## Install from the Chrome Web Store
+[Gati on the Chrome Web Store](https://chromewebstore.google.com/detail/efgiglmglpchhjbphigpndkdkgmnlgbe)
+
 ## Install without the Chrome Web Store
 1. Download `assets/downloads/gati-chrome-extension.zip` from the repository and unzip it (or use this `extension/` folder directly).
 2. Open `chrome://extensions`, turn on **Developer mode** (top right).
