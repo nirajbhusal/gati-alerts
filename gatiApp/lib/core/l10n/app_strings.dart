@@ -35,6 +35,7 @@ class AppStrings {
   // Common
   String get all => _t('सबै', 'All');
   String get active => _t('सक्रिय', 'Active');
+  String get allHazards => _t('सबै प्रकार', 'All types');
   String get allNepal => _t('सबै नेपाल', 'All Nepal');
   String get myDistrict => _t('मेरो जिल्ला', 'My district');
   String get chooseDistrict => _t('जिल्ला छान्नुहोस्', 'Choose district');

@@ -5,6 +5,7 @@ import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/l10n/localized_text.dart';
 import '../../../../core/preferences/app_preferences.dart';
 import '../../../../core/theme/app_dimens.dart';
+import '../../../../core/widgets/icon_tile.dart';
 import '../../../../core/widgets/section_card.dart';
 import '../../domain/entities/weather_report.dart';
 
@@ -18,51 +19,41 @@ class ForecastCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(stringsProvider);
     final lang = ref.watch(languageProvider);
-    final theme = Theme.of(context);
+    final text = Theme.of(context).textTheme;
 
-    Widget row(IconData icon, String label, LocalizedText text) => Padding(
-      padding: const EdgeInsets.only(top: Gap.sm),
+    Widget period(IconData icon, String label, LocalizedText value) => Padding(
+      padding: const EdgeInsets.all(Gap.lg),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, size: 20, color: theme.colorScheme.secondary),
-          const SizedBox(width: Gap.sm),
+          IconTile(icon),
+          const SizedBox(width: Gap.md),
           Expanded(
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: '$label: ',
-                    style: const TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                  TextSpan(text: text.of(lang)),
-                ],
-              ),
-              style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(label, style: text.labelMedium),
+                Text(value.of(lang), style: text.bodyMedium),
+              ],
             ),
           ),
         ],
       ),
     );
 
-    return SectionCard(
+    return SectionCard.list(
       title: '${s.forecast24} · ${forecast.place.of(lang)}',
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (!forecast.analysis.isEmpty)
-            Text(
-              forecast.analysis.of(lang),
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
-            ),
-          if (!forecast.day.isEmpty)
-            row(Icons.wb_sunny_outlined, s.day, forecast.day),
-          if (!forecast.night.isEmpty)
-            row(Icons.nightlight_outlined, s.night, forecast.night),
-        ],
-      ),
+      children: [
+        if (!forecast.analysis.isEmpty)
+          Padding(
+            padding: const EdgeInsets.all(Gap.lg),
+            child: Text(forecast.analysis.of(lang), style: text.bodyMedium),
+          ),
+        if (!forecast.day.isEmpty)
+          period(Icons.wb_sunny_outlined, s.day, forecast.day),
+        if (!forecast.night.isEmpty)
+          period(Icons.bedtime_outlined, s.night, forecast.night),
+      ],
     );
   }
 }

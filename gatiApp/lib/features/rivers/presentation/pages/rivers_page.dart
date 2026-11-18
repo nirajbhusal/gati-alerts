@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/preferences/app_preferences.dart';
 import '../../../../core/widgets/async_list_view.dart';
+import '../../../../core/widgets/section_card.dart';
 import '../../../../core/widgets/source_note.dart';
 import '../../../../core/widgets/state_views.dart';
 import '../providers/river_providers.dart';
-import '../widgets/river_gauge_card.dart';
+import '../widgets/river_gauge_row.dart';
 
 class RiversPage extends ConsumerWidget {
   const RiversPage({super.key});
@@ -23,11 +24,11 @@ class RiversPage extends ConsumerWidget {
         if (report.gauges.isEmpty)
           EmptyView(message: s.nothingHere)
         else
-          for (final g in report.gauges) RiverGaugeCard(gauge: g),
-        SourceNote(
-          text: '${report.source.of(lang)} · ${report.asOf.of(lang)}',
-          url: report.url,
-        ),
+          SectionCard.list(
+            title: report.asOf.of(lang),
+            children: [for (final g in report.gauges) RiverGaugeRow(gauge: g)],
+          ),
+        SourceNote(text: report.source.of(lang), url: report.url),
       ],
     );
   }

@@ -5,7 +5,7 @@ import '../error/failure.dart';
 import '../l10n/app_strings.dart';
 import '../theme/app_dimens.dart';
 
-/// Centered icon + message, with an optional action. Base of the views below.
+/// Quiet centred icon + message, with an optional action.
 class MessageView extends StatelessWidget {
   const MessageView({
     super.key,
@@ -23,16 +23,21 @@ class MessageView extends StatelessWidget {
     final theme = Theme.of(context);
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(Gap.xl),
+        padding: const EdgeInsets.symmetric(
+          horizontal: Gap.xl,
+          vertical: Gap.xl * 2,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 48, color: theme.colorScheme.onSurfaceVariant),
+            Icon(icon, size: 32, color: theme.colorScheme.onSurfaceVariant),
             const SizedBox(height: Gap.md),
             Text(
               message,
               textAlign: TextAlign.center,
-              style: theme.textTheme.bodyLarge,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ),
             if (action != null) ...[const SizedBox(height: Gap.lg), action!],
           ],
@@ -54,8 +59,8 @@ class ErrorView extends ConsumerWidget {
     final failure = Failure.from(error);
     return MessageView(
       icon: failure is NetworkFailure
-          ? Icons.wifi_off_rounded
-          : Icons.error_outline_rounded,
+          ? Icons.cloud_off_outlined
+          : Icons.error_outline,
       message: switch (failure) {
         NetworkFailure() => s.errorNetwork,
         ServerFailure() => s.errorServer,
@@ -63,10 +68,10 @@ class ErrorView extends ConsumerWidget {
       },
       action: onRetry == null
           ? null
-          : FilledButton.icon(
+          : OutlinedButton(
+              style: OutlinedButton.styleFrom(minimumSize: const Size(140, 44)),
               onPressed: onRetry,
-              icon: const Icon(Icons.refresh_rounded),
-              label: Text(s.retry),
+              child: Text(s.retry),
             ),
     );
   }
@@ -79,8 +84,6 @@ class EmptyView extends StatelessWidget {
   final IconData? icon;
 
   @override
-  Widget build(BuildContext context) => MessageView(
-    icon: icon ?? Icons.check_circle_outline_rounded,
-    message: message,
-  );
+  Widget build(BuildContext context) =>
+      MessageView(icon: icon ?? Icons.inbox_outlined, message: message);
 }

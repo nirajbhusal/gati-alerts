@@ -2,61 +2,71 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_dimens.dart';
 
-/// Card with an optional title row. Used for every grouped block.
+/// A bordered card with an optional label above it.
+///
+/// [SectionCard] pads one child. [SectionCard.list] stacks rows edge to edge
+/// with hairline dividers, like a settings group.
 class SectionCard extends StatelessWidget {
   const SectionCard({
     super.key,
     this.title,
     this.trailing,
-    required this.child,
+    required Widget this.child,
     this.onTap,
-    this.accent,
-  });
+  }) : children = null;
+
+  const SectionCard.list({
+    super.key,
+    this.title,
+    this.trailing,
+    required List<Widget> this.children,
+  }) : child = null,
+       onTap = null;
 
   final String? title;
   final Widget? trailing;
-  final Widget child;
+  final Widget? child;
+  final List<Widget>? children;
   final VoidCallback? onTap;
-
-  /// Coloured strip on the left edge (severity, status).
-  final Color? accent;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final content = Padding(
-      padding: const EdgeInsets.all(Gap.lg),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (title != null) ...[
-            Row(
-              children: [
-                Expanded(
-                  child: Text(title!, style: theme.textTheme.titleMedium),
-                ),
-                ?trailing,
+    final rows = children;
+    final body = rows == null
+        ? InkWell(
+            onTap: onTap,
+            child: Padding(padding: const EdgeInsets.all(Gap.lg), child: child),
+          )
+        : Column(
+            children: [
+              for (final (i, row) in rows.indexed) ...[
+                if (i > 0) const Divider(indent: Gap.lg),
+                row,
               ],
-            ),
-            const SizedBox(height: Gap.sm),
-          ],
-          child,
-        ],
-      ),
-    );
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: accent == null
-            ? content
-            : DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border(left: BorderSide(color: accent!, width: 4)),
+            ],
+          );
+
+    final card = Card(clipBehavior: Clip.antiAlias, child: body);
+    if (title == null) return card;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(Gap.xs, 0, Gap.xs, Gap.sm),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title!,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
-                child: content,
               ),
-      ),
+              ?trailing,
+            ],
+          ),
+        ),
+        card,
+      ],
     );
   }
 }

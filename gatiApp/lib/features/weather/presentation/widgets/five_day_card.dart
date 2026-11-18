@@ -19,7 +19,7 @@ extension WarningLevelStyle on WarningLevel {
   };
 }
 
-/// DHM's 5-day warning: one coloured tile per day, then the advisory.
+/// DHM's 5-day warning: one bar per day in the map colour, then the advisory.
 class FiveDayCard extends ConsumerWidget {
   const FiveDayCard({super.key, required this.bulletin});
 
@@ -29,50 +29,44 @@ class FiveDayCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(stringsProvider);
     final lang = ref.watch(languageProvider);
-    final theme = Theme.of(context);
+    final text = Theme.of(context).textTheme;
     return SectionCard(
       title: s.fiveDayWarning,
       trailing: bulletin.issued == null
           ? null
-          : Text(
-              Fmt.dateTime(bulletin.issued!, lang),
-              style: theme.textTheme.bodySmall,
-            ),
+          : Text(Fmt.dateTime(bulletin.issued!, lang), style: text.labelMedium),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            spacing: Gap.xs + 2,
+            spacing: Gap.sm,
             children: [
               for (final day in bulletin.days)
                 Expanded(
                   child: Tooltip(
                     message: day.text.of(lang),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: Gap.sm),
-                      decoration: BoxDecoration(
-                        color: day.level.color.withValues(alpha: 0.16),
-                        border: Border(
-                          bottom: BorderSide(color: day.level.color, width: 4),
+                    triggerMode: TooltipTriggerMode.tap,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: day.level.color,
+                            borderRadius: BorderRadius.circular(Radii.pill),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(Radii.sm),
-                      ),
-                      child: Text(
-                        day.bsDate,
-                        textAlign: TextAlign.center,
-                        style: theme.textTheme.labelMedium,
-                      ),
+                        const SizedBox(height: Gap.sm),
+                        Text(day.bsDate, style: text.labelMedium),
+                      ],
                     ),
                   ),
                 ),
             ],
           ),
           if (!bulletin.advisory.isEmpty) ...[
-            const SizedBox(height: Gap.md),
-            Text(
-              bulletin.advisory.of(lang),
-              style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
-            ),
+            const SizedBox(height: Gap.lg),
+            Text(bulletin.advisory.of(lang), style: text.bodyMedium),
           ],
         ],
       ),

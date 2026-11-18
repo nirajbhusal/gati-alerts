@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/preferences/app_preferences.dart';
-import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/async_list_view.dart';
+import '../../../../core/widgets/choice_row.dart';
+import '../../../../core/widgets/section_card.dart';
 import '../../../../core/widgets/source_note.dart';
 import '../../../../core/widgets/state_views.dart';
 import '../../domain/entities/road_report.dart';
@@ -29,34 +30,28 @@ class RoadsPage extends ConsumerWidget {
         final routes = report.routes
             .where((r) => selected == null || r.status == selected)
             .toList();
+        String count(int n) => Fmt.number(n, lang);
         return [
-          Wrap(
-            spacing: Gap.sm,
-            runSpacing: Gap.sm,
-            children: [
-              for (final status in RoadStatus.values)
-                FilterChip(
-                  avatar: Icon(status.icon, size: 18, color: status.color),
-                  label: Text(
-                    '${status.label.of(lang)} '
-                    '${Fmt.number(report.count(status), lang)}',
-                  ),
-                  selected: selected == status,
-                  showCheckmark: false,
-                  onSelected: (_) => ref
-                      .read(roadStatusFilterProvider.notifier)
-                      .toggle(status),
+          ChoiceRow<RoadStatus?>(
+            choices: [
+              (value: null, label: '${s.all} ${count(report.routes.length)}'),
+              for (final st in RoadStatus.values)
+                (
+                  value: st,
+                  label: '${st.label.of(lang)} ${count(report.count(st))}',
                 ),
             ],
+            selected: selected,
+            onSelected: ref.read(roadStatusFilterProvider.notifier).select,
           ),
           if (routes.isEmpty)
             EmptyView(message: s.nothingHere)
           else
-            for (final r in routes) RoadRouteTile(route: r),
-          SourceNote(
-            text: '${report.rule.of(lang)} (${report.asOf.of(lang)})',
-            url: report.sourceUrl,
-          ),
+            SectionCard.list(
+              title: report.asOf.of(lang),
+              children: [for (final r in routes) RoadRouteTile(route: r)],
+            ),
+          SourceNote(text: report.rule.of(lang), url: report.sourceUrl),
         ];
       },
     );

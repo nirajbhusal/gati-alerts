@@ -6,8 +6,7 @@ import '../../../../core/widgets/async_list_view.dart';
 import '../../../../core/widgets/state_views.dart';
 import '../providers/alert_providers.dart';
 import '../widgets/alert_card.dart';
-import '../widgets/alert_filter_bar.dart';
-import '../widgets/alert_summary_header.dart';
+import '../widgets/alerts_header.dart';
 
 class AlertsPage extends ConsumerWidget {
   const AlertsPage({super.key});
@@ -19,10 +18,9 @@ class AlertsPage extends ConsumerWidget {
       value: ref.watch(filteredAlertsProvider),
       onRefresh: () => ref.refresh(alertsProvider.future),
       builder: (context, alerts) => [
-        const AlertSummaryHeader(),
-        const AlertFilterBar(),
+        const AlertsHeader(),
         if (alerts.isEmpty)
-          EmptyView(message: s.noActiveAlerts)
+          EmptyView(message: s.noActiveAlerts, icon: Icons.check_circle_outline)
         else
           for (final alert in alerts) AlertCard(alert: alert),
       ],

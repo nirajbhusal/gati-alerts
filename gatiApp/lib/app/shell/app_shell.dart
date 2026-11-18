@@ -16,40 +16,53 @@ class AppShell extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(stringsProvider);
     final tabs = [
-      (Icons.campaign_outlined, Icons.campaign, s.alerts),
+      (Icons.notifications_none, Icons.notifications, s.alerts),
       (Icons.cloud_outlined, Icons.cloud, s.weather),
-      (Icons.add_road_outlined, Icons.add_road, s.roads),
-      (Icons.water_outlined, Icons.water, s.rivers),
-      (Icons.phone_outlined, Icons.phone, s.contacts),
+      (Icons.alt_route_outlined, Icons.alt_route, s.roads),
+      (Icons.water_drop_outlined, Icons.water_drop, s.rivers),
+      (Icons.call_outlined, Icons.call, s.contacts),
     ];
     final index = navigationShell.currentIndex;
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
         title: index == 0
-            ? Text(s.appName, style: const TextStyle(color: AppColors.gatiRed))
+            ? Text(
+                s.appName,
+                style: theme.appBarTheme.titleTextStyle?.copyWith(
+                  color: AppColors.gatiRed,
+                  fontSize: 24,
+                ),
+              )
             : Text(tabs[index].$3),
         actions: [
           IconButton(
             tooltip: s.settings,
-            icon: const Icon(Icons.settings_outlined),
+            icon: const Icon(Icons.tune),
             onPressed: () => context.push(AppRoutes.settings),
           ),
+          const SizedBox(width: 4),
         ],
       ),
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: index,
-        onDestinationSelected: (i) =>
-            navigationShell.goBranch(i, initialLocation: i == index),
-        destinations: [
-          for (final (icon, selectedIcon, label) in tabs)
-            NavigationDestination(
-              icon: Icon(icon),
-              selectedIcon: Icon(selectedIcon),
-              label: label,
-            ),
-        ],
+      bottomNavigationBar: DecoratedBox(
+        decoration: BoxDecoration(
+          border: Border(top: BorderSide(color: theme.dividerTheme.color!)),
+        ),
+        child: NavigationBar(
+          selectedIndex: index,
+          onDestinationSelected: (i) =>
+              navigationShell.goBranch(i, initialLocation: i == index),
+          destinations: [
+            for (final (icon, selectedIcon, label) in tabs)
+              NavigationDestination(
+                icon: Icon(icon),
+                selectedIcon: Icon(selectedIcon),
+                label: label,
+              ),
+          ],
+        ),
       ),
     );
   }

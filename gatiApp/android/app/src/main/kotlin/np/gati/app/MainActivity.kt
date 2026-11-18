@@ -1,4 +1,4 @@
-package np.gati.gati_app
+package np.gati.app
 
 import io.flutter.embedding.android.FlutterActivity
 

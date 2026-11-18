@@ -20,7 +20,8 @@ class AsyncListView<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => value.when(
-    loading: () => const Center(child: CircularProgressIndicator()),
+    loading: () =>
+        const Center(child: CircularProgressIndicator(strokeWidth: 2.5)),
     error: (error, _) => ErrorView(error: error, onRetry: onRefresh),
     data: (data) {
       final children = builder(context, data);
@@ -30,7 +31,7 @@ class AsyncListView<T> extends StatelessWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           padding: Gap.page,
           itemCount: children.length,
-          separatorBuilder: (_, _) => const SizedBox(height: Gap.md),
+          separatorBuilder: (_, _) => const SizedBox(height: Gap.lg),
           itemBuilder: (_, i) => children[i],
         ),
       );

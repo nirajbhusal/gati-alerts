@@ -23,5 +23,5 @@ class RoadStatusFilter extends Notifier<RoadStatus?> {
   @override
   RoadStatus? build() => null;
 
-  void toggle(RoadStatus status) => state = state == status ? null : status;
+  void select(RoadStatus? status) => state = status;
 }

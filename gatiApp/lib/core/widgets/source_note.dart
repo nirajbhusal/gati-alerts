@@ -5,7 +5,7 @@ import '../l10n/app_strings.dart';
 import '../theme/app_dimens.dart';
 import '../utils/launcher.dart';
 
-/// "Source: … · checked …" line under each screen. Tapping opens the source.
+/// "Source: … " footnote under each screen. Tapping opens the source.
 class SourceNote extends ConsumerWidget {
   const SourceNote({super.key, required this.text, this.url});
 
@@ -16,29 +16,33 @@ class SourceNote extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(stringsProvider);
     final theme = Theme.of(context);
+    final muted = theme.colorScheme.onSurfaceVariant;
     return InkWell(
       onTap: url == null ? null : () => Launcher.openUrl(url!),
       borderRadius: BorderRadius.circular(Radii.sm),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: Gap.xs),
+        padding: const EdgeInsets.all(Gap.xs),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              Icons.verified_outlined,
-              size: 16,
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-            const SizedBox(width: Gap.sm),
             Expanded(
-              child: Text(
-                '${s.source}: $text',
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                  decoration: url == null ? null : TextDecoration.underline,
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '${s.source}  ',
+                      style: const TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    TextSpan(text: text),
+                  ],
                 ),
+                style: theme.textTheme.bodySmall,
               ),
             ),
+            if (url != null) ...[
+              const SizedBox(width: Gap.sm),
+              Icon(Icons.north_east, size: 16, color: muted),
+            ],
           ],
         ),
       ),

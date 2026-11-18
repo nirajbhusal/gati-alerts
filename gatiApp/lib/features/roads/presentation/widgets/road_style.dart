@@ -12,13 +12,6 @@ extension RoadStatusStyle on RoadStatus {
     RoadStatus.unconfirmed => AppColors.info,
   };
 
-  IconData get icon => switch (this) {
-    RoadStatus.blocked => Icons.block_rounded,
-    RoadStatus.oneway => Icons.swap_calls_rounded,
-    RoadStatus.open => Icons.check_circle_rounded,
-    RoadStatus.unconfirmed => Icons.help_outline_rounded,
-  };
-
   LocalizedText get label => switch (this) {
     RoadStatus.blocked => const LocalizedText(ne: 'अवरुद्ध', en: 'Blocked'),
     RoadStatus.oneway => const LocalizedText(ne: 'आंशिक खुला', en: 'One-way'),

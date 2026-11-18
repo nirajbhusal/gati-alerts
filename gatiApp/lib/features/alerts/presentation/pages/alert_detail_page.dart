@@ -7,7 +7,6 @@ import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/l10n/localized_text.dart';
 import '../../../../core/network/api_endpoints.dart';
 import '../../../../core/preferences/app_preferences.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../core/utils/launcher.dart';
@@ -16,7 +15,7 @@ import '../../../../core/widgets/section_card.dart';
 import '../../../../core/widgets/state_views.dart';
 import '../../domain/entities/alert.dart';
 import '../providers/alert_providers.dart';
-import '../widgets/alert_pills.dart';
+import '../widgets/alert_meta.dart';
 
 class AlertDetailPage extends ConsumerWidget {
   const AlertDetailPage({super.key, required this.id});
@@ -27,7 +26,7 @@ class AlertDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(stringsProvider);
     return Scaffold(
-      appBar: AppBar(title: Text(s.details)),
+      appBar: AppBar(),
       body: AsyncListView<Alert?>(
         value: ref.watch(alertByIdProvider(id)),
         onRefresh: () => ref.refresh(alertsProvider.future),
@@ -41,74 +40,65 @@ class AlertDetailPage extends ConsumerWidget {
   List<Widget> _sections(BuildContext context, WidgetRef ref, Alert alert) {
     final s = ref.watch(stringsProvider);
     final lang = ref.watch(languageProvider);
-    final theme = Theme.of(context);
-    Widget body(LocalizedText t) => SelectableText(
-      t.of(lang),
-      style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
-    );
+    final text = Theme.of(context).textTheme;
+    Widget body(LocalizedText t) =>
+        SelectableText(t.of(lang), style: text.bodyLarge);
 
     return [
-      AlertPills(alert: alert),
-      Text(
-        alert.headline.of(lang),
-        style: theme.textTheme.headlineSmall?.copyWith(
-          fontWeight: FontWeight.w700,
-          height: 1.3,
-        ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AlertMeta(alert: alert),
+          const SizedBox(height: Gap.sm),
+          Text(alert.headline.of(lang), style: text.headlineSmall),
+        ],
       ),
       if (alert.supersededBy != null)
-        Card(
-          color: AppColors.corrected.withValues(alpha: 0.1),
-          child: ListTile(
-            leading: const Icon(Icons.update, color: AppColors.corrected),
-            title: Text(s.laterUpdated),
-            trailing: TextButton(
-              onPressed: () =>
-                  context.pushReplacement(AppRoutes.alert(alert.supersededBy!)),
-              child: Text(s.seeLatest),
-            ),
+        SectionCard(
+          onTap: () =>
+              context.pushReplacement(AppRoutes.alert(alert.supersededBy!)),
+          child: Row(
+            children: [
+              const Icon(Icons.history),
+              const SizedBox(width: Gap.md),
+              Expanded(child: Text(s.laterUpdated, style: text.bodyMedium)),
+              Text(s.seeLatest, style: text.titleSmall),
+              const Icon(Icons.chevron_right),
+            ],
           ),
         ),
-      SectionCard(
-        child: Column(
-          children: [
-            _InfoRow(s.issuedBy, alert.senderName.of(lang)),
-            _InfoRow(s.sent, Fmt.dateTime(alert.sent, lang)),
-            _InfoRow(s.expires, Fmt.dateTime(alert.expires, lang)),
-            for (final area in alert.areas) _InfoRow(s.area, area.of(lang)),
-          ],
-        ),
+      SectionCard.list(
+        children: [
+          _InfoRow(s.issuedBy, alert.senderName.of(lang)),
+          _InfoRow(s.sent, Fmt.dateTime(alert.sent, lang)),
+          _InfoRow(s.expires, Fmt.dateTime(alert.expires, lang)),
+          for (final area in alert.areas) _InfoRow(s.area, area.of(lang)),
+        ],
       ),
       if (!alert.instruction.isEmpty)
-        SectionCard(
-          title: s.whatToDo,
-          accent: AppColors.teal,
-          child: body(alert.instruction),
-        ),
+        SectionCard(title: s.whatToDo, child: body(alert.instruction)),
       if (!alert.description.isEmpty)
         SectionCard(title: s.details, child: body(alert.description)),
-      Text(s.disclaimer, style: theme.textTheme.bodySmall),
-      Wrap(
+      Column(
         spacing: Gap.sm,
-        runSpacing: Gap.sm,
         children: [
           if (alert.sourceUrl != null)
-            FilledButton.icon(
+            FilledButton(
               onPressed: () => Launcher.openUrl(alert.sourceUrl!),
-              icon: const Icon(Icons.open_in_new),
-              label: Text(s.openSource),
+              child: Text(s.openSource),
             ),
-          OutlinedButton.icon(
+          OutlinedButton(
             onPressed: () => Launcher.openUrl(ApiEndpoints.alertPage(alert.id)),
-            icon: const Icon(Icons.public),
-            label: Text(s.openOnWeb),
+            child: Text(s.openOnWeb),
           ),
         ],
       ),
+      Text(s.disclaimer, style: text.bodySmall),
     ];
   }
 }
 
+/// Label on the left, value on the right, inside a list card.
 class _InfoRow extends StatelessWidget {
   const _InfoRow(this.label, this.value);
 
@@ -117,22 +107,14 @@ class _InfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final text = Theme.of(context).textTheme;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: Gap.xs),
+      padding: const EdgeInsets.symmetric(horizontal: Gap.lg, vertical: Gap.md),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 96,
-            child: Text(
-              label,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
-            ),
-          ),
-          Expanded(child: Text(value, style: theme.textTheme.bodyMedium)),
+          SizedBox(width: 92, child: Text(label, style: text.bodySmall)),
+          Expanded(child: Text(value, style: text.bodyMedium)),
         ],
       ),
     );

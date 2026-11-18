@@ -25,15 +25,6 @@ extension SeverityStyle on Severity {
 }
 
 extension TrustStyle on TrustLevel {
-  Color get color => switch (this) {
-    TrustLevel.official => AppColors.navy,
-    TrustLevel.verified => AppColors.teal,
-    _ => AppColors.slate,
-  };
-
-  IconData get icon =>
-      isConfirmed ? Icons.verified_rounded : Icons.help_outline_rounded;
-
   LocalizedText get label => switch (this) {
     TrustLevel.official => const LocalizedText(ne: 'आधिकारिक', en: 'Official'),
     TrustLevel.verified => const LocalizedText(
@@ -54,14 +45,14 @@ extension TrustStyle on TrustLevel {
 
 extension HazardStyle on Hazard {
   IconData get icon => switch (this) {
-    Hazard.flood => Icons.water_rounded,
-    Hazard.landslide => Icons.landslide_rounded,
-    Hazard.road => Icons.add_road_rounded,
-    Hazard.weather => Icons.thunderstorm_rounded,
-    Hazard.earthquake => Icons.vibration_rounded,
-    Hazard.airQuality => Icons.air_rounded,
-    Hazard.epidemic => Icons.coronavirus_rounded,
-    Hazard.other => Icons.campaign_rounded,
+    Hazard.flood => Icons.water_drop_outlined,
+    Hazard.landslide => Icons.landslide_outlined,
+    Hazard.road => Icons.alt_route,
+    Hazard.weather => Icons.thunderstorm_outlined,
+    Hazard.earthquake => Icons.ssid_chart,
+    Hazard.airQuality => Icons.air,
+    Hazard.epidemic => Icons.coronavirus_outlined,
+    Hazard.other => Icons.info_outline,
   };
 
   LocalizedText get label => switch (this) {

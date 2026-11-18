@@ -6,13 +6,12 @@ import '../../../../core/preferences/app_preferences.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/utils/formatters.dart';
-import '../../../../core/widgets/section_card.dart';
-import '../../../../core/widgets/status_pill.dart';
+import '../../../../core/widgets/status_label.dart';
 import '../../domain/entities/river_report.dart';
 
-/// Gauge name, status, and a bar of the level against the danger mark.
-class RiverGaugeCard extends ConsumerWidget {
-  const RiverGaugeCard({super.key, required this.gauge});
+/// Gauge name and status, a thin bar of level against danger, the numbers.
+class RiverGaugeRow extends ConsumerWidget {
+  const RiverGaugeRow({super.key, required this.gauge});
 
   final RiverGauge gauge;
 
@@ -20,45 +19,42 @@ class RiverGaugeCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(stringsProvider);
     final lang = ref.watch(languageProvider);
-    final theme = Theme.of(context);
+    final text = Theme.of(context).textTheme;
     final (color, label) = switch (gauge.status) {
       RiverStatus.normal => (AppColors.ok, s.normal),
       RiverStatus.aboveWarning => (AppColors.caution, s.aboveWarning),
       RiverStatus.aboveDanger => (AppColors.severe, s.aboveDanger),
     };
-    String metres(double? v) =>
-        v == null ? '–' : '${Fmt.number(v, lang, decimals: 2)} m';
+    String m(double? v) => v == null ? '–' : Fmt.number(v, lang, decimals: 2);
 
-    return SectionCard(
-      accent: color,
-      title: gauge.name.of(lang),
-      trailing: StatusPill(label: label, color: color),
+    return Padding(
+      padding: const EdgeInsets.all(Gap.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(gauge.name.of(lang), style: text.titleSmall),
+              ),
+              StatusLabel(label: label, color: color),
+            ],
+          ),
+          const SizedBox(height: Gap.md),
           ClipRRect(
             borderRadius: BorderRadius.circular(Radii.pill),
             child: LinearProgressIndicator(
               value: gauge.fill,
-              minHeight: 8,
+              minHeight: 4,
               color: color,
-              backgroundColor: theme.colorScheme.outlineVariant,
             ),
           ),
           const SizedBox(height: Gap.sm),
-          Wrap(
-            spacing: Gap.lg,
-            children: [
-              Text('${s.level}: ${metres(gauge.level)}'),
-              Text(
-                '${s.warningLevel}: ${metres(gauge.warning)}',
-                style: const TextStyle(color: AppColors.caution),
-              ),
-              Text(
-                '${s.dangerLevel}: ${metres(gauge.danger)}',
-                style: const TextStyle(color: AppColors.severe),
-              ),
-            ],
+          Text(
+            '${s.level} ${m(gauge.level)} m   ·   '
+            '${s.warningLevel} ${m(gauge.warning)}   ·   '
+            '${s.dangerLevel} ${m(gauge.danger)}',
+            style: text.bodySmall,
           ),
         ],
       ),
