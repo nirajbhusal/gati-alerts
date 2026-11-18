@@ -1,29 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/l10n/app_strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../router/app_routes.dart';
+import 'shell_bottom_nav.dart';
+import 'shell_center_button.dart';
 
-/// App bar + bottom navigation around the five main tabs.
+/// Main frame: Alerts · Weather · (Emergency) · Roads · Rivers.
+///
+/// Branch order matches the router: the four bar tabs are branches 0 to 3,
+/// the centre button opens branch [_emergencyBranch].
 class AppShell extends ConsumerWidget {
   const AppShell({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
+  static const _emergencyBranch = 4;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(stringsProvider);
-    final tabs = [
-      (Icons.notifications_none, Icons.notifications, s.alerts),
-      (Icons.cloud_outlined, Icons.cloud, s.weather),
-      (Icons.alt_route_outlined, Icons.alt_route, s.roads),
-      (Icons.water_drop_outlined, Icons.water_drop, s.rivers),
-      (Icons.call_outlined, Icons.call, s.contacts),
-    ];
     final index = navigationShell.currentIndex;
+    final onEmergency = index == _emergencyBranch;
     final theme = Theme.of(context);
+
+    final items = <NavItem>[
+      (
+        icon: Icons.notifications_none,
+        activeIcon: Icons.notifications,
+        label: s.alerts,
+      ),
+      (icon: Icons.cloud_outlined, activeIcon: Icons.cloud, label: s.weather),
+      (
+        icon: Icons.alt_route_outlined,
+        activeIcon: Icons.alt_route,
+        label: s.roads,
+      ),
+      (
+        icon: Icons.water_drop_outlined,
+        activeIcon: Icons.water_drop,
+        label: s.rivers,
+      ),
+    ];
+
+    void go(int branch) {
+      HapticFeedback.selectionClick();
+      navigationShell.goBranch(branch, initialLocation: branch == index);
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +61,7 @@ class AppShell extends ConsumerWidget {
                   fontSize: 24,
                 ),
               )
-            : Text(tabs[index].$3),
+            : Text(onEmergency ? s.contacts : items[index].label),
         actions: [
           IconButton(
             tooltip: s.settings,
@@ -46,24 +72,18 @@ class AppShell extends ConsumerWidget {
         ],
       ),
       body: navigationShell,
-      bottomNavigationBar: DecoratedBox(
-        decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: theme.dividerTheme.color!)),
-        ),
-        child: NavigationBar(
-          selectedIndex: index,
-          onDestinationSelected: (i) =>
-              navigationShell.goBranch(i, initialLocation: i == index),
-          destinations: [
-            for (final (icon, selectedIcon, label) in tabs)
-              NavigationDestination(
-                icon: Icon(icon),
-                selectedIcon: Icon(selectedIcon),
-                label: label,
-              ),
-          ],
-        ),
+      bottomNavigationBar: ShellBottomNav(
+        items: items,
+        currentIndex: onEmergency ? -1 : index,
+        onTap: go,
       ),
+      floatingActionButton: ShellCenterButton(
+        icon: Icons.call,
+        tooltip: s.contacts,
+        selected: onEmergency,
+        onPressed: () => go(_emergencyBranch),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

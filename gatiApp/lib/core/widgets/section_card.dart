@@ -38,6 +38,7 @@ class SectionCard extends StatelessWidget {
             child: Padding(padding: const EdgeInsets.all(Gap.lg), child: child),
           )
         : Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               for (final (i, row) in rows.indexed) ...[
                 if (i > 0) const Divider(indent: Gap.lg),
