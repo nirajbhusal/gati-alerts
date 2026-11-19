@@ -13,7 +13,7 @@
   const npt = (ms) => new Date(ms + G.tzMs).toISOString().slice(0, 10);
   const today = npt(Date.now());
   box.style.setProperty("--hmar", `${W} / ${H}`);
-  let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false, wide = false;
+  let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false, wide = false, affOpen = false, affD = null;
   const CATS = [["all", "सबै", "All", null], ["flood", "बाढी र वर्षा", "Floods and rain", ["flood"]], ["landslide", "पहिरो", "Landslides", ["landslide"]], ["road", "सडक", "Roads", ["road"]], ["earthquake", "भूकम्प", "Earthquakes", ["earthquake"]], ["weather", "मौसम", "Weather", ["weather"]], ["air", "उडान", "Flights", ["air"]]];
   const FULL = { all: "", flood: "#hz=flood", landslide: "#hz=landslide", road: "#hz=road", earthquake: "#L=eq", weather: "#hz=weather", air: "" };
   const RCOL = { open: "#34C77B", oneway: "#F2C94C", blocked: "#FF5C5C", none: "rgba(255,255,255,.45)" };
@@ -142,11 +142,17 @@
       nearN = L.filter((x) => !x.ds.includes(me) && x.ds.some((c) => nb.includes(c))).length; }
     const myN = me ? L.filter((x) => x.ds.includes(me)).length : 0, mnm = mf ? E(T(mf.properties.ne, mf.properties.en)) : "";
     const PIN = '<svg class="mic mic-affected" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/></svg>';
+    /* Am I affected? answered here, on the card, from the same official data as the full page */
+    let affHtml = "";
+    if (me && affOpen) { if (!affD || !G.affect) affHtml = `<div class="hmaff"><p class="hmns">${T("जाँच्दै…", "Checking…")}</p></div>`;
+      else { const v = G.affect.verdict([me], affD, G.affect.getR()), SN = G.affect.sentences(v, mf ? T(mf.properties.ne, mf.properties.en) : "");
+        affHtml = `<div class="hmaff" style="--vc:${v.c}" role="status"><p class="hmafv"><i></i>${E(G.affect.phrase(v))}</p>${SN.length ? `<ul>${SN.slice(0, 4).map((x) => `<li${x.calm ? ' class="calm"' : x.ended ? ' class="ended"' : ""}>${E(x.text)}</li>`).join("")}</ul>` : ""}
+          <p class="hmns">${T("आधिकारिक सूचनाबाट मात्र। सूचना नहुनु भनेको सुरक्षित भन्ने होइन।", "From official notices only. No notice does not mean safe.")} <a href="${R}affected/#d=${E(me)}">${T("पूरा विवरण", "Full details")} →</a></p></div>`; } }
     const near = cat !== "all" ? "" : me ? `<div class="hmnear${myN ? " hot" : ""}"><p class="hmnk">${PIN}${T("मेरो नजिक", "Near me")} · <b>${mnm}</b></p>
         <p class="hmnv">${myN ? T(`${N(myN)} सक्रिय आधिकारिक सूचना`, `${myN} active official alert${myN === 1 ? "" : "s"}`) : T("नाम लिएको सक्रिय आधिकारिक सूचना छैन", "No active official alert names it")}</p>
         <p class="hmns">${myN ? "" : T("यसको अर्थ खतरा छैन भन्ने होइन। ", "This is not an all clear. ")}${wide ? "" : T(`छेउका जिल्लामा: ${N(nearN)}`, `In districts next to you: ${nearN}`)}</p>
-        <p class="hmnb"><a class="hmnbtn2" href="${R}affected/#d=${E(me)}">${T("के म प्रभावित छु?", "Am I affected?")}</a><a class="hmnbtn2" href="${R}route/">${T("मार्ग जाँच", "Route check")}</a><button type="button" class="hmnbtn2" id="hmwide" aria-pressed="${wide}">${wide ? T("मेरो नजिक देखाउनुहोस्", "Zoom to near me") : T("पूरै नेपाल", "All Nepal")}</button><button type="button" class="hmnbtn2" id="hmchg">${T("जिल्ला फेर्नुहोस्", "Change")}</button></p></div>`
-      : `<div class="hmnear"><p class="hmnk">${PIN}${T("मेरो नजिक", "Near me")}</p><p class="hmnv">${T("आफ्नो जिल्ला छान्नुहोस्", "Choose your district")}</p><p class="hmns">${T("नक्सा हजुरको जिल्ला र छेउका जिल्लामा खुल्छ।", "The map then opens on your district and the ones next to it.")}</p><p class="hmnb"><button type="button" class="hmnbtn2 main" id="hmchg">${T("जिल्ला छान्नुहोस्", "Choose district")}</button></p></div>`;
+        ${affHtml}<p class="hmnb"><button type="button" class="hmnbtn2" id="hmaffb" aria-pressed="${affOpen}" aria-expanded="${affOpen}">${T("के म प्रभावित छु?", "Am I affected?")}</button><a class="hmnbtn2" href="${R}route/">${T("मार्ग जाँच", "Route check")}</a><button type="button" class="hmnbtn2" id="hmwide" aria-pressed="${wide}">${wide ? T("मेरो नजिक देखाउनुहोस्", "Zoom to near me") : T("पूरै नेपाल", "All Nepal")}</button><button type="button" class="hmnbtn2" id="hmchg">${T("जिल्ला फेर्नुहोस्", "Change")}</button></p></div>`
+      : `<div class="hmnear"><p class="hmnk">${PIN}${T("मेरो नजिक", "Near me")}</p><p class="hmnv">${T("आफ्नो जिल्ला छान्नुहोस्", "Choose your district")}</p><p class="hmns">${T("नक्सा हजुरको जिल्ला र छेउका जिल्लामा खुल्छ।", "The map then opens on your district and the ones next to it.")}</p><p class="hmnb"><button type="button" class="hmnbtn2 main" id="hmloc">${T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location")}</button><button type="button" class="hmnbtn2" id="hmchg">${T("जिल्ला छान्नुहोस्", "Choose district")}</button></p><p class="hmns">${T("स्थान यही उपकरणमा मात्र जाँचिन्छ, कतै पठाइँदैन।", "Your location is checked on this device only and never sent anywhere.")}</p></div>`;
     box.classList.toggle("hmzoomed", !!me && !wide);
     box.innerHTML = `${head}${cat === "all" ? status : none}${slider}<div class="hmgrid"><div class="hmmain">${near}<div class="hmw"><svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
       <aside class="hmside" aria-label="${E(T("अहिलेको सारांश", "Right now"))}"><h3>${T("अहिले", "Right now")}</h3>${cat === "all" ? nowlist + (named.length ? `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}` : "") : stats + `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}`}<div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div></aside></div>${cxtxt}${note}
@@ -171,6 +177,8 @@
     box.querySelectorAll(".hmd").forEach((p) => { p.onclick = () => pick(p.dataset.c); p.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(p.dataset.c); } }; });
     const x = box.querySelector(".hmx"); if (x) x.onclick = () => { sel = null; draw(); };
     const wd = box.querySelector("#hmwide"); if (wd) wd.onclick = () => { wide = !wide; draw(); };
+    const ab = box.querySelector("#hmaffb"); if (ab) ab.onclick = () => { affOpen = !affOpen; draw(); if (affOpen && !affD && G.affect) G.affect.load().then((d) => { affD = d; draw(); }).catch(() => { affOpen = false; location.href = R + "affected/"; }); };
+    const lc = box.querySelector("#hmloc"); if (lc) lc.onclick = () => { if (G.district && G.district.open) G.district.open(() => { wide = false; draw(); }).then(() => { const b = document.querySelector(".dloc"); if (b) b.click(); }); };
     const ch = box.querySelector("#hmchg"); if (ch) ch.onclick = () => { if (G.district && G.district.open) G.district.open(() => { wide = false; draw(); }); };
   }
 })();
