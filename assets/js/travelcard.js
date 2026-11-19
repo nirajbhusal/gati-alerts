@@ -22,7 +22,8 @@
     const cols = (s.foot || []).map((f) => ({ ...f, lines: wrap(f.v, 26, 400, (W - P * 2 - 48) / Math.max(1, (s.foot || []).length), 4) }));
     const fine = (s.fine || []).flatMap((l) => wrap(l, 22, 400, W - P * 2, 3));
     const bannerLines = wrap(s.banner.value, 44, 700, W - P * 2 - 72, 2);
-    const yTitle = 176, yAfterTitle = yTitle + title.length * 88, ySub = yAfterTitle + 8, yBanner = ySub + sub.length * 42 + 22, bannerH = 62 + bannerLines.length * 54;
+    const mine = (s.mine || []).filter(Boolean).flatMap((l) => wrap(l, 28, 400, W - P * 2 - 56, 3)), mineH = mine.length ? 54 + mine.length * 38 + 26 : 0;
+    const yTitle = 176, yAfterTitle = yTitle + title.length * 88, ySub = yAfterTitle + 8, yMine = ySub + sub.length * 42 + 22, yBanner = yMine + mineH, bannerH = 62 + bannerLines.length * 54;
     const yRows = yBanner + bannerH + 52, rowsH = rows.reduce((h, r) => h + r.h, 0);
     const yFoot = yRows + rowsH + 16, footH = 44 + 40 + Math.max(1, ...cols.map((f) => f.lines.length)) * 34 + 28;
     const H = yFoot + footH + 30 + fine.length * 30 + 84;
@@ -36,6 +37,9 @@
     font(24, 700); x.fillStyle = AMBER; x.fillText(s.kicker, P + (logo ? 96 * logo.width / logo.height + 14 : 0), 132);
     x.fillStyle = "#fff"; title.forEach((l, i) => { font(78, 700); x.fillText(l, P, yTitle + 62 + i * 88); });
     x.fillStyle = SOFT; sub.forEach((l, i) => { font(32); x.fillText(l, P, ySub + 34 + i * 42); });
+    /* the person's own plan, in their words, kept apart from what the agencies say */
+    if (mine.length) { x.strokeStyle = "rgba(255,179,71,.6)"; x.lineWidth = 2; x.setLineDash([8, 8]); x.beginPath(); x.roundRect(P, yMine, W - P * 2, mineH - 22, 20); x.stroke(); x.setLineDash([]);
+      font(22, 700); x.fillStyle = AMBER; x.fillText(s.mineLabel || "", P + 28, yMine + 38); x.fillStyle = "#fff"; mine.forEach((l, i) => { font(28); x.fillText(l, P + 28, yMine + 78 + i * 38); }); }
     /* banner: the official status in one line */
     x.fillStyle = s.banner.color; x.beginPath(); x.roundRect(P, yBanner, W - P * 2, bannerH, 26); x.fill();
     x.fillStyle = s.banner.ink || "#fff"; font(24, 700); x.fillText(s.banner.label, P + 36, yBanner + 46);
@@ -63,8 +67,11 @@
   const flash = (b, msg) => { const old = b.textContent; b.textContent = msg; setTimeout(() => { b.textContent = old; }, 2200); };
 
   /* Three buttons: share the picture, download it, share the same facts as text. */
-  function actions(el, o) { if (!el) return;
-    el.innerHTML = `<div class="tcacts" role="group" aria-label="${T("यात्रा कार्ड", "Travel card")}"><button type="button" class="tcbtn tcmain" data-a="card">${T("कार्ड सेयर गर्नुहोस्", "Share card")}</button><button type="button" class="tcbtn" data-a="save">${T("तस्बिर डाउनलोड", "Download picture")}</button><button type="button" class="tcbtn" data-a="text">${T("पाठ सेयर गर्नुहोस्", "Share as text")}</button></div><p class="meta tcnote">${T("कार्डमा आधिकारिक स्रोतको अवस्था, स्रोत र समय मात्र हुन्छ। समय अनुमान हो।", "The card carries only the official status, with source and time. Times are estimates.")}</p>`;
+  const PK = "gati-trip-plan";
+  const plan = () => { try { return JSON.parse(localStorage.getItem(PK) || "{}"); } catch (e) { return {}; } };
+  function actions(el, o) { if (!el) return; const pl = plan();
+    el.innerHTML = (o.plan ? `<details class="tcplan"${pl.time || pl.note ? " open" : ""}><summary>${T("मेरो योजना थप्नुहोस् (ऐच्छिक)", "Add my plan (optional)")}</summary><div class="tcplanf"><label><span>${T("प्रस्थान समय", "Leaving at")}</span><input type="time" id="tctime" value="${G.esc(pl.time || "")}"></label><label class="tcwide"><span>${T("मेरो टिप्पणी: सवारी, विश्राम, चार्जिङ", "My note: vehicle, breaks, charging")}</span><input type="text" id="tcnote" maxlength="120" autocomplete="off" value="${G.esc(pl.note || "")}"></label></div><p class="meta">${T("यो हजुरको आफ्नै योजना हो; कार्डमा \"मेरो योजना\" भनेर छुट्टै देखिन्छ र यही उपकरणमा मात्र रहन्छ।", "This is your own plan. It is shown apart on the card as \"My plan\" and stays on this device.")}</p></details>` : "") + `<div class="tcacts" role="group" aria-label="${T("यात्रा कार्ड", "Travel card")}"><button type="button" class="tcbtn tcmain" data-a="card">${T("कार्ड सेयर गर्नुहोस्", "Share card")}</button><button type="button" class="tcbtn" data-a="save">${T("तस्बिर डाउनलोड", "Download picture")}</button><button type="button" class="tcbtn" data-a="text">${T("पाठ सेयर गर्नुहोस्", "Share as text")}</button></div><p class="meta tcnote">${T("कार्डमा आधिकारिक स्रोतको अवस्था, स्रोत र समय मात्र हुन्छ। समय अनुमान हो।", "The card carries only the official status, with source and time. Times are estimates.")}</p>`;
+    el.querySelectorAll("#tctime,#tcnote").forEach((i) => (i.oninput = () => { try { localStorage.setItem(PK, JSON.stringify({ time: el.querySelector("#tctime").value, note: el.querySelector("#tcnote").value.slice(0, 120) })); } catch (e) {} }));
     el.querySelectorAll(".tcbtn").forEach((b) => (b.onclick = async () => { const a = b.dataset.a, text = o.text(), url = o.url ? o.url() : location.href;
       if (a === "text") { try { if (navigator.share) { await navigator.share({ text, url }); return; } await navigator.clipboard.writeText(text + " " + url); flash(b, T("कपी भयो", "Copied")); } catch (e) {} return; }
       b.disabled = true; let blob = null; try { blob = await make(o.spec()); } catch (e) {} b.disabled = false;
@@ -73,5 +80,5 @@
       if (a === "card") { try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); if (G.pulse) G.pulse.track("share"); return; } } catch (e) { if (e && e.name === "AbortError") return; } }
       save(blob, o.name()); flash(b, T("डाउनलोड भयो", "Downloaded")); if (G.pulse) G.pulse.track("share"); }));
   }
-  G.travelCard = { make, actions };
+  G.travelCard = { make, actions, plan };
 })();
