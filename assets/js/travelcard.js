@@ -74,11 +74,24 @@
   const VEH = { car: ["कार / जिप", "Car / jeep"], ev: ["विद्युतीय गाडी", "Electric car"], bike: ["मोटरसाइकल", "Motorbike"], bus: ["बस / माइक्रो", "Bus / micro"] };
   const vehName = (k) => (VEH[k] ? T(VEH[k][0], VEH[k][1]) : "");
   const clock = (v) => { const [h, mm] = v.split(":"); return G.lang === "ne" ? G.num(`${+h}:${mm}`) : `${+h % 12 || 12}:${mm} ${+h < 12 ? "AM" : "PM"}`; };
+  const today = () => new Date(Date.now() + G.tzMs).toISOString().slice(0, 10);
+  const addDay = (ad, n) => new Date(Date.parse(ad + "T00:00:00Z") + n * 864e5).toISOString().slice(0, 10);
+  const WD = [["आइत", "Sun"], ["सोम", "Mon"], ["मङ्गल", "Tue"], ["बुध", "Wed"], ["बिही", "Thu"], ["शुक्र", "Fri"], ["शनि", "Sat"]], MO = [["जनवरी", "Jan"], ["फेब्रुअरी", "Feb"], ["मार्च", "Mar"], ["अप्रिल", "Apr"], ["मे", "May"], ["जुन", "Jun"], ["जुलाई", "Jul"], ["अगस्ट", "Aug"], ["सेप्टेम्बर", "Sep"], ["अक्टोबर", "Oct"], ["नोभेम्बर", "Nov"], ["डिसेम्बर", "Dec"]];
+  const dayName = (ad) => { const d = new Date(ad + "T00:00:00Z"); if (isNaN(d)) return ad; const w = WD[d.getUTCDay()], m = MO[d.getUTCMonth()]; return T(`${w[0]}, ${m[0]} ${G.num(String(d.getUTCDate()))}`, `${w[1]} ${d.getUTCDate()} ${m[1]}`); };
+  /* the travel day, only while it is today or later */
+  const planDate = () => { const d = plan().date || ""; return /^\d{4}-\d\d-\d\d$/.test(d) && d >= today() ? d : ""; };
+  const setPlan = (patch) => { try { localStorage.setItem(PK, JSON.stringify({ ...plan(), ...patch })); } catch (e) {} };
+  const dayChips = () => `<button type="button" class="tcchip" data-d="0" aria-pressed="false">${T("आज", "Today")}</button><button type="button" class="tcchip" data-d="1" aria-pressed="false">${T("भोलि", "Tomorrow")}</button><label class="tcother"><span>${T("अर्को दिन", "Other day")}</span><input type="date" class="tcdate" min="${today()}"></label>`;
+  /* wires the day chips and date box inside el; returns a function that repaints them */
+  const dayWire = (el, changed) => { const inp = el.querySelector(".tcdate"), paint = (typing) => { const d = planDate(); el.querySelectorAll("[data-d]").forEach((b) => b.setAttribute("aria-pressed", String(d === addDay(today(), +b.dataset.d)))); if (!typing) inp.value = d; };
+    el.querySelectorAll("[data-d]").forEach((b) => (b.onclick = () => { const v = addDay(today(), +b.dataset.d); setPlan({ date: planDate() === v ? "" : v }); paint(); if (changed) changed(); }));
+    inp.oninput = () => { setPlan({ date: inp.value }); paint(true); if (changed) changed(true); }; paint(); return paint; };
   const nowNpt = () => { const d = new Date(Date.now() + G.tzMs), m = (Math.ceil((d.getUTCHours() * 60 + d.getUTCMinutes()) / 15) * 15) % 1440; return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
   function actions(el, o) { if (!el) return;
     const acts = `<div class="tcacts" role="group" aria-label="${T("यात्रा कार्ड", "Travel card")}"><button type="button" class="tcbtn tcmain" data-a="card">${T("कार्ड सेयर गर्नुहोस्", "Share card")}</button><button type="button" class="tcbtn" data-a="save">${T("तस्बिर डाउनलोड", "Download picture")}</button><button type="button" class="tcbtn" data-a="text">${T("पाठ सेयर गर्नुहोस्", "Share as text")}</button></div><p class="meta tcnote">${T("कार्डमा आधिकारिक स्रोतको अवस्था, स्रोत र समय मात्र हुन्छ। समय अनुमान हो।", "The card carries only the official status, with source and time. Times are estimates.")}</p>`;
     if (!o.plan) el.innerHTML = acts;
     else el.innerHTML = `<div class="tcbox"><div class="tcform"><div class="tcplan"><p class="tcph"><b>${T("आफ्नो यात्रा थप्नुहोस्", "Make it your trip")}</b><span>${T("ऐच्छिक", "optional")}</span></p>
+      <div class="tcq"><span class="tcql" id="tcl0">${T("कुन दिन जाने?", "Which day?")}</span><div class="tcchips" role="group" aria-labelledby="tcl0">${dayChips()}</div></div>
       <div class="tcq"><span class="tcql" id="tcl1">${T("कति बजे हिँड्ने?", "When are you leaving?")}</span><div class="tcchips" role="group" aria-labelledby="tcl1"><button type="button" class="tcchip" data-t="now">${T("अहिले", "Now")}</button>${["05:00", "06:00", "07:00", "08:00"].map((v) => `<button type="button" class="tcchip" data-t="${v}" aria-pressed="false">${clock(v)}</button>`).join("")}<label class="tcother"><span>${T("अर्को समय", "Other time")}</span><input type="time" id="tctime" step="900"></label></div><p class="tcarr" id="tcarr" aria-live="polite" hidden></p></div>
       <div class="tcq"><span class="tcql" id="tcl2">${T("केमा जाने?", "Travelling by")}</span><div class="tcchips" role="group" aria-labelledby="tcl2">${Object.keys(VEH).map((k) => `<button type="button" class="tcchip" data-v="${k}" aria-pressed="false">${vehName(k)}</button>`).join("")}</div></div>
       <label class="tcq"><span class="tcql">${T("टिप्पणी", "Note")}</span><input type="text" id="tcnote" maxlength="120" autocomplete="off" enterkeyhint="done" placeholder="${T("जस्तै: मुग्लिनमा चिया, दुई जना", "e.g. tea stop at Mugling, two of us")}"></label>
@@ -86,26 +99,28 @@
       <figure class="tcprev"><figcaption>${T("हजुरले सेयर गर्ने कार्ड", "The card you will share")}</figcaption><img id="tcimg" alt="${T("सेयर हुने कार्डको पूर्वावलोकन", "Preview of the card you will share")}"></figure></div>`;
     if (o.plan) { const q = (s) => el.querySelector(s); let timer = 0;
       const preview = (wait) => { clearTimeout(timer); timer = setTimeout(async () => { const im = q("#tcimg"); if (!im) return; let b = null; try { b = await make(o.spec()); } catch (e) {} if (!b || !im.isConnected) return; const old = im.src; im.src = URL.createObjectURL(b); if (old.startsWith("blob:")) setTimeout(() => URL.revokeObjectURL(old), 1000); }, wait); };
-      const sync = (typing) => { const p = plan(), ok = /^\d\d:\d\d$/.test(p.time || "");
+      let paintDay = () => {};
+      const sync = (typing) => { paintDay(typing); const p = plan(), ok = /^\d\d:\d\d$/.test(p.time || "");
         el.querySelectorAll("[data-t]").forEach((b) => { if (b.dataset.t !== "now") b.setAttribute("aria-pressed", String(b.dataset.t === p.time)); });
         el.querySelectorAll("[data-v]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === p.veh)));
         if (!typing) { q("#tctime").value = ok ? p.time : ""; q("#tcnote").value = p.note || ""; }
         const arr = q("#tcarr"), line = ok && o.arrive ? o.arrive(+p.time.slice(0, 2) * 60 + +p.time.slice(3)) : ""; arr.textContent = line; arr.hidden = !line;
-        q(".tcclear").hidden = !(ok || p.veh || p.note); preview(typing ? 450 : 60); };
-      const set = (patch, typing) => { try { localStorage.setItem(PK, JSON.stringify({ ...plan(), ...patch })); } catch (e) {} sync(typing); };
+        q(".tcclear").hidden = !(ok || p.veh || p.note || planDate()); preview(typing ? 450 : 60); };
+      const set = (patch, typing) => { setPlan(patch); sync(typing); };
+      paintDay = dayWire(el, (typing) => sync(typing));
       el.querySelectorAll("[data-t]").forEach((b) => (b.onclick = () => { const v = b.dataset.t === "now" ? nowNpt() : b.dataset.t; set({ time: plan().time === v && b.dataset.t !== "now" ? "" : v }); }));
       el.querySelectorAll("[data-v]").forEach((b) => (b.onclick = () => set({ veh: plan().veh === b.dataset.v ? "" : b.dataset.v })));
       q("#tctime").oninput = (e) => set({ time: e.target.value }, true);
       q("#tcnote").oninput = (e) => set({ note: e.target.value.slice(0, 120) }, true);
-      q(".tcclear").onclick = () => set({ time: "", veh: "", note: "" });
+      q(".tcclear").onclick = () => set({ date: "", time: "", veh: "", note: "" });
       sync(); }
     el.querySelectorAll(".tcbtn").forEach((b) => (b.onclick = async () => { const a = b.dataset.a, text = o.text(), url = o.url ? o.url() : location.href;
       if (a === "text") { try { if (navigator.share) { await navigator.share({ text, url }); return; } await navigator.clipboard.writeText(text + " " + url); flash(b, T("कपी भयो", "Copied")); } catch (e) {} return; }
-      b.disabled = true; let blob = null; try { blob = await make(o.spec()); } catch (e) {} b.disabled = false;
+      b.disabled = true; let blob = null; try { blob = o.image ? await o.image() : await make(o.spec()); } catch (e) {} b.disabled = false;
       if (!blob) { flash(b, T("बनाउन सकिएन", "Could not make it")); return; }
       const file = new File([blob], o.name(), { type: "image/png" });
       if (a === "card") { try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); if (G.pulse) G.pulse.track("share"); return; } } catch (e) { if (e && e.name === "AbortError") return; } }
       save(blob, o.name()); flash(b, T("डाउनलोड भयो", "Downloaded")); if (G.pulse) G.pulse.track("share"); }));
   }
-  G.travelCard = { make, actions, plan, vehName };
+  G.travelCard = { make, actions, plan, vehName, planDate, setPlan, dayName, dayChips, dayWire };
 })();
