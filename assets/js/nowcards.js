@@ -53,12 +53,12 @@
   const MAP = G.root + "share/today.png";
   let cur = "wx", seen = false, url = "";
   async function preview() { const im = box.querySelector(".ncimg"); if (!im || !seen) return; const k = cur;
-    if (k === "map") { im.src = MAP; im.hidden = false; return; }
+    if (k === "map") { im.src = MAP; im.hidden = false; im.parentNode.href = MAP; return; }
     let blob = null; try { blob = await G.travelCard.make(SPEC[k]()); } catch (e) {}
-    if (k !== cur || !blob) return; if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); im.src = url; im.hidden = false; }
+    if (k !== cur || !blob) return; if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); im.src = url; im.hidden = false; im.parentNode.href = url; }
   function draw() {
     box.innerHTML = `<h2 class="nch">${T("आजका कार्ड: सेयर गर्नुहोस्", "Today's cards to share")}</h2><div class="nctabs" role="tablist">${TABS.map(([k, ne, en], i) => `<button type="button" role="tab" class="nctab" data-k="${k}" aria-selected="${k === cur}">${N(i + 1)} ${T(ne, en)}</button>`).join("")}</div>
-      <div class="ncbody${cur === "map" ? " ncwide" : ""}"><div class="ncview"><img class="ncimg" alt="${cur === "map" ? T("आजको नेपाल कार्ड: नक्सा, DHM चेतावनी, नदी, सडक र नापिएको वर्षा", "Today's Nepal card: map, DHM warning, rivers, roads and measured rain") : T("छानिएको कार्डको पूर्वावलोकन", "Preview of the chosen card")}" hidden></div><div class="ncact"></div></div>`;
+      <div class="ncbody${cur === "map" ? " ncwide" : ""}"><a class="ncview" target="_blank" rel="noopener" aria-label="${T("कार्ड ठूलो पारेर हेर्नुहोस्", "Open the card full size")}"><img class="ncimg" alt="${cur === "map" ? T("आजको नेपाल कार्ड: नक्सा, DHM चेतावनी, नदी, सडक र नापिएको वर्षा", "Today's Nepal card: map, DHM warning, rivers, roads and measured rain") : T("छानिएको कार्डको पूर्वावलोकन", "Preview of the chosen card")}" hidden><span class="nczoom" aria-hidden="true">⤢</span></a><div class="ncact"></div></div>`;
     box.querySelectorAll(".nctab").forEach((b) => (b.onclick = () => { cur = b.dataset.k; draw(); }));
     G.travelCard.actions(box.querySelector(".ncact"), { spec: () => SPEC[cur](), image: cur === "map" ? () => fetch(MAP).then((r) => r.blob()) : null, text: () => (cur === "map" ? SPEC.wxText() + "\n" + SPEC.roadText() : SPEC[cur + "Text"]()), url: () => G.country.site, name: () => (cur === "map" ? "gati-nepal-today.png" : `gati-nepal-now-${cur}.png`) });
     preview();
