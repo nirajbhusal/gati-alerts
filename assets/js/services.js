@@ -25,21 +25,28 @@
     ["sources/", "स्रोत", "Sources", "#475569", I('<path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/>'), "source agency"],
     ["about/", "बारेमा", "About", "#64748b", I('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'), "about"],
   ];
+  /* one line per feature, shown on wide screens where each feature is a card */
+  const DESC = { "affected/": ["मेरो जिल्लामा के लागू छ", "What applies to my district"], "route/": ["बाटो खुला छ कि छैन, सेयर कार्डसहित", "Is the road open, with a card to share"], "alerts/": ["मेरो नजिकका र सबै सक्रिय सूचना", "Alerts near me and every active alert"], "contacts/": ["प्रहरी, एम्बुलेन्स, दमकल, जिल्ला कार्यालय", "Police, ambulance, fire, district offices"],
+    "map/": ["सूचना, सडक, नदी, भूकम्प एउटै नक्सामा", "Alerts, roads, rivers, earthquakes on one map"], "weather/": ["DHM चेतावनी, पूर्वानुमान, वर्षा, हावा", "DHM warning, forecast, rain and air"], "roads/": ["राजमार्गको आधिकारिक स्थिति", "Official status of the highways"], "health/": ["अस्पतालका बेड र रक्त सञ्चार", "Hospital beds and blood banks"],
+    "flights/": ["विमानस्थलको मौसम, उडान स्थिति होइन", "Airport weather, not flight status"], "fuel/": ["नेपाल आयल निगमको मूल्य", "Nepal Oil Corporation prices"], "notifications/": ["मेरो जिल्लाका सूचना छान्नुहोस्", "Choose alerts for my district"], "trek/": ["पदमार्ग, अनुमति र सम्पर्क", "Trails, permits and contacts"],
+    "report/": ["देखेको जोखिम पठाउनुहोस्", "Send a hazard you have seen"], "rivers/": ["DHM का नदी मापन केन्द्र", "DHM river gauges"], "earthquakes/": ["हालका भूकम्प", "Recent earthquakes"], "patro/": ["बिदा, सूर्योदय र मौसमी जोखिम", "Holidays, sunrise and seasonal risks"],
+    "safety/": ["विपद् अघि, बेला र पछि", "Before, during and after a hazard"], "feed/": ["सूचना स्वाइप गरेर हेर्नुहोस्", "Swipe through the alerts"], "sources/": ["कुन निकायबाट, कहिले", "Which agency, and when"], "about/": ["गति के हो र के होइन", "What Gati is and is not"] };
+  const MQ = matchMedia("(min-width:900px)");
   let all = false;
   function draw() {
     const q = (box.querySelector("#svq") || {}).value || "";
     const L = S.filter((s) => !q || (s[1] + s[2] + s[5]).toLowerCase().includes(q.toLowerCase()));
-    const shown = q || all ? L : L.slice(0, 8);
+    const big = MQ.matches, shown = q || all || big ? L : L.slice(0, 8);
     const now = new Date(Date.now() + G.tzMs), h = now.getUTCHours(), t = window.BS ? BS.todayNP() : null, b = t ? BS.toBS(t.y, t.m, t.d) : null;
     // greeting removed in minimal design
     const _g = h < 12 ? T("शुभ प्रभात, हजुर", "Good morning") : h < 17 ? T("नमस्ते, हजुर", "Good afternoon") : T("शुभ सन्ध्या, हजुर", "Good evening");
     const bsTxt = b ? (G.lang === "ne" ? `${BS.MN[b.m - 1]} ${G.num(String(b.d))}, ${G.num(String(b.y))}` : `${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
     const ht = document.getElementById("htop"); if (ht) ht.innerHTML = ""; // tagline lives in the header
     box.innerHTML = `<section class="svcard"><div class="svhead"><h2>${T("सुविधाहरू", "Features")}</h2></div>
-      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic.replace("<svg ", `<svg class="mic mic-${h.replace("/", "")}" `)}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सुविधा भेटिएन।", "No matching feature.")}</p>`}</div>
-      ${q || L.length <= 8 ? "" : `<button type="button" class="svmore" aria-expanded="${all}">${all ? T("कम देखाउनुहोस्", "Show less") : T("थप हेर्नुहोस्", "See more")} ${all ? "▴" : "▾"}</button>`}</section>`;
+      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic.replace("<svg ", `<svg class="mic mic-${h.replace("/", "")}" `)}</span><span class="svx"><span class="svl">${T(ne, en)}</span>${DESC[h] ? `<span class="svd">${T(DESC[h][0], DESC[h][1])}</span>` : ""}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सुविधा भेटिएन।", "No matching feature.")}</p>`}</div>
+      ${q || big || L.length <= 8 ? "" : `<button type="button" class="svmore" aria-expanded="${all}">${all ? T("कम देखाउनुहोस्", "Show less") : T("थप हेर्नुहोस्", "See more")} ${all ? "▴" : "▾"}</button>`}</section>`;
     const m = box.querySelector(".svmore"); if (m) m.onclick = () => { all = !all; draw(); };
     box.querySelectorAll("[data-q]").forEach((b) => (b.onclick = () => { if (b.dataset.q === "near" && G.nearby) G.nearby.open(); if (b.dataset.q === "dist" && G.district) G.district.open(() => location.reload()); }));
   }
-  draw(); G.onLang(draw);
+  draw(); G.onLang(draw); MQ.addEventListener("change", draw);
 })();
