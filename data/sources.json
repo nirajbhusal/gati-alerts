@@ -427,10 +427,10 @@
   ],
   "trustDefault": "Model",
   "contact": "https://global-flood.emergency.copernicus.eu/",
-  "status": "link",
+  "status": "live",
   "ingest": null,
   "role": "supplementary",
-  "note": "Added 11 Nov 2026 as a supplementary reference. Not polled and not ingested; never shown as a Gati alert and never summed with DHM or any Nepal agency. The address is from general knowledge and has not yet been opened from Gati's checker."
+  "note": "Live since 19 Nov 2026: when DHM's river readings are stale, the Home and Rivers pages show GloFAS modelled river flow at the same points, read in the reader's browser through the Open-Meteo Flood API and marked Model. Not ingested; never shown as a Gati alert, never compared with DHM's warning and danger levels, and never summed with DHM or any Nepal agency."
  },
  {
   "id": "google-flood-hub",
