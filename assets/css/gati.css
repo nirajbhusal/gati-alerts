@@ -2653,3 +2653,9 @@ html[data-theme=dark] .patro .pday.today .pbig{background:#F4F6FA!important;colo
 @media(hover:hover){#hmap .hmnow a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(11,20,36,.12);border-color:#0F7C86}}
 @media(min-width:601px){#hmap .hmdl{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;align-items:start}}
 #hmap .hmsheet:empty{display:none}
+.hmroad{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.hmroad.r-none{stroke-width:1.3;stroke-dasharray:2 3}.hmroad.r-blocked{stroke-width:3.2}.hmroad.r-oneway{stroke-width:2.8}
+#hmap.hmzoomed .hmroad{stroke-width:1.1}#hmap.hmzoomed .hmroad.r-blocked{stroke-width:1.6}
+.hmap2 circle{stroke:#fff;stroke-width:1.6}.hmap2 text{font:700 9px Inter,sans-serif;fill:#fff;paint-order:stroke;stroke:#0B1424;stroke-width:2.5px}
+#hmap .hmmain .hmleg .hmli{width:12px;height:12px;border-radius:3px;display:inline-block}
+#hmap .hmmain .hmleg .hmli.r{background:#0B1424!important;border:1.5px solid #fff}
