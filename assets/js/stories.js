@@ -76,7 +76,7 @@
           </div></div>
       </div>
       <div class="flow" style="--sc:${G.SEVCOLOR[sev]}">
-        <p class="fsrcline">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))} ↗</a> ${G.trustChip(a.trust)}</p>
+        <p class="fsrcline"><span class="fav" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${HZ[a.hazard] || HZ.other}</svg></span><span class="fby"><a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))}</a>${a.trust === "Official" ? `<span class="fok" title="${T("आधिकारिक स्रोत", "Official source")}">✓<span class="vh"> ${T("आधिकारिक", "Official")}</span></span>` : G.trustChip(a.trust)}<small title="${esc(G.npt(srcTime(a, i)))}">${G.ago(srcTime(a, i))}<span class="fnpt"> · ${G.npt(srcTime(a, i))}</span></small></span></p>
         <details class="fsrc"><summary>${T("स्रोत विवरण", "Source")}</summary>
           ${areas ? `<p>📍 ${esc(areas)}</p>` : ""}${a.state ? `<p>${G.trustChip(a.state)}</p>` : ""}
           <p>${T("स्रोतको समय", "Source time")}: ${G.npt(srcTime(a, i))} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>

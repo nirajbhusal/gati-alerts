@@ -2534,3 +2534,23 @@ a.nabtn-h:hover{text-decoration:underline!important}
 .narow .meta{margin:0}
 .naempty{margin:0 0 8px;padding:10px 12px;border-radius:12px;background:var(--surface2)}
 .nafoot{margin:12px 0 0}
+/* Feed, card view, minimal face: byline, map, headline, what to do. Everything else is under Details. */
+.fav,.fok{display:none}.fby small{font-weight:400}
+.feedwrap:has(.feed:not(.flist)) .fcard:not(.comm) .ftags .tag:not(.fmine),.feedwrap:has(.feed:not(.flist)) .fcard:not(.old):not(.comm) .fpos,.feedwrap:has(.feed:not(.flist)) .fcard .ongline,.feedwrap:has(.feed:not(.flist)) .fcard .finfo,.feedwrap:has(.feed:not(.flist)) .fcard .fsrc,.feedwrap:has(.feed:not(.flist)) .fnpt{display:none!important}
+.feedwrap:has(.feed:not(.flist)) .flow{top:64px;bottom:auto;background:none!important;padding:0 78px 0 16px;z-index:3}
+.feedwrap:has(.feed:not(.flist)) .fsrcline{margin:0;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+.feedwrap:has(.feed:not(.flist)) .fav{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--sc);color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
+.fav svg{width:24px;height:24px}
+.feedwrap:has(.feed:not(.flist)) .fby{display:flex;flex-wrap:wrap;align-items:center;gap:0 6px;min-width:0;line-height:1.25}
+.feedwrap:has(.feed:not(.flist)) .fby a{font-weight:700;font-size:.95rem;text-decoration:none!important}
+.feedwrap:has(.feed:not(.flist)) .fok{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#0F7C86;color:#fff;font-size:10px;font-weight:700}
+.feedwrap:has(.feed:not(.flist)) .fby small{flex-basis:100%;font-size:.78rem;color:rgba(255,255,255,.78)}
+.feedwrap:has(.feed:not(.flist)) .fmain{top:118px;bottom:26px}
+.feedwrap:has(.feed:not(.flist)) .fviz{grid-template-columns:1fr!important}
+.feedwrap:has(.feed:not(.flist)) .fmini{background:none!important;border:0!important;padding:0!important;backdrop-filter:none}
+.feedwrap:has(.feed:not(.flist)) .fmini svg{max-height:none!important;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+.feedwrap:has(.feed:not(.flist)) .fcard h2,.feedwrap:has(.feed:not(.flist)) .fcard .fmain h2{font-size:clamp(1.55rem,6.6vw,2.1rem)!important;-webkit-line-clamp:5}
+.feedwrap:has(.feed:not(.flist)) .fcard .fins{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:1rem}
+.feedwrap:has(.feed:not(.flist)) .fhint{bottom:86px}
+@media(min-width:721px){.feedwrap:has(.feed:not(.flist)) .fhint{bottom:22px}}
+.feedwrap:has(.feed:not(.flist)) .rail{bottom:96px}
