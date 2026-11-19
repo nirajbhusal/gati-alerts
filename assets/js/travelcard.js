@@ -66,12 +66,39 @@
   const save = (blob, name) => { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); };
   const flash = (b, msg) => { const old = b.textContent; b.textContent = msg; setTimeout(() => { b.textContent = old; }, 2200); };
 
-  /* Three buttons: share the picture, download it, share the same facts as text. */
+  /* Three buttons: share the picture, download it, share the same facts as text.
+     With o.plan, a short "my trip" form sits above them: leaving time and vehicle by one tap, an optional note,
+     and a live preview of the card. The plan is the person's own, stays on this device, and is drawn apart on the card. */
   const PK = "gati-trip-plan";
-  const plan = () => { try { return JSON.parse(localStorage.getItem(PK) || "{}"); } catch (e) { return {}; } };
-  function actions(el, o) { if (!el) return; const pl = plan();
-    el.innerHTML = (o.plan ? `<details class="tcplan"${pl.time || pl.note ? " open" : ""}><summary>${T("मेरो योजना थप्नुहोस् (ऐच्छिक)", "Add my plan (optional)")}</summary><div class="tcplanf"><label><span>${T("प्रस्थान समय", "Leaving at")}</span><input type="time" id="tctime" value="${G.esc(pl.time || "")}"></label><label class="tcwide"><span>${T("मेरो टिप्पणी: सवारी, विश्राम, चार्जिङ", "My note: vehicle, breaks, charging")}</span><input type="text" id="tcnote" maxlength="120" autocomplete="off" value="${G.esc(pl.note || "")}"></label></div><p class="meta">${T("यो हजुरको आफ्नै योजना हो; कार्डमा \"मेरो योजना\" भनेर छुट्टै देखिन्छ र यही उपकरणमा मात्र रहन्छ।", "This is your own plan. It is shown apart on the card as \"My plan\" and stays on this device.")}</p></details>` : "") + `<div class="tcacts" role="group" aria-label="${T("यात्रा कार्ड", "Travel card")}"><button type="button" class="tcbtn tcmain" data-a="card">${T("कार्ड सेयर गर्नुहोस्", "Share card")}</button><button type="button" class="tcbtn" data-a="save">${T("तस्बिर डाउनलोड", "Download picture")}</button><button type="button" class="tcbtn" data-a="text">${T("पाठ सेयर गर्नुहोस्", "Share as text")}</button></div><p class="meta tcnote">${T("कार्डमा आधिकारिक स्रोतको अवस्था, स्रोत र समय मात्र हुन्छ। समय अनुमान हो।", "The card carries only the official status, with source and time. Times are estimates.")}</p>`;
-    el.querySelectorAll("#tctime,#tcnote").forEach((i) => (i.oninput = () => { try { localStorage.setItem(PK, JSON.stringify({ time: el.querySelector("#tctime").value, note: el.querySelector("#tcnote").value.slice(0, 120) })); } catch (e) {} }));
+  const plan = () => { try { return JSON.parse(localStorage.getItem(PK) || "{}") || {}; } catch (e) { return {}; } };
+  const VEH = { car: ["कार / जिप", "Car / jeep"], ev: ["विद्युतीय गाडी", "Electric car"], bike: ["मोटरसाइकल", "Motorbike"], bus: ["बस / माइक्रो", "Bus / micro"] };
+  const vehName = (k) => (VEH[k] ? T(VEH[k][0], VEH[k][1]) : "");
+  const clock = (v) => { const [h, mm] = v.split(":"); return G.lang === "ne" ? G.num(`${+h}:${mm}`) : `${+h % 12 || 12}:${mm} ${+h < 12 ? "AM" : "PM"}`; };
+  const nowNpt = () => { const d = new Date(Date.now() + G.tzMs), m = (Math.ceil((d.getUTCHours() * 60 + d.getUTCMinutes()) / 15) * 15) % 1440; return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+  function actions(el, o) { if (!el) return;
+    const acts = `<div class="tcacts" role="group" aria-label="${T("यात्रा कार्ड", "Travel card")}"><button type="button" class="tcbtn tcmain" data-a="card">${T("कार्ड सेयर गर्नुहोस्", "Share card")}</button><button type="button" class="tcbtn" data-a="save">${T("तस्बिर डाउनलोड", "Download picture")}</button><button type="button" class="tcbtn" data-a="text">${T("पाठ सेयर गर्नुहोस्", "Share as text")}</button></div><p class="meta tcnote">${T("कार्डमा आधिकारिक स्रोतको अवस्था, स्रोत र समय मात्र हुन्छ। समय अनुमान हो।", "The card carries only the official status, with source and time. Times are estimates.")}</p>`;
+    if (!o.plan) el.innerHTML = acts;
+    else el.innerHTML = `<div class="tcbox"><div class="tcform"><div class="tcplan"><p class="tcph"><b>${T("आफ्नो यात्रा थप्नुहोस्", "Make it your trip")}</b><span>${T("ऐच्छिक", "optional")}</span></p>
+      <div class="tcq"><span class="tcql" id="tcl1">${T("कति बजे हिँड्ने?", "When are you leaving?")}</span><div class="tcchips" role="group" aria-labelledby="tcl1"><button type="button" class="tcchip" data-t="now">${T("अहिले", "Now")}</button>${["05:00", "06:00", "07:00", "08:00"].map((v) => `<button type="button" class="tcchip" data-t="${v}" aria-pressed="false">${clock(v)}</button>`).join("")}<label class="tcother"><span>${T("अर्को समय", "Other time")}</span><input type="time" id="tctime" step="900"></label></div><p class="tcarr" id="tcarr" aria-live="polite" hidden></p></div>
+      <div class="tcq"><span class="tcql" id="tcl2">${T("केमा जाने?", "Travelling by")}</span><div class="tcchips" role="group" aria-labelledby="tcl2">${Object.keys(VEH).map((k) => `<button type="button" class="tcchip" data-v="${k}" aria-pressed="false">${vehName(k)}</button>`).join("")}</div></div>
+      <label class="tcq"><span class="tcql">${T("टिप्पणी", "Note")}</span><input type="text" id="tcnote" maxlength="120" autocomplete="off" enterkeyhint="done" placeholder="${T("जस्तै: मुग्लिनमा चिया, दुई जना", "e.g. tea stop at Mugling, two of us")}"></label>
+      <p class="meta tcpm">${T("कार्डमा \"मेरो योजना\" भनेर आधिकारिक स्थितिभन्दा छुट्टै देखिन्छ। यही उपकरणमा मात्र रहन्छ।", "Shown on the card as \"My plan\", apart from the official status. It stays on this device.")} <button type="button" class="tcclear" hidden>${T("मेरो योजना हटाउनुहोस्", "Clear my plan")}</button></p></div>${acts}</div>
+      <figure class="tcprev"><figcaption>${T("हजुरले सेयर गर्ने कार्ड", "The card you will share")}</figcaption><img id="tcimg" alt="${T("सेयर हुने कार्डको पूर्वावलोकन", "Preview of the card you will share")}"></figure></div>`;
+    if (o.plan) { const q = (s) => el.querySelector(s); let timer = 0;
+      const preview = (wait) => { clearTimeout(timer); timer = setTimeout(async () => { const im = q("#tcimg"); if (!im) return; let b = null; try { b = await make(o.spec()); } catch (e) {} if (!b || !im.isConnected) return; const old = im.src; im.src = URL.createObjectURL(b); if (old.startsWith("blob:")) setTimeout(() => URL.revokeObjectURL(old), 1000); }, wait); };
+      const sync = (typing) => { const p = plan(), ok = /^\d\d:\d\d$/.test(p.time || "");
+        el.querySelectorAll("[data-t]").forEach((b) => { if (b.dataset.t !== "now") b.setAttribute("aria-pressed", String(b.dataset.t === p.time)); });
+        el.querySelectorAll("[data-v]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === p.veh)));
+        if (!typing) { q("#tctime").value = ok ? p.time : ""; q("#tcnote").value = p.note || ""; }
+        const arr = q("#tcarr"), line = ok && o.arrive ? o.arrive(+p.time.slice(0, 2) * 60 + +p.time.slice(3)) : ""; arr.textContent = line; arr.hidden = !line;
+        q(".tcclear").hidden = !(ok || p.veh || p.note); preview(typing ? 450 : 60); };
+      const set = (patch, typing) => { try { localStorage.setItem(PK, JSON.stringify({ ...plan(), ...patch })); } catch (e) {} sync(typing); };
+      el.querySelectorAll("[data-t]").forEach((b) => (b.onclick = () => { const v = b.dataset.t === "now" ? nowNpt() : b.dataset.t; set({ time: plan().time === v && b.dataset.t !== "now" ? "" : v }); }));
+      el.querySelectorAll("[data-v]").forEach((b) => (b.onclick = () => set({ veh: plan().veh === b.dataset.v ? "" : b.dataset.v })));
+      q("#tctime").oninput = (e) => set({ time: e.target.value }, true);
+      q("#tcnote").oninput = (e) => set({ note: e.target.value.slice(0, 120) }, true);
+      q(".tcclear").onclick = () => set({ time: "", veh: "", note: "" });
+      sync(); }
     el.querySelectorAll(".tcbtn").forEach((b) => (b.onclick = async () => { const a = b.dataset.a, text = o.text(), url = o.url ? o.url() : location.href;
       if (a === "text") { try { if (navigator.share) { await navigator.share({ text, url }); return; } await navigator.clipboard.writeText(text + " " + url); flash(b, T("कपी भयो", "Copied")); } catch (e) {} return; }
       b.disabled = true; let blob = null; try { blob = await make(o.spec()); } catch (e) {} b.disabled = false;
@@ -80,5 +107,5 @@
       if (a === "card") { try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); if (G.pulse) G.pulse.track("share"); return; } } catch (e) { if (e && e.name === "AbortError") return; } }
       save(blob, o.name()); flash(b, T("डाउनलोड भयो", "Downloaded")); if (G.pulse) G.pulse.track("share"); }));
   }
-  G.travelCard = { make, actions, plan };
+  G.travelCard = { make, actions, plan, vehName };
 })();
