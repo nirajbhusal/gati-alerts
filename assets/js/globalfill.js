@@ -1,12 +1,12 @@
 /* When a Nepali source is not reachable or has gone stale, show what a global source says in the meantime,
    instead of leaving the gap empty. Supplementary only: models and global feeds, read in the reader's browser.
    Nothing here becomes a Gati alert, enters a count or replaces the agency's own figure.
-   Home: every gap. Rivers page (body[data-page=rivers]): the river gap only. */
+   Sources page: every gap. Rivers page (body[data-page=rivers]): the river gap only. */
 (function () {
   const G = window.Gati; if (!G) return;
-  const page = document.body.dataset.page, anchor = page === "home" ? document.getElementById("srcflag") : page === "rivers" ? document.getElementById("gauges") : null; if (!anchor) return;
+  const page = document.body.dataset.page, anchor = page === "sources" ? document.getElementById("srcflag") : page === "rivers" ? document.getElementById("gauges") : null; if (!anchor) return;
   const box = document.createElement("section"); box.id = "gmean"; box.className = "card gmean"; box.hidden = true;
-  if (page === "home") anchor.after(box); else anchor.before(box);
+  if (page === "sources") anchor.after(box); else anchor.before(box);
   const T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, N = (v) => G.num(String(v));
   const get = (u) => fetch(u).then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))));
   const day = (o) => new Date(Date.now() + o * 864e5).toISOString().slice(0, 10);
@@ -57,7 +57,7 @@
     const rvAt = RV && RV.as_of && RV.as_of + (RV.as_of.length === 10 ? "T12:00:00" + G.tzIso : "");
     C = { gauges: ((RV && RV.gauges) || []).filter((g) => Array.isArray(g.ll)) };
     if (C.gauges.length && (!rvAt || G.isStale(rvAt) || st("dhm-hydrology") === "down")) need.push("rivers");
-    if (page === "home") { if (st("doe-air") === "down") need.push("air"); if (st("neoc") === "down") need.push("incidents"); if (["down", "stale"].includes(st("nsc"))) need.push("quake"); if (st("edcd") === "down") need.push("health"); }
+    if (page === "sources") { if (st("doe-air") === "down") need.push("air"); if (st("neoc") === "down") need.push("incidents"); if (["down", "stale"].includes(st("nsc"))) need.push("quake"); if (st("edcd") === "down") need.push("health"); }
     if (!need.length) return;
     /* Nothing is asked of a global source until the reader opens the block. The lines are written in the
        reader's language, so after a language change an open block reads the sources again. */

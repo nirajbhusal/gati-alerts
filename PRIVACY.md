@@ -53,7 +53,7 @@ Your browser contacts these services directly, so they see your IP address as an
 | GitHub API | Home and Reports pages | A request for public report issues. |
 | OpenStreetMap tile servers | Pages with a map | The map tiles for the area you view. |
 | Open-Meteo | Weather, air quality and "Am I affected" | Coordinates of a place (see Location). |
-| GDACS, EMSC, Open-Meteo Flood API, IFRC GO | Only when you open "Meanwhile, from global sources" (Home, Rivers) or the Sources page | A standard web request for fixed places in Nepal. Nothing about you or your location. |
+| GDACS, EMSC, Open-Meteo Flood API, IFRC GO | Only when you open "Meanwhile, from global sources" (Sources, Rivers) or the Sources page | A standard web request for fixed places in Nepal. Nothing about you or your location. |
 | Ask Gati Worker (Cloudflare) | Only when you send a question in Ask Gati | Your question text and language. |
 | Report Worker (Cloudflare) | Only if you press "Send without an account" | The report you wrote, and a photo if you added one. |
 | Gati Worker, page totals (Cloudflare) | Every page, unless your browser asks not to be tracked | The page's address on Gati. No identifier. |
