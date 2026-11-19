@@ -2295,3 +2295,22 @@ html[data-theme=dark] .sst-link,html[data-theme=dark] .sst-nofeed{background:rgb
 .pfberr{margin:10px 0 0;color:#C5221F}
 main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .pfbn>*{min-width:0}.pfbn small{white-space:normal;overflow-wrap:anywhere}
+
+/* Am I affected: start card, and a calm (no warning) line */
+.afstart{margin-top:14px}.afstart h2{margin-top:0}
+.afstartb{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.afstarth{margin:14px 0 0;font-weight:700}
+.afsent li.calm{border-left-color:#1e8e3e}
+/* Route check: road notices in force */
+.rnot{margin-top:var(--s4)}.rnot h2{margin-top:0}
+.rnotl{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
+.rnotbtn{display:grid;gap:2px;padding:10px 12px;border:1px solid var(--line);border-left:5px solid #C5221F;border-radius:12px;background:var(--surface);color:var(--ink)!important;text-decoration:none!important}
+.rnotbtn::after{display:none}
+.rnotbtn small{color:var(--slate);font-size:var(--fs-6);line-height:1.35}
+.rnotmore{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0}
+.rnot.rv,#rnotices .rv{opacity:1;transform:none}
+.rnot h2 .count{display:inline;margin-left:6px;color:var(--slate);font-weight:600}
+.afsent li.ended{border-left-color:#8F9BB3;border-left-style:dashed}
+.rnotbtn.ended{border-left-color:#8F9BB3;border-left-style:dashed}
+.rnoth{margin:14px 0 8px;font-size:1rem}
+.rnottag{display:inline-block;margin-bottom:2px;padding:1px 8px;border-radius:99px;background:var(--surface2,#F8EFEC);color:var(--slate);font-size:var(--fs-6);font-weight:700;justify-self:start}

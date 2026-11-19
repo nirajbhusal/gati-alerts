@@ -52,7 +52,16 @@
     if (q.r && RD) { route = RD.routes.find((r) => r.id === q.r); if (!route) return; codes = routeDistricts(route.id); title = T(route.name_ne, route.name_en); inp.querySelector("#afr").value = q.r; tab("r"); }
     else if (q.d) { codes = [q.d]; title = dname(q.d); inp.querySelector("#afd").value = q.d;
       if (q.u) { const lu = await loadLU(); const f = lu && lu.features.find((x) => x.properties.code === q.u); if (f) unit = f.properties.ne || f.properties.en; } }
-    else { box.innerHTML = ""; return; }
+    else { /* nothing chosen yet: say how to start, and offer the districts that are under an alert right now */
+      const now = Date.now(), hot = [...new Set((AL ? AL.alerts : []).filter((a) => a.trust === "Official" && !a.supersededBy && Date.parse(a.expires) > now).flatMap((a) => a.districts))];
+      const mine = G.district.get();
+      box.innerHTML = `<section class="card afstart"><h2>${T("यहाँबाट सुरु गर्नुहोस्", "Start here")}</h2>
+        <p>${T("माथि जिल्ला छान्नुहोस्, वा तलको बटन थिच्नुहोस्। सूचना, मौसम चेतावनी, नदी र सडक एकै ठाउँमा देखिन्छ, हरेकको स्रोत र समयसहित।", "Choose a district above, or use a button below. You get alerts, the weather warning, rivers and roads in one place, each with its source and time.")}</p>
+        <div class="afstartb">${mine ? `<button type="button" class="afbtn afgo" data-d="${E(mine)}">📍 ${E(dname(mine))}</button>` : ""}<button type="button" class="afbtn" id="afstartloc">⌖ ${T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location")}</button></div>
+        ${hot.length ? `<p class="afstarth">${T("अहिले आधिकारिक सूचना भएका जिल्ला", "Districts under an official alert right now")}</p><div class="afstartb">${hot.slice(0, 8).map((c) => `<button type="button" class="afbtn afgo" data-d="${E(c)}">${E(dname(c))}</button>`).join("")}</div>` : `<p class="meta">${T("अहिले कुनै जिल्लालाई नाम लिएर जारी सक्रिय आधिकारिक सूचना छैन।", "No district is named in an active official alert right now.")}</p>`}</section>`;
+      box.querySelectorAll(".afgo").forEach((b) => (b.onclick = () => go({ d: b.dataset.d })));
+      const sl = box.querySelector("#afstartloc"); if (sl) sl.onclick = () => { tab("loc"); const lb = inp.querySelector("#afloc"); if (lb) lb.click(); };
+      return; }
     const v = G.affect.verdict(codes, { ...D, DG }, route ? 0 : G.affect.getR()); if (!route) codes = v.area; const place = title; if (!route) title = G.affect.label(title, v.r);
     let lv = v.lv; if (route) { const rl = { open: 0, none: 1, oneway: 2, blocked: 3 }[route.status] || 0; if (rl > lv) lv = rl; }
     const V = { ...G.affect.LV[lv] }, label = T(V.ne, V.en);
@@ -85,7 +94,7 @@
       <section class="afverdict" style="--vc:${V.c}"><p class="afwhere">${E(title)}${unit ? ` · ${E(unit)}` : ""}</p>${v.r ? `<p class="meta afnote">${E(G.affect.note(v))}</p>` : ""}<button type="button" class="afbtn afreset" id="afreset">↺ ${T("रिसेट", "Reset")}</button>
         <p class="afv"><i></i>${T("आधिकारिक स्रोतअनुसार", "Per official sources")}: <b>${label}</b></p>
         <p class="meta">${T("यो गतिको आफ्नै निर्णय होइन; आधिकारिक निकायका सूचनामा आधारित।", "This is not Gati's own judgement; it is based on notices from official agencies.")} ${T("पछिल्लो जाँच", "Last checked")}: ${checked}${gen ? ` · ${T("डेटा", "data")} ${gen}` : ""}</p></section>
-      <section class="afsent" aria-label="${T("हजुरको जिल्लाका लागि", "For your district")}"><ul>${SENT.map((x, k) => `<li class="${x.none ? "none" : "yes"}"${x.a ? ` style="--vc:${G.SEVCOLOR[x.a.severity] || G.SEVCOLOR.Unknown}"` : ""}><p class="afst1">${E(x.text)}</p>
+      <section class="afsent" aria-label="${T("हजुरको जिल्लाका लागि", "For your district")}"><ul>${SENT.map((x, k) => `<li class="${x.none ? "none" : x.calm ? "calm" : x.ended ? "ended" : "yes"}"${x.a && !x.calm && !x.ended ? ` style="--vc:${G.SEVCOLOR[x.a.severity] || G.SEVCOLOR.Unknown}"` : ""}><p class="afst1">${E(x.text)}</p>
         ${x.a ? `<p class="meta">${T("स्रोत", "Source")}: ${E(x.agency)} · ${G.npt(x.sent)} · <a href="${E(x.web)}" target="_blank" rel="noopener">${T("मूल सूचना", "Original notice")} ↗</a> ${G.trustChip(x.a.trust)}</p>` : `<p class="meta">${T("पछिल्लो जाँच", "Last checked")}: ${checked}</p>`}
         <button type="button" class="afbtn afsh" data-s="${k}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button></li>`).join("")}</ul></section>
       <div class="afgrid"><div>
@@ -134,7 +143,7 @@
     </svg><p class="afleg"><span><i style="background:#1f2328"></i>${T("छानिएको क्षेत्र", "Selected area")}</span>${v.wx.length ? `<span><i style="background:#F5D90A"></i>DHM ${T("पहेँलो", "yellow")}</span>` : ""}<span><i style="background:#2F6FED;border-radius:50%"></i>${T("नदी मापन", "River gauge")}</span><span><i style="background:#16a34a;height:3px"></i>${T("सडक", "Road")}</span></p>`;
   }
   const h = new URLSearchParams(location.hash.slice(1)); const my = G.district && G.district.get();
-  if (h.get("r")) render({ r: h.get("r") }); else if (h.get("d")) render({ d: h.get("d"), u: h.get("u") || "" }); else if (my) go({ d: my });
+  if (h.get("r")) render({ r: h.get("r") }); else if (h.get("d")) render({ d: h.get("d"), u: h.get("u") || "" }); else if (my) go({ d: my }); else render({});
   addEventListener("gati:radius", () => { buildInput(); render(Object.fromEntries(new URLSearchParams(location.hash.slice(1)))); });
   /* Back, forward, or a link to another district or route on this same page */
   addEventListener("hashchange", () => { const q = Object.fromEntries(new URLSearchParams(location.hash.slice(1))); if (q.d || q.r) render(q); });

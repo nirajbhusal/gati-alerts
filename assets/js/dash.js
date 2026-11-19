@@ -15,7 +15,7 @@
     alerts: { h: [330, 200], b: ["trust"] } /* the 7-day agency grid above replaces the agency bars */,
     earthquakes: { h: [498, 302], b: ["quakes"] },
     roads: { h: null, b: ["roadmap", "roads"] } /* reserved in gati.css per width and language */,
-    route: { h: [555, 360], b: ["roads"] },
+    route: { h: [555, 360], b: ["roads"], at: "#navlist" } /* below the answer: the From and To picker comes first */,
     sources: { h: [285, 206], b: ["health"] },
     contacts: { h: [169, 155], b: ["contacts"] },
     map: { h: [467, 313], b: ["agency"] },
@@ -29,7 +29,8 @@
   const reserve = () => { if (C.h) box.style.minHeight = (wide() ? C.h[1] : C.h[0]) + "px"; };
   reserve();
   let anchor = pre ? null : C.at ? main.querySelector(C.at) : main.querySelector("h1");
-  if (pre) {} else if (anchor) { let n = anchor.nextElementSibling; while (n && n.matches("p.lead,p.hsub")) { anchor = n; n = n.nextElementSibling; } anchor.after(box); } else main.prepend(box);
+  const spot = C.at && document.querySelector(C.at);
+  if (pre) {} else if (spot) spot.before(box); else if (anchor) { let n = anchor.nextElementSibling; while (n && n.matches("p.lead,p.hsub")) { anchor = n; n = n.nextElementSibling; } anchor.after(box); } else main.prepend(box);
 
   const src = (links, t) => `<p class="gdsrc">${L("स्रोत", "Source")}: ${links.map(([u, n]) => `<a href="${E(u)}" rel="noopener" target="_blank">${E(n)}</a>`).join(", ")}${t ? ` · <span class="gdtime">${E(t)}</span>` : ""}</p>`;
   const card = (title, body, links, t, cls) => `<div class="gdc ${cls || ""}"><h2 class="gdh">${title}</h2>${body}${src(links, t)}</div>`;
