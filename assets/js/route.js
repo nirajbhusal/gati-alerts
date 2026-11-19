@@ -97,10 +97,12 @@
   let AL = null, DS = null;
   function notices() { const el = document.getElementById("rnotices"); if (!el || !AL) return;
     const now = Date.now(), dn = (c) => { const d = DS && DS.find((x) => x.code === c); return d ? T(d.ne, d.en) : c; };
-    const list = AL.alerts.filter((a) => a.hazard === "road" && a.trust === "Official" && !a.supersededBy && Date.parse(a.expires) > now);
+    const road = AL.alerts.filter((a) => a.hazard === "road" && a.trust === "Official" && !a.supersededBy), list = road.filter((a) => Date.parse(a.expires) > now);
+    const past = road.filter((a) => Date.parse(a.expires) <= now && now - Date.parse(a.expires) < 864e5);
     el.innerHTML = `<section class="card rnot"><h2>${T("अहिले लागू सडक सूचना", "Road notices in force now")} <span class="count">${G.num(String(list.length))}</span></h2>` + (list.length
       ? `<ul class="rnotl">${list.map((a) => { const i = a.info[G.lang] || a.info.ne; return `<li><a class="rnotbtn" href="${R}alerts/${esc(a.identifier)}/"><b>${esc(i.headline)}</b><small>${esc(a.districts.map(dn).join(", "))} · ${esc(i.senderName.split(" — ")[0].split(" · ")[0])} · ${G.npt(i.params["gati:sourceTime"] || a.sent)}</small></a></li>`; }).join("")}</ul>`
       : `<p class="meta">${T("अहिले कुनै सक्रिय आधिकारिक सडक सूचना छैन।", "No official road notice is in force right now.")}</p>`)
+      + (past.length ? `<h3 class="rnoth">${T("पछिल्लो २४ घण्टामा म्याद सकिएका, नयाँ सूचना नआएका", "Ended in the last 24 hours, with no newer notice yet")}</h3><ul class="rnotl">${past.map((a) => { const i = a.info[G.lang] || a.info.ne; return `<li><a class="rnotbtn ended" href="${R}alerts/${esc(a.identifier)}/"><span class="rnottag">${T("म्याद सकियो", "Ended")} ${G.npt(a.expires)}</span><b>${esc(i.headline)}</b><small>${esc(a.districts.map(dn).join(", "))} · ${esc(i.senderName.split(" — ")[0].split(" · ")[0])} · ${T("अवस्था उस्तै हुन सक्छ; यात्रा अघि स्थानीय प्रहरी (१००) सँग बुझ्नुहोस्।", "The road may still be affected; check with local police (100) before travelling.")}</small></a></li>`; }).join("")}</ul>` : "")
       + `<p class="rnotmore"><a class="more" href="${R}roads/">${T("सबै सडकको अवस्था →", "All road status →")}</a> <a class="more" href="${R}affected/">${T("के म प्रभावित छु? →", "Am I affected? →")}</a></p></section>`; }
   opts(); draw(); G.onLang(() => { opts(); draw(); notices(); });
   [AL, DS] = await Promise.all(["data/alerts.json", "data/districts.json"].map((x) => G.json(x).catch(() => null))); notices();

@@ -94,7 +94,7 @@
       <section class="afverdict" style="--vc:${V.c}"><p class="afwhere">${E(title)}${unit ? ` · ${E(unit)}` : ""}</p>${v.r ? `<p class="meta afnote">${E(G.affect.note(v))}</p>` : ""}<button type="button" class="afbtn afreset" id="afreset">↺ ${T("रिसेट", "Reset")}</button>
         <p class="afv"><i></i>${T("आधिकारिक स्रोतअनुसार", "Per official sources")}: <b>${label}</b></p>
         <p class="meta">${T("यो गतिको आफ्नै निर्णय होइन; आधिकारिक निकायका सूचनामा आधारित।", "This is not Gati's own judgement; it is based on notices from official agencies.")} ${T("पछिल्लो जाँच", "Last checked")}: ${checked}${gen ? ` · ${T("डेटा", "data")} ${gen}` : ""}</p></section>
-      <section class="afsent" aria-label="${T("हजुरको जिल्लाका लागि", "For your district")}"><ul>${SENT.map((x, k) => `<li class="${x.none ? "none" : x.calm ? "calm" : "yes"}"${x.a && !x.calm ? ` style="--vc:${G.SEVCOLOR[x.a.severity] || G.SEVCOLOR.Unknown}"` : ""}><p class="afst1">${E(x.text)}</p>
+      <section class="afsent" aria-label="${T("हजुरको जिल्लाका लागि", "For your district")}"><ul>${SENT.map((x, k) => `<li class="${x.none ? "none" : x.calm ? "calm" : x.ended ? "ended" : "yes"}"${x.a && !x.calm && !x.ended ? ` style="--vc:${G.SEVCOLOR[x.a.severity] || G.SEVCOLOR.Unknown}"` : ""}><p class="afst1">${E(x.text)}</p>
         ${x.a ? `<p class="meta">${T("स्रोत", "Source")}: ${E(x.agency)} · ${G.npt(x.sent)} · <a href="${E(x.web)}" target="_blank" rel="noopener">${T("मूल सूचना", "Original notice")} ↗</a> ${G.trustChip(x.a.trust)}</p>` : `<p class="meta">${T("पछिल्लो जाँच", "Last checked")}: ${checked}</p>`}
         <button type="button" class="afbtn afsh" data-s="${k}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button></li>`).join("")}</ul></section>
       <div class="afgrid"><div>
