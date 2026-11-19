@@ -112,7 +112,7 @@
         el.querySelectorAll("[data-v]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === p.veh)));
         if (!typing) { q("#tctime").value = ok ? p.time : ""; q("#tcnote").value = p.note || ""; }
         const arr = q("#tcarr"), line = ok && o.arrive ? o.arrive(+p.time.slice(0, 2) * 60 + +p.time.slice(3)) : ""; arr.textContent = line; arr.hidden = !line;
-        q(".tcclear").hidden = !(ok || p.veh || p.note || planDate()); preview(typing ? 450 : 60); };
+        q(".tcclear").hidden = !(ok || p.veh || p.note || planDate()); if (o.onPlan && !typing) o.onPlan(p, () => sync(true)); preview(typing ? 450 : 60); };
       const set = (patch, typing) => { setPlan(patch); sync(typing); };
       paintDay = dayWire(el, (typing) => sync(typing));
       el.querySelectorAll("[data-t]").forEach((b) => (b.onclick = () => { const v = b.dataset.t === "now" ? nowNpt() : b.dataset.t; set({ time: plan().time === v && b.dataset.t !== "now" ? "" : v }); }));
@@ -120,7 +120,7 @@
       q("#tctime").oninput = (e) => set({ time: e.target.value }, true);
       q("#tcnote").oninput = (e) => set({ note: e.target.value.slice(0, 120) }, true);
       q(".tcgen").onclick = async () => { const ok = await preview(0); const fig = q("#tcprev"); if (ok && fig) { const r = fig.getBoundingClientRect(); if (r.top < 0 || r.top > innerHeight * 0.6) window.scrollTo({ top: r.top + window.scrollY - 90, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); } };
-      q(".tcclear").onclick = () => set({ date: "", time: "", veh: "", note: "" });
+      q(".tcclear").onclick = () => set({ date: "", time: "", veh: "", note: "", range: "" });
       sync(); }
     el.querySelectorAll(".tcbtn[data-a]").forEach((b) => (b.onclick = async () => { const a = b.dataset.a, text = o.text(), url = o.url ? o.url() : location.href;
       if (a === "text") { try { if (navigator.share) { await navigator.share({ text, url }); return; } await navigator.clipboard.writeText(text + " " + url); flash(b, T("कपी भयो", "Copied")); } catch (e) {} return; }
