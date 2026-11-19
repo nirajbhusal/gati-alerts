@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-19T19:33:37+05:45",
+ "checked": "2026-11-20T03:50:59+05:45",
  "reachable": true,
  "source_en": "Airport weather report (METAR), via NOAA Aviation Weather Center",
  "source_ne": "विमानस्थलको मौसम प्रतिवेदन (METAR), NOAA Aviation Weather Center मार्फत",
@@ -22,12 +22,12 @@
  ],
  "stations": {
   "VNKT": {
-   "raw": "METAR VNKT 191330Z 15003KT 170V270 7000 FEW015 15/10 Q1024 NOSIG",
-   "time": "2026-11-19T19:15+05:45",
+   "raw": "METAR VNKT 192200Z 00000KT 6000 FEW015 09/09 Q1024 NOSIG",
+   "time": "2026-11-20T03:45+05:45",
    "url": "https://aviationweather.gov/data/metar/?ids=VNKT",
-   "vis_m": 7000,
-   "wind_dir": 150,
-   "wind_kt": 3,
+   "vis_m": 6000,
+   "wind_dir": 0,
+   "wind_kt": 0,
    "gust_kt": null,
    "wx": [],
    "clouds": [
@@ -38,7 +38,7 @@
     }
    ],
    "ceiling_ft": null,
-   "temp_c": 15,
+   "temp_c": 9,
    "qnh": 1024,
    "cavok": false
   }
