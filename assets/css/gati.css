@@ -1785,7 +1785,7 @@ html[data-theme=paper]{--snow:#FCF6F4;--surface:#FFFCFB;--surface2:#F8EFEC;--lin
    the "Today at a glance" tiles and the lines under them, the "At a glance" slider, the second
    "Am I affected?" card, the highway table (it is the Roads page) and the emergency numbers block. */
 .homev3>.hdist{display:none!important}
-.homev3 #active>article:nth-of-type(n+4){display:none}
+.homev3 #active.hclip>article:nth-of-type(n+4){display:none}
 .homev3{display:flex;flex-direction:column}
 .homev3>*{order:3}
 .homev3>#home-lang{order:0}.homev3>#services{order:1}.homev3>.hhead,.homev3>#hmap{order:2}
@@ -2402,3 +2402,18 @@ a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
 .home .card.gmean{padding:4px 14px}
 .home .svcard{margin-bottom:12px!important}
 .home #hviz .vzt{margin-top:6px!important}.home .hgt0{margin-top:2px!important}
+/* Home, shorter and calmer: clipped alert list, folded data times, one chart-card anatomy */
+.hmoreal{display:flex!important;align-items:center;justify-content:center;width:100%;min-height:48px;margin:0 0 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.hifd summary{cursor:pointer;font-weight:600;min-height:40px;display:flex;align-items:center}
+.hifd[open] summary{margin-bottom:2px}
+#hviz .vz{padding:14px 16px 12px;gap:10px}
+#hviz .vzh{padding-bottom:8px;border-bottom:1px solid var(--line);align-items:center}
+#hviz .vzh h3{font-size:1.02rem;line-height:1.3}
+#hviz .vzh a{padding:4px 10px;border:1px solid var(--line);border-radius:99px;background:var(--surface2);text-decoration:none!important;transition:border-color .16s ease,background-color .16s ease}
+@media(hover:hover){#hviz .vzh a:hover{border-color:#0F7C86;background:rgba(15,124,134,.1)}}
+#hviz .vzsay{font-size:.98rem}
+#hviz .vz>.vzsay+*{margin-top:auto;margin-bottom:auto}
+#hviz .vzf{margin-top:0;padding-top:8px;border-top:1px dashed var(--line);font-size:.8rem;line-height:1.4}
+#hviz .vzq .vzqt{font-size:11px}
+#hviz .vzkey{font-size:.85rem}
+@media(max-width:600px){#hviz .vzgrid{gap:10px}}
