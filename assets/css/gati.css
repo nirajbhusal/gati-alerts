@@ -2616,3 +2616,46 @@ html[data-theme=dark] .patro .pday.today .pbig{background:#F4F6FA!important;colo
 .patro .ptclock .psunr{color:#fff!important}.patro .ptclock b{color:#fff!important}
 .patro .ptile{border-top:0;position:relative;overflow:hidden}.patro .ptile::before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background:#DC143C}
 @media(max-width:959px){.patro .ptoday,.patro .ptclock{border-radius:18px}.patro .pside{border:0;background:none;overflow:visible}}
+/* Nepal Now: the map is the hero. A navy panel, a Near me card on it, the Right now facts as a strip below. */
+#hmap .hmgrid{grid-template-columns:minmax(0,1fr)!important;gap:14px}
+#hmap .hmmain{position:relative;border-radius:22px;padding:clamp(12px,2vw,20px);background:radial-gradient(120% 90% at 80% 0%,#12325a 0%,#0B1424 62%);color:#fff;overflow:hidden}
+#hmap .hmmain .hmw{max-width:none;margin:0;aspect-ratio:var(--hmar,600/340)}
+@media(min-width:900px){#hmap .hmmain .hmw{max-height:560px;margin:0 auto}}
+#hmap .hmland{filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+#hmap .hmmain .hmd{fill:rgba(255,255,255,.14)!important;stroke:rgba(255,255,255,.34)!important;stroke-width:.7!important;transition:fill .18s ease,filter .18s ease}
+#hmap .hmmain .hmd.s-Minor{fill:#F2C94C!important}#hmap .hmmain .hmd.s-Moderate{fill:#F28C1E!important}#hmap .hmmain .hmd.s-Severe{fill:#D93025!important}#hmap .hmmain .hmd.s-Extreme{fill:#8E1B14!important}
+#hmap .hmmain .hmd:hover{fill:rgba(127,209,216,.5)!important;filter:none}
+#hmap .hmmain .hmd.s-Minor:hover,#hmap .hmmain .hmd.s-Moderate:hover,#hmap .hmmain .hmd.s-Severe:hover,#hmap .hmmain .hmd.s-Extreme:hover{filter:brightness(1.12)}
+#hmap .hmmain .hmd.me{stroke:#fff!important;stroke-width:2!important}
+#hmap .hmmain .hmd.on{stroke:#7FD1D8!important;stroke-width:2.2!important}
+#hmap.hmzoomed .hmmain .hmd{stroke-width:.35!important}#hmap.hmzoomed .hmmain .hmd.me{stroke-width:1!important}#hmap.hmzoomed .hmmain .hmd.on{stroke-width:1.1!important}
+#hmap.hmzoomed .hmmain .hmi>*{transform:scale(var(--hz,1))}
+#hmap .hmmain .hmlab{fill:#fff;stroke:#0B1424;display:block}
+#hmap.hmzoomed .hmmain .hmlab{font-size:calc(11px*var(--hz,1));stroke-width:calc(3px*var(--hz,1))}
+#hmap .hmmain .hmleg{color:rgba(255,255,255,.82);margin:10px 0 0}
+#hmap .hmmain .hmleg .hmn{background:rgba(255,255,255,.2)!important;border-color:rgba(255,255,255,.4)!important}
+.hmnear{position:relative;z-index:2;max-width:340px;margin:0 0 10px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.hmnear.hot{border-left:5px solid #F28C1E}
+.hmnear p{margin:0}.hmnk{display:flex;align-items:center;gap:6px;font-size:.82rem;letter-spacing:.02em;color:rgba(255,255,255,.85)}.hmnk .mic{color:#7FD1D8}
+.hmnv{font-size:1.15rem;font-weight:800;line-height:1.25;margin-top:4px!important}
+.hmns{font-size:.85rem;color:rgba(255,255,255,.8);margin-top:2px!important}
+.hmnb{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px!important}
+.hmnbtn2{display:inline-flex;align-items:center;min-height:38px;padding:5px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff!important;font:inherit;font-size:.85rem;font-weight:600;text-decoration:none!important;cursor:pointer;transition:background-color .16s ease,transform .16s ease,border-color .16s ease}
+.hmnbtn2.main,.hmnbtn2[aria-pressed=true]{background:#fff;color:#0B1424!important;border-color:#fff}
+@media(hover:hover){.hmnbtn2:hover{background:rgba(127,209,216,.3);border-color:#7FD1D8}.hmnbtn2.main:hover{background:#e8f6f7}}
+.hmnbtn2:active{transform:scale(.96)}
+@media(min-width:900px){.hmnear{position:absolute;left:clamp(12px,2vw,20px);top:clamp(12px,2vw,20px);margin:0}}
+/* the Right now facts as one strip under the map; districts with alerts as chips */
+#hmap .hmside{border-left:0!important;padding-left:0!important}
+#hmap .hmside h3{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin:4px 0 8px}
+@media(min-width:601px){#hmap .hmnow{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}}
+#hmap .hmnow a{height:100%;border-radius:14px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+@media(hover:hover){#hmap .hmnow a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(11,20,36,.12);border-color:#0F7C86}}
+@media(min-width:601px){#hmap .hmdl{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;align-items:start}}
+#hmap .hmsheet:empty{display:none}
+.hmroad{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.hmroad.r-none{stroke-width:1.3;stroke-dasharray:2 3}.hmroad.r-blocked{stroke-width:3.2}.hmroad.r-oneway{stroke-width:2.8}
+#hmap.hmzoomed .hmroad{stroke-width:1.1}#hmap.hmzoomed .hmroad.r-blocked{stroke-width:1.6}
+.hmap2 circle{stroke:#fff;stroke-width:1.6}.hmap2 text{font:700 9px Inter,sans-serif;fill:#fff;paint-order:stroke;stroke:#0B1424;stroke-width:2.5px}
+#hmap .hmmain .hmleg .hmli{width:12px;height:12px;border-radius:3px;display:inline-block}
+#hmap .hmmain .hmleg .hmli.r{background:#0B1424!important;border:1.5px solid #fff}
