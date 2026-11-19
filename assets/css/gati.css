@@ -2417,3 +2417,11 @@ a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
 #hviz .vzq .vzqt{font-size:11px}
 #hviz .vzkey{font-size:.85rem}
 @media(max-width:600px){#hviz .vzgrid{gap:10px}}
+/* Home on a phone: the Right now tiles in one swipeable row, and a shorter alert card */
+@media(max-width:600px){
+.homev3 .hmnow{display:flex!important;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 8px;margin-right:-18px;padding-right:18px;scrollbar-width:none}
+.homev3 .hmnow::-webkit-scrollbar{display:none}
+.homev3 .hmnow>li{flex:0 0 44%;min-width:150px;scroll-snap-align:start}
+.homev3 #active>article .ahead .tag,.homev3 #active>article .ongline,.homev3 #active>article .afxrow{display:none}
+.homev3 #active>article h4{margin-top:6px}
+}
