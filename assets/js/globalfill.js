@@ -5,7 +5,7 @@
 (function () {
   const G = window.Gati; if (!G) return;
   const page = document.body.dataset.page, anchor = page === "home" ? document.getElementById("srcflag") : page === "rivers" ? document.getElementById("gauges") : null; if (!anchor) return;
-  const box = document.createElement("section"); box.id = "gfill"; box.className = "card gfill"; box.hidden = true;
+  const box = document.createElement("section"); box.id = "gmean"; box.className = "card gmean"; box.hidden = true;
   if (page === "home") anchor.after(box); else anchor.before(box);
   const T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc, N = (v) => G.num(String(v));
   const get = (u) => fetch(u).then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))));
@@ -44,10 +44,11 @@
   const ST = {}; let need = [], C = {};
   function draw() {
     if (!need.length) { box.hidden = true; return; }
-    box.innerHTML = `<h2 class="gfh">${T("यसबीच, विश्व स्रोतबाट", "Meanwhile, from global sources")}</h2><p class="meta gfp">${T("नेपाली स्रोत उपलब्ध नभएको ठाउँमा विश्व स्रोतले अहिले के भन्छ। पूरक मात्र: नेपालको आधिकारिक सूचना वा चेतावनी होइन। हजुरको ब्राउजरले अहिले सोझै ल्याएको।", "What global sources say right now where a Nepali source is not available. Supplementary only: not Nepal's official figures or warnings. Fetched by your browser just now.")}</p>` +
+    const open = (box.querySelector("details") || {}).open;
+    box.innerHTML = `<details${open ? " open" : ""}><summary><span class="gfh">${T("यसबीच, विश्व स्रोतबाट", "Meanwhile, from global sources")}</span><span class="gfn">${N(need.length)}</span></summary><p class="meta gfp">${T("नेपाली स्रोत उपलब्ध नभएको ठाउँमा विश्व स्रोतले अहिले के भन्छ। पूरक मात्र: नेपालको आधिकारिक सूचना वा चेतावनी होइन। हजुरको ब्राउजरले अहिले सोझै ल्याएको।", "What global sources say right now where a Nepali source is not available. Supplementary only: not Nepal's official figures or warnings. Fetched by your browser just now.")}</p><div class="gfgrid">` +
       need.map((k) => { const f = FILL[k], s = ST[k];
         const body = !s ? `<p class="meta">${T("लोड हुँदै…", "Loading…")}</p>` : s.err ? `<p class="meta">${T("अहिले ल्याउन सकिएन।", "Could not load right now.")} <a href="${f.href}" target="_blank" rel="noopener">${E(f.by)} ↗</a></p>` : `<ul class="gfl">${s.rows.map((r) => `<li>${r}</li>`).join("")}</ul>${f.note() ? `<p class="meta">${E(f.note())}</p>` : ""}`;
-        return `<div class="gfrow"><p class="gfm">${E(f.miss())}</p><p class="gfby">${G.trustChip(f.trust) || `<span class="trust gfg">${T("विश्व स्रोत", "Global source")}</span>`} <a href="${f.href}" target="_blank" rel="noopener"><b>${E(f.by)}</b> ↗</a> <span class="meta">${E(f.via)}</span></p>${body}</div>`; }).join("");
+        return `<div class="gfrow"><p class="gfm">${E(f.miss())}</p><p class="gfby">${G.trustChip(f.trust) || `<span class="trust gfg">${T("विश्व स्रोत", "Global source")}</span>`} <a href="${f.href}" target="_blank" rel="noopener"><b>${E(f.by)}</b> ↗</a> <span class="meta">${E(f.via)}</span></p>${body}</div>`; }).join("") + `</div></details>`;
     box.hidden = false;
   }
   Promise.all([G.json("data/sources.json"), G.json("data/source-health.json"), G.json("data/rivers.json").catch(() => null)]).then(([S, h, RV]) => {
