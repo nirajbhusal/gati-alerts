@@ -2381,13 +2381,13 @@ a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
 /* Home polish: one motion language for everything that can be tapped, tinted icon chips, fluid spacing */
 .home .card{padding:clamp(12px,2.2vw,20px)}
 .home .hgt0,.home .nch,.home .vzt{font-size:clamp(1.05rem,1rem + .5vw,1.3rem)}
-.svt svg,.hgsteps a svg{box-sizing:content-box;padding:9px;border-radius:14px;background:rgba(15,124,134,.1);color:#0F7C86!important}
+.svt svg,.hgsteps a svg{box-sizing:content-box;padding:9px;border-radius:14px;background:rgba(15,124,134,.1);background:color-mix(in srgb,var(--ic,#0F7C86) 13%,transparent);color:var(--ic,#0F7C86)!important}
 .hgsteps a,.svt,.svmore,.vzmore,.tcchip,.tcbtn,.nctab,.ncview,#hviz .vzgrid>*,.gmean summary{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background-color .16s ease,color .16s ease!important}
 .svt svg,.hgsteps a svg{transition:background-color .16s ease,color .16s ease}
 @media(hover:hover){
 .hgsteps a:hover,#hviz .vzgrid>*:hover,.ncview:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,20,36,.12);border-color:#0F7C86}
 .svt:hover{transform:translateY(-2px)}
-.svt:hover svg,.hgsteps a:hover svg{background:#0F7C86;color:#fff!important}
+.svt:hover svg,.hgsteps a:hover svg{background:var(--ic,#0F7C86);color:#fff!important}
 .tcchip:hover,.nctab:hover,.tcbtn:hover,.svmore:hover,.vzmore:hover{border-color:#0F7C86;box-shadow:0 2px 10px rgba(11,20,36,.1)}
 .tcbtn.tcmain:hover{background:#16233a}.tcgen:hover{background:#0c6770}
 .gmean summary:hover{color:#0F7C86}
@@ -2425,3 +2425,132 @@ a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
 .homev3 #active>article .ahead .tag,.homev3 #active>article .ongline{display:none}
 .homev3 #active>article h4{margin-top:6px}
 }
+/* Line icons: one colour per subject across the site, and a small move when their link or button is hovered or focused */
+.mic{color:var(--ic,currentColor)}
+/* Gati design system only: crimson for alerts and emergency, river-teal for place, weather and water, saffron for travel, ink and slate for the rest */
+.mic-alerts,.mic-notifications,.mic-contacts,.mic-report,.mic-health{--ic:#DC143C}
+.mic-affected,.mic-map,.mic-home,.mic-weather,.mic-air,.mic-rivers,.mic-trek,.mic-safety,.mic-sources,.mic-flights{--ic:#0F7C86}
+.mic-roads,.mic-route,.mic-fuel,.mic-ask,.mic-reports{--ic:#F28C1E}
+.mic-earthquakes,.mic-patro,.mic-log,.mic-stories,.mic-feed,.mic-lite,.mic-api{--ic:var(--ink)}
+.mic-about,.mic-contact,.mic-me,.mic-privacy{--ic:var(--slate)}
+.mic-close,.mic-chev{--ic:currentColor}
+html[data-theme=dark] :is(.mic-alerts,.mic-notifications,.mic-contacts,.mic-report,.mic-health){--ic:#FF5C7A}
+html[data-theme=dark] :is(.mic-affected,.mic-map,.mic-home,.mic-weather,.mic-air,.mic-rivers,.mic-trek,.mic-safety,.mic-sources,.mic-flights){--ic:#7FD1D8}
+@media(prefers-reduced-motion:no-preference){
+.mic{transform-box:fill-box;transform-origin:center}
+@keyframes micring{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}45%{transform:rotate(11deg)}70%{transform:rotate(-6deg)}}
+@keyframes michop{0%,100%{transform:translateY(0)}35%{transform:translateY(-4px)}65%{transform:translateY(1px)}}
+@keyframes micdrift{0%,100%{transform:translateX(0)}35%{transform:translateX(3px)}70%{transform:translateX(-2px)}}
+@keyframes micbeat{0%,100%{transform:scale(1)}30%{transform:scale(1.18)}60%{transform:scale(.96)}}
+@keyframes mictilt{0%,100%{transform:rotate(0)}40%{transform:rotate(9deg)}75%{transform:rotate(-5deg)}}
+:is(a,button,summary):is(:hover,:focus-visible) .mic{animation:mictilt .5s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-alerts,.mic-notifications){transform-origin:50% 10%;animation:micring .6s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-affected,.mic-map,.mic-home,.mic-me,.mic-trek){animation:michop .5s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-weather,.mic-air,.mic-rivers,.mic-route,.mic-roads,.mic-fuel){animation:micdrift .6s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-health,.mic-earthquakes,.mic-contacts,.mic-safety,.mic-ask){animation:micbeat .5s ease}
+:is(a,button):active .mic{transform:scale(.88)}
+}
+.tabbar .tico .mic{color:var(--ic)!important}
+.tabbar a:not([aria-current=page]) .tico .mic{opacity:.82}
+/* Feed, card view: an immersive full-screen feed. Scoped with :has so the list view and old browsers keep the plain look. */
+.fwm,.fprog,.fhint,.fnav,.railaf{display:none}
+.feedwrap:has(.feed:not(.flist)){background:#060D18!important}
+.feedwrap:has(.feed:not(.flist)) .fcard{max-width:480px;color:#fff!important;background:linear-gradient(165deg,color-mix(in srgb,var(--sc) 58%,#0B1424) 0%,#0B1424 44%,#060D18 100%)!important}
+.feedwrap:has(.feed:not(.flist)) .fbg{display:block!important;background:radial-gradient(90% 46% at 82% 12%,color-mix(in srgb,var(--sc) 55%,transparent),transparent 72%)}
+.feedwrap:has(.feed:not(.flist)) .fwm{display:block;position:absolute;right:-56px;top:74px;width:300px;height:300px;color:#fff;opacity:.1;pointer-events:none}
+.fwm svg{width:100%;height:100%}
+.feedwrap:has(.feed:not(.flist)) .fprog{display:flex;position:absolute;top:52px;left:14px;right:14px;gap:4px;z-index:4}
+.fprog i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.26)}.fprog i.on{background:#fff}
+.feedwrap:has(.feed:not(.flist)) .fmain{left:16px;right:78px;top:68px;bottom:142px;display:flex;flex-direction:column;scrollbar-width:none}
+.feedwrap:has(.feed:not(.flist)) .fmain::-webkit-scrollbar{display:none}
+.feedwrap:has(.feed:not(.flist)) .fmain .fviz{order:-1;margin:0 0 auto;padding-bottom:14px}
+.feedwrap:has(.feed:not(.flist)) .fmain.fend,.feedwrap:has(.feed:not(.flist)) .comm .fmain{justify-content:center}
+.feedwrap:has(.feed:not(.flist)) .fart{display:none}
+.feedwrap:has(.feed:not(.flist)) .fhero{margin:0 0 6px}
+.feedwrap:has(.feed:not(.flist)) .fcard h2,.feedwrap:has(.feed:not(.flist)) .fcard .fmain h2{color:#fff!important;font-size:clamp(1.45rem,6.2vw,2rem)!important;font-weight:800;line-height:1.22;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.35);margin:.25em 0 .3em}
+.feedwrap:has(.feed:not(.flist)) .fcard .tag{background:rgba(255,255,255,.16)!important;color:#fff!important;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px)}
+.feedwrap:has(.feed:not(.flist)) .fcard .fpos{background:rgba(255,255,255,.16);color:#fff;border-radius:99px;padding:2px 10px}
+.feedwrap:has(.feed:not(.flist)) .fcard .ongline,.feedwrap:has(.feed:not(.flist)) .fcard .meta,.feedwrap:has(.feed:not(.flist)) .fcard p{color:rgba(255,255,255,.86)}
+.feedwrap:has(.feed:not(.flist)) .fcard .fins{background:rgba(255,255,255,.13)!important;color:#fff!important;border-left:4px solid var(--sc);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.feedwrap:has(.feed:not(.flist)) .fcard .fins strong{color:#fff}
+.feedwrap:has(.feed:not(.flist)) .fmini,.feedwrap:has(.feed:not(.flist)) .fi{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.14)!important;backdrop-filter:blur(8px)}
+.feedwrap:has(.feed:not(.flist)) .fi b{color:#fff!important}.feedwrap:has(.feed:not(.flist)) .fi span{color:rgba(255,255,255,.75)}
+.feedwrap:has(.feed:not(.flist)) .fmeter i{background:rgba(255,255,255,.25)}.feedwrap:has(.feed:not(.flist)) .fmeter i.on{background:#fff}
+.feedwrap:has(.feed:not(.flist)) .flow{background:linear-gradient(0deg,rgba(6,13,24,.94) 62%,transparent)!important;color:#fff!important;border-bottom:0;padding:18px 78px 36px 16px}
+.feedwrap:has(.feed:not(.flist)) .fcard a{color:#fff!important}
+.feedwrap:has(.feed:not(.flist)) .fsrc summary{border-color:rgba(255,255,255,.3);color:#fff}
+.feedwrap:has(.feed:not(.flist)) .fcard .cnote{background:rgba(255,255,255,.1);color:rgba(255,255,255,.86)}
+/* action rail: round glass buttons */
+.feedwrap:has(.feed:not(.flist)) .rail{right:10px;bottom:124px;gap:14px}
+.feedwrap:has(.feed:not(.flist)) .rail a,.feedwrap:has(.feed:not(.flist)) .rail button{color:#fff!important;font-size:.7rem;font-weight:600;width:64px;gap:5px;white-space:nowrap;text-decoration:none!important;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.feedwrap:has(.feed:not(.flist)) .railaf{display:flex}
+.feedwrap:has(.feed:not(.flist)) .rail :is(a,button)>:first-child{width:48px;height:48px;box-sizing:border-box;padding:12px;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;place-items:center;font-size:20px;line-height:1;transition:transform .16s ease,background-color .16s ease}
+@media(hover:hover){.feedwrap:has(.feed:not(.flist)) .rail :is(a,button):hover>:first-child{transform:scale(1.1);background:var(--sc)}}
+.feedwrap:has(.feed:not(.flist)) .rail :is(a,button):active>:first-child{transform:scale(.92)}
+/* top controls as glass pills */
+.feedwrap:has(.feed:not(.flist)) .ftop{color:#fff;max-width:480px}
+.feedwrap:has(.feed:not(.flist)) .ftop .dpick,.feedwrap:has(.feed:not(.flist)) .ftop .stbtn{background:rgba(255,255,255,.16)!important;color:#fff!important;border-color:rgba(255,255,255,.24)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.feedwrap:has(.feed:not(.flist)) .ftop .flane{background:rgba(255,255,255,.14)!important;border-color:rgba(255,255,255,.22)!important;backdrop-filter:blur(10px)}
+.feedwrap:has(.feed:not(.flist)) .ftop .flane button{color:rgba(255,255,255,.82)!important}
+.feedwrap:has(.feed:not(.flist)) .ftop .flane button[aria-pressed=true]{background:#fff!important;color:#0B1424!important}
+/* swipe hint and mouse buttons */
+.feedwrap:has(.feed:not(.flist)) .fhint{display:flex;flex-direction:row;gap:6px;align-items:center;position:absolute;left:0;right:0;bottom:80px;margin:0 auto;width:max-content;color:rgba(255,255,255,.85);font-size:.78rem;font-weight:600;pointer-events:none;z-index:4;transition:opacity .3s}
+.fhint span{font-size:1.3rem;line-height:.8}.fhint.gone{opacity:0}
+@media(min-width:900px){.feedwrap:has(.feed:not(.flist)) .fnav{display:flex;flex-direction:column;gap:10px;position:absolute;top:50%;left:calc(50% + 262px);transform:translateY(-50%);z-index:5}
+.fnav button{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;font-size:1.2rem;cursor:pointer;transition:background-color .16s ease,transform .16s ease}.fnav button:hover{background:rgba(255,255,255,.28);transform:scale(1.06)}
+.feedwrap:has(.feed:not(.flist)) .fcard{border-radius:26px;height:calc(100% - 20px);margin:10px auto;box-shadow:0 24px 60px rgba(0,0,0,.45)}}
+@media(prefers-reduced-motion:no-preference){
+@keyframes frise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes fwmin{from{opacity:0;transform:scale(.8) rotate(-8deg)}to{opacity:.1;transform:none}}
+.feedwrap:has(.feed:not(.flist)) .fcard.in .fmain>*{animation:frise .45s ease both}
+.feedwrap:has(.feed:not(.flist)) .fcard.in .fmain>*:nth-child(2){animation-delay:.05s}.feedwrap:has(.feed:not(.flist)) .fcard.in .fmain>*:nth-child(3){animation-delay:.1s}.feedwrap:has(.feed:not(.flist)) .fcard.in .fmain>*:nth-child(4){animation-delay:.15s}.feedwrap:has(.feed:not(.flist)) .fcard.in .fmain>*:nth-child(5){animation-delay:.2s}
+.feedwrap:has(.feed:not(.flist)) .fcard.in .fwm{animation:fwmin .7s ease both}
+.feedwrap:has(.feed:not(.flist)) .fcard.in .rail>*{animation:frise .4s ease both;animation-delay:.2s}
+.fhint span{animation:fbob 1.4s ease-in-out infinite}
+}
+.feedwrap:has(.feed:not(.flist)) .fcard .fend .fdisc,.feedwrap:has(.feed:not(.flist)) .fcard .fdisc{color:#fff!important}
+.feedwrap:has(.feed:not(.flist)) .ftop .dpick *{color:#fff!important}
+.feedwrap:has(.feed:not(.flist)) .fcard .btn.alt{background:#fff;color:#0B1424;border-color:#fff}
+.feedwrap:has(.feed:not(.flist)) .fmain>*{flex:none}
+@media(max-width:600px){.feedwrap:has(.feed:not(.flist)) .fmini{min-height:0;padding:6px}.feedwrap:has(.feed:not(.flist)) .fmini svg{max-height:92px}
+.feedwrap:has(.feed:not(.flist)) .fi{padding:3px 10px}.feedwrap:has(.feed:not(.flist)) .finfo{gap:4px}
+.feedwrap:has(.feed:not(.flist)) .fcard h2,.feedwrap:has(.feed:not(.flist)) .fcard .fmain h2{font-size:clamp(1.3rem,5.6vw,1.6rem)!important}}
+/* Alerts page: Alerts near me */
+.nearal{padding:clamp(12px,2.2vw,20px);margin:0 0 16px;border-top:4px solid #0F7C86}
+.nahd{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:0 0 6px}
+.nahd h2{margin:0;font-size:clamp(1.2rem,1.05rem + .8vw,1.6rem)}
+.nagh{margin:14px 0 8px;font-size:1rem;display:flex;align-items:center;gap:8px}
+.nagh span{min-width:24px;height:24px;border-radius:99px;background:var(--surface2);font-size:.8rem;display:inline-grid;place-items:center;padding:0 6px}
+.nalist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+@media(min-width:900px){.nalist{grid-template-columns:1fr 1fr}}
+.narow{border:1px solid var(--line);border-left:5px solid var(--sc);border-radius:14px;background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:6px;transition:transform .16s ease,box-shadow .16s ease}
+@media(hover:hover){.narow:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,20,36,.12)}}
+.nahead{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.nawhere{font-size:.8rem;font-weight:600;color:#0F7C86;border:1px solid currentColor;border-radius:99px;padding:1px 9px}
+a.nabtn-h{font-weight:700;font-size:1.05rem;line-height:1.3;color:var(--ink)!important;text-decoration:none!important}
+a.nabtn-h:hover{text-decoration:underline!important}
+.nado{margin:0;padding:8px 10px;border-radius:10px;background:var(--surface2);font-size:.95rem}
+.narow .meta{margin:0}
+.naempty{margin:0 0 8px;padding:10px 12px;border-radius:12px;background:var(--surface2)}
+.nafoot{margin:12px 0 0}
+/* Feed, card view, minimal face: byline, map, headline, what to do. Everything else is under Details. */
+.fav,.fok{display:none}.fby small{font-weight:400}
+.feedwrap:has(.feed:not(.flist)) .fcard:not(.comm) .ftags .tag:not(.fmine),.feedwrap:has(.feed:not(.flist)) .fcard:not(.old):not(.comm) .fpos,.feedwrap:has(.feed:not(.flist)) .fcard .ongline,.feedwrap:has(.feed:not(.flist)) .fcard .finfo,.feedwrap:has(.feed:not(.flist)) .fcard .fsrc,.feedwrap:has(.feed:not(.flist)) .fnpt{display:none!important}
+.feedwrap:has(.feed:not(.flist)) .flow{top:64px;bottom:auto;background:none!important;padding:0 78px 0 16px;z-index:3}
+.feedwrap:has(.feed:not(.flist)) .fsrcline{margin:0;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+.feedwrap:has(.feed:not(.flist)) .fav{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--sc);color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
+.fav svg{width:24px;height:24px}
+.feedwrap:has(.feed:not(.flist)) .fby{display:flex;flex-wrap:wrap;align-items:center;gap:0 6px;min-width:0;line-height:1.25}
+.feedwrap:has(.feed:not(.flist)) .fby a{font-weight:700;font-size:.95rem;text-decoration:none!important}
+.feedwrap:has(.feed:not(.flist)) .fok{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#0F7C86;color:#fff;font-size:10px;font-weight:700}
+.feedwrap:has(.feed:not(.flist)) .fby small{flex-basis:100%;font-size:.78rem;color:rgba(255,255,255,.78)}
+.feedwrap:has(.feed:not(.flist)) .fmain{top:118px;bottom:26px}
+.feedwrap:has(.feed:not(.flist)) .fviz{grid-template-columns:1fr!important}
+.feedwrap:has(.feed:not(.flist)) .fmini{background:none!important;border:0!important;padding:0!important;backdrop-filter:none}
+.feedwrap:has(.feed:not(.flist)) .fmini svg{max-height:none!important;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+.feedwrap:has(.feed:not(.flist)) .fcard h2,.feedwrap:has(.feed:not(.flist)) .fcard .fmain h2{font-size:clamp(1.55rem,6.6vw,2.1rem)!important;-webkit-line-clamp:5}
+.feedwrap:has(.feed:not(.flist)) .fcard .fins{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:1rem}
+.feedwrap:has(.feed:not(.flist)) .fhint{bottom:86px}
+@media(min-width:721px){.feedwrap:has(.feed:not(.flist)) .fhint{bottom:22px}}
+.feedwrap:has(.feed:not(.flist)) .rail{bottom:96px}
