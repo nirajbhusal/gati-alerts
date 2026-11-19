@@ -10,7 +10,7 @@
   const STEP = { pin: '<path d="M12 21s-6.5-5.8-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/>',
     route: '<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8 18h6.5a3.5 3.5 0 0 0 0-7h-5a3.5 3.5 0 0 1 0-7H16"/>',
     trek: '<path d="M2.5 19.5 9 8l4 6 2.5-3.5 6 9z"/><path d="M14.5 6.5l1-2 1 2"/>' };
-  const sic = (k) => `<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${STEP[k]}</svg>`;
+  const sic = (k) => `<svg class="mic mic-${k === "pin" ? "affected" : k}" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${STEP[k]}</svg>`;
   B.quick = () => `<section class="hgtrav" aria-label="${E(T("यात्रा अघि", "Before you travel"))}"><h2 class="hgt0">${T("यात्रा अघि", "Before you travel")}</h2><ol class="hgsteps">
     <li><a href="${R}affected/"><span class="hgn">${N(1)}</span>${sic("pin")}<b>${T("मेरो जिल्ला जाँच्नुहोस्", "Check my district")}</b><small>${T("चालु आधिकारिक सूचना", "Active official alerts")}</small></a></li>
     <li><a href="${R}route/"><span class="hgn">${N(2)}</span>${sic("route")}<b>${T("सडक मार्ग जाँच्नुहोस्", "Check a road route")}</b><small>${T("प्रहरीको सडक अवस्था", "Police road status")}</small></a></li>
@@ -23,7 +23,7 @@
     const pol = last((a) => a.sender === "nepalpolice.gov.np"), nsc = last((a) => a.sender === "seismonepal.gov.np");
     if (pol) out.push(`${T("नेपाल प्रहरी सूचना", "Nepal Police notice")}: ${tm(pol)}`);
     if (nsc) out.push(`NSC: ${tm(nsc)}`);
-    return out.length ? `<b>${T("गतिसँग भएको पछिल्लो जानकारी", "Latest Gati holds from each source")}:</b> ` + out.map((x) => `<span class="hifs">${x}</span>`).join(" · ") + ` · <a href="${R}sources/">${T("स्रोत स्थिति", "Source health")}</a>` : ""; };
+    return out.length ? `<details class="hifd"><summary>${T("गतिसँग भएको पछिल्लो जानकारी, स्रोत अनुसार", "Latest data Gati holds, by source")}</summary>` + out.map((x) => `<span class="hifs">${x}</span>`).join(" · ") + ` · <a href="${R}sources/">${T("स्रोत स्थिति", "Source health")}</a></details>` : ""; };
   /* Today at a glance: one tile per source, each with its own small graphic, source and time. Counts stay per agency, never added. */
   const IC = { river: '<path d="M3 8c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/><path d="M3 13c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/><path d="M3 18c2.5-2 4.5-2 7 0s4.5 2 7 0 3-1.5 4-1"/>',
     road: '<path d="M8 3 5 21M16 3l3 18"/><path d="M12 4v3M12 10.5v3M12 17v3"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>',

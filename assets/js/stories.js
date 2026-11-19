@@ -60,7 +60,9 @@
     const i = a.info[G.lang] || a.info.ne, sev = G.SEV[a.severity] ? a.severity : "Unknown", act = isActive(a);
     const areas = a.areas.map((x) => x[G.lang] || x.en).filter(Boolean).join(" · ");
     const lv = LV[sev], tl = left(a), nd = a.districts.length;
-    return `<div class="fbg"></div>
+    const na = nAct(), PIN = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/></svg>';
+    return `<div class="fbg"></div><div class="fwm" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${HZ[a.hazard] || HZ.other}</svg></div>
+      ${act && na > 1 && na <= 14 ? `<div class="fprog" aria-hidden="true">${Array.from({ length: na }, (_, n) => `<i${n <= k ? ' class="on"' : ""}></i>`).join("")}</div>` : ""}
       <div class="fmain">
         <div class="fhero">${art(a)}<div class="ftags">${G.sevChip(sev)}${status(a)}${G.roadOngoingChip(a)}${G.district && G.district.get() && a.districts.includes(G.district.get()) ? `<span class="tag fmine">📍 ${T("मेरो जिल्ला", "My district")}</span>` : ""}<span class="tag">${esc(T(...(HZN[a.hazard] || [i.event, i.event])))}</span></div><span class="fpos" aria-label="${act ? T("चालु सूचनामध्ये", "Among active alerts") : T("पुरानो सूचना", "Past alert")}">${act ? `${G.num(String(k + 1))} / ${G.num(String(nAct()))}` : T("पुरानो", "Past")}</span></div>
         <h2 title="${esc(i.headline)}">${esc(G.headline(a, i))}</h2>
@@ -74,13 +76,14 @@
           </div></div>
       </div>
       <div class="flow" style="--sc:${G.SEVCOLOR[sev]}">
-        <p class="fsrcline">🕒 ${G.npt(srcTime(a, i))} · <a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))} ↗</a> ${G.trustChip(a.trust)}</p>
+        <p class="fsrcline"><span class="fav" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${HZ[a.hazard] || HZ.other}</svg></span><span class="fby"><a href="${esc(i.web)}" target="_blank" rel="noopener" title="${esc(agency(i))}">${esc(G.agencyOf(a))}</a>${a.trust === "Official" ? `<span class="fok" title="${T("आधिकारिक स्रोत", "Official source")}">✓<span class="vh"> ${T("आधिकारिक", "Official")}</span></span>` : G.trustChip(a.trust)}<small title="${esc(G.npt(srcTime(a, i)))}">${G.ago(srcTime(a, i))}<span class="fnpt"> · ${G.npt(srcTime(a, i))}</span></small></span></p>
         <details class="fsrc"><summary>${T("स्रोत विवरण", "Source")}</summary>
           ${areas ? `<p>📍 ${esc(areas)}</p>` : ""}${a.state ? `<p>${G.trustChip(a.state)}</p>` : ""}
           <p>${T("स्रोतको समय", "Source time")}: ${G.npt(srcTime(a, i))} · ${T("म्याद", "Expires")}: ${G.npt(a.expires)}</p>
           <p class="fdisc"><a class="relaylink" href="${G.root}about/">${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}</a></p></details>
       </div>
       <div class="rail">
+        <a class="railaf" href="${R}affected/">${PIN}${T("म प्रभावित?", "Affected?")}</a>
         <button type="button" data-act="share" data-k="${k}">${G.SHAREICON || ""}${T("सेयर", "Share")}</button>
         <button type="button" data-act="details" data-k="${k}"><span aria-hidden="true">≡</span>${T("विवरण", "Details")}</button>
       </div>`;
@@ -137,7 +140,9 @@
     const a = items[+t.dataset.k]; ({ share: shareSheet, qr: qrSheet, details: detailSheet, follow: followSheet })[t.dataset.act](a);
   });
   /* Lazy-load: each screen is an empty shell until it nears the viewport. */
-  const io = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) fill(en.target); }), { root: feed, rootMargin: "100% 0px" });
+  /* the card on screen gets .in, which plays its entrance once */
+  const seen = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) en.target.classList.add("in"); }), { root: feed, threshold: 0.55 });
+  const io = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { fill(en.target); seen.observe(en.target); } }), { root: feed, rootMargin: "100% 0px" });
   function fill(el) {
     if (el.dataset.done) return; el.dataset.done = "1"; io.unobserve(el);
     const k = +el.dataset.k; el.innerHTML = k < items.length ? card(items[k], k) : endCard(items.filter(isActive).length);
@@ -236,6 +241,14 @@
     dash.textContent = T("ड्यासबोर्ड", "Dashboard");
   }
   const go = (d) => feed.scrollBy({ top: d * feed.clientHeight, behavior: "smooth" });
+  /* swipe hint until the first move, and previous/next buttons for mouse users */
+  const wrap = feed.parentNode, hint = document.createElement("div"); hint.className = "fhint"; hint.setAttribute("aria-hidden", "true"); wrap.append(hint);
+  const nav = document.createElement("div"); nav.className = "fnav"; wrap.append(nav);
+  const chrome = () => { hint.innerHTML = `<span>⌃</span>${T("माथि स्वाइप गर्नुहोस्", "Swipe up for the next")}`;
+    nav.innerHTML = `<button type="button" data-d="-1" aria-label="${T("अघिल्लो", "Previous")}">↑</button><button type="button" data-d="1" aria-label="${T("अर्को", "Next")}">↓</button>`;
+    nav.querySelectorAll("button").forEach((b) => (b.onclick = () => go(+b.dataset.d))); };
+  chrome(); G.onLang(chrome);
+  feed.addEventListener("scroll", () => { if (feed.scrollTop > 40) hint.classList.add("gone"); }, { passive: true });
   addEventListener("keydown", (e) => {
     if (!sheet.hidden) { if (e.key === "Escape") closeSheet(); return; }
     if (compact) return;
