@@ -2333,7 +2333,11 @@ main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .tcarr{margin:8px 0 0;padding:8px 12px;border-radius:10px;background:rgba(15,124,134,.1);font-weight:600}
 .tcpm{margin:0}
 .tcclear{border:0;background:none;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;padding:6px 0;min-height:32px}
-.tcprev{margin:0}
+.tcprev{margin:0;scroll-margin-top:90px}
+.tcprev img{transition:opacity .15s}.tcprev.tcbusy img{opacity:.45}
+.tcgenrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:10px 0 2px}
+.tcgen{background:#0F7C86;border-color:#0F7C86;color:#fff}
+.tcstat{font-size:var(--fs-6);font-weight:600;color:#0F7C86}
 .tcprev figcaption{font-size:var(--fs-6);color:var(--slate);margin:0 0 6px}
 .tcprev img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 6px 22px rgba(11,20,36,.22);background:#0B1424;min-height:120px}
 @media(max-width:760px){.tcbox{grid-template-columns:1fr}.tcprev img{max-width:340px}}
