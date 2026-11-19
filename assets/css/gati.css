@@ -2370,3 +2370,35 @@ main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .evres{margin:0 0 6px;padding:8px 12px 8px 28px;border-radius:10px;background:rgba(15,124,134,.1)}
 .evres li{margin:2px 0}.evres .evbad{color:#B3261E;font-weight:600}
 a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
+.gmean{padding:4px 14px;margin:0 0 14px}.homev3>#gmean{order:1}
+.gmean summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700}
+.gmean .gfh{font-size:1.05rem}.gfn{min-width:24px;height:24px;border-radius:99px;background:#0F7C86;color:#fff;font-size:.8rem;display:inline-grid;place-items:center;padding:0 6px}
+.gfp{margin:0 0 8px}
+.gfrow{border-top:1px solid var(--line);padding:10px 0 4px}
+.gfm{margin:0;font-weight:700}.gfby{margin:2px 0 4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gfl{margin:0 0 4px;padding-left:1.1em}.gfl li{margin:2px 0}.gfl small{color:var(--slate)}
+@media(min-width:900px){.gfgrid{display:grid;grid-template-columns:1fr 1fr;column-gap:22px;align-items:start}}
+/* Home polish: one motion language for everything that can be tapped, tinted icon chips, fluid spacing */
+.home .card{padding:clamp(12px,2.2vw,20px)}
+.home .hgt0,.home .nch,.home .vzt{font-size:clamp(1.05rem,1rem + .5vw,1.3rem)}
+.svt svg,.hgsteps a svg{box-sizing:content-box;padding:9px;border-radius:14px;background:rgba(15,124,134,.1);color:#0F7C86!important}
+.hgsteps a,.svt,.svmore,.vzmore,.tcchip,.tcbtn,.nctab,.ncview,#hviz .vzgrid>*,.gmean summary{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background-color .16s ease,color .16s ease!important}
+.svt svg,.hgsteps a svg{transition:background-color .16s ease,color .16s ease}
+@media(hover:hover){
+.hgsteps a:hover,#hviz .vzgrid>*:hover,.ncview:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,20,36,.12);border-color:#0F7C86}
+.svt:hover{transform:translateY(-2px)}
+.svt:hover svg,.hgsteps a:hover svg{background:#0F7C86;color:#fff!important}
+.tcchip:hover,.nctab:hover,.tcbtn:hover,.svmore:hover,.vzmore:hover{border-color:#0F7C86;box-shadow:0 2px 10px rgba(11,20,36,.1)}
+.tcbtn.tcmain:hover{background:#16233a}.tcgen:hover{background:#0c6770}
+.gmean summary:hover{color:#0F7C86}
+}
+.hgsteps a:active,.svt:active,.tcchip:active,.tcbtn:active,.nctab:active,.svmore:active,.vzmore:active{transform:scale(.97)}
+.home a:focus-visible,.home button:focus-visible,.home summary:focus-visible,.home select:focus-visible,.home input:focus-visible{outline:3px solid #0F7C86;outline-offset:2px;border-radius:10px}
+@keyframes ncfade{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
+.ncimg{animation:ncfade .25s ease both}
+@keyframes gfopen{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.gmean details[open]>*:not(summary),.tdfold[open]>*:not(summary){animation:gfopen .22s ease both}
+@media(prefers-reduced-motion:reduce){.hgsteps a,.svt,.svmore,.vzmore,.tcchip,.tcbtn,.nctab,.ncview,#hviz .vzgrid>*{transition:none!important;transform:none!important}.ncimg,.gmean details[open]>*,.tdfold[open]>*{animation:none!important}}
+.home .card.gmean{padding:4px 14px}
+.home .svcard{margin-bottom:12px!important}
+.home #hviz .vzt{margin-top:6px!important}.home .hgt0{margin-top:2px!important}
