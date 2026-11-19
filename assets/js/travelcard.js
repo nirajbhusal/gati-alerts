@@ -17,13 +17,18 @@
     /* measure first, so the picture is exactly as tall as its content */
     const title = wrap(s.title, 78, 700, W - P * 2, 3), sub = wrap(s.sub, 32, 400, W - P * 2, 3);
     const TX = 214, TW = W - TX - P;
-    const rows = (s.rows || []).map((r) => { font(36, 700); const nameW = x.measureText(r.name).width; font(22, 700); const tagW = r.tag ? x.measureText(r.tag.text).width + 28 : 0; const below = r.tag && nameW + 16 + tagW > TW;
-      const note = wrap(r.note, 26, 400, TW, 3); return { ...r, note, tagW, nameW, below, h: 48 + (below ? 40 : 0) + note.length * 34 + 30 }; });
+    const rows = (s.rows || []).map((r) => { font(36, 700); const nameW = x.measureText(r.name).width; font(22, 700);
+      const tags = (r.tags || (r.tag ? [r.tag] : [])).map((tg) => ({ ...tg, w: x.measureText(tg.text).width + 28 }));
+      const tagsW = tags.reduce((w, tg) => w + tg.w + 8, 0); const below = tags.length && nameW + 16 + tagsW > TW; const tagLines = !tags.length ? 0 : below ? (tagsW > TW ? 2 : 1) : 0;
+      const note = wrap(r.note, 26, 400, TW, 4); return { ...r, note, tags, nameW, below, h: 48 + tagLines * 40 + note.length * 34 + 30 }; });
     const cols = (s.foot || []).map((f) => ({ ...f, lines: wrap(f.v, 26, 400, (W - P * 2 - 48) / Math.max(1, (s.foot || []).length), 4) }));
     const fine = (s.fine || []).flatMap((l) => wrap(l, 22, 400, W - P * 2, 3));
     const bannerLines = wrap(s.banner.value, 44, 700, W - P * 2 - 72, 2);
     const mine = (s.mine || []).filter(Boolean).flatMap((l) => wrap(l, 28, 400, W - P * 2 - 56, 3)), mineH = mine.length ? 54 + mine.length * 38 + 26 : 0;
-    const yTitle = 176, yAfterTitle = yTitle + title.length * 88, ySub = yAfterTitle + 8, yMine = ySub + sub.length * 42 + 22, yBanner = yMine + mineH, bannerH = 62 + bannerLines.length * 54;
+    const depart = s.depart && (s.depart.value || s.depart.label) ? s.depart : null;
+    const departVal = depart ? wrap(depart.value || "", 46, 700, W - P * 2 - 80, 2) : [];
+    const departH = depart ? 36 + 28 + departVal.length * 54 + 20 : 0;
+    const yTitle = 176, yAfterTitle = yTitle + title.length * 88, ySub = yAfterTitle + 8, yDepart = ySub + sub.length * 42 + 22, yMine = yDepart + departH, yBanner = yMine + mineH, bannerH = 62 + bannerLines.length * 54;
     const yRows = yBanner + bannerH + 52, rowsH = rows.reduce((h, r) => h + r.h, 0);
     const yFoot = yRows + rowsH + 16, footH = 44 + 40 + Math.max(1, ...cols.map((f) => f.lines.length)) * 34 + 28;
     const H = yFoot + footH + 30 + fine.length * 30 + 84;
@@ -37,6 +42,10 @@
     font(24, 700); x.fillStyle = AMBER; x.fillText(s.kicker, P + (logo ? 96 * logo.width / logo.height + 14 : 0), 132);
     x.fillStyle = "#fff"; title.forEach((l, i) => { font(78, 700); x.fillText(l, P, yTitle + 62 + i * 88); });
     x.fillStyle = SOFT; sub.forEach((l, i) => { font(32); x.fillText(l, P, ySub + 34 + i * 42); });
+    /* departure the person typed, kept apart from official status */
+    if (depart) { const dg = x.createLinearGradient(P, yDepart, W - P, yDepart); dg.addColorStop(0, "#ff7a18"); dg.addColorStop(1, "#ffb347"); x.fillStyle = dg; x.beginPath(); x.roundRect(P, yDepart, W - P * 2, departH - 16, 22); x.fill();
+      font(22, 700); x.fillStyle = "#071a2f"; x.fillText(depart.label || "", P + 32, yDepart + 36);
+      x.fillStyle = "#071a2f"; departVal.forEach((l, i) => { font(46, 700); x.fillText(l, P + 32, yDepart + 36 + 52 + i * 54); }); }
     /* the person's own plan, in their words, kept apart from what the agencies say */
     if (mine.length) { x.strokeStyle = "rgba(255,179,71,.6)"; x.lineWidth = 2; x.setLineDash([8, 8]); x.beginPath(); x.roundRect(P, yMine, W - P * 2, mineH - 22, 20); x.stroke(); x.setLineDash([]);
       font(22, 700); x.fillStyle = AMBER; x.fillText(s.mineLabel || "", P + 28, yMine + 38); x.fillStyle = "#fff"; mine.forEach((l, i) => { font(28); x.fillText(l, P + 28, yMine + 78 + i * 38); }); }
@@ -52,7 +61,10 @@
       if (r.time) { font(26, 700); x.fillStyle = AMBER; x.textAlign = "right"; wrap(r.time, 26, 700, 96, 2).forEach((l, k) => x.fillText(l, LX - 26, cy + 9 + k * 30)); x.textAlign = "left"; }
       font(36, 700); x.fillStyle = "#fff"; x.fillText(r.name, TX, cy + 13);
       let ty = cy + 13;
-      if (r.tag) { const tx = r.below ? TX : TX + r.nameW + 16, tyy = r.below ? ty + 14 : cy - 14; x.fillStyle = r.tag.color; x.beginPath(); x.roundRect(tx, tyy, r.tagW, 34, 17); x.fill(); font(22, 700); x.fillStyle = r.tag.ink || "#fff"; x.fillText(r.tag.text, tx + 14, tyy + 25); if (r.below) ty += 40; }
+      if (r.tags && r.tags.length) { let tx = r.below ? TX : TX + r.nameW + 16, tyy = r.below ? ty + 14 : cy - 14, rowH = 0;
+        r.tags.forEach((tg) => { if (tx + tg.w > TX + TW + 4 && tx !== (r.below ? TX : TX + r.nameW + 16)) { tx = TX; tyy += 40; rowH += 40; }
+          x.fillStyle = tg.color; x.beginPath(); x.roundRect(tx, tyy, tg.w, 34, 17); x.fill(); font(22, 700); x.fillStyle = tg.ink || "#fff"; x.fillText(tg.text, tx + 14, tyy + 25); tx += tg.w + 8; });
+        if (r.below) ty += 40 + rowH; }
       x.fillStyle = SOFT; r.note.forEach((l) => { ty += 34; font(26); x.fillText(l, TX, ty); });
       y += r.h; });
     /* three facts at the foot */

@@ -1,0 +1,145 @@
+{
+  "trust": "Reported",
+  "checked": "2026-11-19T11:45:00+05:45",
+  "checked_ne": "मंसिर ३ (१९ नोभेम्बर), बिहान ११:४५ (नेपाल समय)",
+  "checked_en": "Mangsir 3 (19 Nov), 11:45 AM NPT",
+  "note_ne": "गतिसँग चार्जिङ स्टेसनको आधिकारिक सूची छैन। तल सार्वजनिक वेबसूचीमा देखिएका स्थान हुन्; आज स्थलगत जाँच गरिएको छैन। चालु छ कि छैन, जानुअघि सञ्चालकसँग बुझ्नुहोस्।",
+  "note_en": "Gati has no official list of charging stations. The places below appear on public web listings; they have not been checked on the ground today. Confirm with the operator that a charger is working before you rely on it.",
+  "stations": [
+    {
+      "id": "nea-mugling-ccs",
+      "near": [
+        "mugling"
+      ],
+      "operator": "NEA",
+      "ne": "नेपाल विद्युत प्राधिकरण, मुग्लिङ पुल (दारेचोक)",
+      "en": "NEA, Mugling Bridge (Darechok)",
+      "detail_ne": "सार्वजनिक सूचीमा CCS2 १२० कि.वा. डिसी (र एसी पनि उल्लेख)",
+      "detail_en": "Listed as CCS2 120 kW DC (an AC point is also listed)",
+      "sources": [
+        {
+          "label": "chargingstationsnepal.com",
+          "url": "https://chargingstationsnepal.com/station/8c8ed672-9ef3-459a-80b2-c09c1158ac57"
+        },
+        {
+          "label": "ev-nepal.com",
+          "url": "https://www.ev-nepal.com/nea-charging-stations-in-nepal"
+        }
+      ]
+    },
+    {
+      "id": "byd-bharatpur-hakim",
+      "near": [
+        "narayanghat"
+      ],
+      "operator": "BYD",
+      "ne": "BYD / हाकिम चौक, भरतपुर",
+      "en": "BYD / Hakim Chowk, Bharatpur",
+      "detail_ne": "सार्वजनिक सूचीमा CCS2 ३० कि.वा.",
+      "detail_en": "Listed as CCS2 30 kW",
+      "sources": [
+        {
+          "label": "ev-nepal.com",
+          "url": "https://www.ev-nepal.com/byd-charging-stations-in-nepal"
+        }
+      ]
+    },
+    {
+      "id": "nea-butwal-buspark",
+      "near": [
+        "butwal"
+      ],
+      "operator": "NEA",
+      "ne": "नेपाल विद्युत प्राधिकरण, बुटवल बसपार्क",
+      "en": "NEA, Butwal Buspark",
+      "detail_ne": "सार्वजनिक सूचीमा CCS2 १२० कि.वा. डिसी",
+      "detail_en": "Listed as CCS2 120 kW DC",
+      "sources": [
+        {
+          "label": "chargingstationsnepal.com",
+          "url": "https://chargingstationsnepal.com/station/9b72c90a-1310-49ad-9453-f4335beca195"
+        },
+        {
+          "label": "nepalevs.com",
+          "url": "https://nepalevs.com/charging-station/"
+        }
+      ]
+    },
+    {
+      "id": "byd-butwal-kalikanagar",
+      "near": [
+        "butwal"
+      ],
+      "operator": "BYD",
+      "ne": "BYD, कलिकानगर / बुटवल",
+      "en": "BYD, Kalikanagar / Butwal",
+      "detail_ne": "सार्वजनिक सूचीमा CCS2 ३० कि.वा. (कलिकानगर र सर्भिस सेन्टर छुट्टाछुट्टै उल्लेख)",
+      "detail_en": "Listed as CCS2 30 kW (Kalikanagar and the service centre are listed separately)",
+      "sources": [
+        {
+          "label": "Techmandu",
+          "url": "https://techmandu.com/ev-charging-stations-in-nepal/"
+        },
+        {
+          "label": "ev-nepal.com",
+          "url": "https://www.ev-nepal.com/byd-charging-stations-in-nepal"
+        }
+      ]
+    },
+    {
+      "id": "nea-lamahi-buspark",
+      "near": [
+        "lamahi"
+      ],
+      "operator": "NEA",
+      "ne": "नेपाल विद्युत प्राधिकरण, लमही बसपार्क",
+      "en": "NEA, Lamahi Buspark",
+      "detail_ne": "सार्वजनिक सूचीमा CCS2 १२० कि.वा. दुई पोर्ट",
+      "detail_en": "Listed as two CCS2 120 kW ports",
+      "sources": [
+        {
+          "label": "ev-nepal.com",
+          "url": "https://www.ev-nepal.com/nea-charging-stations-in-nepal"
+        },
+        {
+          "label": "nepalevs.com",
+          "url": "https://nepalevs.com/charging-station/"
+        }
+      ]
+    },
+    {
+      "id": "byd-lamahi",
+      "near": [
+        "lamahi"
+      ],
+      "operator": "BYD",
+      "ne": "BYD, लमही",
+      "en": "BYD, Lamahi",
+      "detail_ne": "सार्वजनिक सूचीमा CCS2 ३० कि.वा.",
+      "detail_en": "Listed as CCS2 30 kW",
+      "sources": [
+        {
+          "label": "Techmandu",
+          "url": "https://techmandu.com/ev-charging-stations-in-nepal/"
+        }
+      ]
+    },
+    {
+      "id": "byd-ghorahi",
+      "near": [
+        "ghorahi"
+      ],
+      "operator": "BYD",
+      "ne": "BYD, घोराही (दाङ)",
+      "en": "BYD, Ghorahi (Dang)",
+      "detail_ne": "सार्वजनिक सूचीमा CCS2 ३० कि.वा.",
+      "detail_en": "Listed as CCS2 30 kW",
+      "sources": [
+        {
+          "label": "Techmandu",
+          "url": "https://techmandu.com/ev-charging-stations-in-nepal/"
+        }
+      ]
+    }
+  ]
+}
