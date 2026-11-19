@@ -2369,4 +2369,15 @@ main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .evbox input[type=number]{min-height:44px;padding:6px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:1rem;width:9rem}
 .evres{margin:0 0 6px;padding:8px 12px 8px 28px;border-radius:10px;background:rgba(15,124,134,.1)}
 .evres li{margin:2px 0}.evres .evbad{color:#B3261E;font-weight:600}
+.rcheck{margin:16px 0 4px;padding:12px 14px 10px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.rcheck h3{margin:0 0 8px;font-size:var(--fs-4)}
+.rcheck ul{margin:0 0 8px;padding:0 0 0 1.2em}
+.rcheck li{margin:2px 0}
+.rcheck-rep{margin:8px 0 0;padding:8px 10px;border-radius:10px;background:rgba(242,140,30,.08)}
+.evlisted{margin:6px 0 8px;padding:0 0 0 1.15em}
+.evlisted li{margin:0 0 8px}
+.tknow{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:rgba(30,142,62,.08)}
+.tkended{margin:16px 0 8px;font-size:var(--fs-5)}
+.tkn-ended li,.tkn li.ended{opacity:.82}
+
 a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
