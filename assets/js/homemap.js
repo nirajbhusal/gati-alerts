@@ -13,7 +13,7 @@
   const npt = (ms) => new Date(ms + G.tzMs).toISOString().slice(0, 10);
   const today = npt(Date.now());
   box.style.setProperty("--hmar", `${W} / ${H}`);
-  let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false;
+  let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false, wide = false;
   const CATS = [["all", "सबै", "All", null], ["flood", "बाढी र वर्षा", "Floods and rain", ["flood"]], ["landslide", "पहिरो", "Landslides", ["landslide"]], ["road", "सडक", "Roads", ["road"]], ["earthquake", "भूकम्प", "Earthquakes", ["earthquake"]], ["weather", "मौसम", "Weather", ["weather"]]];
   const FULL = { all: "", flood: "#hz=flood", landslide: "#hz=landslide", road: "#hz=road", earthquake: "#L=eq", weather: "#hz=weather" };
   /* Air quality: DoENV station data (pollution.gov.np) is the official source but has not been reachable from Gati; the full map already shows modelled US AQI (Open-Meteo, CAMS) for major cities, labelled Model. Same source and label here. */
@@ -115,7 +115,25 @@
     const dlist = named.length ? `<ul class="hmdl">${named.slice(0, 8).map((c) => `<li><button type="button" data-c="${c}"${sel === c ? ' aria-pressed="true"' : ""}><i class="s-${top[c]}"></i><span>${E(fname(c))}</span><em>${E(T(G.SEV[top[c]][0], G.SEV[top[c]][1]))}${cnt[c] > 1 ? " · " + N(cnt[c]) : ""}</em></button></li>`).join("")}</ul>${named.length > 8 ? `<p class="meta">${T("र अरू " + N(named.length - 8) + " जिल्ला। नक्सामा हेर्नुहोस्।", "and " + (named.length - 8) + " more districts. See the map.")}</p>` : ""}` : `<p class="hmcalm">${T("कुनै जिल्लालाई नाम लिएर सक्रिय आधिकारिक सूचना छैन।", "No district is named in an active official alert.")}</p>`;
     /* names on the map for the districts with alerts (largest screens only, set in CSS) */
     const lab = named.slice(0, 10).map((c) => S.cen[c] ? `<text class="hmlab" x="${X(S.cen[c][0])}" y="${(+Y(S.cen[c][1]) - 13).toFixed(1)}">${E(fname(c))}</text>` : "").join("");
-    box.innerHTML = `${head}${cat === "all" ? status : none}${slider}<div class="hmgrid"><div class="hmmain"><div class="hmw"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
+    /* Near me: with a district chosen the map opens on it and its six nearest neighbours; one tap shows all Nepal again */
+    const kmc = (a, b) => { const r = Math.PI / 180, x = (b[0] - a[0]) * r * Math.cos(((a[1] + b[1]) / 2) * r), y = (b[1] - a[1]) * r; return Math.sqrt(x * x + y * y) * 6371; };
+    const me = mine && S.cen[mine] ? mine : "", mf = me ? S.dg.features.find((f) => f.properties.code === me) : null;
+    let vb = `0 0 ${W} ${H}`, nearN = 0;
+    if (me && !wide) { const nb = Object.keys(S.cen).filter((c) => c !== me).map((c) => [c, kmc(S.cen[me], S.cen[c])]).sort((a, b) => a[1] - b[1]).slice(0, 6).map((x) => x[0]);
+      let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9; [me].concat(nb).forEach((c) => { const f = S.dg.features.find((q) => q.properties.code === c); polys(f.geometry).forEach((p) => p[0].forEach(([x, y]) => { x0 = Math.min(x0, +X(x)); x1 = Math.max(x1, +X(x)); y0 = Math.min(y0, +Y(y)); y1 = Math.max(y1, +Y(y)); })); });
+      const pad = 10, ar = W / H; let w = x1 - x0 + pad * 2, h = y1 - y0 + pad * 2; if (w / h < ar) w = h * ar; else h = w / ar;
+      const cx0 = (x0 + x1) / 2, cy0 = (y0 + y1) / 2; vb = `${Math.max(0, cx0 - w / 2).toFixed(1)} ${Math.max(0, cy0 - h / 2).toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`;
+      box.style.setProperty("--hz", (w / W * 1.6).toFixed(3));
+      nearN = L.filter((x) => !x.ds.includes(me) && x.ds.some((c) => nb.includes(c))).length; }
+    const myN = me ? L.filter((x) => x.ds.includes(me)).length : 0, mnm = mf ? E(T(mf.properties.ne, mf.properties.en)) : "";
+    const PIN = '<svg class="mic mic-affected" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/></svg>';
+    const near = cat !== "all" ? "" : me ? `<div class="hmnear${myN ? " hot" : ""}"><p class="hmnk">${PIN}${T("मेरो नजिक", "Near me")} · <b>${mnm}</b></p>
+        <p class="hmnv">${myN ? T(`${N(myN)} सक्रिय आधिकारिक सूचना`, `${myN} active official alert${myN === 1 ? "" : "s"}`) : T("नाम लिएको सक्रिय आधिकारिक सूचना छैन", "No active official alert names it")}</p>
+        <p class="hmns">${myN ? "" : T("यसको अर्थ खतरा छैन भन्ने होइन। ", "This is not an all clear. ")}${wide ? "" : T(`छेउका जिल्लामा: ${N(nearN)}`, `In districts next to you: ${nearN}`)}</p>
+        <p class="hmnb"><a class="hmnbtn2" href="${R}affected/#d=${E(me)}">${T("के म प्रभावित छु?", "Am I affected?")}</a><a class="hmnbtn2" href="${R}route/">${T("मार्ग जाँच", "Route check")}</a><button type="button" class="hmnbtn2" id="hmwide" aria-pressed="${wide}">${wide ? T("मेरो नजिक देखाउनुहोस्", "Zoom to near me") : T("पूरै नेपाल", "All Nepal")}</button><button type="button" class="hmnbtn2" id="hmchg">${T("जिल्ला फेर्नुहोस्", "Change")}</button></p></div>`
+      : `<div class="hmnear"><p class="hmnk">${PIN}${T("मेरो नजिक", "Near me")}</p><p class="hmnv">${T("आफ्नो जिल्ला छान्नुहोस्", "Choose your district")}</p><p class="hmns">${T("नक्सा हजुरको जिल्ला र छेउका जिल्लामा खुल्छ।", "The map then opens on your district and the ones next to it.")}</p><p class="hmnb"><button type="button" class="hmnbtn2 main" id="hmchg">${T("जिल्ला छान्नुहोस्", "Choose district")}</button></p></div>`;
+    box.classList.toggle("hmzoomed", !!me && !wide);
+    box.innerHTML = `${head}${cat === "all" ? status : none}${slider}<div class="hmgrid"><div class="hmmain">${near}<div class="hmw"><svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
       <aside class="hmside" aria-label="${E(T("अहिलेको सारांश", "Right now"))}"><h3>${T("अहिले", "Right now")}</h3>${cat === "all" ? nowlist + (named.length ? `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}` : "") : stats + `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}`}<div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div></aside></div>${cxtxt}${note}
       ${nat.length ? `<details class="hmnat"${cat === "weather" ? " open" : ""}><summary>${T("देशव्यापी आधिकारिक सूचना", "Nationwide official notices")}: ${[...new Set(nat.map((x) => x.ag))].map((a) => `${E(a)} ${N(nat.filter((x) => x.ag === a).length)}`).join(" · ")}</summary>${list(nat)}</details>` : ""}
 `;
@@ -137,5 +155,7 @@
     box.querySelectorAll(".hmdl button").forEach((b) => (b.onclick = () => pick(b.dataset.c)));
     box.querySelectorAll(".hmd").forEach((p) => { p.onclick = () => pick(p.dataset.c); p.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(p.dataset.c); } }; });
     const x = box.querySelector(".hmx"); if (x) x.onclick = () => { sel = null; draw(); };
+    const wd = box.querySelector("#hmwide"); if (wd) wd.onclick = () => { wide = !wide; draw(); };
+    const ch = box.querySelector("#hmchg"); if (ch) ch.onclick = () => { if (G.district && G.district.open) G.district.open(() => { wide = false; draw(); }); };
   }
 })();
