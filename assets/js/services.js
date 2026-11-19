@@ -36,7 +36,7 @@
     const bsTxt = b ? (G.lang === "ne" ? `${BS.MN[b.m - 1]} ${G.num(String(b.d))}, ${G.num(String(b.y))}` : `${b.d} ${BS.ME[b.m - 1]} ${b.y} BS`) : "";
     const ht = document.getElementById("htop"); if (ht) ht.innerHTML = ""; // tagline lives in the header
     box.innerHTML = `<section class="svcard"><div class="svhead"><h2>${T("सुविधाहरू", "Features")}</h2></div>
-      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सुविधा भेटिएन।", "No matching feature.")}</p>`}</div>
+      <div class="svgrid">${shown.map(([h, ne, en, c, ic]) => `<a class="svt" href="${R}${h}"><span class="svi">${ic.replace("<svg ", `<svg class="mic mic-${h.replace("/", "")}" `)}</span><span class="svl">${T(ne, en)}</span></a>`).join("") || `<p class="meta">${T("मिल्ने सुविधा भेटिएन।", "No matching feature.")}</p>`}</div>
       ${q || L.length <= 8 ? "" : `<button type="button" class="svmore" aria-expanded="${all}">${all ? T("कम देखाउनुहोस्", "Show less") : T("थप हेर्नुहोस्", "See more")} ${all ? "▴" : "▾"}</button>`}</section>`;
     const m = box.querySelector(".svmore"); if (m) m.onclick = () => { all = !all; draw(); };
     box.querySelectorAll("[data-q]").forEach((b) => (b.onclick = () => { if (b.dataset.q === "near" && G.nearby) G.nearby.open(); if (b.dataset.q === "dist" && G.district) G.district.open(() => location.reload()); }));

@@ -2381,13 +2381,13 @@ a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
 /* Home polish: one motion language for everything that can be tapped, tinted icon chips, fluid spacing */
 .home .card{padding:clamp(12px,2.2vw,20px)}
 .home .hgt0,.home .nch,.home .vzt{font-size:clamp(1.05rem,1rem + .5vw,1.3rem)}
-.svt svg,.hgsteps a svg{box-sizing:content-box;padding:9px;border-radius:14px;background:rgba(15,124,134,.1);color:#0F7C86!important}
+.svt svg,.hgsteps a svg{box-sizing:content-box;padding:9px;border-radius:14px;background:rgba(15,124,134,.1);background:color-mix(in srgb,var(--ic,#0F7C86) 13%,transparent);color:var(--ic,#0F7C86)!important}
 .hgsteps a,.svt,.svmore,.vzmore,.tcchip,.tcbtn,.nctab,.ncview,#hviz .vzgrid>*,.gmean summary{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background-color .16s ease,color .16s ease!important}
 .svt svg,.hgsteps a svg{transition:background-color .16s ease,color .16s ease}
 @media(hover:hover){
 .hgsteps a:hover,#hviz .vzgrid>*:hover,.ncview:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,20,36,.12);border-color:#0F7C86}
 .svt:hover{transform:translateY(-2px)}
-.svt:hover svg,.hgsteps a:hover svg{background:#0F7C86;color:#fff!important}
+.svt:hover svg,.hgsteps a:hover svg{background:var(--ic,#0F7C86);color:#fff!important}
 .tcchip:hover,.nctab:hover,.tcbtn:hover,.svmore:hover,.vzmore:hover{border-color:#0F7C86;box-shadow:0 2px 10px rgba(11,20,36,.1)}
 .tcbtn.tcmain:hover{background:#16233a}.tcgen:hover{background:#0c6770}
 .gmean summary:hover{color:#0F7C86}
@@ -2425,3 +2425,33 @@ a.evbtn{display:inline-flex;align-items:center;text-decoration:none!important}
 .homev3 #active>article .ahead .tag,.homev3 #active>article .ongline{display:none}
 .homev3 #active>article h4{margin-top:6px}
 }
+/* Line icons: one colour per subject across the site, and a small move when their link or button is hovered or focused */
+.mic{color:var(--ic,currentColor)}
+.mic-alerts,.mic-notifications,.mic-contacts,.mic-report{--ic:#E5484D}
+.mic-affected,.mic-map,.mic-home{--ic:#0F9AA6}
+.mic-weather,.mic-rivers{--ic:#2F7FE0}
+.mic-air,.mic-lite,.mic-api,.mic-flights{--ic:#5B6CF0}
+.mic-earthquakes,.mic-patro,.mic-log{--ic:#8E5BD9}
+.mic-roads,.mic-route,.mic-fuel{--ic:#F2800D}
+.mic-trek,.mic-safety,.mic-sources{--ic:#2E9E5B}
+.mic-health,.mic-stories,.mic-feed{--ic:#D6457E}
+.mic-ask,.mic-reports{--ic:#D99A00}
+.mic-about,.mic-contact,.mic-me,.mic-privacy{--ic:#64748B}
+.mic-close,.mic-chev{--ic:currentColor}
+html[data-theme=dark] .mic{filter:brightness(1.25)}
+@media(prefers-reduced-motion:no-preference){
+.mic{transform-box:fill-box;transform-origin:center}
+@keyframes micring{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}45%{transform:rotate(11deg)}70%{transform:rotate(-6deg)}}
+@keyframes michop{0%,100%{transform:translateY(0)}35%{transform:translateY(-4px)}65%{transform:translateY(1px)}}
+@keyframes micdrift{0%,100%{transform:translateX(0)}35%{transform:translateX(3px)}70%{transform:translateX(-2px)}}
+@keyframes micbeat{0%,100%{transform:scale(1)}30%{transform:scale(1.18)}60%{transform:scale(.96)}}
+@keyframes mictilt{0%,100%{transform:rotate(0)}40%{transform:rotate(9deg)}75%{transform:rotate(-5deg)}}
+:is(a,button,summary):is(:hover,:focus-visible) .mic{animation:mictilt .5s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-alerts,.mic-notifications){transform-origin:50% 10%;animation:micring .6s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-affected,.mic-map,.mic-home,.mic-me,.mic-trek){animation:michop .5s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-weather,.mic-air,.mic-rivers,.mic-route,.mic-roads,.mic-fuel){animation:micdrift .6s ease}
+:is(a,button,summary):is(:hover,:focus-visible) :is(.mic-health,.mic-earthquakes,.mic-contacts,.mic-safety,.mic-ask){animation:micbeat .5s ease}
+:is(a,button):active .mic{transform:scale(.88)}
+}
+.tabbar .tico .mic{color:var(--ic)!important}
+.tabbar a:not([aria-current=page]) .tico .mic{opacity:.82}

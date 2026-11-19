@@ -118,7 +118,7 @@
     close: '<path d="M6 6l12 12M18 6 6 18"/>',
     chev: '<path d="m9.5 6 6 6-6 6"/>',
   };
-  const MIC = (id, w = 20) => `<svg class="mic" viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${MI[id] || MI.about}</svg>`;
+  const MIC = (id, w = 20) => `<svg class="mic mic-${id}" viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${MI[id] || MI.about}</svg>`;
   G.MIC = MIC;
   const b = (ne, en) => `<span class="ne-only">${ne}</span><span class="en-only">${en}</span>`;
   G.b = b;
@@ -194,7 +194,7 @@
       · <a href="https://github.com/${G.country.repository}">GitHub</a></div></div>`;
   const tabs = document.createElement("nav");
   tabs.className = "tabbar"; tabs.setAttribute("aria-label", "Quick / छिटो");
-  tabs.innerHTML = TABS.map(([id, href, ic, ne, en, area]) => `<a href="${ROOT}${href}"${id === PAGE || (area ? (areaOf(PAGE) || [])[0] === area : id === "alerts" && PAGE !== "map" && PAGE !== "stories" && (areaOf(PAGE) || [])[0] === "alerts") ? ' aria-current="page"' : ""}><span class="tico">${ic}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
+  tabs.innerHTML = TABS.map(([id, href, ic, ne, en, area]) => `<a href="${ROOT}${href}"${id === PAGE || (area ? (areaOf(PAGE) || [])[0] === area : id === "alerts" && PAGE !== "map" && PAGE !== "stories" && (areaOf(PAGE) || [])[0] === "alerts") ? ' aria-current="page"' : ""}><span class="tico">${ic.replace("<svg ", `<svg class="mic mic-${id === "stories" ? "feed" : id}" `)}</span><span class="tlab">${b(ne, en)}</span></a>`).join("");
   document.body.classList.add("has-tabbar");
   document.body.append(tabs);
   document.body.prepend(header); document.body.classList.add("ghdr");
