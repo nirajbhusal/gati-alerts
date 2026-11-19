@@ -42,6 +42,7 @@
     ["map", "map/", "नक्सा", "Map"],
     ["weather", "weather/", "मौसम र हावा", "Weather"],
     ["roads", "roads/", "सडक", "Roads"],
+    ["route", "route/", "मार्ग जाँच", "Route check"],
     ["contacts", "contacts/", "आपतकालीन नम्बर", "Emergency"],
     ["ask", "ask/", "सोध्नुहोस्", "Ask"],
   ];
@@ -50,7 +51,6 @@
     ["stories", "feed/", "फिड", "Feed"],
     ["rivers", "rivers/", "नदी", "Rivers"],
     ["earthquakes", "earthquakes/", "भूकम्प", "Earthquakes"],
-    ["route", "route/", "मार्ग जाँच", "Route check"],
     ["trek", "trek/", "पदमार्ग", "Trekking"],
     ["flights", "flights/", "उडान", "Flights"],
     ["fuel", "fuel/", "इन्धन मूल्य", "Fuel prices"],
@@ -75,11 +75,12 @@
   const SHORT = { fuel: "Fuel", notifications: "Notifications", trek: "Trekking", air: "Air", route: "Route", weather: "Weather", contacts: "Emergency", health: "Beds & blood", safety: "Safety", log: "Changes" };
   G.PAGES = [...NAV, ...MORE, ["notifications", "notifications/", "सूचना र नोटिफिकेसन", "Alerts & notifications"], ["reports", "reports/", "नागरिक रिपोर्ट", "Citizen reports"], ["affected", "affected/", "के म प्रभावित छु?", "Am I affected?"], ["contact", "contact/", "सम्पर्क", "Contact"], ["privacy", "privacy/", "गोपनीयता", "Privacy"], ["report", "report/", "रिपोर्ट गर्नुहोस्", "Report"], ["api", "api/", "खुला डेटा (API)", "Open data (API)"], ["lite", "lite/", "गति Lite", "Gati Lite"]];
   /* Mobile bottom bar */
-  /* Mobile bottom bar: Home, Alerts, Feed, Map, Hazards. Line icons (24px, 1.8 stroke). Travel is in the menu and the home features. */
+  /* Mobile bottom bar: Home, Alerts, Route, Feed, Map, Hazards. Line icons (24px, 1.8 stroke). */
   const ICON = (d) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
   const TABS = [
     ["home", "./", ICON('<path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5.5h4v5.5"/>'), "गृहपृष्ठ", "Home"],
     ["alerts", "alerts/", ICON('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'), "सूचना", "Alerts"],
+    ["route", "route/", ICON('<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/>'), "मार्ग", "Route"],
     ["stories", "feed/", ICON('<rect x="5" y="6" width="14" height="14.5" rx="2.5"/><path d="M8 3.5h8"/><path d="m10.5 10.5 4 2.75-4 2.75z"/>'), "फिड", "Feed"],
     ["map", "map/", ICON('<path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/>'), "नक्सा", "Map"],
     ["weather", "weather/", ICON('<path d="M7.5 16a4 4 0 0 1 .4-7.98A5.5 5.5 0 0 1 18.4 9.6 3.25 3.25 0 0 1 17.5 16z"/><path d="m9 18.5-.8 2M13 18.5l-.8 2M17 18.5l-.8 2"/>'), "जोखिम", "Hazards", "hazards"],
@@ -152,8 +153,8 @@
     <div class="mdtop"><span class="mdtitle">${b("मेनु", "Menu")}</span><button type="button" class="mdx" data-close aria-label="बन्द गर्नुहोस् / Close">${MIC("close", 22)}</button></div>
     <div class="mdscroll">
       <a class="mdask" href="${ROOT}ask/"${cur("ask")}><span class="mdaski">${MIC("ask", 26)}</span><span class="mdaskt"><b>${b("गतिलाई सोध्नुहोस्", "Ask Gati")}</b><small>${b("आधिकारिक स्रोतबाट मात्र जवाफ", "Answers from official sources only")}</small></span>${MIC("chev", 18)}</a>
-      <nav aria-label="पृष्ठहरू / Pages">${mrow(["home", "./", "गृहपृष्ठ", "Home"])}
-      ${GRP.map(([ne, en, it]) => `<section class="mdg"><h2 class="mdh">${b(ne, en)}</h2>${it.map(mrow).join("")}</section>`).join("")}</nav>
+      <nav aria-label="पृष्ठहरू / Pages">${mrow(["home", "./", "गृहपृष्ठ", "Home"])}${mrow(["route", "route/", "मार्ग जाँच", "Route check"])}
+      ${GRP.map(([ne, en, it]) => `<section class="mdg"><h2 class="mdh">${b(ne, en)}</h2>${it.filter((x) => x[0] !== "route").map(mrow).join("")}</section>`).join("")}</nav>
       <div class="mdfoot">${mrow(["me", "me/", "प्रोफाइल र सेटिङ", "Profile & Settings"])}</div>
     </div></div>`;
   document.body.append(drawer);

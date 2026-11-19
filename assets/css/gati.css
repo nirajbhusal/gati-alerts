@@ -2328,3 +2328,14 @@ main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .tcplanf label{display:grid;gap:4px;font-size:var(--fs-6);color:var(--slate)}
 .tcplanf input{min-height:46px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:1rem;width:100%;min-width:0}
 @media(max-width:480px){.tcplanf{grid-template-columns:1fr}}
+
+/* ===== Home: Nepal Now share cards (weather and rain, roads, airports) ===== */
+.homev3>#nowcards{order:1;margin:0 0 14px}
+.nowcards{padding:14px}
+.nch{margin:0 0 10px;font-size:1.15rem}
+.nctabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.nctab{flex:none;min-height:44px;padding:6px 16px;border:1.5px solid var(--line);border-radius:99px;background:var(--surface);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;white-space:nowrap}
+.nctab[aria-selected=true]{background:#0B1424;border-color:#0B1424;color:#fff}
+.ncview{margin:12px 0 0;max-height:440px;overflow:auto;border-radius:14px;background:#0B1424;min-height:120px}
+.ncimg{display:block;width:100%;max-width:420px;margin:0 auto;height:auto}
+@media(max-width:720px){.tabbar{padding-left:2px;padding-right:2px}.tabbar a{min-width:0;flex:1;padding-left:0;padding-right:0}.tabbar .tlab,.tabbar .tlab span{font-size:.7rem!important;letter-spacing:-.01em;white-space:nowrap}}
