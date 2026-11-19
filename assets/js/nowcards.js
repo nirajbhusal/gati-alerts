@@ -49,19 +49,32 @@
         fine: [k0 && k0.o && k0.o.kind === "official" ? T("स्रोत: काठमाडौँको आधिकारिक विमानस्थल मौसम प्रतिवेदन (METAR)। अन्य विमानस्थल: Open-Meteo मोडेलको अनुमान, मापन होइन।", "Sources: Kathmandu's official airport weather report (METAR). Other airports: an Open-Meteo model estimate, not a measurement.") : T("काठमाडौँको आधिकारिक प्रतिवेदन अहिले उपलब्ध छैन। सबै विमानस्थल: Open-Meteo मोडेलको अनुमान, मापन होइन।", "Kathmandu's official report is not available right now. All airports: an Open-Meteo model estimate, not a measurement."), RELAY()] }; },
     airText() { const s = SPEC.air(); return `${s.title} (${s.date}):\n` + s.rows.map((r) => `• ${r.name}: ${r.tag.text}, ${r.note}`).join("\n") + `\n${s.foot[0].v}`; },
   };
-  const TABS = [["wx", "मौसम र वर्षा", "Weather and rain"], ["road", "सडक", "Roads"], ["air", "विमानस्थल", "Airports"]];
+  const TABS = [["wx", "मौसम र वर्षा", "Weather and rain"], ["road", "सडक", "Roads"], ["air", "विमानस्थल", "Airports"], ["map", "आजको नक्सा", "Today's map"]];
+  const MAP = G.root + "share/today.png";
   let cur = "wx", seen = false, url = "";
   async function preview() { const im = box.querySelector(".ncimg"); if (!im || !seen) return; const k = cur;
+    if (k === "map") { im.src = MAP; im.hidden = false; return; }
     let blob = null; try { blob = await G.travelCard.make(SPEC[k]()); } catch (e) {}
     if (k !== cur || !blob) return; if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); im.src = url; im.hidden = false; }
   function draw() {
-    box.innerHTML = `<h2 class="nch">${T("नेपाल अहिले: सेयर कार्ड", "Nepal Now: share cards")}</h2><div class="nctabs" role="tablist">${TABS.map(([k, ne, en], i) => `<button type="button" role="tab" class="nctab" data-k="${k}" aria-selected="${k === cur}">${N(i + 1)} ${T(ne, en)}</button>`).join("")}</div>
-      <div class="ncview"><img class="ncimg" alt="${T("छानिएको कार्डको पूर्वावलोकन", "Preview of the chosen card")}" hidden></div><div class="ncact"></div>`;
+    box.innerHTML = `<h2 class="nch">${T("आजका कार्ड: सेयर गर्नुहोस्", "Today's cards to share")}</h2><div class="nctabs" role="tablist">${TABS.map(([k, ne, en], i) => `<button type="button" role="tab" class="nctab" data-k="${k}" aria-selected="${k === cur}">${N(i + 1)} ${T(ne, en)}</button>`).join("")}</div>
+      <div class="ncbody${cur === "map" ? " ncwide" : ""}"><div class="ncview"><img class="ncimg" alt="${cur === "map" ? T("आजको नेपाल कार्ड: नक्सा, DHM चेतावनी, नदी, सडक र नापिएको वर्षा", "Today's Nepal card: map, DHM warning, rivers, roads and measured rain") : T("छानिएको कार्डको पूर्वावलोकन", "Preview of the chosen card")}" hidden></div><div class="ncact"></div></div>`;
     box.querySelectorAll(".nctab").forEach((b) => (b.onclick = () => { cur = b.dataset.k; draw(); }));
-    G.travelCard.actions(box.querySelector(".ncact"), { spec: () => SPEC[cur](), text: () => SPEC[cur + "Text"](), url: () => G.country.site, name: () => `gati-nepal-now-${cur}.png` });
+    G.travelCard.actions(box.querySelector(".ncact"), { spec: () => SPEC[cur](), image: cur === "map" ? () => fetch(MAP).then((r) => r.blob()) : null, text: () => (cur === "map" ? SPEC.wxText() + "\n" + SPEC.roadText() : SPEC[cur + "Text"]()), url: () => G.country.site, name: () => (cur === "map" ? "gati-nepal-today.png" : `gati-nepal-now-${cur}.png`) });
     preview();
   }
   draw(); G.onLang(draw);
+  /* Plan my trip: from, to and the day, then on to Route check with the same plan */
+  const hp = document.getElementById("hplan");
+  if (hp && RD && RD.nodes) { const ND = RD.nodes, ls = (k, d) => { try { const v = localStorage.getItem(k); return ND[v] ? v : d; } catch (e) { return d; } };
+    const plan = () => { const keep = [(hp.querySelector("#hpf") || {}).value || ls("gati-rfrom", "ktm"), (hp.querySelector("#hpt") || {}).value || ls("gati-rto", "pokhara")];
+      const o = Object.keys(ND).sort((a, b) => T(ND[a].ne, ND[a].en).localeCompare(T(ND[b].ne, ND[b].en))).map((k) => `<option value="${k}">${G.esc(T(ND[k].ne, ND[k].en))}</option>`).join("");
+      hp.innerHTML = `<h2 class="nch">${T("मेरो यात्रा योजना", "Plan my trip")}</h2><div class="rpick hpick"><label><span>${T("कहाँबाट", "From")}</span><select id="hpf">${o}</select></label><label><span>${T("कहाँसम्म", "To")}</span><select id="hpt">${o}</select></label></div>
+        <div class="tcq"><span class="tcql" id="hpl">${T("कुन दिन जाने?", "Which day?")}</span><div class="tcchips" role="group" aria-labelledby="hpl">${G.travelCard.dayChips()}</div></div>
+        <button type="button" class="tcbtn tcmain" id="hpgo">${T("बाटो जाँच गर्नुहोस् →", "Check my route →")}</button><p class="meta hpm">${T("नेपाल प्रहरी र सडक विभागको आधिकारिक सडक स्थिति, अनुमानित समय र सेयर गर्न मिल्ने कार्ड।", "Official road status from Nepal Police and the Department of Roads, estimated times and a card you can share.")}</p>`;
+      const f = hp.querySelector("#hpf"), t = hp.querySelector("#hpt"); f.value = keep[0]; t.value = keep[1]; G.travelCard.dayWire(hp);
+      hp.querySelector("#hpgo").onclick = () => { if (G.pulse) G.pulse.track("route_check"); location.href = G.root + "route/?from=" + encodeURIComponent(f.value) + "&to=" + encodeURIComponent(t.value); }; };
+    plan(); G.onLang(plan); hp.hidden = false; }
   if (G.airwx) { G.airwx.on(() => { if (cur === "air") preview(); }); G.airwx.load(); }
   if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); seen = true; preview(); } }, { rootMargin: "200px" }); io.observe(box); } else { seen = true; preview(); }
 })();
