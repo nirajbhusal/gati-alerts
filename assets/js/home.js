@@ -358,6 +358,14 @@
     const act = list.filter((a) => !a.expired), exp = list.filter((a) => a.expired).sort((a, b) => s === "severity" ? b.sent.localeCompare(a.sent) : cmp(a, b));
     $("nActive").textContent = `(${G.num(act.length)})`;
     $("nExpired").textContent = `(${G.num(exp.length)})`;
+    /* home: the first three alerts, the rest one tap away, so the page stays short */
+    const clipHome = () => { const box = $("active"); if (PAGE !== "home" || !box) return; const old = document.getElementById("hmoreal"); if (old) old.remove();
+      const arts = box.querySelectorAll(":scope > article"), want = decodeURIComponent(location.hash.slice(1)), openAll = box.dataset.all === "1" || [...arts].slice(3).some((a) => a.id && a.id === want);
+      box.classList.toggle("hclip", arts.length > 3 && !openAll); if (arts.length <= 3) return;
+      const b = document.createElement("button"); b.type = "button"; b.id = "hmoreal"; b.className = "vzmore hmoreal"; b.setAttribute("aria-expanded", String(openAll));
+      b.textContent = openAll ? T("कम देखाउनुहोस् ▴", "Show fewer ▴") : T(`सबै ${G.num(arts.length)} सूचना देखाउनुहोस् ▾`, `Show all ${arts.length} alerts ▾`);
+      b.onclick = () => { box.dataset.all = openAll ? "" : "1"; clipHome(); if (openAll) $("hlist").scrollIntoView({ block: "start" }); }; box.after(b); };
+    setTimeout(clipHome, 0);
     $("active").innerHTML = act.length ? act.map(card).join("") : PAGE === "home" ? `<div class="empty">${T(
       d ? "छानिएको जिल्लालाई नाम लिएर गतिमा अहिले कुनै सक्रिय आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।" : "गतिमा अहिले कुनै सक्रिय आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", d ? "No active official alert in Gati names the chosen district right now. That does not mean there is no risk." : "Gati has no active official alert right now. That does not mean there is no risk.")}
       <br><span class="meta">${T("अन्तिम जाँच", "Last checked")}: ${G.npt(data.generated)} · <a href="${RT}sources/">${T("स्रोतको अवस्था", "Source health")}</a> · <a href="${RT}alerts/">${T("सबै सूचना", "All alerts")}</a></span></div>` : `<div class="empty">${T(
