@@ -630,5 +630,22 @@
   G.setSky = (on) => { try { if (on) localStorage.removeItem("gati-sky"); else localStorage.setItem("gati-sky", "off"); } catch (e) {} if (G.sky) G.sky.apply(); };
   const s = document.createElement("script"); s.src = G.root + "assets/js/sky.js"; s.defer = true; document.body.appendChild(s); })();
 
+/* The two questions people come with, one tap from every page: "Am I affected?" and "Is the road open?".
+   On the home page it is a pair of cards; on other pages a slim row at the top. The page you are on is marked. */
+(function () { const G = window.Gati, main = document.getElementById("main"); if (!G || !main) return;
+  const page = document.body.dataset.page || ""; if (["map", "stories", "embed", "lite", "offline"].includes(page) || main.querySelector(".qtools")) return;
+  const el = document.createElement("nav"); el.className = "qtools" + (page === "home" ? " big" : ""); el.setAttribute("aria-label", "छिटो जाँच · Quick checks");
+  const cur = (id) => (id === page ? ' aria-current="page"' : "");
+  let dn = "";
+  const draw = () => { const T = (ne, en) => (G.lang === "ne" ? ne : en);
+    el.innerHTML = `<a class="qtbtn qa" href="${G.root}affected/"${cur("affected")}>${G.MIC("affected", 22)}<span><b>${T("के म प्रभावित छु?", "Am I affected?")}</b><small>${dn ? G.esc(dn) + " · " : ""}${T("सूचना, मौसम, नदी, सडक", "alerts, weather, rivers, roads")}</small></span></a>`
+      + `<a class="qtbtn qr" href="${G.root}route/"${cur("route")}>${G.MIC("route", 22)}<span><b>${T("बाटो खुला छ?", "Is the road open?")}</b><small>${T("कहाँबाट कहाँसम्म, खण्ड–खण्ड", "from and to, section by section")}</small></span></a>`; };
+  draw(); G.onLang(draw);
+  const sibs = main.querySelector(":scope > nav.sibs"), lang = document.getElementById("home-lang");
+  if (lang) lang.after(el); else if (sibs) sibs.after(el); else main.prepend(el);
+  const name = () => { const c = G.district && G.district.get && G.district.get(); if (!c || !G.district.name) { dn = ""; draw(); return; } G.district.name(c).then((n) => { dn = n || ""; draw(); }).catch(() => {}); };
+  setTimeout(name, 0); addEventListener("gati:district", name); G.onLang(() => setTimeout(name, 0));
+})();
+
 /* Page totals and one-tap feedback (assets/js/pulse.js): no cookies, no identifiers; off when the browser asks not to be tracked. */
 (function () { const G = window.Gati; if (!G || G.pulse) return; const s = document.createElement("script"); s.src = G.root + "assets/js/pulse.js"; s.defer = true; document.body.appendChild(s); })();

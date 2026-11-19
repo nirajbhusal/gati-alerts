@@ -58,8 +58,10 @@
     const circleHit = (a) => r && A.base && (a.areas || []).some((ar) => (ar.circles || []).some((c) => { const [ll, rad] = c.split(" "); const [la, lo] = ll.split(",").map(Number); return A.base.some((f) => kmTo(la, lo, f.geometry) <= r + (+rad || 0)); }));
     const alerts = (d.AL ? d.AL.alerts : []).filter((a) => a.trust === "Official" && isAct(a) && (a.districts.length ? a.districts.some((x) => codes.includes(x)) || circleHit(a) : true) && a.hazard !== "earthquake");
     let lv = 0, why = [];
-    alerts.forEach((a) => { const l = SV[a.severity] || 1; if (l > lv) lv = l; why.push(a); });
-    const b5 = d.WX && d.WX.bulletin5, wxd = b5 ? b5.days.filter((x) => x.level !== "green" && (!x.provinces || x.provinces.some((p) => prov.includes(p)))) : [];
+    const b5 = d.WX && d.WX.bulletin5;
+    /* DHM's 5-day bulletin is listed, but its level comes from the day colours below: an all-green bulletin raises nothing */
+    alerts.forEach((a) => { why.push(a); if (b5 && a.identifier === b5.id) return; const l = SV[a.severity] || 1; if (l > lv) lv = l; });
+    const wxd = b5 ? b5.days.filter((x) => x.level !== "green" && (!x.provinces || x.provinces.some((p) => prov.includes(p)))) : [];
     wxd.forEach((x) => { const l = WL[x.level] || 1; if (l > lv) lv = l; });
     return { lv, ...LV[lv], label: T(LV[lv].ne, LV[lv].en), alerts: why, wx: wxd, b5, r, mode: A.mode, area: codes, base: codes0 };
   }
@@ -67,7 +69,9 @@
   /* Feature 1: one sentence per active official alert ("Yes, ... affects your district") or a single "No active alerts for ..." */
   function sentences(v, place) {
     if (!v.alerts.length) return [{ text: T(`${place}का लागि चालु आधिकारिक सूचना छैन।`, `No active official alerts for ${place}.`), none: true }];
-    return v.alerts.map((a) => { const i = a.info[G.lang] || a.info.ne;
+    const calm = (a) => v.b5 && a.identifier === v.b5.id && !v.wx.length;
+    return v.alerts.slice().sort((a, b) => calm(a) - calm(b)).map((a) => { const i = a.info[G.lang] || a.info.ne;
+      if (calm(a)) return { a, calm: true, text: T(`${place}: DHM को ५ दिने चेतावनीमा पाँचै दिन मौसम चेतावनी छैन।`, `No DHM weather warning for ${place} on any of the next five days.`), agency: G.agencyOf(a), sent: a.sent, web: i.web, perma: G.root + "alerts/" + a.identifier + "/" };
       if (v.r && v.base && !a.districts.some((x) => v.base.includes(x))) return { a, text: T(`"${i.headline}" हजुरको जिल्ला ${place}बाट ${G.num(String(v.r))} किमीभित्र छ।`, `"${i.headline}" is within ${v.r} km of your district, ${place}.`), agency: G.agencyOf(a), sent: a.sent, web: i.web, perma: G.root + "alerts/" + a.identifier + "/" };
       return { a, text: (SV[a.severity] || 1) >= 2 ? T(`हो, "${i.headline}" ले हजुरको जिल्ला ${place}लाई असर गर्छ।`, `Yes, "${i.headline}" affects your district, ${place}.`) : T(`हो, "${i.headline}" मा हजुरको जिल्ला ${place} पनि समेटिएको छ।`, `Yes, "${i.headline}" covers your district, ${place}.`), agency: G.agencyOf(a), sent: a.sent, web: i.web, perma: G.root + "alerts/" + a.identifier + "/" }; });
   }

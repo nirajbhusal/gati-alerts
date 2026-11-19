@@ -2295,3 +2295,37 @@ html[data-theme=dark] .sst-link,html[data-theme=dark] .sst-nofeed{background:rgb
 .pfberr{margin:10px 0 0;color:#C5221F}
 main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .pfbn>*{min-width:0}.pfbn small{white-space:normal;overflow-wrap:anywhere}
+
+/* ===== Quick checks: "Am I affected?" and "Is the road open?", one tap from every page ===== */
+.qtools{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 14px}
+.homev3>.qtools{order:0}
+.qtbtn{display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 12px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink)!important;text-decoration:none!important;line-height:1.2}
+.qtbtn::after{display:none}
+.qtbtn .mic{flex:none;color:#0F7C86}
+.qtbtn span{display:grid;min-width:0}
+.qtbtn b{font-size:.98rem;overflow-wrap:anywhere}
+.qtbtn small{font-size:var(--fs-6);color:var(--slate);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qtbtn:hover{border-color:var(--slate)}
+.qtbtn[aria-current=page]{border-color:#0F7C86;background:#EAF5F5}
+html[data-theme=dark] .qtbtn[aria-current=page]{background:#12303a}
+.qtools.big .qtbtn{min-height:76px;padding:12px 14px;border-color:#0F7C86;border-width:2px;flex-direction:column;align-items:flex-start;gap:6px}
+@media(min-width:600px){.qtools.big .qtbtn{flex-direction:row;align-items:center;gap:12px}}
+.qtools.big .qtbtn b{font-size:1.08rem}
+.qtools.big .qtbtn small{white-space:normal}
+.qtools.big .qtbtn .mic{width:28px;height:28px}
+@media(max-width:380px){.qtools:not(.big) .qtbtn small{display:none}}
+@media(min-width:900px){.qtools{max-width:760px}.qtools.big{max-width:none}}
+/* Am I affected: start card, and a calm (no warning) line */
+.afstart{margin-top:14px}.afstart h2{margin-top:0}
+.afstartb{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.afstarth{margin:14px 0 0;font-weight:700}
+.afsent li.calm{border-left-color:#1e8e3e}
+/* Route check: road notices in force */
+.rnot{margin-top:var(--s4)}.rnot h2{margin-top:0}
+.rnotl{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
+.rnotbtn{display:grid;gap:2px;padding:10px 12px;border:1px solid var(--line);border-left:5px solid #C5221F;border-radius:12px;background:var(--surface);color:var(--ink)!important;text-decoration:none!important}
+.rnotbtn::after{display:none}
+.rnotbtn small{color:var(--slate);font-size:var(--fs-6);line-height:1.35}
+.rnotmore{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0}
+.rnot.rv,#rnotices .rv{opacity:1;transform:none}
+.rnot h2 .count{display:inline;margin-left:6px;color:var(--slate);font-weight:600}
