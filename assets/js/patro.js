@@ -89,8 +89,8 @@
     const today = x.ad === iso(t.y, t.m, t.d);
     const big = mode === "bs" ? G.num(x.bs.d) : G.num(x.d), small = mode === "bs" ? G.num(x.d) : G.num(x.bs.d);
     const aria = `${bsLab(x.bs)} · ${adLab(x)}${x.hol.length ? " · " + x.hol.map((h) => T(h.title_ne, h.title_en)).join(", ") : ""}${x.al.length ? " · " + G.num(x.al.length) + T(" सूचना", " alerts") : ""}`;
-    return `<button type="button" class="pday${x.hol.length || x.wd === 6 ? " hol" : ""}${today ? " today" : ""}${sel === x.ad ? " sel" : ""}" data-ad="${x.ad}" aria-label="${esc(aria)}">
-      <span class="pbig">${big}</span>${x.hol.length > 1 ? `<span class="pplus">+${G.num(x.hol.length - 1)}</span>` : ""}<span class="psmall">${small}</span>
+    return `<button type="button" class="pday${x.hol.length || x.wd === 6 ? " hol" : ""}${x.hol.length ? " fest" : ""}${x.wd === 6 ? " sat" : ""}${today ? " today" : ""}${sel === x.ad ? " sel" : ""}" data-ad="${x.ad}" aria-label="${esc(aria)}">
+      <span class="pbig">${big}</span>${x.hol.length > 1 ? `<span class="pplus">+${G.num(x.hol.length - 1)}</span>` : ""}<span class="psmall">${small}</span>${x.hol.length ? `<span class="pholn" aria-hidden="true">${esc(T(x.hol[0].title_ne, x.hol[0].title_en))}</span>` : ""}
       <span class="pmarks">${dots(x)}</span><span class="pbands">${bands(x)}</span></button>`;
   }
   function weekRow(x) {
@@ -118,9 +118,9 @@
       <div class="ptinfo"><h2>${G.lang === "ne" ? BS.MN[td.bs.m - 1] + ", " + G.num(td.bs.y) : BS.ME[td.bs.m - 1] + " " + td.bs.y + " BS"}</h2><p>${adLab(td)}</p>
       <p class="meta">${T("तिथि: उद्धृत गर्न मिल्ने स्रोत नभएकाले देखाइएको छैन", "Tithi: not shown, no citable source")}</p></div></div>
       ${td.hol.length ? `<p class="ptev">🎉 ${td.hol.map((h) => esc(T(h.title_ne, h.title_en))).join(", ")} ${G.trustChip(td.hol[0].trust)}</p>` : ""}
-      <div class="ptclock"><b id="pclock">${G.num(hh + ":" + mm)}</b><span class="meta">NPT</span><span class="psunr">🌅 ${G.num(td.sun[0])}</span><span class="psunr">🌇 ${G.num(td.sun[1])}</span></div>
+      <div class="ptclock"><b id="pclock">${G.num(hh + ":" + mm)}</b><span class="meta">NPT</span><span class="psunr" title="${T("काठमाडौँको सूर्योदय", "Sunrise, Kathmandu")}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 18a7 7 0 0 1 14 0M2.5 18h19M12 4v3M5.2 8.2l1.6 1.6M18.8 8.2l-1.6 1.6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg><span class="vh">${T("सूर्योदय", "Sunrise")} </span>${G.num(td.sun[0])}</span><span class="psunr" title="${T("काठमाडौँको सूर्यास्त", "Sunset, Kathmandu")}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 18a7 7 0 0 1 14 0M2.5 18h19M12 4v3M5.2 8.2l1.6 1.6M18.8 8.2l-1.6 1.6"/><path d="m9.5 11 2.5 2.5 2.5-2.5"/></svg><span class="vh">${T("सूर्यास्त", "Sunset")} </span>${G.num(td.sun[1])}</span></div>
       <h3>${T("आउँदा बिदा", "Upcoming holidays")}</h3><ul class="pup">${up.map((e) => { const d = Math.round((Date.parse(e.date_ad) - Date.parse(td.ad)) / DAY); const b = BS.toBS(...e.date_ad.split("-").map(Number));
-        return `<li><span class="pupd"><b>${G.num(b.d)}</b><small>${G.lang === "ne" ? BS.MN[b.m - 1] : BS.ME[b.m - 1]}</small></span><span class="pupt">${esc(T(e.title_ne, e.title_en))}<small>${G.num(String(d))} ${T("दिनपछि", "days to go")}</small></span></li>`; }).join("") || `<li class="meta">${T("छैन", "None")}</li>`}</ul>
+        return `<li><span class="pupd"><b>${G.num(b.d)}</b><small>${G.lang === "ne" ? BS.MN[b.m - 1] : BS.ME[b.m - 1]}</small></span><span class="pupt">${esc(T(e.title_ne, e.title_en))}</span><span class="pupn">${d === 0 ? T("आज", "Today") : d === 1 ? T("भोलि", "Tomorrow") : G.num(String(d)) + " " + T("दिन", "days")}</span></li>`; }).join("") || `<li class="meta">${T("छैन", "None")}</li>`}</ul>
       ${up.length ? `<p class="meta">${T("स्रोत", "Source")}: <a href="${esc(up[0].sourceUrl)}" target="_blank" rel="noopener">${esc(T(up[0].source, up[0].source_en || up[0].source))}</a> ${G.trustChip(up[0].trust)}</p>` : ""}`;
   }
   function draw() {
@@ -151,8 +151,8 @@
     cb.setAttribute("aria-pressed", mode === "bs"); ca.setAttribute("aria-pressed", mode === "ad");
     const [vm, vw] = document.querySelectorAll("#pview button"); vm.textContent = T("महिना", "Month"); vw.textContent = T("हप्ता", "Week");
     vm.setAttribute("aria-pressed", view === "month"); vw.setAttribute("aria-pressed", view === "week");
-    document.getElementById("plegend").innerHTML = `<p>${G.SEVORDER.map((s) => `<i class="hdot" style="background:${G.SEVCOLOR[s]}"></i> ${T(G.SEV[s][0], G.SEV[s][1])}`).join(" · ")} · 🎉 ${T("सार्वजनिक बिदा", "Public holiday")}</p>
-      <p>${(cal.seasons || []).map((s) => `<i class="band" style="background:${s.colour}"></i> ${esc(T(s.title_ne, s.title_en))}`).join(" · ")}</p>`;
+    document.getElementById("plegend").innerHTML = `<p class="plg"><b>${T("सूचना", "Alerts")}</b>${G.SEVORDER.map((s) => `<span><i class="hdot" style="background:${G.SEVCOLOR[s]}"></i> ${T(G.SEV[s][0], G.SEV[s][1])}</span>`).join("")}<span class="plgh"><i></i> ${T("सार्वजनिक बिदा", "Public holiday")}</span></p>
+      <p class="plg"><b>${T("मौसमी जोखिम", "Seasonal risk")}</b>${(cal.seasons || []).map((s) => `<span><i class="band" style="background:${s.colour}"></i> ${esc(T(s.title_ne, s.title_en))}</span>`).join("")}</p>`;
     document.getElementById("pnotes").innerHTML = `<p>${esc(T(cal.note_ne || "", cal.note_en || ""))}</p><p>${esc(T(cal.festivals_note_ne || "", cal.festivals_note_en || ""))}</p>
       <p>${esc(T(cal.tithi_note_ne || "", cal.tithi_note_en || ""))}</p><p>${esc(T(cal.seasons_note_ne || "", cal.seasons_note_en || ""))}</p>
       <p>${T("सूर्योदय र सूर्यास्त काठमाडौँ (२७.७१७२° उ, ८५.३२४०° पू) का लागि NOAA सौर्य समीकरणबाट गणना गरिएको हो, एक दुई मिनेट फरक पर्न सक्छ।", "Sunrise and sunset are computed for Kathmandu (27.7172 N, 85.3240 E) with the NOAA solar equations and may differ by a minute or two.")}

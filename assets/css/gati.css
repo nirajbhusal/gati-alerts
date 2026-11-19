@@ -2565,3 +2565,54 @@ a.nabtn-h:hover{text-decoration:underline!important}
 .feedwrap:has(.feed:not(.flist)) .fhint{bottom:86px}
 @media(min-width:721px){.feedwrap:has(.feed:not(.flist)) .fhint{bottom:22px}}
 .feedwrap:has(.feed:not(.flist)) .rail{bottom:96px}
+/* Patro redesign: a navy "today" hero, a calmer month grid, holiday names in the cells, chips for the legend */
+.pholn{display:none}
+.patro .playout{gap:clamp(12px,2vw,20px)}
+.patro .pside{padding:0;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:var(--surface)}
+.patro .pside>*:not(.ptoday):not(.ptclock):not(.ptev){margin-left:16px;margin-right:16px}
+.patro .ptoday{background:linear-gradient(150deg,#0B1424 0%,#12284a 62%,#0F7C86 140%);color:#fff;padding:20px 18px 14px;gap:16px}
+.patro .ptile{width:88px;height:96px;border-radius:18px;background:#fff!important;color:#0B1424;box-shadow:0 10px 26px rgba(0,0,0,.3);border-top:10px solid #DC143C;justify-content:center}
+.patro .ptile b{font-size:2.6rem;line-height:1;color:#0B1424!important;font-weight:800}.patro .ptile span{font-size:.8rem;color:#6B5E5B}
+.patro .ptinfo h2{color:#fff;margin:0;font-size:clamp(1.3rem,1.1rem + 1vw,1.7rem);line-height:1.2}
+.patro .ptinfo p{margin:2px 0 0;color:rgba(255,255,255,.9)}.patro .ptinfo .meta{color:rgba(255,255,255,.62)!important;font-size:.78rem!important}
+.patro .ptev{margin:0;padding:10px 18px;background:rgba(220,20,60,.1);color:var(--ink);font-weight:600}
+.patro .ptclock{margin:0;padding:12px 18px;border-top:0;background:#0B1424;color:#fff;align-items:center}
+.patro .ptclock b{font-size:1.9rem;font-variant-numeric:tabular-nums;letter-spacing:.01em}.patro .ptclock .meta{color:rgba(255,255,255,.7)!important}
+.patro .psunr{display:inline-flex;align-items:center;gap:5px;margin-left:0;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.12);font-size:.85rem;font-variant-numeric:tabular-nums}
+.patro .psunr:first-of-type{margin-left:auto}.patro .psunr svg{color:#F28C1E}
+.patro .pside h3{margin:16px 16px 8px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+.patro .pup{padding:0 0 4px;display:grid;gap:8px}
+.patro .pup li{border:1px solid var(--line)!important;border-radius:14px;padding:8px 10px;background:var(--surface);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.patro .pup li:first-child{border-color:#0F7C86!important;box-shadow:inset 4px 0 0 #0F7C86}
+@media(hover:hover){.patro .pup li:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(11,20,36,.1)}}
+.patro .pupd{background:rgba(220,20,60,.1)!important;color:#DC143C!important;border-radius:12px;width:48px;height:48px}
+.patro .pupt{flex:1;min-width:0}
+.pupn{flex:none;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--surface2);color:var(--ink);white-space:nowrap}
+.patro .pup li:first-child .pupn{background:#0F7C86;color:#fff}
+.patro .pside>.meta,.patro .pside>p{margin:10px 16px 14px}
+/* tools */
+.patro .ptools .sbtn,.patro .pics{border-radius:99px!important;min-height:42px;transition:border-color .16s ease,background-color .16s ease,transform .16s ease}
+@media(hover:hover){.patro .ptools .sbtn:hover,.patro .pics:hover{border-color:#0F7C86!important}}
+.patro .ptools .sbtn:active{transform:scale(.96)}
+.patro .seg{border-radius:99px!important;overflow:hidden}
+.patro .seg button[aria-pressed=true],.patro .seg button.on{background:#0B1424!important;color:#fff!important}
+/* month grid */
+.patro .pday{transition:background-color .14s ease,box-shadow .14s ease;min-height:clamp(64px,9vw,104px)}
+.patro .pday .pbig{display:inline-grid;place-items:center;min-width:1.7em;height:1.7em;border-radius:50%;font-weight:600;font-size:clamp(1.15rem,2.6vw,1.8rem)}
+.patro .pday.sat .pbig{color:#DC143C!important}
+.patro .pday.fest{background:rgba(220,20,60,.07)!important}.patro .pday.fest .pbig{color:#DC143C!important;font-weight:800}
+.patro .pday.today,.patro .pday.today:hover{box-shadow:none!important;background:rgba(11,20,36,.05)!important}
+.patro .pday.today .pbig{background:#0B1424!important;color:#fff!important;font-weight:800;box-shadow:0 4px 12px rgba(11,20,36,.3)}
+html[data-theme=dark] .patro .pday.today .pbig{background:#F4F6FA!important;color:#0B1424!important}
+.patro .pday.sel{box-shadow:inset 0 0 0 2px #0F7C86!important}
+@media(hover:hover){.patro .pday:hover{background:rgba(15,124,134,.08)!important}}
+@media(min-width:760px){.patro .pday.fest .pholn{display:block;position:absolute;left:6px;right:6px;top:calc(1.7em + 18px);font-size:.68rem;line-height:1.15;font-weight:600;color:#DC143C;text-align:left;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}}
+.patro .pseasons{border-radius:16px;border-left:4px solid #0F7C86}
+/* legend as chips */
+.patro .plg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+.patro .plg b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin-right:4px}
+.patro .plg span{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;background:var(--surface);font-size:.82rem}
+.patro .plgh i{width:12px;height:12px;border-radius:3px;background:rgba(220,20,60,.18);border:1px solid #DC143C;display:inline-block}
+.patro .ptclock .psunr{color:#fff!important}.patro .ptclock b{color:#fff!important}
+.patro .ptile{border-top:0;position:relative;overflow:hidden}.patro .ptile::before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background:#DC143C}
+@media(max-width:959px){.patro .ptoday,.patro .ptclock{border-radius:18px}.patro .pside{border:0;background:none;overflow:visible}}
