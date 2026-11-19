@@ -2314,3 +2314,11 @@ main .pfb{padding:14px 16px;box-sizing:border-box;width:100%}
 .rnotbtn.ended{border-left-color:#8F9BB3;border-left-style:dashed}
 .rnoth{margin:14px 0 8px;font-size:1rem}
 .rnottag{display:inline-block;margin-bottom:2px;padding:1px 8px;border-radius:99px;background:var(--surface2,#F8EFEC);color:var(--slate);font-size:var(--fs-6);font-weight:700;justify-self:start}
+
+/* ===== Travel card buttons (Route check, Flights) ===== */
+.tcacts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+.tcbtn{min-height:46px;padding:8px 16px;border:1.5px solid var(--line);border-radius:99px;background:var(--surface);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.tcbtn:hover{border-color:var(--ink)}.tcbtn:disabled{opacity:.6}
+.tcbtn.tcmain{background:#0B1424;border-color:#0B1424;color:#fff}
+.tcnote{margin:0 0 10px}
+#flcard{margin:10px 0 14px}

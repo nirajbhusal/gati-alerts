@@ -1,6 +1,7 @@
 (async function () {
   const G = window.Gati, T = (ne, en) => (G.lang === "ne" ? ne : en), esc = G.esc, R = G.root;
   const RD = await G.json("data/roads.json"), N = RD.nodes;
+  let AL = null, DS = null, WX = null;   /* alerts, districts and weather arrive after the first draw */
   const [RG, DG] = await Promise.all([G.json("data/geo/roads.geojson").catch(() => null), G.json("data/districts.geojson").catch(() => null)]);
   const COL = { open: "#16a34a", oneway: "#f59e0b", blocked: "#dc2626", none: "#86D8A0" };
   let map, lay;
@@ -72,9 +73,10 @@
     const alts = RTS.slice(1), better = RTS[0].st === "bad" ? alts.findIndex((r) => r.st !== "bad") : -1;
     const cnt = {}; RTS[0].groups.forEach((g) => (cnt[g.rt.status] = (cnt[g.rt.status] || 0) + 1));
     const tally = ["blocked", "oneway", "none", "open"].filter((k) => cnt[k]).map((k) => `<span class="tag rs-${k}">${G.num(String(cnt[k]))} ${T(...(G.ROADST[k] || G.ROADST.none))}</span>`).join(" ");
-    out.innerHTML = `<section class="card rsum r-${RTS[0].st}"><div class="rverd">${G.verdictBadge(VK[RTS[0].st])}<button type="button" class="aqbtn rshare" id="rshare">${T("मार्ग सेयर गर्नुहोस्", "Share route")}</button></div>
+    out.innerHTML = `<section class="card rsum r-${RTS[0].st}"><div class="rverd">${G.verdictBadge(VK[RTS[0].st])}</div>
       <p class="rod"><b>${esc(T(N[f.value].ne, N[f.value].en))}</b> → <b>${esc(T(N[t.value].ne, N[t.value].en))}</b></p><p class="bigmsg">${head(RTS[0])}</p><p class="rtally">${tally}</p>
       ${better >= 0 ? `<p class="rbetter">${T(`विकल्प ${G.num(better + 1)} मा अवरुद्ध खण्ड छैन; तल हेर्नुहोस्।`, `Option ${better + 1} has no blocked corridor; see below.`)}</p>` : ""}${etaLine(RTS[0])}<p class="meta">${esc(T(RD.as_of_ne, RD.as_of_en))} · ${T("मानिएको गति: तराई ४०–५५, पहाडी २५–३५, हिमाली/कच्ची १२–२० कि.मि./घण्टा मानेर; प्रत्यक्ष ट्राफिक होइन।", "Speeds assumed: Terai 40–55, hill 25–35, mountain/earthen 12–20 km/h; not live traffic.")}</p>
+      <div id="rcard"></div>
       <p><a class="more" href="${R}map/?route=${encodeURIComponent(f.value + "," + t.value)}">${T("नक्सामा हेर्नुहोस् →", "View on map →")}</a></p></section>
       ${steps(RTS[0])}
       <section class="card ralts"><h2>${T("वैकल्पिक मार्ग", "Alternative routes")}</h2>${alts.length ? alts.map((r, k) => `<details class="ralt r-${r.st}"><summary><b>${T(`विकल्प ${G.num(k + 1)}`, `Option ${k + 1}`)}</b>: ${via(r)}<br>${etaLine(r)}<span class="tag rs-${r.st === "ok" ? "open" : r.st === "bad" ? "blocked" : r.st === "unk" ? "oneway" : "none"}">${head(r)}</span></summary>${steps(r)}</details>`).join("")
@@ -83,6 +85,20 @@
     drawMap(P, alts.map((r) => r.P));
     try { const u = new URL(location.href); u.searchParams.set("from", f.value); u.searchParams.set("to", t.value); history.replaceState(null, "", u); } catch (e) {}
     pops();
+    /* travel card: the same answer as a picture or as text, with nothing added */
+    if (G.travelCard) { const r0 = RTS[0], nm = (k) => T(N[k].ne, N[k].en), day = G.npt(new Date().toISOString()).split(" · ")[0];
+      const TAG = { open: "#1e8e3e", oneway: "#F28C1E", blocked: "#D93025", none: "#5f6b7a" }, BAN = { ok: ["#1e8e3e", T("सबै खण्ड खुला देखिन्छन्", "Every section shows open")], unk: ["#F28C1E", T("केही खण्ड एकतर्फी", "Some sections are one-way")], nc: ["#5f6b7a", T("केही खण्डको आधिकारिक स्थिति छैन", "Some sections have no official status")], bad: ["#D93025", T("बाटोमा अवरुद्ध खण्ड छ", "A section on the way is blocked")] }[r0.st];
+      const now = Date.now(), b5 = WX && WX.bulletin5, d0 = b5 && b5.days.find((d) => d.ad === new Date(now + G.tzMs).toISOString().slice(0, 10));
+      const wxLine = !d0 ? T("आजको DHM बुलेटिन गतिमा छैन; DHM मा हेर्नुहोस्।", "DHM's bulletin for today is not in Gati; check DHM.") : d0.level === "green" ? T("DHM: आज देशभर मौसम चेतावनी छैन।", "DHM: no weather warning anywhere today.") : T("DHM को आज मौसम चेतावनी छ; मौसम पृष्ठ हेर्नुहोस्।", "DHM has a weather warning today; see the Weather page.");
+      const nNot = AL ? AL.alerts.filter((a) => a.hazard === "road" && a.trust === "Official" && !a.supersededBy && Date.parse(a.expires) > now).length : null;
+      const spec = () => { let lo = 0, hi = 0; const rows = [{ time: T("सुरु", "Start"), name: nm(f.value), note: "", solid: false }].concat(r0.groups.map((g, i) => { lo += g.h[0]; hi += g.h[1]; const s = RS[g.rt.status] || RS.none, mid = (lo + hi) / 2;
+          return { time: "≈" + G.num(String(Math.round(mid * 2) / 2)) + T(" घ", " h"), name: nm(g.to), tag: { text: T(s[0], s[1]), color: TAG[g.rt.status] || TAG.none, ink: g.rt.status === "oneway" ? "#14202B" : "#fff" }, note: T(g.rt.name_ne, g.rt.name_en) + " · " + EN.fmtKm(g.km), color: TAG[g.rt.status] || TAG.none, solid: i === r0.groups.length - 1 }; }));
+        return { kicker: T("सडक यात्रा जाँच", "ROAD TRAVEL CHECK"), date: day, title: nm(f.value) + " → " + nm(t.value), sub: EN.fmtKm(r0.km) + " · " + EN.eta(r0.h) + " " + T("(अनुमान, सामान्य अवस्थामा)", "(estimate, normal conditions)"),
+          banner: { label: T("आधिकारिक स्थिति", "OFFICIAL STATUS"), value: BAN[1], color: BAN[0] }, rows,
+          foot: [{ h: T("मौसम", "Weather"), v: wxLine }, { h: T("सडक सूचना", "Road notices"), v: nNot == null ? T("सडक पृष्ठ हेर्नुहोस्।", "See the Roads page.") : T(`अहिले ${G.num(String(nNot))} आधिकारिक सूचना लागू।`, `${nNot} official notice${nNot === 1 ? "" : "s"} in force now.`) }, { h: T("आपतकाल", "Emergency"), v: T("प्रहरी १०० · एम्बुलेन्स १०२", "Police 100 · Ambulance 102") }],
+          fine: [T("स्रोत: नेपाल प्रहरी, सडक विभाग, DHM", "Sources: Nepal Police, Department of Roads, DHM") + " · " + T(RD.as_of_ne, RD.as_of_en), T("समय मानिएको गतिमा आधारित अनुमान हो, प्रत्यक्ष ट्राफिक होइन। मुख्य करिडोर मात्र।", "Times are estimates at assumed speeds, not live traffic. Main corridors only."), T("गतिले आधिकारिक सूचना मात्र फैलाउँछ; आफैँ चेतावनी जारी गर्दैन।", "Gati relays official notices. It does not issue warnings.")] }; };
+      const text = () => `${nm(f.value)} → ${nm(t.value)}: ${BAN[1]}. ${EN.fmtKm(r0.km)}, ${EN.eta(r0.h)} ${T("(अनुमान)", "(estimate)")}.\n` + r0.groups.map((g) => { const s = RS[g.rt.status] || RS.none; return `• ${nm(g.from)} → ${nm(g.to)}: ${T(s[0], s[1])}`; }).join("\n") + `\n${wxLine}\n${T("स्रोत: नेपाल प्रहरी, सडक विभाग, DHM", "Sources: Nepal Police, Department of Roads, DHM")} · ${T(RD.as_of_ne, RD.as_of_en)}. ${T("गतिले आधिकारिक सूचना मात्र फैलाउँछ।", "Gati relays official notices only.")}`;
+      G.travelCard.actions(document.getElementById("rcard"), { spec, text, name: () => `gati-${f.value}-${t.value}.png` }); }
     const sb = document.getElementById("rshare"); if (sb) sb.onclick = () => { const txt = `${T(N[f.value].ne, N[f.value].en)} → ${T(N[t.value].ne, N[t.value].en)}: ${(sb.closest(".rsum").querySelector(".vbadge") || {}).textContent || ""}. ${head(RTS[0])} ${T(RD.as_of_ne, RD.as_of_en)}. ${T("गतिले आधिकारिक स्रोत मात्र प्रसारण गर्छ", "Gati relays official sources")}`;
       const done = () => { sb.textContent = T("लिङ्क कपी भयो", "Link copied"); setTimeout(() => (sb.textContent = T("मार्ग सेयर गर्नुहोस्", "Share route")), 2000); };
       if (navigator.share) navigator.share({ title: T("मार्ग जाँच", "Route check"), text: txt, url: location.href }).catch(() => {}); else if (navigator.clipboard) navigator.clipboard.writeText(txt + " " + location.href).then(done, () => {}); };
@@ -94,7 +110,6 @@
     if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); } }; document.getElementById("rgo").onclick = go; document.getElementById("rswap").onclick = () => { [f.value, t.value] = [t.value, f.value]; draw(); };
   /* Road notices in force right now, from the alerts themselves: the route answer above covers main corridors only,
      so a police notice about any other road is still shown here, with its source and time. */
-  let AL = null, DS = null;
   function notices() { const el = document.getElementById("rnotices"); if (!el || !AL) return;
     const now = Date.now(), dn = (c) => { const d = DS && DS.find((x) => x.code === c); return d ? T(d.ne, d.en) : c; };
     const road = AL.alerts.filter((a) => a.hazard === "road" && a.trust === "Official" && !a.supersededBy), list = road.filter((a) => Date.parse(a.expires) > now);
@@ -105,5 +120,5 @@
       + (past.length ? `<h3 class="rnoth">${T("पछिल्लो २४ घण्टामा म्याद सकिएका, नयाँ सूचना नआएका", "Ended in the last 24 hours, with no newer notice yet")}</h3><ul class="rnotl">${past.map((a) => { const i = a.info[G.lang] || a.info.ne; return `<li><a class="rnotbtn ended" href="${R}alerts/${esc(a.identifier)}/"><span class="rnottag">${T("म्याद सकियो", "Ended")} ${G.npt(a.expires)}</span><b>${esc(i.headline)}</b><small>${esc(a.districts.map(dn).join(", "))} · ${esc(i.senderName.split(" — ")[0].split(" · ")[0])} · ${T("अवस्था उस्तै हुन सक्छ; यात्रा अघि स्थानीय प्रहरी (१००) सँग बुझ्नुहोस्।", "The road may still be affected; check with local police (100) before travelling.")}</small></a></li>`; }).join("")}</ul>` : "")
       + `<p class="rnotmore"><a class="more" href="${R}roads/">${T("सबै सडकको अवस्था →", "All road status →")}</a> <a class="more" href="${R}affected/">${T("के म प्रभावित छु? →", "Am I affected? →")}</a></p></section>`; }
   opts(); draw(); G.onLang(() => { opts(); draw(); notices(); });
-  [AL, DS] = await Promise.all(["data/alerts.json", "data/districts.json"].map((x) => G.json(x).catch(() => null))); notices();
+  [AL, DS, WX] = await Promise.all(["data/alerts.json", "data/districts.json", "data/weather.json"].map((x) => G.json(x).catch(() => null))); notices(); draw();
 })();
