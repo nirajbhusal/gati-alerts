@@ -1,181 +1,186 @@
 {
  "sources": {
   "dhm-hydrology": {
-   "lastSuccess": "2026-11-15T09:14:00Z",
-   "lastChecked": "2026-11-15T09:14:00Z",
+   "lastSuccess": "2026-11-19T03:26:45+00:00",
+   "lastChecked": "2026-11-19T03:26:45+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "dhm-mfd": {
-   "lastSuccess": "2026-11-15T09:14:13Z",
-   "lastChecked": "2026-11-15T09:14:13Z",
+   "lastSuccess": "2026-11-19T03:26:49+00:00",
+   "lastChecked": "2026-11-19T03:26:49+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "neoc": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-13T03:27:21+00:00",
+   "lastChecked": "2026-11-19T03:26:51+00:00",
    "lastResult": "HTTPError: Internal Server Error",
    "status": "down"
   },
   "ndrrma": {
-   "lastSuccess": "2026-11-13T03:27:21+00:00",
-   "lastChecked": "2026-11-13T03:27:21+00:00",
+   "lastSuccess": "2026-11-19T03:26:51+00:00",
+   "lastChecked": "2026-11-19T03:26:51+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "nepal-police": {
-   "lastSuccess": "2026-11-13T03:27:22+00:00",
-   "lastChecked": "2026-11-13T03:27:22+00:00",
+   "lastSuccess": "2026-11-19T03:26:53+00:00",
+   "lastChecked": "2026-11-19T03:26:53+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "bipad": {
-   "lastSuccess": "2026-11-13T03:27:27+00:00",
-   "lastChecked": "2026-11-13T03:27:27+00:00",
+   "lastSuccess": "2026-11-19T03:26:58+00:00",
+   "lastChecked": "2026-11-19T03:26:58+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "nsc": {
    "lastSuccess": "2026-11-13T03:27:28+00:00",
-   "lastChecked": "2026-11-13T03:27:28+00:00",
-   "lastResult": "HTTP 200",
+   "lastChecked": "2026-11-19T03:27:00+00:00",
+   "lastResult": "URLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1029)",
    "status": "stale"
   },
   "usgs": {
-   "lastSuccess": "2026-11-13T03:27:30+00:00",
-   "lastChecked": "2026-11-13T03:27:30+00:00",
+   "lastSuccess": "2026-11-19T03:27:03+00:00",
+   "lastChecked": "2026-11-19T03:27:03+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "doe-air": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-13T03:27:31+00:00",
+   "lastChecked": "2026-11-19T03:27:03+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
    "status": "down"
   },
   "edcd": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-13T03:27:39+00:00",
+   "lastChecked": "2026-11-19T03:27:11+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
    "status": "down"
   },
   "lightning": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned",
+   "lastResult": "nofeed",
    "status": "nofeed"
   },
   "forest-fire": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned",
+   "lastResult": "nofeed",
    "status": "nofeed"
   },
   "avalanche": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned",
+   "lastResult": "nofeed",
    "status": "nofeed"
   },
   "glof": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "planned",
+   "lastResult": "nofeed",
    "status": "nofeed"
   },
   "dor-navigate": {
-   "lastSuccess": "2026-11-18T09:13:33+05:45",
-   "lastChecked": "2026-11-18T09:13:33+05:45",
-   "lastResult": "ok",
+   "lastSuccess": "2026-11-19T03:27:19+00:00",
+   "lastChecked": "2026-11-19T03:27:19+00:00",
+   "lastResult": "HTTP 200",
    "status": "ok"
   },
   "wmo-alert-hub": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "link",
    "status": "link"
   },
   "rimes": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "link",
    "status": "link"
   },
   "icimod": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "link",
    "status": "link"
   },
   "gdacs": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "live",
    "status": "live"
   },
   "nasa-firms": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "live",
    "status": "live"
   },
   "open-meteo": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "live",
    "status": "live"
   },
   "ecmwf": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "live",
    "status": "live"
   },
   "imd-rsmc": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "link",
    "status": "link"
   },
   "glofas": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "link",
    "status": "link"
   },
   "google-flood-hub": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "link",
    "status": "link"
   },
   "nasa-gpm": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "live",
    "status": "live"
   },
   "emsc": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "live",
    "status": "live"
   },
   "reliefweb": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "link",
    "status": "link"
   },
   "ifrc-go": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "listed",
+   "lastResult": "live",
    "status": "live"
+  },
+  "awc-metar": {
+   "lastSuccess": null,
+   "lastChecked": null,
+   "lastResult": "live"
   }
  },
- "checkedAt": "2026-11-15T09:14:15Z",
- "note": "Checked by GitHub Actions runners (outside Nepal). Some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
+ "checkedAt": "2026-11-19T03:27:20+00:00",
+ "note": "Checked from an automated server outside Nepal; some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
  "writtenAt": "2026-11-15T09:14:15Z"
 }
