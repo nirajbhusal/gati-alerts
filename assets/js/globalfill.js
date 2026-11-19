@@ -41,7 +41,7 @@
       load: () => Promise.resolve([T(`खुला फिड छैन। <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener">WHO को रोग प्रकोप समाचार ↗</a> र <a href="https://www.who.int/nepal" target="_blank" rel="noopener">WHO नेपाल ↗</a> हेर्नुहोस्।`, `No open feed. See <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener">WHO Disease Outbreak News ↗</a> and <a href="https://www.who.int/nepal" target="_blank" rel="noopener">WHO Nepal ↗</a>.`)]),
       note: () => "" },
   };
-  const ST = {}; let need = [], C = {};
+  const ST = {}; let need = [], C = {}, onOpen = null;
   function draw() {
     if (!need.length) { box.hidden = true; return; }
     const open = (box.querySelector("details") || {}).open;
@@ -50,6 +50,7 @@
         const body = !s ? `<p class="meta">${T("लोड हुँदै…", "Loading…")}</p>` : s.err ? `<p class="meta">${T("अहिले ल्याउन सकिएन।", "Could not load right now.")} <a href="${f.href}" target="_blank" rel="noopener">${E(f.by)} ↗</a></p>` : `<ul class="gfl">${s.rows.map((r) => `<li>${r}</li>`).join("")}</ul>${f.note() ? `<p class="meta">${E(f.note())}</p>` : ""}`;
         return `<div class="gfrow"><p class="gfm">${E(f.miss())}</p><p class="gfby">${G.trustChip(f.trust) || `<span class="trust gfg">${T("विश्व स्रोत", "Global source")}</span>`} <a href="${f.href}" target="_blank" rel="noopener"><b>${E(f.by)}</b> ↗</a> <span class="meta">${E(f.via)}</span></p>${body}</div>`; }).join("") + `</div></details>`;
     box.hidden = false;
+    const d = box.querySelector("details"); if (d) d.ontoggle = () => { if (d.open && onOpen) onOpen(); };
   }
   Promise.all([G.json("data/sources.json"), G.json("data/source-health.json"), G.json("data/rivers.json").catch(() => null)]).then(([S, h, RV]) => {
     const H = (h && h.sources) || {}, st = (id) => { const s = S.find((x) => x.id === id); return s ? G.srcStatus(s, H[id]) : "ok"; };
@@ -58,8 +59,11 @@
     if (C.gauges.length && (!rvAt || G.isStale(rvAt) || st("dhm-hydrology") === "down")) need.push("rivers");
     if (page === "home") { if (st("doe-air") === "down") need.push("air"); if (st("neoc") === "down") need.push("incidents"); if (["down", "stale"].includes(st("nsc"))) need.push("quake"); if (st("edcd") === "down") need.push("health"); }
     if (!need.length) return;
-    /* the lines are written in the reader's language, so a language change reads the sources again */
-    const run = () => { draw(); need.forEach((k) => FILL[k].load(C).then((rows) => { ST[k] = { rows }; }).catch(() => { ST[k] = { err: true }; }).then(draw)); };
-    run(); G.onLang(run);
+    /* Nothing is asked of a global source until the reader opens the block. The lines are written in the
+       reader's language, so after a language change an open block reads the sources again. */
+    let asked = false;
+    const load = () => { asked = true; need.forEach((k) => FILL[k].load(C).then((rows) => { ST[k] = { rows }; }).catch(() => { ST[k] = { err: true }; }).then(draw)); };
+    onOpen = () => { if (!asked) load(); };
+    draw(); G.onLang(() => { draw(); if (asked) load(); });
   }).catch(() => {});
 })();
