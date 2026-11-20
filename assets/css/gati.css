@@ -2695,3 +2695,17 @@ html[data-theme=dark] .patro .pday.today .pbig{background:#F4F6FA!important;colo
 @media(prefers-reduced-motion:no-preference){@keyframes hstp{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--c) 8%,transparent)}}.hstat.on>i{animation:hstp 2.2s ease-in-out infinite}}
 #hmap{scroll-margin-top:90px}
 .hstat:not(.on) b{font-weight:600;font-size:.95rem}
+/* Home order: Nepal Now above Features */
+.homev3>.hhead,.homev3>#hmap{order:2!important}
+.homev3>#services{order:3!important}
+/* Nepal Now map: drag to move, pinch or buttons to zoom */
+#hmap .hmmain .hmw{position:relative}
+#hmap .hmsvg{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#hmap .hmsvg.grab{cursor:grabbing}#hmap .hmsvg.grab .hmd{transition:none}
+.hmzc{position:absolute;right:8px;bottom:8px;display:flex;flex-direction:column;gap:6px;z-index:2}
+.hmzc button{width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(11,20,36,.72);color:#fff;font:700 1.15rem/1 Inter,sans-serif;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background-color .16s ease,transform .16s ease}
+.hmzc button:disabled{opacity:.4;cursor:default}
+@media(hover:hover){.hmzc button:not(:disabled):hover{background:#0F7C86}}
+.hmzc button:not(:disabled):active{transform:scale(.94)}
+.hmdrag{position:absolute;left:8px;bottom:8px;margin:0;padding:3px 10px;border-radius:99px;background:rgba(11,20,36,.6);color:rgba(255,255,255,.85);font-size:.72rem;pointer-events:none;transition:opacity .3s}
+.hmdrag.gone{opacity:0}
