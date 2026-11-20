@@ -2676,3 +2676,10 @@ html[data-theme=dark] .patro .pday.today .pbig{background:#F4F6FA!important;colo
 .home .svt:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,20,36,.12);border-color:#0F7C86}
 .home .svcard{padding:16px!important;border:1px solid var(--line);border-radius:22px}
 }
+/* Home order: Before you travel (with Plan my trip), then Features, then Nepal Now and the rest */
+.homev3>#hinfo{order:1!important}
+.homev3>#services{order:2!important}
+.homev3>.hhead,.homev3>#hmap{order:3!important}
+.homev3>#nowcards{order:4!important}
+.homev3>#hviz{order:5!important}
+.homev3>.hcols{order:6!important}
