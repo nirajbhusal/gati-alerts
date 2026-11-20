@@ -2709,3 +2709,5 @@ html[data-theme=dark] .patro .pday.today .pbig{background:#F4F6FA!important;colo
 .hmzc button:not(:disabled):active{transform:scale(.94)}
 .hmdrag{position:absolute;left:8px;bottom:8px;margin:0;padding:3px 10px;border-radius:99px;background:rgba(11,20,36,.6);color:rgba(255,255,255,.85);font-size:.72rem;pointer-events:none;transition:opacity .3s}
 .hmdrag.gone{opacity:0}
+/* Home: the Features title uses the same type as the Nepal Now title */
+.home .svhead h2{font-size:var(--fs-2)!important;font-weight:700!important;line-height:1.2!important;letter-spacing:-.01em;margin:0 0 12px}
