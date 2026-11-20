@@ -13,7 +13,7 @@
   const npt = (ms) => new Date(ms + G.tzMs).toISOString().slice(0, 10);
   const today = npt(Date.now());
   box.style.setProperty("--hmar", `${W} / ${H}`);
-  let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false, wide = false, affOpen = false, affD = null;
+  let S = null, day = null, sel = null, cat = "all", AQ = null, aqLoading = false, wide = false, affOpen = false, affD = null, view = null, cur = null;
   const CATS = [["all", "सबै", "All", null], ["flood", "बाढी र वर्षा", "Floods and rain", ["flood"]], ["landslide", "पहिरो", "Landslides", ["landslide"]], ["road", "सडक", "Roads", ["road"]], ["earthquake", "भूकम्प", "Earthquakes", ["earthquake"]], ["weather", "मौसम", "Weather", ["weather"]], ["air", "उडान", "Flights", ["air"]]];
   const FULL = { all: "", flood: "#hz=flood", landslide: "#hz=landslide", road: "#hz=road", earthquake: "#L=eq", weather: "#hz=weather", air: "" };
   const RCOL = { open: "#34C77B", oneway: "#F2C94C", blocked: "#FF5C5C", none: "rgba(255,255,255,.45)" };
@@ -31,7 +31,7 @@
     if (!dg || !al) { box.querySelector(".hmw").innerHTML = `<p class="meta">${T("नक्सा लोड भएन।", "Map could not load.")}</p>`; return; }
     S = { dg, al: al.alerts, gen: al.generated, ar, rd, rv, wx, paths: {}, cen: {} }; dg.features.forEach((f) => { S.paths[f.properties.code] = pth(f.geometry); S.cen[f.properties.code] = ctr(f.geometry); });
     if (ar && today <= ar.days[ar.days.length - 1].ad) { const i = ar.days.findIndex((d) => d.ad >= today); day = ar.days[Math.max(0, i)].ad; }
-    draw(); G.onLang(draw); addEventListener("gati:district", draw); if (G.airwx) { G.airwx.on(() => (cat === "all" || cat === "air") && !sel && draw()); G.airwx.load(); }
+    draw(); G.onLang(draw); addEventListener("gati:district", () => { view = null; draw(); }); if (G.airwx) { G.airwx.on(() => (cat === "all" || cat === "air") && !sel && draw()); G.airwx.load(); }
   });
   if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: "300px" }); io.observe(box); } else go();
   /* active items for the chosen day (or now): official, not expired, not superseded */
@@ -153,8 +153,11 @@
         <p class="hmns">${myN ? "" : T("यसको अर्थ खतरा छैन भन्ने होइन। ", "This is not an all clear. ")}${wide ? "" : T(`छेउका जिल्लामा: ${N(nearN)}`, `In districts next to you: ${nearN}`)}</p>
         ${affHtml}<p class="hmnb"><button type="button" class="hmnbtn2" id="hmaffb" aria-pressed="${affOpen}" aria-expanded="${affOpen}">${T("के म प्रभावित छु?", "Am I affected?")}</button><a class="hmnbtn2" href="${R}route/">${T("मार्ग जाँच", "Route check")}</a><button type="button" class="hmnbtn2" id="hmwide" aria-pressed="${wide}">${wide ? T("मेरो नजिक देखाउनुहोस्", "Zoom to near me") : T("पूरै नेपाल", "All Nepal")}</button><button type="button" class="hmnbtn2" id="hmchg">${T("जिल्ला फेर्नुहोस्", "Change")}</button></p></div>`
       : `<div class="hmnear"><p class="hmnk">${PIN}${T("मेरो नजिक", "Near me")}</p><p class="hmnv">${T("आफ्नो जिल्ला छान्नुहोस्", "Choose your district")}</p><p class="hmns">${T("नक्सा हजुरको जिल्ला र छेउका जिल्लामा खुल्छ।", "The map then opens on your district and the ones next to it.")}</p><p class="hmnb"><button type="button" class="hmnbtn2 main" id="hmloc">${T("मेरो स्थान प्रयोग गर्नुहोस्", "Use my location")}</button><button type="button" class="hmnbtn2" id="hmchg">${T("जिल्ला छान्नुहोस्", "Choose district")}</button></p><p class="hmns">${T("स्थान यही उपकरणमा मात्र जाँचिन्छ, कतै पठाइँदैन।", "Your location is checked on this device only and never sent anywhere.")}</p></div>`;
-    box.classList.toggle("hmzoomed", !!me && !wide);
-    box.innerHTML = `${head}${cat === "all" ? status : none}${slider}<div class="hmgrid"><div class="hmmain">${near}<div class="hmw"><svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg></div>${leg}</div>
+    /* the reader can drag and zoom the map; their view is kept until they reset it or change district */
+    { const bv = vb.split(" ").map(Number); cur = view || { x: bv[0], y: bv[1], w: bv[2], h: bv[3] }; vb = `${cur.x.toFixed(1)} ${cur.y.toFixed(1)} ${cur.w.toFixed(1)} ${cur.h.toFixed(1)}`; }
+    box.style.setProperty("--hz", (cur.w / W * 1.6).toFixed(3));
+    box.classList.toggle("hmzoomed", cur.w < W * 0.8);
+    box.innerHTML = `${head}${cat === "all" ? status : none}${slider}<div class="hmgrid"><div class="hmmain">${near}<div class="hmw"><svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" class="hmsvg"><g class="hmland">${dist}</g>${ic.join("")}${lab}</svg><div class="hmzc" role="group" aria-label="${E(T("नक्सा नियन्त्रण", "Map controls"))}"><button type="button" data-z="in" aria-label="${E(T("ठूलो पार्नुहोस्", "Zoom in"))}">+</button><button type="button" data-z="out" aria-label="${E(T("सानो पार्नुहोस्", "Zoom out"))}">−</button><button type="button" data-z="reset" aria-label="${E(T("सुरुको दृश्य", "Reset view"))}"${view ? "" : " disabled"}>⟲</button></div><p class="hmdrag" aria-hidden="true">${T("तान्नुहोस् · चिमोटेर ठूलो पार्नुहोस्", "Drag to move · pinch or use + − to zoom")}</p></div>${leg}</div>
       <aside class="hmside" aria-label="${E(T("अहिलेको सारांश", "Right now"))}"><h3>${T("अहिले", "Right now")}</h3>${cat === "all" ? nowlist + (named.length ? `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}` : "") : stats + `<h3>${T("सूचना भएका जिल्ला", "Districts with alerts")}</h3>${dlist}`}<div class="hmsheet" id="hmsheet" aria-live="polite">${sel ? sheet(sel, L) : ""}</div></aside></div>${cxtxt}${note}
       ${nat.length ? `<details class="hmnat"${cat === "weather" ? " open" : ""}><summary>${T("देशव्यापी आधिकारिक सूचना", "Nationwide official notices")}: ${[...new Set(nat.map((x) => x.ag))].map((a) => `${E(a)} ${N(nat.filter((x) => x.ag === a).length)}`).join(" · ")}</summary>${list(nat)}</details>` : ""}
 `;
@@ -176,7 +179,25 @@
     box.querySelectorAll(".hmdl button").forEach((b) => (b.onclick = () => pick(b.dataset.c)));
     box.querySelectorAll(".hmd").forEach((p) => { p.onclick = () => pick(p.dataset.c); p.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(p.dataset.c); } }; });
     const x = box.querySelector(".hmx"); if (x) x.onclick = () => { sel = null; draw(); };
-    const wd = box.querySelector("#hmwide"); if (wd) wd.onclick = () => { wide = !wide; draw(); };
+    const wd = box.querySelector("#hmwide"); if (wd) wd.onclick = () => { wide = !wide; view = null; draw(); };
+    /* drag to pan, pinch or buttons to zoom. The viewBox is changed in place, so nothing is redrawn while moving. */
+    const svg = box.querySelector(".hmsvg");
+    if (svg && cur) { const ar = W / H, clampV = (v) => { v.w = Math.max(W / 10, Math.min(W, v.w)); v.h = v.w / ar; v.x = Math.max(-v.w * 0.25, Math.min(W - v.w * 0.75, v.x)); v.y = Math.max(-v.h * 0.25, Math.min(H - v.h * 0.75, v.y)); return v; };
+      const apply = (v) => { view = cur = clampV(v); svg.setAttribute("viewBox", `${cur.x.toFixed(1)} ${cur.y.toFixed(1)} ${cur.w.toFixed(1)} ${cur.h.toFixed(1)}`); box.style.setProperty("--hz", (cur.w / W * 1.6).toFixed(3)); box.classList.toggle("hmzoomed", cur.w < W * 0.8); const rb = box.querySelector('.hmzc [data-z="reset"]'); if (rb) rb.disabled = false; const hd = box.querySelector(".hmdrag"); if (hd) hd.classList.add("gone"); };
+      const upp = () => { const r = svg.getBoundingClientRect(); return Math.max(cur.w / r.width, cur.h / r.height); };
+      const zoomAt = (f, px, py) => { const r = svg.getBoundingClientRect(), k = upp(), ox = (r.width - cur.w / k) / 2, oy = (r.height - cur.h / k) / 2, ux = cur.x + (px - r.left - ox) * k, uy = cur.y + (py - r.top - oy) * k, nw = Math.max(W / 10, Math.min(W, cur.w * f)), g = nw / cur.w; apply({ x: ux - (ux - cur.x) * g, y: uy - (uy - cur.y) * g, w: nw, h: nw / ar }); };
+      const pts = new Map(); let moved = false, start = null, pinch = 0;
+      svg.onpointerdown = (e) => { pts.set(e.pointerId, [e.clientX, e.clientY]); if (pts.size === 1) { moved = false; start = { x: e.clientX, y: e.clientY, vx: cur.x, vy: cur.y }; } else if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = Math.hypot(a[0] - b[0], a[1] - b[1]); moved = true; } };
+      svg.onpointermove = (e) => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, [e.clientX, e.clientY]);
+        if (pts.size === 2) { const [a, b] = [...pts.values()], d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (pinch && d) { zoomAt(pinch / d, (a[0] + b[0]) / 2, (a[1] + b[1]) / 2); pinch = d; } return; }
+        if (!start) return; const dx = e.clientX - start.x, dy = e.clientY - start.y; if (!moved && Math.hypot(dx, dy) < 6) return;
+        if (!moved) { moved = true; try { svg.setPointerCapture(e.pointerId); } catch (er) {} svg.classList.add("grab"); }
+        const k = upp(); apply({ x: start.vx - dx * k, y: start.vy - dy * k, w: cur.w, h: cur.h }); };
+      const end = (e) => { pts.delete(e.pointerId); if (pts.size < 2) pinch = 0; if (!pts.size) { start = null; svg.classList.remove("grab"); } else if (pts.size === 1) { const [p] = [...pts.values()]; start = { x: p[0], y: p[1], vx: cur.x, vy: cur.y }; } };
+      svg.onpointerup = end; svg.onpointercancel = end;
+      svg.addEventListener("click", (e) => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+      svg.addEventListener("wheel", (e) => { if (!e.ctrlKey && !e.metaKey) return; e.preventDefault(); zoomAt(e.deltaY > 0 ? 1.15 : 1 / 1.15, e.clientX, e.clientY); }, { passive: false });
+      box.querySelectorAll(".hmzc button").forEach((b) => (b.onclick = () => { if (b.dataset.z === "reset") { view = null; draw(); return; } const r = svg.getBoundingClientRect(); zoomAt(b.dataset.z === "in" ? 1 / 1.4 : 1.4, r.left + r.width / 2, r.top + r.height / 2); })); }
     const ab = box.querySelector("#hmaffb"); if (ab) ab.onclick = () => { affOpen = !affOpen; draw(); if (affOpen && !affD && G.affect) G.affect.load().then((d) => { affD = d; draw(); }).catch(() => { affOpen = false; location.href = R + "affected/"; }); };
     const lc = box.querySelector("#hmloc"); if (lc) lc.onclick = () => { if (G.district && G.district.open) G.district.open(() => { wide = false; draw(); }).then(() => { const b = document.querySelector(".dloc"); if (b) b.click(); }); };
     const ch = box.querySelector("#hmchg"); if (ch) ch.onclick = () => { if (G.district && G.district.open) G.district.open(() => { wide = false; draw(); }); };
