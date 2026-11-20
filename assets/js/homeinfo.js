@@ -75,3 +75,25 @@
     draw(); G.onLang(draw);
   });
 })();
+/* Home, first line: what is active right now, from official alerts only, with a jump to the map.
+   It never says "safe": with nothing active it says so and adds that this is not an all clear. */
+(function () {
+  const G = window.Gati, el = document.getElementById("hstat"); if (!G || !el) return;
+  const T = (ne, en) => (G.lang === "ne" ? ne : en), RK = { Extreme: 4, Severe: 3, Moderate: 2, Minor: 1 };
+  Promise.all([G.json("data/alerts.json"), G.json("data/districts.json")]).then(([al, ds]) => {
+    const DN = {}; (Array.isArray(ds) ? ds : []).forEach((d) => (DN[d.code] = d));
+    const draw = () => { const act = (al.alerts || []).filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires || "2999-01-01") > Date.now());
+      const top = {}; act.forEach((a) => a.districts.forEach((c) => { if ((RK[a.severity] || 0) > (RK[top[c]] || 0)) top[c] = a.severity; }));
+      const named = Object.keys(top).sort((a, b) => (RK[top[b]] || 0) - (RK[top[a]] || 0)), nat = act.filter((a) => !a.districts.length).length;
+      const nm = (c) => (DN[c] ? T(DN[c].ne, DN[c].en) : c), n = named.length, more = n > 3 ? T(` र अन्य ${G.num(String(n - 3))}`, ` and ${n - 3} more`) : "";
+      const sev = n ? top[named[0]] : "", col = n ? (G.SEVCOLOR[sev] || "#F28C1E") : "#6B5E5B";
+      const main = n ? T(`${G.num(String(n))} जिल्लामा सक्रिय आधिकारिक सूचना: ${named.slice(0, 3).map(nm).join(", ")}${more}`, `${n} district${n === 1 ? "" : "s"} under an active official alert: ${named.slice(0, 3).map(nm).join(", ")}${more}`)
+        : T("अहिले कुनै जिल्लालाई नाम लिएको सक्रिय आधिकारिक सूचना छैन। यसको अर्थ खतरा छैन भन्ने होइन।", "No active official alert names a district right now. This is not an all clear.");
+      const sub = nat ? T(` · देशव्यापी सूचना ${G.num(String(nat))}`, ` · ${nat} nationwide notice${nat === 1 ? "" : "s"}`) : "";
+      el.style.setProperty("--c", col); el.className = "hstat" + (n ? " on" : "");
+      el.innerHTML = `<i aria-hidden="true"></i><span><b>${G.esc(main)}</b>${n && sev ? ` <em>${G.esc(T(G.SEV[sev][0], G.SEV[sev][1]))}</em>` : ""}<small>${G.esc(sub.replace(/^ · /, ""))}</small></span><span class="hstgo" aria-hidden="true">${T("नक्सा", "Map")} ↓</span>`;
+      el.hidden = false; };
+    el.onclick = (e) => { const m = document.getElementById("hmap"); if (!m) return; e.preventDefault(); m.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); };
+    draw(); G.onLang(draw);
+  }).catch(() => {});
+})();
