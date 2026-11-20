@@ -4,12 +4,51 @@
   <id>https://gatialerts.com/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-11-19T03:27:36+00:00</updated>
+  <updated>2026-11-20T03:35:02+00:00</updated>
   <link href="https://gatialerts.com/atom.xml" rel="self"/>
   <link href="https://gatialerts.com/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-11-20-0800</id>
+    <title>DHM: no weather warning anywhere in Nepal for all five days, Mangsir 4 to Mangsir 8 (20 to 24 Nov)</title>
+    <updated>2026-11-20T09:25:00+05:45</updated>
+    <published>2026-11-20T09:25:00+05:45</published>
+    <summary>[Official] Minor · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-11-24T23:59:00+05:45</summary>
+    <link href="https://gatialerts.com/cap/np.gati.dhm-5day-bulletin-2026-11-20-0800.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://gatialerts.com/alerts/np.gati.dhm-5day-bulletin-2026-11-20-0800/" rel="related" type="text/html"/>
+    <link href="https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12440" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-aarughat-soti-2026-11-20-0900</id>
+    <title>Gorkha, Aarughat: road fully blocked after the iron bridge at Soti was swept away</title>
+    <updated>2026-11-20T09:25:00+05:45</updated>
+    <published>2026-11-20T09:25:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-21T08:30:00+05:45</summary>
+    <link href="https://gatialerts.com/cap/np.gati.police-road-aarughat-soti-2026-11-20-0900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://gatialerts.com/alerts/np.gati.police-road-aarughat-soti-2026-11-20-0900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-20-0900</id>
+    <title>Gulmi, Rakse: Kaligandaki Corridor still shown closed; police have not announced a reopening</title>
+    <updated>2026-11-20T09:25:00+05:45</updated>
+    <published>2026-11-20T09:25:00+05:45</published>
+    <summary>[Official] Moderate · Nepal Police Headquarters · relayed by Gati · expires 2026-11-21T08:30:00+05:45</summary>
+    <link href="https://gatialerts.com/cap/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-20-0900.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://gatialerts.com/alerts/np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-20-0900/" rel="related" type="text/html"/>
+    <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
+    <author>
+      <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.dhm-5day-bulletin-2026-11-19-0800</id>
     <title>DHM: no weather warning anywhere in Nepal for all five days, Mangsir 3 to Mangsir 7 (19 to 23 Nov)</title>

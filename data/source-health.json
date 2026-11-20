@@ -85,9 +85,9 @@
    "status": "nofeed"
   },
   "dor-navigate": {
-   "lastSuccess": "2026-11-19T03:27:19+00:00",
-   "lastChecked": "2026-11-19T03:27:19+00:00",
-   "lastResult": "HTTP 200",
+   "lastSuccess": "2026-11-20T09:17:24+05:45",
+   "lastChecked": "2026-11-20T09:17:24+05:45",
+   "lastResult": "ok",
    "status": "ok"
   },
   "wmo-alert-hub": {
