@@ -2709,3 +2709,39 @@ html[data-theme=dark] .patro .pday.today .pbig{background:#F4F6FA!important;colo
 .hmzc button:not(:disabled):active{transform:scale(.94)}
 .hmdrag{position:absolute;left:8px;bottom:8px;margin:0;padding:3px 10px;border-radius:99px;background:rgba(11,20,36,.6);color:rgba(255,255,255,.85);font-size:.72rem;pointer-events:none;transition:opacity .3s}
 .hmdrag.gone{opacity:0}
+/* Breaking: wide banner for a road notice with a daily closure window */
+.breaking li.brkhero,.brklist li.brkhero{position:relative;display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1.1fr) minmax(0,1fr);gap:clamp(12px,2vw,26px);align-items:center;padding:clamp(14px,2vw,20px) clamp(14px,2.4vw,26px)!important;margin:10px 0;border:0!important;border-left:6px solid var(--sc)!important;border-radius:18px!important;background:radial-gradient(120% 140% at 85% 0%,#17365f 0%,#0B1424 62%)!important;color:#fff;font-size:1rem!important;box-shadow:0 10px 28px rgba(11,20,36,.22);overflow:hidden}
+.brkhero p{margin:0}
+.bhk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-bottom:6px!important}
+.brkhero .brktag{color:#FFB4A8!important;font-size:.74rem!important;letter-spacing:.08em}
+.bhkind{font-size:.74rem;font-weight:600;padding:2px 9px;border-radius:99px;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.9)}
+a.bhh{display:block;color:#fff!important;text-decoration:none!important;font-weight:800;font-size:clamp(1.3rem,1.05rem + 1.5vw,2rem);line-height:1.15;letter-spacing:-.01em}
+a.bhh:hover{text-decoration:underline!important}
+.bhsub{margin-top:6px!important;color:rgba(255,255,255,.86);font-size:.98rem;line-height:1.35}
+.bhnow{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.98rem;margin-bottom:28px!important}
+.bhnow i{flex:none;width:11px;height:11px;border-radius:50%;background:#34C77B;box-shadow:0 0 0 4px rgba(52,199,123,.22)}
+.brkhero.in .bhnow i{background:var(--sc);box-shadow:0 0 0 4px color-mix(in srgb,var(--sc) 30%,transparent)}
+.bhbar{position:relative;height:16px;border-radius:99px;background:rgba(255,255,255,.16)}
+.bhwin{position:absolute;top:0;bottom:0;border-radius:99px;background:var(--sc)}
+.bhwin b{position:absolute;left:50%;bottom:calc(100% + 5px);transform:translateX(-50%);white-space:nowrap;font-size:.8rem;font-weight:800;color:#fff}
+.bhpin{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1.5px;border-radius:2px;background:#fff;box-shadow:0 0 0 2px rgba(11,20,36,.6)}
+.bhpin em{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);font-style:normal;font-size:.68rem;font-weight:700;white-space:nowrap;background:#fff;color:#0B1424;border-radius:99px;padding:0 6px}
+.bhax{position:relative;height:16px;margin-top:5px;font-size:.68rem;color:rgba(255,255,255,.7)}
+.bhax span{position:absolute;transform:translateX(-50%);white-space:nowrap}.bhax span:first-child{transform:none}
+.bhleg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:20px!important;font-size:.76rem;color:rgba(255,255,255,.82)}
+.bhleg i{width:10px;height:10px;border-radius:3px;display:inline-block}.bhleg i.c{background:var(--sc)}.bhleg i.o{background:rgba(255,255,255,.3);margin-left:8px}
+.bhdo{padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);font-size:.92rem;line-height:1.4}
+.bhsrc{margin-top:8px!important;font-size:.8rem;color:rgba(255,255,255,.8);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.bhact{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px!important}
+a.bhbtn{display:inline-flex;align-items:center;min-height:38px;padding:5px 13px;border-radius:99px;border:1px solid rgba(255,255,255,.32);background:rgba(255,255,255,.08);color:#fff!important;font-size:.86rem;font-weight:600;text-decoration:none!important;transition:background-color .16s ease,transform .16s ease,border-color .16s ease}
+a.bhbtn.main{background:#fff;color:#0B1424!important;border-color:#fff}
+@media(hover:hover){a.bhbtn:hover{background:rgba(127,209,216,.28);border-color:#7FD1D8}a.bhbtn.main:hover{background:#e8f6f7}}
+a.bhbtn:active{transform:scale(.96)}
+.brkhero .brkx{position:absolute;top:6px;right:6px;margin:0;color:#fff!important;background:rgba(255,255,255,.1)}
+.brkhero .brkx:hover{background:rgba(255,255,255,.22)}
+.breaking:has(.brkhero){background:none;border-bottom:0}
+@media(max-width:1020px){.breaking li.brkhero,.brklist li.brkhero{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.brkhero .bhside{grid-column:1/-1}}
+@media(max-width:640px){.breaking li.brkhero,.brklist li.brkhero{grid-template-columns:minmax(0,1fr);gap:14px;border-radius:16px!important}.brkhero .bhmain{padding-right:40px}}
+@media(prefers-reduced-motion:no-preference){@keyframes bhp{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--sc) 30%,transparent)}50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--sc) 8%,transparent)}}.brkhero.in .bhnow i{animation:bhp 1.8s ease-in-out infinite}}
+html:not([data-theme=dark]) .brkhero .brktag,html[data-theme=dark] .brkhero .brktag{color:#FFB4A8!important}
+@media(min-width:641px){.breaking li.brkhero:has(.brkx){padding-right:60px!important}}
