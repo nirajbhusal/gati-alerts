@@ -259,7 +259,27 @@
   };
   G.roadOngoingChip = (a) => (G.roadOngoing(a) ? `<span class="tag ong">${G.lang === "ne" ? "चलिरहेको" : "Ongoing"}</span>` : "");
   G.roadOngoingLine = (a) => { const o = G.roadOngoing(a); return o ? `<p class="ongline">${G.esc(G.lang === "ne" ? o.ne : o.en)}</p>` : ""; };
-  const brkItem = (a, x) => { const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity];
+  /* A road notice with a daily closure window ("closed daily 11 AM to 4 PM") gets a wide banner: place, the window on a
+     24-hour line with the time now, what to do, source and time. The window is read from the notice's own English
+     headline; nothing is added to it. Any other alert keeps the plain row. */
+  const brkWin = (a) => { if (a.hazard !== "road" || !a.info.en) return null; const m = /daily[^0-9]{0,12}(\d{1,2})(?::(\d\d))?\s*(AM|PM)\s*(?:to|until|–|-)\s*(\d{1,2})(?::(\d\d))?\s*(AM|PM)/i.exec(a.info.en.headline || ""); if (!m) return null;
+    const mn = (h, mi, ap) => ((+h % 12) + (/pm/i.test(ap) ? 12 : 0)) * 60 + (+mi || 0), s = mn(m[1], m[2], m[3]), e = mn(m[4], m[5], m[6]); return e > s ? { s, e } : null; };
+  const brkClock = (min) => { const h = Math.floor(min / 60), mm = String(min % 60).padStart(2, "0"); return G.lang === "ne" ? G.num(`${h}:${mm}`) : `${h % 12 || 12}${mm === "00" ? "" : ":" + mm} ${h < 12 ? "AM" : "PM"}`; };
+  const brkHero = (a, x, w) => { const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity], T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc;
+    const hd = String(i.headline || ""), k = hd.indexOf(":"), place = k > 0 ? hd.slice(0, k).trim() : hd, rest = k > 0 ? hd.slice(k + 1).trim() : "";
+    const d = new Date(Date.now() + G.tzMs), now = d.getUTCHours() * 60 + d.getUTCMinutes(), on = Date.parse(a.info.en.onset || a.info.en.effective || a.sent) <= Date.now(), inside = on && now >= w.s && now < w.e;
+    const stat = !on ? T(`बन्द समय ${brkClock(w.s)}–${brkClock(w.e)}`, `Closure window ${brkClock(w.s)} to ${brkClock(w.e)}`) : inside ? T(`अहिले बन्द समयभित्र · ${brkClock(w.e)} सम्म`, `Now inside the closure window · until ${brkClock(w.e)}`) : now < w.s ? T(`आजको बन्द ${brkClock(w.s)} बजे सुरु हुन्छ`, `Today's closure starts at ${brkClock(w.s)}`) : T(`आजको बन्द समय सकियो · भोलि ${brkClock(w.s)} बजे फेरि`, `Today's closure window has ended · again at ${brkClock(w.s)} tomorrow`);
+    const pc = (v) => (v / 1440 * 100).toFixed(2), src = (i.params && i.params["gati:sourceTime"]) || a.sent;
+    return `<li class="brkhero${inside ? " in" : ""}" style="--sc:${c}"><div class="bhmain"><p class="bhk"><span class="brktag">${T("ताजा चेतावनी", "Breaking")}</span>${G.sevChip(a.severity)}<span class="bhkind">${T("समय तोकिएको सडक बन्द", "Timed road closure")}</span></p>
+        <a class="bhh" href="${ROOT}alerts/${a.identifier}/">${E(place)}</a>${rest ? `<p class="bhsub">${E(rest)}</p>` : ""}</div>
+      <div class="bhtime" role="img" aria-label="${E(T(`हरेक दिन ${brkClock(w.s)} देखि ${brkClock(w.e)} सम्म बन्द`, `Closed every day from ${brkClock(w.s)} to ${brkClock(w.e)}`))}"><p class="bhnow"><i></i>${E(stat)}</p>
+        <div class="bhbar"><span class="bhwin" style="left:${pc(w.s)}%;width:${pc(w.e - w.s)}%"><b>${brkClock(w.s)}–${brkClock(w.e)}</b></span><span class="bhpin" style="left:${pc(now)}%"><em>${T("अहिले", "Now")}</em></span></div>
+        <div class="bhax" aria-hidden="true">${[0, 6, 12, 18, 24].map((h) => `<span style="left:${pc(h * 60)}%">${h === 24 ? "" : brkClock(h * 60)}</span>`).join("")}</div>
+        <p class="bhleg"><span><i class="c"></i>${T("सवारी पूर्ण बन्द", "All vehicles stopped")}</span><span><i class="o"></i>${T("अन्य समय: खुला रहने अपेक्षा", "Other hours: expected open")}</span></p></div>
+      <div class="bhside">${i.instruction ? `<p class="bhdo"><b>${T("के गर्ने", "What to do")}:</b> ${E(i.instruction)}</p>` : ""}<p class="bhsrc">${G.trustChip(a.trust)} ${E(G.agencyOf(a))} · ${G.npt(src)}</p>
+        <p class="bhact"><a class="bhbtn main" href="${ROOT}alerts/${a.identifier}/">${T("पूरा सूचना", "Full notice")}</a><a class="bhbtn" href="${ROOT}route/">${T("मार्ग जाँच", "Route check")}</a>${i.web ? `<a class="bhbtn" href="${E(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>` : ""}</p></div>
+      ${x ? `<button type="button" class="brkx" data-id="${E(a.identifier)}" aria-label="${T("यो सूचना लुकाउनुहोस्", "Dismiss this alert")}">×</button>` : ""}</li>`; };
+  const brkItem = (a, x) => { const w = brkWin(a); if (w) return brkHero(a, x, w); const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity];
     return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}${G.roadOngoingChip(a)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a>${G.roadOngoingLine(a)}<span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${G.affChip(a.districts)}${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
   /* Breaking bar only on Home and Alerts; dismissal lasts for this browser session, per alert identifier */
   const BRK_PAGES = ["home", "alerts"];
