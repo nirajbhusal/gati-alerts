@@ -275,7 +275,7 @@
       <div class="bhtime" role="img" aria-label="${E(T(`हरेक दिन ${brkClock(w.s)} देखि ${brkClock(w.e)} सम्म बन्द`, `Closed every day from ${brkClock(w.s)} to ${brkClock(w.e)}`))}"><p class="bhnow"><i></i>${E(stat)}</p>
         <div class="bhbar"><span class="bhwin" style="left:${pc(w.s)}%;width:${pc(w.e - w.s)}%"><b>${brkClock(w.s)}–${brkClock(w.e)}</b></span><span class="bhpin" style="left:${pc(now)}%"><em>${T("अहिले", "Now")}</em></span></div>
         <div class="bhax" aria-hidden="true">${[0, 6, 12, 18, 24].map((h) => `<span style="left:${pc(h * 60)}%">${h === 24 ? "" : brkClock(h * 60)}</span>`).join("")}</div>
-        <p class="bhleg"><i class="c"></i>${T("सवारी पूर्ण बन्द", "All vehicles stopped")}<i class="o"></i>${T("अन्य समय: खुला रहने अपेक्षा", "Other hours: expected open")}</p></div>
+        <p class="bhleg"><span><i class="c"></i>${T("सवारी पूर्ण बन्द", "All vehicles stopped")}</span><span><i class="o"></i>${T("अन्य समय: खुला रहने अपेक्षा", "Other hours: expected open")}</span></p></div>
       <div class="bhside">${i.instruction ? `<p class="bhdo"><b>${T("के गर्ने", "What to do")}:</b> ${E(i.instruction)}</p>` : ""}<p class="bhsrc">${G.trustChip(a.trust)} ${E(G.agencyOf(a))} · ${G.npt(src)}</p>
         <p class="bhact"><a class="bhbtn main" href="${ROOT}alerts/${a.identifier}/">${T("पूरा सूचना", "Full notice")}</a><a class="bhbtn" href="${ROOT}route/">${T("मार्ग जाँच", "Route check")}</a>${i.web ? `<a class="bhbtn" href="${E(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>` : ""}</p></div>
       ${x ? `<button type="button" class="brkx" data-id="${E(a.identifier)}" aria-label="${T("यो सूचना लुकाउनुहोस्", "Dismiss this alert")}">×</button>` : ""}</li>`; };

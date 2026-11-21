@@ -2747,3 +2747,23 @@ a.bhbtn:active{transform:scale(.96)}
 @media(prefers-reduced-motion:no-preference){@keyframes bhp{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--sc) 30%,transparent)}50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--sc) 8%,transparent)}}.brkhero.in .bhnow i{animation:bhp 1.8s ease-in-out infinite}}
 html:not([data-theme=dark]) .brkhero .brktag,html[data-theme=dark] .brkhero .brktag{color:#FFB4A8!important}
 @media(min-width:641px){.breaking li.brkhero:has(.brkx){padding-right:60px!important}}
+/* Breaking banner: light on the paper and light themes, navy only on the dark theme */
+html:not([data-theme=dark]) .breaking li.brkhero,html:not([data-theme=dark]) .brklist li.brkhero{background:linear-gradient(115deg,color-mix(in srgb,var(--sc) 13%,var(--surface)) 0%,var(--surface) 58%)!important;color:var(--ink);box-shadow:0 8px 24px rgba(11,20,36,.1);outline:1px solid var(--line);outline-offset:-1px}
+html:not([data-theme=dark]) .brkhero .brktag{color:#B8261C!important}
+html:not([data-theme=dark]) .bhkind{border-color:var(--line);color:var(--ink);background:var(--surface)}
+html:not([data-theme=dark]) a.bhh{color:var(--ink)!important}
+html:not([data-theme=dark]) .bhsub{color:var(--slate)}
+html:not([data-theme=dark]) .bhbar{background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line)}
+html:not([data-theme=dark]) .bhwin b{color:var(--ink)}
+html:not([data-theme=dark]) .bhpin{background:#0B1424;box-shadow:0 0 0 2px var(--surface)}
+html:not([data-theme=dark]) .bhpin em{background:#0B1424;color:#fff}
+html:not([data-theme=dark]) .bhax,html:not([data-theme=dark]) .bhleg,html:not([data-theme=dark]) .bhsrc{color:var(--slate)}
+html:not([data-theme=dark]) .bhleg i.o{background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line)}
+html:not([data-theme=dark]) .bhnow i{background:#1e8e3e;box-shadow:0 0 0 4px rgba(30,142,62,.18)}
+html:not([data-theme=dark]) .brkhero.in .bhnow i{background:var(--sc);box-shadow:0 0 0 4px color-mix(in srgb,var(--sc) 26%,transparent)}
+html:not([data-theme=dark]) .bhdo{background:var(--surface);border-color:var(--line);color:var(--ink)}
+html:not([data-theme=dark]) a.bhbtn{border-color:var(--line);background:var(--surface);color:var(--ink)!important}
+html:not([data-theme=dark]) a.bhbtn.main{background:#0B1424;border-color:#0B1424;color:#fff!important}
+@media(hover:hover){html:not([data-theme=dark]) a.bhbtn:hover{border-color:#0F7C86;background:rgba(15,124,134,.1)}html:not([data-theme=dark]) a.bhbtn.main:hover{background:#16233a}}
+html:not([data-theme=dark]) .brkhero .brkx{color:var(--ink)!important;background:var(--surface2)}
+.bhleg{gap:4px 14px!important}.bhleg span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.bhleg i.o{margin-left:0!important}
