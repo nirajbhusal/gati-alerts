@@ -1,62 +1,62 @@
 {
  "sources": {
   "dhm-hydrology": {
-   "lastSuccess": "2026-11-19T03:26:45+00:00",
-   "lastChecked": "2026-11-19T03:26:45+00:00",
+   "lastSuccess": "2026-11-21T03:26:46+00:00",
+   "lastChecked": "2026-11-21T03:26:46+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "dhm-mfd": {
-   "lastSuccess": "2026-11-19T03:26:49+00:00",
-   "lastChecked": "2026-11-19T03:26:49+00:00",
+   "lastSuccess": "2026-11-21T03:26:49+00:00",
+   "lastChecked": "2026-11-21T03:26:49+00:00",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "neoc": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-19T03:26:51+00:00",
+   "lastChecked": "2026-11-21T03:26:50+00:00",
    "lastResult": "HTTPError: Internal Server Error",
    "status": "down"
   },
   "ndrrma": {
-   "lastSuccess": "2026-11-19T03:26:51+00:00",
-   "lastChecked": "2026-11-19T03:26:51+00:00",
+   "lastSuccess": "2026-11-21T03:26:50+00:00",
+   "lastChecked": "2026-11-21T03:26:50+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "nepal-police": {
-   "lastSuccess": "2026-11-19T03:26:53+00:00",
-   "lastChecked": "2026-11-19T03:26:53+00:00",
+   "lastSuccess": "2026-11-21T03:26:52+00:00",
+   "lastChecked": "2026-11-21T03:26:52+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "bipad": {
-   "lastSuccess": "2026-11-19T03:26:58+00:00",
-   "lastChecked": "2026-11-19T03:26:58+00:00",
+   "lastSuccess": "2026-11-21T03:26:57+00:00",
+   "lastChecked": "2026-11-21T03:26:57+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "nsc": {
    "lastSuccess": "2026-11-13T03:27:28+00:00",
-   "lastChecked": "2026-11-19T03:27:00+00:00",
+   "lastChecked": "2026-11-21T03:26:58+00:00",
    "lastResult": "URLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1029)",
    "status": "stale"
   },
   "usgs": {
-   "lastSuccess": "2026-11-19T03:27:03+00:00",
-   "lastChecked": "2026-11-19T03:27:03+00:00",
+   "lastSuccess": "2026-11-21T03:27:00+00:00",
+   "lastChecked": "2026-11-21T03:27:00+00:00",
    "lastResult": "HTTP 200",
    "status": "stale"
   },
   "doe-air": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-19T03:27:03+00:00",
+   "lastChecked": "2026-11-21T03:27:01+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
    "status": "down"
   },
   "edcd": {
    "lastSuccess": null,
-   "lastChecked": "2026-11-19T03:27:11+00:00",
+   "lastChecked": "2026-11-21T03:27:09+00:00",
    "lastResult": "URLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
    "status": "down"
   },
@@ -85,9 +85,9 @@
    "status": "nofeed"
   },
   "dor-navigate": {
-   "lastSuccess": "2026-11-20T09:17:24+05:45",
-   "lastChecked": "2026-11-20T09:17:24+05:45",
-   "lastResult": "ok",
+   "lastSuccess": "2026-11-21T03:27:17+00:00",
+   "lastChecked": "2026-11-21T03:27:17+00:00",
+   "lastResult": "HTTP 200",
    "status": "ok"
   },
   "wmo-alert-hub": {
@@ -141,7 +141,7 @@
   "glofas": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "link",
+   "lastResult": "live",
    "status": "link"
   },
   "google-flood-hub": {
@@ -180,7 +180,7 @@
    "lastResult": "live"
   }
  },
- "checkedAt": "2026-11-19T03:27:20+00:00",
+ "checkedAt": "2026-11-21T03:27:17+00:00",
  "note": "Checked from an automated server outside Nepal; some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
  "writtenAt": "2026-11-15T09:14:15Z"
 }
