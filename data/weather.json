@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-23T09:14:12+05:45",
+ "checked": "2026-11-24T09:13:39+05:45",
  "official": {
   "name_ne": "जल तथा मौसम विज्ञान विभाग, मौसम पूर्वानुमान महाशाखा",
   "name_en": "DHM Meteorological Forecasting Division",
@@ -7,17 +7,17 @@
   "warningUrl": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning",
   "reachable": true
  },
- "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; मंसिर ७ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी (१२४४७) सबैभन्दा पछिल्लो हो। नक्साका रङ १२४४५ बाट बदलिएका छैनन्। नक्सा पढियो: मंसिर ७ देखि मंसिर ११ सम्म पाँचै दिन देशभर हरियो; रातो, सुन्तला वा पहेँलो चेतावनी छैन। नदीको तह यस पटक पुनः जाँचिएको छैन; पछिल्लो अवस्था नदी पृष्ठमा हेर्नुहोस्।",
- "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Mangsir 7 (12447) is the latest. Map colours are unchanged from 12445. Maps read: green across the country on all five days, Mangsir 7 to Mangsir 11; no red, orange or yellow. River levels were not re-checked in this pass; see the Rivers page for the latest.",
+ "note_ne": "DHM मौसम पूर्वानुमान महाशाखाको साइट dhm.gov.np/mfd खुल्यो; मंसिर ७ बिहान ८ बजे जारी ५ दिने मौसम चेतावनी (१२४४९) सबैभन्दा पछिल्लो हो। नक्साका रङ १२४४७ बाट बदलिएका छैनन्। नक्साका रङ १२४४५ बाट बदलिएका छैनन्। नक्सा पढियो: मंसिर ७ देखि मंसिर ११ सम्म पाँचै दिन देशभर हरियो; रातो, सुन्तला वा पहेँलो चेतावनी छैन। नदीको तह यस पटक पुनः जाँचिएको छैन; पछिल्लो अवस्था नदी पृष्ठमा हेर्नुहोस्।",
+ "note_en": "DHM's forecasting site dhm.gov.np/mfd loaded; the 5-day weather warning issued at 8 AM Mangsir 7 (12449) is the latest. Map colours are unchanged from 12447. Map colours are unchanged from 12445. Maps read: green across the country on all five days, Mangsir 7 to Mangsir 11; no red, orange or yellow. River levels were not re-checked in this pass; see the Rivers page for the latest.",
  "rainfall": null,
  "rainfall_note_ne": "२४ घण्टाको स्टेसन वर्षा: उपलब्ध छैन।",
  "rainfall_note_en": "24 h station rainfall: not available.",
  "rainfallUrl": "https://www.dhm.gov.np/hydrology/rainfall-watch",
  "bulletin5": {
   "id": "np.gati.dhm-5day-bulletin-2026-11-23-0800",
-  "issued": "2026-11-23T08:00:00+05:45",
-  "posted": "2026-11-23T07:14:37+05:45",
-  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12447",
+  "issued": "2026-11-24T08:00:00+05:45",
+  "posted": "2026-11-24T08:02:03+05:45",
+  "url": "https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12449",
   "trust": "Official",
   "days": [
    {
@@ -61,7 +61,7 @@
   "map_note_ne": "DHM को ५ दिने चेतावनी नक्सामा मंसिर ७ देखि मंसिर ११ सम्म पाँचै दिन देशभर हरियो (चेतावनी छैन)।",
   "map_note_en": "DHM's 5-day warning maps are green (no warning) across the country on all five days, Mangsir 7 to Mangsir 11.",
   "url_map": "https://dhm.gov.np/mfd/api/image/weather-map/2026/11/23/warning-map-day-1-1795399180583.png",
-  "mfd_id": "12447"
+  "mfd_id": "12449"
  },
  "observed": {
   "time": "2026-11-03T18:20:00+05:45",
@@ -70,29 +70,29 @@
  },
  "forecast24": {
   "country": {
-   "id": "1493",
-   "issued": "2026-11-23T08:00:00+05:45",
+   "id": "1495",
+   "issued": "2026-11-24T08:00:00+05:45",
    "url": "https://dhm.gov.np/mfd/#/weather/country",
    "api": "https://dhm.gov.np/mfd/api/country-forecast",
-   "analysis_ne": "हाल नेपालको पश्चिमी वायूको आंशिक प्रभाव रहेको छ ।",
-   "analysis_en": "The country is currently under the partial influence of westerly winds.",
-   "day_ne": "कोशी, बागमती र गण्डकी प्रदेशको हिमाली क्षेत्रका साथै कोशी प्रदेशको पहाडी क्षेत्रमा आंशिक बादल लाग्नेछ, बाँकी क्षेत्रमा मौसम मूख्यतया सफा रहनेछ। कोशी र गण्डकी प्रदेशका हिमाली भू-भागका एक-दुई स्थानमा हल्का वर्षा/हिमपातको सम्भावना छ।",
-   "day_en": "Partly cloudy conditions will prevail in the Himalayan regions of Koshi, Bagmati and Gandaki Provinces, as well as in the Hilly region of Koshi Province, while the weather will remain mainly fair in the remaining areas. Light rain/snowfall is likely at one or two places in the Himalayan regions of Koshi and Gandaki Provinces.",
-   "night_ne": "कोशी प्रदेशको हिमाली र पहाडी क्षेत्रका साथै बागमती र गण्डकी प्रदेशको हिमाली क्षेत्रमा आंशिक बादल लाग्नेछ, बाँकी क्षेत्रमा मौसम मूख्यतया सफा रहनेछ। कोशी प्रदेशको हिमाली भू-भागका एक-दुई स्थानमा हल्का वर्षा/हिमपातको सम्भावना छ। तराई भू-भाग, उपत्यका तथा खोँचहरूमा बिहानपख थोरै स्थानमा हुस्सु/कुहिरो लाग्नेछ ।",
-   "night_en": "Partly cloudy conditions will prevail in the Himalayan and Hilly regions of Koshi Province, as well as in the Himalayan regions of Bagmati and Gandaki Provinces, while the weather will remain mainly fair in the remaining areas. Light rain/snowfall is likely at one or two places in the Himalayan region of Koshi Province. Mist/fog is likely at a few places in the Terai regions, valleys and river basins during the early morning."
+   "analysis_ne": "हाल नेपालमा कुनै पनि मौसमी प्रणालीको उल्लेखनीय प्रभाव रहेको छैन ।",
+   "analysis_en": "Currently, no significant weather system is influencing Nepal.",
+   "day_ne": "कोशी प्रदेशको हिमाली क्षेत्र तथा कोशी, बागमती र गण्डकी प्रदेशको पहाडी क्षेत्रमा आंशिक बादल लाग्नेछ, बाँकी क्षेत्रमा मौसम मूख्यतया सफा रहनेछ।",
+   "day_en": "Partly cloudy conditions will prevail in the Hilly regions of Koshi, Bagmati and Gandaki Province, and Himalayan regions of Koshi Province while the weather will remain mainly fair in the remaining areas.",
+   "night_ne": "कर्णाली र सुदूरपश्चिम प्रदेशमा आंशिक बादल लाग्नेछ, बाँकी क्षेत्रमा मौसम मूख्यतया सफा रहनेछ। तराई भू-भाग, उपत्यका तथा खोँचहरूमा बिहानपख थोरै स्थानमा हुस्सु/कुहिरो लाग्नेछ ।",
+   "night_en": "Partly cloudy conditions will prevail in Karnali and Sudurpashchim Provinces, while the weather will remain mainly fair in the remaining areas. Mist/fog is likely at a few places in the Terai regions, valleys and gorges during the early morning."
   },
   "kathmandu": {
-   "id": "1953",
-   "issued": "2026-11-23T08:00:00+05:45",
+   "id": "1955",
+   "issued": "2026-11-24T08:00:00+05:45",
    "url": "https://dhm.gov.np/mfd/#/weather/city",
    "api": "https://dhm.gov.np/mfd/api/weather",
    "name_ne": "काठमाडौँ",
    "name_en": "Kathmandu",
-   "day_ne": "मुख्यतया सफा",
-   "day_en": "Mainly fair weather",
+   "day_ne": "आंशिक बादल",
+   "day_en": "Partly Cloudy",
    "night_ne": "मुख्यतया सफा",
    "night_en": "Mainly fair weather",
-   "day_from_c": 21,
+   "day_from_c": 20,
    "day_to_c": null,
    "night_from_c": 7,
    "night_to_c": null,
@@ -100,14 +100,14 @@
   }
  },
  "dhm_ids": {
-  "recent": "12447",
+  "recent": "12449",
   "special": "12405",
-  "warning": "12447",
+  "warning": "12449",
   "nowcast": "12429",
-  "country_forecast": "1493"
+  "country_forecast": "1495"
  },
  "station_obs": {
-  "issued": "2026-11-23T08:45:00+05:45",
+  "issued": "2026-11-24T08:45:00+05:45",
   "url": "https://dhm.gov.np/mfd/#/weather/observation",
   "api": "https://dhm.gov.np/mfd/api/manual-observation",
   "stations": [
@@ -119,8 +119,8 @@
      80.5833
     ],
     "rain_mm": 0,
-    "tmin_c": 6.1,
-    "tmax_c": 18.7
+    "tmin_c": 8.7,
+    "tmax_c": 19.6
    },
    {
     "en": "Dipayal",
@@ -130,8 +130,8 @@
      80.9333
     ],
     "rain_mm": 0,
-    "tmin_c": 9.3,
-    "tmax_c": 26
+    "tmin_c": 8.3,
+    "tmax_c": 24.8
    },
    {
     "en": "Dhangadi",
@@ -141,8 +141,8 @@
      80.6
     ],
     "rain_mm": 0,
-    "tmin_c": 12.6,
-    "tmax_c": 28.5
+    "tmin_c": 12.5,
+    "tmax_c": 27.5
    },
    {
     "en": "Birendranagar",
@@ -152,8 +152,8 @@
      81.6333
     ],
     "rain_mm": 0,
-    "tmin_c": 8.2,
-    "tmax_c": 22.4
+    "tmin_c": 8.5,
+    "tmax_c": 23.7
    },
    {
     "en": "Nepalgunj",
@@ -163,8 +163,8 @@
      81.6167
     ],
     "rain_mm": 0,
-    "tmin_c": 13.8,
-    "tmax_c": 29
+    "tmin_c": 13,
+    "tmax_c": 27.5
    },
    {
     "en": "Jumla",
@@ -174,8 +174,8 @@
      82.1833
     ],
     "rain_mm": 0,
-    "tmin_c": -7.6,
-    "tmax_c": 20.5
+    "tmin_c": -7.5,
+    "tmax_c": 20.7
    },
    {
     "en": "Ghorahi",
@@ -186,7 +186,7 @@
     ],
     "rain_mm": 0,
     "tmin_c": 11,
-    "tmax_c": 26.7
+    "tmax_c": 25.1
    },
    {
     "en": "Pokhara",
@@ -196,8 +196,8 @@
      84.0169252
     ],
     "rain_mm": 0,
-    "tmin_c": 11.2,
-    "tmax_c": 23.6
+    "tmin_c": 13.5,
+    "tmax_c": 22.6
    },
    {
     "en": "Bhairahawa",
@@ -207,8 +207,8 @@
      83.45
     ],
     "rain_mm": 0,
-    "tmin_c": 13.8,
-    "tmax_c": 31
+    "tmin_c": 13.5,
+    "tmax_c": 29.5
    },
    {
     "en": "Simara",
@@ -218,8 +218,8 @@
      84.98
     ],
     "rain_mm": 0,
-    "tmin_c": 13.5,
-    "tmax_c": 28.5
+    "tmin_c": 12.3,
+    "tmax_c": 27.6
    },
    {
     "en": "Kathmandu",
@@ -229,8 +229,8 @@
      85.37
     ],
     "rain_mm": 0,
-    "tmin_c": 8,
-    "tmax_c": 22
+    "tmin_c": 7.9,
+    "tmax_c": 21
    },
    {
     "en": "Okhaldhunga",
@@ -240,8 +240,8 @@
      86.5
     ],
     "rain_mm": 0,
-    "tmin_c": 10.1,
-    "tmax_c": 21.6
+    "tmin_c": 8.9,
+    "tmax_c": 21
    },
    {
     "en": "Dhankuta",
@@ -252,7 +252,7 @@
     ],
     "rain_mm": 0,
     "tmin_c": 11.2,
-    "tmax_c": 25.6
+    "tmax_c": 24.8
    },
    {
     "en": "Biratnagar",
@@ -262,8 +262,8 @@
      87.2797
     ],
     "rain_mm": 0,
-    "tmin_c": 17,
-    "tmax_c": 28.2
+    "tmin_c": 13.5,
+    "tmax_c": 29.1
    },
    {
     "en": "Jomsom",
@@ -295,8 +295,8 @@
      85.9
     ],
     "rain_mm": 0,
-    "tmin_c": 19.6,
-    "tmax_c": 29.6
+    "tmin_c": 13.5,
+    "tmax_c": 28.4
    },
    {
     "en": "Jiri",
@@ -318,7 +318,7 @@
     ],
     "rain_mm": 0,
     "tmin_c": 9,
-    "tmax_c": 20.9
+    "tmax_c": 20
    },
    {
     "en": "Chandragadi Airport",
@@ -328,8 +328,8 @@
      88.075144
     ],
     "rain_mm": 0,
-    "tmin_c": 15.9,
-    "tmax_c": 27.7
+    "tmin_c": 14.8,
+    "tmax_c": 28.7
    },
    {
     "en": "Lumle",
