@@ -1,0 +1,68 @@
+# Build the macOS app (Gati.app) and upload a .dmg and a .zip as workflow artifacts.
+# The app is signed ad hoc: no Apple Developer ID is used and nothing is notarised.
+# Does not deploy GitHub Pages, tag a release, or publish to any store.
+
+name: macOS app
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "mac/**"
+      - ".github/workflows/mac.yml"
+  pull_request:
+    paths:
+      - "mac/**"
+      - ".github/workflows/mac.yml"
+
+env:
+  TZ: Asia/Kathmandu   # Gati runs on Nepal time (UTC+5:45)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mac-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-14
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Toolchain
+        run: |
+          swift --version
+          xcodebuild -version
+
+      - name: Build Gati.app, .dmg and .zip
+        run: bash mac/build.sh
+
+      - name: Check the bundle
+        run: |
+          set -euo pipefail
+          lipo -info mac/build/Gati.app/Contents/MacOS/Gati
+          codesign -dv mac/build/Gati.app 2>&1 | head -8
+          plutil -lint mac/build/Gati.app/Contents/Info.plist
+          ls -la mac/build
+
+      - name: The app starts and stays running
+        run: |
+          set -euo pipefail
+          defaults write io.github.nirajbhusal.gati.mac noticeShown -bool true   # skip the first-run notice, which waits for a click
+          open mac/build/Gati.app
+          sleep 12
+          pgrep -x Gati
+          pkill -x Gati || true
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: gati-mac
+          path: |
+            mac/build/Gati.dmg
+            mac/build/Gati-mac.zip
+          if-no-files-found: error
