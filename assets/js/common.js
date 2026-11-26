@@ -217,7 +217,10 @@
     const RK = ["Unknown", "Minor", "Moderate", "Severe", "Extreme"];
     const began = (a) => { const c = a.chain && a.chain[0] && Date.parse(a.chain[0].sent); return c && !isNaN(c) ? Math.min(c, Date.parse(a.sent)) : Date.parse(a.sent); };
     const raised = (a) => { const prev = (a.chain || []).filter((c) => c.id !== a.identifier).map((c) => G.alertById[c.id]).filter(Boolean); return prev.length > 0 && prev.every((p) => RK.indexOf(p.severity) < RK.indexOf(a.severity)); };
-    return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && now - Date.parse(a.sent) < 864e5 && SV.includes(a.severity) && (now - began(a) < 864e5 || raised(a)))
+    /* One exception to "new only": a highway notice with a daily closure window stays on the banner for as long as
+       it is in force, because it changes what a traveller can do today. Its tag says "In force today", not "Breaking". */
+    return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && SV.includes(a.severity) && ((now - Date.parse(a.sent) < 864e5 && (now - began(a) < 864e5 || raised(a))) || !!brkWin(a)))
+      .map((a) => { a._ongoing = !(now - Date.parse(a.sent) < 864e5 && (now - began(a) < 864e5 || raised(a))); return a; })
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
   const dismissed = () => { try { return JSON.parse(sessionStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
   /* 'Am I affected?' chip: links to /affected/ prefilled with the alert's district(s) */
@@ -267,20 +270,22 @@
   const brkClock = (min) => { const h = Math.floor(min / 60), mm = String(min % 60).padStart(2, "0"); return G.lang === "ne" ? G.num(`${h}:${mm}`) : `${h % 12 || 12}${mm === "00" ? "" : ":" + mm} ${h < 12 ? "AM" : "PM"}`; };
   const brkHero = (a, x, w) => { const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity], T = (ne, en) => (G.lang === "ne" ? ne : en), E = G.esc;
     const hd = String(i.headline || ""), k = hd.indexOf(":"), place = k > 0 ? hd.slice(0, k).trim() : hd, rest = k > 0 ? hd.slice(k + 1).trim() : "";
-    const d = new Date(Date.now() + G.tzMs), now = d.getUTCHours() * 60 + d.getUTCMinutes(), on = Date.parse(a.info.en.onset || a.info.en.effective || a.sent) <= Date.now(), inside = on && now >= w.s && now < w.e;
+    const d = new Date(Date.now() + G.tzMs), now = d.getUTCHours() * 60 + d.getUTCMinutes(), on = Date.parse((a.info.en || i).onset || (a.info.en || i).effective || a.sent) <= Date.now(), inside = !!w && on && now >= w.s && now < w.e;
+    const tag = a._ongoing ? T("आज लागू", "In force today") : T("ताजा चेतावनी", "Breaking"), src = (i.params && i.params["gati:sourceTime"]) || a.sent, pc = (v) => (v / 1440 * 100).toFixed(2);
+    const side = `<div class="bhside">${i.instruction ? `<p class="bhdo"><b>${T("के गर्ने", "What to do")}:</b> ${E(i.instruction)}</p>` : ""}<p class="bhsrc">${G.trustChip(a.trust)} ${E(G.agencyOf(a))} · ${G.npt(src)}</p>
+        <p class="bhact"><a class="bhbtn main" href="${ROOT}alerts/${a.identifier}/">${T("पूरा सूचना", "Full notice")}</a>${a.hazard === "road" ? `<a class="bhbtn" href="${ROOT}route/">${T("मार्ग जाँच", "Route check")}</a>` : `<a class="bhbtn" href="${ROOT}affected/${a.districts && a.districts.length ? "#d=" + encodeURIComponent(a.districts[0]) : ""}">${T("के म प्रभावित छु?", "Am I affected?")}</a>`}${i.web ? `<a class="bhbtn" href="${E(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>` : ""}</p></div>`;
+    const close = x ? `<button type="button" class="brkx" data-id="${E(a.identifier)}" aria-label="${T("यो सूचना लुकाउनुहोस्", "Dismiss this alert")}">×</button>` : "";
+    if (!w) return `<li class="brkhero nowin" style="--sc:${c}"><div class="bhmain"><p class="bhk"><span class="brktag">${tag}</span>${G.sevChip(a.severity)}${i.event ? `<span class="bhkind">${E(i.event)}</span>` : ""}</p>
+        <a class="bhh" href="${ROOT}alerts/${a.identifier}/">${E(place)}</a>${rest ? `<p class="bhsub">${E(rest)}</p>` : ""}</div>${side}${close}</li>`;
     const stat = !on ? T(`बन्द समय ${brkClock(w.s)}–${brkClock(w.e)}`, `Closure window ${brkClock(w.s)} to ${brkClock(w.e)}`) : inside ? T(`अहिले बन्द समयभित्र · ${brkClock(w.e)} सम्म`, `Now inside the closure window · until ${brkClock(w.e)}`) : now < w.s ? T(`आजको बन्द ${brkClock(w.s)} बजे सुरु हुन्छ`, `Today's closure starts at ${brkClock(w.s)}`) : T(`आजको बन्द समय सकियो · भोलि ${brkClock(w.s)} बजे फेरि`, `Today's closure window has ended · again at ${brkClock(w.s)} tomorrow`);
-    const pc = (v) => (v / 1440 * 100).toFixed(2), src = (i.params && i.params["gati:sourceTime"]) || a.sent;
-    return `<li class="brkhero${inside ? " in" : ""}" style="--sc:${c}"><div class="bhmain"><p class="bhk"><span class="brktag">${T("ताजा चेतावनी", "Breaking")}</span>${G.sevChip(a.severity)}<span class="bhkind">${T("समय तोकिएको सडक बन्द", "Timed road closure")}</span></p>
+    return `<li class="brkhero${inside ? " in" : ""}" style="--sc:${c}"><div class="bhmain"><p class="bhk"><span class="brktag">${tag}</span>${G.sevChip(a.severity)}<span class="bhkind">${T("समय तोकिएको सडक बन्द", "Timed road closure")}</span></p>
         <a class="bhh" href="${ROOT}alerts/${a.identifier}/">${E(place)}</a>${rest ? `<p class="bhsub">${E(rest)}</p>` : ""}</div>
       <div class="bhtime" role="img" aria-label="${E(T(`हरेक दिन ${brkClock(w.s)} देखि ${brkClock(w.e)} सम्म बन्द`, `Closed every day from ${brkClock(w.s)} to ${brkClock(w.e)}`))}"><p class="bhnow"><i></i>${E(stat)}</p>
         <div class="bhbar"><span class="bhwin" style="left:${pc(w.s)}%;width:${pc(w.e - w.s)}%"><b>${brkClock(w.s)}–${brkClock(w.e)}</b></span><span class="bhpin" style="left:${pc(now)}%"><em>${T("अहिले", "Now")}</em></span></div>
         <div class="bhax" aria-hidden="true">${[0, 6, 12, 18, 24].map((h) => `<span style="left:${pc(h * 60)}%">${h === 24 ? "" : brkClock(h * 60)}</span>`).join("")}</div>
         <p class="bhleg"><span><i class="c"></i>${T("सवारी पूर्ण बन्द", "All vehicles stopped")}</span><span><i class="o"></i>${T("अन्य समय: खुला रहने अपेक्षा", "Other hours: expected open")}</span></p></div>
-      <div class="bhside">${i.instruction ? `<p class="bhdo"><b>${T("के गर्ने", "What to do")}:</b> ${E(i.instruction)}</p>` : ""}<p class="bhsrc">${G.trustChip(a.trust)} ${E(G.agencyOf(a))} · ${G.npt(src)}</p>
-        <p class="bhact"><a class="bhbtn main" href="${ROOT}alerts/${a.identifier}/">${T("पूरा सूचना", "Full notice")}</a><a class="bhbtn" href="${ROOT}route/">${T("मार्ग जाँच", "Route check")}</a>${i.web ? `<a class="bhbtn" href="${E(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>` : ""}</p></div>
-      ${x ? `<button type="button" class="brkx" data-id="${E(a.identifier)}" aria-label="${T("यो सूचना लुकाउनुहोस्", "Dismiss this alert")}">×</button>` : ""}</li>`; };
-  const brkItem = (a, x) => { const w = brkWin(a); if (w) return brkHero(a, x, w); const i = a.info[G.lang] || a.info.ne, c = G.SEVCOLOR[a.severity];
-    return `<li style="--sc:${c}"><span class="brktag">${G.lang === "ne" ? "ताजा चेतावनी" : "Breaking"}</span>${G.sevChip(a.severity)}${G.roadOngoingChip(a)}<a class="brkh" href="${ROOT}alerts/${a.identifier}/">${G.esc(i.headline)}</a>${G.roadOngoingLine(a)}<span class="brkm">${G.esc(G.agencyOf(a))} · ${G.npt(a.sent)}</span>${G.affChip(a.districts)}${x ? `<button type="button" class="brkx" data-id="${G.esc(a.identifier)}" aria-label="${G.lang === "ne" ? "यो सूचना लुकाउनुहोस्" : "Dismiss this alert"}">×</button>` : ""}</li>`; };
+      ${side}${close}</li>`; };
+  const brkItem = (a, x) => brkHero(a, x, brkWin(a));
   /* Breaking bar only on Home and Alerts; dismissal lasts for this browser session, per alert identifier */
   const BRK_PAGES = ["home", "alerts"];
   const drawBreaking = () => !BRK_PAGES.includes(PAGE) ? Promise.resolve(brk.hidden = true) : G.breaking().then((L) => {

@@ -2767,3 +2767,7 @@ html:not([data-theme=dark]) a.bhbtn.main{background:#0B1424;border-color:#0B1424
 @media(hover:hover){html:not([data-theme=dark]) a.bhbtn:hover{border-color:#0F7C86;background:rgba(15,124,134,.1)}html:not([data-theme=dark]) a.bhbtn.main:hover{background:#16233a}}
 html:not([data-theme=dark]) .brkhero .brkx{color:var(--ink)!important;background:var(--surface2)}
 .bhleg{gap:4px 14px!important}.bhleg span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.bhleg i.o{margin-left:0!important}
+/* Breaking: every item is a banner. Without a daily window it has two columns. */
+.breaking li.brkhero.nowin,.brklist li.brkhero.nowin{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+@media(max-width:640px){.breaking li.brkhero.nowin,.brklist li.brkhero.nowin{grid-template-columns:minmax(0,1fr)}}
+.breaking li.brkhero+li.brkhero{border-top:0}
