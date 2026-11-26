@@ -1,4 +1,4 @@
-/* Ambient sky: a subtle time-of-day look (NPT) in the header and the weather card only, never behind alert text.
+/* Ambient sky: a subtle time-of-day look (NPT) in the weather card only, never behind alert text.
    dawn 05:00-07:00, day 07:00-17:00, dusk 17:00-19:00, night 19:00-05:00 (Nepal time, UTC+5:45).
    Preview: ?sky=dawn|day|dusk|night forces the phase. Kept in the code on purpose for previews. */
 (function () {
@@ -34,7 +34,8 @@
     if (!c) { c = document.createElement(el.matches(".tdrow") ? "span" : "p"); c.className = "skycap"; el.appendChild(c); }
     if (c.textContent !== txt) { c.textContent = txt; c.title = T("यो रङ DHM को आधिकारिक मौसम र नेपाल समयअनुसार मात्र हो; सूचना होइन।", "This tint follows DHM's official weather and Nepal time only; it is not an alert."); }
   }
-  function hosts() { return [document.querySelector("header.top"), document.querySelector("#today .td-wx"), document.getElementById("wx5")].filter(Boolean); }
+  /* The header no longer takes the sky look; only the weather cards do. */
+  function hosts() { return [document.querySelector("#today .td-wx"), document.getElementById("wx5")].filter(Boolean); }
   let apply = function () {
     const f = Q.get("sky"); S.phase = PH.includes(f) ? f : phaseOf(nptHour());
     H.dataset.sky = S.on ? S.phase : "off"; H.dataset.skyWx = S.on ? S.wx : "";
