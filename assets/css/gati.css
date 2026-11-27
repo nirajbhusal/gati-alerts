@@ -2771,3 +2771,5 @@ html:not([data-theme=dark]) .brkhero .brkx{color:var(--ink)!important;background
 .breaking li.brkhero.nowin,.brklist li.brkhero.nowin{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
 @media(max-width:640px){.breaking li.brkhero.nowin,.brklist li.brkhero.nowin{grid-template-columns:minmax(0,1fr)}}
 .breaking li.brkhero+li.brkhero{border-top:0}
+.bhheld{margin-top:6px!important;font-size:.8rem;line-height:1.35;color:rgba(255,255,255,.82);border-left:3px solid var(--sc);padding-left:8px}
+html:not([data-theme=dark]) .bhheld{color:var(--slate)}
