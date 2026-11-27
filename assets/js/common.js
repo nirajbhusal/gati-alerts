@@ -219,7 +219,14 @@
     const raised = (a) => { const prev = (a.chain || []).filter((c) => c.id !== a.identifier).map((c) => G.alertById[c.id]).filter(Boolean); return prev.length > 0 && prev.every((p) => RK.indexOf(p.severity) < RK.indexOf(a.severity)); };
     /* One exception to "new only": a highway notice with a daily closure window stays on the banner for as long as
        it is in force, because it changes what a traveller can do today. Its tag says "In force today", not "Breaking". */
-    return d.alerts.filter((a) => a.trust === "Official" && !a.expired && !a.supersededBy && Date.parse(a.expires) > now && SV.includes(a.severity) && ((now - Date.parse(a.sent) < 864e5 && (now - began(a) < 864e5 || raised(a))) || !!brkWin(a)))
+    /* A daily closure that the agency says runs "until further notice" does not end when the day's notice expires at the
+       close of the window. It stays on the banner until a newer notice replaces it (a reopening supersedes it), for at
+       most three days after the last notice Gati holds, and the banner then says which notice that was. */
+    const UFN = /until (further|another) notice|until another notice is published/i;
+    const standing = (a) => !!brkWin(a) && !a.supersededBy && UFN.test(((a.info.en || {}).headline || "") + " " + ((a.info.en || {}).description || "")) && now - Date.parse(a.sent) < 3 * 864e5;
+    const live = (a) => !a.expired && Date.parse(a.expires) > now;
+    return d.alerts.filter((a) => a.trust === "Official" && !a.supersededBy && SV.includes(a.severity) && ((live(a) && ((now - Date.parse(a.sent) < 864e5 && (now - began(a) < 864e5 || raised(a))) || !!brkWin(a))) || standing(a)))
+      .map((a) => { a._held = !live(a); return a; })
       .map((a) => { a._ongoing = !(now - Date.parse(a.sent) < 864e5 && (now - began(a) < 864e5 || raised(a))); return a; })
       .sort((a, b) => SV.indexOf(b.severity) - SV.indexOf(a.severity) || b.sent.localeCompare(a.sent)); });
   const dismissed = () => { try { return JSON.parse(sessionStorage.getItem("gati-brk-dismissed") || "[]"); } catch (e) { return []; } };
@@ -272,7 +279,7 @@
     const hd = String(i.headline || ""), k = hd.indexOf(":"), place = k > 0 ? hd.slice(0, k).trim() : hd, rest = k > 0 ? hd.slice(k + 1).trim() : "";
     const d = new Date(Date.now() + G.tzMs), now = d.getUTCHours() * 60 + d.getUTCMinutes(), on = Date.parse((a.info.en || i).onset || (a.info.en || i).effective || a.sent) <= Date.now(), inside = !!w && on && now >= w.s && now < w.e;
     const tag = a._ongoing ? T("आज लागू", "In force today") : T("ताजा चेतावनी", "Breaking"), src = (i.params && i.params["gati:sourceTime"]) || a.sent, pc = (v) => (v / 1440 * 100).toFixed(2);
-    const side = `<div class="bhside">${i.instruction ? `<p class="bhdo"><b>${T("के गर्ने", "What to do")}:</b> ${E(i.instruction)}</p>` : ""}<p class="bhsrc">${G.trustChip(a.trust)} ${E(G.agencyOf(a))} · ${G.npt(src)}</p>
+    const side = `<div class="bhside">${i.instruction ? `<p class="bhdo"><b>${T("के गर्ने", "What to do")}:</b> ${E(i.instruction)}</p>` : ""}<p class="bhsrc">${G.trustChip(a.trust)} ${E(G.agencyOf(a))} · ${G.npt(src)}</p>${a._held ? `<p class="bhheld">${T(`अर्को सूचना नआएसम्म हरेक दिन लागू। गतिसँग भएको प्रहरीको पछिल्लो सूचना: ${G.npt(a.sent)}। यात्रा अघि १०० मा बुझ्नुहोस्।`, `In force every day until further notice. Last police notice Gati holds: ${G.npt(a.sent)}. Check with police (100) before you travel.`)}</p>` : ""}
         <p class="bhact"><a class="bhbtn main" href="${ROOT}alerts/${a.identifier}/">${T("पूरा सूचना", "Full notice")}</a>${a.hazard === "road" ? `<a class="bhbtn" href="${ROOT}route/">${T("मार्ग जाँच", "Route check")}</a>` : `<a class="bhbtn" href="${ROOT}affected/${a.districts && a.districts.length ? "#d=" + encodeURIComponent(a.districts[0]) : ""}">${T("के म प्रभावित छु?", "Am I affected?")}</a>`}${i.web ? `<a class="bhbtn" href="${E(i.web)}" target="_blank" rel="noopener">${T("स्रोत", "Source")} ↗</a>` : ""}</p></div>`;
     const close = x ? `<button type="button" class="brkx" data-id="${E(a.identifier)}" aria-label="${T("यो सूचना लुकाउनुहोस्", "Dismiss this alert")}">×</button>` : "";
     if (!w) return `<li class="brkhero nowin" style="--sc:${c}"><div class="bhmain"><p class="bhk"><span class="brktag">${tag}</span>${G.sevChip(a.severity)}${i.event ? `<span class="bhkind">${E(i.event)}</span>` : ""}</p>
