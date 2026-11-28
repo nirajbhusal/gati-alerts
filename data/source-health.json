@@ -1,14 +1,14 @@
 {
  "sources": {
   "dhm-hydrology": {
-   "lastSuccess": "2026-11-27T03:28:56+00:00",
-   "lastChecked": "2026-11-27T03:28:56+00:00",
+   "lastSuccess": "2026-11-28T03:51:02Z",
+   "lastChecked": "2026-11-28T03:51:02Z",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "dhm-mfd": {
-   "lastSuccess": "2026-11-27T03:28:59+00:00",
-   "lastChecked": "2026-11-27T03:28:59+00:00",
+   "lastSuccess": "2026-11-28T03:51:07Z",
+   "lastChecked": "2026-11-28T03:51:07Z",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
@@ -58,7 +58,7 @@
    "lastSuccess": "2026-11-27T03:29:19+00:00",
    "lastChecked": "2026-11-27T03:29:19+00:00",
    "lastResult": "HTTP 200",
-   "status": "down"
+   "status": "stale"
   },
   "lightning": {
    "lastSuccess": null,
@@ -142,7 +142,7 @@
    "lastSuccess": null,
    "lastChecked": null,
    "lastResult": "live",
-   "status": "link"
+   "status": "live"
   },
   "google-flood-hub": {
    "lastSuccess": null,
@@ -177,10 +177,11 @@
   "awc-metar": {
    "lastSuccess": null,
    "lastChecked": null,
-   "lastResult": "live"
+   "lastResult": "live",
+   "status": "live"
   }
  },
- "checkedAt": "2026-11-27T03:29:22+00:00",
- "note": "Checked from an automated server outside Nepal; some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
- "writtenAt": "2026-11-15T09:14:15Z"
+ "checkedAt": "2026-11-28T03:51:09Z",
+ "note": "Checked by GitHub Actions runners (outside Nepal). Some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
+ "writtenAt": "2026-11-28T03:51:09Z"
 }

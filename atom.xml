@@ -3,7 +3,7 @@
   <id>https://gatialerts.com/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-11-28T03:28:05+00:00</updated>
+  <updated>2026-11-28T03:51:17+00:00</updated>
   <link href="https://gatialerts.com/atom.xml" rel="self"/>
   <link href="https://gatialerts.com/" rel="alternate"/>
   <author>
@@ -179,6 +179,19 @@
     </author>
   </entry>
   <entry>
+    <id>np.gati.nsc-quake-1385-2026-11-24</id>
+    <title>Earthquake: 4.0 ML, Darchula - India border (NSC)</title>
+    <updated>2026-11-24T18:31:00+05:45</updated>
+    <published>2026-11-24T18:31:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-11-25T18:31:00+05:45</summary>
+    <link href="https://gatialerts.com/cap/np.gati.nsc-quake-1385-2026-11-24.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://gatialerts.com/alerts/np.gati.nsc-quake-1385-2026-11-24/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
+    </author>
+  </entry>
+  <entry>
     <id>np.gati.dhm-5day-bulletin-2026-11-24-0800</id>
     <title>DHM: no weather warning anywhere in Nepal for all five days, Mangsir 8 to Mangsir 12 (24 to 28 Nov)</title>
     <updated>2026-11-24T09:25:00+05:45</updated>
@@ -228,6 +241,32 @@
     <link href="https://www.nepalpolice.gov.np/notices/1141/" rel="via"/>
     <author>
       <name>nepalpolice.gov.np</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.usgs-quake-us6000ud3i-2026-11-24</id>
+    <title>Earthquake: M5.3 (mb), 67 km WNW of Mangan, India (USGS)</title>
+    <updated>2026-11-24T07:17:42+05:45</updated>
+    <published>2026-11-24T07:17:42+05:45</published>
+    <summary>[Official] Unknown · U.S. Geological Survey (USGS) · relayed by Gati · expires 2026-11-25T07:17:42+05:45</summary>
+    <link href="https://gatialerts.com/cap/np.gati.usgs-quake-us6000ud3i-2026-11-24.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://gatialerts.com/alerts/np.gati.usgs-quake-us6000ud3i-2026-11-24/" rel="related" type="text/html"/>
+    <link href="https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3i" rel="via"/>
+    <author>
+      <name>earthquake.usgs.gov</name>
+    </author>
+  </entry>
+  <entry>
+    <id>np.gati.nsc-quake-1384-2026-11-24</id>
+    <title>Earthquake: 5.6 ML, Olangchung Gola (Taplejung-Tibet Border) (NSC)</title>
+    <updated>2026-11-24T07:17:00+05:45</updated>
+    <published>2026-11-24T07:17:00+05:45</published>
+    <summary>[Official] Unknown · National Earthquake Monitoring and Research Center (NSC) · relayed by Gati · expires 2026-11-25T07:17:00+05:45</summary>
+    <link href="https://gatialerts.com/cap/np.gati.nsc-quake-1384-2026-11-24.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://gatialerts.com/alerts/np.gati.nsc-quake-1384-2026-11-24/" rel="related" type="text/html"/>
+    <link href="https://seismonepal.gov.np/ne" rel="via"/>
+    <author>
+      <name>seismonepal.gov.np</name>
     </author>
   </entry>
   <entry>

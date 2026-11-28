@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-28T03:28:05+00:00",
- "count": 153,
+ "generated": "2026-11-28T03:51:17+00:00",
+ "count": 156,
  "alerts": [
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-28-0800",
@@ -3273,6 +3273,107 @@
    "supersededBy": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-27-0530"
   },
   {
+   "identifier": "np.gati.nsc-quake-1385-2026-11-24",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-11-24T18:31:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1385-2026-11-24.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-24T18:31:00+05:45",
+     "onset": "2026-11-24T18:31:00+05:45",
+     "expires": "2026-11-25T18:31:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ४.० ML, Darchula - India border (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-११-२४ १८:३१ NPT मा Darchula - India border क्षेत्रमा ४.० ML को भूकम्प गयो। केन्द्रबिन्दु: २९.९४°N, ८०.५३°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-11-24T18:31:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ४.० ML, Darchula - India border (NSC)",
+      "gati:magnitude": "4.0 ML"
+     },
+     "areas": [
+      {
+       "desc": "Darchula - India border",
+       "circles": [
+        "29.9400,80.5300 0"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-24T18:31:00+05:45",
+     "onset": "2026-11-24T18:31:00+05:45",
+     "expires": "2026-11-25T18:31:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 4.0 ML, Darchula - India border (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 4.0 ML occurred at 2026-11-24 18:31 NPT, Darchula - India border. Epicentre: 29.94°N, 80.53°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-11-24T18:31:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 4.0 ML, Darchula - India border (NSC)",
+      "gati:magnitude": "4.0 ML"
+     },
+     "areas": [
+      {
+       "desc": "Darchula - India border",
+       "circles": [
+        "29.9400,80.5300 0"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-11-25T18:31:00+05:45",
+   "districts": [],
+   "expired": true,
+   "areas": [
+    {
+     "code": null,
+     "circles": [
+      "29.9400,80.5300 0"
+     ],
+     "ne": "Darchula - India border",
+     "en": "Darchula - India border"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-24-0800",
    "sender": "hydrology.gov.np",
    "sent": "2026-11-24T09:25:00+05:45",
@@ -4267,6 +4368,214 @@
     }
    ],
    "supersededBy": "np.gati.police-road-gulmi-kaligandaki-corridor-2026-11-27-0530"
+  },
+  {
+   "identifier": "np.gati.usgs-quake-us6000ud3i-2026-11-24",
+   "sender": "earthquake.usgs.gov",
+   "sent": "2026-11-24T07:17:42+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: U.S. Geological Survey (USGS). Source: https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3i",
+   "references": null,
+   "file": "data/alerts/usgs-quake-us6000ud3i-2026-11-24.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-24T07:17:42+05:45",
+     "onset": "2026-11-24T07:17:42+05:45",
+     "expires": "2026-11-25T07:17:42+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: M५.३ (mb), ताप्लेजुङ जिल्ला, 67 km WNW of Mangan, India (USGS)",
+     "description": "अमेरिकी भूगर्भ सर्वेक्षण (USGS) अनुसार २०२६-११-२४ ०७:१७ NPT मा ताप्लेजुङ जिल्ला, ६७ km WNW of Mangan, India क्षेत्रमा M५.३ (mb) को भूकम्प गयो। केन्द्रबिन्दु: २७.८३°N, ८७.९५°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3i",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3i",
+      "gati:sourceTime": "2026-11-24T07:17:42+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: M५.३ (mb), ताप्लेजुङ जिल्ला, 67 km WNW of Mangan, India (USGS)",
+      "gati:magnitude": "M5.3 (mb)"
+     },
+     "areas": [
+      {
+       "desc": "ताप्लेजुङ जिल्ला",
+       "circles": [
+        "27.8328,87.9467 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0101"
+       }
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-24T07:17:42+05:45",
+     "onset": "2026-11-24T07:17:42+05:45",
+     "expires": "2026-11-25T07:17:42+05:45",
+     "contact": "USGS National Earthquake Information Center · https://earthquake.usgs.gov/",
+     "senderName": "U.S. Geological Survey (USGS) · relayed by Gati",
+     "headline": "Earthquake: M5.3 (mb), 67 km WNW of Mangan, India (USGS)",
+     "description": "According to U.S. Geological Survey (USGS), an earthquake of M5.3 (mb) occurred at 2026-11-24 07:17 NPT, 67 km WNW of Mangan, India. Epicentre: 27.83°N, 87.95°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3i",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3i",
+      "gati:sourceTime": "2026-11-24T07:17:42+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: M5.3 (mb), 67 km WNW of Mangan, India (USGS)",
+      "gati:magnitude": "M5.3 (mb)"
+     },
+     "areas": [
+      {
+       "desc": "Taplejung district",
+       "circles": [
+        "27.8328,87.9467 0"
+       ],
+       "geocodes": {
+        "NP-DISTRICT": "NP0101"
+       }
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-11-25T07:17:42+05:45",
+   "districts": [
+    "NP0101"
+   ],
+   "expired": true,
+   "areas": [
+    {
+     "code": "NP0101",
+     "circles": [
+      "27.8328,87.9467 0"
+     ],
+     "ne": "ताप्लेजुङ जिल्ला",
+     "en": "Taplejung district"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
+  },
+  {
+   "identifier": "np.gati.nsc-quake-1384-2026-11-24",
+   "sender": "seismonepal.gov.np",
+   "sent": "2026-11-24T07:17:00+05:45",
+   "status": "Actual",
+   "msgType": "Alert",
+   "scope": "Public",
+   "note": "Relayed by Gati (गति), an independent citizen verification project. Gati does not issue official warnings (Disaster Risk Reduction and Management Act 2074). Original: National Earthquake Monitoring and Research Center (NSC). Source: https://seismonepal.gov.np/ne",
+   "references": null,
+   "file": "data/alerts/nsc-quake-1384-2026-11-24.xml",
+   "info": {
+    "ne": {
+     "category": "Geo",
+     "event": "भूकम्प",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-24T07:17:00+05:45",
+     "onset": "2026-11-24T07:17:00+05:45",
+     "expires": "2026-11-25T07:17:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) · गति मार्फत प्रसारित",
+     "headline": "भूकम्प: ५.६ ML, Olangchung Gola (Taplejung-Tibet Border) (NSC)",
+     "description": "राष्ट्रिय भूकम्प मापन तथा अनुसन्धान केन्द्र (NSC) अनुसार २०२६-११-२४ ०७:१७ NPT मा Olangchung Gola (Taplejung-Tibet Border) क्षेत्रमा ५.६ ML को भूकम्प गयो। केन्द्रबिन्दु: २७.९०°N, ८८.०७°E।",
+     "instruction": "धक्का फेरि आए घुँडा टेक्नुहोस्, टाउको छोप्नुहोस्, समात्नुहोस्। चर्केका घर र भिरालो ठाउँबाट टाढा रहनुहोस्।",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-11-24T07:17:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "भूकम्प: ५.६ ML, Olangchung Gola (Taplejung-Tibet Border) (NSC)",
+      "gati:magnitude": "5.6 ML"
+     },
+     "areas": [
+      {
+       "desc": "Olangchung Gola (Taplejung-Tibet Border)",
+       "circles": [
+        "27.9000,88.0700 0"
+       ],
+       "geocodes": {}
+      }
+     ]
+    },
+    "en": {
+     "category": "Geo",
+     "event": "Earthquake",
+     "responseType": "None",
+     "urgency": "Past",
+     "severity": "Unknown",
+     "certainty": "Observed",
+     "effective": "2026-11-24T07:17:00+05:45",
+     "onset": "2026-11-24T07:17:00+05:45",
+     "expires": "2026-11-25T07:17:00+05:45",
+     "contact": "NSC · https://seismonepal.gov.np/",
+     "senderName": "National Earthquake Monitoring and Research Center (NSC) · relayed by Gati",
+     "headline": "Earthquake: 5.6 ML, Olangchung Gola (Taplejung-Tibet Border) (NSC)",
+     "description": "According to National Earthquake Monitoring and Research Center (NSC), an earthquake of 5.6 ML occurred at 2026-11-24 07:17 NPT, Olangchung Gola (Taplejung-Tibet Border). Epicentre: 27.90°N, 88.07°E.",
+     "instruction": "If shaking returns: drop, cover and hold on. Stay away from cracked buildings and steep slopes.",
+     "web": "https://seismonepal.gov.np/ne",
+     "params": {
+      "gati:trustLevel": "Official",
+      "gati:sourceUrl": "https://seismonepal.gov.np/ne",
+      "gati:sourceTime": "2026-11-24T07:17:00+05:45",
+      "gati:hazard": "earthquake",
+      "gati:summary160": "Earthquake: 5.6 ML, Olangchung Gola (Taplejung-Tibet Border) (NSC)",
+      "gati:magnitude": "5.6 ML"
+     },
+     "areas": [
+      {
+       "desc": "Olangchung Gola (Taplejung-Tibet Border)",
+       "circles": [
+        "27.9000,88.0700 0"
+       ],
+       "geocodes": {}
+      }
+     ]
+    }
+   },
+   "trust": "Official",
+   "state": null,
+   "hazard": "earthquake",
+   "severity": "Unknown",
+   "expires": "2026-11-25T07:17:00+05:45",
+   "districts": [],
+   "expired": true,
+   "areas": [
+    {
+     "code": null,
+     "circles": [
+      "27.9000,88.0700 0"
+     ],
+     "ne": "Olangchung Gola (Taplejung-Tibet Border)",
+     "en": "Olangchung Gola (Taplejung-Tibet Border)"
+    }
+   ],
+   "refIds": [],
+   "chain": [],
+   "supersededBy": null
   },
   {
    "identifier": "np.gati.dhm-5day-bulletin-2026-11-23-0800",
