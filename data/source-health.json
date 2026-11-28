@@ -1,14 +1,14 @@
 {
  "sources": {
   "dhm-hydrology": {
-   "lastSuccess": "2026-11-28T03:51:02Z",
-   "lastChecked": "2026-11-28T03:51:02Z",
+   "lastSuccess": "2026-11-28T12:53:07Z",
+   "lastChecked": "2026-11-28T12:53:07Z",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
   "dhm-mfd": {
-   "lastSuccess": "2026-11-28T03:51:07Z",
-   "lastChecked": "2026-11-28T03:51:07Z",
+   "lastSuccess": "2026-11-28T12:53:21Z",
+   "lastChecked": "2026-11-28T12:53:21Z",
    "lastResult": "HTTP 200",
    "status": "ok"
   },
@@ -181,7 +181,7 @@
    "status": "live"
   }
  },
- "checkedAt": "2026-11-28T03:51:09Z",
+ "checkedAt": "2026-11-28T12:53:22Z",
  "note": "Checked by GitHub Actions runners (outside Nepal). Some .gov.np sites block or time out for such servers even when they are up for people in Nepal.",
- "writtenAt": "2026-11-28T03:51:09Z"
+ "writtenAt": "2026-11-28T12:53:22Z"
 }
