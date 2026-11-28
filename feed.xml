@@ -4,12 +4,25 @@
   <id>https://gatialerts.com/atom.xml</id>
   <title>गति (Gati) — relayed CAP 1.2 alerts (not official warnings)</title>
   <subtitle>सही सूचना, सही समयमा । / The right alert, right on time. Gati relays and verifies; it does not issue official warnings.</subtitle>
-  <updated>2026-11-27T03:31:34+00:00</updated>
+  <updated>2026-11-28T03:28:05+00:00</updated>
   <link href="https://gatialerts.com/atom.xml" rel="self"/>
   <link href="https://gatialerts.com/" rel="alternate"/>
   <author>
     <name>Gati (Niraj Bhusal, maintainer)</name>
   </author>
+  <entry>
+    <id>np.gati.dhm-5day-bulletin-2026-11-28-0800</id>
+    <title>DHM: no weather warning anywhere in Nepal for all five days, Mangsir 12 to Mangsir 16 (28 Nov to 2 Dec)</title>
+    <updated>2026-11-28T09:30:00+05:45</updated>
+    <published>2026-11-28T09:30:00+05:45</published>
+    <summary>[Official] Minor · Department of Hydrology and Meteorology (DHM), Meteorological Forecasting Division · relayed by Gati · expires 2026-12-02T23:59:00+05:45</summary>
+    <link href="https://gatialerts.com/cap/np.gati.dhm-5day-bulletin-2026-11-28-0800.xml" rel="alternate" type="application/cap+xml"/>
+    <link href="https://gatialerts.com/alerts/np.gati.dhm-5day-bulletin-2026-11-28-0800/" rel="related" type="text/html"/>
+    <link href="https://dhm.gov.np/mfd/#/weather/pages/weather-warning/12456" rel="via"/>
+    <author>
+      <name>hydrology.gov.np</name>
+    </author>
+  </entry>
   <entry>
     <id>np.gati.dhm-5day-bulletin-2026-11-27-0800</id>
     <title>DHM: no weather warning anywhere in Nepal for all five days, Mangsir 11 to Mangsir 15 (27 Nov to 1 Dec)</title>
